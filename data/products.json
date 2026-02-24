@@ -94,5 +94,28 @@
             "🪈 Krishna Theme",
             "✍️ Tracing"
         ]
+    },
+    {
+        "id": 3,
+        "title": "testoing",
+        "price": 349,
+        "mrp": 800,
+        "badge": "Popular",
+        "badgeType": "default",
+        "image": "images/products/images.jpg",
+        "images": [
+            "images/products/images.jpg",
+            "images/products/images_1.jpg"
+        ],
+        "fallbackEmoji": "🪈",
+        "shortDesc": "Tracing, colouring & early math with Lord Krishna's values and stories. Designed for toddlers — blending devotion with education through fun activities.",
+        "fullDesc": "Introduce your child to learning inspired by Lord Krishna's values and stories!\n\nDesigned for toddlers and preschoolers, this A4-sized customised activity book blends devotion with early education through fun, age-appropriate activities.\n\nFeaturing Krishna, peacock feathers, flute, cows, and playful Vrindavan elements, children enjoy learning while developing essential skills.\n\n✨ What's Inside:\n• Tracing activities (letters and shapes)\n• Colouring pages with Krishna theme\n• Early math exercises\n• Krishna story elements and illustrations\n• Personalised child name on cover\n• 30 pages of activities\n\n🎯 Benefits:\n• Introduces cultural & spiritual values early\n• Develops fine motor skills through tracing\n• Builds number sense with fun activities\n• Screen-free, value-based engagement\n\n👶 Age Group: Toddlers & Preschoolers (2–5 years)\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🎨 Colouring",
+            "🔢 Early Math",
+            "🪈 Krishna Theme",
+            "✍️ Tracing"
+        ]
     }
 ]
