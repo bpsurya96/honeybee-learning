@@ -7,19 +7,21 @@
     <title>Product — HoneyBee Learning</title>
     <meta name="description"
         content="View product details, gallery, and customer reviews for HoneyBee Learning personalised kids books.">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/product.css">
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap';
+        document.head.appendChild(link);
+    </script>
 </head>
 
 <body>
 
     <nav>
         <a class="nav-logo" href="index.html">
-            <img src="https://smartpos.amazon.in/images/82888/a01481c8_1769483833674.png" alt="HoneyBee"
-                onerror="this.style.display='none'">
+            <img src="images/logo/logo.png" alt="HoneyBee" style="height:42px;border-radius:10px;">
             <div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div>
         </a>
         <a href="index.html" class="back-btn">← All Products</a>

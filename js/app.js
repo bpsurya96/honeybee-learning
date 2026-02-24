@@ -132,9 +132,9 @@ function renderTestimonials() {
 
 // ─── HERO BANNER ───
 const bannerImgs = [
-    "https://m.media-amazon.com/images/X/bxt1/M/obxt1Bh6XGGSoC1._SL3840_QL80_FMwebp_.png",
-    "https://m.media-amazon.com/images/X/bxt1/M/Zbxt1hrg8bCSWsW._SL3840_QL80_FMwebp_.png",
-    "https://m.media-amazon.com/images/X/bxt1/M/Gbxt1Bb2R8ZjjyJ._SL3840_QL80_FMwebp_.png"
+    "images/hero/1.png",
+    "images/hero/2.png",
+    "images/hero/3.png"
 ];
 let bannerIdx = 0;
 function setBanner(i) {

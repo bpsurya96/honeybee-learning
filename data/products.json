@@ -8,7 +8,11 @@
         "badgeType": "hot",
         "image": "images/products/0/1.png",
         "images": [
-            "images/products/0/1.png"
+            "images/products/0/1.png",
+            "images/products/0/2.jpg",
+            "images/products/0/3.jpg",
+            "images/products/0/4.png",
+            "images/products/0/5.png"
         ],
         "fallbackEmoji": "📖",
         "shortDesc": "Personalised name worksheets with moral values learning. Krishna-inspired, teaching kindness, sharing & calmness through fun preschool exercises.",
@@ -28,9 +32,9 @@
         "mrp": 850,
         "badge": "Newly Launched",
         "badgeType": "new",
-        "image": "images/products/1/1.png",
+        "image": "images/products/1/1.jpg",
         "images": [
-            "images/products/1/1.png"
+            "images/products/1/1.jpg"
         ],
         "fallbackEmoji": "🦕",
         "shortDesc": "Name tracing, matching letters & word search in a fun dinosaur theme. Makes your child's first writing journey special and personal — A4, 30 pages!",
@@ -49,9 +53,9 @@
         "mrp": 900,
         "badge": "Best Seller",
         "badgeType": "hot",
-        "image": "images/products/2/1.png",
+        "image": "images/products/2/1.jpg",
         "images": [
-            "images/products/2/1.png"
+            "images/products/2/1.jpg"
         ],
         "fallbackEmoji": "🃏",
         "shortDesc": "Real-life objects with value-based sentences personalised with your child's name. A–Z complete set (26 cards) for meaningful alphabet learning.",

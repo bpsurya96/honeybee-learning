@@ -7,9 +7,14 @@
   <title>HoneyBee Learning — Personalised Kids Books & Birthday Return Gifts, Chennai</title>
   <meta name="description"
     content="Personalised activity books, value-based learning materials & birthday return gift combos crafted with love for every little learner. Based in Medavakkam, Chennai.">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Load Google Fonts without blocking page render
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap';
+    document.head.appendChild(link);
+  </script>
 </head>
 
 <body>
@@ -17,8 +22,7 @@
   <!-- NAV -->
   <nav id="mainNav">
     <a class="nav-logo" href="#">
-      <img src="https://smartpos.amazon.in/images/82888/a01481c8_1769483833674.png" alt="HoneyBee"
-        onerror="this.style.display='none'">
+      <img src="images/logo/logo.png" alt="HoneyBee" style="height:42px;border-radius:10px;">
       <div>
         <span class="nav-logo-text">HoneyBee</span>
         <span class="nav-logo-sub">Learning</span>
@@ -65,9 +69,8 @@
       </div>
     </div>
     <div class="hero-right">
-      <img class="hero-banner-img" id="heroBanner" loading="eager"
-        src="https://m.media-amazon.com/images/X/bxt1/M/obxt1Bh6XGGSoC1._SL3840_QL80_FMwebp_.png"
-        alt="HoneyBee Learning">
+      <img class="hero-banner-img" id="heroBanner" loading="eager" src="images/hero/1.png" alt="HoneyBee Learning"
+        onerror="this.parentElement.style.display='none'">
       <div class="banner-dots">
         <button class="banner-dot active" onclick="setBanner(0)"></button>
         <button class="banner-dot" onclick="setBanner(1)"></button>
