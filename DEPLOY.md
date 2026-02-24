@@ -1,19 +1,20 @@
 # 🍯 HoneyBee Learning — Deployment Guide
 
-## Quick Start (Local)
+## Live Site
 
-Run the site locally on your machine:
+**GitHub Pages**: https://bpsurya96.github.io/honeybee-learning/
+
+**Repo**: https://github.com/bpsurya96/honeybee-learning (branch: `main`)
+
+---
+
+## Quick Start (Local)
 
 ```bash
 bash serve.sh
 ```
 
 Then open **http://localhost:8080** in your browser.
-
-To use a different port:
-```bash
-bash serve.sh 3000
-```
 
 ---
 
@@ -23,7 +24,6 @@ bash serve.sh 3000
 honeybee_learning/
 ├── index.html              ← Main homepage
 ├── product.html            ← Product detail page
-├── CNAME                   ← Custom domain config
 ├── serve.sh                ← Local dev server
 │
 ├── css/
@@ -77,60 +77,36 @@ Edit `data/reviews.json`:
 
 ---
 
-## Free Deployment to the Internet
+## Deploy Updates
 
-### Option 1: GitHub Pages (Recommended — 100% Free Forever)
+Just push to `main` — GitHub Pages auto-deploys:
 
-1. **Create a GitHub account** if you don't have one: https://github.com/signup
+```bash
+git add -A
+git commit -m "Update products"
+git push
+```
 
-2. **Create a new repository** on GitHub:
-   - Go to https://github.com/new
-   - Name it `honeybee-learning`
-   - Keep it **Public**
-   - Click **Create repository**
-
-3. **Push your code to GitHub**:
-   ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/honeybee-learning.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-4. **Enable GitHub Pages**:
-   - Go to your repo → **Settings** → **Pages**
-   - Under "Source", select **Deploy from a branch**
-   - Choose **main** branch, folder **/ (root)**
-   - Click **Save**
-
-5. **Your site will be live at**:
-   ```
-   https://YOUR_USERNAME.github.io/honeybee-learning/
-   ```
-
-6. **Future updates** — just push:
-   ```bash
-   git add -A
-   git commit -m "Update products"
-   git push
-   ```
-
-### Option 2: Netlify (Drag & Drop)
-
-1. Go to https://app.netlify.com/drop
-2. Drag your entire folder into the browser
-3. Done!
+Site updates within ~1 minute.
 
 ---
 
-## Custom Domain (Optional)
+## GitHub Pages Setup (Already Done)
 
-If you buy a domain (e.g., `honeybeelearning.in` — ~₹99-199/year):
+- Repo → **Settings** → **Pages**
+- Source: **Deploy from a branch**
+- Branch: **main**, folder **/ (root)**
 
-1. In your DNS provider, add:
+---
+
+## Custom Domain (Future — Optional)
+
+When you buy a domain (e.g., `honeybeelearning.in` — ~₹99-199/year):
+
+1. Create a `CNAME` file in the repo root with your domain name
+2. In your DNS provider, add:
    - `A` record → `185.199.108.153`
    - `A` record → `185.199.109.153`
-   - `CNAME` for `www` → `YOUR_USERNAME.github.io`
-
-2. In GitHub Pages settings, enter your custom domain
-
-3. Enable "Enforce HTTPS"
+   - `CNAME` for `www` → `bpsurya96.github.io`
+3. In GitHub Pages settings, enter your custom domain
+4. Enable "Enforce HTTPS"
