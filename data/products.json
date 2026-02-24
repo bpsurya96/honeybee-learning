@@ -6,13 +6,9 @@
         "mrp": 850,
         "badge": "Best Seller",
         "badgeType": "hot",
-        "image": "https://m.media-amazon.com/images/X/bxt1/M/zbxt1BCGpUq$Rnq._SL3840_QL80_FMwebp_.png",
+        "image": "images/products/0/1.png",
         "images": [
-            "https://m.media-amazon.com/images/X/bxt1/M/zbxt1BCGpUq$Rnq._SL3840_QL80_FMwebp_.png",
-            "https://m.media-amazon.com/images/X/bxt1/M/Abxt1RXZC$kr1N4._SL3840_QL80_FMwebp_.jpg",
-            "https://m.media-amazon.com/images/X/bxt1/M/7bxt1R3$uvXkLOq._SL3840_QL80_FMwebp_.jpg",
-            "https://m.media-amazon.com/images/X/bxt1/M/dbxt1BtzT43J3cb._SL3840_QL80_FMwebp_.png",
-            "https://m.media-amazon.com/images/X/bxt1/M/mbxt1xRRGU7jXaS._SL3840_QL80_FMwebp_.png"
+            "images/products/0/1.png"
         ],
         "fallbackEmoji": "📖",
         "shortDesc": "Personalised name worksheets with moral values learning. Krishna-inspired, teaching kindness, sharing & calmness through fun preschool exercises.",
@@ -32,11 +28,9 @@
         "mrp": 850,
         "badge": "Newly Launched",
         "badgeType": "new",
-        "image": "https://m.media-amazon.com/images/X/bxt1/M/Abxt1RXZC$kr1N4._SL3840_QL80_FMwebp_.jpg",
+        "image": "images/products/1/1.png",
         "images": [
-            "https://m.media-amazon.com/images/X/bxt1/M/Abxt1RXZC$kr1N4._SL3840_QL80_FMwebp_.jpg",
-            "https://m.media-amazon.com/images/X/bxt1/M/zbxt1BCGpUq$Rnq._SL3840_QL80_FMwebp_.png",
-            "https://m.media-amazon.com/images/X/bxt1/M/7bxt1R3$uvXkLOq._SL3840_QL80_FMwebp_.jpg"
+            "images/products/1/1.png"
         ],
         "fallbackEmoji": "🦕",
         "shortDesc": "Name tracing, matching letters & word search in a fun dinosaur theme. Makes your child's first writing journey special and personal — A4, 30 pages!",
@@ -55,11 +49,9 @@
         "mrp": 900,
         "badge": "Best Seller",
         "badgeType": "hot",
-        "image": "https://m.media-amazon.com/images/X/bxt1/M/7bxt1R3$uvXkLOq._SL3840_QL80_FMwebp_.jpg",
+        "image": "images/products/2/1.png",
         "images": [
-            "https://m.media-amazon.com/images/X/bxt1/M/7bxt1R3$uvXkLOq._SL3840_QL80_FMwebp_.jpg",
-            "https://m.media-amazon.com/images/X/bxt1/M/zbxt1BCGpUq$Rnq._SL3840_QL80_FMwebp_.png",
-            "https://m.media-amazon.com/images/X/bxt1/M/Abxt1RXZC$kr1N4._SL3840_QL80_FMwebp_.jpg"
+            "images/products/2/1.png"
         ],
         "fallbackEmoji": "🃏",
         "shortDesc": "Real-life objects with value-based sentences personalised with your child's name. A–Z complete set (26 cards) for meaningful alphabet learning.",
@@ -78,34 +70,9 @@
         "mrp": 800,
         "badge": "Popular",
         "badgeType": "default",
-        "image": "https://m.media-amazon.com/images/X/bxt1/M/dbxt1BtzT43J3cb._SL3840_QL80_FMwebp_.png",
+        "image": "images/products/3/1.png",
         "images": [
-            "https://m.media-amazon.com/images/X/bxt1/M/dbxt1BtzT43J3cb._SL3840_QL80_FMwebp_.png",
-            "https://m.media-amazon.com/images/X/bxt1/M/zbxt1BCGpUq$Rnq._SL3840_QL80_FMwebp_.png",
-            "https://m.media-amazon.com/images/X/bxt1/M/mbxt1xRRGU7jXaS._SL3840_QL80_FMwebp_.png"
-        ],
-        "fallbackEmoji": "🪈",
-        "shortDesc": "Tracing, colouring & early math with Lord Krishna's values and stories. Designed for toddlers — blending devotion with education through fun activities.",
-        "fullDesc": "Introduce your child to learning inspired by Lord Krishna's values and stories!\n\nDesigned for toddlers and preschoolers, this A4-sized customised activity book blends devotion with early education through fun, age-appropriate activities.\n\nFeaturing Krishna, peacock feathers, flute, cows, and playful Vrindavan elements, children enjoy learning while developing essential skills.\n\n✨ What's Inside:\n• Tracing activities (letters and shapes)\n• Colouring pages with Krishna theme\n• Early math exercises\n• Krishna story elements and illustrations\n• Personalised child name on cover\n• 30 pages of activities\n\n🎯 Benefits:\n• Introduces cultural & spiritual values early\n• Develops fine motor skills through tracing\n• Builds number sense with fun activities\n• Screen-free, value-based engagement\n\n👶 Age Group: Toddlers & Preschoolers (2–5 years)\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
-        "tags": [
-            "📏 A4 — 30 Pages",
-            "🎨 Colouring",
-            "🔢 Early Math",
-            "🪈 Krishna Theme",
-            "✍️ Tracing"
-        ]
-    },
-    {
-        "id": 3,
-        "title": "testoing",
-        "price": 349,
-        "mrp": 800,
-        "badge": "Popular",
-        "badgeType": "default",
-        "image": "images/products/images.jpg",
-        "images": [
-            "images/products/images.jpg",
-            "images/products/images_1.jpg"
+            "images/products/3/1.png"
         ],
         "fallbackEmoji": "🪈",
         "shortDesc": "Tracing, colouring & early math with Lord Krishna's values and stories. Designed for toddlers — blending devotion with education through fun activities.",
