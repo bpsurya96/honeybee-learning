@@ -1,0 +1,98 @@
+[
+    {
+        "id": "worksheet-fun-pack",
+        "name": "Worksheet Fun Pack",
+        "emoji": "📋",
+        "price": 25,
+        "mrpLabel": "Under ₹50",
+        "category": "under50",
+        "hasCandy": true,
+        "items": [
+            "3 personalised activity sheets (A4 B/W)",
+            "Pencil",
+            "Eraser",
+            "Chocolate or Chikki",
+            "Packed as a set"
+        ]
+    },
+    {
+        "id": "mini-color-pack",
+        "name": "Mini Color Pack",
+        "emoji": "🖍️",
+        "price": 50,
+        "mrpLabel": "Under ₹85",
+        "category": "under100",
+        "hasCandy": true,
+        "items": [
+            "5 personalised A4 B/W activity sheets",
+            "Pencil + eraser + sharpner",
+            "Chocolate / kadala mittai",
+            "Crayons — 10 color set",
+            "Packed as a set"
+        ]
+    },
+    {
+        "id": "mini-activity-book",
+        "name": "Mini Activity Book",
+        "emoji": "📒",
+        "price": 85,
+        "mrpLabel": "Under ₹100",
+        "category": "under100",
+        "hasCandy": false,
+        "items": [
+            "20-page mini activity book (A5)",
+            "Personalised cover page",
+            "Pencil + eraser",
+            "Packed as a set"
+        ]
+    },
+    {
+        "id": "activity-book-stationery",
+        "name": "Activity Book + Stationery",
+        "emoji": "📚",
+        "price": 99,
+        "mrpLabel": "Under ₹150",
+        "category": "under200",
+        "hasCandy": false,
+        "items": [
+            "25-page mini activity book (A5)",
+            "Personalised cover page",
+            "Pencil + eraser + sharpner",
+            "Packed as a set"
+        ]
+    },
+    {
+        "id": "budget-friendly-combo",
+        "name": "Budget Friendly Combo",
+        "emoji": "🌟",
+        "price": 150,
+        "mrpLabel": "Under ₹200",
+        "category": "under200",
+        "hasCandy": true,
+        "items": [
+            "35-page mini activity book (A5)",
+            "Personalised cover page",
+            "Pencil + eraser + scale + crayons",
+            "Chocolate or kadala mittai",
+            "Packed as a set"
+        ]
+    },
+    {
+        "id": "high-value-combo",
+        "name": "High Value Combo",
+        "emoji": "👑",
+        "price": 170,
+        "mrpLabel": "Best Value",
+        "category": "premium",
+        "isPremium": true,
+        "hasCandy": true,
+        "items": [
+            "50-page mini activity book (A5)",
+            "Personalised cover page for book",
+            "Pencil + eraser + sharpner + scale + crayons",
+            "Chocolate or kadala mittai",
+            "Personalised thank-you card",
+            "Packed as a set"
+        ]
+    }
+]
