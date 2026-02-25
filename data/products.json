@@ -100,5 +100,140 @@
             "🪈 Krishna Theme",
             "✍️ Tracing"
         ]
+    },
+    {
+        "id": 4,
+        "title": "Personalised Christmas Theme Activity Book",
+        "price": 349,
+        "mrp": 800,
+        "badge": "Festive",
+        "badgeType": "success",
+        "image": "images/products/4/1.png",
+        "images": [
+            "images/products/4/1.png",
+            "images/products/4/2.png",
+            "images/products/4/3.png",
+            "images/products/4/4.png",
+            "images/products/4/5.png",
+            "images/products/4/6.png",
+            "images/products/4/7.png"
+        ],
+        "fallbackEmoji": "🎄",
+        "shortDesc": "Festive tracing, colouring & early math with Christmas joy. A personalised learning book for toddlers — fun, festive and educational.",
+        "fullDesc": "Make learning magical this Christmas! 🎄\n\nThis A4-sized personalised activity book blends festive fun with early education through engaging, age-appropriate activities.\n\nFeaturing Santa, Christmas tree, gifts, stars, bells, and snow elements, children enjoy screen-free learning while building essential skills.\n\n✨ What's Inside:\n• Tracing activities (letters and shapes)\n• Christmas colouring pages\n• Early math exercises\n• Festive illustrations and patterns\n• Personalised child name on cover\n• 30 pages of activities\n\n🎯 Benefits:\n• Improves fine motor skills\n• Builds number recognition\n• Encourages festive learning\n• Screen-free creative engagement\n\n👶 Age Group: 2–5 years\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🎨 Colouring",
+            "🔢 Early Math",
+            "🎄 Christmas Theme",
+            "✍️ Tracing"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Personalised Little Radha Krishna Activity Book",
+        "price": 349,
+        "mrp": 800,
+        "badge": "Devotional",
+        "badgeType": "default",
+        "image": "images/products/5/1.png",
+        "images": [
+            "images/products/5/1.png",
+            "images/products/5/2.png",
+            "images/products/5/3.png",
+            "images/products/5/4.png",
+            "images/products/5/5.png",
+            "images/products/5/6.png"
+        ],
+        "fallbackEmoji": "🦚",
+        "shortDesc": "Tracing, colouring & early learning with Little Radha Krishna — blending devotion, culture and education for toddlers.",
+        "fullDesc": "Introduce your child to love, devotion and joyful learning with Little Radha Krishna! 🦚\n\nThis personalised A4 activity book combines cultural values with early education through playful and engaging activities.\n\nFeaturing Radha Krishna, peacocks, flute, flowers and Vrindavan elements.\n\n✨ What's Inside:\n• Tracing letters and shapes\n• Radha Krishna colouring pages\n• Early math activities\n• Cultural illustrations\n• Personalised child name on cover\n• 30 pages of learning\n\n🎯 Benefits:\n• Builds fine motor skills\n• Introduces Indian cultural values\n• Improves focus and creativity\n• Screen-free devotional learning\n\n👶 Age Group: 2–5 years\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🎨 Colouring",
+            "🔢 Early Math",
+            "🦚 Radha Krishna Theme",
+            "✍️ Tracing"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Personalised Space Theme Activity Book",
+        "price": 349,
+        "mrp": 800,
+        "badge": "STEM",
+        "badgeType": "info",
+        "image": "images/products/6/1.png",
+        "images": [
+            "images/products/6/1.png",
+            "images/products/6/2.png",
+            "images/products/6/3.png",
+            "images/products/6/4.png",
+            "images/products/6/5.png",
+            "images/products/6/6.png"
+        ],
+        "fallbackEmoji": "🚀",
+        "shortDesc": "Rockets, planets & stars with tracing, colouring and early math. A personalised space learning book for curious little explorers.",
+        "fullDesc": "Take your child on a fun learning journey through space! 🚀\n\nThis personalised A4 activity book introduces early concepts using rockets, planets, astronauts and stars.\n\n✨ What's Inside:\n• Alphabet tracing\n• Space colouring pages\n• Counting planets and stars\n• Shape recognition activities\n• Personalised child name on cover\n• 30 pages of fun learning\n\n🎯 Benefits:\n• Encourages curiosity and imagination\n• Builds early math skills\n• Develops pencil control\n• Screen-free STEM learning\n\n👶 Age Group: 2–5 years\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🎨 Colouring",
+            "🔢 Early Math",
+            "🚀 Space Theme",
+            "✍️ Tracing"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Personalised Murugan Theme Activity Book",
+        "price": 349,
+        "mrp": 800,
+        "badge": "Spiritual",
+        "badgeType": "default",
+        "image": "images/products/7/1.png",
+        "images": [
+            "images/products/7/1.png",
+            "images/products/7/2.png",
+            "images/products/7/3.png",
+            "images/products/7/4.png",
+            "images/products/7/5.png"
+        ],
+        "fallbackEmoji": "🦚",
+        "shortDesc": "Tracing, colouring & early learning with Lord Murugan symbols — value-based education for toddlers.",
+        "fullDesc": "Make early learning divine and joyful with Lord Murugan! 🔱\n\nThis personalised A4 activity book blends spiritual symbols with foundational learning activities.\n\nFeaturing Vel, peacock, lotus, temple elements and Murugan illustrations.\n\n✨ What's Inside:\n• Letter and shape tracing\n• Murugan colouring pages\n• Early counting activities\n• Symbol recognition\n• Personalised child name on cover\n• 30 pages of activities\n\n🎯 Benefits:\n• Introduces spiritual values early\n• Improves hand-eye coordination\n• Builds number sense\n• Screen-free cultural learning\n\n👶 Age Group: 2–5 years\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🎨 Colouring",
+            "🔢 Early Math",
+            "🔱 Murugan Theme",
+            "✍️ Tracing"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Personalised Ocean Theme Activity Book",
+        "price": 349,
+        "mrp": 800,
+        "badge": "Learning",
+        "badgeType": "primary",
+        "image": "images/products/8/1.png",
+        "images": [
+            "images/products/8/1.png",
+            "images/products/8/2.png",
+            "images/products/8/3.png",
+            "images/products/8/4.png",
+            "images/products/8/5.png",
+            "images/products/8/6.png"
+        ],
+        "fallbackEmoji": "🐳",
+        "shortDesc": "Underwater tracing, colouring & counting with sea animals. A personalised ocean learning adventure for toddlers.",
+        "fullDesc": "Dive into fun learning with ocean friends! 🌊\n\nThis personalised A4 activity book introduces sea animals, shapes and numbers through engaging activities.\n\nFeaturing fish, whale, octopus, turtle, shells and waves.\n\n✨ What's Inside:\n• Alphabet tracing\n• Ocean colouring pages\n• Counting sea creatures\n• Pattern and shape activities\n• Personalised child name on cover\n• 30 pages of learning\n\n🎯 Benefits:\n• Builds vocabulary and recognition\n• Develops fine motor skills\n• Encourages curiosity about nature\n• Screen-free interactive learning\n\n👶 Age Group: 2–5 years\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🎨 Colouring",
+            "🔢 Early Math",
+            "🌊 Ocean Theme",
+            "✍️ Tracing"
+        ]
     }
 ]
