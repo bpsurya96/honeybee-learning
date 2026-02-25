@@ -9,6 +9,8 @@
         content="View product details, gallery, and customer reviews for HoneyBee Learning personalised kids books.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/product-responsive.css">
     <script>
         var link = document.createElement('link');
         link.rel = 'stylesheet';
@@ -24,7 +26,12 @@
             <img src="images/logo/logo.png" alt="HoneyBee" style="height:42px;border-radius:10px;">
             <div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div>
         </a>
-        <a href="index.html" class="back-btn">← All Products</a>
+        <div class="nav-right">
+            <a href="index.html" class="back-btn">← All Products</a>
+            <button class="hamburger" id="hamburger" onclick="toggleMenuProduct()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </nav>
 
     <div class="product-page">
@@ -95,6 +102,12 @@
     </footer>
 
     <script src="js/product.js"></script>
+    <script>
+        function toggleMenuProduct() {
+            var ham = document.getElementById('hamburger');
+            ham.classList.toggle('open');
+        }
+    </script>
 </body>
 
 </html>
