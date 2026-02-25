@@ -130,20 +130,6 @@ function renderTestimonials() {
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
 }
 
-// ─── HERO BANNER ───
-const bannerImgs = [
-    "images/hero/1.png",
-    "images/hero/2.png",
-    "images/hero/3.png"
-];
-let bannerIdx = 0;
-function setBanner(i) {
-    bannerIdx = i;
-    document.getElementById('heroBanner').src = bannerImgs[i];
-    document.querySelectorAll('.banner-dot').forEach((d, j) => d.classList.toggle('active', i === j));
-}
-setInterval(() => setBanner((bannerIdx + 1) % bannerImgs.length), 4000);
-
 // ─── STREAM TABS ───
 function switchStream(stream, btn) {
     document.querySelectorAll('.stream-tab').forEach(t => t.classList.remove('active'));
