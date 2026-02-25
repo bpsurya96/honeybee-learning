@@ -32,9 +32,14 @@
         "mrp": 850,
         "badge": "Newly Launched",
         "badgeType": "new",
-        "image": "images/products/1/1.jpg",
+        "image": "images/products/1/6.png",
         "images": [
-            "images/products/1/1.jpg"
+            "images/products/1/1.png",
+            "images/products/1/2.png",
+            "images/products/1/3.png",
+            "images/products/1/4.png",
+            "images/products/1/5.png",
+            "images/products/1/6.png"
         ],
         "fallbackEmoji": "🦕",
         "shortDesc": "Name tracing, matching letters & word search in a fun dinosaur theme. Makes your child's first writing journey special and personal — A4, 30 pages!",
@@ -53,9 +58,10 @@
         "mrp": 900,
         "badge": "Best Seller",
         "badgeType": "hot",
-        "image": "images/products/2/1.jpg",
+        "image": "images/products/2/1.png",
         "images": [
-            "images/products/2/1.jpg"
+            "images/products/2/1.png",
+            "images/products/2/2.png"
         ],
         "fallbackEmoji": "🃏",
         "shortDesc": "Real-life objects with value-based sentences personalised with your child's name. A–Z complete set (26 cards) for meaningful alphabet learning.",
@@ -76,7 +82,13 @@
         "badgeType": "default",
         "image": "images/products/3/1.png",
         "images": [
-            "images/products/3/1.png"
+            "images/products/3/1.png",
+            "images/products/3/2.png",
+            "images/products/3/3.png",
+            "images/products/3/4.png",
+            "images/products/3/5.png",
+            "images/products/3/6.png",
+            "images/products/3/7.png"
         ],
         "fallbackEmoji": "🪈",
         "shortDesc": "Tracing, colouring & early math with Lord Krishna's values and stories. Designed for toddlers — blending devotion with education through fun activities.",
