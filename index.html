@@ -175,13 +175,27 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- REVIEWS (full tabbed section) -->
   <section class="testimonials-section" id="testimonials">
     <div class="section-tag">Happy Families</div>
     <div class="section-title">What Parents Say</div>
-    <div class="section-sub">Smiles from Chennai's birthday parties and playrooms!</div>
-    <div class="testi-grid" id="testiGrid">
-      <!-- Populated from data/reviews.json -->
+    <div class="section-sub">Real reviews — text, photos &amp; videos — from happy families across Tamil Nadu!</div>
+
+    <div class="review-tabs" id="homeReviewTabs">
+      <button class="review-tab active" onclick="switchHomeReview('text', this)">💬 Text Reviews</button>
+      <button class="review-tab" onclick="switchHomeReview('videos', this)">🎥 Video Reviews</button>
+    </div>
+
+    <div class="review-content active" id="home-review-text">
+      <div class="testi-grid" id="testiGrid">
+        <!-- Populated from data/reviews.json -->
+      </div>
+    </div>
+
+    <div class="review-content" id="home-review-videos">
+      <div class="home-video-grid" id="homeVideoGrid">
+        <!-- Populated from data/reviews.json -->
+      </div>
     </div>
   </section>
 

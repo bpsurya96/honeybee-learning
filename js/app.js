@@ -48,6 +48,7 @@ async function loadReviews() {
         const res = await fetch('data/reviews.json');
         reviewsData = await res.json();
         renderTestimonials();
+        renderHomeVideoReviews();
     } catch (e) { console.error('Failed to load reviews:', e); }
 }
 
@@ -111,13 +112,11 @@ function renderReturnGifts() {
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
 }
 
-// ─── RENDER TESTIMONIALS ───
+// ─── RENDER TESTIMONIALS (text reviews) ───
 function renderTestimonials() {
     const grid = document.getElementById('testiGrid');
-    if (!grid || !reviewsData.text.length) return;
-    // Show first 3 text reviews on home page
-    const shown = reviewsData.text.slice(0, 3);
-    grid.innerHTML = shown.map(r => `
+    if (!grid || !reviewsData.text || !reviewsData.text.length) return;
+    grid.innerHTML = reviewsData.text.map(r => `
     <div class="testi-card reveal">
       <div class="testi-quote">"</div>
       <div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
@@ -128,6 +127,58 @@ function renderTestimonials() {
       </div>
     </div>`).join('');
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+}
+
+// ─── RENDER HOME VIDEO REVIEWS (YouTube Shorts) ───
+function renderHomeVideoReviews() {
+    const grid = document.getElementById('homeVideoGrid');
+    if (!grid || !reviewsData.videos || !reviewsData.videos.length) return;
+
+    grid.innerHTML = reviewsData.videos.map(r => {
+        const ytId = r.youtube;
+        const thumbUrl = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+        const embedUrl = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&playsinline=1`;
+        return `
+        <div class="home-video-card">
+            <div class="video-lazy-wrap" data-embed="${embedUrl}">
+                <div class="video-play-overlay" onclick="loadYouTubeHome(this.parentElement)"
+                     style="background-image:url('${thumbUrl}');">
+                    <div class="video-thumb-gradient"></div>
+                    <div class="video-play-circle">&#9654;</div>
+                    <div class="video-play-meta">
+                        <div class="video-play-name">${r.name}</div>
+                        <div class="video-play-loc">${r.loc}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="home-video-caption">
+                <div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
+                <p class="testi-text" style="margin:8px 0 6px;">${r.text}</p>
+                <div class="testi-name">${r.name} <span class="testi-loc" style="font-weight:600;">· ${r.loc}</span></div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function loadYouTubeHome(wrap) {
+    const embedUrl = wrap.dataset.embed;
+    if (!embedUrl) return;
+    wrap.innerHTML = `<iframe
+        src="${embedUrl}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="width:100%;aspect-ratio:9/16;display:block;border-radius:var(--radius) var(--radius) 0 0;background:#000;">
+    </iframe>`;
+    delete wrap.dataset.embed;
+}
+
+// ─── REVIEW TAB SWITCHER (home page) ───
+function switchHomeReview(type, btn) {
+    document.querySelectorAll('#homeReviewTabs .review-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('#testimonials .review-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('home-review-' + type).classList.add('active');
 }
 
 // ─── STREAM TABS ───
