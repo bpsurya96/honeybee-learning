@@ -114,7 +114,7 @@ function renderReturnGifts() {
 
 // ─── RENDER TESTIMONIALS (text reviews) ───
 function renderTestimonials() {
-    const grid = document.getElementById('testiGrid');
+    const grid = document.getElementById('testiTrack');
     if (!grid || !reviewsData.text || !reviewsData.text.length) return;
     grid.innerHTML = reviewsData.text.map(r => `
     <div class="testi-card reveal">
@@ -131,7 +131,7 @@ function renderTestimonials() {
 
 // ─── RENDER HOME VIDEO REVIEWS (YouTube Shorts) ───
 function renderHomeVideoReviews() {
-    const grid = document.getElementById('homeVideoGrid');
+    const grid = document.getElementById('videoTrack');
     if (!grid || !reviewsData.videos || !reviewsData.videos.length) return;
 
     grid.innerHTML = reviewsData.videos.map(r => {
@@ -307,4 +307,14 @@ function initNavScroll() {
         });
         document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
     });
+}
+
+// ─── CAROUSEL SCROLL ───
+function scrollCarousel(trackId, dir) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+    // Scroll by one card width
+    const card = track.firstElementChild;
+    const step = card ? card.offsetWidth + 20 : 300;
+    track.scrollBy({ left: dir * step, behavior: 'smooth' });
 }

@@ -1354,10 +1354,9 @@ section {
   background: white;
 }
 
+/* testi-grid is now the carousel track — layout handled by .carousel-track */
 .testi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+  display: contents;
 }
 
 .testi-card {
@@ -1540,6 +1539,7 @@ footer a {
     font-size: 0.86rem;
   }
 }
+
 /* ─── HOME PAGE REVIEW TABS ─── */
 #homeReviewTabs {
   display: flex;
@@ -1548,6 +1548,7 @@ footer a {
   flex-wrap: wrap;
   margin-bottom: 28px;
 }
+
 .review-tab {
   padding: 11px 24px;
   font-family: 'Nunito', sans-serif;
@@ -1565,16 +1566,30 @@ footer a {
   align-items: center;
   gap: 6px;
 }
-.review-tab:hover { color: var(--green); background: var(--green-pale); }
-.review-tab.active { color: var(--green); border-bottom-color: var(--green); background: var(--green-pale); }
-.review-content { display: none; }
-.review-content.active { display: block; }
+
+.review-tab:hover {
+  color: var(--green);
+  background: var(--green-pale);
+}
+
+.review-tab.active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+  background: var(--green-pale);
+}
+
+.review-content {
+  display: none;
+}
+
+.review-content.active {
+  display: block;
+}
 
 /* ─── HOME VIDEO GRID ─── */
+/* home-video-grid is now inside .carousel-track — layout handled there */
 .home-video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  display: contents;
 }
 
 .home-video-card {
@@ -1584,6 +1599,7 @@ footer a {
   box-shadow: var(--shadow-card);
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .home-video-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-deep);
@@ -1599,6 +1615,7 @@ footer a {
   cursor: pointer;
   aspect-ratio: 9/16;
 }
+
 .video-play-overlay {
   position: absolute;
   inset: 0;
@@ -1612,49 +1629,58 @@ footer a {
   background-color: #111;
   transition: filter 0.2s;
 }
-.video-play-overlay:hover { filter: brightness(1.08); }
+
+.video-play-overlay:hover {
+  filter: brightness(1.08);
+}
+
 .video-thumb-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.25) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.25) 100%);
 }
+
 .video-play-circle {
   position: relative;
   z-index: 1;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(255,179,0,0.95);
+  background: rgba(255, 179, 0, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   color: var(--brown);
   padding-left: 4px;
-  box-shadow: 0 0 0 8px rgba(255,179,0,0.2), 0 8px 24px rgba(0,0,0,0.5);
+  box-shadow: 0 0 0 8px rgba(255, 179, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .video-play-overlay:hover .video-play-circle {
   transform: scale(1.1);
-  box-shadow: 0 0 0 12px rgba(255,179,0,0.25), 0 12px 36px rgba(0,0,0,0.6);
+  box-shadow: 0 0 0 12px rgba(255, 179, 0, 0.25), 0 12px 36px rgba(0, 0, 0, 0.6);
 }
+
 .video-play-meta {
   position: relative;
   z-index: 1;
   text-align: center;
 }
+
 .video-play-name {
   color: white;
   font-family: 'Fredoka One', cursive;
   font-size: 1rem;
   margin-bottom: 3px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
+
 .video-play-loc {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 0.76rem;
   font-weight: 600;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .home-video-caption {
@@ -1663,12 +1689,124 @@ footer a {
 
 /* Responsive: 2-col on mobile, up to 5-col on wide screens */
 @media(max-width: 480px) {
-  .home-video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  #homeReviewTabs .review-tab { padding: 9px 14px; font-size: 0.84rem; }
+  .home-video-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  #homeReviewTabs .review-tab {
+    padding: 9px 14px;
+    font-size: 0.84rem;
+  }
 }
+
 @media(min-width: 769px) and (max-width: 1024px) {
-  .home-video-grid { grid-template-columns: repeat(3, 1fr); }
+  .home-video-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
 @media(min-width: 1280px) {
-  .home-video-grid { grid-template-columns: repeat(5, 1fr); }
+  .home-video-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   REVIEW CAROUSELS
+   ═══════════════════════════════════════════════ */
+
+/* Wrapper holds track + both arrow buttons */
+.carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Scrollable row */
+.carousel-track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 8px 4px 16px;
+  flex: 1;
+  align-items: stretch;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Every direct child snaps into place */
+.carousel-track>* {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* ── Text review cards in carousel ── */
+.carousel-track .testi-card {
+  width: 300px;
+  min-height: 180px;
+  margin: 0;
+  /* remove any old grid gaps */
+}
+
+/* ── Video cards in carousel ── */
+.carousel-track .home-video-card {
+  width: 220px;
+}
+
+/* ── Arrow buttons ── */
+.carousel-btn {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--green-pale);
+  background: white;
+  color: var(--green);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  z-index: 2;
+  padding: 0;
+}
+
+.carousel-btn:hover {
+  background: var(--green);
+  color: white;
+  transform: scale(1.08);
+  box-shadow: var(--shadow);
+}
+
+.carousel-btn:active {
+  transform: scale(0.96);
+}
+
+/* On very small screens the arrows can overlap — hide them and rely on swipe */
+@media (max-width: 480px) {
+  .carousel-btn {
+    display: none;
+  }
+
+  .carousel-wrap {
+    gap: 0;
+  }
+
+  .carousel-track .testi-card {
+    width: 80vw;
+  }
+
+  .carousel-track .home-video-card {
+    width: 52vw;
+  }
 }
