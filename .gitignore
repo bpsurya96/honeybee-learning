@@ -16,3 +16,13 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+
+# Large media files — videos now served via YouTube, raw MP4s stay local only
+reviews/videos/*.mp4
+reviews/videos/originals/
+reviews/photos/*.jpg
+reviews/photos/*.jpeg
+reviews/photos/*.png
+
+# Video compression script (local use only)
+compress_videos.sh

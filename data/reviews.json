@@ -8,16 +8,30 @@
             "avatar": "👩"
         },
         {
+            "name": "Nivedhitha",
+            "loc": "Munichalai, Madurai",
+            "stars": 4,
+            "text": "Its awesome, my son really loved it.",
+            "avatar": "👩"
+        },
+        {
+            "name": "Shravanthi",
+            "loc": "Sabarimalayapuram, Sivagiri",
+            "stars": 5,
+            "text": "We wanted something meaningful for my son's birthday and ordered 35 sets of Mini Colour Pack. The kids were so happy with the activity sheets and stationery. Seeing them start coloring in class itself was the cutest moment. Highly Recommended!",
+            "avatar": "👩"
+        },
+        {
             "name": "Kavitha R.",
             "loc": "Sholinganallur, Chennai",
-            "stars": 5,
+            "stars": 4,
             "text": "The Bhagavad Gita activity book is beautiful! My 4-year-old loves the Krishna illustrations and the name personalisation makes her feel so special. Highly recommend!",
             "avatar": "👩‍💼"
         },
         {
             "name": "Ramesh K.",
             "loc": "Perungudi, Chennai",
-            "stars": 5,
+            "stars": 4,
             "text": "Got the Alphabet Flashcards for my daughter. The real-life pictures with her name in the sentences made learning so engaging. Sold out in my kids group within a week!",
             "avatar": "👨"
         },
@@ -44,5 +58,41 @@
         }
     ],
     "photos": [],
-    "videos": []
+    "videos": [
+        {
+            "name": "Manikandan",
+            "loc": "Somarasampatti, Trichy",
+            "stars": 5,
+            "text": "Ocean theme activity book is wonderful for value education. My daughter now talks about ocean creatures and learning more things after doing the exercises!",
+            "youtube": "yCsBi-g-b2o"
+        },
+        {
+            "name": "Geetha",
+            "loc": "Krishnarajapuram, Bangalore",
+            "stars": 4,
+            "text": "Reusable book - Roads and Cars theme. My child is hooked, and I personally loved it myself. It's really good for toddlers. Highly recommend!",
+            "youtube": "tG9q0YS1dTU"
+        },
+        {
+            "name": "Srija",
+            "loc": "Chinnalapatti, Dindugal",
+            "stars": 5,
+            "text": "Ordered 25 worksheet fun pack. The quality and presentation were wonderful, and everyone really likes them. Truly appreciate your effort and great work! My daughter loved it a lot.",
+            "youtube": "-Ls9w3RLdzw"
+        },
+        {
+            "name": "Madhumitha",
+            "loc": "Teppakulam, Madurai",
+            "stars": 5,
+            "text": "Barbie theme activity book with my kid's name, and family name tracing was such a unique exercise. I really appreciate bringing these kinds of books to market!",
+            "youtube": "NH8rxpwhZYk"
+        },
+        {
+            "name": "Vidhya Deepak Prakash",
+            "loc": "Lalgudi, Trichy",
+            "stars": 5,
+            "text": "Ordered Butterfly theme activity book for my daughter. She really loved it, and the motivational stickers included in the set were so nice.",
+            "youtube": "O-ffeovY_98"
+        }
+    ]
 }

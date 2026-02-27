@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════════
    HoneyBee Learning — Product Page JS
    ═══════════════════════════════════════════════
-   
    Product data loaded from data/products.json
    Reviews loaded from data/reviews.json
    ═══════════════════════════════════════════════ */
@@ -55,7 +54,7 @@ function initProduct() {
     p.images.forEach((src, i) => {
         const div = document.createElement('div');
         div.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
-        div.innerHTML = `<img src="${src}" alt="View ${i + 1}">`;
+        div.innerHTML = `<img src="${src}" alt="View ${i + 1}" loading="lazy">`;
         div.onclick = () => setMainImg(i);
         tc.appendChild(div);
     });
@@ -87,29 +86,88 @@ function switchReview(type, btn) {
 }
 
 function initReviews() {
-    // Text reviews
+    // ── Text reviews ──
     const trg = document.getElementById('textReviewGrid');
-    if (reviews.text.length) {
-        trg.innerHTML = reviews.text.map(r => `<div class="review-card"><div class="review-stars">${renderStars(r.stars)}</div><div class="review-text">${r.text}</div><div class="review-author"><div class="review-avatar">${r.avatar}</div><div><div class="review-name">${r.name}</div><div class="review-loc">${r.loc}</div></div></div></div>`).join('');
+    if (reviews.text && reviews.text.length) {
+        trg.innerHTML = reviews.text.map(r => `
+        <div class="review-card">
+            <div class="review-stars">${renderStars(r.stars)}</div>
+            <div class="review-text">${r.text}</div>
+            <div class="review-author">
+                <div class="review-avatar">${r.avatar}</div>
+                <div>
+                    <div class="review-name">${r.name}</div>
+                    <div class="review-loc">${r.loc}</div>
+                </div>
+            </div>
+        </div>`).join('');
     } else {
         trg.innerHTML = '<div class="empty-state"><span class="empty-icon">💬</span><p>No text reviews yet. Be the first to share!</p></div>';
     }
 
-    // Photo reviews
+    // ── Photo reviews ──
     const prg = document.getElementById('photoReviewGrid');
-    if (reviews.photos.length) {
-        prg.innerHTML = reviews.photos.map(r => `<div class="photo-review" onclick="document.getElementById('lightboxImg').src='${r.img}';document.getElementById('lightbox').classList.add('open');"><img src="${r.img}" alt="Review by ${r.name}"><div class="photo-caption"><div class="review-stars">${renderStars(r.stars)}</div><p>${r.text}</p><div class="pname">— ${r.name}</div></div></div>`).join('');
+    if (reviews.photos && reviews.photos.length) {
+        prg.innerHTML = reviews.photos.map(r => `
+        <div class="photo-review" onclick="document.getElementById('lightboxImg').src='${r.img}';document.getElementById('lightbox').classList.add('open');">
+            <img src="${r.img}" alt="Review by ${r.name}" loading="lazy">
+            <div class="photo-caption">
+                <div class="review-stars">${renderStars(r.stars)}</div>
+                <p>${r.text}</p>
+                <div class="pname">— ${r.name}</div>
+            </div>
+        </div>`).join('');
     } else {
         prg.innerHTML = '<div class="empty-state"><span class="empty-icon">📸</span><p>No photo reviews yet. Share your child\'s experience!</p></div>';
     }
 
-    // Video reviews
+    // ── Video reviews — YouTube Shorts embed ──
+    // Uses YouTube's thumbnail as preview. Video loads only when user taps play.
+    // Works on all devices, no storage/bandwidth issues.
     const vrg = document.getElementById('videoReviewGrid');
-    if (reviews.videos.length) {
-        vrg.innerHTML = reviews.videos.map(r => `<div class="video-review"><video controls preload="metadata"><source src="${r.video}" type="video/mp4">Your browser does not support video.</video><div class="video-caption"><div class="review-stars">${renderStars(r.stars)}</div><p>${r.text}</p><div class="pname">— ${r.name}</div></div></div>`).join('');
+    if (reviews.videos && reviews.videos.length) {
+        vrg.innerHTML = reviews.videos.map(r => {
+            const ytId = r.youtube;
+            const thumbUrl = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
+            const embedUrl = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&playsinline=1`;
+            return `
+            <div class="video-review">
+                <div class="video-lazy-wrap" data-embed="${embedUrl}">
+                    <!-- YouTube thumbnail used as poster — loads only a small image, not the video -->
+                    <div class="video-play-overlay" onclick="loadYouTubeEmbed(this.parentElement)"
+                         style="background-image:url('${thumbUrl}');">
+                        <div class="video-thumb-gradient"></div>
+                        <div class="video-play-circle">&#9654;</div>
+                        <div class="video-play-meta">
+                            <div class="video-play-name">${r.name}</div>
+                            <div class="video-play-loc">${r.loc}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-caption">
+                    <div class="review-stars">${renderStars(r.stars)}</div>
+                    <p>${r.text}</p>
+                    <div class="pname">— ${r.name}, <span>${r.loc}</span></div>
+                </div>
+            </div>`;
+        }).join('');
     } else {
         vrg.innerHTML = '<div class="empty-state"><span class="empty-icon">🎥</span><p>No video reviews yet. Record your child\'s reaction!</p></div>';
     }
+}
+
+// Replaces the thumbnail overlay with the actual YouTube iframe on tap
+function loadYouTubeEmbed(wrap) {
+    const embedUrl = wrap.dataset.embed;
+    if (!embedUrl) return;
+    wrap.innerHTML = `<iframe
+        src="${embedUrl}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="width:100%;aspect-ratio:9/16;display:block;border-radius:var(--radius) var(--radius) 0 0;background:#000;">
+    </iframe>`;
+    delete wrap.dataset.embed;
 }
 
 function initKeyboardNav() {
