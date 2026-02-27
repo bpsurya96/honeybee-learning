@@ -177,3 +177,12 @@ function initKeyboardNav() {
         if (e.key === 'Escape') closeLightbox();
     });
 }
+
+// ─── CAROUSEL SCROLL (shared with home page) ───
+function scrollCarousel(trackId, dir) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+    const card = track.firstElementChild;
+    const step = card ? card.offsetWidth + 20 : 300;
+    track.scrollBy({ left: dir * step, behavior: 'smooth' });
+}

@@ -1810,3 +1810,39 @@ footer a {
     width: 52vw;
   }
 }
+/* ─── LEARNING PRODUCT SUB-TABS ─── */
+.learning-subtabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.learning-subtab {
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: 2px solid var(--green-pale);
+  background: white;
+  color: var(--text-soft);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.learning-subtab:hover {
+  border-color: var(--green-light);
+  color: var(--green);
+  background: var(--green-pale);
+}
+.learning-subtab.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+  box-shadow: 0 4px 14px rgba(61,107,36,0.3);
+}
+
+/* ─── PRODUCT PAGE REVIEW CAROUSEL CARD WIDTHS ─── */
+.carousel-track .review-card  { width: 280px; min-height: 160px; }
+.carousel-track .photo-review { width: 240px; }
+.carousel-track .video-review { width: 240px; }

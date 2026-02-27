@@ -23,7 +23,8 @@
             "✍️ Personalised Name",
             "🌟 Moral Values",
             "🎁 Perfect Gift"
-        ]
+        ],
+        "productType": "activity"
     },
     {
         "id": 1,
@@ -49,7 +50,8 @@
             "✍️ Name Tracing",
             "🦕 Dino Theme",
             "🔤 Matching & Word Search"
-        ]
+        ],
+        "productType": "activity"
     },
     {
         "id": 2,
@@ -71,7 +73,8 @@
             "✍️ Personalised Name",
             "🌱 Value-Based Learning",
             "📸 Real-Life Objects"
-        ]
+        ],
+        "productType": "other"
     },
     {
         "id": 3,
@@ -99,7 +102,8 @@
             "🔢 Early Math",
             "🪈 Krishna Theme",
             "✍️ Tracing"
-        ]
+        ],
+        "productType": "activity"
     },
     {
         "id": 4,
@@ -127,7 +131,8 @@
             "🔢 Early Math",
             "🎄 Christmas Theme",
             "✍️ Tracing"
-        ]
+        ],
+        "productType": "activity"
     },
     {
         "id": 5,
@@ -154,7 +159,8 @@
             "🔢 Early Math",
             "🦚 Radha Krishna Theme",
             "✍️ Tracing"
-        ]
+        ],
+        "productType": "activity"
     },
     {
         "id": 6,
@@ -181,7 +187,8 @@
             "🔢 Early Math",
             "🚀 Space Theme",
             "✍️ Tracing"
-        ]
+        ],
+        "productType": "activity"
     },
     {
         "id": 7,
@@ -207,7 +214,8 @@
             "🔢 Early Math",
             "🔱 Murugan Theme",
             "✍️ Tracing"
-        ]
+        ],
+        "productType": "activity"
     },
     {
         "id": 8,
@@ -234,6 +242,7 @@
             "🔢 Early Math",
             "🌊 Ocean Theme",
             "✍️ Tracing"
-        ]
+        ],
+        "productType": "activity"
     }
 ]

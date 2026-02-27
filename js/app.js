@@ -11,6 +11,7 @@ let learningProducts = [];
 let returnGifts = [];
 let reviewsData = { text: [], photos: [], videos: [] };
 let selectedCandy = 'chocolate';
+let currentLearningType = 'activity';
 let currentCombo = '';
 let currentPrice = '';
 
@@ -53,10 +54,18 @@ async function loadReviews() {
 }
 
 // ─── RENDER LEARNING PRODUCTS ───
-function renderLearningProducts() {
+function renderLearningProducts(typeFilter) {
     const grid = document.getElementById('learningGrid');
     if (!grid) return;
-    grid.innerHTML = learningProducts.map((p, i) => {
+    const type = typeFilter || currentLearningType;
+    const filtered = learningProducts.filter(p => (p.productType || 'activity') === type);
+
+    if (!filtered.length) {
+        grid.innerHTML = '<div class="empty-state" style="margin:40px auto;"><span class="empty-icon">📦</span><p>No products in this category yet. Check back soon!</p></div>';
+        return;
+    }
+
+    grid.innerHTML = filtered.map((p, i) => {
         const off = Math.round((1 - p.price / p.mrp) * 100);
         const badgeClass = p.badgeType === 'hot' ? 'badge-hot' : p.badgeType === 'new' ? 'badge-new' : 'badge-hot';
         return `
@@ -74,13 +83,20 @@ function renderLearningProducts() {
         <div class="lcard-tags">${p.tags.map(t => `<span class="lcard-tag">${t}</span>`).join('')}</div>
         <div class="lcard-footer">
           <span class="lcard-off">${off}% Off</span>
-          <a href="product.html?id=${p.id}" class="lcard-btn">View & Order 📚</a>
+          <a href="product.html?id=${p.id}" class="lcard-btn">View &amp; Order 📚</a>
         </div>
       </div>
     </div>`;
     }).join('');
-    // Re-observe new reveal elements
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+}
+
+// ─── LEARNING SUB-TAB SWITCHER ───
+function switchLearning(type, btn) {
+    currentLearningType = type;
+    document.querySelectorAll('.learning-subtab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    renderLearningProducts(type);
 }
 
 // ─── RENDER RETURN GIFTS ───
