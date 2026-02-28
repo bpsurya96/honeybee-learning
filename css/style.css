@@ -129,7 +129,6 @@ nav {
 
 /* ─── HERO ─── */
 .hero {
-  min-height: 100vh;
   background: linear-gradient(180deg, var(--sky) 0%, var(--sky-dark) 35%, var(--green-pale) 65%, #c8e6a0 100%);
   position: relative;
   overflow: hidden;
