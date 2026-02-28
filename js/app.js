@@ -25,6 +25,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFilters();
     initReveal();
     initNavScroll();
+
+    // ─── Auto-switch tab from URL param (e.g. ?tab=learning) ───
+    const tabParam = new URLSearchParams(window.location.search).get('tab');
+    if (tabParam) {
+        const tabBtn = document.getElementById('tab-' + tabParam);
+        if (tabBtn) {
+            switchStream(tabParam, tabBtn);
+            // Scroll to the section after a short delay to let layout settle
+            setTimeout(() => {
+                const el = document.getElementById('streams');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
+        }
+    }
 });
 
 // ─── DATA LOADERS ───
