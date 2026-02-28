@@ -128,6 +128,16 @@ function renderReturnGifts() {
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
 }
 
+// ─── AVATAR HELPERS ───
+function getInitials(name) {
+    return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+}
+const AVATAR_COLORS = ['#3d6b24', '#f4a227', '#6b3a1f', '#5a9435', '#d35400', '#1a6b5a', '#8b5a3a', '#c0392b'];
+function avatarColor(name) {
+    let h = 0; for (const c of name) h = c.charCodeAt(0) + ((h << 5) - h);
+    return AVATAR_COLORS[Math.abs(h) % AVATAR_COLORS.length];
+}
+
 // ─── RENDER TESTIMONIALS (text reviews) ───
 function renderTestimonials() {
     const grid = document.getElementById('testiTrack');
@@ -138,8 +148,11 @@ function renderTestimonials() {
       <div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div>
       <div class="testi-text">${r.text}</div>
       <div class="testi-author">
-        <div class="testi-avatar">${r.avatar}</div>
-        <div><div class="testi-name">${r.name}</div><div class="testi-loc">${r.loc}</div></div>
+        <div class="testi-avatar testi-avatar-initials" style="background:${avatarColor(r.name)}">${getInitials(r.name)}</div>
+        <div>
+          <div class="testi-name">${r.name}</div>
+          <div class="testi-loc">${r.loc}${r.date ? ` &nbsp;&middot;&nbsp; <span class="review-date">${r.date}</span>` : ''}</div>
+        </div>
       </div>
     </div>`).join('');
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
@@ -271,8 +284,7 @@ function closeModalOnBg(e) { if (e.target === document.getElementById('modalOver
 function selectCandy(type) {
     selectedCandy = type;
     document.getElementById('candy1').classList.toggle('selected', type === 'chocolate');
-    document.getElementById('candy2').classList.toggle('selected', type === 'kadala');
-    document.getElementById('candy3').classList.toggle('selected', type === 'chikki');
+    document.getElementById('candy2').classList.toggle('selected', type === 'chikki');
 }
 function submitOrder() {
     const name = document.getElementById('buyerName').value.trim();
@@ -285,7 +297,7 @@ function submitOrder() {
     const notes = document.getElementById('notes').value.trim();
     const errEl = document.getElementById('formError');
     const showCandy = document.getElementById('candyGroup').style.display !== 'none';
-    const candyMap = { chocolate: '🍫 Chocolate', kadala: '🥜 Kadala Mittai', chikki: '🍬 Chikki' };
+    const candyMap = { chocolate: '🍫 Chocolate', chikki: '🍬 Chikki' };
     if (!name || !phone || !child || !qty || !ddate || !addr) { errEl.textContent = '⚠️ Please fill in all required fields marked with *'; errEl.style.display = 'block'; return; }
     if (!/^\d{10}$/.test(phone.replace(/\s/g, ''))) { errEl.textContent = '⚠️ Please enter a valid 10-digit phone number.'; errEl.style.display = 'block'; return; }
     errEl.style.display = 'none';

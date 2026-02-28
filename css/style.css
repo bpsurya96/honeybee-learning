@@ -1846,3 +1846,157 @@ footer a {
 .carousel-track .review-card  { width: 280px; min-height: 160px; }
 .carousel-track .photo-review { width: 240px; }
 .carousel-track .video-review { width: 240px; }
+
+/* ─── STICKY WHATSAPP FAB ─── */
+.wa-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  transition: transform 0.25s, box-shadow 0.25s, padding 0.25s;
+  animation: waBounce 2.5s ease-in-out infinite;
+  overflow: hidden;
+  max-width: 52px;
+}
+.wa-fab svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.wa-fab-label {
+  white-space: nowrap;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-width 0.3s ease, opacity 0.3s ease;
+}
+.wa-fab:hover {
+  max-width: 200px;
+  padding: 12px 20px;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(37,211,102,0.55);
+  animation: none;
+}
+.wa-fab:hover .wa-fab-label {
+  max-width: 140px;
+  opacity: 1;
+}
+@keyframes waBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ─── ABOUT US SECTION ─── */
+.about-section {
+  background: linear-gradient(135deg, var(--honey-pale) 0%, #fff3d0 100%);
+  border-top: 3px solid #ffe08280;
+  border-bottom: 3px solid #ffe08280;
+}
+.about-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.about-emoji {
+  font-size: 5rem;
+  flex-shrink: 0;
+  animation: sunPulse 4s ease-in-out infinite;
+  line-height: 1;
+  margin-top: 8px;
+}
+.about-text h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--brown);
+  margin: 10px 0 16px;
+  line-height: 1.2;
+}
+.about-text p {
+  font-size: 0.97rem;
+  color: var(--text-soft);
+  font-weight: 600;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.about-trust-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  margin: 20px 0 24px;
+}
+.about-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--brown);
+}
+.about-trust-item span {
+  color: var(--text);
+}
+.about-wa-btn {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 11px 26px;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.about-wa-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+}
+@media (max-width: 600px) {
+  .about-inner { flex-direction: column; gap: 16px; }
+  .about-emoji { font-size: 3.5rem; }
+  .about-trust-row { grid-template-columns: 1fr; }
+}
+
+/* ─── INITIALS AVATAR ─── */
+.testi-avatar-initials {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: white;
+  flex-shrink: 0;
+  font-style: normal;
+}
+.review-avatar.testi-avatar-initials {
+  width: 38px;
+  height: 38px;
+  font-size: 0.9rem;
+}
+
+/* ─── REVIEW DATE BADGE ─── */
+.review-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  opacity: 0.75;
+}
+

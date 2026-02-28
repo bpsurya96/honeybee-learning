@@ -78,6 +78,16 @@ function closeLightbox() { document.getElementById('lightbox').classList.remove(
 
 function renderStars(n) { return '★'.repeat(n) + '☆'.repeat(5 - n); }
 
+// ─── AVATAR HELPERS ───
+function getInitials(name) {
+    return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+}
+const AVATAR_COLORS = ['#3d6b24', '#f4a227', '#6b3a1f', '#5a9435', '#d35400', '#1a6b5a', '#8b5a3a', '#c0392b'];
+function avatarColor(name) {
+    let h = 0; for (const c of name) h = c.charCodeAt(0) + ((h << 5) - h);
+    return AVATAR_COLORS[Math.abs(h) % AVATAR_COLORS.length];
+}
+
 function switchReview(type, btn) {
     document.querySelectorAll('.review-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.review-content').forEach(c => c.classList.remove('active'));
@@ -94,10 +104,10 @@ function initReviews() {
             <div class="review-stars">${renderStars(r.stars)}</div>
             <div class="review-text">${r.text}</div>
             <div class="review-author">
-                <div class="review-avatar">${r.avatar}</div>
+                <div class="review-avatar testi-avatar-initials" style="background:${avatarColor(r.name)}">${getInitials(r.name)}</div>
                 <div>
                     <div class="review-name">${r.name}</div>
-                    <div class="review-loc">${r.loc}</div>
+                    <div class="review-loc">${r.loc}${r.date ? ` &nbsp;&middot;&nbsp; <span class="review-date">${r.date}</span>` : ''}</div>
                 </div>
             </div>
         </div>`).join('');
