@@ -99,14 +99,28 @@ Site updates within ~1 minute.
 
 ---
 
-## Custom Domain (Future — Optional)
+## Custom Domain Setup
 
-When you buy a domain (e.g., `honeybeelearning.in` — ~₹99-199/year):
+The domain **honeybeelearning.co.in** is now configured for this project.
 
-1. Create a `CNAME` file in the repo root with your domain name
-2. In your DNS provider, add:
-   - `A` record → `185.199.108.153`
-   - `A` record → `185.199.109.153`
-   - `CNAME` for `www` → `bpsurya96.github.io`
-3. In GitHub Pages settings, enter your custom domain
-4. Enable "Enforce HTTPS"
+### Configuration Done:
+1. Created `CNAME` file in the repo root.
+2. Deployment branch is `main`.
+
+### DNS Steps (Verify at your Domain Provider):
+To ensure the domain points correctly to GitHub Pages, check your DNS settings at the registrar (e.g., GoDaddy, Hostinger):
+
+1. **A Records** (Point your base domain `honeybeelearning.co.in` to GitHub):
+   - Type: `A`, Host: `@`, Value: `185.199.108.153`
+   - Type: `A`, Host: `@`, Value: `185.199.109.153`
+   - Type: `A`, Host: `@`, Value: `185.199.110.153`
+   - Type: `A`, Host: `@`, Value: `185.199.111.153`
+
+2. **CNAME Record** (Point `www` to your GitHub repo):
+   - Type: `CNAME`, Host: `www`, Value: `bpsurya96.github.io`
+
+### GitHub Settings:
+1. Go to Repo → **Settings** → **Pages**
+2. Your "Custom domain" should now show `honeybeelearning.co.in` (from the `CNAME` file).
+3. **Wait for DNS check**: Once GitHub verifies it, ensure **"Enforce HTTPS"** is checked.
+
