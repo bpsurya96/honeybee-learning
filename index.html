@@ -90,6 +90,12 @@
     <div class="section-sub">Personalised learning books for daily use, and fun birthday return gift
       combos for every budget.</div>
 
+    <div class="search-container reveal">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="productSearch" class="search-input" placeholder="Search for products, themes or ages..."
+        oninput="handleSearch(this.value)">
+    </div>
+
     <div class="stream-tabs">
       <button class="stream-tab active" id="tab-gifts" onclick="switchStream('gifts',this)">🎁 Birthday Return
         Gifts</button>

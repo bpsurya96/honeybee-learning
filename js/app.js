@@ -14,6 +14,7 @@ let selectedCandy = 'chocolate';
 let currentLearningType = 'activity';
 let currentCombo = '';
 let currentPrice = '';
+let searchQuery = '';
 
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', async () => {
@@ -72,10 +73,25 @@ function renderLearningProducts(typeFilter) {
     const grid = document.getElementById('learningGrid');
     if (!grid) return;
     const type = typeFilter || currentLearningType;
-    const filtered = learningProducts.filter(p => (p.productType || 'activity') === type);
+    const filtered = learningProducts.filter(p => {
+        const matchesType = (p.productType || 'activity') === type;
+        const matchesSearch = !searchQuery ||
+            p.title.toLowerCase().includes(searchQuery) ||
+            (p.shortDesc && p.shortDesc.toLowerCase().includes(searchQuery)) ||
+            (p.tags && p.tags.some(t => t.toLowerCase().includes(searchQuery)));
+        return matchesType && matchesSearch;
+    });
 
     if (!filtered.length) {
-        grid.innerHTML = '<div class="empty-state" style="margin:40px auto;"><span class="empty-icon">📦</span><p>No products in this category yet. Check back soon!</p></div>';
+        if (searchQuery) {
+            grid.innerHTML = `<div class="empty-state" style="margin:40px auto; grid-column: 1/-1; text-align: center;">
+                <span class="empty-icon" style="font-size:3rem;display:block;margin-bottom:10px;">🔍</span>
+                <p style="font-weight:700;color:var(--text-soft);">No items found for "${searchQuery}" in this category.</p>
+                <button onclick="clearSearch()" style="margin-top:15px;background:var(--green-pale);color:var(--green);border:none;padding:8px 20px;border-radius:50px;font-weight:800;cursor:pointer;">Clear Search</button>
+            </div>`;
+        } else {
+            grid.innerHTML = '<div class="empty-state" style="margin:40px auto; text-align: center;"><span class="empty-icon">📦</span><p>No products in this category yet. Check back soon!</p></div>';
+        }
         return;
     }
 
@@ -113,11 +129,51 @@ function switchLearning(type, btn) {
     renderLearningProducts(type);
 }
 
+// ─── SEARCH HANDLER ───
+function handleSearch(val) {
+    searchQuery = val.toLowerCase().trim();
+    renderLearningProducts();
+    renderReturnGifts();
+}
+
+function clearSearch() {
+    searchQuery = '';
+    const searchInput = document.getElementById('productSearch');
+    if (searchInput) searchInput.value = '';
+    renderLearningProducts();
+    renderReturnGifts();
+}
+
 // ─── RENDER RETURN GIFTS ───
 function renderReturnGifts() {
     const grid = document.getElementById('giftsGrid');
     if (!grid) return;
-    grid.innerHTML = returnGifts.map(g => {
+
+    const activeFilterBtn = document.querySelector('.filter-btn.active');
+    const f = activeFilterBtn ? activeFilterBtn.dataset.filter : 'all';
+
+    const filtered = returnGifts.filter(g => {
+        const matchesCategory = f === 'all' || g.category === f;
+        const matchesSearch = !searchQuery ||
+            g.name.toLowerCase().includes(searchQuery) ||
+            g.items.some(item => item.toLowerCase().includes(searchQuery));
+        return matchesCategory && matchesSearch;
+    });
+
+    if (!filtered.length) {
+        if (searchQuery) {
+            grid.innerHTML = `<div class="empty-state" style="margin:40px auto; grid-column: 1/-1; text-align: center;">
+                <span class="empty-icon" style="font-size:3rem;display:block;margin-bottom:10px;">🔍</span>
+                <p style="font-weight:700;color:var(--text-soft);">No gift combos found for "${searchQuery}" in this filter.</p>
+                <button onclick="clearSearch()" style="margin-top:15px;background:var(--green-pale);color:var(--green);border:none;padding:8px 20px;border-radius:50px;font-weight:800;cursor:pointer;">Clear Search</button>
+            </div>`;
+        } else {
+            grid.innerHTML = '<div class="empty-state" style="margin:40px auto; text-align: center;"><span class="empty-icon">🎁</span><p>No items found in this category.</p></div>';
+        }
+        return;
+    }
+
+    grid.innerHTML = filtered.map(g => {
         const isPremium = g.isPremium;
         const headerStyle = isPremium ? ' style="background:linear-gradient(135deg,#fff8e1,#ffe082);"' : '';
         const nameStyle = isPremium ? ' style="color:var(--brown);"' : '';
@@ -241,8 +297,7 @@ function initFilters() {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            const f = btn.dataset.filter;
-            document.querySelectorAll('.product-card').forEach(c => c.classList.toggle('hidden', f !== 'all' && c.dataset.category !== f));
+            renderReturnGifts();
         });
     });
 }

@@ -322,6 +322,21 @@
         font-size: 0.7rem;
     }
 
+    .search-container {
+        margin-bottom: 32px;
+    }
+
+    .search-input {
+        padding: 13px 16px 13px 46px;
+        font-size: 0.92rem;
+        border-width: 2px;
+    }
+
+    .search-icon {
+        font-size: 1.15rem;
+        left: 16px;
+    }
+
     /* Tabs — horizontal scroll on small phones */
     .stream-tabs {
         flex-wrap: nowrap;

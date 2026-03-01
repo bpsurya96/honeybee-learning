@@ -33,8 +33,8 @@ async function loadReviews() {
 
 function initProduct() {
     const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get('id')) || 0;
-    p = products[id] || products[0];
+    const id = parseInt(params.get('id'));
+    p = products.find(item => item.id === id) || products[0];
     if (!p) return;
 
     document.title = p.title + ' — HoneyBee Learning';
