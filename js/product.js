@@ -248,3 +248,110 @@ function scrollCarousel(trackId, dir) {
     const step = card ? card.offsetWidth + 20 : 300;
     track.scrollBy({ left: dir * step, behavior: 'smooth' });
 }
+
+// ─────────────────────────────────────────────────
+//  CUSTOMISE YOUR OWN — Interactive Logic
+// ─────────────────────────────────────────────────
+
+let selectedProductType = '';
+
+// Theme chip selection
+function selectTheme(btn, value) {
+    // Deselect all chips
+    document.querySelectorAll('.theme-chip').forEach(c => c.classList.remove('selected'));
+    btn.classList.add('selected');
+
+    const input = document.getElementById('customThemeInput');
+    if (value) {
+        // Pre-fill input with the chosen theme
+        input.value = value;
+        input.style.display = 'none';
+    } else {
+        // "My Own Theme" — show and focus the input
+        input.value = '';
+        input.style.display = 'block';
+        input.focus();
+    }
+}
+
+// Product type card selection
+function selectProductType(card, typeLabel) {
+    document.querySelectorAll('.pt-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedProductType = typeLabel;
+}
+
+// Submit custom order via WhatsApp
+function submitCustomOrder() {
+    const themeInput = (document.getElementById('customThemeInput').value || '').trim();
+    const selectedChip = document.querySelector('.theme-chip.selected:not(.custom-chip)');
+    const theme = themeInput || (selectedChip ? selectedChip.textContent.trim() : '');
+
+    const childName = (document.getElementById('custChildName').value || '').trim();
+    const age = document.getElementById('custAge').value;
+    const qty = document.getElementById('custQty').value;
+    const budget = document.getElementById('custBudget').value;
+    const phone = (document.getElementById('custPhone').value || '').trim();
+    const time = document.getElementById('custTime').value;
+    const notes = (document.getElementById('custNotes').value || '').trim();
+    const errEl = document.getElementById('custError');
+
+    // Collect checked special features
+    const specials = [...document.querySelectorAll('.special-chip input:checked')]
+        .map(cb => cb.value);
+
+    // Validation
+    if (!theme) {
+        showCustError('⚠️ Please pick a theme or type your own in the text box.');
+        return;
+    }
+    if (!childName) {
+        showCustError("⚠️ Please enter your child's name.");
+        return;
+    }
+    if (!age) {
+        showCustError('⚠️ Please select your child\'s age group.');
+        return;
+    }
+    if (!phone || !/^\d{10}$/.test(phone.replace(/\s/g, ''))) {
+        showCustError('⚠️ Please enter a valid 10-digit WhatsApp number.');
+        return;
+    }
+    errEl.style.display = 'none';
+
+    // Build a rich, structured WhatsApp message
+    let msg = `🍯 *HoneyBee Learning — Custom Book Request* 🎨\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+    msg += `🖼️ *Theme:* ${theme}\n`;
+    if (selectedProductType) msg += `📦 *Product Type:* ${selectedProductType}\n`;
+    msg += `\n👶 *Child's Name:* ${childName}\n`;
+    msg += `🎂 *Age Group:* ${age}\n`;
+    if (qty) msg += `🔢 *Quantity:* ${qty}\n`;
+    if (budget) msg += `💰 *Budget:* ${budget}\n`;
+
+    if (specials.length) {
+        msg += `\n✨ *Special Requests:*\n`;
+        specials.forEach(s => { msg += `  • ${s}\n`; });
+    }
+
+    if (notes) {
+        msg += `\n📝 *Additional Details:*\n${notes}\n`;
+    }
+
+    msg += `\n📞 *WhatsApp:* ${phone}`;
+    if (time) msg += `\n⏰ *Best Time to Reach:* ${time}`;
+
+    msg += `\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+    msg += `_Sent from HoneyBee Learning custom order form_`;
+
+    window.open(`https://wa.me/918883624873?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function showCustError(msg) {
+    const errEl = document.getElementById('custError');
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+    errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/product.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/product-responsive.css">
+    <link rel="stylesheet" href="css/custom-order.css">
 
     <!-- Google Analytics 4 — same Measurement ID as index.html -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4YMNFP0WP"></script>
@@ -70,6 +71,209 @@
                     <div>₹75 flat delivery · FREE above ₹1000 · 3–5 days delivery · 7-day return policy</div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         CUSTOMISE YOUR OWN SECTION
+         ═══════════════════════════════════════════ -->
+    <div class="custom-section" id="customiseSection">
+        <div class="custom-inner">
+
+            <!-- Header -->
+            <div class="custom-header">
+                <div class="custom-badge">✨ We Create Anything</div>
+                <h2 class="custom-title">Still not fully satisfied? <br>Let's create <span>yours!</span> 🎨</h2>
+                <p class="custom-sub">Every child is unique — so should be their book! Tell us your dream theme and
+                    we'll handcraft a personalised learning book just for your little one, delivered in 3–5 days. 🍯</p>
+            </div>
+
+            <!-- Step 1: Pick a Theme -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">1</span> Pick your theme <span
+                        class="step-hint">(or type your own below)</span></div>
+                <div class="theme-chips" id="themeChips">
+                    <button class="theme-chip" onclick="selectTheme(this, 'Marvel / Avengers')">🦸 Marvel /
+                        Avengers</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Doraemon')">🤖 Doraemon</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Peppa Pig')">🐷 Peppa Pig</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Minions')">💛 Minions</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Disney Princess')">👸 Disney
+                        Princess</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Paw Patrol')">🐾 Paw Patrol</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Cars & Trucks')">🚗 Cars & Trucks</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Dinosaurs')">🦕 Dinosaurs</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Ganesh Theme')">🐘 Ganesh Theme</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Tamil Culture / Pongal')">🎶 Tamil
+                        Culture</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Ramayan Theme')">🏹 Ramayan Theme</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Fairy Tales')">🧚 Fairy Tales</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Animals & Safari')">🦁 Animals &
+                        Safari</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Super Mario')">🍄 Super Mario</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Frozen / Elsa')">❄️ Frozen / Elsa</button>
+                    <button class="theme-chip custom-chip" onclick="selectTheme(this, '')">✏️ My Own Theme...</button>
+                </div>
+                <input type="text" id="customThemeInput" class="custom-input" style="display:none;margin-top:4px;"
+                    placeholder="e.g. Chota Bheem, Ninja, Tamil Alphabet, Regional Festival..." />
+            </div>
+
+            <!-- Step 2: Product Type -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">2</span> What type of product?</div>
+                <div class="product-type-cards" id="productTypeCards">
+                    <div class="pt-card"
+                        onclick="selectProductType(this, 'Personalised Activity Book (A4, 30 pages, single use)')"
+                        data-type="activity">
+                        <div class="pt-icon">📚</div>
+                        <div class="pt-name">Activity Book</div>
+                        <div class="pt-desc">A4 · 30 pages · Tracing, Colouring, Math</div>
+                        <div class="pt-price">Starting ₹349</div>
+                    </div>
+                    <div class="pt-card"
+                        onclick="selectProductType(this, 'Reusable Wipe & Learn Laminated Book (A4, 100+ uses)')"
+                        data-type="reusable">
+                        <div class="pt-icon">♻️</div>
+                        <div class="pt-name">Reusable Book</div>
+                        <div class="pt-desc">A4 · Laminated · Wipe & Learn · 100+ uses</div>
+                        <div class="pt-price">Starting ₹699</div>
+                    </div>
+                    <div class="pt-card"
+                        onclick="selectProductType(this, 'Personalised Alphabet Flashcards (A–Z, 26 cards)')"
+                        data-type="flashcard">
+                        <div class="pt-icon">🃏</div>
+                        <div class="pt-name">Flashcards</div>
+                        <div class="pt-desc">A–Z · 26 Cards · Value-based sentences</div>
+                        <div class="pt-price">Starting ₹199</div>
+                    </div>
+                    <div class="pt-card" onclick="selectProductType(this, 'Reusable Alphabet Chart (A4, laminated)')"
+                        data-type="chart">
+                        <div class="pt-icon">📋</div>
+                        <div class="pt-name">Learning Chart</div>
+                        <div class="pt-desc">A4 · Laminated · Alphabet / Numbers</div>
+                        <div class="pt-price">Starting ₹99</div>
+                    </div>
+                    <div class="pt-card" onclick="selectProductType(this, 'Return Gift Set (combo of books + treats)')"
+                        data-type="gift">
+                        <div class="pt-icon">🎁</div>
+                        <div class="pt-name">Return Gift Set</div>
+                        <div class="pt-desc">Birthday combos · Bulk orders · With treats</div>
+                        <div class="pt-price">Starting ₹99/set</div>
+                    </div>
+                    <div class="pt-card" onclick="selectProductType(this, 'Not sure — need help choosing')"
+                        data-type="other">
+                        <div class="pt-icon">💬</div>
+                        <div class="pt-name">Not Sure Yet</div>
+                        <div class="pt-desc">Tell us your need & we'll recommend!</div>
+                        <div class="pt-price">Free advice</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Child Details -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">3</span> A little about your child</div>
+                <div class="custom-form-row">
+                    <div class="custom-form-group">
+                        <label class="custom-label">Child's Name *</label>
+                        <input type="text" id="custChildName" class="custom-input" placeholder="e.g. Arjun, Priya..." />
+                    </div>
+                    <div class="custom-form-group">
+                        <label class="custom-label">Age Group *</label>
+                        <select id="custAge" class="custom-input">
+                            <option value="">Select age group</option>
+                            <option value="1–2 years (Toddler)">1–2 years (Toddler)</option>
+                            <option value="3–5 years (Preschool / LKG)">3–5 years (Preschool / LKG)</option>
+                            <option value="6–8 years (Class 1–3)">6–8 years (Class 1–3)</option>
+                            <option value="9–12 years (Class 4–7)">9–12 years (Class 4–7)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="custom-form-row">
+                    <div class="custom-form-group">
+                        <label class="custom-label">Quantity Needed</label>
+                        <select id="custQty" class="custom-input">
+                            <option value="1 copy">1 copy (for my child)</option>
+                            <option value="2–5 copies">2–5 copies (siblings / cousins)</option>
+                            <option value="10–25 copies (Return Gifts)">10–25 copies (Return Gifts)</option>
+                            <option value="25–50 copies (Bulk)">25–50 copies (Bulk)</option>
+                            <option value="50+ copies (Bulk / Event)">50+ copies (Bulk / Event)</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group">
+                        <label class="custom-label">Budget Range</label>
+                        <select id="custBudget" class="custom-input">
+                            <option value="">Any / Not sure</option>
+                            <option value="Under ₹200">Under ₹200</option>
+                            <option value="₹200–₹500">₹200–₹500</option>
+                            <option value="₹500–₹1000">₹500–₹1000</option>
+                            <option value="₹1000+">₹1000+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Extra Details -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">4</span> Anything special you want?</div>
+                <div class="special-chips">
+                    <label class="special-chip"><input type="checkbox" value="Child's name on cover" /> 🏷️ Name on
+                        cover</label>
+                    <label class="special-chip"><input type="checkbox" value="Parent names inside" /> 👨‍👩‍👧 Parent
+                        names inside</label>
+                    <label class="special-chip"><input type="checkbox" value="Photo on cover" /> 📸 Photo on
+                        cover</label>
+                    <label class="special-chip"><input type="checkbox" value="Specific colour theme" /> 🎨 Specific
+                        colours</label>
+                    <label class="special-chip"><input type="checkbox" value="Tamil / regional language" /> 🗣️ Tamil /
+                        Regional</label>
+                    <label class="special-chip"><input type="checkbox" value="Moral values / life skills pages" /> 🌟
+                        Moral values</label>
+                    <label class="special-chip"><input type="checkbox" value="Bilingual (English + Tamil)" /> 🔤
+                        Bilingual</label>
+                    <label class="special-chip"><input type="checkbox" value="Extra tracing pages" /> ✍️ More
+                        tracing</label>
+                </div>
+                <textarea id="custNotes" class="custom-input custom-textarea"
+                    placeholder="Describe your vision! e.g. 'I want a Ganesh theme book with Tamil alphabet tracing, personalised for my daughter Kavya (age 4). Need 15 copies for her birthday return gifts...'"></textarea>
+            </div>
+
+            <!-- Step 5: Contact -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">5</span> Your WhatsApp number</div>
+                <div class="custom-form-row">
+                    <div class="custom-form-group" style="flex:2">
+                        <label class="custom-label">WhatsApp Number *</label>
+                        <input type="tel" id="custPhone" class="custom-input" placeholder="10-digit number"
+                            maxlength="10" />
+                    </div>
+                    <div class="custom-form-group" style="flex:1">
+                        <label class="custom-label">Best time to call?</label>
+                        <select id="custTime" class="custom-input">
+                            <option value="Anytime">Anytime</option>
+                            <option value="Morning (9am–12pm)">Morning (9am–12pm)</option>
+                            <option value="Afternoon (12pm–4pm)">Afternoon (12pm–4pm)</option>
+                            <option value="Evening (4pm–8pm)">Evening (4pm–8pm)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error & Submit -->
+            <p id="custError" class="cust-error" style="display:none;"></p>
+            <button class="cust-submit-btn" onclick="submitCustomOrder()">
+                <span>🎨 Send My Custom Request via WhatsApp</span>
+                <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    style="flex-shrink:0">
+                    <circle cx="16" cy="16" r="16" fill="#25D366" />
+                    <path
+                        d="M23.5 8.5A10.44 10.44 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.84.48 3.63 1.39 5.21L5.5 26.5l5.42-1.42A10.44 10.44 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5z"
+                        fill="white" />
+                </svg>
+            </button>
+            <p class="cust-note">💬 We'll reply within a few hours · 🚚 Delivery in 3–5 days · ❤️ 100% personalised,
+                made with love in Chennai</p>
+
         </div>
     </div>
 
