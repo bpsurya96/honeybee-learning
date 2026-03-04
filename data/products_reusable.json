@@ -173,5 +173,41 @@
             "reusable tracing workbook",
             "personalised preschool learning book"
         ]
+    },
+    {
+        "id": 106,
+        "title": "Personalised Dora Buji Reusable Laminated Wipe & Learn Activity Book",
+        "price": 479,
+        "mrp": 1200,
+        "badge": "Reusable",
+        "badgeType": "warning",
+        "image": "images/products/106/1.png",
+        "images": [
+            "images/products/106/1.png",
+            "images/products/106/2.png",
+            "images/products/106/3.png",
+            "images/products/106/4.png"
+        ],
+        "fallbackEmoji": "🧭",
+        "shortDesc": "Adventure-themed Dora Buji wipe-and-learn reusable book with tracing, numbers, mazes and name practice.",
+        "fullDesc": "Explore, learn and trace with Dora Buji adventures! 🧭🎒\n\nThis personalised reusable laminated activity book keeps toddlers engaged while practising writing and problem-solving again and again.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing practice\n• Shape identification\n• Maze and path tracing\n• Matching activities\n• Name tracing practice\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Wipe & reuse 100+ times\n• Smooth marker-friendly finish\n\n🎯 Benefits:\n• Improves pencil control\n• Builds early math and literacy skills\n• Encourages logical thinking with mazes\n• Boosts writing confidence\n• Screen-free learning fun\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
+        "tags": [
+            "♻️ Reusable",
+            "🧭 Adventure Theme",
+            "✍️ Wipe & Learn",
+            "💧 Waterproof",
+            "🧒 Name Tracing"
+        ],
+        "productType": "reusable",
+        "seoTitle": "Dora Buji Reusable Activity Book for Kids | Laminated Wipe & Learn Personalised Workbook",
+        "metaDescription": "Buy personalised Dora Buji reusable laminated activity book for toddlers. Waterproof wipe & learn tracing, numbers, mazes and name practice book for 100+ uses.",
+        "keywords": [
+            "dora buji reusable book",
+            "wipe and learn activity book",
+            "laminated kids tracing book",
+            "reusable preschool workbook",
+            "personalised wipe and reuse book",
+            "maze tracing toddler book"
+        ]
     }
 ]
