@@ -9,6 +9,7 @@
     content="Personalised activity books, value-based learning materials & birthday return gift combos crafted with love for every little learner. Based in Medavakkam, Chennai.">
   <link rel="icon" href="images/logo/logo.png">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/splash.css">
   <link rel="stylesheet" href="css/responsive.css">
 
   <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your real Measurement ID -->
@@ -30,6 +31,62 @@
 </head>
 
 <body>
+
+  <!-- ═══════════════════════════════════════════
+       WELCOME SPLASH — shows once per session
+       ═══════════════════════════════════════════ -->
+  <div class="splash" id="welcomeSplash">
+
+    <!-- Floating hexagons background -->
+    <div class="splash-hexagons" aria-hidden="true">
+      <div class="hex hex1">⬡</div>
+      <div class="hex hex2">⬡</div>
+      <div class="hex hex3">⬡</div>
+      <div class="hex hex4">⬡</div>
+      <div class="hex hex5">⬡</div>
+      <div class="hex hex6">⬡</div>
+    </div>
+
+    <!-- Floating emoji confetti -->
+    <div class="splash-confetti" aria-hidden="true">
+      <span style="--d:0.1s;--x:12%">📚</span>
+      <span style="--d:0.4s;--x:28%">⭐</span>
+      <span style="--d:0.2s;--x:48%">🌸</span>
+      <span style="--d:0.6s;--x:65%">🎨</span>
+      <span style="--d:0.3s;--x:80%">✏️</span>
+      <span style="--d:0.5s;--x:92%">🎁</span>
+    </div>
+
+    <!-- Main content -->
+    <div class="splash-content">
+      <!-- Bee flying in -->
+      <div class="splash-bee" aria-hidden="true">🐝</div>
+
+      <!-- Logo -->
+      <div class="splash-logo">
+        <img src="images/logo/logo.png" alt="HoneyBee Learning" onerror="this.style.display='none'">
+      </div>
+
+      <!-- Brand name -->
+      <div class="splash-brand">
+        <span class="splash-honey">HoneyBee</span>
+        <span class="splash-learning">Learning</span>
+      </div>
+
+      <!-- Tagline with typing feel -->
+      <p class="splash-tagline">
+        🍯 Making every child's name <strong>extra special</strong> ✨
+      </p>
+
+      <!-- Progress bar -->
+      <div class="splash-bar-wrap">
+        <div class="splash-bar" id="splashBar"></div>
+      </div>
+
+      <p class="splash-skip">Tap anywhere to enter →</p>
+    </div>
+
+  </div>
 
   <!-- NAV -->
   <nav id="mainNav">
@@ -55,7 +112,7 @@
     <div class="cloud cloud1"></div>
     <div class="cloud cloud2"></div>
     <div class="hero-left">
-      <div class="hero-badge">📍 Medavakkam, Chennai &nbsp;|&nbsp; 🚚 Free delivery above ₹1000</div>
+      <div class="hero-badge">📍 Medavakkam, Chennai &nbsp;|&nbsp; 🚚 Delivery across India</div>
       <h1>Learning Made <span>Playful</span> & Personal!</h1>
       <p class="hero-desc">Personalised activity books, value-based learning materials & birthday return gift combos —
         crafted with love for every little learner.</p>
@@ -169,9 +226,10 @@
         <span style="font-size:2rem;">🚚</span>
         <div>
           <div style="font-weight:800;color:var(--brown);font-size:0.97rem;">Delivery Info for Learning Products</div>
-          <div style="font-size:0.87rem;color:var(--text-soft);font-weight:600;margin-top:3px;">₹75 flat delivery charge
-            &nbsp;·&nbsp; FREE delivery above ₹1000 &nbsp;·&nbsp; Delivered in 3–5 days &nbsp;·&nbsp; 7-day return
-            policy (₹150 return fee applies)</div>
+          <div style="font-size:0.87rem;color:var(--text-soft);font-weight:600;margin-top:3px;">Delivery charges
+            applicable based on location
+            &nbsp;·&nbsp; Free pickup in Medavakkam &nbsp;·&nbsp; Delivered in 3–5 days &nbsp;·&nbsp; 7-day return
+            policy</div>
         </div>
       </div>
 
@@ -270,11 +328,7 @@
         <div class="contact-label">WhatsApp</div>
         <div class="contact-value">Message Us</div>
       </a>
-      <a class="contact-card" href="https://www.smartbiz.in/HoneybeeLearning" target="_blank"><span
-          class="contact-icon">🛍️</span>
-        <div class="contact-label">Online Store</div>
-        <div class="contact-value">SmartBiz Shop</div>
-      </a>
+
       <a class="contact-card" href="https://www.instagram.com/honeybee.learning.co?igsh=aDJ3enhnNWs1eHZ0"
         target="_blank"><span class="contact-icon">📸</span>
         <div class="contact-label">Instagram</div>
@@ -292,9 +346,8 @@
     Medavakkam,
     Chennai &nbsp;|&nbsp; Made with love for every little learner<br>
     <span style="font-size:0.78rem;opacity:0.6;margin-top:5px;display:block;">
-      Also on <a href="https://www.smartbiz.in/HoneybeeLearning" target="_blank">SmartBiz</a>
-      &nbsp;·&nbsp;
-      <a href="https://www.instagram.com/honeybee.learning.co?igsh=aDJ3enhnNWs1eHZ0" target="_blank">📸 Instagram</a>
+      <a href="https://www.instagram.com/honeybee.learning.co?igsh=aDJ3enhnNWs1eHZ0" target="_blank">📸
+        @honeybee.learning.co on Instagram</a>
     </span>
   </footer>
 
@@ -404,6 +457,39 @@
       document.getElementById('navLinks').classList.remove('open');
       document.body.style.overflow = '';
     }
+  </script>
+
+  <!-- ═══ WELCOME SPLASH LOGIC ═══ -->
+  <script>
+    (function () {
+      const splash = document.getElementById('welcomeSplash');
+      if (!splash) return;
+
+      // Only show once per browser session
+      if (sessionStorage.getItem('hbl_welcomed')) {
+        splash.classList.add('gone');
+        return;
+      }
+
+      // Lock scroll while splash is shown
+      document.body.classList.add('splash-open');
+
+      function dismissSplash() {
+        splash.classList.add('hiding');
+        document.body.classList.remove('splash-open');
+        sessionStorage.setItem('hbl_welcomed', '1');
+        setTimeout(() => splash.classList.add('gone'), 580); // after CSS fade-out
+      }
+
+      // Auto-dismiss after 2.8s (matches the progress bar)
+      const timer = setTimeout(dismissSplash, 2800);
+
+      // Tap / click to skip early
+      splash.addEventListener('click', function () {
+        clearTimeout(timer);
+        dismissSplash();
+      });
+    })();
   </script>
 </body>
 
