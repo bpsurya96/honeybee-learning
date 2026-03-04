@@ -302,6 +302,112 @@
         "productType": "activity"
     },
     {
+        "id": 11,
+        "title": "Personalised Jungle Safari Activity Book for Kids – Tracing, Colouring & Early Learning",
+        "price": 349,
+        "mrp": 800,
+        "badge": "Popular",
+        "badgeType": "default",
+        "image": "images/products/11/1.png",
+        "images": [
+            "images/products/11/1.png",
+            "images/products/11/2.png",
+            "images/products/11/3.png",
+            "images/products/11/4.png",
+            "images/products/11/5.png"
+        ],
+        "fallbackEmoji": "🦁",
+        "shortDesc": "Fun jungle learning with lion, elephant, monkey & giraffe – personalised tracing, colouring and early math for toddlers.",
+        "fullDesc": "Welcome to a wild jungle learning adventure! 🌿🦁\n\nThis personalised A4 activity book introduces children to jungle animals through engaging skill-based activities.\n\nFeaturing lion, elephant, monkey, giraffe, zebra, trees and safari elements to keep toddlers excited while learning.\n\n✨ What's Inside:\n• Alphabet tracing with animal names\n• Jungle colouring pages\n• Counting animals for early math\n• Matching and pattern activities\n• Personalised child name on cover\n• 30 pages of learning fun\n\n🎯 Benefits:\n• Builds vocabulary and animal recognition\n• Develops fine motor and writing skills\n• Improves focus and problem-solving\n• Encourages screen-free learning\n\n👶 Age Group: 2–5 years\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🦁 Jungle Theme",
+            "🎨 Colouring",
+            "🔢 Early Math",
+            "✍️ Tracing"
+        ],
+        "productType": "activity",
+        "seoTitle": "Jungle Theme Personalised Activity Book for Kids | Animal Tracing & Colouring Workbook",
+        "metaDescription": "Shop personalised jungle theme activity book with lion, elephant and monkey. Tracing, colouring and early math for toddlers. A4 30-page learning book.",
+        "keywords": [
+            "jungle activity book for kids",
+            "animal theme personalised workbook",
+            "toddler tracing colouring book",
+            "early learning jungle book",
+            "personalised kids activity book"
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Personalised Unicorn Magic Activity Book for Kids – Tracing, Colouring & Early Learning",
+        "price": 349,
+        "mrp": 800,
+        "badge": "Bestseller",
+        "badgeType": "success",
+        "image": "images/products/12/1.png",
+        "images": [
+            "images/products/12/1.png",
+            "images/products/12/2.png",
+            "images/products/12/3.png",
+            "images/products/12/4.png",
+            "images/products/12/5.png"
+        ],
+        "fallbackEmoji": "🦄",
+        "shortDesc": "Magical unicorn learning with rainbows, stars & castles – personalised tracing, colouring and early math for toddlers.",
+        "fullDesc": "Enter a magical world of unicorn learning! 🦄🌈\n\nThis personalised A4 activity book combines fun and skill-building through colourful unicorn, rainbow and star-themed activities.\n\n✨ What's Inside:\n• Alphabet tracing with unicorn words\n• Rainbow colouring pages\n• Counting stars for early math\n• Matching and pattern activities\n• Personalised child name on cover\n• 30 pages of learning fun\n\n🎯 Benefits:\n• Improves pencil control and writing readiness\n• Builds number recognition\n• Encourages creativity and imagination\n• Screen-free joyful learning\n\n👶 Age Group: 2–5 years\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🦄 Unicorn Theme",
+            "🎨 Colouring",
+            "🔢 Early Math",
+            "✍️ Tracing"
+        ],
+        "productType": "activity",
+        "seoTitle": "Unicorn Personalised Activity Book for Kids | Tracing Colouring Early Learning",
+        "metaDescription": "Buy personalised unicorn activity book for toddlers. Magical tracing, colouring and early math workbook with child name. A4 30 pages.",
+        "keywords": [
+            "unicorn activity book for kids",
+            "personalised unicorn workbook",
+            "toddler tracing colouring book",
+            "unicorn learning book",
+            "early learning activity book"
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Personalised Dora Buji Adventure Activity Book – Tracing, Puzzles & Early Learning",
+        "price": 349,
+        "mrp": 800,
+        "badge": "Learning",
+        "badgeType": "primary",
+        "image": "images/products/13/1.png",
+        "images": [
+            "images/products/13/1.png",
+            "images/products/13/2.png",
+            "images/products/13/4.png"
+        ],
+        "fallbackEmoji": "🧭",
+        "shortDesc": "Adventure learning with maps, paths & fun puzzles – personalised tracing, colouring and problem-solving for toddlers.",
+        "fullDesc": "Let your child explore and learn with Dora Buji adventures! 🧭🎒\n\nThis personalised A4 activity book encourages curiosity, navigation skills and early learning through interactive activities.\n\n✨ What's Inside:\n• Alphabet tracing with adventure words\n• Path tracing and maze puzzles\n• Counting objects for early math\n• Matching and shape activities\n• Personalised child name on cover\n• 30 pages of fun learning\n\n🎯 Benefits:\n• Improves logical thinking and focus\n• Develops fine motor and writing skills\n• Encourages problem-solving through puzzles\n• Screen-free interactive learning\n\n👶 Age Group: 2–5 years\n📏 A4 Size — 30 Pages\n💖 Personalised with your child's name",
+        "tags": [
+            "📏 A4 — 30 Pages",
+            "🧭 Adventure Theme",
+            "🧩 Puzzles",
+            "🔢 Early Math",
+            "✍️ Tracing"
+        ],
+        "productType": "activity",
+        "seoTitle": "Dora Adventure Personalised Activity Book for Kids | Maze Tracing Puzzle Workbook",
+        "metaDescription": "Shop personalised Dora adventure activity book with tracing, mazes and puzzles. A4 early learning workbook for toddlers with child name.",
+        "keywords": [
+            "dora activity book for kids",
+            "personalised adventure workbook",
+            "maze tracing puzzle book",
+            "toddler learning activity book",
+            "early learning puzzle book"
+        ]
+    },
+    {
         "id": 101,
         "title": "Personalised Thomas & Friends Reusable Laminated Activity Book",
         "price": 699,
@@ -317,7 +423,7 @@
         ],
         "fallbackEmoji": "🚂",
         "shortDesc": "Thomas & Friends reusable wipe-and-learn book — laminated, waterproof and tear-proof for 100+ practice sessions.",
-        "fullDesc": "All aboard for fun learning with Thomas & Friends! 🚂\n\nThis personalised reusable activity book is fully laminated, waterproof and tear-proof — designed for repeated practice without paper waste.\n\nChildren can trace, erase and learn again for 100+ uses using a whiteboard marker.\n\nFeaturing Thomas, engines, tracks, signals and transport elements that keep toddlers engaged while learning.\n\n✨ What's Inside:\n• Alphabet tracing (wipe & reuse)\n• Number writing practice\n• Shapes and patterns\n• Transport object recognition\n• Name tracing (personalised)\n• 20+ laminated reusable pages\n\n🛡️ Quality Features:\n• Fully laminated sheets\n• Waterproof & spill-proof\n• Tear-resistant for toddler use\n• Rounded child-safe corners\n• Works with whiteboard marker\n\n🎯 Benefits:\n• Unlimited practice without reprinting\n• Builds writing confidence through repetition\n• Develops fine motor skills\n• Mess-free, screen-free learning\n\n👶 Age Group: 2–6 years\n📏 A4 Size — Reusable Laminated Pages\n♻️ 100+ Times Practice\n💖 Personalised with your child's name",
+        "fullDesc": "All aboard for fun learning with Thomas & Friends! 🚂\n\nThis personalised reusable activity book is fully laminated, waterproof and tear-proof — designed for repeated practice without paper waste.\n\nChildren can trace, erase and learn again for 100+ uses using a whiteboard marker.\n\nFeaturing Thomas, engines, tracks, signals and transport elements that keep toddlers engaged while learning.\n\n✨ What's Inside:\n• Alphabet tracing (wipe & reuse)\n• Number writing practice\n• Shapes and patterns\n• Transport object recognition\n• Name tracing (personalised)\n• 10+ laminated reusable pages\n\n🛡️ Quality Features:\n• Fully laminated sheets\n• Waterproof & spill-proof\n• Tear-resistant for toddler use\n• Rounded child-safe corners\n• Works with whiteboard marker\n\n🎯 Benefits:\n• Unlimited practice without reprinting\n• Builds writing confidence through repetition\n• Develops fine motor skills\n• Mess-free, screen-free learning\n\n👶 Age Group: 2–6 years\n📏 A4 Size — Reusable Laminated Pages\n♻️ 100+ Times Practice\n💖 Personalised with your child's name",
         "tags": [
             "♻️ Reusable Book",
             "💧 Waterproof Laminated",
@@ -352,7 +458,7 @@
         ],
         "fallbackEmoji": "🦇",
         "shortDesc": "Superhero wipe-and-learn reusable book — laminated, waterproof and tear-proof for unlimited tracing practice.",
-        "fullDesc": "Turn learning into a superhero mission with Batman! 🦇\n\nThis personalised reusable book helps children practise writing again and again using wipe-and-erase pages.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and patterns\n• Name tracing (personalised)\n• 20+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Works with whiteboard marker\n• 100+ practice uses\n\n🎯 Benefits:\n• Builds writing confidence\n• Improves pencil control\n• Screen-free skill learning\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
+        "fullDesc": "Turn learning into a superhero mission with Batman! 🦇\n\nThis personalised reusable book helps children practise writing again and again using wipe-and-erase pages.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and patterns\n• Name tracing (personalised)\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Works with whiteboard marker\n• 100+ practice uses\n\n🎯 Benefits:\n• Builds writing confidence\n• Improves pencil control\n• Screen-free skill learning\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
         "tags": [
             "♻️ Reusable",
             "🦇 Superhero Theme",
@@ -387,7 +493,7 @@
         ],
         "fallbackEmoji": "🦄",
         "shortDesc": "Magical unicorn reusable learning book — wipe, trace and practise 100+ times.",
-        "fullDesc": "Make learning magical with a personalised unicorn wipe-and-learn book! 🦄✨\n\nDesigned for repeated practice with colourful, engaging activities.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and patterns\n• Name tracing\n• 20+ laminated reusable pages\n\n🛡️ Features:\n• Waterproof & tear-proof\n• Fully laminated sheets\n• Whiteboard marker friendly\n• 100+ reusable practice\n\n🎯 Benefits:\n• Improves writing skills\n• Boosts focus and creativity\n• Mess-free learning time\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
+        "fullDesc": "Make learning magical with a personalised unicorn wipe-and-learn book! 🦄✨\n\nDesigned for repeated practice with colourful, engaging activities.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and patterns\n• Name tracing\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Waterproof & tear-proof\n• Fully laminated sheets\n• Whiteboard marker friendly\n• 100+ reusable practice\n\n🎯 Benefits:\n• Improves writing skills\n• Boosts focus and creativity\n• Mess-free learning time\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
         "tags": [
             "♻️ Reusable",
             "🦄 Unicorn Theme",
@@ -422,7 +528,7 @@
         ],
         "fallbackEmoji": "🚗",
         "shortDesc": "Transport-themed reusable tracing book with roads, cars and traffic learning.",
-        "fullDesc": "Perfect for little car lovers! 🚗\n\nThis personalised reusable activity book teaches writing, shapes and patterns through fun transport-based activities.\n\n✨ What's Inside:\n• Alphabet road tracing\n• Number parking activities\n• Shape matching with vehicles\n• Name tracing\n• 20+ laminated reusable pages\n\n🛡️ Features:\n• Waterproof laminated sheets\n• Tear-proof toddler safe\n• Wipe & reuse 100+ times\n\n🎯 Benefits:\n• Improves hand-eye coordination\n• Builds writing control\n• Keeps kids engaged longer\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
+        "fullDesc": "Perfect for little car lovers! 🚗\n\nThis personalised reusable activity book teaches writing, shapes and patterns through fun transport-based activities.\n\n✨ What's Inside:\n• Alphabet road tracing\n• Number parking activities\n• Shape matching with vehicles\n• Name tracing\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Waterproof laminated sheets\n• Tear-proof toddler safe\n• Wipe & reuse 100+ times\n\n🎯 Benefits:\n• Improves hand-eye coordination\n• Builds writing control\n• Keeps kids engaged longer\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
         "tags": [
             "♻️ Reusable",
             "🚗 Transport Theme",
@@ -457,7 +563,7 @@
         ],
         "fallbackEmoji": "🍉",
         "shortDesc": "Fun Cocomelon wipe-and-learn reusable book with tracing, numbers and name practice.",
-        "fullDesc": "Learning with favourite Cocomelon friends! 🍉🎶\n\nThis personalised reusable activity book keeps toddlers engaged while practising writing again and again.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and matching\n• Name tracing\n• 20+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Wipe & reuse 100+ times\n\n🎯 Benefits:\n• Encourages independent practice\n• Builds writing confidence\n• Screen-free learning fun\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
+        "fullDesc": "Learning with favourite Cocomelon friends! 🍉🎶\n\nThis personalised reusable activity book keeps toddlers engaged while practising writing again and again.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and matching\n• Name tracing\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Wipe & reuse 100+ times\n\n🎯 Benefits:\n• Encourages independent practice\n• Builds writing confidence\n• Screen-free learning fun\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
         "tags": [
             "♻️ Reusable",
             "🍉 Kids Theme",
