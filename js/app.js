@@ -1,9 +1,12 @@
 /* ═══════════════════════════════════════════════
    HoneyBee Learning — Main Application JS
    ═══════════════════════════════════════════════
-   
-   All product data is loaded from JSON files in data/
-   Edit those files to change products, prices, images etc.
+
+   Products are loaded from 3 split files:
+     • data/products_activity.json  — Activity books
+     • data/products_reusable.json  — Reusable wipe & learn
+     • data/products_other.json     — Flashcards & charts
+   Edit the relevant file to update that type.
    ═══════════════════════════════════════════════ */
 
 // ─── GLOBAL STATE ───
@@ -47,8 +50,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ─── DATA LOADERS ───
 async function loadProducts() {
     try {
-        const res = await fetch('data/products.json');
-        learningProducts = await res.json();
+        // Load all 3 split files in parallel and merge into one array
+        const [activityRes, reusableRes, otherRes] = await Promise.all([
+            fetch('data/products_activity.json'),
+            fetch('data/products_reusable.json'),
+            fetch('data/products_other.json')
+        ]);
+        const [activity, reusable, other] = await Promise.all([
+            activityRes.json(),
+            reusableRes.json(),
+            otherRes.json()
+        ]);
+        learningProducts = [...activity, ...reusable, ...other];
         renderLearningProducts();
     } catch (e) { console.error('Failed to load products:', e); }
 }
@@ -78,14 +91,28 @@ function renderLearningProducts(typeFilter, resetPage) {
 
     if (resetPage !== false) currentProductPage = 1;
 
+    // When a search query is active, search across ALL product types.
+    // Otherwise, filter to only the active tab's type.
     const filtered = learningProducts.filter(p => {
-        const matchesType = (p.productType || 'activity') === type;
         const matchesSearch = !searchQuery ||
             p.title.toLowerCase().includes(searchQuery) ||
             (p.shortDesc && p.shortDesc.toLowerCase().includes(searchQuery)) ||
-            (p.tags && p.tags.some(t => t.toLowerCase().includes(searchQuery)));
-        return matchesType && matchesSearch;
+            (p.tags && p.tags.some(t => t.toLowerCase().includes(searchQuery))) ||
+            (p.keywords && p.keywords.some(k => k.toLowerCase().includes(searchQuery)));
+
+        if (searchQuery) {
+            // Search mode: ignore type tab, show from all types
+            return matchesSearch;
+        } else {
+            // Browse mode: filter by active tab type
+            return (p.productType || 'activity') === type;
+        }
     });
+
+    // Show a hint banner when search is returning cross-type results
+    const searchBanner = searchQuery
+        ? `<div style="grid-column:1/-1;background:var(--honey-pale,#fff8e1);border:1.5px solid var(--honey,#f4a227);border-radius:10px;padding:10px 16px;font-size:0.85rem;font-weight:600;color:var(--brown,#6b3a1f);margin-bottom:4px;">🔍 Showing results across <strong>all categories</strong> for "${searchQuery}"</div>`
+        : '';
 
     if (!filtered.length) {
         if (searchQuery) {
@@ -136,7 +163,7 @@ function renderLearningProducts(typeFilter, resetPage) {
         <div class="load-more-info all-loaded">✅ Showing all ${filtered.length} product${filtered.length !== 1 ? 's' : ''}</div>
     </div>`;
 
-    grid.innerHTML = cardsHTML + loadMoreHTML;
+    grid.innerHTML = searchBanner + cardsHTML + loadMoreHTML;
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
 }
 
@@ -217,8 +244,8 @@ function renderSearchNotFound(query) {
 function submitSnfForm() {
     const theme = (document.getElementById('snfTheme').value || '').trim();
     const phone = (document.getElementById('snfPhone').value || '').trim();
-    const type  = document.getElementById('snfType').value;
-    const age   = document.getElementById('snfAge').value;
+    const type = document.getElementById('snfType').value;
+    const age = document.getElementById('snfAge').value;
     const notes = (document.getElementById('snfNotes').value || '').trim();
     const errEl = document.getElementById('snfError');
 
@@ -227,8 +254,8 @@ function submitSnfForm() {
     errEl.style.display = 'none';
 
     let msg = `🍯 *HoneyBee Learning — Custom Theme Enquiry* 🎨\n\n*Looking for:* ${theme}`;
-    if (type)  msg += `\n*Product Type:* ${type}`;
-    if (age)   msg += `\n*Age Group:* ${age}`;
+    if (type) msg += `\n*Product Type:* ${type}`;
+    if (age) msg += `\n*Age Group:* ${age}`;
     if (notes) msg += `\n*Additional Details:* ${notes}`;
     msg += `\n*WhatsApp:* ${phone}\n\n_Sent from HoneyBee Learning search_`;
 

@@ -1,7 +1,10 @@
 /* ═══════════════════════════════════════════════
    HoneyBee Learning — Product Page JS
    ═══════════════════════════════════════════════
-   Product data loaded from data/products.json
+   Products loaded from split files:
+     • data/products_activity.json
+     • data/products_reusable.json
+     • data/products_other.json
    Reviews loaded from data/reviews.json
    ═══════════════════════════════════════════════ */
 
@@ -19,8 +22,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadProducts() {
     try {
-        const res = await fetch('data/products.json');
-        products = await res.json();
+        // Load all 3 split files in parallel and merge into one array
+        const [activityRes, reusableRes, otherRes] = await Promise.all([
+            fetch('data/products_activity.json'),
+            fetch('data/products_reusable.json'),
+            fetch('data/products_other.json')
+        ]);
+        const [activity, reusable, other] = await Promise.all([
+            activityRes.json(),
+            reusableRes.json(),
+            otherRes.json()
+        ]);
+        products = [...activity, ...reusable, ...other];
     } catch (e) { console.error('Failed to load products:', e); }
 }
 

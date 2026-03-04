@@ -24,7 +24,16 @@
             "🌟 Moral Values",
             "🎁 Perfect Gift"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Bhagavad Gita Personalised Activity Book for Kids | Moral Values Learning Workbook",
+        "metaDescription": "Buy Bhagavad Gita inspired personalised activity book for kids. Krishna-themed moral values, name tracing and preschool exercises. Perfect gift for ages 3–6.",
+        "keywords": [
+            "bhagavad gita activity book for kids",
+            "personalised moral values workbook",
+            "krishna inspired learning book",
+            "preschool activity book with values",
+            "personalised kids activity book"
+        ]
     },
     {
         "id": 1,
@@ -51,30 +60,16 @@
             "🦕 Dino Theme",
             "🔤 Matching & Word Search"
         ],
-        "productType": "activity"
-    },
-    {
-        "id": 2,
-        "title": "Personalised Alphabet Flashcards for Kids",
-        "price": 199,
-        "mrp": 900,
-        "badge": "Best Seller",
-        "badgeType": "hot",
-        "image": "images/products/2/1.png",
-        "images": [
-            "images/products/2/1.png",
-            "images/products/2/2.png"
-        ],
-        "fallbackEmoji": "🃏",
-        "shortDesc": "Real-life objects with value-based sentences personalised with your child's name. A–Z complete set (26 cards) for meaningful alphabet learning.",
-        "fullDesc": "Make alphabet learning meaningful with our Personalised Alphabet Flashcards for Kids, designed using real-life everyday objects and customised value sentences for your child.\n\nEach flashcard introduces a letter with a real object and a positive benefit line personalised with your child's name, helping children connect learning with daily life.\n\n✨ What Makes It Special:\n• Real-life objects for easy recognition (A to Z)\n• 26 complete flashcards\n• Personalised positive sentences with child's name\n• Value-based learning with every letter\n• Durable, child-friendly card stock\n\n🎯 Benefits:\n• Builds letter recognition naturally\n• Develops vocabulary through real objects\n• Instils positive values from an early age\n• Makes learning personal and engaging\n\n💖 Personalised with your child's name",
-        "tags": [
-            "🔤 A–Z (26 Cards)",
-            "✍️ Personalised Name",
-            "🌱 Value-Based Learning",
-            "📸 Real-Life Objects"
-        ],
-        "productType": "other"
+        "productType": "activity",
+        "seoTitle": "Dino Theme Personalised Activity Book for Kids | Name Tracing & Word Search Workbook",
+        "metaDescription": "Shop customised dinosaur theme activity book for kids with name tracing, matching letters and word search. A4 30-page personalised learning workbook.",
+        "keywords": [
+            "dino theme activity book for kids",
+            "personalised name tracing workbook",
+            "dinosaur learning book for toddlers",
+            "customised kids activity book",
+            "word search tracing book"
+        ]
     },
     {
         "id": 3,
@@ -103,7 +98,16 @@
             "🪈 Krishna Theme",
             "✍️ Tracing"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Krishna Theme Personalised Activity Book for Kids | Tracing Colouring Early Math",
+        "metaDescription": "Shop personalised Krishna theme activity book with tracing, colouring and early math. A4 30-page devotional learning workbook for toddlers aged 2–5.",
+        "keywords": [
+            "krishna theme activity book for kids",
+            "personalised krishna workbook",
+            "toddler colouring tracing book",
+            "devotional learning book for kids",
+            "early math activity book"
+        ]
     },
     {
         "id": 4,
@@ -132,7 +136,16 @@
             "🎄 Christmas Theme",
             "✍️ Tracing"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Christmas Personalised Activity Book for Kids | Festive Tracing Colouring Workbook",
+        "metaDescription": "Buy personalised Christmas theme activity book for toddlers with Santa, tree and festive tracing, colouring and early math. A4 30-page personalised learning book.",
+        "keywords": [
+            "christmas activity book for kids",
+            "personalised festive learning book",
+            "christmas colouring tracing workbook",
+            "toddler christmas gift book",
+            "early learning christmas book"
+        ]
     },
     {
         "id": 5,
@@ -160,7 +173,16 @@
             "🦚 Radha Krishna Theme",
             "✍️ Tracing"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Radha Krishna Personalised Activity Book for Kids | Devotional Tracing Colouring Workbook",
+        "metaDescription": "Shop Little Radha Krishna personalised activity book for toddlers with tracing, colouring and early learning. A4 30-page cultural devotional workbook.",
+        "keywords": [
+            "radha krishna activity book for kids",
+            "personalised devotional learning book",
+            "little radha krishna workbook",
+            "cultural activity book for toddlers",
+            "krishna colouring tracing book"
+        ]
     },
     {
         "id": 6,
@@ -188,7 +210,16 @@
             "🚀 Space Theme",
             "✍️ Tracing"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Space Theme Personalised Activity Book for Kids | Tracing Colouring STEM Workbook",
+        "metaDescription": "Buy personalised space theme activity book for toddlers with rockets, planets and astronauts. Tracing, colouring and early math. A4 30-page STEM learning book.",
+        "keywords": [
+            "space theme activity book for kids",
+            "personalised space learning workbook",
+            "rocket planet tracing book",
+            "stem activity book for toddlers",
+            "space colouring book kids"
+        ]
     },
     {
         "id": 7,
@@ -215,7 +246,16 @@
             "🔱 Murugan Theme",
             "✍️ Tracing"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Murugan Theme Personalised Activity Book for Kids | Spiritual Tracing Colouring Workbook",
+        "metaDescription": "Shop personalised Lord Murugan activity book for toddlers with tracing, colouring and early counting. A4 30-page spiritual cultural learning workbook.",
+        "keywords": [
+            "murugan activity book for kids",
+            "personalised spiritual learning book",
+            "lord murugan colouring book",
+            "cultural activity book for toddlers",
+            "murugan theme tracing workbook"
+        ]
     },
     {
         "id": 8,
@@ -243,7 +283,16 @@
             "🌊 Ocean Theme",
             "✍️ Tracing"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Ocean Theme Personalised Activity Book for Kids | Underwater Tracing Colouring Workbook",
+        "metaDescription": "Buy personalised ocean theme activity book for toddlers with sea animals, tracing, colouring and counting. A4 30-page underwater learning adventure workbook.",
+        "keywords": [
+            "ocean theme activity book for kids",
+            "personalised underwater learning book",
+            "sea animals tracing colouring book",
+            "toddler ocean adventure workbook",
+            "early math ocean activity book"
+        ]
     },
     {
         "id": 9,
@@ -271,7 +320,16 @@
             "🔢 Early Math",
             "✍️ Tracing"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Barbie Princess Personalised Activity Book for Girls | Tracing Colouring Early Learning",
+        "metaDescription": "Shop personalised Barbie princess activity book for girls with tracing, colouring and number recognition. A4 30-page princess themed learning workbook.",
+        "keywords": [
+            "barbie princess activity book for girls",
+            "personalised princess learning workbook",
+            "princess colouring tracing book",
+            "girls activity book personalised",
+            "princess theme early learning book"
+        ]
     },
     {
         "id": 10,
@@ -299,7 +357,16 @@
             "🔢 Early Math",
             "✍️ Tracing"
         ],
-        "productType": "activity"
+        "productType": "activity",
+        "seoTitle": "Butterfly Garden Personalised Activity Book for Toddlers | Nature Tracing Colouring Workbook",
+        "metaDescription": "Buy personalised butterfly garden activity book for toddlers with tracing, colouring and counting. A4 30-page nature-themed early learning workbook.",
+        "keywords": [
+            "butterfly activity book for toddlers",
+            "personalised nature learning workbook",
+            "butterfly colouring tracing book",
+            "garden theme activity book kids",
+            "nature early learning book"
+        ]
     },
     {
         "id": 11,
@@ -405,247 +472,6 @@
             "maze tracing puzzle book",
             "toddler learning activity book",
             "early learning puzzle book"
-        ]
-    },
-    {
-        "id": 101,
-        "title": "Personalised Thomas & Friends Reusable Laminated Activity Book",
-        "price": 699,
-        "mrp": 1200,
-        "badge": "Reusable",
-        "badgeType": "default",
-        "image": "images/products/101/1.png",
-        "images": [
-            "images/products/101/1.png",
-            "images/products/101/2.png",
-            "images/products/101/3.png",
-            "images/products/101/4.png"
-        ],
-        "fallbackEmoji": "🚂",
-        "shortDesc": "Thomas & Friends reusable wipe-and-learn book — laminated, waterproof and tear-proof for 100+ practice sessions.",
-        "fullDesc": "All aboard for fun learning with Thomas & Friends! 🚂\n\nThis personalised reusable activity book is fully laminated, waterproof and tear-proof — designed for repeated practice without paper waste.\n\nChildren can trace, erase and learn again for 100+ uses using a whiteboard marker.\n\nFeaturing Thomas, engines, tracks, signals and transport elements that keep toddlers engaged while learning.\n\n✨ What's Inside:\n• Alphabet tracing (wipe & reuse)\n• Number writing practice\n• Shapes and patterns\n• Transport object recognition\n• Name tracing (personalised)\n• 10+ laminated reusable pages\n\n🛡️ Quality Features:\n• Fully laminated sheets\n• Waterproof & spill-proof\n• Tear-resistant for toddler use\n• Rounded child-safe corners\n• Works with whiteboard marker\n\n🎯 Benefits:\n• Unlimited practice without reprinting\n• Builds writing confidence through repetition\n• Develops fine motor skills\n• Mess-free, screen-free learning\n\n👶 Age Group: 2–6 years\n📏 A4 Size — Reusable Laminated Pages\n♻️ 100+ Times Practice\n💖 Personalised with your child's name",
-        "tags": [
-            "♻️ Reusable Book",
-            "💧 Waterproof Laminated",
-            "✍️ Wipe & Learn",
-            "🚂 Transport Theme",
-            "🧒 Name Tracing"
-        ],
-        "productType": "reusable",
-        "seoTitle": "Thomas Reusable Activity Book for Kids | Laminated Wipe & Learn Workbook",
-        "metaDescription": "Shop personalised Thomas reusable laminated activity book. Waterproof, tear-proof, wipe & learn pages for 100+ uses. Perfect for toddlers writing practice.",
-        "keywords": [
-            "reusable activity book for kids",
-            "laminated wipe and learn book",
-            "thomas transport learning book",
-            "personalised reusable workbook",
-            "waterproof toddler activity book"
-        ]
-    },
-    {
-        "id": 102,
-        "title": "Personalised Batman Reusable Laminated Wipe & Learn Activity Book",
-        "price": 699,
-        "mrp": 1200,
-        "badge": "Reusable",
-        "badgeType": "default",
-        "image": "images/products/102/1.png",
-        "images": [
-            "images/products/102/1.png",
-            "images/products/102/2.png",
-            "images/products/102/3.png",
-            "images/products/102/4.png"
-        ],
-        "fallbackEmoji": "🦇",
-        "shortDesc": "Superhero wipe-and-learn reusable book — laminated, waterproof and tear-proof for unlimited tracing practice.",
-        "fullDesc": "Turn learning into a superhero mission with Batman! 🦇\n\nThis personalised reusable book helps children practise writing again and again using wipe-and-erase pages.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and patterns\n• Name tracing (personalised)\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Works with whiteboard marker\n• 100+ practice uses\n\n🎯 Benefits:\n• Builds writing confidence\n• Improves pencil control\n• Screen-free skill learning\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
-        "tags": [
-            "♻️ Reusable",
-            "🦇 Superhero Theme",
-            "✍️ Wipe & Learn",
-            "💧 Waterproof",
-            "🧒 Name Tracing"
-        ],
-        "productType": "reusable",
-        "seoTitle": "Batman Reusable Activity Book for Kids | Laminated Wipe & Learn Workbook",
-        "metaDescription": "Personalised Batman reusable laminated book with wipe & learn tracing pages. Waterproof, tear-proof and reusable 100+ times for toddlers.",
-        "keywords": [
-            "batman reusable book",
-            "superhero wipe and learn",
-            "laminated activity book kids",
-            "reusable tracing workbook",
-            "personalised toddler learning book"
-        ]
-    },
-    {
-        "id": 103,
-        "title": "Personalised Unicorn Reusable Laminated Wipe & Learn Activity Book",
-        "price": 699,
-        "mrp": 1200,
-        "badge": "Reusable",
-        "badgeType": "default",
-        "image": "images/products/103/1.png",
-        "images": [
-            "images/products/103/1.png",
-            "images/products/103/2.png",
-            "images/products/103/3.png",
-            "images/products/103/4.png"
-        ],
-        "fallbackEmoji": "🦄",
-        "shortDesc": "Magical unicorn reusable learning book — wipe, trace and practise 100+ times.",
-        "fullDesc": "Make learning magical with a personalised unicorn wipe-and-learn book! 🦄✨\n\nDesigned for repeated practice with colourful, engaging activities.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and patterns\n• Name tracing\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Waterproof & tear-proof\n• Fully laminated sheets\n• Whiteboard marker friendly\n• 100+ reusable practice\n\n🎯 Benefits:\n• Improves writing skills\n• Boosts focus and creativity\n• Mess-free learning time\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
-        "tags": [
-            "♻️ Reusable",
-            "🦄 Unicorn Theme",
-            "✍️ Wipe & Learn",
-            "💧 Waterproof",
-            "🧒 Name Tracing"
-        ],
-        "productType": "reusable",
-        "seoTitle": "Unicorn Reusable Activity Book for Kids | Laminated Wipe & Learn Workbook",
-        "metaDescription": "Personalised unicorn reusable laminated activity book with tracing and writing practice. Waterproof, tear-proof and reusable for 100+ uses.",
-        "keywords": [
-            "unicorn reusable book",
-            "wipe and learn unicorn",
-            "laminated kids workbook",
-            "reusable tracing book",
-            "personalised toddler activity book"
-        ]
-    },
-    {
-        "id": 104,
-        "title": "Personalised Roads & Cars Reusable Laminated Wipe & Learn Book",
-        "price": 699,
-        "mrp": 1200,
-        "badge": "Reusable",
-        "badgeType": "default",
-        "image": "images/products/104/1.png",
-        "images": [
-            "images/products/104/1.png",
-            "images/products/104/2.png",
-            "images/products/104/3.png",
-            "images/products/104/4.png"
-        ],
-        "fallbackEmoji": "🚗",
-        "shortDesc": "Transport-themed reusable tracing book with roads, cars and traffic learning.",
-        "fullDesc": "Perfect for little car lovers! 🚗\n\nThis personalised reusable activity book teaches writing, shapes and patterns through fun transport-based activities.\n\n✨ What's Inside:\n• Alphabet road tracing\n• Number parking activities\n• Shape matching with vehicles\n• Name tracing\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Waterproof laminated sheets\n• Tear-proof toddler safe\n• Wipe & reuse 100+ times\n\n🎯 Benefits:\n• Improves hand-eye coordination\n• Builds writing control\n• Keeps kids engaged longer\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
-        "tags": [
-            "♻️ Reusable",
-            "🚗 Transport Theme",
-            "✍️ Wipe & Learn",
-            "💧 Waterproof",
-            "🧒 Name Tracing"
-        ],
-        "productType": "reusable",
-        "seoTitle": "Roads & Cars Reusable Activity Book for Kids | Wipe & Learn Transport Workbook",
-        "metaDescription": "Personalised roads and cars reusable laminated book for toddlers. Wipe & learn tracing, waterproof pages, 100+ practice uses.",
-        "keywords": [
-            "transport reusable book",
-            "cars wipe and learn",
-            "laminated tracing workbook",
-            "reusable toddler activity book",
-            "personalised vehicle learning book"
-        ]
-    },
-    {
-        "id": 105,
-        "title": "Personalised Cocomelon Reusable Laminated Wipe & Learn Activity Book",
-        "price": 599,
-        "mrp": 1200,
-        "badge": "Reusable",
-        "badgeType": "warning",
-        "image": "images/products/105/1.png",
-        "images": [
-            "images/products/105/1.png",
-            "images/products/105/2.png",
-            "images/products/105/3.png",
-            "images/products/105/4.png"
-        ],
-        "fallbackEmoji": "🍉",
-        "shortDesc": "Fun Cocomelon wipe-and-learn reusable book with tracing, numbers and name practice.",
-        "fullDesc": "Learning with favourite Cocomelon friends! 🍉🎶\n\nThis personalised reusable activity book keeps toddlers engaged while practising writing again and again.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and matching\n• Name tracing\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Wipe & reuse 100+ times\n\n🎯 Benefits:\n• Encourages independent practice\n• Builds writing confidence\n• Screen-free learning fun\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
-        "tags": [
-            "♻️ Reusable",
-            "🍉 Kids Theme",
-            "✍️ Wipe & Learn",
-            "💧 Waterproof",
-            "🧒 Name Tracing"
-        ],
-        "productType": "reusable",
-        "seoTitle": "Cocomelon Reusable Activity Book for Kids | Laminated Wipe & Learn Workbook",
-        "metaDescription": "Personalised Cocomelon reusable laminated activity book for toddlers. Waterproof wipe & learn pages for 100+ uses. Perfect writing practice book.",
-        "keywords": [
-            "cocomelon reusable book",
-            "wipe and learn toddler book",
-            "laminated kids activity book",
-            "reusable tracing workbook",
-            "personalised preschool learning book"
-        ]
-    },
-    {
-        "id": 201,
-        "title": "Reusable Laminated Alphabet Chart – Hospital Theme (Wipe & Learn)",
-        "price": 99,
-        "mrp": 250,
-        "badge": "Reusable",
-        "badgeType": "success",
-        "image": "images/products/201/8.png",
-        "images": [
-            "images/products/201/8.png",
-            "images/products/201/9.png"
-        ],
-        "fallbackEmoji": "🏥",
-        "shortDesc": "Hospital-themed reusable alphabet chart with doctors, nurse and medical objects – wipe, trace and learn 100+ times.",
-        "fullDesc": "Make alphabet learning meaningful with real-life hospital objects! 🏥\n\nThis laminated reusable alphabet chart helps children recognise letters using doctor, nurse, ambulance, syringe, stethoscope and other medical visuals.\n\n✨ What's Included:\n• A–Z alphabet with hospital objects\n• Traceable letters (wipe & reuse)\n• Uppercase and lowercase practice\n• Large child-friendly layout\n\n🛡️ Quality Features:\n• Fully laminated & waterproof\n• Tear-proof and long-lasting\n• Works with whiteboard marker\n• 100+ reusable practice\n\n🎯 Benefits:\n• Improves letter recognition\n• Builds vocabulary with real-life objects\n• Encourages repeated practice\n• Screen-free learning tool\n\n👶 Age: 2–6 years\n📏 A4 Laminated Chart\n♻️ Reusable Wipe & Learn Format",
-        "tags": [
-            "♻️ Reusable",
-            "🏥 Hospital Theme",
-            "✍️ Alphabet Tracing",
-            "💧 Waterproof Laminated",
-            "🔤 A–Z Learning"
-        ],
-        "productType": "other",
-        "seoTitle": "Hospital Theme Reusable Alphabet Chart for Kids | Laminated Wipe & Learn A–Z",
-        "metaDescription": "Shop hospital theme reusable laminated alphabet chart for toddlers. Wipe & learn A–Z with medical objects. Waterproof and reusable 100+ times.",
-        "keywords": [
-            "hospital alphabet chart",
-            "reusable laminated alphabet chart",
-            "wipe and learn a to z chart",
-            "medical theme learning chart",
-            "alphabet tracing reusable"
-        ]
-    },
-    {
-        "id": 202,
-        "title": "Reusable Laminated Alphabet Chart – Space Theme (Wipe & Learn)",
-        "price": 99,
-        "mrp": 250,
-        "badge": "Reusable",
-        "badgeType": "success",
-        "image": "images/products/202/15.png",
-        "images": [
-            "images/products/202/15.png",
-            "images/products/202/16.png"
-        ],
-        "fallbackEmoji": "🚀",
-        "shortDesc": "Space-themed reusable A–Z alphabet chart with planets, rocket and astronaut – wipe, trace and learn again.",
-        "fullDesc": "Blast off into alphabet learning with space adventures! 🚀\n\nThis reusable laminated alphabet chart teaches A–Z using rockets, planets, astronaut, satellite, stars and moon visuals.\n\n✨ What's Included:\n• A–Z alphabet with space objects\n• Traceable uppercase and lowercase letters\n• Large child-friendly design\n• Wipe & reuse writing surface\n\n🛡️ Quality Features:\n• Fully laminated waterproof chart\n• Tear-resistant and durable\n• Whiteboard marker friendly\n• 100+ reusable practice\n\n🎯 Benefits:\n• Builds letter recognition\n• Encourages curiosity about space\n• Improves writing control\n• Screen-free learning support\n\n👶 Age: 2–6 years\n📏 A4 Laminated Chart\n♻️ Reusable Wipe & Learn Format",
-        "tags": [
-            "♻️ Reusable",
-            "🚀 Space Theme",
-            "✍️ Alphabet Tracing",
-            "💧 Waterproof Laminated",
-            "🔤 A–Z Learning"
-        ],
-        "productType": "other",
-        "seoTitle": "Space Theme Reusable Alphabet Chart for Kids | Laminated Wipe & Learn A–Z",
-        "metaDescription": "Buy space theme reusable laminated alphabet chart with wipe & learn tracing. A–Z planets, rocket and astronaut for toddlers. Reusable 100+ times.",
-        "keywords": [
-            "space alphabet chart",
-            "reusable a to z laminated chart",
-            "wipe and learn alphabet poster",
-            "space learning chart for kids",
-            "alphabet tracing reusable"
         ]
     }
 ]
