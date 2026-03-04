@@ -969,6 +969,258 @@ section {
   border: 2px solid #ffe08250;
 }
 
+/* ─── LOAD MORE ─── */
+.load-more-wrap {
+  padding: 20px 0 8px;
+}
+
+.load-more-info {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  margin-bottom: 14px;
+}
+
+.load-more-info.all-loaded {
+  color: var(--green);
+}
+
+.load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--green);
+  border: 2.5px solid var(--green);
+  padding: 12px 36px;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(61, 107, 36, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.load-more-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--green);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.25s ease;
+  z-index: 0;
+}
+
+.load-more-btn:hover {
+  color: white;
+  box-shadow: 0 8px 24px rgba(61, 107, 36, 0.28);
+  transform: translateY(-2px);
+}
+
+.load-more-btn:hover::before {
+  transform: scaleY(1);
+}
+
+.load-more-btn span,
+.load-more-btn {
+  position: relative;
+  z-index: 1;
+}
+
+.load-more-btn:active {
+  transform: translateY(0);
+}
+
+/* ─── SEARCH NOT FOUND CARD ─── */
+.search-notfound-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 20px;
+}
+
+.snf-card {
+  background: white;
+  border-radius: 28px;
+  padding: 40px 36px;
+  max-width: 680px;
+  width: 100%;
+  box-shadow: 0 8px 40px rgba(61,107,36,0.10);
+  border: 2px solid var(--green-pale);
+  text-align: center;
+}
+
+.snf-icon {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  animation: bounceIn 0.5s ease both;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.snf-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.6rem;
+  color: var(--brown);
+  margin-bottom: 10px;
+}
+
+.snf-sub {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.snf-sub strong {
+  color: var(--green);
+}
+
+.snf-form {
+  text-align: left;
+  background: var(--cream);
+  border-radius: 20px;
+  padding: 24px 22px;
+  border: 2px solid var(--green-pale);
+  margin-bottom: 20px;
+}
+
+.snf-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 560px) {
+  .snf-form-row {
+    grid-template-columns: 1fr;
+  }
+  .snf-card {
+    padding: 28px 18px;
+  }
+}
+
+.snf-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.snf-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--brown);
+  letter-spacing: 0.2px;
+}
+
+.snf-input {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--green-pale);
+  background: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.snf-input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(61,107,36,0.08);
+}
+
+.snf-textarea {
+  resize: vertical;
+  min-height: 72px;
+  border-radius: 12px;
+}
+
+.snf-submit-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.snf-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+}
+
+.snf-note {
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.snf-or-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-soft);
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin: 18px 0;
+}
+
+.snf-or-divider::before,
+.snf-or-divider::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: var(--green-pale);
+}
+
+.snf-clear-btn {
+  background: none;
+  border: 2px solid var(--green-pale);
+  color: var(--green);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.snf-clear-btn:hover {
+  background: var(--green-pale);
+  border-color: var(--green);
+}
+
 /* ─── DETAIL MODAL ─── */
 .dmodal-overlay {
   position: fixed;

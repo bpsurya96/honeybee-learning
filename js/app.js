@@ -15,6 +15,8 @@ let currentLearningType = 'activity';
 let currentCombo = '';
 let currentPrice = '';
 let searchQuery = '';
+const PRODUCTS_PER_PAGE = 6;
+let currentProductPage = 1;
 
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', async () => {
@@ -68,11 +70,14 @@ async function loadReviews() {
     } catch (e) { console.error('Failed to load reviews:', e); }
 }
 
-// ─── RENDER LEARNING PRODUCTS ───
-function renderLearningProducts(typeFilter) {
+// ─── RENDER LEARNING PRODUCTS (with pagination) ───
+function renderLearningProducts(typeFilter, resetPage) {
     const grid = document.getElementById('learningGrid');
     if (!grid) return;
     const type = typeFilter || currentLearningType;
+
+    if (resetPage !== false) currentProductPage = 1;
+
     const filtered = learningProducts.filter(p => {
         const matchesType = (p.productType || 'activity') === type;
         const matchesSearch = !searchQuery ||
@@ -84,18 +89,19 @@ function renderLearningProducts(typeFilter) {
 
     if (!filtered.length) {
         if (searchQuery) {
-            grid.innerHTML = `<div class="empty-state" style="margin:40px auto; grid-column: 1/-1; text-align: center;">
-                <span class="empty-icon" style="font-size:3rem;display:block;margin-bottom:10px;">🔍</span>
-                <p style="font-weight:700;color:var(--text-soft);">No items found for "${searchQuery}" in this category.</p>
-                <button onclick="clearSearch()" style="margin-top:15px;background:var(--green-pale);color:var(--green);border:none;padding:8px 20px;border-radius:50px;font-weight:800;cursor:pointer;">Clear Search</button>
-            </div>`;
+            grid.innerHTML = renderSearchNotFound(searchQuery);
         } else {
-            grid.innerHTML = '<div class="empty-state" style="margin:40px auto; text-align: center;"><span class="empty-icon">📦</span><p>No products in this category yet. Check back soon!</p></div>';
+            grid.innerHTML = '<div class="empty-state" style="margin:40px auto; text-align: center; grid-column: 1/-1;"><span class="empty-icon">📦</span><p>No products in this category yet. Check back soon!</p></div>';
         }
         return;
     }
 
-    grid.innerHTML = filtered.map((p, i) => {
+    // Pagination slice
+    const totalToShow = currentProductPage * PRODUCTS_PER_PAGE;
+    const visible = filtered.slice(0, totalToShow);
+    const hasMore = filtered.length > totalToShow;
+
+    const cardsHTML = visible.map((p) => {
         const off = Math.round((1 - p.price / p.mrp) * 100);
         const badgeClass = p.badgeType === 'hot' ? 'badge-hot' : p.badgeType === 'new' ? 'badge-new' : 'badge-hot';
         return `
@@ -118,12 +124,121 @@ function renderLearningProducts(typeFilter) {
       </div>
     </div>`;
     }).join('');
+
+    const loadMoreHTML = hasMore ? `
+    <div class="load-more-wrap" style="grid-column: 1/-1; text-align: center; margin-top: 12px;">
+        <div class="load-more-info">Showing ${visible.length} of ${filtered.length} products</div>
+        <button class="load-more-btn" onclick="loadMoreProducts()">
+            Load More Products ↓
+        </button>
+    </div>` : `
+    <div class="load-more-wrap" style="grid-column: 1/-1; text-align: center; margin-top: 12px;">
+        <div class="load-more-info all-loaded">✅ Showing all ${filtered.length} product${filtered.length !== 1 ? 's' : ''}</div>
+    </div>`;
+
+    grid.innerHTML = cardsHTML + loadMoreHTML;
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+}
+
+// ─── LOAD MORE ───
+function loadMoreProducts() {
+    currentProductPage++;
+    renderLearningProducts(currentLearningType, false);
+    // Smooth scroll to newly loaded items
+    setTimeout(() => {
+        const loadMoreBtn = document.querySelector('.load-more-btn');
+        if (loadMoreBtn) {
+            loadMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, 100);
+}
+
+// ─── SEARCH NOT FOUND — WhatsApp Enquiry Form ───
+function renderSearchNotFound(query) {
+    return `
+    <div class="search-notfound-wrap" style="grid-column: 1/-1;">
+        <div class="snf-card">
+            <div class="snf-icon">🔍</div>
+            <h3 class="snf-title">We couldn't find "${query}"</h3>
+            <p class="snf-sub">But don't worry! We can create <strong>custom personalised books & products</strong> for any theme. Tell us what you're looking for and we'll get back to you on WhatsApp! 💬</p>
+
+            <div class="snf-form" id="snfForm">
+                <div class="snf-form-row">
+                    <div class="snf-form-group">
+                        <label class="snf-label">What theme are you looking for? *</label>
+                        <input type="text" id="snfTheme" class="snf-input" placeholder="e.g. Minions, Superhero, Tamil festival..." value="${query}">
+                    </div>
+                    <div class="snf-form-group">
+                        <label class="snf-label">Product type you need?</label>
+                        <select id="snfType" class="snf-input">
+                            <option value="">Select type (optional)</option>
+                            <option value="Activity Book">📚 Activity Book</option>
+                            <option value="Reusable Book">♻️ Reusable Wipe &amp; Learn Book</option>
+                            <option value="Flashcards">🃏 Flashcards</option>
+                            <option value="Return Gift Set">🎁 Birthday Return Gift Set</option>
+                            <option value="Custom">🎨 Custom / Not sure</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="snf-form-row">
+                    <div class="snf-form-group">
+                        <label class="snf-label">Child's age group?</label>
+                        <select id="snfAge" class="snf-input">
+                            <option value="">Select age (optional)</option>
+                            <option value="1-2 years">1–2 years (Toddler)</option>
+                            <option value="3-5 years">3–5 years (Preschool/LKG)</option>
+                            <option value="6-8 years">6–8 years (Class 1–3)</option>
+                            <option value="9-12 years">9–12 years (Class 4–7)</option>
+                        </select>
+                    </div>
+                    <div class="snf-form-group">
+                        <label class="snf-label">Your WhatsApp number *</label>
+                        <input type="tel" id="snfPhone" class="snf-input" placeholder="10-digit number">
+                    </div>
+                </div>
+                <div class="snf-form-group">
+                    <label class="snf-label">Anything else you'd like? (optional)</label>
+                    <textarea id="snfNotes" class="snf-input snf-textarea" placeholder="e.g. personalised with child's name, quantity needed, budget range..."></textarea>
+                </div>
+                <p id="snfError" style="color:#c0392b;font-size:0.85rem;font-weight:700;display:none;margin-bottom:8px;"></p>
+                <button class="snf-submit-btn" onclick="submitSnfForm()">
+                    <span>Send Enquiry via WhatsApp 💬</span>
+                </button>
+                <p class="snf-note">We'll reply within a few hours to help you find exactly what you need!</p>
+            </div>
+
+            <div class="snf-or-divider"><span>or</span></div>
+            <button class="snf-clear-btn" onclick="clearSearch()">← Clear Search &amp; Browse All Products</button>
+        </div>
+    </div>`;
+}
+
+// ─── SUBMIT SEARCH NOT FOUND FORM ───
+function submitSnfForm() {
+    const theme = (document.getElementById('snfTheme').value || '').trim();
+    const phone = (document.getElementById('snfPhone').value || '').trim();
+    const type  = document.getElementById('snfType').value;
+    const age   = document.getElementById('snfAge').value;
+    const notes = (document.getElementById('snfNotes').value || '').trim();
+    const errEl = document.getElementById('snfError');
+
+    if (!theme) { errEl.textContent = '⚠️ Please enter the theme you are looking for.'; errEl.style.display = 'block'; return; }
+    if (!phone || !/^\d{10}$/.test(phone.replace(/\s/g, ''))) { errEl.textContent = '⚠️ Please enter a valid 10-digit WhatsApp number.'; errEl.style.display = 'block'; return; }
+    errEl.style.display = 'none';
+
+    let msg = `🍯 *HoneyBee Learning — Custom Theme Enquiry* 🎨\n\n*Looking for:* ${theme}`;
+    if (type)  msg += `\n*Product Type:* ${type}`;
+    if (age)   msg += `\n*Age Group:* ${age}`;
+    if (notes) msg += `\n*Additional Details:* ${notes}`;
+    msg += `\n*WhatsApp:* ${phone}\n\n_Sent from HoneyBee Learning search_`;
+
+    window.open(`https://wa.me/918883624873?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 // ─── LEARNING SUB-TAB SWITCHER ───
 function switchLearning(type, btn) {
     currentLearningType = type;
+    currentProductPage = 1;
     document.querySelectorAll('.learning-subtab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
     renderLearningProducts(type);
