@@ -8,9 +8,32 @@
   <meta name="description"
     content="Personalised activity books, value-based learning materials & birthday return gift combos crafted with love for every little learner. Based in Medavakkam, Chennai.">
   <link rel="icon" href="images/logo/logo.png">
+
+  <!-- ═══ PERFORMANCE HINTS ═══ -->
+  <!-- Warm up connection to Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+  <!-- Preload logo: it's the biggest above-the-fold (LCP) element -->
+  <link rel="preload" as="image" href="images/logo/logo.png">
+
+  <!-- Prefetch data files — browser starts downloading before JS even runs -->
+  <link rel="prefetch" as="fetch" href="data/products_activity.json" crossorigin>
+  <link rel="prefetch" as="fetch" href="data/products_reusable.json" crossorigin>
+  <link rel="prefetch" as="fetch" href="data/products_other.json" crossorigin>
+  <link rel="prefetch" as="fetch" href="data/return-gifts.json" crossorigin>
+  <link rel="prefetch" as="fetch" href="data/reviews.json" crossorigin>
+
+  <!-- Critical CSS: blocking (needed for first paint) -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/splash.css">
-  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Non-critical CSS: async load (media=print trick, applied before scroll) -->
+  <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="css/responsive.css">
+  </noscript>>
 
   <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your real Measurement ID -->
   <!-- Get your ID at: https://analytics.google.com → Admin → Data Streams → Web Stream -->
@@ -21,13 +44,14 @@
     gtag('js', new Date());
     gtag('config', 'G-R4YMNFP0WP');
   </script>
-  <script>
-    // Load Google Fonts without blocking page render
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap';
-    document.head.appendChild(link);
-  </script>
+  <!-- Google Fonts — non-blocking preload -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
+    onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap">
+  </noscript>
 </head>
 
 <body>

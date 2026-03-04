@@ -8,13 +8,36 @@
     <meta name="description"
         content="View product details, gallery, and customer reviews for HoneyBee Learning personalised kids books.">
     <link rel="icon" href="images/logo/logo.png">
+
+    <!-- ═══ PERFORMANCE HINTS ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+    <!-- Preload logo (LCP element) -->
+    <link rel="preload" as="image" href="images/logo/logo.png">
+
+    <!-- Prefetch product data — starts before JS runs -->
+    <link rel="prefetch" as="fetch" href="data/products_activity.json" crossorigin>
+    <link rel="prefetch" as="fetch" href="data/products_reusable.json" crossorigin>
+    <link rel="prefetch" as="fetch" href="data/products_other.json" crossorigin>
+    <link rel="prefetch" as="fetch" href="data/reviews.json" crossorigin>
+
+    <!-- Critical CSS (blocks render — needed for above-fold content) -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/product.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/product-responsive.css">
-    <link rel="stylesheet" href="css/custom-order.css">
 
-    <!-- Google Analytics 4 — same Measurement ID as index.html -->
+    <!-- Non-critical CSS (loaded async) -->
+    <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/product-responsive.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/custom-order.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/product-responsive.css">
+        <link rel="stylesheet" href="css/custom-order.css">
+    </noscript>
+
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4YMNFP0WP"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -22,12 +45,15 @@
         gtag('js', new Date());
         gtag('config', 'G-R4YMNFP0WP');
     </script>
-    <script>
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;500;600;700;800&display=swap';
-        document.head.appendChild(link);
-    </script>
+
+    <!-- Google Fonts — non-blocking preload -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
+        onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap">
+    </noscript>
 </head>
 
 <body>
