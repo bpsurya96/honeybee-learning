@@ -62,28 +62,67 @@ function initProduct() {
     const msg = encodeURIComponent(`🍯 *HoneyBee Learning — Order Enquiry* 📚\n\n*Product:* ${p.title}\n*Price:* ₹${p.price} (MRP: ₹${p.mrp})\n\nI'd like to order this product. Please share personalisation details and payment info.\n\n_Sent from HoneyBee Learning website_`);
     document.getElementById('orderBtn').href = `https://wa.me/918883624873?text=${msg}`;
 
-    // Build gallery thumbs
+    // Build gallery thumbs + dot indicators
     const tc = document.getElementById('thumbsContainer');
+    const dc = document.getElementById('galleryDots');
     p.images.forEach((src, i) => {
+        // Thumbnail
         const div = document.createElement('div');
         div.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
         div.innerHTML = `<img src="${src}" alt="View ${i + 1}" loading="lazy">`;
         div.onclick = () => setMainImg(i);
         tc.appendChild(div);
+
+        // Dot
+        if (dc) {
+            const dot = document.createElement('button');
+            dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `View image ${i + 1}`);
+            dot.onclick = () => setMainImg(i);
+            dc.appendChild(dot);
+        }
     });
     setMainImg(0);
 
     // Click main image to open lightbox
-    document.getElementById('mainImg').addEventListener('click', () => {
+    const mainImgEl = document.getElementById('mainImg');
+    mainImgEl.addEventListener('click', () => {
         document.getElementById('lightboxImg').src = p.images[currentImgIdx];
         document.getElementById('lightbox').classList.add('open');
     });
+
+    // ─── Touch swipe support ───
+    let touchStartX = 0;
+    let touchStartY = 0;
+    const galleryEl = document.getElementById('galleryMain');
+    galleryEl.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    galleryEl.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        // Only count as a horizontal swipe if X movement > Y (not a scroll)
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            if (dx < 0) nextImg();   // swipe left = next
+            else prevImg();   // swipe right = prev
+        }
+    }, { passive: true });
 }
 
 function setMainImg(idx) {
     currentImgIdx = idx;
-    document.getElementById('mainImg').src = p.images[idx];
+    const mainImgEl = document.getElementById('mainImg');
+    // Fade out, swap src, fade in — prevents flash of wrong-size image
+    mainImgEl.style.opacity = '0';
+    setTimeout(() => {
+        mainImgEl.src = p.images[idx];
+        mainImgEl.style.opacity = '1';
+    }, 80);
+    // Sync thumbs
     document.querySelectorAll('.gallery-thumb').forEach((t, i) => t.classList.toggle('active', i === idx));
+    // Sync dots
+    document.querySelectorAll('.gallery-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
 }
 function nextImg() { setMainImg((currentImgIdx + 1) % p.images.length); }
 function prevImg() { setMainImg((currentImgIdx - 1 + p.images.length) % p.images.length); }
