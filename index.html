@@ -300,6 +300,7 @@
 
     <div class="review-tabs" id="homeReviewTabs">
       <button class="review-tab active" onclick="switchHomeReview('text', this)">💬 Text Reviews</button>
+      <button class="review-tab" onclick="switchHomeReview('photos', this)">📸 Photo Reviews</button>
       <button class="review-tab" onclick="switchHomeReview('videos', this)">🎥 Video Reviews</button>
     </div>
 
@@ -311,6 +312,18 @@
           <!-- Populated from data/reviews.json -->
         </div>
         <button class="carousel-btn carousel-btn--next" onclick="scrollCarousel('testiTrack', 1)"
+          aria-label="Next">&#8250;</button>
+      </div>
+    </div>
+
+    <div class="review-content" id="home-review-photos">
+      <div class="carousel-wrap">
+        <button class="carousel-btn carousel-btn--prev" onclick="scrollCarousel('photoTrack', -1)"
+          aria-label="Previous">&#8249;</button>
+        <div class="carousel-track" id="photoTrack">
+          <!-- Populated from data/reviews.json -->
+        </div>
+        <button class="carousel-btn carousel-btn--next" onclick="scrollCarousel('photoTrack', 1)"
           aria-label="Next">&#8250;</button>
       </div>
     </div>

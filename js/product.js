@@ -172,11 +172,11 @@ function initReviews() {
     if (reviews.photos && reviews.photos.length) {
         prg.innerHTML = reviews.photos.map(r => `
         <div class="photo-review" onclick="document.getElementById('lightboxImg').src='${r.img}';document.getElementById('lightbox').classList.add('open');">
-            <img src="${r.img}" alt="Review by ${r.name}" loading="lazy">
+            <img src="${r.img}" alt="Review by ${r.name || 'Anonymous'}" loading="lazy">
             <div class="photo-caption">
-                <div class="review-stars">${renderStars(r.stars)}</div>
-                <p>${r.text}</p>
-                <div class="pname">— ${r.name}</div>
+                ${r.stars ? `<div class="review-stars">${renderStars(r.stars)}</div>` : ''}
+                ${r.text ? `<p>${r.text}</p>` : ''}
+                ${r.name ? `<div class="pname">— ${r.name}${r.loc ? `, <span>${r.loc}</span>` : ''}</div>` : ''}
             </div>
         </div>`).join('');
     } else {

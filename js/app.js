@@ -79,6 +79,7 @@ async function loadReviews() {
         const res = await fetch('data/reviews.json');
         reviewsData = await res.json();
         renderTestimonials();
+        renderHomePhotoReviews();
         renderHomeVideoReviews();
     } catch (e) { console.error('Failed to load reviews:', e); }
 }
@@ -368,6 +369,43 @@ function renderTestimonials() {
       </div>
     </div>`).join('');
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+}
+
+// ─── RENDER HOME PHOTO REVIEWS ───
+function renderHomePhotoReviews() {
+    const grid = document.getElementById('photoTrack');
+    if (!grid || !reviewsData.photos || !reviewsData.photos.length) return;
+
+    // render as flex column to match other cards
+    grid.innerHTML = reviewsData.photos.map(r => `
+    <div class="photo-review" onclick="openLightboxFromHome('${r.img}')" style="min-width: 280px; width: 280px; cursor: pointer; flex-shrink: 0; display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow-card); background: white;">
+        <img src="${r.img}" alt="Customer Photo" loading="lazy" style="width: 100%; height: 260px; object-fit: cover;">
+        <div class="photo-caption" style="padding: 16px; display: flex; flex-direction: column; flex: 1;">
+            ${r.stars ? `<div class="review-stars" style="color:var(--orange);font-size:1.1rem;margin-bottom:6px;">${renderStars(r.stars)}</div>` : ''}
+            ${r.text ? `<p style="font-size:0.88rem;color:var(--text);margin-bottom:8px;line-height:1.5; flex: 1;">${r.text}</p>` : ''}
+            ${r.name ? `<div class="pname" style="font-size:0.85rem;color:var(--text-soft);font-weight:700;text-align:right; margin-top: auto;">— ${r.name}${r.loc ? `, <span style="font-weight:600;">${r.loc}</span>` : ''}</div>` : ''}
+        </div>
+    </div>`).join('');
+}
+
+function renderStars(n) { return '★'.repeat(n) + '☆'.repeat(5 - n); }
+
+function openLightboxFromHome(imgSrc) {
+    const lightbox = document.getElementById('dmodalOverlay');
+    if (lightbox) {
+        // reuse the dmodal html we have
+        document.getElementById('dmImg').src = imgSrc;
+        document.getElementById('dmTitle').textContent = "Customer Photo";
+        document.getElementById('dmPrice').textContent = '';
+        document.getElementById('dmMrp').textContent = '';
+        document.getElementById('dmOff').textContent = '';
+        document.getElementById('dmDesc').textContent = '';
+        document.getElementById('dmTags').innerHTML = '';
+        document.getElementById('dmBtn').style.display = 'none';
+        document.querySelector('.dmodal-note').style.display = 'none';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 // ─── RENDER HOME VIDEO REVIEWS (YouTube Shorts) ───
