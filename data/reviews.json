@@ -8,6 +8,13 @@
             "text": "Ordered 30 Mini Color Packs for my son's birthday. Every child's name was personalised perfectly. The kids were so excited to see their own names on the sheets!"
         },
         {
+            "name": "Asha Nandhini",
+            "loc": "Villapuram, Madurai",
+            "stars": 5,
+            "date": "Jan 2026",
+            "text": "I wanted to gift my daughter with a fun + educational activity.So , I ordered a Barbie themed activity book for her birthday . She was excited and happy for the book. Thank you Honeybee learning the gift."
+        },
+        {
             "name": "Nivedhitha",
             "loc": "Munichalai, Madurai",
             "stars": 4,
@@ -57,7 +64,23 @@
             "text": "Krishna theme activity book is wonderful for value education. My daughter now talks about kindness and sharing after doing the exercises!"
         }
     ],
-    "photos": [],
+    "photos": [
+        {
+            "stars": 5,
+            "date": "Mar 2026",
+            "img": "reviews/photos/review1.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Mar 2026",
+            "img": "reviews/photos/review2.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Mar 2026",
+            "img": "reviews/photos/review3.jpeg"
+        }
+    ],
     "videos": [
         {
             "name": "Manikandan",
