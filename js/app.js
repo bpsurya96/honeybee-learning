@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initReveal();
     initNavScroll();
 
+    initFAQ();
+
     // ─── Auto-switch tab from URL param (e.g. ?tab=learning) ───
     const tabParam = new URLSearchParams(window.location.search).get('tab');
     if (tabParam) {
@@ -46,6 +48,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 });
+
+// ─── INIT FAQ ───
+function initFAQ() {
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const answer = btn.nextElementSibling;
+            const isActive = item.classList.contains('active');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+                i.querySelector('.faq-answer').style.maxHeight = null;
+            });
+
+            // Open clicked if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
+}
 
 // ─── DATA LOADERS ───
 async function loadProducts() {

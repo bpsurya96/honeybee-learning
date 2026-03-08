@@ -456,6 +456,7 @@ nav {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -1072,7 +1073,7 @@ section {
   padding: 40px 36px;
   max-width: 680px;
   width: 100%;
-  box-shadow: 0 8px 40px rgba(61,107,36,0.10);
+  box-shadow: 0 8px 40px rgba(61, 107, 36, 0.10);
   border: 2px solid var(--green-pale);
   text-align: center;
 }
@@ -1084,9 +1085,19 @@ section {
 }
 
 @keyframes bounceIn {
-  0% { transform: scale(0.6); opacity: 0; }
-  70% { transform: scale(1.1); }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .snf-title {
@@ -1131,6 +1142,7 @@ section {
   .snf-form-row {
     grid-template-columns: 1fr;
   }
+
   .snf-card {
     padding: 28px 18px;
   }
@@ -1165,7 +1177,7 @@ section {
 
 .snf-input:focus {
   border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(61,107,36,0.08);
+  box-shadow: 0 0 0 3px rgba(61, 107, 36, 0.08);
 }
 
 .snf-textarea {
@@ -2367,4 +2379,75 @@ footer a {
   font-weight: 600;
   color: var(--text-soft);
   opacity: 0.75;
+}
+
+/* ─── FAQ SECTION ─── */
+.faq-section {
+  background: white;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  border: 2px solid var(--green-pale);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.faq-item.active {
+  border-color: var(--green);
+  box-shadow: var(--shadow);
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 20px 24px;
+  background: var(--cream);
+  border: none;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.15rem;
+  color: var(--green);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.faq-question:hover {
+  background: var(--green-pale);
+}
+
+.faq-icon {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  transition: transform 0.3s;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+}
+
+.faq-answer p {
+  padding: 0 24px 24px;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  font-weight: 600;
+  line-height: 1.6;
 }

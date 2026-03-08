@@ -10,6 +10,75 @@
         max-width: 95%;
         max-height: 80dvh;
     }
+
+    /* ─── MOBILE STICKY BAR ─── */
+    .mobile-sticky-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 10px 4%;
+        border-top: 1px solid var(--green-pale);
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
+        z-index: 100;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        animation: slideUpBar 0.5s ease both;
+    }
+
+    @keyframes slideUpBar {
+        from {
+            transform: translateY(100%);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    .msb-info {
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .msb-title {
+        font-weight: 800;
+        font-size: 0.8rem;
+        color: var(--brown);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .msb-price {
+        font-family: 'Fredoka One', cursive;
+        font-size: 1.15rem;
+        color: var(--green);
+    }
+
+    .msb-btn {
+        background: var(--orange);
+        color: white;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(244, 162, 39, 0.3);
+    }
+
+    /* Make room for bottom sticky bar so footer isn't hidden */
+    footer {
+        padding-bottom: 80px;
+    }
+
+    .wa-fab {
+        bottom: 80px;
+    }
 }
 
 /* ─── TABLET (481–768px) ─── */

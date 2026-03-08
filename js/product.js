@@ -14,9 +14,8 @@ let currentImgIdx = 0;
 let p = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await Promise.all([loadProducts(), loadReviews()]);
+    await loadProducts();
     initProduct();
-    initReviews();
     initKeyboardNav();
 });
 
@@ -108,6 +107,16 @@ function initProduct() {
             else prevImg();   // swipe right = prev
         }
     }, { passive: true });
+
+    // Populate sticky order bar
+    const msbTitle = document.getElementById('msbTitle');
+    const msbPrice = document.getElementById('msbPrice');
+    const msbBtn = document.getElementById('msbBtn');
+    if (msbTitle) msbTitle.textContent = p.title;
+    if (msbPrice) msbPrice.textContent = '₹' + p.price;
+    if (msbBtn) msbBtn.href = `https://wa.me/918883624873?text=${msg}`;
+
+    renderRelatedProducts();
 }
 
 function setMainImg(idx) {
@@ -140,114 +149,68 @@ function avatarColor(name) {
     return AVATAR_COLORS[Math.abs(h) % AVATAR_COLORS.length];
 }
 
-function switchReview(type, btn) {
-    document.querySelectorAll('.review-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.review-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('review-' + type).classList.add('active');
+function renderRelatedProducts() {
+    const grid = document.getElementById('relatedGrid');
+    if (!grid || !products.length || !p) return;
+
+    // Filter out current product
+    let related = products.filter(item => item.id !== p.id);
+
+    // Prefer same product type if possible
+    const sameType = related.filter(item => item.productType === p.productType);
+    if (sameType.length >= 3) {
+        related = sameType;
+    }
+
+    // Shuffle and pick 3
+    related.sort(() => 0.5 - Math.random());
+    const toShow = related.slice(0, 3);
+
+    grid.innerHTML = toShow.map(item => {
+        const badgeClass = item.badgeType === 'hot' ? 'badge-hot' : item.badgeType === 'new' ? 'badge-new' : 'badge-hot';
+        return `
+    <div class="learning-card">
+      <div class="lcard-img-wrap">
+        <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.parentElement.innerHTML='<span>${item.fallbackEmoji || '📚'}</span>'">
+        <div class="lcard-badges">
+          <span class="${badgeClass}">${item.badge}</span>
+          <div class="lcard-price"><span class="lcard-mrp">₹${item.mrp}</span>₹${item.price}</div>
+        </div>
+      </div>
+      <div class="lcard-body" style="display:flex;flex-direction:column;">
+        <div class="lcard-title">${item.title}</div>
+        <div class="lcard-tags">${(item.tags || []).slice(0, 2).map(t => `<span class="lcard-tag">${t}</span>`).join('')}</div>
+        <div class="lcard-footer" style="margin-top:auto;padding-top:12px;">
+          <a href="product.html?id=${item.id}" class="lcard-btn" style="width:100%;text-align:center;">View Details 💡</a>
+        </div>
+      </div>
+    </div>`;
+    }).join('');
 }
 
-function initReviews() {
-    // ── Text reviews ──
-    const trg = document.getElementById('textReviewGrid');
-    if (reviews.text && reviews.text.length) {
-        trg.innerHTML = reviews.text.map(r => `
-        <div class="review-card">
-            <div class="review-stars">${renderStars(r.stars)}</div>
-            <div class="review-text">${r.text}</div>
-            <div class="review-author">
-                <div class="review-avatar testi-avatar-initials" style="background:${avatarColor(r.name)}">${getInitials(r.name)}</div>
-                <div>
-                    <div class="review-name">${r.name}</div>
-                    <div class="review-loc">${r.loc}${r.date ? ` &nbsp;&middot;&nbsp; <span class="review-date">${r.date}</span>` : ''}</div>
-                </div>
-            </div>
-        </div>`).join('');
-    } else {
-        trg.innerHTML = '<div class="empty-state"><span class="empty-icon">💬</span><p>No text reviews yet. Be the first to share!</p></div>';
-    }
+function shareProduct() {
+    const url = window.location.href;
+    const title = p.title + ' — HoneyBee Learning';
+    const text = 'Check out this awesome personalised book from HoneyBee Learning!';
 
-    // ── Photo reviews ──
-    const prg = document.getElementById('photoReviewGrid');
-    if (reviews.photos && reviews.photos.length) {
-        prg.innerHTML = reviews.photos.map(r => `
-        <div class="photo-review" onclick="document.getElementById('lightboxImg').src='${r.img}';document.getElementById('lightbox').classList.add('open');">
-            <img src="${r.img}" alt="Review by ${r.name || 'Anonymous'}" loading="lazy">
-            <div class="photo-caption">
-                ${r.stars ? `<div class="review-stars">${renderStars(r.stars)}</div>` : ''}
-                ${r.text ? `<p>${r.text}</p>` : ''}
-                ${r.name ? `<div class="pname">— ${r.name}${r.loc ? `, <span>${r.loc}</span>` : ''}</div>` : ''}
-            </div>
-        </div>`).join('');
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: text,
+            url: url
+        }).catch(err => console.error('Error sharing', err));
     } else {
-        prg.innerHTML = '<div class="empty-state"><span class="empty-icon">📸</span><p>No photo reviews yet. Share your child\'s experience!</p></div>';
-    }
-
-    // ── Video reviews — YouTube Shorts embed ──
-    // Uses YouTube's thumbnail as preview. Video loads only when user taps play.
-    // Works on all devices, no storage/bandwidth issues.
-    const vrg = document.getElementById('videoReviewGrid');
-    if (reviews.videos && reviews.videos.length) {
-        vrg.innerHTML = reviews.videos.map(r => {
-            const ytId = r.youtube;
-            const thumbUrl = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`;
-            const embedUrl = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&playsinline=1`;
-            return `
-            <div class="video-review">
-                <div class="video-lazy-wrap" data-embed="${embedUrl}">
-                    <!-- YouTube thumbnail used as poster — loads only a small image, not the video -->
-                    <div class="video-play-overlay" onclick="loadYouTubeEmbed(this.parentElement)"
-                         style="background-image:url('${thumbUrl}');">
-                        <div class="video-thumb-gradient"></div>
-                        <div class="video-play-circle">&#9654;</div>
-                        <div class="video-play-meta">
-                            <div class="video-play-name">${r.name}</div>
-                            <div class="video-play-loc">${r.loc}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="video-caption">
-                    <div class="review-stars">${renderStars(r.stars)}</div>
-                    <p>${r.text}</p>
-                    <div class="pname">— ${r.name}, <span>${r.loc}</span></div>
-                </div>
-            </div>`;
-        }).join('');
-    } else {
-        vrg.innerHTML = '<div class="empty-state"><span class="empty-icon">🎥</span><p>No video reviews yet. Record your child\'s reaction!</p></div>';
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(url).then(() => {
+            const btn = document.getElementById('shareBtn');
+            const origHTML = btn.innerHTML;
+            btn.innerHTML = '✅ Link Copied!';
+            setTimeout(() => btn.innerHTML = origHTML, 2000);
+        });
     }
 }
 
-// Replaces the thumbnail overlay with the actual YouTube iframe on tap
-function loadYouTubeEmbed(wrap) {
-    const embedUrl = wrap.dataset.embed;
-    if (!embedUrl) return;
-    wrap.innerHTML = `<iframe
-        src="${embedUrl}"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        style="width:100%;aspect-ratio:9/16;display:block;border-radius:var(--radius) var(--radius) 0 0;background:#000;">
-    </iframe>`;
-    delete wrap.dataset.embed;
-}
-
-function initKeyboardNav() {
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') nextImg();
-        if (e.key === 'ArrowLeft') prevImg();
-        if (e.key === 'Escape') closeLightbox();
-    });
-}
-
-// ─── CAROUSEL SCROLL (shared with home page) ───
-function scrollCarousel(trackId, dir) {
-    const track = document.getElementById(trackId);
-    if (!track) return;
-    const card = track.firstElementChild;
-    const step = card ? card.offsetWidth + 20 : 300;
-    track.scrollBy({ left: dir * step, behavior: 'smooth' });
-}
+// review logic removed
 
 // ─────────────────────────────────────────────────
 //  CUSTOMISE YOUR OWN — Interactive Logic

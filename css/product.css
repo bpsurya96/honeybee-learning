@@ -773,3 +773,49 @@
     font-weight: 600;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
+
+/* ─── RELATED PRODUCTS ─── */
+.related-section {
+    padding: 60px 5%;
+    background: white;
+    border-top: 2px solid var(--green-pale);
+}
+
+.related-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--green);
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* ─── SHARE BUTTON ─── */
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: white;
+    border: 2px solid var(--green-pale);
+    color: var(--brown);
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.share-btn:hover {
+    background: var(--green-pale);
+    border-color: var(--green);
+    color: var(--green);
+}
+
+/* ─── MOBILE STICKY BAR ─── */
+.mobile-sticky-bar {
+    display: none;
+}
