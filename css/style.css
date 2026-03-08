@@ -425,17 +425,40 @@ nav {
 /* ─── BANNER STRIP ─── */
 .banner-strip {
   background: var(--honey);
-  padding: 10px 5%;
-  text-align: center;
+  padding: 10px 0;
   font-weight: 800;
   font-size: 0.9rem;
   color: var(--brown);
   overflow: hidden;
   white-space: nowrap;
+  position: relative;
 }
 
-.banner-strip span {
+.banner-track {
+  display: flex;
+  width: max-content;
+  animation: scrollBanner 30s linear infinite;
+}
+
+.banner-track:hover {
+  animation-play-state: paused;
+}
+
+.banner-content {
+  display: flex;
+}
+
+.banner-content span {
   margin: 0 16px;
+}
+
+@keyframes scrollBanner {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ─── SECTIONS ─── */

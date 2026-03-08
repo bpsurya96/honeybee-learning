@@ -1,37 +1,5 @@
 [
     {
-        "id": 2,
-        "title": "Personalised Alphabet Flashcards for Kids",
-        "price": 199,
-        "mrp": 900,
-        "badge": "Best Seller",
-        "badgeType": "hot",
-        "image": "images/products/2/1.png",
-        "images": [
-            "images/products/2/1.png",
-            "images/products/2/2.png"
-        ],
-        "fallbackEmoji": "🃏",
-        "shortDesc": "Real-life objects with value-based sentences personalised with your child's name. A–Z complete set (26 cards) for meaningful alphabet learning.",
-        "fullDesc": "Make alphabet learning meaningful with our Personalised Alphabet Flashcards for Kids, designed using real-life everyday objects and customised value sentences for your child.\n\nEach flashcard introduces a letter with a real object and a positive benefit line personalised with your child's name, helping children connect learning with daily life.\n\n✨ What Makes It Special:\n• Real-life objects for easy recognition (A to Z)\n• 26 complete flashcards\n• Personalised positive sentences with child's name\n• Value-based learning with every letter\n• Durable, child-friendly card stock\n\n🎯 Benefits:\n• Builds letter recognition naturally\n• Develops vocabulary through real objects\n• Instils positive values from an early age\n• Makes learning personal and engaging\n\n💖 Personalised with your child's name",
-        "tags": [
-            "🔤 A–Z (26 Cards)",
-            "✍️ Personalised Name",
-            "🌱 Value-Based Learning",
-            "📸 Real-Life Objects"
-        ],
-        "productType": "other",
-        "seoTitle": "Personalised Alphabet Flashcards for Kids | A–Z Value-Based Learning Cards",
-        "metaDescription": "Buy personalised alphabet flashcards for kids with A–Z real-life objects and value-based sentences. 26-card set customised with your child's name.",
-        "keywords": [
-            "personalised alphabet flashcards for kids",
-            "a to z learning cards",
-            "value based alphabet cards",
-            "customised kids flashcards",
-            "early learning alphabet cards"
-        ]
-    },
-    {
         "id": 201,
         "title": "Reusable Laminated Alphabet Chart – Hospital Theme (Wipe & Learn)",
         "price": 99,

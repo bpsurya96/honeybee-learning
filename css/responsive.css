@@ -298,10 +298,10 @@
 
     .banner-strip {
         font-size: 0.75rem;
-        padding: 8px 4%;
+        padding: 8px 0;
     }
 
-    .banner-strip span {
+    .banner-content span {
         margin: 0 8px;
     }
 
