@@ -23,3 +23,7 @@ reviews/videos/originals/
 
 # Video compression script (local use only)
 compress_videos.sh
+
+node_modules/*
+package-lock.json
+package.json

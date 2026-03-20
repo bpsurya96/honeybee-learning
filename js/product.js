@@ -53,12 +53,10 @@ function initProduct() {
     document.getElementById('productBadge').textContent = p.badge;
     document.getElementById('productTitle').textContent = p.title;
     document.getElementById('priceSell').textContent = '₹' + p.price;
-    document.getElementById('priceMrp').textContent = 'M.R.P.: ₹' + p.mrp;
-    document.getElementById('priceOff').textContent = Math.round((1 - p.price / p.mrp) * 100) + '% Off';
     document.getElementById('productDesc').textContent = p.fullDesc;
     document.getElementById('productTags').innerHTML = p.tags.map(t => `<span class="product-tag">${t}</span>`).join('');
 
-    const msg = encodeURIComponent(`🍯 *HoneyBee Learning — Order Enquiry* 📚\n\n*Product:* ${p.title}\n*Price:* ₹${p.price} (MRP: ₹${p.mrp})\n\nI'd like to order this product. Please share personalisation details and payment info.\n\n_Sent from HoneyBee Learning website_`);
+    const msg = encodeURIComponent(`🍯 *HoneyBee Learning — Order Enquiry* 📚\n\n*Product:* ${p.title}\n*Price:* ₹${p.price}\n\nI'd like to order this product. Please share personalisation details and payment info.\n\n_Sent from HoneyBee Learning website_`);
     document.getElementById('orderBtn').href = `https://wa.me/918883624873?text=${msg}`;
 
     // Build gallery thumbs + dot indicators
@@ -174,7 +172,7 @@ function renderRelatedProducts() {
         <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.parentElement.innerHTML='<span>${item.fallbackEmoji || '📚'}</span>'">
         <div class="lcard-badges">
           <span class="${badgeClass}">${item.badge}</span>
-          <div class="lcard-price"><span class="lcard-mrp">₹${item.mrp}</span>₹${item.price}</div>
+          <div class="lcard-price">₹${item.price}</div>
         </div>
       </div>
       <div class="lcard-body" style="display:flex;flex-direction:column;">

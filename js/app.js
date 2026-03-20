@@ -155,7 +155,6 @@ function renderLearningProducts(typeFilter, resetPage) {
     const hasMore = filtered.length > totalToShow;
 
     const cardsHTML = visible.map((p) => {
-        const off = Math.round((1 - p.price / p.mrp) * 100);
         const badgeClass = p.badgeType === 'hot' ? 'badge-hot' : p.badgeType === 'new' ? 'badge-new' : 'badge-hot';
         return `
     <div class="learning-card reveal">
@@ -163,7 +162,7 @@ function renderLearningProducts(typeFilter, resetPage) {
         <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.parentElement.innerHTML='<span>${p.fallbackEmoji}</span>'">
         <div class="lcard-badges">
           <span class="${badgeClass}">${p.badge}</span>
-          <div class="lcard-price"><span class="lcard-mrp">₹${p.mrp}</span>₹${p.price}</div>
+          <div class="lcard-price">₹${p.price}</div>
         </div>
       </div>
       <div class="lcard-body">
@@ -171,7 +170,6 @@ function renderLearningProducts(typeFilter, resetPage) {
         <div class="lcard-desc">${p.shortDesc}</div>
         <div class="lcard-tags">${p.tags.map(t => `<span class="lcard-tag">${t}</span>`).join('')}</div>
         <div class="lcard-footer">
-          <span class="lcard-off">${off}% Off</span>
           <a href="product.html?id=${p.id}" class="lcard-btn">View &amp; Order 📚</a>
         </div>
       </div>
@@ -422,8 +420,6 @@ function openLightboxFromHome(imgSrc) {
         document.getElementById('dmImg').src = imgSrc;
         document.getElementById('dmTitle').textContent = "Customer Photo";
         document.getElementById('dmPrice').textContent = '';
-        document.getElementById('dmMrp').textContent = '';
-        document.getElementById('dmOff').textContent = '';
         document.getElementById('dmDesc').textContent = '';
         document.getElementById('dmTags').innerHTML = '';
         document.getElementById('dmBtn').style.display = 'none';
@@ -513,12 +509,10 @@ function openDetailModal(idx) {
     document.getElementById('dmImg').src = p.image;
     document.getElementById('dmTitle').textContent = p.title;
     document.getElementById('dmPrice').textContent = '₹' + p.price;
-    document.getElementById('dmMrp').textContent = 'M.R.P.: ₹' + p.mrp;
-    document.getElementById('dmOff').textContent = Math.round((1 - p.price / p.mrp) * 100) + '% Off';
     document.getElementById('dmDesc').textContent = p.fullDesc;
     document.getElementById('dmTags').innerHTML = p.tags.map(t => `<span class="dmodal-tag">${t}</span>`).join('');
     document.getElementById('dmBtn').onclick = () => {
-        const msg = encodeURIComponent(`🍯 *HoneyBee Learning — Order Enquiry* 📚\n\n*Product:* ${p.title}\n*Price:* ₹${p.price} (MRP: ₹${p.mrp})\n\nI'd like to order this product. Please share personalisation details and payment info.\n\n_Sent from HoneyBee Learning website_`);
+        const msg = encodeURIComponent(`🍯 *HoneyBee Learning — Order Enquiry* 📚\n\n*Product:* ${p.title}\n*Price:* ₹${p.price}\n\nI'd like to order this product. Please share personalisation details and payment info.\n\n_Sent from HoneyBee Learning website_`);
         window.open(`https://wa.me/918883624873?text=${msg}`, '_blank');
     };
     document.getElementById('dmodalOverlay').classList.add('open');
