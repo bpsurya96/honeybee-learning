@@ -159,7 +159,7 @@ function renderLearningProducts(typeFilter, resetPage) {
         return `
     <div class="learning-card reveal">
       <div class="lcard-img-wrap">
-        <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.parentElement.innerHTML='<span>${p.fallbackEmoji}</span>'">
+        <img src="${p.image}" alt="${p.title} — personalised activity book for kids, HoneyBee Learning" loading="lazy" onerror="this.parentElement.innerHTML='<span>${p.fallbackEmoji}</span>'">
         <div class="lcard-badges">
           <span class="${badgeClass}">${p.badge}</span>
           <div class="lcard-price">₹${p.price}</div>
@@ -402,7 +402,7 @@ function renderHomePhotoReviews() {
     // render as flex column to match other cards
     grid.innerHTML = reviewsData.photos.map(r => `
     <div class="photo-review" onclick="openLightboxFromHome('${r.img}')" style="min-width: 280px; width: 280px; cursor: pointer; flex-shrink: 0; display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow-card); background: white;">
-        <img src="${r.img}" alt="Customer Photo" loading="lazy" style="width: 100%; height: 260px; object-fit: cover;">
+        <img src="${r.img}" alt="Customer review photo — HoneyBee Learning personalised kids book" loading="lazy" style="width: 100%; height: 260px; object-fit: cover;">
         <div class="photo-caption" style="padding: 16px; display: flex; flex-direction: column; flex: 1;">
             ${r.stars ? `<div class="review-stars" style="color:var(--orange);font-size:1.1rem;margin-bottom:6px;">${renderStars(r.stars)}</div>` : ''}
             ${r.text ? `<p style="font-size:0.88rem;color:var(--text);margin-bottom:8px;line-height:1.5; flex: 1;">${r.text}</p>` : ''}

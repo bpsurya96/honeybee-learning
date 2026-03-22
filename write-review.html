@@ -5,13 +5,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Write a Review — HoneyBee Learning</title>
-  <meta name="description" content="Share your feedback about HoneyBee Learning products and help other parents discover personalised kids books.">
+  <meta name="description" content="Share your experience with HoneyBee Learning personalised kids books and return gifts. Help other parents discover India's first personalised kids book brand.">
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
+  <meta property="og:title" content="Write a Review — HoneyBee Learning">
+  <meta property="og:description" content="Share your experience with HoneyBee Learning. Help other parents find the best personalised kids books and birthday return gifts in India.">
+  <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+  <meta property="og:site_name" content="HoneyBee Learning">
   <link rel="icon" href="images/logo/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="images/logo/logo.png">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- SEO — noindex: this form page shouldn't appear in Google search -->
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
+  <meta property="og:title" content="Write a Review — HoneyBee Learning">
+  <meta property="og:description" content="Share your experience with HoneyBee Learning personalised kids books. Help other parents discover India's first personalised kids book brand.">
+  <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+  <meta property="og:site_name" content="HoneyBee Learning">
+  <meta name="twitter:card" content="summary_large_image">
+
+    <!-- SEO - noindex: form pages don't need Google indexing -->
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
+  <meta property="og:title" content="Write a Review - HoneyBee Learning">
+  <meta property="og:description" content="Share your experience with HoneyBee Learning personalised kids books. Help other parents discover India's first personalised kids book brand.">
+  <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+  <meta property="og:site_name" content="HoneyBee Learning">
+  <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/pages.css">
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
@@ -302,14 +329,14 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="learning.html">📚 Learning</a></li>
-      <li><a href="gifts.html">🎁 Return Gifts</a></li>
+      <li><a href="index.html#streams">📚 Learning</a></li>
+      <li><a href="index.html#streams">🎁 Return Gifts</a></li>
       <li><a href="index.html#testimonials" class="active">⭐ Reviews</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="faq.html">FAQ</a></li>
     </ul>
     <div class="nav-right">
-      <a href="login.html" id="navUserBtn" class="nav-cta" style="background:var(--honey);">Login / Sign Up 🔐</a>
+      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us 💬</a>
     </div>
   </nav>
   <script>
@@ -320,7 +347,7 @@
         const btn = document.getElementById('navUserBtn');
         if (btn) {
           btn.innerHTML = `👤 Hi, ${name.split(' ')[0]}`;
-          btn.href = 'my-orders.html'; btn.title = name;
+          btn.href = '#contact'; btn.title = name;
           btn.style.cssText += ';max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';
         }
         // Pre-fill name on first step

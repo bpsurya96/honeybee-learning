@@ -51,7 +51,21 @@ function initProduct() {
 
     document.title = p.title + ' — HoneyBee Learning';
     document.getElementById('productBadge').textContent = p.badge;
-    document.getElementById('productTitle').textContent = p.title;
+    
+  // ─── Dynamic SEO update ───────────────────────────────────────────
+  if (product.title) {
+    document.title = product.title + ' — HoneyBee Learning | India\'s First Personalised Kids Book Brand';
+    const md = document.getElementById('metaDesc');
+    if (md) md.setAttribute('content', product.shortDesc + ' — Personalised by HoneyBee Learning, Chennai.');
+    const ot = document.getElementById('ogTitle');
+    if (ot) ot.setAttribute('content', product.title + ' — HoneyBee Learning');
+    const od = document.getElementById('ogDesc');
+    if (od) od.setAttribute('content', product.shortDesc || 'Personalised kids activity book by HoneyBee Learning, Chennai.');
+    const oi = document.getElementById('ogImage');
+    if (oi && product.image) oi.setAttribute('content', 'https://honeybeelearning.co/' + product.image);
+  }
+
+  document.getElementById('productTitle').textContent = p.title;
     document.getElementById('priceSell').textContent = '₹' + p.price;
     document.getElementById('productDesc').textContent = p.fullDesc;
     document.getElementById('productTags').innerHTML = p.tags.map(t => `<span class="product-tag">${t}</span>`).join('');
