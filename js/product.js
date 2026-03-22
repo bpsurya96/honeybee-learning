@@ -53,16 +53,16 @@ function initProduct() {
     document.getElementById('productBadge').textContent = p.badge;
     
   // ─── Dynamic SEO update ───────────────────────────────────────────
-  if (product.title) {
-    document.title = product.title + ' — HoneyBee Learning | India\'s First Personalised Kids Book Brand';
+  if (p.title) {
+    document.title = p.title + ' — HoneyBee Learning | India\'s First Personalised Kids Book Brand';
     const md = document.getElementById('metaDesc');
-    if (md) md.setAttribute('content', product.shortDesc + ' — Personalised by HoneyBee Learning, Chennai.');
+    if (md) md.setAttribute('content', p.shortDesc + ' — Personalised by HoneyBee Learning, Chennai.');
     const ot = document.getElementById('ogTitle');
-    if (ot) ot.setAttribute('content', product.title + ' — HoneyBee Learning');
+    if (ot) ot.setAttribute('content', p.title + ' — HoneyBee Learning');
     const od = document.getElementById('ogDesc');
-    if (od) od.setAttribute('content', product.shortDesc || 'Personalised kids activity book by HoneyBee Learning, Chennai.');
+    if (od) od.setAttribute('content', p.shortDesc || 'Personalised kids activity book by HoneyBee Learning, Chennai.');
     const oi = document.getElementById('ogImage');
-    if (oi && product.image) oi.setAttribute('content', 'https://honeybeelearning.co/' + product.image);
+    if (oi && p.image) oi.setAttribute('content', 'https://honeybeelearning.co/' + p.image);
   }
 
   document.getElementById('productTitle').textContent = p.title;

@@ -1818,18 +1818,75 @@ section {
 footer {
   background: var(--brown);
   color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 24px 5%;
+  padding: 48px 5% 24px;
   font-size: 0.87rem;
   font-weight: 600;
+  text-align: left;
 }
 
-footer strong {
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px 40px;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 20px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-brand {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
   color: white;
 }
 
-footer a {
-  color: rgba(255, 255, 255, 0.65);
+.footer-brand-sub {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.footer-title {
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--honey);
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 0.78rem;
+  opacity: 0.55;
+  font-weight: 600;
 }
 
 /* ─── REVEAL ANIMATION ─── */
