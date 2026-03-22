@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story — HoneyBee Learning | Personalised Kids Books, Chennai</title>
+  <meta name="description"
+    content="Learn about HoneyBee Learning — a home-based small business from Medavakkam, Chennai, crafting personalised kids books and birthday return gifts with love.">
+  <link rel="icon" href="images/logo/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="images/logo/logo.png">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/responsive.css"></noscript>
+
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
+    onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap">
+  </noscript>
+
+  <style>
+    body { background: #fafaf7; }
+    .page-hero { background: linear-gradient(135deg, #3d6b24 0%, #5a9435 55%, #f4a227 100%); }
+
+    .about-page-wrap {
+      max-width: 800px;
+      margin: 44px auto;
+      padding: 0 24px 60px;
+    }
+
+    .about-story-block {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 40px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+      margin-bottom: 28px;
+    }
+
+    .about-story-block h2 {
+      font-family: 'Fredoka One', cursive;
+      color: var(--green);
+      font-size: 1.6rem;
+      margin: 0 0 16px;
+    }
+
+    .about-story-block p {
+      color: var(--text-soft);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .about-story-block p:last-child { margin-bottom: 0; }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .value-card {
+      background: #f9f7f0;
+      border-radius: 14px;
+      padding: 22px 20px;
+      text-align: center;
+      border: 1.5px solid #f0ead8;
+    }
+
+    .value-card .v-icon { font-size: 2rem; margin-bottom: 10px; }
+    .value-card .v-title {
+      font-family: 'Fredoka One', cursive;
+      color: var(--green);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .value-card .v-desc {
+      font-size: 0.87rem;
+      color: var(--text-soft);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .founder-card {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: linear-gradient(135deg, #f0f9e8, #fff8e1);
+      border-radius: 20px;
+      padding: 32px 36px;
+      margin-bottom: 28px;
+      border: 1.5px solid #d4edaa;
+    }
+
+    .founder-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--honey));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .founder-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.4rem;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+
+    .founder-role {
+      font-size: 0.88rem;
+      color: var(--brown);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .founder-quote {
+      font-size: 0.93rem;
+      color: var(--text-soft);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .cta-strip {
+      background: linear-gradient(135deg, var(--green), #1a7a3c);
+      color: white;
+      border-radius: 20px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .cta-strip h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      margin: 0 0 10px;
+    }
+
+    .cta-strip p {
+      font-weight: 600;
+      opacity: 0.9;
+      margin: 0 0 22px;
+      font-size: 0.95rem;
+    }
+
+    .cta-strip .cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-strip a {
+      display: inline-block;
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-strip a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .cta-btn-wa { background: #25D366; color: white; }
+    .cta-btn-browse { background: white; color: var(--green); }
+
+    @media (max-width: 600px) {
+      .about-story-block { padding: 24px 20px; }
+      .founder-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a class="nav-logo" href="index.html">
+      <img src="images/logo/logo.png" alt="HoneyBee" style="height:42px;border-radius:10px;">
+      <div>
+        <span class="nav-logo-text">HoneyBee</span>
+        <span class="nav-logo-sub">Learning</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="learning.html">📚 Learning</a></li>
+      <li><a href="gifts.html">🎁 Return Gifts</a></li>
+      <li><a href="index.html#testimonials">Reviews</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="login.html" id="navUserBtn" class="nav-cta" style="background:var(--honey);">Login / Sign Up 🔐</a>
+    </div>
+  </nav>
+  <script>
+    (function () {
+      const name = sessionStorage.getItem('hbl_customer_name');
+      const phone = sessionStorage.getItem('hbl_customer_phone');
+      if (name && phone) {
+        const btn = document.getElementById('navUserBtn');
+        if (btn) {
+          const first = name.split(' ')[0];
+          btn.innerHTML = `👤 Hi, ${first}`;
+          btn.href = 'my-orders.html';
+          btn.title = name;
+          btn.style.maxWidth = '140px';
+          btn.style.overflow = 'hidden';
+          btn.style.textOverflow = 'ellipsis';
+          btn.style.whiteSpace = 'nowrap';
+        }
+      }
+    })();
+  </script>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">🏠 Home</a>
+    <span>›</span>
+    <strong style="color:var(--green);">🍯 Our Story</strong>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="page-hero-emoji">🍯</span>
+    <h1>Our Story</h1>
+    <p>A home-based dream from Medavakkam, Chennai — crafting personalised learning with love for every little learner.</p>
+  </div>
+
+  <div class="about-page-wrap">
+
+    <!-- FOUNDER -->
+    <div class="founder-card">
+      <div class="founder-avatar">👩</div>
+      <div>
+        <div class="founder-name">Shanmugi</div>
+        <div class="founder-role">Founder, HoneyBee Learning · Medavakkam, Chennai</div>
+        <div class="founder-quote">"I wanted every child at my son's birthday party to go home with something meaningful — not another forgotten plastic toy. That's where HoneyBee Learning began."</div>
+      </div>
+    </div>
+
+    <!-- STORY -->
+    <div class="about-story-block">
+      <h2>How It All Started 🌱</h2>
+      <p>HoneyBee Learning started in 2024 from a small home studio in Medavakkam, Chennai, with one simple idea — personalised books and return gifts that children actually value.</p>
+      <p>As a parent, Shanmugi noticed how birthday return gifts were often generic — plastic toys that broke within days, candies that were forgotten, and stationery that never felt special. She wanted something different: gifts that had the child's name on them, that were fun to use, and that parents would genuinely appreciate.</p>
+      <p>Each book is thoughtfully designed, printed in-house, and packed by hand. Every order is reviewed personally before it ships — because to us, it's not just a product; it's a memory your child will carry.</p>
+    </div>
+
+    <!-- WHAT WE DO -->
+    <div class="about-story-block">
+      <h2>What We Make ✨</h2>
+      <p>We specialise in two categories of personalised products, both crafted with your child's name and love:</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="v-icon">📚</div>
+          <div class="v-title">Learning Products</div>
+          <div class="v-desc">Personalised activity books, reusable wipe & learn books, flashcards and alphabet charts — all with your child's name.</div>
+        </div>
+        <div class="value-card">
+          <div class="v-icon">🎁</div>
+          <div class="v-title">Birthday Return Gifts</div>
+          <div class="v-desc">Thoughtfully curated gift combos starting from ₹25/set — printed, packed and delivered for your child's special day.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="about-story-block">
+      <h2>What We Stand For 💛</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="v-icon">❤️</div>
+          <div class="v-title">Made with Love</div>
+          <div class="v-desc">Every order is packed by hand, reviewed personally, and shipped with care — because your child deserves the best.</div>
+        </div>
+        <div class="value-card">
+          <div class="v-icon">✏️</div>
+          <div class="v-title">Personalised Always</div>
+          <div class="v-desc">Every book carries your child's own name — making learning personal, meaningful, and truly special.</div>
+        </div>
+        <div class="value-card">
+          <div class="v-icon">📦</div>
+          <div class="v-title">Quality You Can Trust</div>
+          <div class="v-desc">We share a preview before printing. You approve it. Only then do we print and ship — no surprises.</div>
+        </div>
+        <div class="value-card">
+          <div class="v-icon">🌱</div>
+          <div class="v-title">Local & Small Business</div>
+          <div class="v-desc">100% home-based, in Medavakkam. Every order supports a local family directly — no intermediaries.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-strip">
+      <h2>Ready to Make It Personal? 🎨</h2>
+      <p>Browse our products or drop us a message — we're happy to help you find the perfect gift!</p>
+      <div class="cta-btns">
+        <a href="learning.html" class="cta-btn-browse">📚 Browse Learning Products</a>
+        <a href="https://wa.me/918883624873" target="_blank" class="cta-btn-wa">💬 WhatsApp Us</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <strong>🍯 HoneyBee Learning</strong> — Personalised Kids Books &amp; Birthday Return Gifts &nbsp;|&nbsp;
+    Medavakkam, Chennai<br>
+    <span style="font-size:0.78rem;opacity:0.6;margin-top:5px;display:block;">
+      <a href="faq.html">❓ FAQ</a> &nbsp;·&nbsp;
+      <a href="write-review.html">⭐ Write a Review</a> &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/honeybee.learning.co?igsh=aDJ3enhnNWs1eHZ0" target="_blank">📸 @honeybee.learning.co</a>
+    </span>
+  </footer>
+
+  <a class="wa-fab" href="https://wa.me/918883624873" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="16" fill="#25D366" />
+      <path d="M23.5 8.5A10.44 10.44 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.84.48 3.63 1.39 5.21L5.5 26.5l5.42-1.42A10.44 10.44 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5z" fill="white" />
+    </svg>
+    <span class="wa-fab-label">Chat with us</span>
+  </a>
+</body>
+
+</html>
