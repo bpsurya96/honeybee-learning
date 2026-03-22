@@ -138,6 +138,57 @@ function initProduct() {
     }
 
     renderRelatedProducts();
+
+    // ─── AUTOFILL ENQUIRY FORM ───
+    const themeInput = document.getElementById('customThemeInput');
+    if (themeInput) {
+        let matchedChip = false;
+        document.querySelectorAll('.theme-chip:not(.custom-chip)').forEach(chip => {
+            const text = chip.textContent.replace(/[^\w\s]/gi, '').trim().toLowerCase();
+            if (p.title.toLowerCase().includes(text) || (p.tags && p.tags.join(' ').toLowerCase().includes(text))) {
+                chip.classList.add('selected');
+                matchedChip = true;
+            } else {
+                chip.classList.remove('selected');
+            }
+        });
+        if (!matchedChip) {
+            const customChip = document.querySelector('.custom-chip');
+            if (customChip) {
+                customChip.classList.add('selected');
+            }
+            themeInput.style.display = 'block';
+            themeInput.value = p.title;
+        } else {
+            themeInput.style.display = 'none';
+            themeInput.value = '';
+        }
+    }
+
+    document.querySelectorAll('.pt-card').forEach(card => {
+        if (card.dataset.type === p.productType) {
+            card.classList.add('selected');
+            const ptName = card.querySelector('.pt-name');
+            const ptDesc = card.querySelector('.pt-desc');
+            selectedProductType = (ptName ? ptName.textContent : '') + ' - ' + (ptDesc ? ptDesc.textContent : '');
+        } else {
+            card.classList.remove('selected');
+        }
+    });
+
+    const budgetSelect = document.getElementById('custBudget');
+    if (budgetSelect && p.price) {
+        if (p.price < 200) budgetSelect.value = 'Under ₹200';
+        else if (p.price <= 500) budgetSelect.value = '₹200–₹500';
+        else if (p.price <= 1000) budgetSelect.value = '₹500–₹1000';
+        else budgetSelect.value = '₹1000+';
+    }
+
+    const notesInput = document.getElementById('custNotes');
+    if (notesInput) {
+        notesInput.value = `Enquiring about: ${p.title} (₹${p.price}). Please share more details!`;
+    }
+
 }
 
 function setMainImg(idx) {
