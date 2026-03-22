@@ -30,6 +30,16 @@
     body { background: #fafaf7; }
     .page-hero { background: linear-gradient(135deg, #3d6b24 0%, #5a9435 55%, #f4a227 100%); }
 
+    .founder-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3.5px solid white;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
     .about-page-wrap {
       max-width: 800px;
       margin: 44px auto;
@@ -237,14 +247,26 @@
   <div class="page-hero">
     <span class="page-hero-emoji">🍯</span>
     <h1>Our Story</h1>
-    <p>A home-based dream from Medavakkam, Chennai — crafting personalised learning with love for every little learner.</p>
+    <p>India's first personalised activity book brand — a home-based dream from Medavakkam, Chennai, made with love for every little learner.</p>
+  </div>
+
+  <!-- India First Banner -->
+  <div style="max-width:800px;margin:0 auto;padding:20px 24px 0;">
+    <div class="india-banner">
+      <span class="flag">🇮🇳</span>
+      <span><strong>India's first personalised activity book brand</strong> — crafting books with your child's name woven into every page, from our home studio in Chennai.</span>
+    </div>
   </div>
 
   <div class="about-page-wrap">
 
     <!-- FOUNDER -->
     <div class="founder-card">
-      <div class="founder-avatar">👩</div>
+      <img src="images/founder.jpg" alt="Shanmugi, Founder of HoneyBee Learning"
+           class="founder-photo"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <!-- Fallback avatar shown if photo not uploaded yet -->
+      <div class="founder-avatar" style="display:none;">👩</div>
       <div>
         <div class="founder-name">Shanmugi</div>
         <div class="founder-role">Founder, HoneyBee Learning · Medavakkam, Chennai</div>
@@ -255,6 +277,10 @@
     <!-- STORY -->
     <div class="about-story-block">
       <h2>How It All Started 🌱</h2>
+      <div class="india-banner" style="background:linear-gradient(135deg,#fff3cd,#fff8e1);border-color:#f4a227;">
+        <span class="flag">🇮🇳</span>
+        <span>HoneyBee Learning is <strong>India's first personalised activity book brand</strong> crafting books with each child's name woven into every page.</span>
+      </div>
       <p>HoneyBee Learning started in 2024 from a small home studio in Medavakkam, Chennai, with one simple idea — personalised books and return gifts that children actually value.</p>
       <p>As a parent, Shanmugi noticed how birthday return gifts were often generic — plastic toys that broke within days, candies that were forgotten, and stationery that never felt special. She wanted something different: gifts that had the child's name on them, that were fun to use, and that parents would genuinely appreciate.</p>
       <p>Each book is thoughtfully designed, printed in-house, and packed by hand. Every order is reviewed personally before it ships — because to us, it's not just a product; it's a memory your child will carry.</p>
