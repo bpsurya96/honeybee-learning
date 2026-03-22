@@ -453,9 +453,8 @@
         </div>
         <div class="dmodal-desc" id="dmDesc"></div>
         <div class="dmodal-tags" id="dmTags"></div>
-        <button class="dmodal-btn" id="dmBtn">Order via WhatsApp 💬</button>
-        <p class="dmodal-note">Tap to send your enquiry directly to our WhatsApp. We'll confirm personalisation details
-          and payment within a few hours!</p>
+        <button class="dmodal-btn" id="dmBtn">Send Enquiry ✉️</button>
+        <p class="dmodal-note">We will reach out to you and customize based on your preference.</p>
       </div>
     </div>
   </div>
@@ -464,7 +463,7 @@
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
     <div class="modal">
       <div class="modal-header"><button class="modal-close" onclick="closeOrderModal()">✕</button>
-        <h2>Customise & Order</h2>
+        <h2>Send Enquiry</h2>
         <p>Fill in the details — we'll personalise it just for you!</p>
       </div>
       <div class="modal-body">
@@ -509,17 +508,16 @@
               placeholder="Theme preference, multiple names, etc." style="min-height:54px;"></textarea></div>
           <p id="formError" style="color:#c0392b;font-weight:700;font-size:0.86rem;margin-bottom:10px;display:none;">
           </p>
-          <button class="btn-submit" onclick="submitOrder()">Send Order via WhatsApp 💬</button>
-          <p style="text-align:center;font-size:0.79rem;color:var(--text-soft);margin-top:7px;font-weight:600;">We'll
-            confirm your order within a few hours.</p>
+          <button class="btn-submit" onclick="submitOrder()">Send Send Enquiry ✉️</button>
+          <p style="text-align:center;font-size:0.79rem;color:var(--text-soft);margin-top:7px;font-weight:600;">We will reach out to you and customize based on your preference.</p>
         </div>
         <div class="success-screen" id="successScreen">
           <span class="success-bee">🍯</span>
-          <h2>Order Sent!</h2>
-          <p>Your order details have been sent to our WhatsApp.<br>We'll confirm within a few hours!</p>
-          <div class="order-id-box" id="orderIdBox">ORDER #—</div>
-          <p style="font-size:0.84rem;">Or tap below to open WhatsApp directly:</p>
-          <a class="whatsapp-btn" id="whatsappLink" href="#" target="_blank"><span>💬</span> Open WhatsApp</a><br><br>
+          <h2>Enquiry Sent!</h2>
+          <p>Your enquiry details have been sent.<br>We will reach out to you and customize based on your preference.</p>
+          <div class="order-id-box" id="orderIdBox">ENQUIRY #—</div>
+          
+          
           <button onclick="closeOrderModal()"
             style="background:none;border:2px solid var(--green);color:var(--green);padding:10px 22px;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;font-size:0.9rem;">Done
             ✓</button>

@@ -70,8 +70,11 @@ function initProduct() {
     document.getElementById('productDesc').textContent = p.fullDesc;
     document.getElementById('productTags').innerHTML = p.tags.map(t => `<span class="product-tag">${t}</span>`).join('');
 
-    const msg = encodeURIComponent(`🍯 *HoneyBee Learning — Order Enquiry* 📚\n\n*Product:* ${p.title}\n*Price:* ₹${p.price}\n\nI'd like to order this product. Please share personalisation details and payment info.\n\n_Sent from HoneyBee Learning website_`);
-    document.getElementById('orderBtn').href = `https://wa.me/918883624873?text=${msg}`;
+    document.getElementById('orderBtn').href = '#customiseSection';
+    document.getElementById('orderBtn').onclick = (e) => {
+        e.preventDefault();
+        document.getElementById('customiseSection').scrollIntoView({ behavior: 'smooth' });
+    };
 
     // Build gallery thumbs + dot indicators
     const tc = document.getElementById('thumbsContainer');
@@ -126,7 +129,13 @@ function initProduct() {
     const msbBtn = document.getElementById('msbBtn');
     if (msbTitle) msbTitle.textContent = p.title;
     if (msbPrice) msbPrice.textContent = '₹' + p.price;
-    if (msbBtn) msbBtn.href = `https://wa.me/918883624873?text=${msg}`;
+    if (msbBtn) {
+        msbBtn.href = '#customiseSection';
+        msbBtn.onclick = (e) => {
+            e.preventDefault();
+            document.getElementById('customiseSection').scrollIntoView({ behavior: 'smooth' });
+        };
+    }
 
     renderRelatedProducts();
 }
@@ -294,33 +303,37 @@ function submitCustomOrder() {
     }
     errEl.style.display = 'none';
 
-    // Build a rich, structured WhatsApp message
-    let msg = `🍯 *HoneyBee Learning — Custom Book Request* 🎨\n`;
-    msg += `━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-
-    msg += `🖼️ *Theme:* ${theme}\n`;
-    if (selectedProductType) msg += `📦 *Product Type:* ${selectedProductType}\n`;
-    msg += `\n👶 *Child's Name:* ${childName}\n`;
-    msg += `🎂 *Age Group:* ${age}\n`;
-    if (qty) msg += `🔢 *Quantity:* ${qty}\n`;
-    if (budget) msg += `💰 *Budget:* ${budget}\n`;
-
-    if (specials.length) {
-        msg += `\n✨ *Special Requests:*\n`;
-        specials.forEach(s => { msg += `  • ${s}\n`; });
-    }
-
-    if (notes) {
-        msg += `\n📝 *Additional Details:*\n${notes}\n`;
-    }
-
-    msg += `\n📞 *WhatsApp:* ${phone}`;
-    if (time) msg += `\n⏰ *Best Time to Reach:* ${time}`;
-
-    msg += `\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    msg += `_Sent from HoneyBee Learning custom order form_`;
-
-    window.open(`https://wa.me/918883624873?text=${encodeURIComponent(msg)}`, '_blank');
+    const payload = {
+        _subject: "Custom Product Enquiry - HoneyBee Learning",
+        Theme: theme,
+        ProductType: selectedProductType || 'Not specified',
+        ChildName: childName,
+        AgeGroup: age,
+        Quantity: qty,
+        Budget: budget,
+        SpecialRequests: specials.length ? specials.join(', ') : 'None',
+        Notes: notes,
+        Phone: phone,
+        BestTime: time
+    };
+    
+    const btn = document.querySelector('.cust-submit-btn');
+    const origText = btn.innerHTML;
+    btn.innerHTML = 'Sending... ⏳';
+    
+    fetch('https://formsubmit.co/ajax/honeybeelearning.co@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+    }).then(r => r.json()).then(res => {
+        alert("Enquiry Sent! We will reach out to you and customize based on your preference.");
+        document.getElementById('custChildName').value = '';
+        document.getElementById('custNotes').value = '';
+    }).catch(e => {
+        showCustError('⚠️ Network error. Please try again.');
+    }).finally(() => {
+        btn.innerHTML = origText;
+    });
 }
 
 function showCustError(msg) {
