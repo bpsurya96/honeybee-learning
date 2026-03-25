@@ -405,6 +405,70 @@
     line-height: 1.7;
 }
 
+/* ─── AGE CURRICULUM CARD (Text-based) ─── */
+.age-curr-card {
+    background: #fffdf5;
+    border: 2px solid var(--honey);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: left;
+    margin-top: 14px;
+    box-shadow: 0 4px 15px rgba(255,179,0,0.15);
+}
+
+.curr-header {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--brown);
+    margin-bottom: 12px;
+    border-bottom: 2px dashed #ffe082;
+    padding-bottom: 8px;
+}
+
+.curr-header span {
+    color: var(--green);
+}
+
+.curr-body {
+    margin-bottom: 12px;
+}
+
+.curr-body strong {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.curr-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.curr-tag {
+    background: white;
+    border: 1.5px solid var(--green-pale);
+    color: var(--text-soft);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 50px;
+}
+
+.curr-footer {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    background: var(--honey-pale);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.curr-footer strong {
+    color: var(--brown);
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 600px) {
     .custom-section {

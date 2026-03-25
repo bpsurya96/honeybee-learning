@@ -394,45 +394,75 @@ function showCustError(msg) {
     errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+const ageCurriculums = {
+    '1–2 years': {
+        focus: 'Sensory Exploration',
+        activities: ['Object recognition', 'Colour matching', 'Simple tracing', 'Shadow matching'],
+        skills: 'Fine motor skills, early observation.'
+    },
+    '3–5 years': {
+        focus: 'Foundation Learning',
+        activities: ['Alphabet tracing', 'Number counting', 'Shape sorting', 'Simple mazes', 'Matching pairs'],
+        skills: 'Hand-eye coordination, early literacy.'
+    },
+    '6 years': {
+        focus: 'Comprehension & Logic',
+        activities: ['Reading sentences', 'Missing letters', 'Word search', 'Number sequences', 'Addition & subtraction', 'Time basics', 'Spot differences'],
+        skills: 'Problem solving, reading comprehension.'
+    },
+    '7 years': {
+        focus: 'Language & Thinking',
+        activities: ['Sentence formation', 'Synonyms & opposites', 'Crosswords', 'Multiplication basics', 'Skip counting', 'Logical puzzles', 'Riddles'],
+        skills: 'Language development, reasoning.'
+    },
+    '8 years': {
+        focus: 'Critical Thinking',
+        activities: ['Simple comprehensions', 'Multiplication tables', 'Logic puzzles', 'Brain teasers', 'Fractions basics', 'Coding patterns', 'Sudoku (medium)'],
+        skills: 'Advanced language, deep reasoning.'
+    },
+    '9 years': {
+        focus: 'Problem Solving & Advanced Thinking',
+        activities: ['Paragraph comprehension', 'Math word problems', 'Long multiplication', 'Division puzzles', 'Logic grids & riddles', 'Coding puzzles'],
+        skills: 'Analytical reasoning, complex comprehension.'
+    },
+    '10-12 years': {
+        focus: 'Advanced Logic',
+        activities: ['Complex word puzzles', 'Advanced math challenges', 'Logic grids', 'Scientific reasoning', 'Strategic brain teasers'],
+        skills: 'Critical analysis, high-level reasoning.'
+    }
+};
+
 function updateCustomAgeImage() {
     const ageVal = document.getElementById('custAge').value;
     const previewDiv = document.getElementById('custAgePreview');
     
-    // Clear out previous images and hide by default
+    // Clear out previous HTML and hide by default
     previewDiv.innerHTML = '';
     previewDiv.style.display = 'none';
     
-    let images = [];
-
-    if (ageVal.includes('1–2 years')) {
-        images.push('images/age-guides/age-2.jpeg');
-    } else if (ageVal.includes('3–5 years')) {
-        images.push('images/age-guides/age-4.jpeg');
-    } else if (ageVal.includes('6 years')) {
-        images.push('images/age-guides/age-6.jpeg');
-    } else if (ageVal.includes('7 years')) {
-        images.push('images/age-guides/age-7.jpeg');
-    } else if (ageVal.includes('8 years')) {
-        images.push('images/age-guides/age-8.jpeg');
-    } else if (ageVal.includes('9 years')) {
-        // Show BOTH images for age 9!
-        images.push('images/age-guides/age-9.jpeg'); // Problem solving
-        images.push('images/age-guides/age-9_1.jpeg'); // Advanced thinking
-    } else if (ageVal.includes('10-12 years')) {
-        images.push('images/age-guides/age-9_1.jpeg');
+    // Find matching curriculum
+    let matchedData = null;
+    for (const key of Object.keys(ageCurriculums)) {
+        if (ageVal.includes(key)) {
+            matchedData = ageCurriculums[key];
+            break;
+        }
     }
 
-    if (images.length > 0) {
-        images.forEach(src => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = 'Age Curriculum';
-            img.style.maxWidth = '100%';
-            img.style.borderRadius = '12px';
-            img.style.border = '2px solid var(--green-pale)';
-            img.style.marginTop = '10px';
-            previewDiv.appendChild(img);
-        });
+    if (matchedData) {
+        // Build the fast HTML card
+        previewDiv.innerHTML = `
+            <div class="age-curr-card">
+                <div class="curr-header">🎯 Focus: <span>${matchedData.focus}</span></div>
+                <div class="curr-body">
+                    <strong>🧩 Inside the Book:</strong>
+                    <div class="curr-tags">
+                        ${matchedData.activities.map(a => `<span class="curr-tag">${a}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="curr-footer">🌟 <strong>Skills developed:</strong> ${matchedData.skills}</div>
+            </div>
+        `;
         previewDiv.style.display = 'block';
     }
 }
