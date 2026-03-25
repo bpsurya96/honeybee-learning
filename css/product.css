@@ -774,6 +774,69 @@
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
+/* ─── AGE GUIDE SECTION ─── */
+.age-guide-wrapper {
+    padding: 50px 5% 20px;
+    background: #fffdf5; /* subtle honey-pale bg */
+    border-top: 2px solid var(--green-pale);
+    text-align: center;
+}
+
+.age-guide-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--brown);
+    margin-bottom: 8px;
+}
+
+.age-guide-sub {
+    font-size: 1rem;
+    color: var(--text-soft);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.age-guide-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.age-guide-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.age-guide-img {
+    height: 480px;
+    border-radius: 16px;
+    scroll-snap-align: start;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 3px solid var(--green-pale);
+    object-fit: contain;
+    background: white;
+}
+
+.swipe-indicator {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+@media(max-width:768px) {
+    .age-guide-title {
+        font-size: 1.6rem;
+    }
+    .age-guide-img {
+        height: 380px;
+        max-width: 85vw; /* Ensure they don't stretch too wide on tiny phones */
+    }
+}
+
 /* ─── RELATED PRODUCTS ─── */
 .related-section {
     padding: 60px 5%;

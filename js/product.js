@@ -394,3 +394,46 @@ function showCustError(msg) {
     errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+function updateCustomAgeImage() {
+    const ageVal = document.getElementById('custAge').value;
+    const previewDiv = document.getElementById('custAgePreview');
+    
+    // Clear out previous images and hide by default
+    previewDiv.innerHTML = '';
+    previewDiv.style.display = 'none';
+    
+    let images = [];
+
+    if (ageVal.includes('1–2 years')) {
+        images.push('images/age-guides/age-2.jpeg');
+    } else if (ageVal.includes('3–5 years')) {
+        images.push('images/age-guides/age-4.jpeg');
+    } else if (ageVal.includes('6 years')) {
+        images.push('images/age-guides/age-6.jpeg');
+    } else if (ageVal.includes('7 years')) {
+        images.push('images/age-guides/age-7.jpeg');
+    } else if (ageVal.includes('8 years')) {
+        images.push('images/age-guides/age-8.jpeg');
+    } else if (ageVal.includes('9 years')) {
+        // Show BOTH images for age 9!
+        images.push('images/age-guides/age-9.jpeg'); // Problem solving
+        images.push('images/age-guides/age-9_1.jpeg'); // Advanced thinking
+    } else if (ageVal.includes('10-12 years')) {
+        images.push('images/age-guides/age-9_1.jpeg');
+    }
+
+    if (images.length > 0) {
+        images.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = 'Age Curriculum';
+            img.style.maxWidth = '100%';
+            img.style.borderRadius = '12px';
+            img.style.border = '2px solid var(--green-pale)';
+            img.style.marginTop = '10px';
+            previewDiv.appendChild(img);
+        });
+        previewDiv.style.display = 'block';
+    }
+}
+

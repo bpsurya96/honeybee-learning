@@ -117,6 +117,26 @@
     </div>
 
     <!-- ═══════════════════════════════════════════
+         WHAT YOUR CHILD WILL LEARN (AGE GUIDE)
+         ═══════════════════════════════════════════ -->
+    <div class="age-guide-wrapper" id="ageGuideWrapper">
+        <h2 class="age-guide-title">What Your Child Will Learn 🧠</h2>
+        <p class="age-guide-sub">Carefully curated activities for every milestone!</p>
+        <div class="age-guide-scroll">
+            <img src="images/age-guides/age-2.jpeg" class="age-guide-img" alt="Age 2 Focus" loading="lazy">
+            <img src="images/age-guides/age-3.jpeg" class="age-guide-img" alt="Age 3 Focus" loading="lazy">
+            <img src="images/age-guides/age-4.jpeg" class="age-guide-img" alt="Age 4 Focus" loading="lazy">
+            <img src="images/age-guides/age-5.jpeg" class="age-guide-img" alt="Age 5 Focus" loading="lazy">
+            <img src="images/age-guides/age-6.jpeg" class="age-guide-img" alt="Age 6 Focus" loading="lazy">
+            <img src="images/age-guides/age-7.jpeg" class="age-guide-img" alt="Age 7 Focus" loading="lazy">
+            <img src="images/age-guides/age-8.jpeg" class="age-guide-img" alt="Age 8 Focus" loading="lazy">
+            <img src="images/age-guides/age-9.jpeg" class="age-guide-img" alt="Age 9 Focus (Problem Solving)" loading="lazy">
+            <img src="images/age-guides/age-9_1.jpeg" class="age-guide-img" alt="Age 9 Focus (Advanced Thinking)" loading="lazy">
+        </div>
+        <div class="swipe-indicator">← Swipe to see more →</div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
          RELATED PRODUCTS
          ═══════════════════════════════════════════ -->
     <div class="related-section">
@@ -232,13 +252,19 @@
                     </div>
                     <div class="custom-form-group">
                         <label class="custom-label">Age Group *</label>
-                        <select id="custAge" class="custom-input">
+                        <select id="custAge" class="custom-input" onchange="updateCustomAgeImage()">
                             <option value="">Select age group</option>
                             <option value="1–2 years (Toddler)">1–2 years (Toddler)</option>
                             <option value="3–5 years (Preschool / LKG)">3–5 years (Preschool / LKG)</option>
-                            <option value="6–8 years (Class 1–3)">6–8 years (Class 1–3)</option>
-                            <option value="9–12 years (Class 4–7)">9–12 years (Class 4–7)</option>
+                            <option value="6 years">6 years (Early Primary)</option>
+                            <option value="7 years">7 years</option>
+                            <option value="8 years">8 years</option>
+                            <option value="9 years">9 years</option>
+                            <option value="10-12 years">10–12 years (Class 5–7)</option>
                         </select>
+                        <div id="custAgePreview" style="display:none; margin-top:12px; text-align:center;">
+                            <img id="custAgeImage" src="" alt="Age Curriculum" style="max-width:100%; border-radius:12px; border:2px solid var(--green-pale);">
+                        </div>
                     </div>
                 </div>
                 <div class="custom-form-row">
