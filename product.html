@@ -125,20 +125,28 @@
     <div class="age-guide-wrapper" id="ageGuideWrapper">
         <h2 class="age-guide-title">What Your Child Will Learn 🧠</h2>
         <p class="age-guide-sub">Carefully curated activities for every milestone!</p>
-        <div class="age-guide-scroll">
-            <img src="images/age-guides/age-2.jpeg" class="age-guide-img" alt="Age 2 Focus" loading="lazy">
-            <img src="images/age-guides/age-3.jpeg" class="age-guide-img" alt="Age 3 Focus" loading="lazy">
-            <img src="images/age-guides/age-4.jpeg" class="age-guide-img" alt="Age 4 Focus" loading="lazy">
-            <img src="images/age-guides/age-5.jpeg" class="age-guide-img" alt="Age 5 Focus" loading="lazy">
-            <img src="images/age-guides/age-6.jpeg" class="age-guide-img" alt="Age 6 Focus" loading="lazy">
-            <img src="images/age-guides/age-7.jpeg" class="age-guide-img" alt="Age 7 Focus" loading="lazy">
-            <img src="images/age-guides/age-8.jpeg" class="age-guide-img" alt="Age 8 Focus" loading="lazy">
-            <img src="images/age-guides/age-9.jpeg" class="age-guide-img" alt="Age 9 Focus (Problem Solving)"
-                loading="lazy">
-            <img src="images/age-guides/age-9_1.jpeg" class="age-guide-img" alt="Age 9 Focus (Advanced Thinking)"
-                loading="lazy">
+        <div class="age-guide-container" style="position: relative; max-width: 1000px; margin: 0 auto;">
+            <button class="age-nav age-prev" onclick="scrollAgeGuide(-1)">‹</button>
+            <div class="age-guide-scroll">
+                <img src="images/age-guides/age-2.jpeg" class="age-guide-img" alt="Age 2 Focus" loading="lazy">
+                <img src="images/age-guides/age-3.jpeg" class="age-guide-img" alt="Age 3 Focus" loading="lazy">
+                <img src="images/age-guides/age-4.jpeg" class="age-guide-img" alt="Age 4 Focus" loading="lazy">
+                <img src="images/age-guides/age-5.jpeg" class="age-guide-img" alt="Age 5 Focus" loading="lazy">
+                <img src="images/age-guides/age-6.jpeg" class="age-guide-img" alt="Age 6 Focus" loading="lazy">
+                <img src="images/age-guides/age-7.jpeg" class="age-guide-img" alt="Age 7 Focus" loading="lazy">
+                <img src="images/age-guides/age-8.jpeg" class="age-guide-img" alt="Age 8 Focus" loading="lazy">
+                <img src="images/age-guides/age-9.jpeg" class="age-guide-img" alt="Age 9 Focus (Problem Solving)"
+                    loading="lazy">
+                <img src="images/age-guides/age-9_1.jpeg" class="age-guide-img" alt="Age 9 Focus (Advanced Thinking)"
+                    loading="lazy">
+                <img src="images/age-guides/age-10.jpeg" class="age-guide-img" alt="Age 10 Focus" loading="lazy">
+                <img src="images/age-guides/age-11.jpeg" class="age-guide-img" alt="Age 11 Focus" loading="lazy">
+                <img src="images/age-guides/age-12.jpeg" class="age-guide-img" alt="Age 12 Focus" loading="lazy">
+            </div>
         </div>
-        <div class="swipe-indicator">← Swipe to see more →</div>
+        <button class="age-nav age-next" onclick="scrollAgeGuide(1)">›</button>
+    </div>
+    <div class="swipe-indicator">← Swipe or use buttons to see more →</div>
     </div>
 
     <!-- ═══════════════════════════════════════════

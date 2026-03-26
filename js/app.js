@@ -438,7 +438,7 @@ function openLightboxFromHome(imgSrc) {
     if (lightbox) {
         // reuse the dmodal html we have
         document.getElementById('dmImg').src = imgSrc;
-        document.getElementById('dmTitle').textContent = "Customer Photo";
+        document.getElementById('dmTitle').textContent = "";
         document.getElementById('dmPrice').textContent = '';
         document.getElementById('dmDesc').textContent = '';
         document.getElementById('dmTags').innerHTML = '';

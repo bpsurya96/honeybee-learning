@@ -58,6 +58,13 @@ function initAgeGuideDrag() {
     slider.style.cursor = 'grab';
 }
 
+function scrollAgeGuide(dir) {
+    const slider = document.querySelector('.age-guide-scroll');
+    if (!slider) return;
+    const scrollAmount = slider.clientWidth * 0.8; 
+    slider.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+}
+
 async function loadProducts() {
     try {
         // Load all 3 split files in parallel and merge into one array
