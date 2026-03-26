@@ -16,8 +16,47 @@ let p = null;
 document.addEventListener('DOMContentLoaded', async () => {
     await loadProducts();
     initProduct();
-    initKeyboardNav();
+    if(typeof initKeyboardNav === 'function') initKeyboardNav();
+    initAgeGuideDrag();
 });
+
+// ─── AGE GUIDE DRAG TO SCROLL ───
+function initAgeGuideDrag() {
+    const slider = document.querySelector('.age-guide-scroll');
+    if (!slider) return;
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+        slider.style.scrollSnapType = 'none';
+    });
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+        slider.style.scrollSnapType = 'x mandatory';
+    });
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+        slider.style.scrollSnapType = 'x mandatory';
+    });
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // scroll-fast
+        slider.scrollLeft = scrollLeft - walk;
+    });
+    
+    // Set initial cursor
+    slider.style.cursor = 'grab';
+}
 
 async function loadProducts() {
     try {
