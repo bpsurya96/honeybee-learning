@@ -1,40 +1,5 @@
 [
     {
-        "id": 0,
-        "title": "Bhagavad Gita Inspired Activity Book for Kids",
-        "price": 349,
-        "badge": "Best Seller",
-        "badgeType": "hot",
-        "image": "images/products/0/1.png",
-        "images": [
-            "images/products/0/1.png",
-            "images/products/0/2.jpg",
-            "images/products/0/3.jpg",
-            "images/products/0/4.png",
-            "images/products/0/5.png"
-        ],
-        "fallbackEmoji": "📖",
-        "shortDesc": "Personalised name worksheets with moral values learning. Krishna-inspired, teaching kindness, sharing & calmness through fun preschool exercises.",
-        "fullDesc": "Introduce your child to good values with fun and learning!\n\nThis Krishna-inspired personalised activity book is specially designed for preschool kids to learn kindness, sharing, calmness, and positive behaviour through simple exercises.\n\n✨ What's Inside:\n• Gita-inspired moral lessons (Krishna & Arjuna)\n• Trace the word activities (KIND, CALM, SHARE)\n• Match the kind action exercises\n• Picture-based value learning\n• Personalised child name affirmations\n• Preschool-friendly design with colourful illustrations\n\n🎯 Benefits:\n• Builds moral values at an early age\n• Improves fine motor skills\n• Encourages positive behaviour\n• Fun, screen-free learning\n\n👶 Age Group: 3–6 years\n🎁 Perfect for: Daily practice, return gifts, birthday gifts, value education\n💖 Personalised with your child's name",
-        "tags": [
-            "👶 Age: 3–6 yrs",
-            "📐 A4 Size",
-            "✍️ Personalised Name",
-            "🌟 Moral Values",
-            "🎁 Perfect Gift"
-        ],
-        "productType": "activity",
-        "seoTitle": "Bhagavad Gita Personalised Activity Book for Kids | Moral Values Learning Workbook",
-        "metaDescription": "Buy Bhagavad Gita inspired personalised activity book for kids. Krishna-themed moral values, name tracing and preschool exercises. Perfect gift for ages 3–6.",
-        "keywords": [
-            "bhagavad gita activity book for kids",
-            "personalised moral values workbook",
-            "krishna inspired learning book",
-            "preschool activity book with values",
-            "personalised kids activity book"
-        ]
-    },
-    {
         "id": 1,
         "title": "Customised Dino Theme Activity Book for Kids",
         "price": 349,
