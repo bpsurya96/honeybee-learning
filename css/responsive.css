@@ -323,7 +323,7 @@
     }
 
     .search-container {
-        margin-bottom: 32px;
+        margin-bottom: 24px;
     }
 
     .search-input {
@@ -337,7 +337,21 @@
         left: 16px;
     }
 
-    /* Tabs — horizontal scroll on small phones */
+    /* Show scroll hint and fade overlay on mobile */
+    .stream-tabs-scroll-hint {
+        display: block;
+    }
+
+    .stream-tabs-fade-hint {
+        display: block;
+    }
+
+    /* Show Ocean Kits promo banner in learning stream on mobile */
+    .ocean-kit-promo-banner {
+        display: flex;
+    }
+
+    /* Tabs — horizontal scroll on small phones with fade overlay */
     .stream-tabs {
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -352,19 +366,19 @@
     .stream-tab {
         white-space: nowrap;
         flex-shrink: 0;
-        padding: 9px 12px;
-        font-size: 0.81rem;
+        padding: 9px 14px;
+        font-size: 0.82rem;
     }
 
-    /* Single-column grids on phone */
+    /* Two-column compact grid on phones — shows more products at once */
     .products-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 
     .learning-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 
     .testi-grid {
@@ -377,13 +391,16 @@
         gap: 12px;
     }
 
-    /* Scrollable filter bar */
+    /* Scrollable filter bar with fade hint */
     .filter-bar {
         flex-wrap: nowrap;
         overflow-x: auto;
         scrollbar-width: none;
         padding-bottom: 4px;
         -webkit-overflow-scrolling: touch;
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        padding-right: 24px;
     }
 
     .filter-bar::-webkit-scrollbar {
@@ -397,13 +414,90 @@
         padding: 6px 13px;
     }
 
-    /* Learning cards */
+    /* Learning cards — compact on mobile 2-col */
     .lcard-img-wrap {
-        height: 185px;
+        height: 140px;
+    }
+
+    .lcard-body {
+        padding: 10px 12px 12px;
+    }
+
+    .lcard-desc {
+        display: none; /* hide description in 2-col view for cleaner look */
+    }
+
+    .lcard-tags {
+        display: none; /* hide tags in 2-col compact view */
     }
 
     .lcard-title {
-        font-size: 1rem;
+        font-size: 0.88rem;
+        margin-bottom: 8px;
+    }
+
+    .lcard-price {
+        font-size: 0.95rem;
+        padding: 3px 8px;
+    }
+
+    .lcard-btn {
+        padding: 8px 10px;
+        font-size: 0.78rem;
+    }
+
+    /* Gift cards compact 2-col */
+    .card-header {
+        padding: 14px 12px 10px;
+    }
+
+    .card-emoji {
+        font-size: 2.2rem;
+        margin-bottom: 4px;
+    }
+
+    .card-name {
+        font-size: 0.92rem;
+    }
+
+    .price-actual {
+        font-size: 0.95rem;
+    }
+
+    .card-body {
+        padding: 10px 12px 12px;
+    }
+
+    .card-items li {
+        font-size: 0.76rem;
+        padding: 2px 0;
+    }
+
+    .card-btn {
+        padding: 9px;
+        font-size: 0.82rem;
+    }
+
+    /* Learning sub-tabs — horizontal scroll on mobile */
+    .learning-subtabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        padding-right: 24px;
+        margin-bottom: 16px;
+    }
+
+    .learning-subtabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .learning-subtab {
+        flex-shrink: 0;
+        padding: 8px 16px;
+        font-size: 0.82rem;
     }
 
     /* How-it-works cards */
@@ -424,22 +518,7 @@
         font-size: 0.78rem;
     }
 
-    /* Product cards */
-    .card-header {
-        padding: 18px 16px 12px;
-    }
 
-    .card-name {
-        font-size: 1.1rem;
-    }
-
-    .card-body {
-        padding: 12px 16px 16px;
-    }
-
-    .card-items li {
-        font-size: 0.82rem;
-    }
 
     /* Contact — list layout */
     .contact-cards {
