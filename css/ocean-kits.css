@@ -768,33 +768,160 @@ body.ocean-page {
   margin: 0;
 }
 
-/* ────────────────────────────────────────
-   RESPONSIVE
-   ──────────────────────────────────────── */
-@media (max-width: 900px) {
+/* ════════════════════════════════════════════
+   RESPONSIVE — Mobile-first, all breakpoints
+   ════════════════════════════════════════════ */
+
+/* ── Base box-sizing safety ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Tablet / small desktop (≤ 960px) ── */
+@media (max-width: 960px) {
   .ok-hero-inner {
     flex-direction: column;
-    padding: 44px 24px 32px;
+    padding: 44px 20px 36px;
     text-align: center;
+    gap: 28px;
   }
+  .ok-hero-text { max-width: 100%; }
   .ok-hero-img-wrap {
     flex: unset;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
+    margin: 0 auto;
   }
   .ok-hero-badges { justify-content: center; }
+
+  /* Pricing strip — 2×2 grid on tablet */
+  .ok-pricing-strip-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 600px;
+  }
   .ok-ps-divider { display: none; }
-  .ok-pricing-strip-inner { gap: 6px; }
-  .ok-ps-item { padding: 6px 14px; }
+  .ok-ps-item { padding: 10px 16px; }
+
+  /* Products → 2 columns on tablet */
+  .ok-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Trust → 2 columns on tablet */
+  .ok-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
 }
 
-@media (max-width: 640px) {
-  .ok-products-grid { grid-template-columns: 1fr; }
-  .ok-trust-grid { grid-template-columns: 1fr; }
-  .ok-compare-table th, .ok-compare-table td { font-size: 0.8rem; padding: 10px 10px; }
-  .ok-hero-title { font-size: 2rem; }
-  .nav-right .nav-cta { display: none; }
+/* ── Mobile landscape / phablet (≤ 680px) ── */
+@media (max-width: 680px) {
+  /* Nav */
+  #mainNav { padding: 0 16px; }
+  .nav-right .nav-cta { display: none; }              /* hide WhatsApp nav CTA — FAB covers it */
+  .back-btn { font-size: 0.8rem; padding: 5px 12px; }
 
-  .ok-pricing-strip-inner { flex-direction: column; gap: 0; }
-  .ok-ps-item { padding: 8px 20px; }
+  /* Hero */
+  .ok-hero { min-height: auto; }
+  .ok-hero-inner { padding: 36px 16px 28px; }
+  .ok-hero-title { font-size: clamp(1.75rem, 7vw, 2.2rem); }
+  .ok-hero-sub { font-size: 0.95rem; }
+  .ok-hero-cta { display: block; width: 100%; text-align: center; padding: 14px 20px; }
+  .ok-hero-img-wrap { max-width: 360px; }
+  .ok-hero-img { transform: none; }                   /* remove tilt — can clip on small screens */
+
+  /* Pricing strip → single column */
+  .ok-pricing-strip { padding: 14px 12px; }
+  .ok-pricing-strip-inner {
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+  }
+  .ok-ps-item { padding: 8px 10px; gap: 8px; }
+  .ok-ps-icon { font-size: 1.4rem; }
+  .ok-ps-label { font-size: 0.68rem; }
+  .ok-ps-val { font-size: 0.88rem; }
+
+  /* Products → single column */
+  .ok-products-section { padding: 44px 14px 40px; }
+  .ok-products-grid { grid-template-columns: 1fr; gap: 18px; }
+
+  /* Card tweaks */
+  .ok-card-img-wrap { height: 200px; }
+  .ok-card-body { padding: 18px 16px 22px; }
+  .ok-card-title { font-size: 1.3rem; }
+
+  /* Trust → single column */
+  .ok-trust-section { padding: 44px 14px; }
+  .ok-trust-grid { grid-template-columns: 1fr; gap: 14px; }
+  .ok-trust-card { padding: 22px 18px; }
+
+  /* Comparison table — hide "Freebies" column on phones */
+  .ok-compare-table .col-freebies { display: none; }
+  .ok-compare-table th { font-size: 0.75rem; padding: 12px 10px; }
+  .ok-compare-table td { font-size: 0.82rem; padding: 11px 10px; }
+  .ok-compare-section { padding: 44px 12px; }
+
+  /* CTA section */
+  .ok-cta-section { padding: 60px 16px 52px; }
+  .ok-cta-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .ok-cta-btns { flex-direction: column; align-items: stretch; }
+  .ok-cta-btn { width: 100%; justify-content: center; padding: 15px 20px; font-size: 1rem; }
+}
+
+/* ── Very small phones (≤ 400px) ── */
+@media (max-width: 400px) {
+  .ok-hero-title { font-size: 1.7rem; }
+  .ok-badge { font-size: 0.74rem; padding: 5px 10px; }
+  .ok-price-tag { font-size: 1.75rem; }
+  .ok-section-title { font-size: 1.6rem; }
+
+  /* Pricing strip → stack vertically */
+  .ok-pricing-strip-inner { grid-template-columns: 1fr; }
+  .ok-ps-item { justify-content: center; text-align: center; }
+
+  /* Nav logo text — hide sub on tiny screens */
+  .nav-logo-sub { display: none; }
+
+  /* Table — only show Kit, Age, Price, Order */
+  .ok-compare-table .col-books { display: none; }
+}
+
+/* ── Sticky mobile WhatsApp order bar ── */
+.ok-mobile-wa-bar {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .ok-mobile-wa-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    background: linear-gradient(90deg, #128C7E, #25D366);
+    padding: 12px 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    gap: 10px;
+    text-decoration: none;
+  }
+  .ok-mobile-wa-bar span {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    color: white;
+    letter-spacing: 0.3px;
+  }
+  /* Add bottom padding so last content isn't hidden behind the bar */
+  .ok-cta-section { padding-bottom: 80px; }
+  footer { padding-bottom: 62px; }
+}
+
+/* ── Touch-device: remove hover effects that can "stick" ── */
+@media (hover: none) {
+  .ok-card:hover { transform: none; box-shadow: var(--ok-shadow); }
+  .ok-trust-card:hover { transform: none; box-shadow: none; }
+  .ok-hero-img:hover { transform: none; }
 }
