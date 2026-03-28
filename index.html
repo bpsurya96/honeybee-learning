@@ -258,16 +258,30 @@
         oninput="handleSearch(this.value)">
     </div>
 
-    <div class="stream-tabs">
-      <button class="stream-tab active" id="tab-learning" onclick="switchStream('learning',this)">📚 Learning
-        Products</button>
-      <button class="stream-tab" id="tab-gifts" onclick="switchStream('gifts',this)">🎁 Birthday Return
-        Gifts</button>
-      <a class="stream-tab" href="ocean-kits.html" style="background:linear-gradient(135deg,#0e4f7c,#00b4d8);color:white;border-color:transparent;text-decoration:none;">🌊 Ocean Kits ✨</a>
+    <div class="stream-tabs-wrap">
+      <div class="stream-tabs">
+        <button class="stream-tab active" id="tab-learning" onclick="switchStream('learning',this)">📚 Learning
+          Products</button>
+        <button class="stream-tab" id="tab-gifts" onclick="switchStream('gifts',this)">🎁 Birthday Return
+          Gifts</button>
+        <a class="stream-tab" href="ocean-kits.html" style="background:linear-gradient(135deg,#0e4f7c,#00b4d8);color:white;border-color:transparent;text-decoration:none;">🌊 Ocean Kits ✨</a>
+      </div>
+      <div class="stream-tabs-fade-hint" aria-hidden="true"></div>
     </div>
+    <p class="stream-tabs-scroll-hint">← Swipe to see all tabs →</p>
 
     <!-- LEARNING STREAM -->
     <div class="stream-content active" id="stream-learning">
+      <!-- Ocean Kits Promo Banner (visible on mobile) -->
+      <a href="ocean-kits.html" class="ocean-kit-promo-banner" aria-label="Explore Ocean Kits">
+        <div class="ocean-kit-promo-icon">🌊</div>
+        <div class="ocean-kit-promo-text">
+          <div class="ocean-kit-promo-title">New! Ocean Kits ✨</div>
+          <div class="ocean-kit-promo-sub">Marine learning kits for curious little explorers</div>
+        </div>
+        <div class="ocean-kit-promo-arrow">→</div>
+      </a>
+
       <div class="delivery-box">
         <span style="font-size:2rem;">🚚</span>
         <div>

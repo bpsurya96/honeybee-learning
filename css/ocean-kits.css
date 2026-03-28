@@ -358,15 +358,17 @@ body.ocean-page {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 12px;
 }
 
 .ok-card-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* Makes white background of JPGs transparent over the gradient */
   transition: transform 0.4s;
 }
-.ok-card:hover .ok-card-img { transform: scale(1.04); }
+.ok-card:hover .ok-card-img { transform: scale(1.06); }
 
 .ok-card-body {
   padding: 22px 22px 26px;

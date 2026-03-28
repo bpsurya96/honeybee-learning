@@ -551,6 +551,35 @@ section {
   padding-bottom: 0;
 }
 
+/* Wrapper adds fade-right overlay for scroll hint on mobile */
+.stream-tabs-wrap {
+  position: relative;
+}
+
+.stream-tabs-fade-hint {
+  display: none; /* shown via media query */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, white 85%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Mobile swipe hint – hidden by default, shown on small screens */
+.stream-tabs-scroll-hint {
+  display: none;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin: 4px 0 0;
+  opacity: 0.65;
+}
+
 .stream-tabs {
   display: flex;
   gap: 0;
@@ -594,6 +623,73 @@ section {
 
 .stream-content.active {
   display: block;
+}
+
+/* ─── OCEAN KITS PROMO BANNER (mobile discovery) ─── */
+.ocean-kit-promo-banner {
+  display: none; /* shown on mobile via media query */
+  text-decoration: none;
+  background: linear-gradient(135deg, #0e4f7c 0%, #0096c7 60%, #00b4d8 100%);
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  color: white;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.ocean-kit-promo-banner::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.ocean-kit-promo-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 180, 216, 0.45);
+}
+
+.ocean-kit-promo-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.ocean-kit-promo-text {
+  flex: 1;
+}
+
+.ocean-kit-promo-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.05rem;
+  margin-bottom: 2px;
+}
+
+.ocean-kit-promo-sub {
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0.88;
+}
+
+.ocean-kit-promo-arrow {
+  font-size: 1.4rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  opacity: 0.85;
 }
 
 /* ─── HOW IT WORKS ─── */
