@@ -109,6 +109,7 @@ function renderRedeemGrid() {
       <div class="bp-redeem-pts-label">Bee Points</div>
       <hr class="bp-redeem-divider">
       <div class="bp-redeem-reward">${item.reward}</div>
+      <a href="index.html#streams" class="bp-redeem-order-btn">Shop to Earn 🛍️</a>
     </div>
   `).join('');
 }
@@ -301,7 +302,9 @@ async function handleLogin(e) {
       // showDashboard() will be called by onAuthStateChange
     }
   } catch (err) {
-    errorEl.textContent = '❌ Incorrect username or password. Please try again.';
+    // Show the actual error from Supabase to help debug
+    const msg = err.message || 'Login failed. Please try again.';
+    errorEl.textContent = '❌ ' + msg;
     errorEl.style.display = 'block';
     const card = document.querySelector('.admin-login-card');
     if (card) { card.style.animation = 'none'; card.offsetHeight; card.style.animation = 'shake 0.4s ease'; }

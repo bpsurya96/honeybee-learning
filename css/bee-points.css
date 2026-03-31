@@ -512,6 +512,27 @@
   margin-bottom: 8px;
 }
 
+.bp-redeem-order-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 20px;
+  background: rgba(255,215,0,0.12);
+  border: 1.5px solid rgba(255,215,0,0.35);
+  border-radius: 50px;
+  color: #FFD700;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.bp-redeem-order-btn:hover {
+  background: rgba(255,215,0,0.22);
+  transform: translateY(-2px);
+}
+
+
 /* ─── HOW IT WORKS SECTION ─── */
 .bp-how-section {
   background: var(--cream);
