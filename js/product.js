@@ -116,6 +116,21 @@ function initProduct() {
     document.getElementById('productDesc').textContent = p.fullDesc;
     document.getElementById('productTags').innerHTML = p.tags.map(t => `<span class="product-tag">${t}</span>`).join('');
 
+    // ─── Freebies box ───
+    const freebiesContainer = document.getElementById('productFreebies');
+    if (freebiesContainer) {
+        if (p.freebies && p.freebies.length) {
+            freebiesContainer.innerHTML = `
+                <div class="freebies-label">🎁 Free Goodies Included</div>
+                <div class="freebies-items">
+                    ${p.freebies.map(f => `<span class="freebie-pill">${f}</span>`).join('')}
+                </div>`;
+            freebiesContainer.style.display = '';
+        } else {
+            freebiesContainer.style.display = 'none';
+        }
+    }
+
     document.getElementById('orderBtn').href = '#customiseSection';
     document.getElementById('orderBtn').onclick = (e) => {
         e.preventDefault();
