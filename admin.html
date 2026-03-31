@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Bee Points Dashboard | HoneyBee Learning</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" href="images/logo/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/bee-points.css">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
+    onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap">
+  </noscript>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Nunito', sans-serif; }
+    :root {
+      --green: #3d6b24;
+      --green-pale: #e8f5d8;
+      --brown: #6b3a1f;
+      --brown-light: #8b5a3a;
+      --honey: #ffb300;
+      --cream: #fffdf5;
+      --text: #2a2a2a;
+      --text-soft: #666;
+    }
+  </style>
+</head>
+
+<body class="admin-body">
+
+  <!-- ═══ LOGIN SCREEN ═══ -->
+  <div class="admin-login-wrap" id="loginScreen">
+    <div class="admin-login-card">
+
+      <div class="admin-login-logo">
+        <span class="admin-login-bee">🐝</span>
+        <div class="admin-login-brand">HoneyBee Learning</div>
+        <div class="admin-login-sub">Admin Portal</div>
+      </div>
+
+      <h1 class="admin-login-title">Welcome Back 👋</h1>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="admin-field">
+          <label for="loginUsername">Username</label>
+          <input type="text" id="loginUsername" class="admin-input" placeholder="Enter username" autocomplete="username"
+            required>
+        </div>
+        <div class="admin-field">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="admin-input" placeholder="Enter password"
+            autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="admin-login-btn" id="loginBtn">Sign In 🔑</button>
+      </form>
+
+      <p class="admin-login-error" id="loginError" aria-live="polite"></p>
+
+    </div>
+  </div>
+
+  <!-- ═══ DASHBOARD ═══ -->
+  <div class="admin-dashboard" id="adminDashboard">
+
+    <!-- Top bar -->
+    <header class="admin-topbar">
+      <div class="admin-topbar-brand">
+        <span class="admin-topbar-bee">🐝</span>
+        <div>
+          <div class="admin-topbar-title">Bee Points Admin</div>
+          <div class="admin-topbar-sub">HoneyBee Learning · Medavakkam, Chennai</div>
+        </div>
+      </div>
+      <div class="admin-topbar-right">
+        <div class="admin-realtime-badge" id="realtimeBadge">
+          <span class="admin-realtime-dot"></span>
+          <span id="realtimeStatus">Connecting...</span>
+        </div>
+        <button class="admin-logout-btn" onclick="handleLogout()" id="logoutBtn">Sign Out</button>
+      </div>
+    </header>
+
+    <div class="admin-content">
+
+      <!-- Setup banner -->
+      <div class="admin-setup-banner" id="setupBanner" style="display:none;">
+        <span style="font-size:1.4rem;flex-shrink:0;">⚙️</span>
+        <div>
+          <strong>Supabase Setup Required:</strong> Please update <code>SUPABASE_URL</code> and
+          <code>SUPABASE_ANON_KEY</code> in <code>js/bee-points.js</code> to connect to your Supabase database.
+          The app is currently running in <strong>demo mode</strong> with sample data.
+          <a href="https://supabase.com" target="_blank" rel="noopener"
+            style="color:#FFD700;font-weight:800;">Set up Supabase →</a>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="admin-stats-row" id="adminStatsRow">
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon">👥</div>
+          <div class="admin-stat-value" id="statTotalCustomers">—</div>
+          <div class="admin-stat-label">Total Customers</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon">🐝</div>
+          <div class="admin-stat-value" id="statTotalPoints">—</div>
+          <div class="admin-stat-label">Points Issued</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon">📦</div>
+          <div class="admin-stat-value" id="statTotalOrders">—</div>
+          <div class="admin-stat-label">Total Orders</div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="admin-stat-icon">💰</div>
+          <div class="admin-stat-value" id="statTotalRevenue">—</div>
+          <div class="admin-stat-label">Total Revenue</div>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="admin-toolbar">
+        <input type="text" id="adminSearch" class="admin-search" placeholder="🔍  Search by name or mobile..."
+          oninput="filterTable(this.value)">
+        <button class="admin-add-btn" onclick="openAddModal()" id="addCustomerBtn">
+          ➕ Add Customer
+        </button>
+      </div>
+
+      <!-- Table -->
+      <div class="admin-table-wrap">
+        <div class="admin-table-loading" id="tableLoading">
+          <div class="bp-spinner" style="margin:0 auto 12px;width:32px;height:32px;border-width:4px;"></div>
+          <p>Loading customer data...</p>
+        </div>
+
+        <table class="admin-table" id="adminTable" style="display:none;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Customer Name</th>
+              <th>Mobile Number</th>
+              <th>Bee Points 🐝</th>
+              <th>Orders</th>
+              <th>Total Spent</th>
+              <th>Member Since</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+          </tbody>
+        </table>
+
+        <div class="admin-empty" id="adminEmpty" style="display:none;">
+          <div class="admin-empty-icon">🐝</div>
+          <div class="admin-empty-text">No customers found. Add the first one!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ ADD / EDIT MODAL ═══ -->
+  <div class="admin-modal-overlay" id="customerModal" onclick="handleModalOverlayClick(event)">
+    <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h2 class="admin-modal-title" id="modalTitle">Add Customer 🐝</h2>
+
+      <div class="admin-modal-field">
+        <label for="modalName">Customer Name *</label>
+        <input type="text" id="modalName" class="admin-modal-input" placeholder="e.g. Priya Kumar">
+      </div>
+      <div class="admin-modal-field">
+        <label for="modalMobile">Mobile Number *</label>
+        <input type="tel" id="modalMobile" class="admin-modal-input" placeholder="10-digit number" maxlength="10"
+          inputmode="numeric">
+      </div>
+      <div class="admin-modal-field">
+        <label for="modalPoints">Bee Points 🐝</label>
+        <input type="number" id="modalPoints" class="admin-modal-input" placeholder="e.g. 150" min="0" value="0">
+      </div>
+      <div class="admin-modal-field">
+        <label for="modalOrders">Number of Orders</label>
+        <input type="number" id="modalOrders" class="admin-modal-input" placeholder="e.g. 3" min="0" value="0">
+      </div>
+      <div class="admin-modal-field">
+        <label for="modalSpent">Total Amount Spent (₹)</label>
+        <input type="number" id="modalSpent" class="admin-modal-input" placeholder="e.g. 1500" min="0" value="0">
+      </div>
+      <div class="admin-modal-field">
+        <label for="modalNotes">Notes (optional)</label>
+        <input type="text" id="modalNotes" class="admin-modal-input" placeholder="e.g. Repeat customer, premium">
+      </div>
+
+      <p class="admin-modal-error" id="modalError" aria-live="polite"></p>
+
+      <div class="admin-modal-btns">
+        <button class="admin-modal-cancel" onclick="closeModal()">Cancel</button>
+        <button class="admin-modal-save" id="modalSaveBtn" onclick="saveCustomer()">Save Customer ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete confirm modal -->
+  <div class="admin-modal-overlay" id="deleteModal" onclick="handleDeleteOverlayClick(event)">
+    <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+      <h2 class="admin-modal-title" id="deleteModalTitle" style="color:#ff6b6b;">Delete Customer? ⚠️</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;font-weight:600;margin-bottom:8px;">
+        Are you sure you want to delete <strong id="deleteCustomerName" style="color:white;"></strong>?
+      </p>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;font-weight:600;">
+        This action cannot be undone and will permanently remove all their Bee Points.
+      </p>
+      <div class="admin-modal-btns" style="margin-top:24px;">
+        <button class="admin-modal-cancel" onclick="closeDeleteModal()">Cancel</button>
+        <button class="admin-modal-save" onclick="confirmDelete()"
+          style="background:linear-gradient(135deg,#e74c3c,#c0392b);color:white;">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/bee-points.js"></script>
+  <script>
+    // Admin-specific init
+    document.addEventListener('DOMContentLoaded', () => {
+      initAdmin();
+    });
+  </script>
+
+</body>
+
+</html>

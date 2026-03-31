@@ -329,31 +329,24 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#streams">Products</a></li>
-      <li><a href="index.html#testimonials" class="active">⭐ Reviews</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="index.html#streams" onclick="closeMenu()">Products</a></li>
+      <li><a href="ocean-kits.html" onclick="closeMenu()" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
+      <li><a href="index.html#testimonials" class="active" onclick="closeMenu()">⭐ Reviews</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="bee-points.html" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
+      <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us 💬</a>
     </div>
   </nav>
   <script>
-    (function () {
-      const name = sessionStorage.getItem('hbl_customer_name');
-      const phone = sessionStorage.getItem('hbl_customer_phone');
-      if (name && phone) {
-        const btn = document.getElementById('navUserBtn');
-        if (btn) {
-          btn.innerHTML = `👤 Hi, ${name.split(' ')[0]}`;
-          btn.href = '#footer'; btn.title = name;
-          btn.style.cssText += ';max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';
-        }
-        // Pre-fill name on first step
-        const nameEl = document.getElementById('revName');
-        if (nameEl) nameEl.value = name;
-      }
-    })();
+    function closeMenu() {
+      const nav = document.getElementById('navLinks');
+      if (nav) nav.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   </script>
 
   <!-- BREADCRUMB -->
@@ -570,9 +563,11 @@
         <div class="footer-title">Quick Links</div>
         <div class="footer-links">
           <a href="index.html#streams">🛍️ Products</a>
+          <a href="ocean-kits.html">🌊 Ocean Kits</a>
           <a href="about.html">🍯 About</a>
           <a href="faq.html">❓ FAQ</a>
           <a href="write-review.html">⭐ Write a Review</a>
+          <a href="bee-points.html">🐝 Bee Points</a>
         </div>
       </div>
       <div class="footer-col">
