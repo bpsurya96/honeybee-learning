@@ -285,7 +285,7 @@ async function handleLogin(e) {
 
   try {
     if (IS_DEMO_MODE || !supabase) {
-      // Demo mode — hardcoded check
+      // Demo mode
       if (username === 'natcha' && password === 'Natcha@2023') {
         await delay(400);
         sessionStorage.setItem('hbl_admin_auth', 'true');
@@ -294,17 +294,32 @@ async function handleLogin(e) {
         throw new Error('Invalid credentials');
       }
     } else {
-      // Real Supabase Auth — username is treated as email
-      // Support both "natcha" shorthand and full email
+      // Real Supabase Auth
+      // Accept either the short username "natcha" or the full email
       const email = username.includes('@') ? username : ADMIN_EMAIL;
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) throw error;
+      console.log('[BeePoints Admin] Attempting login with email:', email);
+
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      console.log('[BeePoints Admin] Auth response:', { data, error });
+
+      if (error) {
+        // Map Supabase error codes to helpful messages
+        let msg = error.message;
+        if (error.message.includes('Email not confirmed')) {
+          msg = 'Your admin email is not confirmed. Go to Supabase → Authentication → Users → click the user → Confirm email manually.';
+        } else if (error.message.includes('Invalid login credentials')) {
+          msg = `Wrong email or password. The admin email set is: ${ADMIN_EMAIL}. Make sure this exactly matches the email in Supabase Authentication → Users.`;
+        } else if (error.message.includes('path') || error.message.includes('Path')) {
+          msg = `Supabase project error: ${error.message}. Check that your project is not paused at supabase.com.`;
+        }
+        throw new Error(msg);
+      }
       // showDashboard() will be called by onAuthStateChange
     }
   } catch (err) {
-    // Show the actual error from Supabase to help debug
-    const msg = err.message || 'Login failed. Please try again.';
-    errorEl.textContent = '❌ ' + msg;
+    console.error('[BeePoints Admin] Login error:', err);
+    // Show full error message
+    errorEl.textContent = err.message || 'Login failed. Please try again.';
     errorEl.style.display = 'block';
     const card = document.querySelector('.admin-login-card');
     if (card) { card.style.animation = 'none'; card.offsetHeight; card.style.animation = 'shake 0.4s ease'; }
