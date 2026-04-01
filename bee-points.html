@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐝 Bee Points — HoneyBee Learning | Earn & Redeem Loyalty Rewards</title>
+  <meta name="description"
+    content="Check your HoneyBee Learning Bee Points balance! Earn 10 Bee Points for every ₹100 spent. Redeem points for free stationery, activity sheets, discounts and more.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://honeybeelearning.co/bee-points.html">
+
+  <!-- OG -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://honeybeelearning.co/bee-points.html">
+  <meta property="og:title" content="🐝 Bee Points — HoneyBee Learning Loyalty Programme">
+  <meta property="og:description"
+    content="Earn 10 Bee Points for every ₹100 spent. Redeem for free stationery, worksheets, discounts & more!">
+  <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+
+  <link rel="icon" href="images/logo/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bee-points.css">
+  <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="css/responsive.css">
+  </noscript>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
+    onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap">
+  </noscript>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav" aria-label="Main navigation">
+    <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
+      <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books"
+        style="height:42px;border-radius:10px;">
+      <div>
+        <span class="nav-logo-text">HoneyBee</span>
+        <span class="nav-logo-sub">Learning</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#streams" onclick="closeMenu()">Products</a></li>
+      <li><a href="ocean-kits.html" onclick="closeMenu()" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊
+          Ocean Kits</a></li>
+      <li><a href="index.html#testimonials" onclick="closeMenu()">Reviews</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="bee-points.html" class="active" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝
+          Bee Points</a></li>
+      <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="nav-cta"
+        style="background:#25D366;">WhatsApp Us 💬</a>
+    </div>
+  </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
+
+  <!-- HERO -->
+  <section class="bp-hero" id="home" aria-label="Bee Points hero">
+    <!-- Firework decorations -->
+    <span class="bp-hero-firework" aria-hidden="true">🎆</span>
+    <span class="bp-hero-firework" aria-hidden="true">✨</span>
+    <span class="bp-hero-firework" aria-hidden="true">🎇</span>
+    <span class="bp-hero-firework" aria-hidden="true">⭐</span>
+
+    <div class="bp-hero-content">
+      <span class="bp-hero-icon" aria-hidden="true">🐝</span>
+      <h1 class="bp-hero-title">🍯 Bee Points</h1>
+      <p class="bp-hero-subtitle">Your HoneyBee Learning Loyalty Rewards — Earn on every order, Redeem for amazing
+        gifts!</p>
+      <div class="bp-hero-pills">
+        <span class="bp-pill">🛍️ ₹100 spent = 10 Bee Points</span>
+        <span class="bp-pill">🎁 Redeem for free gifts & discounts</span>
+        <span class="bp-pill">🔥 Points never expire</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- POINTS LOOKUP -->
+  <section class="bp-lookup-section" id="check-points" aria-labelledby="lookupTitle">
+    <div class="bp-lookup-card">
+      <h2 class="bp-lookup-title" id="lookupTitle">Check Your Bee Points 🐝</h2>
+      <p class="bp-lookup-sub">Enter your registered mobile number to see your points balance</p>
+
+      <form id="lookupForm" onsubmit="lookupPoints(event)">
+        <div class="bp-lookup-input-wrap">
+          <span class="bp-lookup-icon">📱</span>
+          <input type="tel" id="mobileInput" class="bp-lookup-input" placeholder="Enter 10-digit mobile number"
+            maxlength="10" pattern="[0-9]{10}" inputmode="numeric" aria-label="Mobile number" required>
+        </div>
+        <button type="submit" class="bp-lookup-btn" id="lookupBtn">
+          <span id="lookupBtnText">Check My Points 🐝</span>
+        </button>
+      </form>
+
+      <p class="bp-lookup-error" id="lookupError" aria-live="polite"></p>
+
+      <!-- Result card -->
+      <div class="bp-points-result" id="pointsResult" aria-live="polite">
+        <div class="bp-points-card">
+          <p class="bp-customer-name">Welcome back,</p>
+          <p class="bp-customer-actual-name" id="resultName">—</p>
+
+          <div class="bp-points-display">
+            <span class="bp-points-bee-icon" aria-hidden="true">🐝</span>
+            <p class="bp-points-label">Your Bee Points Balance</p>
+            <p class="bp-points-value" id="resultPoints">0</p>
+          </div>
+
+          <div class="bp-stats-row">
+            <div class="bp-stat-box">
+              <div class="bp-stat-box-value" id="resultOrders">0</div>
+              <div class="bp-stat-box-label">Total Orders</div>
+            </div>
+            <div class="bp-stat-box">
+              <div class="bp-stat-box-value" id="resultSpent">₹0</div>
+              <div class="bp-stat-box-label">Total Spent</div>
+            </div>
+          </div>
+        </div>
+
+        <p
+          style="margin-top:16px;font-size:0.84rem;color:var(--text-soft);font-weight:600;text-align:center;line-height:1.5;">
+          🎉 To redeem points, simply mention your mobile number when placing your next order on WhatsApp!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP 5 LEADERBOARD -->
+  <section class="bp-leader-section" id="leaderboard" aria-labelledby="leaderTitle">
+    <div style="text-align:center;margin-bottom:8px;">
+      <div class="section-tag">🏆 Hall of Fame</div>
+      <h2 class="section-title" id="leaderTitle">Top Bee Point Earners</h2>
+      <p class="section-sub" style="margin:0 auto;">Our most loyal customers — who will join next? 🐝</p>
+    </div>
+
+    <div class="bp-leader-card">
+      <div class="bp-leader-list" id="leaderboardList">
+        <!-- Top 5 loaded by JS -->
+        <div class="bp-leader-skeleton"></div>
+        <div class="bp-leader-skeleton"></div>
+        <div class="bp-leader-skeleton"></div>
+      </div>
+      <p class="bp-leader-note">
+        <a href="#check-points" style="color:var(--honey);font-weight:700;">Check your own points ↑</a>
+      </p>
+    </div>
+  </section>
+
+
+  <section class="bp-how-section" aria-labelledby="howTitle">
+    <div style="text-align:center;margin-bottom:8px;">
+      <div class="section-tag">Simple & Sweet</div>
+      <h2 class="section-title" id="howTitle">How Bee Points Work</h2>
+      <p class="section-sub" style="margin:0 auto;">Earn on every purchase, save up, and redeem for amazing rewards —
+        it's that simple!</p>
+    </div>
+
+    <div class="bp-how-grid">
+      <div class="bp-how-card">
+        <div class="bp-how-num">1</div>
+        <div class="bp-how-icon">🛍️</div>
+        <h3 class="bp-how-title">Place an Order</h3>
+        <p class="bp-how-desc">Shop any HoneyBee Learning product — personalised books, kits, or return gifts.</p>
+      </div>
+      <div class="bp-how-card">
+        <div class="bp-how-num">2</div>
+        <div class="bp-how-icon">🐝</div>
+        <h3 class="bp-how-title">Earn 10 Points / ₹100</h3>
+        <p class="bp-how-desc">For every ₹100 you spend, you automatically earn 10 Bee Points on your account.</p>
+      </div>
+      <div class="bp-how-card">
+        <div class="bp-how-num">3</div>
+        <div class="bp-how-icon">🍯</div>
+        <h3 class="bp-how-title">Save & Accumulate</h3>
+        <p class="bp-how-desc">Your points never expire! Keep earning across multiple orders until you're ready to
+          redeem.</p>
+      </div>
+      <div class="bp-how-card">
+        <div class="bp-how-num">4</div>
+        <div class="bp-how-icon">🎁</div>
+        <h3 class="bp-how-title">Redeem for Rewards</h3>
+        <p class="bp-how-desc">Mention your mobile on WhatsApp when ordering. We'll apply your points instantly!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REDEEM TABLE -->
+  <section class="bp-redeem-section" aria-labelledby="redeemTitle">
+    <div style="text-align:center;margin-bottom:8px;">
+      <div class="section-tag">Rewards Catalogue</div>
+      <h2 class="section-title" id="redeemTitle">🎁 Redeem Your Bee Points</h2>
+      <p class="section-sub" style="margin:0 auto;">The more you shop, the more you earn! Here's what you can get with
+        your points.</p>
+    </div>
+
+    <div class="bp-redeem-grid" id="redeemGrid" aria-label="Redemption rewards list">
+      <!-- Populated by JS -->
+    </div>
+
+    <p style="text-align:center;margin-top:28px;font-size:0.9rem;color:var(--text-soft);font-weight:600;">
+      💬 To redeem, simply mention your Bee Points when placing your order via WhatsApp!<br>
+      <a href="https://wa.me/918883624873?text=Hi%20HoneyBee%20Learning!%20I%20want%20to%20redeem%20my%20Bee%20Points."
+        target="_blank" rel="noopener" style="color:var(--green);font-weight:800;text-decoration:none;">Chat on WhatsApp
+        →</a>
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="bp-cta-section" aria-labelledby="ctaTitle">
+    <h2 class="bp-cta-title" id="ctaTitle">🐝 Start Earning Today!</h2>
+    <p class="bp-cta-sub">Every order gets you closer to amazing free rewards. Browse our products and start collecting
+      Bee Points!</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html#streams" class="bp-cta-btn">
+        🛍️ Browse Products &amp; Earn Points
+      </a>
+      <a href="ocean-kits.html" class="bp-cta-btn"
+        style="background:rgba(0,180,216,0.15);border:1.5px solid rgba(0,180,216,0.4);color:#00b4d8;">
+        🌊 Ocean Learning Kits
+      </a>
+    </div>
+    <p style="margin-top:16px;font-size:0.85rem;color:rgba(255,255,255,0.45);font-weight:600;">Then WhatsApp us to place
+      your order &amp; get Bee Points credited 👌</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div class="footer-brand">🍯 HoneyBee Learning</div>
+        <div class="footer-brand-sub">🇮🇳 India's First Personalised Activity Book for Kids<br>📍 Medavakkam, Chennai
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html#streams">🛍️ Products</a>
+          <a href="ocean-kits.html">🌊 Ocean Kits</a>
+          <a href="about.html">🍯 About</a>
+          <a href="faq.html">❓ FAQ</a>
+          <a href="write-review.html">⭐ Write a Review</a>
+          <a href="bee-points.html">🐝 Bee Points</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">Connect</div>
+        <div class="footer-links">
+          <a href="https://wa.me/918883624873" target="_blank">💬 WhatsApp</a>
+          <a href="https://www.instagram.com/honeybee.learning.co" target="_blank">📸 Instagram</a>
+          <a href="tel:8883624873">📞 Call Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      © 2026 HoneyBee Learning · Bee Points Loyalty Programme · Made with ❤️ in Chennai
+    </div>
+  </footer>
+
+  <!-- Sticky WhatsApp -->
+  <a class="wa-fab" href="https://wa.me/918883624873" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="16" fill="#25D366" />
+      <path
+        d="M23.5 8.5A10.44 10.44 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.84.48 3.63 1.39 5.21L5.5 26.5l5.42-1.42A10.44 10.44 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5z"
+        fill="white" />
+    </svg>
+    <span class="wa-fab-label">Chat with us</span>
+  </a>
+
+  <!-- Hamburger + Close Menu -->
+  <script>
+    function closeMenu() {
+      var nav = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      var hamburger = document.getElementById('hamburger');
+      if (nav) nav.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      if (!hamburger) return;
+      hamburger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.contains('open');
+        if (isOpen) { closeMenu(); }
+        else {
+          navLinks.classList.add('open');
+          if (overlay) overlay.classList.add('open');
+          hamburger.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+      if (overlay) overlay.addEventListener('click', closeMenu);
+    });
+  </script>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/bee-points.js"></script>
+
+</body>
+
+</html>

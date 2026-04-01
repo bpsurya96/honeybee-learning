@@ -258,43 +258,58 @@
 <body>
   <!-- NAV -->
   <nav id="mainNav">
-    <a class="nav-logo" href="index.html">
-      <img src="images/logo/logo.png" alt="HoneyBee" style="height:42px;border-radius:10px;">
+    <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
+      <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books" style="height:42px;border-radius:10px;">
       <div>
         <span class="nav-logo-text">HoneyBee</span>
         <span class="nav-logo-sub">Learning</span>
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#streams">Products</a></li>
-      <li><a href="index.html#testimonials">Reviews</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="index.html#footer">Contact</a></li>
+      <li><a href="index.html#streams" onclick="closeMenu()">Products</a></li>
+      <li><a href="ocean-kits.html" onclick="closeMenu()" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
+      <li><a href="index.html#testimonials" onclick="closeMenu()">Reviews</a></li>
+      <li><a href="about.html" class="active" onclick="closeMenu()">About</a></li>
+      <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="bee-points.html" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
+      <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us
-        💬</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us 💬</a>
     </div>
   </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
   <script>
-    (function () {
-      const name = sessionStorage.getItem('hbl_customer_name');
-      const phone = sessionStorage.getItem('hbl_customer_phone');
-      if (name && phone) {
-        const btn = document.getElementById('navUserBtn');
-        if (btn) {
-          const first = name.split(' ')[0];
-          btn.innerHTML = `👤 Hi, ${first}`;
-          btn.href = '#footer';
-          btn.title = name;
-          btn.style.maxWidth = '140px';
-          btn.style.overflow = 'hidden';
-          btn.style.textOverflow = 'ellipsis';
-          btn.style.whiteSpace = 'nowrap';
+    function closeMenu() {
+      var nav = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      var hamburger = document.getElementById('hamburger');
+      if (nav) nav.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      if (!hamburger) return;
+      hamburger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.contains('open');
+        if (isOpen) { closeMenu(); }
+        else {
+          navLinks.classList.add('open');
+          if (overlay) overlay.classList.add('open');
+          hamburger.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
         }
-      }
-    })();
+      });
+      if (overlay) overlay.addEventListener('click', closeMenu);
+    });
   </script>
 
   <!-- BREADCRUMB -->
@@ -457,9 +472,11 @@
         <div class="footer-title">Quick Links</div>
         <div class="footer-links">
           <a href="index.html#streams">🛍️ Products</a>
+          <a href="ocean-kits.html">🌊 Ocean Kits</a>
           <a href="about.html">🍯 About</a>
           <a href="faq.html">❓ FAQ</a>
           <a href="write-review.html">⭐ Write a Review</a>
+          <a href="bee-points.html">🐝 Bee Points</a>
         </div>
       </div>
       <div class="footer-col">

@@ -176,13 +176,18 @@
       <li><a href="#testimonials" onclick="closeMenu()">Reviews</a></li>
       <li><a href="about.html" onclick="closeMenu()">About</a></li>
       <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="bee-points.html" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
       <li><a href="#footer" onclick="closeMenu()">Contact</a></li>
     </ul>
     <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="nav-cta"
         style="background:#25D366;">WhatsApp Us 💬</a>
     </div>
   </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -473,9 +478,11 @@
         <div class="footer-title">Quick Links</div>
         <div class="footer-links">
           <a href="index.html#streams">🛍️ Products</a>
+          <a href="ocean-kits.html">🌊 Ocean Kits</a>
           <a href="about.html">🍯 About</a>
           <a href="faq.html">❓ FAQ</a>
           <a href="write-review.html">⭐ Write a Review</a>
+          <a href="bee-points.html">🐝 Bee Points</a>
         </div>
       </div>
       <div class="footer-col">
@@ -594,9 +601,32 @@
   <script src="js/app.js"></script>
   <script>
     function closeMenu() {
-      document.getElementById('navLinks').classList.remove('open');
+      var nav = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      var hamburger = document.getElementById('hamburger');
+      if (nav) nav.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
       document.body.style.overflow = '';
     }
+    document.addEventListener('DOMContentLoaded', function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      if (!hamburger) return;
+      hamburger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.contains('open');
+        if (isOpen) { closeMenu(); }
+        else {
+          navLinks.classList.add('open');
+          if (overlay) overlay.classList.add('open');
+          hamburger.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+      if (overlay) overlay.addEventListener('click', closeMenu);
+    });
   </script>
 
   <!-- ═══ WELCOME SPLASH LOGIC ═══ -->
