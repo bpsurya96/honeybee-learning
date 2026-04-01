@@ -51,7 +51,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 // ──────────────────────────────────────────────────────────
 // Admin email (must match the Supabase Auth user you created)
-const ADMIN_EMAIL = 'natcha@honeybeelearning.co';
+const ADMIN_EMAIL = 'bpsurya96@gmail.com';
 
 // Detect demo mode
 const IS_DEMO_MODE = SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE';
