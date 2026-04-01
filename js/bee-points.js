@@ -57,10 +57,10 @@ const ADMIN_EMAIL = 'bpsurya96@gmail.com';
 const IS_DEMO_MODE = SUPABASE_URL === 'YOUR_SUPABASE_URL_HERE';
 
 // Initialize Supabase client
-let supabase = null;
+let supabaseClient = null;
 if (!IS_DEMO_MODE) {
   try {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   } catch (e) {
     console.warn('Supabase init failed, running in demo mode:', e);
   }
@@ -124,11 +124,11 @@ async function loadLeaderboard() {
   try {
     let top5 = [];
 
-    if (IS_DEMO_MODE || !supabase) {
+    if (IS_DEMO_MODE || !supabaseClient) {
       await delay(400);
       top5 = [...demoData].sort((a, b) => b.points - a.points).slice(0, 5);
     } else {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseClient
         .from('bee_points_customers')
         .select('name, points, total_orders')
         .order('points', { ascending: false })
@@ -212,11 +212,11 @@ async function lookupPoints(e) {
   try {
     let customer = null;
 
-    if (IS_DEMO_MODE || !supabase) {
+    if (IS_DEMO_MODE || !supabaseClient) {
       await delay(700);
       customer = demoData.find(c => c.mobile === mobile) || null;
     } else {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseClient
         .from('bee_points_customers')
         .select('*')
         .eq('mobile', mobile)
@@ -276,12 +276,12 @@ function initAdmin() {
   if (!document.getElementById('loginScreen')) return;
 
   // Check existing session
-  if (!IS_DEMO_MODE && supabase) {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+  if (!IS_DEMO_MODE && supabaseClient) {
+    supabaseClient.auth.getSession().then(({ data: { session } }) => {
       if (session) showDashboard();
     });
     // Listen for auth state changes
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
       if (session) {
         showDashboard();
       } else {
@@ -306,7 +306,7 @@ async function handleLogin(e) {
   btn.disabled = true;
 
   try {
-    if (IS_DEMO_MODE || !supabase) {
+    if (IS_DEMO_MODE || !supabaseClient) {
       // Demo mode
       if (username === 'natcha' && password === 'Natcha@2023') {
         await delay(400);
@@ -321,7 +321,7 @@ async function handleLogin(e) {
       const email = username.includes('@') ? username : ADMIN_EMAIL;
       console.log('[BeePoints Admin] Attempting login with email:', email);
 
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
       console.log('[BeePoints Admin] Auth response:', { data, error });
 
       if (error) {
@@ -352,11 +352,11 @@ async function handleLogin(e) {
 }
 
 async function handleLogout() {
-  if (!IS_DEMO_MODE && supabase) {
-    await supabase.auth.signOut();
+  if (!IS_DEMO_MODE && supabaseClient) {
+    await supabaseClient.auth.signOut();
   }
   sessionStorage.removeItem('hbl_admin_auth');
-  if (realtimeChannel && supabase) supabase.removeChannel(realtimeChannel);
+  if (realtimeChannel && supabaseClient) supabaseClient.removeChannel(realtimeChannel);
   document.getElementById('adminDashboard').style.display = 'none';
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('loginUsername').value = '';
@@ -369,7 +369,7 @@ async function showDashboard() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('adminDashboard').style.display = 'block';
 
-  if (IS_DEMO_MODE || !supabase) {
+  if (IS_DEMO_MODE || !supabaseClient) {
     document.getElementById('setupBanner').style.display = 'flex';
     document.getElementById('realtimeStatus').textContent = 'Demo Mode';
   }
@@ -393,11 +393,11 @@ async function loadCustomers() {
   try {
     let customers = [];
 
-    if (IS_DEMO_MODE || !supabase) {
+    if (IS_DEMO_MODE || !supabaseClient) {
       await delay(500);
       customers = [...demoData];
     } else {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseClient
         .from('bee_points_customers')
         .select('*')
         .order('points', { ascending: false });
@@ -530,7 +530,7 @@ async function saveCustomer() {
   saveBtn.disabled = true;
 
   try {
-    if (IS_DEMO_MODE || !supabase) {
+    if (IS_DEMO_MODE || !supabaseClient) {
       await delay(400);
       if (currentEditId) {
         const idx = demoData.findIndex(c => c.id === currentEditId);
@@ -542,10 +542,10 @@ async function saveCustomer() {
     } else {
       const payload = { name, mobile, points, total_orders: orders, total_spent: spent, notes, updated_at: new Date().toISOString() };
       if (currentEditId) {
-        const { error } = await supabase.from('bee_points_customers').update(payload).eq('id', currentEditId);
+        const { error } = await supabaseClient.from('bee_points_customers').update(payload).eq('id', currentEditId);
         if (error) throw error;
       } else {
-        const { error } = await supabase.from('bee_points_customers').insert([{ ...payload, created_at: new Date().toISOString() }]);
+        const { error } = await supabaseClient.from('bee_points_customers').insert([{ ...payload, created_at: new Date().toISOString() }]);
         if (error) throw error;
       }
     }
@@ -578,11 +578,11 @@ function openDeleteModal(id, name) {
 async function confirmDelete() {
   if (!deleteTargetId) return;
   try {
-    if (IS_DEMO_MODE || !supabase) {
+    if (IS_DEMO_MODE || !supabaseClient) {
       await delay(300);
       demoData = demoData.filter(c => c.id !== deleteTargetId);
     } else {
-      const { error } = await supabase.from('bee_points_customers').delete().eq('id', deleteTargetId);
+      const { error } = await supabaseClient.from('bee_points_customers').delete().eq('id', deleteTargetId);
       if (error) throw error;
     }
     closeDeleteModal();
@@ -597,8 +597,8 @@ async function confirmDelete() {
 //  ADMIN — REALTIME
 // ═══════════════════════════════════
 function setupRealtime() {
-  if (IS_DEMO_MODE || !supabase) return;
-  realtimeChannel = supabase
+  if (IS_DEMO_MODE || !supabaseClient) return;
+  realtimeChannel = supabaseClient
     .channel('bee_points_live')
     .on('postgres_changes', { event: '*', schema: 'public', table: 'bee_points_customers' }, () => {
       loadCustomers();
