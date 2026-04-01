@@ -137,6 +137,12 @@ async function loadLeaderboard() {
       top5 = data || [];
     }
 
+    if (top5.length === 0) {
+      // If table is empty, show a nice message or use demo data as placeholder
+      board.innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.9rem;padding:20px;">No customers yet. Start earning Bee Points today! 🐝</p>';
+      return;
+    }
+
     const medals = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
     const colors = ['#FFD700', '#C0C0C0', '#CD7F32', 'rgba(255,255,255,0.6)', 'rgba(255,255,255,0.5)'];
 
@@ -621,17 +627,36 @@ document.head.appendChild(_shakeStyle);
 // ═══════════════════════════════════
 //  INIT
 // ═══════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
+function initBeePoints() {
   // Public page
   renderRedeemGrid();
   loadLeaderboard();
 
+  // Also manually try to invoke render table on admin if it exists
   const lookupForm = document.getElementById('lookupForm');
-  if (lookupForm) lookupForm.addEventListener('submit', lookupPoints);
+  if (lookupForm) {
+      // we remove existing listener to avoid dupe in case init fires twice
+      lookupForm.removeEventListener('submit', lookupPoints);
+      lookupForm.addEventListener('submit', lookupPoints);
+  }
 
   const mobileInput = document.getElementById('mobileInput');
-  if (mobileInput) mobileInput.addEventListener('input', e => { e.target.value = e.target.value.replace(/[^0-9]/g, ''); });
+  if (mobileInput) {
+      mobileInput.removeEventListener('input', restrictMobileInput);
+      mobileInput.addEventListener('input', restrictMobileInput);
+  }
 
   // Admin page
   initAdmin();
-});
+}
+
+function restrictMobileInput(e) {
+  e.target.value = e.target.value.replace(/[^0-9]/g, '');
+}
+
+// Ensure init runs even if DOMContentLoaded already fired before this script evaluated
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBeePoints);
+} else {
+  initBeePoints();
+}
