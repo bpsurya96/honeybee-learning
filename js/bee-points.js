@@ -248,8 +248,6 @@ function showLookupError(msg) {
 function displayCustomerResult(customer) {
   document.getElementById('resultName').textContent = customer.name;
   document.getElementById('resultPoints').textContent = '0';
-  document.getElementById('resultEquivalent').textContent =
-    `Worth approx. ₹${Math.floor(customer.points / 10 * 9)} in rewards`;
   document.getElementById('resultOrders').textContent = customer.total_orders;
   document.getElementById('resultSpent').textContent = '₹' + Number(customer.total_spent).toLocaleString('en-IN');
   document.getElementById('pointsResult').style.display = 'block';
@@ -635,15 +633,15 @@ function initBeePoints() {
   // Also manually try to invoke render table on admin if it exists
   const lookupForm = document.getElementById('lookupForm');
   if (lookupForm) {
-      // we remove existing listener to avoid dupe in case init fires twice
-      lookupForm.removeEventListener('submit', lookupPoints);
-      lookupForm.addEventListener('submit', lookupPoints);
+    // we remove existing listener to avoid dupe in case init fires twice
+    lookupForm.removeEventListener('submit', lookupPoints);
+    lookupForm.addEventListener('submit', lookupPoints);
   }
 
   const mobileInput = document.getElementById('mobileInput');
   if (mobileInput) {
-      mobileInput.removeEventListener('input', restrictMobileInput);
-      mobileInput.addEventListener('input', restrictMobileInput);
+    mobileInput.removeEventListener('input', restrictMobileInput);
+    mobileInput.addEventListener('input', restrictMobileInput);
   }
 
   // Admin page

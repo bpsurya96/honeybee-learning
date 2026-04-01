@@ -440,96 +440,152 @@
 
 /* ─── REDEEM TABLE ─── */
 .bp-redeem-section {
-  background: white;
-  padding: 60px 5%;
+  background: var(--cream, #fffdf5);
+  padding: 80px 5%;
 }
 
 .bp-redeem-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
-  margin-top: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
 }
 
 .bp-redeem-card {
-  background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 100%);
-  border-radius: 18px;
-  padding: 24px 20px;
+  background: white;
+  border-radius: 20px;
+  padding: 30px 24px;
   text-align: center;
-  border: 1.5px solid rgba(255,215,0,0.25);
+  border: 2px solid var(--honey-pale, #ffe89e);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+}
+
+/* Beautiful 'Ticket' style cutouts */
+.bp-redeem-card::before,
+.bp-redeem-card::after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  width: 20px;
+  height: 20px;
+  background: var(--cream, #fffdf5);
+  border-radius: 50%;
+  border: 2px solid var(--honey-pale, #ffe89e);
+  z-index: 1;
 }
 
 .bp-redeem-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #FFD700, #f4a227, #FFD700);
+  left: -12px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  transform: translateY(-50%) rotate(45deg);
+  transition: border-color 0.3s;
+}
+
+.bp-redeem-card::after {
+  right: -12px;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  transform: translateY(-50%) rotate(-45deg);
+  transition: border-color 0.3s;
 }
 
 .bp-redeem-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(255,215,0,0.2);
-  border-color: rgba(255,215,0,0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(255, 179, 0, 0.15);
+  border-color: var(--honey);
+}
+
+.bp-redeem-card:hover::before,
+.bp-redeem-card:hover::after {
+  border-color: var(--honey);
+}
+
+.bp-redeem-icon {
+  font-size: 2.8rem;
+  display: inline-flex;
+  margin: -10px auto 4px;
+  padding: 16px;
+  background: linear-gradient(135deg, #fffbdf, white);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(255, 179, 0, 0.1);
+  z-index: 2;
+  position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 .bp-redeem-points {
   font-family: 'Fredoka One', cursive;
-  font-size: 2rem;
-  color: #FFD700;
-  margin-bottom: 4px;
+  font-size: 2.5rem;
+  color: var(--brown);
+  background: linear-gradient(135deg, var(--honey), #f4a227);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  line-height: 1;
 }
 
 .bp-redeem-pts-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: rgba(255,215,0,0.6);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-soft);
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px dashed rgba(255, 179, 0, 0.35);
 }
 
 .bp-redeem-divider {
-  border: none;
-  height: 1px;
-  background: rgba(255,215,0,0.15);
-  margin: 12px 0;
+  display: none; /* Replaced by the dashed border above */
 }
 
 .bp-redeem-reward {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--green);
   line-height: 1.4;
-}
-
-.bp-redeem-icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 8px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .bp-redeem-order-btn {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 8px 20px;
-  background: rgba(255,215,0,0.12);
-  border: 1.5px solid rgba(255,215,0,0.35);
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  background: var(--honey);
+  border: none;
   border-radius: 50px;
-  color: #FFD700;
+  color: white;
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(255, 179, 0, 0.3);
+  z-index: 2;
+  position: relative;
 }
 
 .bp-redeem-order-btn:hover {
-  background: rgba(255,215,0,0.22);
-  transform: translateY(-2px);
+  background: #f4a227;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 179, 0, 0.4);
 }
 
 

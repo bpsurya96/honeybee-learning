@@ -716,13 +716,12 @@
     .bp-cta-section { padding: 44px 5%; }
 
     .bp-redeem-grid {
+        /* Adjust for tablet */
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 20px;
     }
-    .bp-redeem-card { padding: 18px 14px; }
-    .bp-redeem-points { font-size: 1.6rem; }
-    .bp-redeem-reward { font-size: 0.85rem; }
-    .bp-redeem-icon { font-size: 1.6rem; }
+    .bp-redeem-card { padding: 24px 20px; }
+    .bp-redeem-icon { font-size: 2.2rem; }
 
     .bp-leader-card { margin-top: 24px; }
     .bp-lookup-card { padding: 28px 20px; }
@@ -739,14 +738,15 @@
     .bp-pill { font-size: 0.77rem; padding: 6px 12px; }
 
     .bp-redeem-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        /* Let it form nice large single stack automatically instead of a squashed grid */
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
-    .bp-redeem-card { padding: 14px 10px; }
-    .bp-redeem-points { font-size: 1.4rem; }
-    .bp-redeem-icon { font-size: 1.4rem; }
-    .bp-redeem-reward { font-size: 0.8rem; }
-    .bp-redeem-order-btn { font-size: 0.72rem; padding: 6px 12px; margin-top: 10px; }
+    .bp-redeem-card { padding: 20px 18px; min-height: 240px; }
+    .bp-redeem-points { font-size: 2rem; }
+    .bp-redeem-reward { font-size: 1rem; margin-bottom: 16px; }
+    .bp-redeem-icon { font-size: 2rem; margin: 0 auto; }
+    .bp-redeem-order-btn { font-size: 0.9rem; padding: 10px 0; }
 
     .bp-leader-row { padding: 12px 16px; gap: 10px; }
     .bp-leader-name { font-size: 0.9rem; }
