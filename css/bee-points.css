@@ -541,18 +541,33 @@
 
 .bp-how-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 16px;
+  margin-top: 40px;
+  position: relative;
+}
+
+/* Connecting line between the 4 step circles on desktop */
+.bp-how-grid::before {
+  content: '';
+  position: absolute;
+  top: 22px; /* aligns with centre of the step number circle */
+  left: calc(12.5% + 4px);
+  right: calc(12.5% + 4px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), #5a9435);
+  z-index: 0;
 }
 
 .bp-how-card {
   background: white;
   border-radius: 20px;
-  padding: 28px 20px;
+  padding: 30px 18px 24px;
   text-align: center;
   border: 2px solid var(--green-pale);
   transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  z-index: 1;
 }
 
 .bp-how-card:hover {
@@ -561,8 +576,8 @@
 }
 
 .bp-how-num {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: linear-gradient(135deg, var(--green), #5a9435);
   color: white;
   border-radius: 50%;
@@ -570,27 +585,51 @@
   align-items: center;
   justify-content: center;
   font-family: 'Fredoka One', cursive;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin: 0 auto 14px;
+  box-shadow: 0 4px 12px rgba(61,107,36,0.3);
+  border: 3px solid var(--cream);
+  position: relative;
+  z-index: 2;
 }
 
 .bp-how-icon {
   font-size: 2.4rem;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .bp-how-title {
   font-family: 'Fredoka One', cursive;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--brown);
   margin-bottom: 6px;
 }
 
 .bp-how-desc {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-soft);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.55;
+}
+
+/* Tablet: 2x2 */
+@media (max-width: 900px) {
+  .bp-how-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .bp-how-grid::before { display: none; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .bp-how-section { padding: 40px 4%; }
+  .bp-how-grid { gap: 12px; }
+  .bp-how-card { padding: 20px 12px 16px; }
+  .bp-how-num { width: 36px; height: 36px; font-size: 1rem; margin-bottom: 10px; }
+  .bp-how-icon { font-size: 2rem; margin-bottom: 8px; }
+  .bp-how-title { font-size: 0.9rem; }
+  .bp-how-desc { font-size: 0.78rem; }
 }
 
 /* ─── CTA SECTION ─── */

@@ -23,6 +23,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/bee-points.css">
+  <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/responsive.css"></noscript>
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
     onload="this.rel='stylesheet'">
@@ -37,25 +39,30 @@
   <!-- NAV -->
   <nav id="mainNav" aria-label="Main navigation">
     <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
-      <img src="images/logo/logo.png" alt="HoneyBee Learning" style="height:42px;border-radius:10px;">
+      <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books" style="height:42px;border-radius:10px;">
       <div>
         <span class="nav-logo-text">HoneyBee</span>
         <span class="nav-logo-sub">Learning</span>
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#streams">Products</a></li>
-      <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
-      <li><a href="bee-points.html" class="active" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="index.html#footer">Contact</a></li>
+      <li><a href="index.html#streams" onclick="closeMenu()">Products</a></li>
+      <li><a href="ocean-kits.html" onclick="closeMenu()" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
+      <li><a href="index.html#testimonials" onclick="closeMenu()">Reviews</a></li>
+      <li><a href="about.html" onclick="closeMenu()">About</a></li>
+      <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="bee-points.html" class="active" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
+      <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
     </ul>
     <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="nav-cta"
         style="background:#25D366;">WhatsApp Us 💬</a>
     </div>
   </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
 
   <!-- HERO -->
   <section class="bp-hero" id="home" aria-label="Bee Points hero">
@@ -238,8 +245,10 @@
         <div class="footer-title">Quick Links</div>
         <div class="footer-links">
           <a href="index.html#streams">🛍️ Products</a>
+          <a href="ocean-kits.html">🌊 Ocean Kits</a>
           <a href="about.html">🍯 About</a>
           <a href="faq.html">❓ FAQ</a>
+          <a href="write-review.html">⭐ Write a Review</a>
           <a href="bee-points.html">🐝 Bee Points</a>
         </div>
       </div>
@@ -267,6 +276,37 @@
     </svg>
     <span class="wa-fab-label">Chat with us</span>
   </a>
+
+  <!-- Hamburger + Close Menu -->
+  <script>
+    function closeMenu() {
+      var nav = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      var hamburger = document.getElementById('hamburger');
+      if (nav) nav.classList.remove('open');
+      if (overlay) overlay.classList.remove('open');
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      if (!hamburger) return;
+      hamburger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.contains('open');
+        if (isOpen) { closeMenu(); }
+        else {
+          navLinks.classList.add('open');
+          if (overlay) overlay.classList.add('open');
+          hamburger.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+      if (overlay) overlay.addEventListener('click', closeMenu);
+    });
+  </script>
 
   <!-- Supabase CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

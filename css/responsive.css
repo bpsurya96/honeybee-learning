@@ -695,3 +695,66 @@
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+/* ═══════════════════════════════════════════════
+   BEE POINTS PAGE — Responsive
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .bp-hero {
+        padding: 100px 5% 60px;
+        min-height: 50vh;
+    }
+    .bp-hero-icon { font-size: 3.5rem; }
+    .bp-hero-subtitle { font-size: 0.97rem; }
+    .bp-hero-pills { gap: 8px; }
+    .bp-pill { font-size: 0.8rem; padding: 6px 14px; }
+
+    .bp-leader-section { padding: 44px 5%; }
+    .bp-lookup-section { padding: 44px 5%; }
+    .bp-redeem-section { padding: 44px 5%; }
+    .bp-how-section { padding: 44px 5%; }
+    .bp-cta-section { padding: 44px 5%; }
+
+    .bp-redeem-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .bp-redeem-card { padding: 18px 14px; }
+    .bp-redeem-points { font-size: 1.6rem; }
+    .bp-redeem-reward { font-size: 0.85rem; }
+    .bp-redeem-icon { font-size: 1.6rem; }
+
+    .bp-leader-card { margin-top: 24px; }
+    .bp-lookup-card { padding: 28px 20px; }
+}
+
+@media (max-width: 480px) {
+    .bp-hero {
+        padding: 84px 4% 48px;
+    }
+    .bp-hero-icon { font-size: 3rem; }
+    .bp-hero-title { font-size: 2.2rem; }
+    .bp-hero-subtitle { font-size: 0.9rem; }
+    .bp-hero-pills { flex-direction: column; align-items: center; gap: 6px; }
+    .bp-pill { font-size: 0.77rem; padding: 6px 12px; }
+
+    .bp-redeem-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .bp-redeem-card { padding: 14px 10px; }
+    .bp-redeem-points { font-size: 1.4rem; }
+    .bp-redeem-icon { font-size: 1.4rem; }
+    .bp-redeem-reward { font-size: 0.8rem; }
+    .bp-redeem-order-btn { font-size: 0.72rem; padding: 6px 12px; margin-top: 10px; }
+
+    .bp-leader-row { padding: 12px 16px; gap: 10px; }
+    .bp-leader-name { font-size: 0.9rem; }
+    .bp-leader-pts { font-size: 1.2rem; }
+
+    .bp-lookup-card { padding: 24px 16px; }
+    .bp-lookup-title { font-size: 1.5rem; }
+
+    .bp-cta-section { padding: 40px 4%; }
+    .bp-cta-btn { padding: 12px 24px; font-size: 0.93rem; width: 100%; text-align: center; box-sizing: border-box; }
+}

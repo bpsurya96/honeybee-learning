@@ -258,8 +258,8 @@
 <body>
   <!-- NAV -->
   <nav id="mainNav">
-    <a class="nav-logo" href="index.html">
-      <img src="images/logo/logo.png" alt="HoneyBee" style="height:42px;border-radius:10px;">
+    <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
+      <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books" style="height:42px;border-radius:10px;">
       <div>
         <span class="nav-logo-text">HoneyBee</span>
         <span class="nav-logo-sub">Learning</span>
@@ -275,20 +275,41 @@
       <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us
-        💬</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us 💬</a>
     </div>
   </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
   <script>
     function closeMenu() {
-      const nav = document.getElementById('navLinks');
-      const overlay = document.getElementById('navOverlay');
-      const hamburger = document.getElementById('hamburger');
+      var nav = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      var hamburger = document.getElementById('hamburger');
       if (nav) nav.classList.remove('open');
       if (overlay) overlay.classList.remove('open');
-      if (hamburger) hamburger.classList.remove('open');
+      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
       document.body.style.overflow = '';
     }
+    document.addEventListener('DOMContentLoaded', function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+      if (!hamburger) return;
+      hamburger.addEventListener('click', function () {
+        var isOpen = navLinks.classList.contains('open');
+        if (isOpen) { closeMenu(); }
+        else {
+          navLinks.classList.add('open');
+          if (overlay) overlay.classList.add('open');
+          hamburger.classList.add('open');
+          hamburger.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+      if (overlay) overlay.addEventListener('click', closeMenu);
+    });
   </script>
 
   <!-- BREADCRUMB -->
