@@ -777,6 +777,10 @@ body.ocean-page {
 /* ── Base box-sizing safety ── */
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Prevent horizontal overflow globally on this page */
+body.ocean-page { overflow-x: hidden; }
+body.ocean-page * { max-width: 100%; }
+
 /* ── Tablet / small desktop (≤ 960px) ── */
 @media (max-width: 960px) {
   .ok-hero-inner {
@@ -810,6 +814,12 @@ body.ocean-page {
     gap: 20px;
   }
 
+  /* Comparison table — ensure scroll on tablet too */
+  .ok-compare-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   /* Trust → 2 columns on tablet */
   .ok-trust-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -817,76 +827,128 @@ body.ocean-page {
   }
 }
 
-/* ── Mobile landscape / phablet (≤ 680px) ── */
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  /* Section headers */
+  .ok-section-header { margin-bottom: 28px; }
+  .ok-section-sub { font-size: 0.92rem; }
+
+  /* Comparison table — scroll wrapper fix */
+  .ok-compare-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    margin: 0 -4px;
+    padding: 0 4px;
+  }
+  .ok-compare-table {
+    min-width: 480px;
+  }
+}
+
+/* ── Mobile portrait / phablet (≤ 680px) ── */
 @media (max-width: 680px) {
   /* Nav */
-  #mainNav { padding: 0 16px; }
-  .nav-right .nav-cta { display: none; }              /* hide WhatsApp nav CTA — FAB covers it */
-  .back-btn { font-size: 0.8rem; padding: 5px 12px; }
+  #mainNav { padding: 0 14px; height: 58px; }
+  .nav-right .nav-cta { display: none; }
+  .nav-logo img { height: 36px !important; }
 
-  /* Hero */
+  /* Hero — stack vertically, full bleed */
   .ok-hero { min-height: auto; }
-  .ok-hero-inner { padding: 36px 16px 28px; }
-  .ok-hero-title { font-size: clamp(1.75rem, 7vw, 2.2rem); }
-  .ok-hero-sub { font-size: 0.95rem; }
-  .ok-hero-cta { display: block; width: 100%; text-align: center; padding: 14px 20px; }
-  .ok-hero-img-wrap { max-width: 360px; }
-  .ok-hero-img { transform: none; }                   /* remove tilt — can clip on small screens */
-
-  /* Pricing strip → single column */
-  .ok-pricing-strip { padding: 14px 12px; }
-  .ok-pricing-strip-inner {
-    grid-template-columns: 1fr;
-    max-width: 100%;
+  .ok-hero-inner { padding: 32px 16px 24px; gap: 20px; }
+  .ok-hero-title { font-size: clamp(1.7rem, 7.5vw, 2.2rem); }
+  .ok-hero-sub { font-size: 0.92rem; margin-bottom: 16px; }
+  .ok-hero-badges { gap: 6px; margin-bottom: 20px; }
+  .ok-badge { font-size: 0.78rem; padding: 5px 11px; }
+  .ok-hero-cta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 1rem;
   }
-  .ok-ps-item { padding: 8px 10px; gap: 8px; }
+  .ok-hero-img-wrap { max-width: 300px; }
+  .ok-hero-img { transform: none; border-radius: 14px; }
+
+  /* Pricing strip — 2×2 compact grid */
+  .ok-pricing-strip { padding: 12px 10px; }
+  .ok-pricing-strip-inner {
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+    gap: 2px;
+  }
+  .ok-ps-item { padding: 10px 12px; gap: 8px; }
   .ok-ps-icon { font-size: 1.4rem; }
-  .ok-ps-label { font-size: 0.68rem; }
-  .ok-ps-val { font-size: 0.88rem; }
+  .ok-ps-label { font-size: 0.64rem; }
+  .ok-ps-val { font-size: 0.84rem; }
 
   /* Products → single column */
-  .ok-products-section { padding: 44px 14px 40px; }
-  .ok-products-grid { grid-template-columns: 1fr; gap: 18px; }
+  .ok-products-section { padding: 36px 14px 40px; }
+  .ok-products-grid { grid-template-columns: 1fr; gap: 16px; }
 
   /* Card tweaks */
-  .ok-card-img-wrap { height: 200px; }
-  .ok-card-body { padding: 18px 16px 22px; }
-  .ok-card-title { font-size: 1.3rem; }
+  .ok-card-img-wrap { height: 190px; padding: 8px; }
+  .ok-card-body { padding: 16px 14px 20px; }
+  .ok-card-title { font-size: 1.25rem; }
+  .ok-card-desc { font-size: 0.88rem; }
+  .ok-price-tag { font-size: 1.8rem; }
+  .ok-includes-list li { font-size: 0.84rem; }
+  .ok-order-btn { font-size: 1rem; padding: 13px 20px; }
 
-  /* Trust → single column */
-  .ok-trust-section { padding: 44px 14px; }
-  .ok-trust-grid { grid-template-columns: 1fr; gap: 14px; }
-  .ok-trust-card { padding: 22px 18px; }
-
-  /* Comparison table — hide "Freebies" column on phones */
+  /* Comparison table section */
+  .ok-compare-section { padding: 40px 12px; }
+  .ok-compare-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+  }
+  .ok-compare-table { min-width: 420px; }
   .ok-compare-table .col-freebies { display: none; }
-  .ok-compare-table th { font-size: 0.75rem; padding: 12px 10px; }
-  .ok-compare-table td { font-size: 0.82rem; padding: 11px 10px; }
-  .ok-compare-section { padding: 44px 12px; }
+  .ok-compare-table th { font-size: 0.72rem; padding: 10px 10px; white-space: nowrap; }
+  .ok-compare-table td { font-size: 0.82rem; padding: 10px 10px; }
+
+  /* Trust section */
+  .ok-trust-section { padding: 40px 14px; }
+  .ok-trust-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ok-trust-card { padding: 18px 14px; border-radius: 14px; }
+  .ok-trust-icon { font-size: 1.9rem; margin-bottom: 10px; }
+  .ok-trust-card h3 { font-size: 1rem; }
+  .ok-trust-card p { font-size: 0.82rem; }
 
   /* CTA section */
-  .ok-cta-section { padding: 60px 16px 52px; }
-  .ok-cta-title { font-size: clamp(1.5rem, 6vw, 2rem); }
-  .ok-cta-btns { flex-direction: column; align-items: stretch; }
-  .ok-cta-btn { width: 100%; justify-content: center; padding: 15px 20px; font-size: 1rem; }
+  .ok-cta-section { padding: 56px 16px 52px; }
+  .ok-cta-title { font-size: clamp(1.5rem, 7vw, 2rem); }
+  .ok-cta-sub { font-size: 0.9rem; margin-bottom: 24px; }
+  .ok-cta-btns { flex-direction: column; align-items: stretch; gap: 10px; }
+  .ok-cta-btn { width: 100%; justify-content: center; padding: 15px 20px; font-size: 0.98rem; }
+  .ok-cta-note { font-size: 0.78rem; }
 }
 
 /* ── Very small phones (≤ 400px) ── */
 @media (max-width: 400px) {
-  .ok-hero-title { font-size: 1.7rem; }
-  .ok-badge { font-size: 0.74rem; padding: 5px 10px; }
-  .ok-price-tag { font-size: 1.75rem; }
-  .ok-section-title { font-size: 1.6rem; }
+  .ok-hero-title { font-size: 1.6rem; }
+  .ok-hero-tag { font-size: 0.78rem; padding: 5px 14px; }
+  .ok-badge { font-size: 0.72rem; padding: 4px 9px; }
+  .ok-price-tag { font-size: 1.65rem; }
+  .ok-section-title { font-size: 1.55rem; }
 
-  /* Pricing strip → stack vertically */
+  /* Pricing strip — single column on tiny screens */
   .ok-pricing-strip-inner { grid-template-columns: 1fr; }
-  .ok-ps-item { justify-content: center; text-align: center; }
+  .ok-ps-item { justify-content: flex-start; text-align: left; }
 
   /* Nav logo text — hide sub on tiny screens */
   .nav-logo-sub { display: none; }
 
   /* Table — only show Kit, Age, Price, Order */
   .ok-compare-table .col-books { display: none; }
+  .ok-compare-table { min-width: 300px; }
+
+  /* Trust — single column on tiny screens */
+  .ok-trust-grid { grid-template-columns: 1fr; }
+
+  /* Card */
+  .ok-card-img-wrap { height: 170px; }
+  .ok-card-body { padding: 14px 12px 18px; }
 }
 
 /* ── Sticky mobile WhatsApp order bar ── */
@@ -905,10 +967,12 @@ body.ocean-page {
     right: 0;
     z-index: 900;
     background: linear-gradient(90deg, #128C7E, #25D366);
-    padding: 12px 20px;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    padding: 13px 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.22);
     gap: 10px;
     text-decoration: none;
+    /* safe area for notched phones */
+    padding-bottom: calc(13px + env(safe-area-inset-bottom, 0px));
   }
   .ok-mobile-wa-bar span {
     font-family: 'Fredoka One', cursive;
@@ -917,12 +981,10 @@ body.ocean-page {
     letter-spacing: 0.3px;
   }
   /* Hide the global FAB since we have the sticky bar */
-  .wa-fab {
-    display: none !important;
-  }
-  /* Add bottom padding so last content isn't hidden behind the bar */
-  body.ocean-page .ok-cta-section { padding-bottom: 85px !important; }
-  body.ocean-page footer#footer { padding-bottom: 85px !important; }
+  .wa-fab { display: none !important; }
+  /* Bottom padding so content isn't hidden behind bar */
+  body.ocean-page .ok-cta-section { padding-bottom: 90px !important; }
+  body.ocean-page footer#footer { padding-bottom: 90px !important; }
 }
 
 /* ── Touch-device: remove hover effects that can "stick" ── */
@@ -930,4 +992,4 @@ body.ocean-page {
   .ok-card:hover { transform: none; box-shadow: var(--ok-shadow); }
   .ok-trust-card:hover { transform: none; box-shadow: none; }
   .ok-hero-img:hover { transform: none; }
-}
+  .ok-order-btn:hover { transform: none; }
