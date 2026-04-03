@@ -836,7 +836,7 @@ body.ocean-page {
   /* Pricing strip → single column */
   .ok-pricing-strip { padding: 14px 12px; }
   .ok-pricing-strip-inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     max-width: 100%;
   }
   .ok-ps-item { padding: 8px 10px; gap: 8px; }
@@ -916,9 +916,13 @@ body.ocean-page {
     color: white;
     letter-spacing: 0.3px;
   }
+  /* Hide the global FAB since we have the sticky bar */
+  .wa-fab {
+    display: none !important;
+  }
   /* Add bottom padding so last content isn't hidden behind the bar */
-  .ok-cta-section { padding-bottom: 80px; }
-  footer { padding-bottom: 62px; }
+  body.ocean-page .ok-cta-section { padding-bottom: 85px !important; }
+  body.ocean-page footer#footer { padding-bottom: 85px !important; }
 }
 
 /* ── Touch-device: remove hover effects that can "stick" ── */
