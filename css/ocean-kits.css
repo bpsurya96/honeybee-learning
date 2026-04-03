@@ -779,7 +779,6 @@ body.ocean-page {
 
 /* Prevent horizontal overflow globally on this page */
 body.ocean-page { overflow-x: hidden; }
-body.ocean-page * { max-width: 100%; }
 
 /* ── Tablet / small desktop (≤ 960px) ── */
 @media (max-width: 960px) {
@@ -993,3 +992,4 @@ body.ocean-page * { max-width: 100%; }
   .ok-trust-card:hover { transform: none; box-shadow: none; }
   .ok-hero-img:hover { transform: none; }
   .ok-order-btn:hover { transform: none; }
+}
