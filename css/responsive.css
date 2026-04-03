@@ -84,11 +84,11 @@
         display: flex;
     }
 
-    /* Slide-in drawer */
+    /* Slide-in drawer using transform to prevent horizontal overflow */
     .nav-links {
         position: fixed;
         top: 0;
-        right: -280px;
+        right: 0;
         width: 260px;
         height: 100dvh;
         background: #ffffff;
@@ -97,14 +97,15 @@
         padding: 80px 20px 30px;
         gap: 2px;
         box-shadow: -6px 0 32px rgba(0, 0, 0, 0.15);
-        transition: right 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(120%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         list-style: none;
         overflow-y: auto;
     }
 
     .nav-links.open {
-        right: 0;
+        transform: translateX(0);
     }
 
     .nav-links li a {
