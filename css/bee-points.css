@@ -442,12 +442,13 @@
 .bp-redeem-section {
   background: var(--cream, #fffdf5);
   padding: 80px 5%;
+  overflow-x: hidden;
 }
 
 .bp-redeem-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 28px;
   margin-top: 40px;
 }
 
@@ -467,11 +468,18 @@
 }
 
 /* Beautiful 'Ticket' style cutouts */
-.bp-redeem-card::before,
-.bp-redeem-card::after {
+.bp-redeem-divider {
+  position: relative;
+  border: none;
+  border-top: 2px dashed rgba(255, 179, 0, 0.35);
+  margin: 0 -24px 20px -24px;
+}
+
+.bp-redeem-divider::before,
+.bp-redeem-divider::after {
   content: '';
   position: absolute;
-  top: 55%;
+  top: 50%;
   width: 20px;
   height: 20px;
   background: var(--cream, #fffdf5);
@@ -480,7 +488,7 @@
   z-index: 1;
 }
 
-.bp-redeem-card::before {
+.bp-redeem-divider::before {
   left: -12px;
   border-right-color: transparent;
   border-top-color: transparent;
@@ -489,7 +497,7 @@
   transition: border-color 0.3s;
 }
 
-.bp-redeem-card::after {
+.bp-redeem-divider::after {
   right: -12px;
   border-left-color: transparent;
   border-top-color: transparent;
@@ -504,8 +512,8 @@
   border-color: var(--honey);
 }
 
-.bp-redeem-card:hover::before,
-.bp-redeem-card:hover::after {
+.bp-redeem-card:hover .bp-redeem-divider::before,
+.bp-redeem-card:hover .bp-redeem-divider::after {
   border-color: var(--honey);
 }
 
@@ -544,11 +552,6 @@
   letter-spacing: 1.5px;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 2px dashed rgba(255, 179, 0, 0.35);
-}
-
-.bp-redeem-divider {
-  display: none; /* Replaced by the dashed border above */
 }
 
 .bp-redeem-reward {
