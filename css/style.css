@@ -2003,9 +2003,8 @@ footer {
     padding: 8px 4%;
   }
 
-  .nav-links {
-    display: none;
-  }
+  /* NOTE: .nav-links mobile drawer behaviour is handled entirely by responsive.css */
+  /* Do NOT set display:none here — it breaks the hamburger slide-in drawer */
 
   .hero {
     padding: 82px 5% 88px;

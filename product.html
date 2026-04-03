@@ -46,14 +46,10 @@
     <link rel="stylesheet" href="css/product.css">
 
     <!-- Non-critical CSS (loaded async) -->
-    <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
+    <!-- Responsive CSS loads synchronously so hamburger nav drawer always works -->
+  <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/product-responsive.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/custom-order.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="css/responsive.css">
-        <link rel="stylesheet" href="css/product-responsive.css">
-        <link rel="stylesheet" href="css/custom-order.css">
-    </noscript>
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4YMNFP0WP"></script>
@@ -68,10 +64,6 @@
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
         onload="this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap">
-    </noscript>
 </head>
 
 <body>

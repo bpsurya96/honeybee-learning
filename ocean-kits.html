@@ -37,12 +37,8 @@
   <!-- Critical CSS -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/ocean-kits.css">
-
-  <!-- Non-critical CSS -->
-  <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="css/responsive.css">
-  </noscript>
+  <!-- Responsive CSS loads synchronously so hamburger nav drawer always works -->
+  <link rel="stylesheet" href="css/responsive.css">
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4YMNFP0WP"></script>
@@ -109,7 +105,8 @@
       var navLinks = document.getElementById('navLinks');
       var overlay = document.getElementById('navOverlay');
       if (!hamburger) return;
-      hamburger.addEventListener('click', function () {
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation(); // Stop event from bubbling up to body
         var isOpen = navLinks.classList.contains('open');
         if (isOpen) { closeMenu(); }
         else {
@@ -121,6 +118,13 @@
         }
       });
       if (overlay) overlay.addEventListener('click', closeMenu);
+      
+      // Close menu if clicking outside of the navlinks
+      document.body.addEventListener('click', function(e) {
+         if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger) {
+             closeMenu();
+         }
+      });
     });
   </script>
 
