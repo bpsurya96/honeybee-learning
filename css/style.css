@@ -606,30 +606,6 @@ nav {
   line-height: 1.5;
 }
 
-@media (max-width: 680px) {
-  .how-strip-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 0;
-  }
-  .how-strip-grid::before {
-    display: none;
-  }
-  .hero {
-    flex-direction: column-reverse;
-    padding-top: 80px;
-    padding-bottom: 32px;
-    gap: 24px;
-  }
-  .hero-right {
-    max-width: 100%;
-    min-width: unset;
-    width: 100%;
-  }
-  .hero-slideshow {
-    aspect-ratio: 4/3;
-    max-height: 280px;
-  }
-}
 
 @keyframes fadeUp {
   from {
