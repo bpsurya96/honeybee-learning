@@ -177,16 +177,27 @@
         font-size: 0.98rem;
     }
 
-    /* Tablet: hero row layout, slideshow right column */
-    .hero-right {
-        min-width: 220px;
-        max-width: 280px;
-        display: block;
+    /* Tablet: side-by-side, slideshow takes right 45% */
+    .hero {
+        padding: 0;
+        gap: 0;
+        flex-direction: row;
     }
 
+    .hero-left {
+        flex: 0 0 55%;
+        max-width: 55%;
+        padding: 100px 4% 60px 5%;
+    }
+
+    .hero-right {
+        flex: 1 1 45%;
+    }
+
+    /* Slideshow fills right column fully */
     .hero-slideshow {
-        aspect-ratio: 3/4;
-        max-height: 320px;
+        min-height: 100vh;
+        height: 100%;
     }
 
     /* How It Works strip — 2x2 on tablet portrait */
@@ -276,29 +287,31 @@
         font-size: 0.62rem;
     }
 
-    /* Hero — stack vertically: slideshow ABOVE text on mobile */
+    /* Hero — stack vertically on mobile: text on top, slideshow below */
     .hero {
-        flex-direction: column-reverse;
-        padding: 76px 4% 48px;
-        gap: 20px;
+        flex-direction: column;
         min-height: auto;
-        align-items: stretch;
     }
 
-    /* Slideshow: full-width on mobile, landscape ratio */
-    .hero-right {
+    .hero-left {
+        flex: none;
         max-width: 100%;
-        min-width: unset;
+        padding: 80px 6% 28px;
+        order: 1;
+    }
+
+    .hero-right {
+        flex: none;
         width: 100%;
+        order: 2;
     }
 
+    /* Slideshow: full width, fixed height on mobile */
     .hero-slideshow {
-        aspect-ratio: 16/9;
-        max-height: 240px;
-    }
-
-    .hero-slide-dots {
-        margin-top: 10px;
+        min-height: 0;
+        height: 56vw;
+        min-height: 220px;
+        max-height: 320px;
     }
 
     .slide-trust-strip {
@@ -710,13 +723,10 @@
         font-size: 2.7rem;
     }
 
-    /* Small desktop — slideshow slightly smaller */
-    .hero-right {
-        max-width: 380px;
-    }
-
-    .hero-slideshow {
-        max-height: 440px;
+    /* Small desktop — slideshow min-height = 100vh (full panel) */
+    .hero-left {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 
     /* How It Works strip — all 4 in a row */
@@ -765,13 +775,9 @@
         padding: 110px 7% 90px;
     }
 
-    /* Wide desktop — slideshow larger */
-    .hero-right {
-        max-width: 500px;
-    }
-
-    .hero-slideshow {
-        max-height: 540px;
+    /* Wide desktop — left panel padding matches wider section padding */
+    .hero-left {
+        padding: 130px 5% 90px 7%;
     }
 
     .how-it-works-strip {
@@ -813,13 +819,9 @@
         padding: 120px 10% 100px;
     }
 
-    /* Ultra-wide — slideshow biggest */
-    .hero-right {
-        max-width: 560px;
-    }
-
-    .hero-slideshow {
-        max-height: 600px;
+    /* Ultra-wide — extend left panel padding */
+    .hero-left {
+        padding: 140px 5% 100px 10%;
     }
 
     .how-it-works-strip {
