@@ -227,5 +227,82 @@
             "🖊️ Whiteboard Marker",
             "🌟 Motivational Stickers"
         ]
+    },
+    {
+        "id": 107,
+        "title": "Personalised Hulk Reusable Laminated Wipe & Learn Activity Book",
+        "price": 399,
+        "badge": "Reusable",
+        "badgeType": "default",
+        "image": "images/products/107/1.png",
+        "images": [
+            "images/products/107/1.png",
+            "images/products/107/2.png",
+            "images/products/107/3.png",
+            "images/products/107/4.png"
+        ],
+        "fallbackEmoji": "🦸‍♂️",
+        "shortDesc": "Hulk smash and learn reusable book — laminated, waterproof and tear-proof for unlimited tracing practice.",
+        "fullDesc": "Turn learning into an incredible adventure with Hulk! 🦸‍♂️\n\nThis personalised reusable book helps children practise writing again and again using wipe-and-erase pages.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and patterns\n• Name tracing (personalised)\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Works with whiteboard marker\n• 100+ practice uses\n\n🎯 Benefits:\n• Builds writing confidence\n• Improves pencil control\n• Screen-free skill learning\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
+        "tags": [
+            "♻️ Reusable",
+            "🦸‍♂️ Superhero Theme",
+            "✍️ Wipe & Learn",
+            "💧 Waterproof",
+            "🧒 Name Tracing"
+        ],
+        "productType": "reusable",
+        "seoTitle": "Hulk Reusable Activity Book for Kids | Laminated Wipe & Learn Workbook",
+        "metaDescription": "Personalised Hulk reusable laminated book with wipe & learn tracing pages. Waterproof, tear-proof and reusable 100+ times for toddlers.",
+        "keywords": [
+            "hulk reusable book",
+            "superhero wipe and learn",
+            "laminated activity book kids",
+            "reusable tracing workbook",
+            "personalised toddler learning book"
+        ],
+        "freebies": [
+            "🖊️ Whiteboard Marker",
+            "🌟 Motivational Stickers"
+        ]
+    },
+    {
+        "id": 108,
+        "title": "Personalised Spiderman Reusable Laminated Wipe & Learn Activity Book",
+        "price": 399,
+        "badge": "Reusable",
+        "badgeType": "default",
+        "image": "images/products/108/1.png",
+        "images": [
+            "images/products/108/1.png",
+            "images/products/108/2.png",
+            "images/products/108/3.png",
+            "images/products/108/4.png",
+            "images/products/108/5.png"
+        ],
+        "fallbackEmoji": "🕸️",
+        "shortDesc": "Spiderman web-slinging reusable book — laminated, waterproof and tear-proof for unlimited tracing practice.",
+        "fullDesc": "Swing into learning fun with Spiderman! 🕸️🕷️\n\nThis personalised reusable book helps children practise writing again and again using wipe-and-erase pages.\n\n✨ What's Inside:\n• Alphabet tracing\n• Number writing\n• Shapes and patterns\n• Name tracing (personalised)\n• 10+ laminated reusable pages\n\n🛡️ Features:\n• Fully laminated & waterproof\n• Tear-resistant toddler safe\n• Works with whiteboard marker\n• 100+ practice uses\n\n🎯 Benefits:\n• Builds writing confidence\n• Improves pencil control\n• Screen-free skill learning\n\n👶 Age: 2–6 years\n📏 A4 Reusable Format\n💖 Personalised with child’s name",
+        "tags": [
+            "♻️ Reusable",
+            "🕸️ Superhero Theme",
+            "✍️ Wipe & Learn",
+            "💧 Waterproof",
+            "🧒 Name Tracing"
+        ],
+        "productType": "reusable",
+        "seoTitle": "Spiderman Reusable Activity Book for Kids | Laminated Wipe & Learn Workbook",
+        "metaDescription": "Personalised Spiderman reusable laminated book with wipe & learn tracing pages. Waterproof, tear-proof and reusable 100+ times for toddlers.",
+        "keywords": [
+            "spiderman reusable book",
+            "superhero wipe and learn",
+            "laminated activity book kids",
+            "reusable tracing workbook",
+            "personalised toddler learning book"
+        ],
+        "freebies": [
+            "🖊️ Whiteboard Marker",
+            "🌟 Motivational Stickers"
+        ]
     }
 ]
