@@ -162,42 +162,17 @@
         padding: 10px 5%;
     }
 
-    .hero {
-        padding: 92px 5% 78px;
-        gap: 28px;
-        flex-direction: row;
-        align-items: center;
+    /* Cinematic Hero Tablet Tweaks */
+    .cinematic-content {
+        padding: 100px 5% 90px;
     }
-
-    .hero h1 {
-        font-size: 2.35rem;
+    
+    .cinematic-h1 {
+        font-size: 3.2rem;
     }
-
-    .hero-desc {
-        font-size: 0.98rem;
-    }
-
-    /* Tablet: side-by-side, slideshow takes right 45% */
-    .hero {
-        padding: 0;
+    
+    .cinematic-stats {
         gap: 0;
-        flex-direction: row;
-    }
-
-    .hero-left {
-        flex: 0 0 55%;
-        max-width: 55%;
-        padding: 100px 4% 60px 5%;
-    }
-
-    .hero-right {
-        flex: 1 1 45%;
-    }
-
-    /* Slideshow fills right column fully */
-    .hero-slideshow {
-        min-height: 100vh;
-        height: 100%;
     }
 
     /* How It Works strip — 2x2 on tablet portrait */
@@ -287,52 +262,69 @@
         font-size: 0.62rem;
     }
 
-    /* Hero — stack vertically on mobile: text on top, slideshow below */
-    .hero {
+    /* Cinematic Hero Mobile Tweaks */
+    .cinematic-content {
+        padding: 90px 5% 60px;
+    }
+    
+    .cinematic-h1 {
+        font-size: 2.6rem;
+    }
+    
+    .cinematic-desc {
+        font-size: 0.95rem;
+    }
+    
+    .mosaic-col {
+        gap: 4px;
+    }
+    
+    .mosaic-bg {
+        grid-template-columns: repeat(3, 1fr);
+        inset: -2px;
+    }
+    
+    /* Make buttons stack on very small screens */
+    .cinematic-btns {
         flex-direction: column;
-        min-height: auto;
-    }
-
-    .hero-left {
-        flex: none;
-        max-width: 100%;
-        padding: 80px 6% 28px;
-        order: 1;
-    }
-
-    .hero-right {
-        flex: none;
         width: 100%;
-        order: 2;
+        max-width: 300px;
+        gap: 12px;
     }
-
-    /* Slideshow: full width, fixed height on mobile */
-    .hero-slideshow {
-        min-height: 0;
-        height: 56vw;
-        min-height: 220px;
-        max-height: 320px;
+    
+    .cbtn-primary, .cbtn-secondary {
+        width: 100%;
+        text-align: center;
     }
-
-    .slide-trust-strip {
-        font-size: 0.65rem;
-        padding: 5px 10px;
+    
+    /* Stats break to 2x2 on mobile */
+    .cinematic-stats {
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr;
+        row-gap: 24px;
+        width: 100%;
+        max-width: 340px;
     }
-
-    .slide-name-badge {
-        font-size: 0.68rem;
-        padding: 3px 10px;
-        top: 32px;
-        right: 8px;
+    
+    /* Hide the 2nd and 4th dividing elements (the ones that would be at the end of a row) */
+    .cstat-divider:nth-child(2) { display: block; }
+    .cstat-divider:nth-child(4) { display: none; }
+    .cstat-divider:nth-child(6) { display: block; }
+    
+    /* Theme chips scroll horizontally on mobile */
+    .cinematic-themes {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        width: 100vw;
+        padding: 0 5%;
+        /* Hide scrollbar */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
     }
-
-    .slide-theme-pill {
-        font-size: 0.7rem;
-        padding: 3px 10px;
-    }
-
-    .slide-benefit {
-        font-size: 0.65rem;
+    
+    .cinematic-themes::-webkit-scrollbar {
+        display: none;
     }
 
     /* How It Works strip — 2x2 grid on mobile */
@@ -723,10 +715,8 @@
         font-size: 2.7rem;
     }
 
-    /* Small desktop — slideshow min-height = 100vh (full panel) */
-    .hero-left {
-        flex: 0 0 50%;
-        max-width: 50%;
+    .cinematic-content {
+        max-width: 800px;
     }
 
     /* How It Works strip — all 4 in a row */
@@ -775,9 +765,9 @@
         padding: 110px 7% 90px;
     }
 
-    /* Wide desktop — left panel padding matches wider section padding */
-    .hero-left {
-        padding: 130px 5% 90px 7%;
+    .cinematic-content {
+        padding: 130px 5% 90px;
+        max-width: 900px;
     }
 
     .how-it-works-strip {
@@ -819,9 +809,9 @@
         padding: 120px 10% 100px;
     }
 
-    /* Ultra-wide — extend left panel padding */
-    .hero-left {
-        padding: 140px 5% 100px 10%;
+    .cinematic-content {
+        padding: 150px 5% 100px;
+        max-width: 1000px;
     }
 
     .how-it-works-strip {
