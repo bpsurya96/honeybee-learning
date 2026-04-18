@@ -361,10 +361,10 @@ function renderReturnGifts() {
 
     grid.innerHTML = filtered.map(g => {
         const isPremium = g.isPremium;
-        const headerStyle = isPremium ? ' style="background:linear-gradient(135deg,#fff8e1,#ffe082);"' : '';
-        const nameStyle = isPremium ? ' style="color:var(--brown);"' : '';
-        const badgeStyle = isPremium ? ' style="background:var(--orange);"' : '';
-        const btnStyle = isPremium ? ' style="background:var(--brown);"' : '';
+        const headerStyle = isPremium ? ' style="background:linear-gradient(135deg,#fff8e1,#ffe082); border-bottom-color: rgba(255,160,0,0.3);"' : '';
+        const nameStyle = isPremium ? ' style="color:#8b5a3a;"' : '';
+        const badgeStyle = isPremium ? ' style="background:linear-gradient(135deg, #d35400, #e67e22);"' : '';
+        const btnStyle = isPremium ? ' style="background:linear-gradient(135deg, #6b3a1f 0%, #4a2511 100%); box-shadow: 0 6px 20px rgba(107, 58, 31, 0.4);"' : '';
         const btnEmoji = isPremium ? '👑' : '🎁';
         return `
     <div class="product-card reveal" data-category="${g.category}">
