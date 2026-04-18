@@ -222,7 +222,126 @@
       </div>
     </div>
     <div class="hero-right">
-      <img src="images/hero/1.png" alt="Personalised Kids Activity Books" class="hero-banner-img">
+      <!-- ═══ HERO PRODUCT SLIDESHOW ═══ -->
+      <div class="hero-slideshow" id="heroSlideshow"
+           onmouseenter="heroPause()" onmouseleave="heroResume()">
+
+        <!-- Persistent trust strip (top) -->
+        <div class="slide-trust-strip">♻️ Wipe &amp; Learn &nbsp;·&nbsp; 100+ Uses &nbsp;·&nbsp; Personalised with Child's Name</div>
+
+        <!-- Persistent floating name badge -->
+        <div class="slide-name-badge" id="slideNameBadge">✨ Arjun loves this!</div>
+
+        <!-- Slide 1 — Thomas & Friends -->
+        <div class="hero-slide active" id="hslide-0">
+          <img src="images/products/101/1.png" alt="Thomas Friends Reusable Activity Book" loading="lazy">
+          <div class="slide-bottom">
+            <span class="slide-theme-pill">🚂 Thomas &amp; Friends</span>
+            <span class="slide-benefit">Alphabet &amp; number tracing</span>
+          </div>
+        </div>
+
+        <!-- Slide 2 — Batman -->
+        <div class="hero-slide" id="hslide-1">
+          <img src="images/products/102/1.png" alt="Batman Reusable Activity Book" loading="lazy">
+          <div class="slide-bottom">
+            <span class="slide-theme-pill">🦇 Batman</span>
+            <span class="slide-benefit">Shapes &amp; writing practice</span>
+          </div>
+        </div>
+
+        <!-- Slide 3 — Unicorn -->
+        <div class="hero-slide" id="hslide-2">
+          <img src="images/products/103/1.png" alt="Unicorn Reusable Activity Book" loading="lazy">
+          <div class="slide-bottom">
+            <span class="slide-theme-pill">🦄 Unicorn Magic</span>
+            <span class="slide-benefit">Tracing &amp; creativity</span>
+          </div>
+        </div>
+
+        <!-- Slide 4 — Cocomelon -->
+        <div class="hero-slide" id="hslide-3">
+          <img src="images/products/105/1.png" alt="Cocomelon Reusable Activity Book" loading="lazy">
+          <div class="slide-bottom">
+            <span class="slide-theme-pill">🍉 Cocomelon</span>
+            <span class="slide-benefit">Numbers &amp; matching</span>
+          </div>
+        </div>
+
+        <!-- Slide 5 — Hulk -->
+        <div class="hero-slide" id="hslide-4">
+          <img src="images/products/107/1.png" alt="Hulk Reusable Activity Book" loading="lazy">
+          <div class="slide-bottom">
+            <span class="slide-theme-pill">🦸 Hulk</span>
+            <span class="slide-benefit">Fine motor skills</span>
+          </div>
+        </div>
+
+        <!-- Slide 6 — Spiderman -->
+        <div class="hero-slide" id="hslide-5">
+          <img src="images/products/108/1.png" alt="Spiderman Reusable Activity Book" loading="lazy">
+          <div class="slide-bottom">
+            <span class="slide-theme-pill">🕸️ Spiderman</span>
+            <span class="slide-benefit">Name personalisation</span>
+          </div>
+        </div>
+
+      </div><!-- /hero-slideshow -->
+
+      <!-- Dot indicators -->
+      <div class="hero-slide-dots" id="heroSlideDots" aria-label="Slide indicators"></div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS STRIP ═══ -->
+  <section class="how-it-works-strip" aria-label="How HoneyBee Learning works">
+    <div class="how-strip-header">
+      <div class="section-tag">Simple &amp; Fun</div>
+      <div class="how-strip-title">How It Works 🐝</div>
+      <div class="how-strip-sub">From choosing a theme to practising 100+ times — here's the magic!</div>
+    </div>
+    <div class="how-strip-grid">
+
+      <!-- Step 1 -->
+      <div class="how-strip-step">
+        <div class="how-strip-icon-wrap" style="background:linear-gradient(135deg,#e8f5d8,#c8e6a0);">
+          <span>🎨</span>
+          <span class="how-strip-step-num">1</span>
+        </div>
+        <h4>Pick a Theme</h4>
+        <p>Choose from 8+ favourite characters — Thomas, Batman, Unicorn, Spiderman &amp; more!</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="how-strip-step">
+        <div class="how-strip-icon-wrap" style="background:linear-gradient(135deg,#fff8e1,#ffe082);">
+          <span>✏️</span>
+          <span class="how-strip-step-num">2</span>
+        </div>
+        <h4>We Personalise</h4>
+        <p>Every page is printed with <strong>your child's name</strong> to make learning feel magical.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="how-strip-step">
+        <div class="how-strip-icon-wrap" style="background:linear-gradient(135deg,#e3f2fd,#90caf9);">
+          <span>🖊️</span>
+          <span class="how-strip-step-num">3</span>
+        </div>
+        <h4>Wipe &amp; Learn</h4>
+        <p>Fully laminated pages — trace with any whiteboard marker, wipe clean and go again!</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="how-strip-step">
+        <div class="how-strip-icon-wrap" style="background:linear-gradient(135deg,#fce4ec,#f48fb1);">
+          <span>♻️</span>
+          <span class="how-strip-step-num">4</span>
+        </div>
+        <h4>Repeat 100+ Times</h4>
+        <p>Zero paper waste — the book lasts <strong>years</strong> of daily practice. Screen-free, mess-free!</p>
+      </div>
+
     </div>
   </section>
 
@@ -637,6 +756,70 @@
          }
       });
     });
+  </script>
+
+  <!-- ═══ HERO SLIDESHOW LOGIC ═══ -->
+  <script>
+    (function () {
+      var SLIDE_COUNT = 6;
+      var INTERVAL_MS = 3200;
+      var current = 0;
+      var timer = null;
+      var paused = false;
+
+      var NAMES = ['Arjun', 'Priya', 'Dev', 'Ananya', 'Rohan', 'Sara'];
+      var EMOJIS = ['✨', '🌟', '💛', '🎉', '🚀', '🌸'];
+
+      // Build dots
+      var dotsWrap = document.getElementById('heroSlideDots');
+      for (var i = 0; i < SLIDE_COUNT; i++) {
+        var d = document.createElement('button');
+        d.className = 'hero-slide-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        d.dataset.idx = i;
+        d.addEventListener('click', function () { goTo(parseInt(this.dataset.idx)); });
+        dotsWrap.appendChild(d);
+      }
+
+      function goTo(idx) {
+        // Deactivate old
+        var old = document.getElementById('hslide-' + current);
+        if (old) old.classList.remove('active');
+        var oldDot = dotsWrap.children[current];
+        if (oldDot) oldDot.classList.remove('active');
+
+        current = (idx + SLIDE_COUNT) % SLIDE_COUNT;
+
+        // Activate new
+        var slide = document.getElementById('hslide-' + current);
+        if (slide) slide.classList.add('active');
+        var dot = dotsWrap.children[current];
+        if (dot) dot.classList.add('active');
+
+        // Update name badge
+        var badge = document.getElementById('slideNameBadge');
+        if (badge) {
+          badge.style.animation = 'none';
+          badge.offsetHeight; // reflow to restart animation
+          badge.style.animation = '';
+          badge.textContent = EMOJIS[current] + ' ' + NAMES[current] + ' loves this!';
+        }
+      }
+
+      function next() { goTo(current + 1); }
+
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(next, INTERVAL_MS);
+      }
+
+      // Exposed globals for HTML onmouseenter / onmouseleave
+      window.heroPause = function () { paused = true; clearInterval(timer); };
+      window.heroResume = function () { paused = false; startTimer(); };
+
+      // Start
+      startTimer();
+    })();
   </script>
 
   <!-- ═══ WELCOME SPLASH LOGIC ═══ -->
