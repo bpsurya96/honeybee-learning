@@ -180,9 +180,11 @@
     }
 
     .hcs-img {
-        max-height: 100%;
+        width: 100%;
+        height: auto;
         max-width: 420px;
-        width: auto;
+        max-height: 40vh;
+        aspect-ratio: 1 / 1;
         object-fit: contain;
     }
 
@@ -305,9 +307,11 @@
     }
 
     .hcs-img {
-        max-height: 100%;
+        width: 100%;
+        height: auto;
         max-width: 320px;
-        width: auto;
+        max-height: 35vh;
+        aspect-ratio: 1 / 1;
         object-fit: contain;
     }
 
