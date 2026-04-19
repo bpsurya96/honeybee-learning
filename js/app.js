@@ -662,3 +662,159 @@ function scrollCarousel(trackId, dir) {
     const step = card ? card.offsetWidth + 20 : 300;
     track.scrollBy({ left: dir * step, behavior: 'smooth' });
 }
+
+// ─── WHY HONEYBEE EXPLAINER MODAL ───
+let explainerCurrentSlide = 0;
+const EXPLAINER_TOTAL = 4;
+let explainerTimer = null;
+const EXPLAINER_AUTO_MS = 5000; // auto-advance every 5s
+
+function openExplainerModal() {
+    const overlay = document.getElementById('explainerOverlay');
+    if (!overlay) return;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    explainerCurrentSlide = 0;
+    renderExplainerSlide(0);
+    startExplainerTimer();
+}
+
+function closeExplainerModal(e) {
+    const overlay = document.getElementById('explainerOverlay');
+    if (!overlay) return;
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    stopExplainerTimer();
+}
+
+function renderExplainerSlide(idx) {
+    const slides = document.querySelectorAll('.explainer-slide');
+    const dots = document.querySelectorAll('.enav-dot');
+    const track = document.getElementById('epTrack');
+    const prevBtn = document.getElementById('ePrev');
+    const nextBtn = document.getElementById('eNext');
+
+    slides.forEach((s, i) => {
+        s.style.display = i === idx ? 'block' : 'none';
+        if (i === idx) {
+            s.style.animation = 'none';
+            void s.offsetWidth;
+            s.style.animation = '';
+        }
+    });
+
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    if (track) track.style.width = (((idx + 1) / EXPLAINER_TOTAL) * 100) + '%';
+    if (prevBtn) prevBtn.disabled = idx === 0;
+    if (nextBtn) nextBtn.disabled = idx === EXPLAINER_TOTAL - 1;
+    explainerCurrentSlide = idx;
+}
+
+function explainerNav(dir) {
+    const next = explainerCurrentSlide + dir;
+    if (next < 0 || next >= EXPLAINER_TOTAL) return;
+    renderExplainerSlide(next);
+    resetExplainerTimer();
+}
+
+function goExplainerSlide(idx) {
+    renderExplainerSlide(idx);
+    resetExplainerTimer();
+}
+
+function startExplainerTimer() {
+    stopExplainerTimer();
+    explainerTimer = setInterval(() => {
+        const next = explainerCurrentSlide + 1;
+        if (next < EXPLAINER_TOTAL) {
+            renderExplainerSlide(next);
+        } else {
+            stopExplainerTimer();
+        }
+    }, EXPLAINER_AUTO_MS);
+}
+
+function stopExplainerTimer() {
+    if (explainerTimer) { clearInterval(explainerTimer); explainerTimer = null; }
+}
+
+function resetExplainerTimer() {
+    stopExplainerTimer();
+    startExplainerTimer();
+}
+
+// Keyboard support for explainer modal
+document.addEventListener('keydown', (e) => {
+    const overlay = document.getElementById('explainerOverlay');
+    if (!overlay || !overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') closeExplainerModal();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') explainerNav(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   explainerNav(-1);
+});
+
+// ─── HERO CAROUSEL ───
+let hcsCurrentSlide = 0;
+const HCS_TOTAL = 4;
+let hcsTimer = null;
+const HCS_AUTO_MS = 5000;
+
+function renderHcsSlide(idx) {
+    const track = document.getElementById('hcsTrack');
+    const dots = document.querySelectorAll('.hcs-dot');
+    const prog = document.getElementById('hcsProgressBar');
+    if (!track) return;
+
+    // Move track (-0%, -25%, -50%, -75%)
+    track.style.transform = `translateX(-${(idx * 100) / HCS_TOTAL}%)`;
+
+    // Update dots
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+
+    // Update progress bar
+    if (prog) prog.style.width = (((idx + 1) / HCS_TOTAL) * 100) + '%';
+
+    // Prevent prev/next when out of bounds
+    document.getElementById('hcsPrev').disabled = (idx === 0);
+    document.getElementById('hcsNext').disabled = (idx === HCS_TOTAL - 1);
+
+    hcsCurrentSlide = idx;
+}
+
+function hcsNav(dir) {
+    const next = hcsCurrentSlide + dir;
+    if (next < 0 || next >= HCS_TOTAL) return;
+    renderHcsSlide(next);
+    resetHcsTimer();
+}
+
+function hcsGoTo(idx) {
+    renderHcsSlide(idx);
+    resetHcsTimer();
+}
+
+function startHcsTimer() {
+    stopHcsTimer();
+    hcsTimer = setInterval(() => {
+        let next = hcsCurrentSlide + 1;
+        if (next >= HCS_TOTAL) next = 0; // loop back to start
+        renderHcsSlide(next);
+    }, HCS_AUTO_MS);
+}
+
+function stopHcsTimer() {
+    if (hcsTimer) { clearInterval(hcsTimer); hcsTimer = null; }
+}
+
+function resetHcsTimer() {
+    stopHcsTimer();
+    startHcsTimer();
+}
+
+// Init carousel on load if it exists
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('hcsTrack')) {
+        renderHcsSlide(0);
+        startHcsTimer();
+    }
+});
+

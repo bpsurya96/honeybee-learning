@@ -162,20 +162,40 @@
         padding: 10px 5%;
     }
 
-    /* Cinematic Hero Tablet Tweaks */
-    .cinematic-content {
-        padding: 100px 5% 90px;
-    }
-    
-    .cinematic-h1 {
-        font-size: 3.2rem;
-    }
-    
-    .cinematic-stats {
-        gap: 0;
+    /* Hero Carousel Tablet Portrait tweaks */
+    .hcs-track {
+        height: auto;
+        min-height: unset;
+        align-items: stretch;
     }
 
-    /* How It Works strip — 2x2 on tablet portrait */
+    .hcs-slide {
+        flex-direction: column;
+    }
+
+    .hcs-image-side {
+        padding: 40px 5% 0;
+        max-height: 45vh;
+        align-items: flex-end;
+    }
+
+    .hcs-img {
+        max-height: 100%;
+        max-width: 420px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .hcs-text-side {
+        padding: 40px 5% 80px;
+        max-width: 100%;
+        align-items: flex-start;
+    }
+
+    .hcs-headline {
+        font-size: 2.8rem;
+    }
+
     .how-strip-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
@@ -262,70 +282,89 @@
         font-size: 0.62rem;
     }
 
-    /* Cinematic Hero Mobile Tweaks */
-    .cinematic-content {
-        padding: 90px 5% 60px;
+    /* Hero Carousel Mobile Tweaks */
+    .hero-carousel-section {
+        padding-top: 52px;
     }
-    
-    .cinematic-h1 {
-        font-size: 2.6rem;
+
+    .hcs-track {
+        height: auto;
+        min-height: unset;
+        align-items: stretch;
     }
-    
-    .cinematic-desc {
-        font-size: 0.95rem;
-    }
-    
-    .mosaic-col {
-        gap: 4px;
-    }
-    
-    .mosaic-bg {
-        grid-template-columns: repeat(3, 1fr);
-        inset: -2px;
-    }
-    
-    /* Make buttons stack on very small screens */
-    .cinematic-btns {
+
+    .hcs-slide {
         flex-direction: column;
-        width: 100%;
-        max-width: 300px;
-        gap: 12px;
     }
-    
-    .cbtn-primary, .cbtn-secondary {
-        width: 100%;
+
+    .hcs-image-side {
+        padding: 30px 4% 10px;
+        max-height: 40vh;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .hcs-img {
+        max-height: 100%;
+        max-width: 320px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .hcs-text-side {
+        padding: 10px 6% 90px;
+        align-items: center;
         text-align: center;
     }
-    
-    /* Stats break to 2x2 on mobile */
-    .cinematic-stats {
-        display: grid;
-        grid-template-columns: 1fr 1px 1fr;
-        row-gap: 24px;
+
+    .hcs-tag {
+        align-self: center;
+        margin-bottom: 12px;
+        font-size: 0.7rem;
+    }
+
+    .hcs-headline {
+        font-size: 2.2rem;
+    }
+
+    .hcs-body {
+        font-size: 0.9rem;
+    }
+
+    .hcs-trust-row {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .hcs-trust-row span {
+        font-size: 0.72rem;
+        padding: 4px 10px;
+    }
+
+    .hcs-theme-chips {
+        justify-content: center;
+    }
+
+    .hcs-btns {
+        flex-direction: column;
         width: 100%;
-        max-width: 340px;
+        gap: 10px;
+        margin-top: 10px;
     }
-    
-    /* Hide the 2nd and 4th dividing elements (the ones that would be at the end of a row) */
-    .cstat-divider:nth-child(2) { display: block; }
-    .cstat-divider:nth-child(4) { display: none; }
-    .cstat-divider:nth-child(6) { display: block; }
-    
-    /* Theme chips scroll horizontally on mobile */
-    .cinematic-themes {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
-        width: 100vw;
-        padding: 0 5%;
-        /* Hide scrollbar */
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+
+    .hcs-btn-primary, .hcs-btn-secondary {
+        width: 100%;
     }
-    
-    .cinematic-themes::-webkit-scrollbar {
-        display: none;
+
+    .hcs-arrow {
+        top: 38%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
     }
+
+    .hcs-arrow--prev { left: 10px; }
+    .hcs-arrow--next { right: 10px; }
 
     /* How It Works strip — 2x2 grid on mobile */
     .how-it-works-strip {
@@ -699,6 +738,66 @@
     footer {
         padding: 18px 4%;
         font-size: 0.8rem;
+    }
+
+    /* Hero Why Card — compact on mobile */
+    .hero-why-card {
+        padding: 10px 14px 10px 10px;
+        gap: 10px;
+    }
+
+    .hwc-thumb {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hwc-title {
+        font-size: 0.95rem;
+    }
+
+    .hwc-sub {
+        font-size: 0.65rem;
+    }
+
+    /* Explainer modal — bottom-sheet on mobile */
+    .explainer-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .explainer-panel {
+        border-radius: 24px 24px 0 0;
+        max-height: 92dvh;
+    }
+
+    .explainer-slides {
+        padding: 20px 18px 6px;
+    }
+
+    .esl-title {
+        font-size: 1.45rem;
+    }
+
+    .esl-desc {
+        font-size: 0.9rem;
+    }
+
+    .esl-theme-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+    }
+
+    .esl-theme-grid span {
+        font-size: 0.7rem;
+        padding: 7px 2px;
+    }
+
+    .esl-cert-card {
+        padding: 14px 16px;
+    }
+
+    .explainer-nav {
+        padding: 10px 16px 24px;
     }
 }
 

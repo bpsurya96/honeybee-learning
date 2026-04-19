@@ -189,130 +189,114 @@
   </nav>
   <div class="nav-drawer-overlay" id="navOverlay"></div>
 
-  <!-- ═══ CINEMATIC FULL-SCREEN HERO ═══ -->
-  <section class="hero-cinematic" id="home">
+  <!-- ═══ HERO CAROUSEL ═══ -->
+  <section class="hero-carousel-section" id="home" aria-label="Hero slideshow">
 
-    <!-- ── Animated Mosaic Collage Background ── -->
-    <div class="mosaic-bg" aria-hidden="true">
+    <!-- ── Slides ── -->
+    <div class="hcs-track" id="hcsTrack">
 
-      <!-- Column 1 — scrolls UP -->
-      <div class="mosaic-col mosaic-col-1">
-        <div class="mosaic-card"><img src="images/products/101/1.png" alt="Thomas Activity Book"><div class="mosaic-label">🚂 Thomas</div></div>
-        <div class="mosaic-card"><img src="images/products/104/1.png" alt="Cars Activity Book"><div class="mosaic-label">🚗 Cars</div></div>
-        <div class="mosaic-card"><img src="images/products/107/1.png" alt="Hulk Activity Book"><div class="mosaic-label">🦸 Hulk</div></div>
-        <div class="mosaic-card"><img src="images/products/103/1.png" alt="Unicorn Activity Book"><div class="mosaic-label">🦄 Unicorn</div></div>
-        <!-- Duplicated for seamless loop -->
-        <div class="mosaic-card"><img src="images/products/101/1.png" alt="Thomas Activity Book"><div class="mosaic-label">🚂 Thomas</div></div>
-        <div class="mosaic-card"><img src="images/products/104/1.png" alt="Cars Activity Book"><div class="mosaic-label">🚗 Cars</div></div>
-        <div class="mosaic-card"><img src="images/products/107/1.png" alt="Hulk Activity Book"><div class="mosaic-label">🦸 Hulk</div></div>
-        <div class="mosaic-card"><img src="images/products/103/1.png" alt="Unicorn Activity Book"><div class="mosaic-label">🦄 Unicorn</div></div>
-      </div>
-
-      <!-- Column 2 — scrolls DOWN -->
-      <div class="mosaic-col mosaic-col-2">
-        <div class="mosaic-card"><img src="images/products/108/1.png" alt="Spiderman Activity Book"><div class="mosaic-label">🕸️ Spiderman</div></div>
-        <div class="mosaic-card"><img src="images/products/102/1.png" alt="Batman Activity Book"><div class="mosaic-label">🦇 Batman</div></div>
-        <div class="mosaic-card"><img src="images/products/106/1.png" alt="Dora Activity Book"><div class="mosaic-label">🧭 Dora</div></div>
-        <div class="mosaic-card"><img src="images/products/105/1.png" alt="Cocomelon Activity Book"><div class="mosaic-label">🍉 Cocomelon</div></div>
-        <!-- Duplicated for seamless loop -->
-        <div class="mosaic-card"><img src="images/products/108/1.png" alt="Spiderman Activity Book"><div class="mosaic-label">🕸️ Spiderman</div></div>
-        <div class="mosaic-card"><img src="images/products/102/1.png" alt="Batman Activity Book"><div class="mosaic-label">🦇 Batman</div></div>
-        <div class="mosaic-card"><img src="images/products/106/1.png" alt="Dora Activity Book"><div class="mosaic-label">🧭 Dora</div></div>
-        <div class="mosaic-card"><img src="images/products/105/1.png" alt="Cocomelon Activity Book"><div class="mosaic-label">🍉 Cocomelon</div></div>
-      </div>
-
-      <!-- Column 3 — scrolls UP (faster) -->
-      <div class="mosaic-col mosaic-col-3">
-        <div class="mosaic-card"><img src="images/products/103/1.png" alt="Unicorn Activity Book"><div class="mosaic-label">🦄 Unicorn</div></div>
-        <div class="mosaic-card"><img src="images/products/105/1.png" alt="Cocomelon Activity Book"><div class="mosaic-label">🍉 Cocomelon</div></div>
-        <div class="mosaic-card"><img src="images/products/102/1.png" alt="Batman Activity Book"><div class="mosaic-label">🦇 Batman</div></div>
-        <div class="mosaic-card"><img src="images/products/101/1.png" alt="Thomas Activity Book"><div class="mosaic-label">🚂 Thomas</div></div>
-        <!-- Duplicated for seamless loop -->
-        <div class="mosaic-card"><img src="images/products/103/1.png" alt="Unicorn Activity Book"><div class="mosaic-label">🦄 Unicorn</div></div>
-        <div class="mosaic-card"><img src="images/products/105/1.png" alt="Cocomelon Activity Book"><div class="mosaic-label">🍉 Cocomelon</div></div>
-        <div class="mosaic-card"><img src="images/products/102/1.png" alt="Batman Activity Book"><div class="mosaic-label">🦇 Batman</div></div>
-        <div class="mosaic-card"><img src="images/products/101/1.png" alt="Thomas Activity Book"><div class="mosaic-label">🚂 Thomas</div></div>
-      </div>
-
-    </div><!-- /mosaic-bg -->
-
-    <!-- ── Gradient overlay ── -->
-    <div class="mosaic-overlay" aria-hidden="true"></div>
-
-    <!-- ── Centered hero content ── -->
-    <div class="cinematic-content">
-
-      <!-- Status badge -->
-      <div class="cinematic-badge">
-        <span>🇮🇳 India's First</span>
-        <span class="cbadge-dot">·</span>
-        <span>📍 Medavakkam, Chennai</span>
-        <span class="cbadge-dot">·</span>
-        <span>⭐ 500+ Happy Parents</span>
-      </div>
-
-      <!-- Headline -->
-      <h1 class="cinematic-h1">
-        Every Book Has<br>
-        <span class="cinematic-highlight">Your Child's Name</span> On It! ✨
-      </h1>
-
-      <!-- Description -->
-      <p class="cinematic-desc">
-        Personalised wipe-and-learn activity books for kids aged 2–12.<br>
-        Choose a theme → we print your child's name → they learn &amp; play for 100+ sessions!
-      </p>
-
-      <!-- CTAs -->
-      <div class="cinematic-btns">
-        <a href="https://wa.me/918883624873" target="_blank" class="cbtn-primary">WhatsApp Us 💬</a>
-        <a href="#streams" class="cbtn-secondary">Explore Products 📚</a>
-      </div>
-
-      <!-- Stats -->
-      <div class="cinematic-stats">
-        <div class="cstat">
-          <span class="cstat-num">1200+</span>
-          <span class="cstat-label">Sets Delivered</span>
+      <!-- ══ SLIDE 1: Personalised Name ══ -->
+      <div class="hcs-slide hcs-slide--1" data-slide="0">
+        <div class="hcs-image-side">
+          <img src="images/hero/slide1.png" alt="Child holding a personalised activity book with their name on it" class="hcs-img" loading="eager">
         </div>
-        <div class="cstat-divider"></div>
-        <div class="cstat">
-          <span class="cstat-num">₹25</span>
-          <span class="cstat-label">Starting From</span>
-        </div>
-        <div class="cstat-divider"></div>
-        <div class="cstat">
-          <span class="cstat-num">100+</span>
-          <span class="cstat-label">Uses Per Book</span>
-        </div>
-        <div class="cstat-divider"></div>
-        <div class="cstat">
-          <span class="cstat-num">8+</span>
-          <span class="cstat-label">Fun Themes</span>
+        <div class="hcs-text-side">
+          <div class="hcs-tag">🇮🇳 India's First — Chennai</div>
+          <h1 class="hcs-headline">Your Child's Name<br><span class="hcs-accent">On Every Page!</span></h1>
+          <p class="hcs-body">We print <strong>your child's name</strong> across every page of the book — making learning feel magical, personal and exciting. Works for kids aged 2–12!</p>
+          <div class="hcs-trust-row">
+            <span>✅ Personalised</span>
+            <span>✅ Ages 2–12</span>
+            <span>✅ 1200+ Delivered</span>
+          </div>
+          <div class="hcs-btns">
+            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary">Order on WhatsApp 💬</a>
+            <a href="#streams" class="hcs-btn-secondary">See Products 📚</a>
+          </div>
         </div>
       </div>
 
-      <!-- Theme chips -->
-      <div class="cinematic-themes">
-        <span class="ctheme-chip">🚂 Thomas</span>
-        <span class="ctheme-chip">🦇 Batman</span>
-        <span class="ctheme-chip">🦄 Unicorn</span>
-        <span class="ctheme-chip">🍉 Cocomelon</span>
-        <span class="ctheme-chip">🕸️ Spiderman</span>
-        <span class="ctheme-chip">🦸 Hulk</span>
-        <span class="ctheme-chip">🧭 Dora</span>
-        <span class="ctheme-chip">🚗 Cars</span>
+      <!-- ══ SLIDE 2: 8+ Themes ══ -->
+      <div class="hcs-slide hcs-slide--2" data-slide="1">
+        <div class="hcs-image-side">
+          <img src="images/hero/slide2.png" alt="8 different themed activity books for kids" class="hcs-img" loading="lazy">
+        </div>
+        <div class="hcs-text-side">
+          <div class="hcs-tag">🎨 Choose Their Favourite</div>
+          <h2 class="hcs-headline">8+ Fun Themes<br><span class="hcs-accent">Let Them Pick!</span></h2>
+          <p class="hcs-body">From Thomas 🚂 to Spiderman 🕸️ to Unicorn 🦄 — we have every child's favourite character. When they love the theme, they love to learn!</p>
+          <div class="hcs-theme-chips">
+            <span>🚂 Thomas</span><span>🦇 Batman</span><span>🦄 Unicorn</span>
+            <span>🍉 Cocomelon</span><span>🕸️ Spiderman</span><span>🦸 Hulk</span>
+            <span>🧭 Dora</span><span>🚗 Cars</span>
+          </div>
+          <div class="hcs-btns">
+            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary">Order on WhatsApp 💬</a>
+            <a href="#streams" class="hcs-btn-secondary">Explore Books 📚</a>
+          </div>
+        </div>
       </div>
 
-    </div><!-- /cinematic-content -->
+      <!-- ══ SLIDE 3: Wipe & Learn ══ -->
+      <div class="hcs-slide hcs-slide--3" data-slide="2">
+        <div class="hcs-image-side">
+          <img src="images/hero/slide3.png" alt="Child writing on a laminated book page and wiping it clean" class="hcs-img" loading="lazy">
+        </div>
+        <div class="hcs-text-side">
+          <div class="hcs-tag">♻️ Reusable — Zero Waste</div>
+          <h2 class="hcs-headline">Write, Wipe &amp;<br><span class="hcs-accent">Repeat 100+ Times!</span></h2>
+          <p class="hcs-body">Every page is <strong>fully laminated</strong> — your child writes with a whiteboard marker, wipes it clean, and starts again. One book lasts <strong>years</strong> of daily practice!</p>
+          <div class="hcs-trust-row">
+            <span>✅ Fully Laminated</span>
+            <span>✅ Screen-Free</span>
+            <span>✅ 100+ Sessions</span>
+          </div>
+          <div class="hcs-btns">
+            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary">Order on WhatsApp 💬</a>
+            <a href="#streams" class="hcs-btn-secondary">View Books 📚</a>
+          </div>
+        </div>
+      </div>
 
-    <!-- ── Scroll hint ── -->
-    <div class="cinematic-scroll-hint" aria-label="Scroll down">
-      <div class="scroll-indicator-line"></div>
-      <span>Scroll to explore</span>
+      <!-- ══ SLIDE 4: Birthday Return Gifts ══ -->
+      <div class="hcs-slide hcs-slide--4" data-slide="3">
+        <div class="hcs-image-side">
+          <img src="images/hero/slide4.png" alt="Birthday return gift sets beautifully packed" class="hcs-img" loading="lazy">
+        </div>
+        <div class="hcs-text-side">
+          <div class="hcs-tag">🎁 Birthday Return Gifts</div>
+          <h2 class="hcs-headline">Perfect Return Gifts<br><span class="hcs-accent">Starting ₹25!</span></h2>
+          <p class="hcs-body">Give something <strong>meaningful</strong> instead of plastic toys! Our birthday return gift combos come with personalised books, stickers &amp; candy — packed and ready for every child!</p>
+          <div class="hcs-trust-row">
+            <span>✅ From ₹25</span>
+            <span>✅ Pan-India Delivery</span>
+            <span>✅ Bulk Orders</span>
+          </div>
+          <div class="hcs-btns">
+            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary">Order Gifts 🎁</a>
+            <a href="#streams" class="hcs-btn-secondary">See Gift Combos</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hcs-track -->
+
+    <!-- ── Prev / Next arrows ── -->
+    <button class="hcs-arrow hcs-arrow--prev" id="hcsPrev" onclick="hcsNav(-1)" aria-label="Previous slide">&#8249;</button>
+    <button class="hcs-arrow hcs-arrow--next" id="hcsNext" onclick="hcsNav(1)"  aria-label="Next slide">&#8250;</button>
+
+    <!-- ── Slide dots ── -->
+    <div class="hcs-dots" id="hcsDots" role="tablist">
+      <button class="hcs-dot active" onclick="hcsGoTo(0)" role="tab" aria-label="Slide 1"></button>
+      <button class="hcs-dot"        onclick="hcsGoTo(1)" role="tab" aria-label="Slide 2"></button>
+      <button class="hcs-dot"        onclick="hcsGoTo(2)" role="tab" aria-label="Slide 3"></button>
+      <button class="hcs-dot"        onclick="hcsGoTo(3)" role="tab" aria-label="Slide 4"></button>
     </div>
 
-  </section><!-- /hero-cinematic -->
+    <!-- ── Progress bar ── -->
+    <div class="hcs-progress"><div class="hcs-progress-bar" id="hcsProgressBar"></div></div>
+
+  </section><!-- /hero-carousel-section -->
 
 
 
@@ -731,6 +715,123 @@
       </div>
     </div>
   </div>
+
+  <!-- ═══ WHY HONEYBEE EXPLAINER MODAL ═══ -->
+  <div class="explainer-overlay" id="explainerOverlay" onclick="closeExplainerModal(event)" role="dialog"
+    aria-modal="true" aria-label="Why HoneyBee Learning — explainer">
+    <div class="explainer-panel" onclick="event.stopPropagation()">
+
+      <!-- Close -->
+      <button class="explainer-close" onclick="closeExplainerModal()" aria-label="Close">✕</button>
+
+      <!-- Progress bar -->
+      <div class="explainer-progress" id="explainerProgress">
+        <div class="ep-track" id="epTrack"></div>
+      </div>
+
+      <!-- Slides wrapper -->
+      <div class="explainer-slides" id="explainerSlides">
+
+        <!-- Slide 1: Fun learning -->
+        <div class="explainer-slide" data-slide="0">
+          <div class="esl-icon" style="background:linear-gradient(135deg,#fff8dc,#ffe066);">🎉</div>
+          <div class="esl-step">Step 1 of 4</div>
+          <h2 class="esl-title">Learning with Fun!</h2>
+          <p class="esl-desc">
+            Children learn <strong>best when they enjoy</strong> what they do.
+            HoneyBee books mix tracing, colouring, puzzles and games —
+            so your child asks <em>"Can I do one more page?"</em> every single day! 🌟
+          </p>
+          <div class="esl-highlights">
+            <span>✏️ Tracing &amp; Writing</span>
+            <span>🎨 Colouring</span>
+            <span>🧩 Puzzles &amp; Games</span>
+            <span>📚 100+ Sessions Per Book</span>
+          </div>
+        </div>
+
+        <!-- Slide 2: Many themes -->
+        <div class="explainer-slide" data-slide="1" style="display:none">
+          <div class="esl-icon" style="background:linear-gradient(135deg,#e3f2fd,#90caf9);">🎨</div>
+          <div class="esl-step">Step 2 of 4</div>
+          <h2 class="esl-title">8+ Exciting Themes!</h2>
+          <p class="esl-desc">
+            Every child has a favourite character — and <strong>we have them all!</strong>
+            Let your child pick a theme they love, and we make learning feel like
+            an adventure with <em>their favourite hero</em> on every page.
+          </p>
+          <div class="esl-theme-grid">
+            <span>🚂 Thomas</span>
+            <span>🦇 Batman</span>
+            <span>🦄 Unicorn</span>
+            <span>🍉 Cocomelon</span>
+            <span>🕸️ Spiderman</span>
+            <span>🦸 Hulk</span>
+            <span>🧭 Dora</span>
+            <span>🚗 Cars</span>
+          </div>
+        </div>
+
+        <!-- Slide 3: Certificate -->
+        <div class="explainer-slide" data-slide="2" style="display:none">
+          <div class="esl-icon" style="background:linear-gradient(135deg,#fce4ec,#f48fb1);">🏅</div>
+          <div class="esl-step">Step 3 of 4</div>
+          <h2 class="esl-title">A Certificate at the End!</h2>
+          <p class="esl-desc">
+            Every HoneyBee book ends with a <strong>personalised completion certificate</strong> —
+            printed with your child's own name! This creates <em>discipline, pride and a sense of
+            achievement</em> that encourages them to finish every page.
+          </p>
+          <div class="esl-cert-preview" aria-hidden="true">
+            <div class="esl-cert-card">
+              <div class="esl-cert-icon">🏆</div>
+              <div class="esl-cert-name">Certificate of Achievement</div>
+              <div class="esl-cert-child">Awarded to <strong>Your Child's Name</strong></div>
+              <div class="esl-cert-sub">For completing HoneyBee Learning Activity Book</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Personalised name -->
+        <div class="explainer-slide" data-slide="3" style="display:none">
+          <div class="esl-icon" style="background:linear-gradient(135deg,#e8f5d8,#a5d66a);">✨</div>
+          <div class="esl-step">Step 4 of 4</div>
+          <h2 class="esl-title">Their Name. Every Page.</h2>
+          <p class="esl-desc">
+            When a child <strong>sees their own name</strong> on every page of a book,
+            they become deeply attached to it — spending more time reading,
+            practising and learning. It's the secret to <em>less screen time, naturally.</em> 🐝
+          </p>
+          <div class="esl-name-demo" aria-hidden="true">
+            <div class="esl-book-preview">
+              <div class="esl-book-cover">
+                <span class="esl-book-emoji">📖</span>
+                <div class="esl-book-personalised">"<span class="esl-name-highlight">Aarav</span>'s Adventure Book"</div>
+                <div class="esl-book-sub">Every page printed with your child's name ✨</div>
+              </div>
+            </div>
+          </div>
+          <!-- Final CTA -->
+          <a href="https://wa.me/918883624873" target="_blank" class="esl-final-cta"
+            onclick="closeExplainerModal()">Order Your Personalised Book 💬</a>
+        </div>
+
+      </div><!-- /explainer-slides -->
+
+      <!-- Navigation -->
+      <div class="explainer-nav">
+        <button class="enav-btn enav-prev" id="ePrev" onclick="explainerNav(-1)" aria-label="Previous slide">‹</button>
+        <div class="enav-dots" id="enavDots">
+          <span class="enav-dot active" onclick="goExplainerSlide(0)"></span>
+          <span class="enav-dot" onclick="goExplainerSlide(1)"></span>
+          <span class="enav-dot" onclick="goExplainerSlide(2)"></span>
+          <span class="enav-dot" onclick="goExplainerSlide(3)"></span>
+        </div>
+        <button class="enav-btn enav-next" id="eNext" onclick="explainerNav(1)" aria-label="Next slide">›</button>
+      </div>
+
+    </div><!-- /explainer-panel -->
+  </div><!-- /explainer-overlay -->
 
   <!-- STICKY WHATSAPP BUTTON -->
   <a class="wa-fab" href="https://wa.me/918883624873" target="_blank" aria-label="Chat on WhatsApp">
