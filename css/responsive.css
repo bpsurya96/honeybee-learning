@@ -38,16 +38,16 @@
 
 .hamburger span {
     display: block;
-    width: 22px;
-    height: 2.5px;
+    width: 24px;
+    height: 3px;
     background: var(--green);
-    border-radius: 2px;
+    border-radius: 4px;
     transition: all 0.3s ease;
     transform-origin: center;
 }
 
 .hamburger.open span:nth-child(1) {
-    transform: translateY(7.5px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
@@ -56,7 +56,7 @@
 }
 
 .hamburger.open span:nth-child(3) {
-    transform: translateY(-7.5px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ─── DRAWER OVERLAY ─── */
@@ -65,9 +65,9 @@
     position: fixed;
     inset: 0;
     z-index: var(--z-overlay, 98);
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px); /* Reduced blur for better performance and visibility */
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .nav-drawer-overlay.open {
@@ -84,14 +84,19 @@
         display: flex;
     }
 
-    /* Disable nav backdrop filter on mobile to avoid blurring child fixed drawer */
-    nav {
+    /* Force NO blur on navigation components */
+    nav, nav * {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        background: var(--cream) !important; /* Solid background to prevent blur leakage */
+        filter: none !important;
     }
 
-    /* Slide-in drawer using transform to prevent horizontal overflow */
+    nav {
+        background: var(--cream) !important;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    }
+
+    /* Slide-in drawer using translate3d for GPU acceleration and sharpness */
     .nav-links {
         position: fixed;
         top: 0;
@@ -103,19 +108,24 @@
         flex-direction: column;
         padding: 80px 20px 30px;
         gap: 2px;
-        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
-        transform: translate3d(105%, 0, 0); /* Use 3D transform for hardware acceleration */
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.12);
+        transform: translate3d(101%, 0, 0); 
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         list-style: none;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        backdrop-filter: none !important; /* Explicitly disable blur on the drawer itself */
-        -webkit-backdrop-filter: none !important;
+        /* Sharpness Fixes */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        backface-visibility: hidden;
+        perspective: 1000px;
+        will-change: transform;
     }
 
     .nav-links.open {
-        transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0) !important;
     }
 
     .nav-links li a {
