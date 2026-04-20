@@ -666,18 +666,18 @@
             <div class="osum-price" id="modalPrice">₹—</div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label>Your Name *</label><input type="text" id="buyerName"
+            <div class="form-group"><label for="buyerName">Your Name *</label><input type="text" id="buyerName"
                 placeholder="Parent / Buyer name"></div>
-            <div class="form-group"><label>Phone / WhatsApp *</label><input type="tel" id="buyerPhone"
+            <div class="form-group"><label for="buyerPhone">Phone / WhatsApp *</label><input type="tel" id="buyerPhone"
                 placeholder="10-digit number"></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label>Child's Name (for personalisation) *</label><input type="text" id="childName"
+            <div class="form-group"><label for="childName">Child's Name (for personalisation) *</label><input type="text" id="childName"
                 placeholder="e.g. Arjun"></div>
-            <div class="form-group"><label>Quantity *</label><input type="number" id="quantity" value="10" min="1"
+            <div class="form-group"><label for="quantity">Quantity *</label><input type="number" id="quantity" value="10" min="1"
                 max="500"></div>
           </div>
-          <div class="form-group"><label>Age Group</label><select id="ageGroup">
+          <div class="form-group"><label for="ageGroup">Age Group</label><select id="ageGroup">
               <option value="">Select age group</option>
               <option value="1-2">1–2 years (Toddler)</option>
               <option value="3-5">3–5 years (Nursery/LKG)</option>
@@ -689,10 +689,10 @@
                 onclick="selectCandy('chocolate')">🍫 Chocolate</button><button class="candy-btn" id="candy2"
                 onclick="selectCandy('chikki')">🍬 Chikki</button></div>
           </div>
-          <div class="form-group"><label>Delivery Date Needed *</label><input type="date" id="deliveryDate"></div>
-          <div class="form-group"><label>Delivery Address *</label><textarea id="address"
+          <div class="form-group"><label for="deliveryDate">Delivery Date Needed *</label><input type="date" id="deliveryDate"></div>
+          <div class="form-group"><label for="address">Delivery Address *</label><textarea id="address"
               placeholder="Your full address"></textarea></div>
-          <div class="form-group"><label>Special Notes</label><textarea id="notes"
+          <div class="form-group"><label for="notes">Special Notes</label><textarea id="notes"
               placeholder="Theme preference, multiple names, etc." style="min-height:54px;"></textarea></div>
           <p id="formError" style="color:#c0392b;font-weight:700;font-size:0.86rem;margin-bottom:10px;display:none;">
           </p>
@@ -853,7 +853,7 @@
       if (nav) nav.classList.remove('open');
       if (overlay) overlay.classList.remove('open');
       if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
-      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
     }
     document.addEventListener('DOMContentLoaded', function () {
       var hamburger = document.getElementById('hamburger');
@@ -869,7 +869,7 @@
           if (overlay) overlay.classList.add('open');
           hamburger.classList.add('open');
           hamburger.setAttribute('aria-expanded', 'true');
-          document.body.style.overflow = 'hidden';
+          document.body.classList.add('no-scroll');
         }
       });
       if (overlay) overlay.addEventListener('click', closeMenu);

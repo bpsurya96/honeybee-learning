@@ -64,7 +64,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 98;
+    z-index: var(--z-overlay, 98);
     background: rgba(0, 0, 0, 0.38);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
@@ -92,7 +92,7 @@
         width: 260px;
         height: 100dvh;
         background: #ffffff;
-        z-index: 99;
+        z-index: var(--z-modal, 99);
         flex-direction: column;
         padding: 80px 20px 30px;
         gap: 2px;
@@ -218,9 +218,6 @@
         padding: 52px 5%;
     }
 
-    .section-title {
-        font-size: 2rem;
-    }
 
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -452,9 +449,6 @@
         padding: 40px 4%;
     }
 
-    .section-title {
-        font-size: 1.55rem;
-    }
 
     .section-sub {
         font-size: 0.87rem;
@@ -845,9 +839,6 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .section-title {
-        font-size: 2.2rem;
-    }
 }
 
 /* ═══════════════════════════════════════════════
