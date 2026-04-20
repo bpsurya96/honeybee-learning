@@ -64,7 +64,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    z-index: 98;
+    z-index: var(--z-overlay, 98);
     background: rgba(0, 0, 0, 0.38);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
@@ -84,6 +84,13 @@
         display: flex;
     }
 
+    /* Disable nav backdrop filter on mobile to avoid blurring child fixed drawer */
+    nav {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255, 253, 245, 0.98);
+    }
+
     /* Slide-in drawer using transform to prevent horizontal overflow */
     .nav-links {
         position: fixed;
@@ -92,7 +99,7 @@
         width: 260px;
         height: 100dvh;
         background: #ffffff;
-        z-index: 99;
+        z-index: var(--z-modal, 99);
         flex-direction: column;
         padding: 80px 20px 30px;
         gap: 2px;
@@ -162,26 +169,59 @@
         padding: 10px 5%;
     }
 
-    .hero {
-        padding: 92px 5% 78px;
-        gap: 28px;
+    /* Hero Carousel Tablet Portrait tweaks */
+    .hcs-track {
+        height: auto;
+        min-height: unset;
+        align-items: stretch;
     }
 
-    .hero h1 {
-        font-size: 2.35rem;
+    .hcs-slide {
+        flex-direction: column;
     }
 
-    .hero-desc {
-        font-size: 0.98rem;
+    .hcs-image-side {
+        padding: 40px 5% 0;
+        align-items: flex-end;
+    }
+
+    .hcs-img {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+    }
+
+    .hcs-text-side {
+        padding: 40px 5% 80px;
+        max-width: 100%;
+        align-items: flex-start;
+    }
+
+    .hcs-headline {
+        font-size: 2.8rem;
+    }
+
+    .how-strip-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .how-strip-grid::before {
+        display: none;
+    }
+
+    .how-strip-step h4 {
+        font-size: 0.92rem;
+    }
+
+    .how-strip-step p {
+        font-size: 0.75rem;
     }
 
     section {
         padding: 52px 5%;
     }
 
-    .section-title {
-        font-size: 2rem;
-    }
 
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -222,6 +262,7 @@
     }
 }
 
+
 /* ═══════════════════════════════════════════════
    MOBILE  ≤ 480px
    ═══════════════════════════════════════════════ */
@@ -243,13 +284,118 @@
         font-size: 0.62rem;
     }
 
-    /* Hero — stack vertically */
-    .hero {
+    /* Hero Carousel Mobile Tweaks */
+    .hero-carousel-section {
+        padding-top: 52px;
+    }
+
+    .hcs-track {
+        height: auto;
+        min-height: unset;
+        align-items: stretch;
+    }
+
+    .hcs-slide {
         flex-direction: column;
-        padding: 76px 4% 66px;
-        gap: 18px;
-        min-height: auto;
-        align-items: flex-start;
+    }
+
+    .hcs-image-side {
+        padding: 30px 4% 10px;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .hcs-img {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+    }
+
+    .hcs-text-side {
+        padding: 10px 6% 90px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hcs-tag {
+        align-self: center;
+        margin-bottom: 12px;
+        font-size: 0.7rem;
+    }
+
+    .hcs-headline {
+        font-size: 2.2rem;
+    }
+
+    .hcs-body {
+        font-size: 0.9rem;
+    }
+
+    .hcs-trust-row {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .hcs-trust-row span {
+        font-size: 0.72rem;
+        padding: 4px 10px;
+    }
+
+    .hcs-theme-chips {
+        justify-content: center;
+    }
+
+    .hcs-btns {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .hcs-btn-primary, .hcs-btn-secondary {
+        width: 100%;
+    }
+
+    .hcs-arrow {
+        top: 38%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+    }
+
+    .hcs-arrow--prev { left: 10px; }
+    .hcs-arrow--next { right: 10px; }
+
+    /* How It Works strip — 2x2 grid on mobile */
+    .how-it-works-strip {
+        padding: 28px 4% 32px;
+    }
+
+    .how-strip-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 8px;
+    }
+
+    .how-strip-grid::before {
+        display: none;
+    }
+
+    .how-strip-title {
+        font-size: 1.3rem;
+    }
+
+    .how-strip-icon-wrap {
+        width: 56px;
+        height: 56px;
+        font-size: 1.6rem;
+    }
+
+    .how-strip-step h4 {
+        font-size: 0.88rem;
+    }
+
+    .how-strip-step p {
+        font-size: 0.72rem;
     }
 
     .hero h1 {
@@ -304,9 +450,6 @@
         padding: 40px 4%;
     }
 
-    .section-title {
-        font-size: 1.55rem;
-    }
 
     .section-sub {
         font-size: 0.87rem;
@@ -378,7 +521,31 @@
 
     .testi-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+    }
+    
+    .carousel-track .testi-card {
+        min-width: 260px;
+        width: 260px;
+        padding: 20px;
+    }
+
+    .testi-avatar-initials {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .review-tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .review-tab {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        text-align: center;
+        min-width: 45%;
     }
 
     .how-grid {
@@ -593,6 +760,66 @@
         padding: 18px 4%;
         font-size: 0.8rem;
     }
+
+    /* Hero Why Card — compact on mobile */
+    .hero-why-card {
+        padding: 10px 14px 10px 10px;
+        gap: 10px;
+    }
+
+    .hwc-thumb {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hwc-title {
+        font-size: 0.95rem;
+    }
+
+    .hwc-sub {
+        font-size: 0.65rem;
+    }
+
+    /* Explainer modal — bottom-sheet on mobile */
+    .explainer-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .explainer-panel {
+        border-radius: 24px 24px 0 0;
+        max-height: 92dvh;
+    }
+
+    .explainer-slides {
+        padding: 20px 18px 6px;
+    }
+
+    .esl-title {
+        font-size: 1.45rem;
+    }
+
+    .esl-desc {
+        font-size: 0.9rem;
+    }
+
+    .esl-theme-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+    }
+
+    .esl-theme-grid span {
+        font-size: 0.7rem;
+        padding: 7px 2px;
+    }
+
+    .esl-cert-card {
+        padding: 14px 16px;
+    }
+
+    .explainer-nav {
+        padding: 10px 16px 24px;
+    }
 }
 
 /* ═══════════════════════════════════════════════
@@ -608,16 +835,25 @@
         font-size: 2.7rem;
     }
 
-    .hero-right {
-        max-width: 360px;
+    .cinematic-content {
+        max-width: 800px;
+    }
+
+    /* How It Works strip — all 4 in a row */
+    .how-strip-step h4 {
+        font-size: 0.95rem;
+    }
+
+    .how-strip-step p {
+        font-size: 0.76rem;
     }
 
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .learning-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .testi-grid {
@@ -628,9 +864,6 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .section-title {
-        font-size: 2.2rem;
-    }
 }
 
 /* ═══════════════════════════════════════════════
@@ -649,12 +882,27 @@
         padding: 110px 7% 90px;
     }
 
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .cinematic-content {
+        padding: 130px 5% 90px;
+        max-width: 900px;
+    }
+
+    .how-it-works-strip {
+        padding: 44px 7% 48px;
+    }
+
+    .how-strip-icon-wrap {
+        width: 76px;
+        height: 76px;
+        font-size: 2.2rem;
     }
 
     .learning-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(5, 1fr);
     }
 
     .testi-grid {
@@ -682,8 +930,13 @@
         padding: 120px 10% 100px;
     }
 
-    .learning-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .cinematic-content {
+        padding: 150px 5% 100px;
+        max-width: 1000px;
+    }
+
+    .how-it-works-strip {
+        padding: 52px 10% 56px;
     }
 
     .testi-grid {
