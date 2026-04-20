@@ -153,5 +153,111 @@
             "🧹 Eraser",
             "🌟 Motivational Stickers"
         ]
+    },
+    {
+        "id": 205,
+        "title": "Kids Math Practice Book with Cheat Sheet | Addition & Subtraction Workbook (Reusable)",
+        "price": 199,
+        "badge": "Reusable",
+        "badgeType": "success",
+        "image": "images/products/205/1.png",
+        "images": [
+            "images/products/205/1.png"
+        ],
+        "fallbackEmoji": "🧮",
+        "shortDesc": "Reusable math practice book with addition, subtraction and cheat sheet – wipe and learn 100+ times.",
+        "fullDesc": "Make math fun and easy with our hands-on practice book! 📝\n\nDesigned for young learners, this book includes visual exercises to help children understand addition and subtraction concepts clearly.\n\n✨ Includes:\n• Addition & subtraction practice\n• Color & count activities\n• Cheat sheet for quick learning\n• Fun and engaging exercises\n\n🛡️ Features:\n• Reusable laminated pages\n• Step-by-step learning\n• Builds strong math foundation",
+        "tags": [
+            "♻️ Reusable",
+            "🧮 Math Practice",
+            "🔢 Addition & Subtraction",
+            "📄 Cheat Sheet Included"
+        ],
+        "productType": "other",
+        "seoTitle": "Kids Math Practice Book with Cheat Sheet | Reusable Addition & Subtraction Workbook",
+        "metaDescription": "Buy reusable math practice book for kids. Includes addition, subtraction, color & count activities, and a cheat sheet. Laminated and wipe-clean.",
+        "keywords": [
+            "math practice book for kids",
+            "reusable addition subtraction workbook",
+            "math cheat sheet for children",
+            "wipe and learn math book",
+            "preschool math activities"
+        ],
+        "freebies": [
+            "✏️ Whiteboard Marker",
+            "🧹 Eraser",
+            "🌟 Motivational Stickers"
+        ]
+    },
+    {
+        "id": 206,
+        "title": "My First Learning Book for Babies | A4 Laminated Visual Learning Book (0–1 Year)",
+        "price": 299,
+        "badge": "Visual Learning",
+        "badgeType": "primary",
+        "image": "images/products/206/1.png",
+        "images": [
+            "images/products/206/1.png"
+        ],
+        "fallbackEmoji": "👶",
+        "shortDesc": "A4 laminated visual recognition book for babies 0–1 year featuring animals, fruits, colors and family.",
+        "fullDesc": "Introduce your baby to early learning with our visual recognition book! 👶🌐\n\nDesigned for newborns and toddlers, this laminated book helps babies recognize everyday objects through bright and simple visuals.\n\n✨ Includes:\n• Animals, fruits, vegetables\n• Colors, numbers\n• English & Tamil basics\n• Family recognition pages\n\n🛡️ Features:\n• A4 laminated durable pages\n• Bright, baby-friendly visuals\n• Supports early brain development",
+        "tags": [
+            "📏 A4 Laminated",
+            "👶 0–1 Year",
+            "🌈 Visual Recognition",
+            "🌍 English & Tamil"
+        ],
+        "productType": "other",
+        "seoTitle": "My First Learning Book for Babies | A4 Laminated Visual Recognition (0–1 Year)",
+        "metaDescription": "Shop baby's first learning book with A4 laminated pages. Visual recognition for animals, fruits, and family. Perfect for infants 0-1 year.",
+        "keywords": [
+            "baby learning book 0-1 year",
+            "laminated visual recognition book",
+            "infant first learning book",
+            "A4 baby book",
+            "English Tamil baby book"
+        ],
+        "freebies": [
+            "🌟 Growth Chart",
+            "🧸 Sticker Sheet",
+            "🌟 Motivational Stickers"
+        ]
+    },
+    {
+        "id": 207,
+        "title": "Personalised Tamil Name Tracing Book for Kids | Reusable A5 Laminated Workbook",
+        "price": 199,
+        "badge": "Personalised",
+        "badgeType": "primary",
+        "image": "images/products/207/1.png",
+        "images": [
+            "images/products/207/1.png"
+        ],
+        "fallbackEmoji": "✍️",
+        "shortDesc": "Personalised A5 reusable Tamil name and letter tracing workbook with 247 letters – write and wipe.",
+        "fullDesc": "Help your child learn Tamil in a fun and engaging way with our personalised name tracing workbook! ✍️📚\n\nDesigned for early learners, this reusable laminated book allows kids to practice again and again while building confidence in writing.\n\n✨ Features:\n• Personalised with child’s name\n• 247 letter tracing\n• Write & wipe laminated pages\n• A5 size – easy to handle\n• Improves handwriting & recognition\n\n🎯 Perfect for: Age 3–6 years",
+        "tags": [
+            "♻️ Reusable",
+            "✍️ Tamil Name Tracing",
+            "🔤 247 Letters",
+            "📏 A5 Size",
+            "📸 Customised"
+        ],
+        "productType": "other",
+        "seoTitle": "Personalised Tamil Name Tracing Book for Kids | Reusable A5 Laminated Workbook",
+        "metaDescription": "Order personalised Tamil name tracing book for kids. Reusable A5 laminated workbook with 247 letter tracing. Perfect for age 3-6 years.",
+        "keywords": [
+            "tamil name tracing book",
+            "personalised tamil workbook",
+            "reusable tamil writing book",
+            "kids tamil letter tracing",
+            "A5 laminated tamil book"
+        ],
+        "freebies": [
+            "✏️ Whiteboard Marker",
+            "🧹 Eraser",
+            "🌟 Motivational Stickers"
+        ]
     }
 ]
