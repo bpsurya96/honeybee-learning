@@ -162,7 +162,13 @@
         "badgeType": "success",
         "image": "images/products/205/1.png",
         "images": [
-            "images/products/205/1.png"
+            "images/products/205/1.png",
+            "images/products/205/2.png",
+            "images/products/205/3.png",
+            "images/products/205/4.png",
+            "images/products/205/5.png",
+            "images/products/205/6.png",
+            "images/products/205/7.png"
         ],
         "fallbackEmoji": "🧮",
         "shortDesc": "Reusable math practice book with addition, subtraction and cheat sheet – wipe and learn 100+ times.",
@@ -197,7 +203,11 @@
         "badgeType": "primary",
         "image": "images/products/206/1.png",
         "images": [
-            "images/products/206/1.png"
+            "images/products/206/1.png",
+            "images/products/206/2.png",
+            "images/products/206/3.png",
+            "images/products/206/4.png",
+            "images/products/206/5.png"
         ],
         "fallbackEmoji": "👶",
         "shortDesc": "A4 laminated visual recognition book for babies 0–1 year featuring animals, fruits, colors and family.",
@@ -232,7 +242,10 @@
         "badgeType": "primary",
         "image": "images/products/207/1.png",
         "images": [
-            "images/products/207/1.png"
+            "images/products/207/1.png",
+            "images/products/207/2.png",
+            "images/products/207/3.png",
+            "images/products/207/4.png"
         ],
         "fallbackEmoji": "✍️",
         "shortDesc": "Personalised A5 reusable Tamil name and letter tracing workbook with 247 letters – write and wipe.",
