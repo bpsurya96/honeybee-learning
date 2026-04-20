@@ -65,9 +65,9 @@
     position: fixed;
     inset: 0;
     z-index: var(--z-overlay, 98);
-    background: rgba(0, 0, 0, 0.38);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .nav-drawer-overlay.open {
@@ -88,7 +88,7 @@
     nav {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        background: rgba(255, 253, 245, 0.98);
+        background: var(--cream) !important; /* Solid background to prevent blur leakage */
     }
 
     /* Slide-in drawer using transform to prevent horizontal overflow */
@@ -96,23 +96,26 @@
         position: fixed;
         top: 0;
         right: 0;
-        width: 260px;
+        width: 280px;
         height: 100dvh;
         background: #ffffff;
         z-index: var(--z-modal, 99);
         flex-direction: column;
         padding: 80px 20px 30px;
         gap: 2px;
-        box-shadow: -6px 0 32px rgba(0, 0, 0, 0.15);
-        transform: translateX(120%);
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+        transform: translate3d(105%, 0, 0); /* Use 3D transform for hardware acceleration */
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         list-style: none;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        backdrop-filter: none !important; /* Explicitly disable blur on the drawer itself */
+        -webkit-backdrop-filter: none !important;
     }
 
     .nav-links.open {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     .nav-links li a {
