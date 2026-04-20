@@ -179,19 +179,18 @@ nav {
 .hero-carousel-section {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - var(--nav-height, 68px));
-  height: auto;
+  min-height: 100vh;
   overflow: hidden;
   padding-top: var(--nav-height, 68px); /* dynamic nav height */
-  background: #ffffff; /* fallback */
+  background: #ffffff;
 }
 
 /* Track holds all 4 slides side by side */
 .hcs-track {
   display: flex;
   width: 400%; /* 4 slides × 100% */
-  min-height: calc(100vh - var(--nav-height, 68px));
-  height: auto;
+  height: calc(100vh - var(--nav-height, 68px));
+  min-height: 560px;
   touch-action: pan-y pinch-zoom; /* Prevents horizontal swipe navigation interfering with JS swiper */
   transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
 }
@@ -224,8 +223,7 @@ nav {
 .hcs-img {
   width: 100%;
   max-width: 480px;
-  height: auto;
-  aspect-ratio: 1 / 1;
+  max-height: 540px;
   object-fit: contain;
   border-radius: 24px;
   background: rgba(255,255,255,0.7);

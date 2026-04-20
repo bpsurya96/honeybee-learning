@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initNavScroll();
 
     initFAQ();
+    initSwipes();
 
     // ─── Auto-switch tab from URL param (e.g. ?tab=learning) ───
     const tabParam = new URLSearchParams(window.location.search).get('tab');
@@ -438,14 +439,20 @@ function openLightboxFromHome(imgSrc) {
     if (lightbox) {
         // reuse the dmodal html we have
         document.getElementById('dmImg').src = imgSrc;
+        document.getElementById('dmImg').style.maxHeight = '80vh';
+        document.getElementById('dmImg').style.aspectRatio = 'auto';
         document.getElementById('dmTitle').textContent = "";
         document.getElementById('dmPrice').textContent = '';
         document.getElementById('dmDesc').textContent = '';
         document.getElementById('dmTags').innerHTML = '';
         document.getElementById('dmBtn').style.display = 'none';
-        document.querySelector('.dmodal-note').style.display = 'none';
+        
+        // Hide note if it exists
+        const note = document.querySelector('.dmodal-note');
+        if (note) note.style.display = 'none';
+        
         lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
     }
 }
 
@@ -527,6 +534,8 @@ function initFilters() {
 function openDetailModal(idx) {
     const p = learningProducts[idx];
     document.getElementById('dmImg').src = p.image;
+    document.getElementById('dmImg').style.maxHeight = '220px';
+    document.getElementById('dmImg').style.aspectRatio = '1 / 1';
     document.getElementById('dmTitle').textContent = p.title;
     document.getElementById('dmPrice').textContent = '₹' + p.price;
     document.getElementById('dmDesc').textContent = p.fullDesc;
@@ -790,6 +799,20 @@ function hcsNav(dir) {
 function hcsGoTo(idx) {
     renderHcsSlide(idx);
     resetHcsTimer();
+}
+
+function initSwipes() {
+    // Hero Carousel Swipes
+    const hcsTrack = document.getElementById('hcsTrack');
+    if (hcsTrack) {
+        let sx = 0;
+        hcsTrack.addEventListener('touchstart', e => { sx = e.changedTouches[0].screenX; }, {passive:true});
+        hcsTrack.addEventListener('touchend', e => {
+            let ex = e.changedTouches[0].screenX;
+            if (sx - ex > 40) hcsNav(1);
+            if (ex - sx > 40) hcsNav(-1);
+        }, {passive:true});
+    }
 }
 
 function startHcsTimer() {

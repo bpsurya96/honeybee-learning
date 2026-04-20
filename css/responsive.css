@@ -514,7 +514,31 @@
 
     .testi-grid {
         grid-template-columns: 1fr;
-        gap: 12px;
+    }
+    
+    .carousel-track .testi-card {
+        min-width: 260px;
+        width: 260px;
+        padding: 20px;
+    }
+
+    .testi-avatar-initials {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .review-tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .review-tab {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        text-align: center;
+        min-width: 45%;
     }
 
     .how-grid {
