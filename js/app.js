@@ -18,7 +18,7 @@ let currentLearningType = 'activity';
 let currentCombo = '';
 let currentPrice = '';
 let searchQuery = '';
-const PRODUCTS_PER_PAGE = 6;
+function getProductsPerPage() { return window.innerWidth >= 1280 ? 10 : (window.innerWidth >= 769 ? 8 : 6); }
 let currentProductPage = 1;
 
 // ─── INIT ───
@@ -151,7 +151,7 @@ function renderLearningProducts(typeFilter, resetPage) {
     }
 
     // Pagination slice
-    const totalToShow = currentProductPage * PRODUCTS_PER_PAGE;
+    const totalToShow = currentProductPage * getProductsPerPage();
     const visible = filtered.slice(0, totalToShow);
     const hasMore = filtered.length > totalToShow;
 
