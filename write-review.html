@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Write a Review — HoneyBee Learning</title>
-  <meta name="description" content="Share your experience with HoneyBee Learning personalised kids books and return gifts. Help other parents discover India's first personalised activity book for kids.">
+  <meta name="description"
+    content="Share your experience with HoneyBee Learning personalised kids books and return gifts. Help other parents discover India's first personalised activity book for kids.">
   <meta name="robots" content="noindex, follow">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
   <meta property="og:title" content="Write a Review — HoneyBee Learning">
-  <meta property="og:description" content="Share your experience with HoneyBee Learning. Help other parents find the best personalised kids books and birthday return gifts in India.">
+  <meta property="og:description"
+    content="Share your experience with HoneyBee Learning. Help other parents find the best personalised kids books and birthday return gifts in India.">
   <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
   <meta property="og:site_name" content="HoneyBee Learning">
   <link rel="icon" href="images/logo/logo.png">
@@ -23,17 +25,19 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
   <meta property="og:title" content="Write a Review — HoneyBee Learning">
-  <meta property="og:description" content="Share your experience with HoneyBee Learning personalised kids books. Help other parents discover India's first personalised activity book for kids.">
+  <meta property="og:description"
+    content="Share your experience with HoneyBee Learning personalised kids books. Help other parents discover India's first personalised activity book for kids.">
   <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
   <meta property="og:site_name" content="HoneyBee Learning">
   <meta name="twitter:card" content="summary_large_image">
 
-    <!-- SEO - noindex: form pages don't need Google indexing -->
+  <!-- SEO - noindex: form pages don't need Google indexing -->
   <meta name="robots" content="noindex, follow">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
   <meta property="og:title" content="Write a Review - HoneyBee Learning">
-  <meta property="og:description" content="Share your experience with HoneyBee Learning personalised kids books. Help other parents discover India's first personalised activity book for kids.">
+  <meta property="og:description"
+    content="Share your experience with HoneyBee Learning personalised kids books. Help other parents discover India's first personalised activity book for kids.">
   <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
   <meta property="og:site_name" content="HoneyBee Learning">
   <meta name="twitter:card" content="summary_large_image">
@@ -48,8 +52,13 @@
 
 
   <style>
-    body { background: #fafaf7; }
-    .page-hero { background: linear-gradient(135deg, #f4a227 0%, #e67e22 100%); }
+    body {
+      background: #fafaf7;
+    }
+
+    .page-hero {
+      background: linear-gradient(135deg, #f4a227 0%, #e67e22 100%);
+    }
 
     /* ── PROGRESS BAR ── */
     .progress-wrap {
@@ -57,6 +66,7 @@
       margin: 28px auto 0;
       padding: 0 24px;
     }
+
     .progress-label {
       display: flex;
       justify-content: space-between;
@@ -65,12 +75,14 @@
       color: var(--brown);
       margin-bottom: 8px;
     }
+
     .progress-bar-bg {
       height: 8px;
       background: #f0e8d0;
       border-radius: 10px;
       overflow: hidden;
     }
+
     .progress-bar-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--honey), var(--green));
@@ -89,15 +101,25 @@
       background: white;
       border-radius: 22px;
       padding: 36px 36px 28px;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.07);
+      box-shadow: 0 6px 32px rgba(0, 0, 0, 0.07);
       display: none;
       animation: fadeUp 0.3s ease;
     }
-    .step-box.active { display: block; }
+
+    .step-box.active {
+      display: block;
+    }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .step-num {
@@ -108,6 +130,7 @@
       letter-spacing: 0.5px;
       margin-bottom: 8px;
     }
+
     .step-question {
       font-family: 'Fredoka One', cursive;
       font-size: 1.4rem;
@@ -115,6 +138,7 @@
       margin: 0 0 6px;
       line-height: 1.3;
     }
+
     .step-hint {
       font-size: 0.87rem;
       color: var(--text-soft);
@@ -129,6 +153,7 @@
       gap: 12px;
       margin-bottom: 28px;
     }
+
     .choice-chip {
       border: 2.5px solid #eee;
       border-radius: 16px;
@@ -143,13 +168,24 @@
       background: white;
       user-select: none;
     }
-    .choice-chip .chip-emoji { font-size: 1.8rem; display: block; margin-bottom: 6px; }
-    .choice-chip:hover { border-color: var(--honey); background: #fffbf0; transform: translateY(-1px); }
+
+    .choice-chip .chip-emoji {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .choice-chip:hover {
+      border-color: var(--honey);
+      background: #fffbf0;
+      transform: translateY(-1px);
+    }
+
     .choice-chip.selected {
       border-color: var(--green);
       background: linear-gradient(135deg, #eaf7e0, #f6ffec);
       color: var(--green);
-      box-shadow: 0 4px 14px rgba(61,107,36,0.12);
+      box-shadow: 0 4px 14px rgba(61, 107, 36, 0.12);
     }
 
     /* ── CHECK CHIPS (multi-select) ── */
@@ -159,6 +195,7 @@
       gap: 12px;
       margin-bottom: 28px;
     }
+
     .check-chip {
       border: 2.5px solid #eee;
       border-radius: 14px;
@@ -176,13 +213,23 @@
       align-items: center;
       gap: 10px;
     }
-    .check-chip .check-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .check-chip:hover { border-color: var(--honey); background: #fffbf0; }
+
+    .check-chip .check-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .check-chip:hover {
+      border-color: var(--honey);
+      background: #fffbf0;
+    }
+
     .check-chip.selected {
       border-color: var(--green);
       background: linear-gradient(135deg, #eaf7e0, #f6ffec);
       color: var(--green);
     }
+
     .check-chip.selected::after {
       content: '✓';
       margin-left: auto;
@@ -197,6 +244,7 @@
       gap: 10px;
       margin-bottom: 28px;
     }
+
     .star-btn {
       font-size: 2.6rem;
       cursor: pointer;
@@ -207,11 +255,18 @@
       padding: 0;
       line-height: 1;
     }
-    .star-btn.lit { color: var(--honey); }
-    .star-btn:hover { transform: scale(1.2); }
+
+    .star-btn.lit {
+      color: var(--honey);
+    }
+
+    .star-btn:hover {
+      transform: scale(1.2);
+    }
 
     /* ── TEXT INPUT ── */
-    .rev-input, .rev-textarea {
+    .rev-input,
+    .rev-textarea {
       width: 100%;
       padding: 14px 16px;
       border: 2px solid #eee;
@@ -224,12 +279,18 @@
       transition: border-color 0.2s, box-shadow 0.2s;
       box-sizing: border-box;
     }
-    .rev-input:focus, .rev-textarea:focus {
+
+    .rev-input:focus,
+    .rev-textarea:focus {
       border-color: var(--honey);
       outline: none;
-      box-shadow: 0 0 0 4px rgba(244,162,39,0.1);
+      box-shadow: 0 0 0 4px rgba(244, 162, 39, 0.1);
     }
-    .rev-textarea { min-height: 110px; resize: vertical; }
+
+    .rev-textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
 
     /* ── NAV BUTTONS ── */
     .btn-row {
@@ -237,6 +298,7 @@
       gap: 12px;
       margin-top: 8px;
     }
+
     .btn-back {
       flex: 1;
       padding: 14px;
@@ -250,7 +312,12 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-back:hover { border-color: var(--honey); color: var(--brown); }
+
+    .btn-back:hover {
+      border-color: var(--honey);
+      color: var(--brown);
+    }
+
     .btn-next {
       flex: 2;
       padding: 14px;
@@ -264,8 +331,17 @@
       cursor: pointer;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-next:hover { background: #1a7a3c; transform: translateY(-1px); }
-    .btn-next:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+    .btn-next:hover {
+      background: #1a7a3c;
+      transform: translateY(-1px);
+    }
+
+    .btn-next:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     /* ── MEDIA UPLOAD SECTION ── */
     .media-box {
@@ -277,8 +353,16 @@
       margin-bottom: 20px;
       transition: border-color 0.2s;
     }
-    .media-box:hover { border-color: var(--honey); }
-    .media-box .media-icon { font-size: 2.5rem; margin-bottom: 10px; }
+
+    .media-box:hover {
+      border-color: var(--honey);
+    }
+
+    .media-box .media-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
     .media-box p {
       font-size: 0.88rem;
       font-weight: 700;
@@ -293,13 +377,20 @@
       padding: 48px 20px 36px;
       display: none;
     }
+
     .success-box h2 {
       font-family: 'Fredoka One', cursive;
       color: var(--green);
       font-size: 2rem;
       margin: 20px 0 12px;
     }
-    .success-box p { font-weight: 600; color: var(--text-soft); font-size: 1rem; margin-bottom: 28px; }
+
+    .success-box p {
+      font-weight: 600;
+      color: var(--text-soft);
+      font-size: 1rem;
+      margin-bottom: 28px;
+    }
 
     /* ── ERROR ── */
     .err-msg {
@@ -311,9 +402,18 @@
     }
 
     @media (max-width: 480px) {
-      .step-box { padding: 28px 20px 22px; }
-      .choice-grid, .check-grid { grid-template-columns: 1fr 1fr; }
-      .step-question { font-size: 1.2rem; }
+      .step-box {
+        padding: 28px 20px 22px;
+      }
+
+      .choice-grid,
+      .check-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .step-question {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -329,49 +429,83 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#streams" onclick="closeMenu()">Products</a></li>
-      <li><a href="ocean-kits.html" onclick="closeMenu()" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
-      <li><a href="index.html#testimonials" class="active" onclick="closeMenu()">⭐ Reviews</a></li>
-      <li><a href="about.html" onclick="closeMenu()">About</a></li>
-      <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-      <li><a href="bee-points.html" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
-      <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
+      <li><a href="index.html#streams">Products</a></li>
+      <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊
+          Ocean Kits</a></li>
+      <li><a href="index.html#testimonials" class="active">⭐ Reviews</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="bee-points.html" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a>
+      </li>
+      <li><a href="index.html#footer">Contact</a></li>
     </ul>
     <div class="nav-right">
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us 💬</a>
+      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us
+        💬</a>
     </div>
   </nav>
   <div class="nav-drawer-overlay" id="navOverlay"></div>
   <script>
-    function closeMenu() {
-      var nav = document.getElementById('navLinks');
-      var overlay = document.getElementById('navOverlay');
-      var hamburger = document.getElementById('hamburger');
-      if (nav) nav.classList.remove('open');
-      if (overlay) overlay.classList.remove('open');
-      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
-      document.body.style.overflow = '';
-    }
     document.addEventListener('DOMContentLoaded', function () {
       var hamburger = document.getElementById('hamburger');
       var navLinks = document.getElementById('navLinks');
       var overlay = document.getElementById('navOverlay');
-      if (!hamburger) return;
-      hamburger.addEventListener('click', function () {
-        var isOpen = navLinks.classList.contains('open');
-        if (isOpen) { closeMenu(); }
-        else {
-          navLinks.classList.add('open');
-          if (overlay) overlay.classList.add('open');
-          hamburger.classList.add('open');
-          hamburger.setAttribute('aria-expanded', 'true');
-          document.body.style.overflow = 'hidden';
+
+      // 1. Unified close function
+      function closeMenu() {
+        if (navLinks) navLinks.classList.remove('open');
+        if (overlay) overlay.classList.remove('open');
+        if (hamburger) {
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+        // Reset scrolling consistently 
+        document.body.classList.remove('no-scroll');
+        document.body.style.overflow = '';
+      }
+
+      // 2. Hamburger toggle logic
+      if (hamburger) {
+        hamburger.addEventListener('click', function (e) {
+          e.stopPropagation(); // Prevents click from bubbling to body
+          var isOpen = navLinks.classList.contains('open');
+          if (isOpen) {
+            closeMenu();
+          } else {
+            navLinks.classList.add('open');
+            if (overlay) overlay.classList.add('open');
+            hamburger.classList.add('open');
+            hamburger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('no-scroll');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+
+      // 3. Close on overlay click
+      if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+      }
+
+      // 4. Close menu if clicking outside of it
+      document.body.addEventListener('click', function (e) {
+        if (navLinks && navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger) {
+          closeMenu();
         }
       });
-      if (overlay) overlay.addEventListener('click', closeMenu);
+
+      // 5. THE FIX: Handle link clicks with a slight delay so redirection doesn't fail
+      if (navLinks) {
+        var links = navLinks.querySelectorAll('a');
+        links.forEach(function (link) {
+          link.addEventListener('click', function () {
+            setTimeout(closeMenu, 150);
+          });
+        });
+      }
     });
   </script>
 
@@ -431,7 +565,8 @@
         <button class="star-btn" data-val="4" onclick="setStar(4)">★</button>
         <button class="star-btn" data-val="5" onclick="setStar(5)">★</button>
       </div>
-      <div id="starLabel" style="font-size:0.9rem;color:var(--text-soft);font-weight:700;margin-bottom:20px;">Tap a star above ☝️</div>
+      <div id="starLabel" style="font-size:0.9rem;color:var(--text-soft);font-weight:700;margin-bottom:20px;">Tap a star
+        above ☝️</div>
 
       <div class="err-msg" id="err2">⚠️ Please select a star rating.</div>
       <div class="btn-row">
@@ -551,13 +686,15 @@
       <div class="step-question">Tell us more in your own words ✍️</div>
       <div class="step-hint">Optional — but your story helps other parents a lot!</div>
 
-      <textarea id="revText" class="rev-textarea" placeholder="e.g. My daughter absolutely loved the Barbie activity book! The name personalisation made it feel extra special..."></textarea>
+      <textarea id="revText" class="rev-textarea"
+        placeholder="e.g. My daughter absolutely loved the Barbie activity book! The name personalisation made it feel extra special..."></textarea>
 
       <!-- Media Upload -->
       <div class="media-box">
         <div class="media-icon">📸</div>
         <p>Can you share a photo or video of your child using the book?<br>
-        <strong style="color:var(--brown);">Real photos build trust and inspire other parents!</strong></p>
+          <strong style="color:var(--brown);">Real photos build trust and inspire other parents!</strong>
+        </p>
         <input type="text" id="revMediaLink" class="rev-input" style="margin-bottom:0;text-align:left;"
           placeholder="Paste a Google Drive / YouTube / Instagram link (optional)">
       </div>
@@ -573,8 +710,11 @@
     <div class="success-box" id="successBox">
       <div style="font-size:3.5rem;">🎉</div>
       <h2>Thank You!</h2>
-      <p>We've received your review. It means the world to us and will help other parents find the right learning tools for their little ones! 🍯</p>
-      <a href="index.html" style="display:inline-block;background:var(--green);color:white;padding:14px 32px;border-radius:50px;font-weight:800;font-size:1rem;text-decoration:none;">Back to Home 🏠</a>
+      <p>We've received your review. It means the world to us and will help other parents find the right learning tools
+        for their little ones! 🍯</p>
+      <a href="index.html"
+        style="display:inline-block;background:var(--green);color:white;padding:14px 32px;border-radius:50px;font-weight:800;font-size:1rem;text-decoration:none;">Back
+        to Home 🏠</a>
     </div>
 
   </div><!-- /review-card -->
@@ -655,7 +795,7 @@
 
       if (step === 1) {
         const name = document.getElementById('revName').value.trim();
-        const loc  = document.getElementById('revLoc').value.trim();
+        const loc = document.getElementById('revLoc').value.trim();
         if (!name || !loc) { show('err1'); return false; }
         hide('err1'); return true;
       }
@@ -704,31 +844,31 @@
       btn.textContent = '⏳ Sending...';
 
       // Collect all data
-      const name      = document.getElementById('revName').value.trim();
-      const loc       = document.getElementById('revLoc').value.trim();
-      const stars     = selectedStar;
-      const enjoyEL   = document.querySelector('#enjoyGrid .choice-chip.selected');
-      const enjoy     = enjoyEL ? enjoyEL.dataset.val : '—';
-      const skills    = [...document.querySelectorAll('#skillsGrid .check-chip.selected')]
-                          .map(c => c.textContent.trim()).join(', ') || 'None selected';
-      const ageEL     = document.querySelector('#ageGrid .choice-chip.selected');
-      const ageLevel  = ageEL ? ageEL.dataset.val : '—';
-      const recEL     = document.querySelector('#recGrid .choice-chip.selected');
+      const name = document.getElementById('revName').value.trim();
+      const loc = document.getElementById('revLoc').value.trim();
+      const stars = selectedStar;
+      const enjoyEL = document.querySelector('#enjoyGrid .choice-chip.selected');
+      const enjoy = enjoyEL ? enjoyEL.dataset.val : '—';
+      const skills = [...document.querySelectorAll('#skillsGrid .check-chip.selected')]
+        .map(c => c.textContent.trim()).join(', ') || 'None selected';
+      const ageEL = document.querySelector('#ageGrid .choice-chip.selected');
+      const ageLevel = ageEL ? ageEL.dataset.val : '—';
+      const recEL = document.querySelector('#recGrid .choice-chip.selected');
       const recommend = recEL ? recEL.dataset.val : '—';
-      const text      = document.getElementById('revText').value.trim();
-      const media     = document.getElementById('revMediaLink').value.trim();
+      const text = document.getElementById('revText').value.trim();
+      const media = document.getElementById('revMediaLink').value.trim();
 
       const payload = {
         _subject: `⭐ New Review from ${name} — ${stars}/5 Stars`,
-        Name:            name,
-        Location:        loc,
-        Rating:          `${stars}/5 Stars`,
+        Name: name,
+        Location: loc,
+        Rating: `${stars}/5 Stars`,
         Child_Enjoyment: enjoy,
         Skills_Improved: skills,
         Age_Suitability: ageLevel,
-        Recommend:       recommend,
-        Review_Text:     text || 'No written review provided',
-        Media_Link:      media || 'Not provided',
+        Recommend: recommend,
+        Review_Text: text || 'No written review provided',
+        Media_Link: media || 'Not provided',
       };
 
       try {
@@ -756,4 +896,5 @@
     }
   </script>
 </body>
+
 </html>

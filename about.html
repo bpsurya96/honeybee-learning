@@ -13,20 +13,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="images/logo/logo.png">
 
-  <!-- ═══ SEO ═══ -->
-  <meta name="keywords"
-    content="HoneyBee Learning about, personalised activity books founder Chennai, India first kids book brand, Shanmugi HoneyBee Learning, Medavakkam kids books, about HoneyBee Learning">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Shanmugi, HoneyBee Learning">
-  <link rel="canonical" href="https://honeybeelearning.co/about.html">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://honeybeelearning.co/about.html">
-  <meta property="og:title" content="Our Story — HoneyBee Learning | India's First Personalised Activity Book for Kids">
-  <meta property="og:description"
-    content="Learn about Shanmugi and the HoneyBee Learning story — India's first personalised activity book for kids, home-based in Medavakkam, Chennai.">
-  <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
-  <meta property="og:site_name" content="HoneyBee Learning">
-  <meta name="twitter:card" content="summary_large_image">
 
   <!-- SEO -->
   <meta name="keywords"
@@ -253,56 +239,91 @@
   <!-- NAV -->
   <nav id="mainNav">
     <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
-      <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books" style="height:42px;border-radius:10px;">
+      <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books"
+        style="height:42px;border-radius:10px;">
       <div>
         <span class="nav-logo-text">HoneyBee</span>
         <span class="nav-logo-sub">Learning</span>
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#streams" onclick="closeMenu()">Products</a></li>
-      <li><a href="ocean-kits.html" onclick="closeMenu()" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
-      <li><a href="index.html#testimonials" onclick="closeMenu()">Reviews</a></li>
-      <li><a href="about.html" class="active" onclick="closeMenu()">About</a></li>
-      <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-      <li><a href="bee-points.html" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
-      <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
+      <li><a href="index.html#streams">Products</a></li>
+      <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊
+          Ocean Kits</a></li>
+      <li><a href="index.html#testimonials">Reviews</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="bee-points.html" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a>
+      </li>
+      <li><a href="index.html#footer">Contact</a></li>
     </ul>
     <div class="nav-right">
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us 💬</a>
+      <a href="https://wa.me/918883624873" id="navUserBtn" class="nav-cta" style="background:var(--honey);">WhatsApp Us
+        💬</a>
     </div>
   </nav>
   <div class="nav-drawer-overlay" id="navOverlay"></div>
   <script>
-    function closeMenu() {
-      var nav = document.getElementById('navLinks');
-      var overlay = document.getElementById('navOverlay');
-      var hamburger = document.getElementById('hamburger');
-      if (nav) nav.classList.remove('open');
-      if (overlay) overlay.classList.remove('open');
-      if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
-      document.body.style.overflow = '';
-    }
     document.addEventListener('DOMContentLoaded', function () {
       var hamburger = document.getElementById('hamburger');
       var navLinks = document.getElementById('navLinks');
       var overlay = document.getElementById('navOverlay');
-      if (!hamburger) return;
-      hamburger.addEventListener('click', function () {
-        var isOpen = navLinks.classList.contains('open');
-        if (isOpen) { closeMenu(); }
-        else {
-          navLinks.classList.add('open');
-          if (overlay) overlay.classList.add('open');
-          hamburger.classList.add('open');
-          hamburger.setAttribute('aria-expanded', 'true');
-          document.body.style.overflow = 'hidden';
+
+      // 1. Unified close function
+      function closeMenu() {
+        if (navLinks) navLinks.classList.remove('open');
+        if (overlay) overlay.classList.remove('open');
+        if (hamburger) {
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+        // Reset scrolling consistently 
+        document.body.classList.remove('no-scroll');
+        document.body.style.overflow = '';
+      }
+
+      // 2. Hamburger toggle logic
+      if (hamburger) {
+        hamburger.addEventListener('click', function (e) {
+          e.stopPropagation(); // Prevents click from bubbling to body
+          var isOpen = navLinks.classList.contains('open');
+          if (isOpen) {
+            closeMenu();
+          } else {
+            navLinks.classList.add('open');
+            if (overlay) overlay.classList.add('open');
+            hamburger.classList.add('open');
+            hamburger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('no-scroll');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+
+      // 3. Close on overlay click
+      if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+      }
+
+      // 4. Close menu if clicking outside of it
+      document.body.addEventListener('click', function (e) {
+        if (navLinks && navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger) {
+          closeMenu();
         }
       });
-      if (overlay) overlay.addEventListener('click', closeMenu);
+
+      // 5. THE FIX: Handle link clicks with a slight delay so redirection doesn't fail
+      if (navLinks) {
+        var links = navLinks.querySelectorAll('a');
+        links.forEach(function (link) {
+          link.addEventListener('click', function () {
+            setTimeout(closeMenu, 150);
+          });
+        });
+      }
     });
   </script>
 
@@ -317,7 +338,8 @@
   <div class="page-hero">
     <span class="page-hero-emoji">🍯</span>
     <h1>Our Story</h1>
-    <p>India's first personalised activity book for kids — a home-based dream from Medavakkam, Chennai, made with love for
+    <p>India's first personalised activity book for kids — a home-based dream from Medavakkam, Chennai, made with love
+      for
       every little learner.</p>
   </div>
 
@@ -345,31 +367,63 @@
         <div class="founder-role">Founder, HoneyBee Learning · Medavakkam, Chennai</div>
         <div class="founder-quote">"I wanted every child at my daughter's birthday party to go home with something
           meaningful — not another forgotten plastic toy. That's where HoneyBee Learning began."</div>
-        
-        <div style="margin-top: 18px; padding: 18px; background: rgba(255,255,255,0.6); border-radius: 14px; border: 1.5px dashed #bccf9b;">
-          <h4 style="margin: 0 0 8px 0; color: var(--green); font-family: 'Fredoka One', cursive; font-size: 1.15rem;">A Proud Inspiration 🏆</h4>
-          <p style="margin: 0 0 14px 0; font-size: 0.92rem; color: var(--text-soft); font-weight: 600; line-height: 1.6;">Our true inspiration is my daughter — a <strong>multiple record holder</strong>! Her boundless curiosity and love for learning spark the ideas behind every personalised book we create.</p>
+
+        <div
+          style="margin-top: 18px; padding: 18px; background: rgba(255,255,255,0.6); border-radius: 14px; border: 1.5px dashed #bccf9b;">
+          <h4 style="margin: 0 0 8px 0; color: var(--green); font-family: 'Fredoka One', cursive; font-size: 1.15rem;">A
+            Proud Inspiration 🏆</h4>
+          <p
+            style="margin: 0 0 14px 0; font-size: 0.92rem; color: var(--text-soft); font-weight: 600; line-height: 1.6;">
+            Our true inspiration is my daughter — a <strong>multiple record holder</strong>! Her boundless curiosity and
+            love for learning spark the ideas behind every personalised book we create.</p>
           <div style="display: flex; gap: 14px; flex-wrap: wrap;">
             <!-- Placeholders for images: swap src out when images are uploaded -->
             <div style="width: 110px;">
-              <div style="width: 110px; height: 110px; background: #eef2e6; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-                <img src="images/record-holder-1.jpeg" alt="Record Holder 1" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="openLightboxFromHome(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                <span style="display: none; font-size: 0.75rem; color: #7f9a5f; padding: 8px; text-align: center; font-weight: 700;">Upload Photo 1</span>
+              <div
+                style="width: 110px; height: 110px; background: #eef2e6; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                <img src="images/record-holder-1.jpeg" alt="Record Holder 1"
+                  style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;"
+                  onclick="openLightboxFromHome(this.src)"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <span
+                  style="display: none; font-size: 0.75rem; color: #7f9a5f; padding: 8px; text-align: center; font-weight: 700;">Upload
+                  Photo 1</span>
               </div>
             </div>
             <div style="width: 110px;">
-              <div style="width: 110px; height: 110px; background: #eef2e6; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
-                <img src="images/record-holder-2.jpeg" alt="Record Holder 2" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" onclick="openLightboxFromHome(this.src)" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                <span style="display: none; font-size: 0.75rem; color: #7f9a5f; padding: 8px; text-align: center; font-weight: 700;">Upload Photo 2</span>
+              <div
+                style="width: 110px; height: 110px; background: #eef2e6; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                <img src="images/record-holder-2.jpeg" alt="Record Holder 2"
+                  style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;"
+                  onclick="openLightboxFromHome(this.src)"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <span
+                  style="display: none; font-size: 0.75rem; color: #7f9a5f; padding: 8px; text-align: center; font-weight: 700;">Upload
+                  Photo 2</span>
               </div>
             </div>
           </div>
           <div style="margin-top: 18px;">
-            <p style="margin: 0 0 10px 0; font-size: 0.95rem; color: var(--text-soft); font-weight: 700;">View her incredible records:</p>
+            <p style="margin: 0 0 10px 0; font-size: 0.95rem; color: var(--text-soft); font-weight: 700;">View her
+              incredible records:</p>
             <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.8;">
-              <li><a href="https://www.worldwideworldrecords.com/post/maximum-indian-states-identifiedusing-indian-map-pieces-puzzle-in-30-seconds-by-the-youngest-kid-ag" target="_blank" rel="noopener noreferrer" style="color: var(--green); text-decoration: none; font-weight: 600; border-bottom: 1.5px dashed var(--green); transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Worldwide World Records</a></li>
-              <li><a href="https://indiabookofrecords.in/t-k-natchathiraa-ibr-achiever/" target="_blank" rel="noopener noreferrer" style="color: var(--green); text-decoration: none; font-weight: 600; border-bottom: 1.5px dashed var(--green); transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">India Book of Records</a></li>
-              <li><a href="https://www.internationalbookofrecords.com/records/fastest-to-identify-all-indian-states-from-a-15-piece-indian-map-knob-puzzle-toddler/" target="_blank" rel="noopener noreferrer" style="color: var(--green); text-decoration: none; font-weight: 600; border-bottom: 1.5px dashed var(--green); transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">International Book of Records</a></li>
+              <li><a
+                  href="https://www.worldwideworldrecords.com/post/maximum-indian-states-identifiedusing-indian-map-pieces-puzzle-in-30-seconds-by-the-youngest-kid-ag"
+                  target="_blank" rel="noopener noreferrer"
+                  style="color: var(--green); text-decoration: none; font-weight: 600; border-bottom: 1.5px dashed var(--green); transition: opacity 0.2s;"
+                  onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Worldwide World Records</a>
+              </li>
+              <li><a href="https://indiabookofrecords.in/t-k-natchathiraa-ibr-achiever/" target="_blank"
+                  rel="noopener noreferrer"
+                  style="color: var(--green); text-decoration: none; font-weight: 600; border-bottom: 1.5px dashed var(--green); transition: opacity 0.2s;"
+                  onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">India Book of Records</a>
+              </li>
+              <li><a
+                  href="https://www.internationalbookofrecords.com/records/fastest-to-identify-all-indian-states-from-a-15-piece-indian-map-knob-puzzle-toddler/"
+                  target="_blank" rel="noopener noreferrer"
+                  style="color: var(--green); text-decoration: none; font-weight: 600; border-bottom: 1.5px dashed var(--green); transition: opacity 0.2s;"
+                  onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">International Book of
+                  Records</a></li>
             </ul>
           </div>
         </div>
@@ -381,7 +435,8 @@
       <h2>How It All Started 🌱</h2>
       <div class="india-banner" style="background:linear-gradient(135deg,#fff3cd,#fff8e1);border-color:#f4a227;">
         <span class="flag">🇮🇳</span>
-        <span>HoneyBee Learning is <strong>India's first personalised activity book for kids</strong> crafting books with
+        <span>HoneyBee Learning is <strong>India's first personalised activity book for kids</strong> crafting books
+          with
           each child's name woven into every page.</span>
       </div>
       <p>HoneyBee Learning started in 2024 from a small home studio in Medavakkam, Chennai, with one simple idea —
@@ -502,10 +557,13 @@
   <!-- DETAIL MODAL (REUSED FOR LIGHTBOX) -->
   <div class="dmodal-overlay" id="dmodalOverlay" onclick="closeDetailOnBg(event)">
     <div class="dmodal">
-      <div class="dmodal-img"><img id="dmImg" src="" alt=""><button class="dmodal-close" onclick="closeDetailModal()">✕</button></div>
+      <div class="dmodal-img"><img id="dmImg" src="" alt=""><button class="dmodal-close"
+          onclick="closeDetailModal()">✕</button></div>
       <div class="dmodal-body">
         <div class="dmodal-title" id="dmTitle"></div>
-        <div class="dmodal-price-row"><div class="dmodal-price" id="dmPrice"></div></div>
+        <div class="dmodal-price-row">
+          <div class="dmodal-price" id="dmPrice"></div>
+        </div>
         <div class="dmodal-desc" id="dmDesc"></div>
         <div class="dmodal-tags" id="dmTags"></div>
         <button class="dmodal-btn" id="dmBtn">Send Enquiry ✉️</button>
@@ -516,18 +574,18 @@
 
   <script>
     function openLightboxFromHome(imgSrc) {
-        const lightbox = document.getElementById('dmodalOverlay');
-        if (lightbox) {
-            document.getElementById('dmImg').src = imgSrc;
-            document.getElementById('dmTitle').textContent = "";
-            document.getElementById('dmPrice').textContent = '';
-            document.getElementById('dmDesc').textContent = '';
-            document.getElementById('dmTags').innerHTML = '';
-            document.getElementById('dmBtn').style.display = 'none';
-            document.querySelector('.dmodal-note').style.display = 'none';
-            lightbox.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
+      const lightbox = document.getElementById('dmodalOverlay');
+      if (lightbox) {
+        document.getElementById('dmImg').src = imgSrc;
+        document.getElementById('dmTitle').textContent = "";
+        document.getElementById('dmPrice').textContent = '';
+        document.getElementById('dmDesc').textContent = '';
+        document.getElementById('dmTags').innerHTML = '';
+        document.getElementById('dmBtn').style.display = 'none';
+        document.querySelector('.dmodal-note').style.display = 'none';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
     }
     function closeDetailModal() { document.getElementById('dmodalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
     function closeDetailOnBg(e) { if (e.target === document.getElementById('dmodalOverlay')) closeDetailModal(); }

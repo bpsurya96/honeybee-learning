@@ -16,8 +16,16 @@
     onload="this.rel='stylesheet'">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Nunito', sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+    }
+
     :root {
       --green: #3d6b24;
       --green-pale: #e8f5d8;
@@ -94,8 +102,8 @@
           <strong>Supabase Setup Required:</strong> Please update <code>SUPABASE_URL</code> and
           <code>SUPABASE_ANON_KEY</code> in <code>js/bee-points.js</code> to connect to your Supabase database.
           The app is currently running in <strong>demo mode</strong> with sample data.
-          <a href="https://supabase.com" target="_blank" rel="noopener"
-            style="color:#FFD700;font-weight:800;">Set up Supabase →</a>
+          <a href="https://supabase.com" target="_blank" rel="noopener" style="color:#FFD700;font-weight:800;">Set up
+            Supabase →</a>
         </div>
       </div>
 
@@ -227,9 +235,63 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/bee-points.js"></script>
   <script>
-    // Admin-specific init
-    document.addEventListener('DOMContentLoaded', () => {
-      initAdmin();
+    document.addEventListener('DOMContentLoaded', function () {
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var overlay = document.getElementById('navOverlay');
+
+      // 1. Unified close function
+      function closeMenu() {
+        if (navLinks) navLinks.classList.remove('open');
+        if (overlay) overlay.classList.remove('open');
+        if (hamburger) {
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+        // Reset scrolling consistently 
+        document.body.classList.remove('no-scroll');
+        document.body.style.overflow = '';
+      }
+
+      // 2. Hamburger toggle logic
+      if (hamburger) {
+        hamburger.addEventListener('click', function (e) {
+          e.stopPropagation(); // Prevents click from bubbling to body
+          var isOpen = navLinks.classList.contains('open');
+          if (isOpen) {
+            closeMenu();
+          } else {
+            navLinks.classList.add('open');
+            if (overlay) overlay.classList.add('open');
+            hamburger.classList.add('open');
+            hamburger.setAttribute('aria-expanded', 'true');
+            document.body.classList.add('no-scroll');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+
+      // 3. Close on overlay click
+      if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+      }
+
+      // 4. Close menu if clicking outside of it
+      document.body.addEventListener('click', function (e) {
+        if (navLinks && navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger) {
+          closeMenu();
+        }
+      });
+
+      // 5. THE FIX: Handle link clicks with a slight delay so redirection doesn't fail
+      if (navLinks) {
+        var links = navLinks.querySelectorAll('a');
+        links.forEach(function (link) {
+          link.addEventListener('click', function () {
+            setTimeout(closeMenu, 150);
+          });
+        });
+      }
     });
   </script>
 

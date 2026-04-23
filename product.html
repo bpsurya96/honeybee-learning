@@ -74,13 +74,15 @@
             <div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div>
         </a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html#streams" onclick="closeMenu()">Products</a></li>
-            <li><a href="ocean-kits.html" onclick="closeMenu()" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
-            <li><a href="index.html#testimonials" onclick="closeMenu()">Reviews</a></li>
-            <li><a href="about.html" onclick="closeMenu()">About</a></li>
-            <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
-            <li><a href="bee-points.html" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
-            <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
+            <li><a href="index.html#streams">Products</a></li>
+            <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a>
+            </li>
+            <li><a href="index.html#testimonials">Reviews</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="bee-points.html" style="color:var(--honey);font-weight:800;">🐝 Bee
+                    Points</a></li>
+            <li><a href="index.html#footer">Contact</a></li>
         </ul>
         <div class="nav-right">
             <a href="index.html?tab=learning#streams" class="back-btn" style="margin-right: 10px;">← All Products</a>
@@ -91,32 +93,63 @@
     </nav>
     <div class="nav-drawer-overlay" id="navOverlay"></div>
     <script>
-        function closeMenu() {
-            var nav = document.getElementById('navLinks');
-            var overlay = document.getElementById('navOverlay');
-            var hamburger = document.getElementById('hamburger');
-            if (nav) nav.classList.remove('open');
-            if (overlay) overlay.classList.remove('open');
-            if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
-            document.body.style.overflow = '';
-        }
         document.addEventListener('DOMContentLoaded', function () {
             var hamburger = document.getElementById('hamburger');
             var navLinks = document.getElementById('navLinks');
             var overlay = document.getElementById('navOverlay');
-            if (!hamburger) return;
-            hamburger.addEventListener('click', function () {
-                var isOpen = navLinks.classList.contains('open');
-                if (isOpen) { closeMenu(); }
-                else {
-                    navLinks.classList.add('open');
-                    if (overlay) overlay.classList.add('open');
-                    hamburger.classList.add('open');
-                    hamburger.setAttribute('aria-expanded', 'true');
-                    document.body.style.overflow = 'hidden';
+
+            // 1. Unified close function
+            function closeMenu() {
+                if (navLinks) navLinks.classList.remove('open');
+                if (overlay) overlay.classList.remove('open');
+                if (hamburger) {
+                    hamburger.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+                // Reset scrolling consistently 
+                document.body.classList.remove('no-scroll');
+                document.body.style.overflow = '';
+            }
+
+            // 2. Hamburger toggle logic
+            if (hamburger) {
+                hamburger.addEventListener('click', function (e) {
+                    e.stopPropagation(); // Prevents click from bubbling to body
+                    var isOpen = navLinks.classList.contains('open');
+                    if (isOpen) {
+                        closeMenu();
+                    } else {
+                        navLinks.classList.add('open');
+                        if (overlay) overlay.classList.add('open');
+                        hamburger.classList.add('open');
+                        hamburger.setAttribute('aria-expanded', 'true');
+                        document.body.classList.add('no-scroll');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            }
+
+            // 3. Close on overlay click
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+
+            // 4. Close menu if clicking outside of it
+            document.body.addEventListener('click', function (e) {
+                if (navLinks && navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger) {
+                    closeMenu();
                 }
             });
-            if (overlay) overlay.addEventListener('click', closeMenu);
+
+            // 5. THE FIX: Handle link clicks with a slight delay so redirection doesn't fail
+            if (navLinks) {
+                var links = navLinks.querySelectorAll('a');
+                links.forEach(function (link) {
+                    link.addEventListener('click', function () {
+                        setTimeout(closeMenu, 150);
+                    });
+                });
+            }
         });
     </script>
 
@@ -140,7 +173,7 @@
                 <div class="product-desc" id="productDesc"></div>
                 <div class="product-tags" id="productTags"></div>
                 <div class="product-freebies" id="productFreebies" style="display:none;"></div>
-                
+
                 <div class="ecommerce-urgency">
                     <span class="urgency-icon">⚡</span>
                     <div class="urgency-text">
@@ -407,7 +440,8 @@
         <div class="footer-inner">
             <div class="footer-col">
                 <div class="footer-brand">🍯 HoneyBee Learning</div>
-                <div class="footer-brand-sub">🇮🇳 India's First Personalised Activity Book for Kids<br>📍 Medavakkam, Chennai
+                <div class="footer-brand-sub">🇮🇳 India's First Personalised Activity Book for Kids<br>📍 Medavakkam,
+                    Chennai
                 </div>
             </div>
             <div class="footer-col">
