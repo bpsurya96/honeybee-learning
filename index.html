@@ -77,11 +77,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/splash.css">
 
-  <!-- Non-critical CSS: async load (media=print trick, applied before scroll) -->
-  <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="css/responsive.css">
-  </noscript>>
+  <!-- Responsive CSS loads synchronously so hamburger nav drawer always works -->
+  <link rel="stylesheet" href="css/responsive.css">
 
   <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your real Measurement ID -->
   <!-- Get your ID at: https://analytics.google.com → Admin → Data Streams → Web Stream -->
@@ -319,9 +316,6 @@
 
   </section><!-- /hero-carousel-section -->
 
-
-
-
   <!-- ═══ HOW IT WORKS STRIP ═══ -->
   <section class="how-it-works-strip" aria-label="How HoneyBee Learning works">
     <div class="how-strip-header">
@@ -438,17 +432,6 @@
         </div>
         <div class="ocean-kit-promo-arrow">→</div>
       </a>
-
-      <div class="delivery-box">
-        <span style="font-size:2rem;">🚚</span>
-        <div>
-          <div style="font-weight:800;color:var(--brown);font-size:0.97rem;">Delivery Info for Learning Products</div>
-          <div style="font-size:0.87rem;color:var(--text-soft);font-weight:600;margin-top:3px;">Delivery charges
-            applicable based on location
-            &nbsp;·&nbsp; Free pickup in Medavakkam &nbsp;·&nbsp; Delivered in 3–5 days &nbsp;·&nbsp; No returns — all
-            orders are personalised &amp; confirmed with you before we print</div>
-        </div>
-      </div>
 
       <div class="section-tag">Personalised Books & Cards</div>
       <h3 style="font-family:'Fredoka One',cursive;font-size:1.75rem;color:var(--green);margin-bottom:7px;">HoneyBee

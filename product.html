@@ -47,7 +47,7 @@
 
     <!-- Non-critical CSS (loaded async) -->
     <!-- Responsive CSS loads synchronously so hamburger nav drawer always works -->
-  <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/product-responsive.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/custom-order.css" media="print" onload="this.media='all'">
 
@@ -68,15 +68,57 @@
 
 <body>
 
-    <nav>
+    <nav id="mainNav" aria-label="Main navigation">
         <a class="nav-logo" href="index.html">
             <img src="images/logo/logo.png" alt="HoneyBee" style="height:42px;border-radius:10px;">
             <div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div>
         </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#streams" onclick="closeMenu()">Products</a></li>
+            <li><a href="ocean-kits.html" onclick="closeMenu()" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
+            <li><a href="index.html#testimonials" onclick="closeMenu()">Reviews</a></li>
+            <li><a href="about.html" onclick="closeMenu()">About</a></li>
+            <li><a href="faq.html" onclick="closeMenu()">FAQ</a></li>
+            <li><a href="bee-points.html" onclick="closeMenu()" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a></li>
+            <li><a href="index.html#footer" onclick="closeMenu()">Contact</a></li>
+        </ul>
         <div class="nav-right">
-            <a href="index.html?tab=learning#streams" class="back-btn">← All Products</a>
+            <a href="index.html?tab=learning#streams" class="back-btn" style="margin-right: 10px;">← All Products</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
+    <div class="nav-drawer-overlay" id="navOverlay"></div>
+    <script>
+        function closeMenu() {
+            var nav = document.getElementById('navLinks');
+            var overlay = document.getElementById('navOverlay');
+            var hamburger = document.getElementById('hamburger');
+            if (nav) nav.classList.remove('open');
+            if (overlay) overlay.classList.remove('open');
+            if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); }
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var hamburger = document.getElementById('hamburger');
+            var navLinks = document.getElementById('navLinks');
+            var overlay = document.getElementById('navOverlay');
+            if (!hamburger) return;
+            hamburger.addEventListener('click', function () {
+                var isOpen = navLinks.classList.contains('open');
+                if (isOpen) { closeMenu(); }
+                else {
+                    navLinks.classList.add('open');
+                    if (overlay) overlay.classList.add('open');
+                    hamburger.classList.add('open');
+                    hamburger.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+            if (overlay) overlay.addEventListener('click', closeMenu);
+        });
+    </script>
 
     <div class="product-page">
         <div class="product-layout">

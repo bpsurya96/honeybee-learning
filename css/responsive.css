@@ -21,7 +21,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     background: none;
     border: none;
     cursor: pointer;
@@ -38,25 +38,31 @@
 
 .hamburger span {
     display: block;
-    width: 24px;
-    height: 3px;
+    width: 5px;
+    height: 5px;
     background: var(--green);
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
 }
 
 .hamburger.open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(9px) rotate(45deg);
+    width: 22px;
+    height: 3px;
+    border-radius: 4px;
 }
 
 .hamburger.open span:nth-child(2) {
     opacity: 0;
-    transform: scaleX(0);
+    transform: scale(0);
 }
 
 .hamburger.open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-9px) rotate(-45deg);
+    width: 22px;
+    height: 3px;
+    border-radius: 4px;
 }
 
 /* ─── DRAWER OVERLAY ─── */
@@ -65,9 +71,10 @@
     position: fixed;
     inset: 0;
     z-index: var(--z-overlay, 98);
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(4px); /* Reduced blur for better performance and visibility */
-    -webkit-backdrop-filter: blur(4px);
+    /* Solid semi-transparent dark — NO blur so the drawer panel stays sharp */
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 .nav-drawer-overlay.open {
@@ -84,44 +91,55 @@
         display: flex;
     }
 
-    /* Force NO blur on navigation components */
-    nav, nav * {
+    /* ── Completely eliminate blur/filter on all nav elements on mobile ── */
+    nav {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        filter: none !important;
+        background: var(--cream) !important;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        /* Prevent nav from creating a stacking context that bleeds into drawer */
+        isolation: isolate;
+    }
+
+    nav * {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         filter: none !important;
     }
 
-    nav {
-        background: var(--cream) !important;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    }
-
-    /* Slide-in drawer using translate3d for GPU acceleration and sharpness */
+    /* Slide-in drawer — fully opaque white so nothing bleeds through */
     .nav-links {
         position: fixed;
         top: 0;
         right: 0;
         width: 280px;
         height: 100dvh;
+        /* Solid white — no transparency, no blur */
         background: #ffffff;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        filter: none !important;
         z-index: var(--z-modal, 99);
         flex-direction: column;
         padding: 80px 20px 30px;
         gap: 2px;
         box-shadow: -10px 0 40px rgba(0, 0, 0, 0.12);
-        transform: translate3d(101%, 0, 0); 
+        transform: translate3d(101%, 0, 0);
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         list-style: none;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
-        /* Sharpness Fixes */
+        /* Sharpness / anti-aliasing fixes */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
         backface-visibility: hidden;
-        perspective: 1000px;
         will-change: transform;
+        /* Ensure drawer is its own paint layer — prevents parent blur bleeding in */
+        isolation: isolate;
+        transform-style: flat;
     }
 
     .nav-links.open {
