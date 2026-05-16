@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reusable Books — HoneyBee Learning | Write, Wipe & Learn Again</title>
+  <meta name="description" content="Laminated reusable activity books for kids. Write with whiteboard marker, wipe clean and learn again 100+ times. Personalised with child's name. HoneyBee Learning, Chennai.">
+  <link rel="icon" href="images/logo/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/responsive.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"></noscript>
+  <style>
+    .rb-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; margin-top:28px; }
+    .rb-card { background:white; border-radius:18px; overflow:hidden; border:2px solid var(--green-pale); box-shadow:0 4px 16px rgba(0,0,0,0.07); transition:all 0.22s; text-decoration:none; display:flex; flex-direction:column; }
+    .rb-card:hover { transform:translateY(-4px); border-color:var(--green); }
+    .rb-img-wrap { background:linear-gradient(135deg,#e8f5d8,#fffde7); text-align:center; padding:28px 16px 16px; font-size:3rem; }
+    .rb-img-wrap img { width:100%; height:140px; object-fit:cover; border-radius:10px; }
+    .rb-body { padding:14px 16px 18px; flex:1; display:flex; flex-direction:column; }
+    .rb-badge { display:inline-block; background:var(--green-pale); color:var(--green); font-size:0.68rem; font-weight:800; padding:3px 10px; border-radius:50px; margin-bottom:6px; }
+    .rb-name { font-family:'Fredoka One',cursive; font-size:1rem; color:var(--text); margin-bottom:4px; }
+    .rb-desc { font-size:0.78rem; font-weight:600; color:var(--text-soft); line-height:1.4; flex:1; }
+    .rb-price { font-family:'Fredoka One',cursive; color:var(--green); font-size:1rem; margin:8px 0; }
+    .rb-btn { background:var(--green); color:white; border:none; padding:9px; border-radius:50px; font-family:'Nunito',sans-serif; font-weight:800; font-size:0.82rem; cursor:pointer; text-align:center; text-decoration:none; display:block; }
+    .how-demo { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:28px; }
+    .how-demo-step { background:white; border-radius:16px; padding:24px 18px; text-align:center; border:2px solid var(--green-pale); }
+    .hds-icon { font-size:2.4rem; margin-bottom:10px; }
+    .hds-title { font-family:'Fredoka One',cursive; font-size:1rem; color:var(--green); margin-bottom:6px; }
+    .hds-desc { font-size:0.8rem; font-weight:600; color:var(--text-soft); }
+    @media(max-width:480px){ .how-demo{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+  <nav id="mainNav"><a class="nav-logo" href="index.html"><img src="images/logo/logo.png" alt="HoneyBee Learning" style="height:42px;border-radius:10px;"><div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shop-by-age.html">🎂 Shop by Age</a></li><li><a href="reusable-books.html" class="active">♻️ Reusable Books</a></li><li><a href="name-books.html">✍️ Name Books</a></li><li><a href="themes.html">🎨 Themes</a></li><li><a href="return-gifts-page.html">🎁 Return Gifts</a></li><li><a href="combos.html">📦 Combos</a></li><li><a href="school-orders.html">🏫 School Orders</a></li><li><a href="reviews.html">⭐ Reviews</a></li><li><a href="faq.html">❓ FAQ</a></li><li><a href="contact.html">📞 Contact</a></li>
+    </ul>
+    <div class="nav-right"><button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button><a href="https://wa.me/918883624873" target="_blank" class="nav-cta" style="background:#25D366;">WhatsApp Us 💬</a></div>
+  </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
+
+  <div class="page-hero" style="background:linear-gradient(135deg,#e8f5d8,#e0f2f1);">
+    <div class="section-tag">Eco-Friendly Learning</div>
+    <h1>Write, Wipe & Learn Again ♻️</h1>
+    <p>Fully laminated pages — your child writes with a whiteboard marker, wipes clean and starts again. One book lasts <strong>years</strong> of daily practice!</p>
+    <div class="trust-strip" style="margin-top:24px;">
+      <span class="trust-badge">✅ Marker Included</span>
+      <span class="trust-badge">✅ Laminated Pages</span>
+      <span class="trust-badge">✅ Eco-Friendly</span>
+      <span class="trust-badge">✅ Reuse 100+ Times</span>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section style="padding:52px 5%;background:white;text-align:center;">
+    <div class="section-tag">How Reusable Books Work</div>
+    <h2 class="section-title">Write, Wipe, Repeat! 🖊️</h2>
+    <div class="how-demo">
+      <div class="how-demo-step"><div class="hds-icon">✍️</div><div class="hds-title">1. Write</div><div class="hds-desc">Use the included whiteboard marker to trace letters, numbers or write their name.</div></div>
+      <div class="how-demo-step"><div class="hds-icon">🧹</div><div class="hds-title">2. Wipe Clean</div><div class="hds-desc">Wipe the page clean with a dry cloth or tissue — good as new in 2 seconds!</div></div>
+      <div class="how-demo-step"><div class="hds-icon">🔄</div><div class="hds-title">3. Repeat!</div><div class="hds-desc">Practise again and again — 100+ times per book, zero paper waste!</div></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section style="padding:52px 5%;">
+    <div class="section-tag">All Reusable Books</div>
+    <h2 class="section-title" style="text-align:center;">Choose Your Child's Favourite Theme</h2>
+    <div class="rb-grid">
+      <a href="product.html?id=101" class="rb-card"><div class="rb-img-wrap"><img src="images/products/101/1.png" alt="Thomas Reusable Book" onerror="this.style.display='none';this.nextSibling.style.display='block'"><span style="display:none;font-size:3rem;">🚂</span></div><div class="rb-body"><span class="rb-badge">♻️ Reusable</span><div class="rb-name">Thomas & Friends</div><div class="rb-desc">Train-themed wipe & learn — alphabet, numbers & name tracing</div><div class="rb-price">₹399</div><a href="product.html?id=101" class="rb-btn">View & Order 📚</a></div></a>
+      <a href="product.html?id=102" class="rb-card"><div class="rb-img-wrap"><img src="images/products/102/1.png" alt="Batman Reusable Book" onerror="this.style.display='none';this.nextSibling.style.display='block'"><span style="display:none;font-size:3rem;">🦇</span></div><div class="rb-body"><span class="rb-badge">♻️ Reusable</span><div class="rb-name">Batman Superhero</div><div class="rb-desc">Superhero mission writing — alphabet, shapes & name tracing</div><div class="rb-price">₹399</div><a href="product.html?id=102" class="rb-btn">View & Order 📚</a></div></a>
+      <a href="product.html?id=103" class="rb-card"><div class="rb-img-wrap"><img src="images/products/103/1.png" alt="Unicorn Reusable Book" onerror="this.style.display='none';this.nextSibling.style.display='block'"><span style="display:none;font-size:3rem;">🦄</span></div><div class="rb-body"><span class="rb-badge">♻️ Reusable</span><div class="rb-name">Unicorn Magic</div><div class="rb-desc">Magical wipe & learn with rainbows & stars</div><div class="rb-price">₹399</div><a href="product.html?id=103" class="rb-btn">View & Order 📚</a></div></a>
+      <a href="product.html?id=104" class="rb-card"><div class="rb-img-wrap"><img src="images/products/104/1.png" alt="Cars Reusable Book" onerror="this.style.display='none';this.nextSibling.style.display='block'"><span style="display:none;font-size:3rem;">🚗</span></div><div class="rb-body"><span class="rb-badge">♻️ Reusable</span><div class="rb-name">Roads & Cars</div><div class="rb-desc">Transport-themed road tracing & writing practice</div><div class="rb-price">₹399</div><a href="product.html?id=104" class="rb-btn">View & Order 📚</a></div></a>
+      <a href="product.html?id=105" class="rb-card"><div class="rb-img-wrap"><img src="images/products/105/1.png" alt="Cocomelon Reusable Book" onerror="this.style.display='none';this.nextSibling.style.display='block'"><span style="display:none;font-size:3rem;">🍉</span></div><div class="rb-body"><span class="rb-badge">♻️ Reusable</span><div class="rb-name">Cocomelon</div><div class="rb-desc">Fun wipe & learn with favourite Cocomelon friends</div><div class="rb-price">₹399</div><a href="product.html?id=105" class="rb-btn">View & Order 📚</a></div></a>
+      <a href="product.html?id=106" class="rb-card"><div class="rb-img-wrap"><img src="images/products/106/1.png" alt="Dora Reusable Book" onerror="this.style.display='none';this.nextSibling.style.display='block'"><span style="display:none;font-size:3rem;">🧭</span></div><div class="rb-body"><span class="rb-badge">♻️ Reusable</span><div class="rb-name">Dora Buji Adventure</div><div class="rb-desc">Adventure tracing with mazes, numbers & names</div><div class="rb-price">₹399</div><a href="product.html?id=106" class="rb-btn">View & Order 📚</a></div></a>
+      <a href="product.html?id=107" class="rb-card"><div class="rb-img-wrap"><img src="images/products/107/1.png" alt="Hulk Reusable Book" onerror="this.style.display='none';this.nextSibling.style.display='block'"><span style="display:none;font-size:3rem;">🦸</span></div><div class="rb-body"><span class="rb-badge">♻️ Reusable</span><div class="rb-name">Hulk Superhero</div><div class="rb-desc">Incredible writing adventure — wipe & learn again!</div><div class="rb-price">₹399</div><a href="product.html?id=107" class="rb-btn">View & Order 📚</a></div></a>
+      <a href="product.html?id=108" class="rb-card"><div class="rb-img-wrap"><img src="images/products/108/1.png" alt="Spiderman Reusable Book" onerror="this.style.display='none';this.nextSibling.style.display='block'"><span style="display:none;font-size:3rem;">🕸️</span></div><div class="rb-body"><span class="rb-badge">♻️ Reusable</span><div class="rb-name">Spiderman</div><div class="rb-desc">Web-slinging wipe & learn — most popular reusable book!</div><div class="rb-price">₹399</div><a href="product.html?id=108" class="rb-btn">View & Order 📚</a></div></a>
+      <!-- Custom Request -->
+      <a href="https://wa.me/918883624873?text=Hi! I want a custom theme reusable book." target="_blank" class="rb-card" style="border-style:dashed;border-color:var(--green);background:var(--green-pale);">
+        <div class="rb-img-wrap" style="background:transparent;"><span style="font-size:3rem;">✨</span></div>
+        <div class="rb-body"><span class="rb-badge">Custom Order</span><div class="rb-name">Custom Theme</div><div class="rb-desc">Want a different theme? We can make it! Ask us on WhatsApp.</div><div class="rb-price" style="color:var(--brown);">Request Price</div><span class="rb-btn" style="background:var(--green);">Request Custom 💬</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section style="padding:56px 5%;background:var(--green);text-align:center;">
+    <h2 style="font-family:'Fredoka One',cursive;font-size:1.9rem;color:white;margin-bottom:10px;">All Reusable Books include a Whiteboard Marker! 🖊️</h2>
+    <p style="color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:24px;">Personalised with your child's name · Waterproof & tear-proof · Works for ages 2–8</p>
+    <a href="https://wa.me/918883624873?text=Hi! I want to order a reusable book for my child." target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:15px 34px;border-radius:50px;font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,0.3);">💬 Order on WhatsApp</a>
+  </section>
+
+  <footer id="footer"><div class="footer-inner">
+    <div class="footer-col"><div class="footer-brand">🍯 HoneyBee Learning</div><div class="footer-brand-sub">🇮🇳 India's First Personalised Activity Book<br>📍 Medavakkam, Chennai</div></div>
+    <div class="footer-col"><div class="footer-title">Shop</div><div class="footer-links"><a href="shop-by-age.html">🎂 Shop by Age</a><a href="name-books.html">✍️ Name Books</a><a href="themes.html">🎨 Themes</a><a href="return-gifts-page.html">🎁 Return Gifts</a><a href="combos.html">📦 Combos</a><a href="school-orders.html">🏫 School Orders</a></div></div>
+    <div class="footer-col"><div class="footer-title">Connect</div><div class="footer-links"><a href="https://wa.me/918883624873" target="_blank">💬 WhatsApp</a><a href="https://www.instagram.com/honeybee.learning.co" target="_blank">📸 Instagram</a><a href="tel:8883624873">📞 8883624873</a></div></div>
+  </div><div class="footer-copy">© 2026 HoneyBee Learning · Made with ❤️ in Chennai</div></footer>
+  <a class="wa-fab" href="https://wa.me/918883624873" target="_blank" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 8.5A10.44 10.44 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.84.48 3.63 1.39 5.21L5.5 26.5l5.42-1.42A10.44 10.44 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5z" fill="white"/></svg><span class="wa-fab-label">Chat with us</span></a>
+  <script>const h=document.getElementById('hamburger'),n=document.getElementById('navLinks'),o=document.getElementById('navOverlay');function cm(){n.classList.remove('open');o.classList.remove('open');h.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.classList.remove('no-scroll');}h.addEventListener('click',e=>{e.stopPropagation();n.classList.contains('open')?cm():(n.classList.add('open'),o.classList.add('open'),h.classList.add('open'),h.setAttribute('aria-expanded','true'),document.body.classList.add('no-scroll'));});o.addEventListener('click',cm);n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setTimeout(cm,150)));</script>
+</body>
+</html>

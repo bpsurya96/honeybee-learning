@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop by Age — HoneyBee Learning | Books for Kids 1–8 Years</title>
+  <meta name="description" content="Find the perfect personalised activity book for your child's age. Categorised learning for 1-2 years, 2-4 years, 4-6 years, and 6-8 years. HoneyBee Learning, Chennai.">
+  <link rel="icon" href="images/logo/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"></noscript>
+  <style>
+    .age-page-section { padding: 56px 5%; }
+    .age-page-section:nth-child(odd) { background: var(--cream); }
+    .age-page-section:nth-child(even) { background: white; }
+    .age-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .age-emoji { font-size: 3.5rem; background: var(--green-pale); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .age-title { font-family: 'Fredoka One', cursive; font-size: 2rem; color: var(--green); margin-bottom: 4px; }
+    .age-sub { font-size: 0.95rem; font-weight: 600; color: var(--text-soft); }
+    .age-product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+    .age-card { background: white; border-radius: 18px; padding: 24px; border: 2px solid var(--green-pale); box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: all 0.22s; display: flex; flex-direction: column; }
+    .age-card:hover { transform: translateY(-4px); border-color: var(--green); box-shadow: 0 10px 24px rgba(61,107,36,0.12); }
+    .ac-icon { font-size: 2.6rem; margin-bottom: 12px; }
+    .ac-title { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: var(--text); margin-bottom: 6px; }
+    .ac-desc { font-size: 0.8rem; font-weight: 600; color: var(--text-soft); line-height: 1.4; flex: 1; }
+    .ac-price { font-family: 'Fredoka One', cursive; color: var(--green); font-size: 1.05rem; margin: 12px 0; }
+    .ac-btn { background: var(--green); color: white; border: none; padding: 10px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.85rem; cursor: pointer; text-align: center; text-decoration: none; display: block; }
+    .age-nav-strip { position: sticky; top: 68px; background: white; z-index: 50; display: flex; justify-content: center; gap: 12px; padding: 16px 5%; border-bottom: 2px solid var(--green-pale); box-shadow: 0 4px 12px rgba(0,0,0,0.03); flex-wrap: wrap; }
+    .age-nav-btn { background: var(--cream); border: 2px solid transparent; color: var(--text); font-weight: 700; padding: 8px 20px; border-radius: 50px; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+    .age-nav-btn:hover { border-color: var(--green); color: var(--green); background: white; }
+    @media (max-width: 600px) { .age-header { flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav id="mainNav">
+    <a class="nav-logo" href="index.html"><img src="images/logo/logo.png" alt="HoneyBee Learning" style="height:42px;border-radius:10px;"><div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shop-by-age.html" class="active">🎂 Shop by Age</a></li>
+      <li><a href="reusable-books.html">♻️ Reusable Books</a></li>
+      <li><a href="name-books.html">✍️ Name Books</a></li>
+      <li><a href="themes.html">🎨 Themes</a></li>
+      <li><a href="return-gifts-page.html">🎁 Return Gifts</a></li>
+      <li><a href="combos.html">📦 Combos</a></li>
+      <li><a href="school-orders.html">🏫 School Orders</a></li>
+      <li><a href="reviews.html">⭐ Reviews</a></li>
+      <li><a href="faq.html">❓ FAQ</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul>
+    <div class="nav-right"><button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button><a href="https://wa.me/918883624873" target="_blank" class="nav-cta" style="background:#25D366;">WhatsApp Us 💬</a></div>
+  </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
+
+  <div class="page-hero" style="background:linear-gradient(135deg,#fce4ec,#e8f5d8);">
+    <div class="section-tag">Perfect Match</div>
+    <h1>Shop by Age 🎂</h1>
+    <p>Every child learns differently. We've curated our products to perfectly match your child's developmental stage.</p>
+  </div>
+
+  <div class="age-nav-strip">
+    <a href="#age-1-2" class="age-nav-btn">👶 1–2 Years</a>
+    <a href="#age-2-4" class="age-nav-btn">🧒 2–4 Years</a>
+    <a href="#age-4-6" class="age-nav-btn">🧑 4–6 Years</a>
+    <a href="#age-6-8" class="age-nav-btn">👦 6–8 Years</a>
+  </div>
+
+  <!-- 1-2 YEARS -->
+  <section class="age-page-section" id="age-1-2">
+    <div class="age-header">
+      <div class="age-emoji">👶</div>
+      <div>
+        <h2 class="age-title">1–2 Years (Toddlers)</h2>
+        <div class="age-sub">Sensory exploration, first words, and visual development.</div>
+      </div>
+    </div>
+    <div class="age-product-grid">
+      <div class="age-card"><div class="ac-icon">🃏</div><h3 class="ac-title">First Words Flashcards</h3><p class="ac-desc">High-contrast cards to develop vocabulary and visual tracking.</p><div class="ac-price">₹249</div><a href="https://wa.me/918883624873?text=Hi! I want to order First Words Flashcards." target="_blank" class="ac-btn">Order Now 💬</a></div>
+      <div class="age-card"><div class="ac-icon">🎨</div><h3 class="ac-title">Finger Painting Book</h3><p class="ac-desc">Safe, simple patterns for sensory art exploration.</p><div class="ac-price">₹299</div><a href="https://wa.me/918883624873?text=Hi! I want to order Finger Painting Book." target="_blank" class="ac-btn">Order Now 💬</a></div>
+      <div class="age-card"><div class="ac-icon">🐾</div><h3 class="ac-title">Animal Sounds Flashcards</h3><p class="ac-desc">Learn the animals and the sounds they make!</p><div class="ac-price">₹249</div><a href="https://wa.me/918883624873?text=Hi! I want to order Animal Sounds Flashcards." target="_blank" class="ac-btn">Order Now 💬</a></div>
+    </div>
+  </section>
+
+  <!-- 2-4 YEARS -->
+  <section class="age-page-section" id="age-2-4">
+    <div class="age-header">
+      <div class="age-emoji">🧒</div>
+      <div>
+        <h2 class="age-title">2–4 Years (Nursery / Preschool)</h2>
+        <div class="age-sub">Pencil control, alphabet introduction, and basic numbers.</div>
+      </div>
+    </div>
+    <div class="age-product-grid">
+      <div class="age-card"><div class="ac-icon">🕸️</div><h3 class="ac-title">Name Tracing Book</h3><p class="ac-desc">Your child's name on every page to encourage writing.</p><div class="ac-price">₹349</div><a href="product.html?id=108" class="ac-btn">View Book 📚</a></div>
+      <div class="age-card"><div class="ac-icon">♻️</div><h3 class="ac-title">Reusable Alphabet Book</h3><p class="ac-desc">Wipe & learn book for practicing letters 100+ times.</p><div class="ac-price">₹399</div><a href="reusable-books.html" class="ac-btn">View Book 📚</a></div>
+      <div class="age-card"><div class="ac-icon">🔢</div><h3 class="ac-title">Numbers 1-20 Tracing</h3><p class="ac-desc">Fun activities to count and trace numbers.</p><div class="ac-price">₹349</div><a href="product.html?id=2" class="ac-btn">View Book 📚</a></div>
+      <div class="age-card"><div class="ac-icon">⭐</div><h3 class="ac-title">Shapes & Colors Book</h3><p class="ac-desc">Identify and trace basic shapes and learn primary colors.</p><div class="ac-price">₹299</div><a href="https://wa.me/918883624873?text=Hi! I want to order Shapes & Colors Book." target="_blank" class="ac-btn">Order Now 💬</a></div>
+    </div>
+  </section>
+
+  <!-- 4-6 YEARS -->
+  <section class="age-page-section" id="age-4-6">
+    <div class="age-header">
+      <div class="age-emoji">🧑</div>
+      <div>
+        <h2 class="age-title">4–6 Years (LKG / UKG)</h2>
+        <div class="age-sub">Phonics, sight words, and reading readiness.</div>
+      </div>
+    </div>
+    <div class="age-product-grid">
+      <div class="age-card"><div class="ac-icon">🌸</div><h3 class="ac-title">Phonics Workbook</h3><p class="ac-desc">Step-by-step reading readiness with sound blending.</p><div class="ac-price">₹349</div><a href="product.html?id=9" class="ac-btn">View Book 📚</a></div>
+      <div class="age-card"><div class="ac-icon">👀</div><h3 class="ac-title">Sight Words Book</h3><p class="ac-desc">Learn the most common English words for early reading.</p><div class="ac-price">₹349</div><a href="https://wa.me/918883624873?text=Hi! I want to order Sight Words Book." target="_blank" class="ac-btn">Order Now 💬</a></div>
+      <div class="age-card"><div class="ac-icon">➕</div><h3 class="ac-title">Early Addition & Subtraction</h3><p class="ac-desc">Simple math puzzles and activities.</p><div class="ac-price">₹349</div><a href="https://wa.me/918883624873?text=Hi! I want to order Early Math Book." target="_blank" class="ac-btn">Order Now 💬</a></div>
+      <div class="age-card"><div class="ac-icon">🇮🇳</div><h3 class="ac-title">Tamil / Hindi Letter Tracing</h3><p class="ac-desc">Practice regional language alphabet tracing.</p><div class="ac-price">₹349</div><a href="https://wa.me/918883624873?text=Hi! I want to order Tamil/Hindi Tracing Book." target="_blank" class="ac-btn">Order Now 💬</a></div>
+    </div>
+  </section>
+
+  <!-- 6-8 YEARS -->
+  <section class="age-page-section" id="age-6-8">
+    <div class="age-header">
+      <div class="age-emoji">👦</div>
+      <div>
+        <h2 class="age-title">6–8 Years (Classes 1–3)</h2>
+        <div class="age-sub">Advanced writing, cursive, math, and reading comprehension.</div>
+      </div>
+    </div>
+    <div class="age-product-grid">
+      <div class="age-card"><div class="ac-icon">🖋️</div><h3 class="ac-title">Cursive Writing Practice</h3><p class="ac-desc">Master cursive writing with fun, engaging activities.</p><div class="ac-price">₹349</div><a href="https://wa.me/918883624873?text=Hi! I want to order Cursive Writing Practice." target="_blank" class="ac-btn">Order Now 💬</a></div>
+      <div class="age-card"><div class="ac-icon">🧠</div><h3 class="ac-title">Brain Teasers & Puzzles</h3><p class="ac-desc">Logic puzzles, crosswords, and sudoku for kids.</p><div class="ac-price">₹349</div><a href="product.html?id=12" class="ac-btn">View Book 📚</a></div>
+      <div class="age-card"><div class="ac-icon">✖️</div><h3 class="ac-title">Multiplication Tables</h3><p class="ac-desc">Learn and practice times tables easily.</p><div class="ac-price">₹349</div><a href="https://wa.me/918883624873?text=Hi! I want to order Multiplication Tables Book." target="_blank" class="ac-btn">Order Now 💬</a></div>
+      <div class="age-card"><div class="ac-icon">🌍</div><h3 class="ac-title">World Explorer Activity Book</h3><p class="ac-desc">Learn about countries, flags, and geography.</p><div class="ac-price">₹399</div><a href="https://wa.me/918883624873?text=Hi! I want to order World Explorer Book." target="_blank" class="ac-btn">Order Now 💬</a></div>
+    </div>
+  </section>
+
+  <footer id="footer"><div class="footer-inner">
+    <div class="footer-col"><div class="footer-brand">🍯 HoneyBee Learning</div><div class="footer-brand-sub">🇮🇳 India's First Personalised Activity Book<br>📍 Medavakkam, Chennai</div></div>
+    <div class="footer-col"><div class="footer-title">Shop</div><div class="footer-links"><a href="shop-by-age.html">🎂 Shop by Age</a><a href="reusable-books.html">♻️ Reusable Books</a><a href="name-books.html">✍️ Name Books</a><a href="themes.html">🎨 Themes</a><a href="return-gifts-page.html">🎁 Return Gifts</a><a href="combos.html">📦 Combos</a></div></div>
+    <div class="footer-col"><div class="footer-title">Connect</div><div class="footer-links"><a href="https://wa.me/918883624873" target="_blank">💬 WhatsApp</a><a href="https://www.instagram.com/honeybee.learning.co" target="_blank">📸 Instagram</a><a href="tel:8883624873">📞 8883624873</a></div></div>
+  </div><div class="footer-copy">© 2026 HoneyBee Learning · Made with ❤️ in Chennai</div></footer>
+  <a class="wa-fab" href="https://wa.me/918883624873" target="_blank" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 8.5A10.44 10.44 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.84.48 3.63 1.39 5.21L5.5 26.5l5.42-1.42A10.44 10.44 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5z" fill="white"/></svg><span class="wa-fab-label">Chat with us</span></a>
+  <script>const h=document.getElementById('hamburger'),n=document.getElementById('navLinks'),o=document.getElementById('navOverlay');function cm(){n.classList.remove('open');o.classList.remove('open');h.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.classList.remove('no-scroll');}h.addEventListener('click',e=>{e.stopPropagation();n.classList.contains('open')?cm():(n.classList.add('open'),o.classList.add('open'),h.classList.add('open'),h.setAttribute('aria-expanded','true'),document.body.classList.add('no-scroll'));});o.addEventListener('click',cm);n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setTimeout(cm,150)));</script>
+</body>
+</html>

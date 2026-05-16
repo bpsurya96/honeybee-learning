@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Themes — HoneyBee Learning | Barbie, Krishna, Jungle, Unicorn & More</title>
+  <meta name="description" content="Choose your child's favourite theme — Barbie, Krishna, Jungle, Princess, Spiderman, Unicorn and more. Personalised activity books with any theme!">
+  <link rel="icon" href="images/logo/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"></noscript>
+  <style>
+    .theme-page-section { padding: 56px 5%; }
+    .theme-page-section:nth-child(even) { background: var(--cream); }
+    .theme-category-title { font-family:'Fredoka One',cursive; font-size:1.6rem; color:var(--green); margin-bottom:6px; }
+    .theme-category-sub { font-size:0.88rem; font-weight:600; color:var(--text-soft); margin-bottom:28px; }
+    .theme-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; }
+    .tc {
+      background:white; border-radius:18px; padding:28px 16px 22px;
+      text-align:center; text-decoration:none; border:2.5px solid transparent;
+      box-shadow:0 4px 16px rgba(0,0,0,0.07); transition:all 0.22s;
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+    }
+    .tc:hover { transform:translateY(-5px); box-shadow:0 12px 28px rgba(0,0,0,0.13); }
+    .tc-emoji { font-size:2.6rem; }
+    .tc-name { font-family:'Fredoka One',cursive; font-size:1rem; color:var(--text); }
+    .tc-desc { font-size:0.76rem; font-weight:600; color:var(--text-soft); }
+    .tc-btn { margin-top:8px; padding:7px 16px; border-radius:50px; font-size:0.78rem; font-weight:800; background:var(--green); color:white; }
+    .theme-tab-nav { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; padding:18px 5%; background:white; border-bottom:2px solid var(--green-pale); position:sticky; top:68px; z-index:50; }
+    .theme-tab-btn { padding:9px 20px; border-radius:50px; border:2px solid var(--green-pale); color:var(--text-soft); font-weight:700; font-size:0.85rem; text-decoration:none; transition:all 0.2s; background:white; }
+    .theme-tab-btn:hover { border-color:var(--green); color:var(--green); }
+    @media(max-width:480px){ .theme-cards{grid-template-columns:repeat(2,1fr);gap:10px;} .tc{padding:20px 10px 16px;} }
+  </style>
+</head>
+<body>
+  <nav id="mainNav" aria-label="Main navigation">
+    <a class="nav-logo" href="index.html"><img src="images/logo/logo.png" alt="HoneyBee Learning" style="height:42px;border-radius:10px;"><div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="shop-by-age.html">🎂 Shop by Age</a></li>
+      <li><a href="reusable-books.html">♻️ Reusable Books</a></li>
+      <li><a href="name-books.html">✍️ Name Books</a></li>
+      <li><a href="themes.html" class="active">🎨 Themes</a></li>
+      <li><a href="return-gifts-page.html">🎁 Return Gifts</a></li>
+      <li><a href="combos.html">📦 Combos</a></li>
+      <li><a href="school-orders.html">🏫 School Orders</a></li>
+      <li><a href="reviews.html">⭐ Reviews</a></li>
+      <li><a href="faq.html">❓ FAQ</a></li>
+      <li><a href="contact.html">📞 Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <a href="https://wa.me/918883624873" target="_blank" class="nav-cta" style="background:#25D366;">WhatsApp Us 💬</a>
+    </div>
+  </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
+
+  <div class="page-hero" style="background:linear-gradient(135deg,#e3f2fd,#fce4ec);">
+    <div class="section-tag">Pick Their Favourite</div>
+    <h1>Theme Collections 🎨</h1>
+    <p>When kids love the theme, they love to learn! Every book is personalised with your child's name and their favourite character or theme.</p>
+  </div>
+
+  <div class="theme-tab-nav">
+    <a href="#girls-themes" class="theme-tab-btn">👧 Girls Themes</a>
+    <a href="#boys-themes" class="theme-tab-btn">👦 Boys Themes</a>
+    <a href="#educational-themes" class="theme-tab-btn">📚 Educational</a>
+    <a href="#spiritual-themes" class="theme-tab-btn">🙏 Spiritual</a>
+  </div>
+
+  <!-- GIRLS -->
+  <section class="theme-page-section" id="girls-themes">
+    <div class="theme-category-title">👧 Girls Themes</div>
+    <div class="theme-category-sub">Magical, princess-perfect books that little girls absolutely love!</div>
+    <div class="theme-cards">
+      <a href="product.html?id=9" class="tc" id="barbie" style="border-color:#ff69b4;">
+        <div class="tc-emoji">👑</div><div class="tc-name">Barbie / Princess</div><div class="tc-desc">Pink & glamorous learning fun</div><div class="tc-btn">View Book</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want a Frozen theme book for my daughter." target="_blank" class="tc" id="frozen" style="border-color:#00bcd4;">
+        <div class="tc-emoji">❄️</div><div class="tc-name">Frozen</div><div class="tc-desc">Elsa & Anna magical adventures</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want a Princess theme book." target="_blank" class="tc" id="princess" style="border-color:#e91e8c;">
+        <div class="tc-emoji">👸</div><div class="tc-name">Princess</div><div class="tc-desc">Royal tiaras & fairy tale castles</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+      <a href="product.html?id=12" class="tc" id="unicorn" style="border-color:#9c27b0;">
+        <div class="tc-emoji">🦄</div><div class="tc-name">Unicorn</div><div class="tc-desc">Rainbows, stars & magic</div><div class="tc-btn">View Book</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want a Mermaid theme book." target="_blank" class="tc" style="border-color:#00acc1;">
+        <div class="tc-emoji">🧜‍♀️</div><div class="tc-name">Mermaid</div><div class="tc-desc">Ocean magic with shimmering fins</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- BOYS -->
+  <section class="theme-page-section" id="boys-themes">
+    <div class="theme-category-title">👦 Boys Themes</div>
+    <div class="theme-category-sub">Action-packed themes that make every boy excited to open their book!</div>
+    <div class="theme-cards">
+      <a href="https://wa.me/918883624873?text=Hi! I want a Spiderman theme book." target="_blank" class="tc" id="spiderman" style="border-color:#f44336;">
+        <div class="tc-emoji">🕸️</div><div class="tc-name">Spiderman</div><div class="tc-desc">Web-slinging superhero adventure</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want an Avengers theme book." target="_blank" class="tc" style="border-color:#1565c0;">
+        <div class="tc-emoji">🦸</div><div class="tc-name">Avengers</div><div class="tc-desc">Iron Man, Thor & superhero crew</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want a Cars theme book." target="_blank" class="tc" id="vehicles" style="border-color:#2196f3;">
+        <div class="tc-emoji">🚗</div><div class="tc-name">Cars & Vehicles</div><div class="tc-desc">Racing cars, trucks & transport</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want a Dinosaur theme book." target="_blank" class="tc" style="border-color:#558b2f;">
+        <div class="tc-emoji">🦕</div><div class="tc-name">Dinosaur</div><div class="tc-desc">T-Rex, triceratops & dino world</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+      <a href="product.html?id=6" class="tc" id="space" style="border-color:#3f51b5;">
+        <div class="tc-emoji">🚀</div><div class="tc-name">Space & Planets</div><div class="tc-desc">Rockets, astronauts & galaxies</div><div class="tc-btn">View Book</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- EDUCATIONAL -->
+  <section class="theme-page-section" id="educational-themes">
+    <div class="theme-category-title">📚 Educational Themes</div>
+    <div class="theme-category-sub">Nature and world themes that build curiosity alongside academics!</div>
+    <div class="theme-cards">
+      <a href="product.html?id=11" class="tc" id="jungle" style="border-color:#4caf50;">
+        <div class="tc-emoji">🦁</div><div class="tc-name">Jungle Safari</div><div class="tc-desc">Lion, elephant, giraffe & more</div><div class="tc-btn">View Book</div>
+      </a>
+      <a href="product.html?id=8" class="tc" id="ocean" style="border-color:#0097a7;">
+        <div class="tc-emoji">🌊</div><div class="tc-name">Ocean / Sea</div><div class="tc-desc">Fish, whales & underwater world</div><div class="tc-btn">View Book</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want a Farm Animals theme book." target="_blank" class="tc" style="border-color:#8d6e63;">
+        <div class="tc-emoji">🐄</div><div class="tc-name">Farm Animals</div><div class="tc-desc">Cows, hens, sheep & barn life</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+      <a href="product.html?id=10" class="tc" style="border-color:#66bb6a;">
+        <div class="tc-emoji">🦋</div><div class="tc-name">Butterfly Garden</div><div class="tc-desc">Nature, flowers & garden friends</div><div class="tc-btn">View Book</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want a Community Helpers theme book." target="_blank" class="tc" style="border-color:#ff7043;">
+        <div class="tc-emoji">👨‍🚒</div><div class="tc-name">Community Helpers</div><div class="tc-desc">Doctors, firemen, teachers & more</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SPIRITUAL -->
+  <section class="theme-page-section" id="spiritual-themes">
+    <div class="theme-category-title">🙏 Spiritual Themes</div>
+    <div class="theme-category-sub">Value-based learning rooted in Indian culture and devotion.</div>
+    <div class="theme-cards">
+      <a href="product.html?id=3" class="tc" id="krishna" style="border-color:#7b5ea7;">
+        <div class="tc-emoji">🪈</div><div class="tc-name">Krishna</div><div class="tc-desc">Vrindavan, peacocks & devotion</div><div class="tc-btn">View Book</div>
+      </a>
+      <a href="product.html?id=5" class="tc" style="border-color:#ad1457;">
+        <div class="tc-emoji">🦚</div><div class="tc-name">Radha Krishna</div><div class="tc-desc">Love, devotion & divine stories</div><div class="tc-btn">View Book</div>
+      </a>
+      <a href="https://wa.me/918883624873?text=Hi! I want a Ganesha theme book." target="_blank" class="tc" id="ganesha" style="border-color:#ff6f00;">
+        <div class="tc-emoji">🐘</div><div class="tc-name">Ganesha</div><div class="tc-desc">Wisdom, blessings & new beginnings</div><div class="tc-btn">Enquire 💬</div>
+      </a>
+      <a href="product.html?id=7" class="tc" style="border-color:#e65100;">
+        <div class="tc-emoji">🔱</div><div class="tc-name">Murugan</div><div class="tc-desc">Vel, peacock & Tamil spirituality</div><div class="tc-btn">View Book</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CUSTOM CTA -->
+  <section style="padding:56px 5%;background:var(--green);text-align:center;">
+    <h2 style="font-family:'Fredoka One',cursive;font-size:1.9rem;color:white;margin-bottom:10px;">Don't See Your Child's Theme? 🤔</h2>
+    <p style="color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:24px;">We create <strong style="color:var(--honey);">custom themes</strong> on request! Batman, Thomas, Moana, Paw Patrol — just ask!</p>
+    <a href="https://wa.me/918883624873?text=Hi! I want a custom theme book for my child." target="_blank"
+       style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:15px 34px;border-radius:50px;font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,0.3);">
+      💬 Request a Custom Theme
+    </a>
+  </section>
+
+  <footer id="footer"><div class="footer-inner">
+    <div class="footer-col"><div class="footer-brand">🍯 HoneyBee Learning</div><div class="footer-brand-sub">🇮🇳 India's First Personalised Activity Book<br>📍 Medavakkam, Chennai</div></div>
+    <div class="footer-col"><div class="footer-title">Shop</div><div class="footer-links"><a href="shop-by-age.html">🎂 Shop by Age</a><a href="reusable-books.html">♻️ Reusable Books</a><a href="name-books.html">✍️ Name Books</a><a href="return-gifts-page.html">🎁 Return Gifts</a><a href="combos.html">📦 Combos</a></div></div>
+    <div class="footer-col"><div class="footer-title">Connect</div><div class="footer-links"><a href="https://wa.me/918883624873" target="_blank">💬 WhatsApp</a><a href="https://www.instagram.com/honeybee.learning.co" target="_blank">📸 Instagram</a><a href="tel:8883624873">📞 8883624873</a></div></div>
+  </div><div class="footer-copy">© 2026 HoneyBee Learning · Made with ❤️ in Chennai</div></footer>
+
+  <a class="wa-fab" href="https://wa.me/918883624873" target="_blank" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.5 8.5A10.44 10.44 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.84.48 3.63 1.39 5.21L5.5 26.5l5.42-1.42A10.44 10.44 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5zm-7.5 16.16a8.67 8.67 0 0 1-4.42-1.21l-.32-.19-3.22.84.86-3.14-.21-.33A8.67 8.67 0 1 1 16 24.66zm4.76-6.5c-.26-.13-1.54-.76-1.78-.84-.24-.09-.41-.13-.58.13-.17.26-.65.84-.8 1.01-.15.17-.3.19-.56.06-.26-.13-1.1-.4-2.1-1.29-.78-.69-1.3-1.54-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.46.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.5-.43-.43-.58-.44h-.5c-.17 0-.45.06-.69.32-.24.26-.9.88-.9 2.15s.92 2.49 1.05 2.66c.13.17 1.81 2.77 4.39 3.88.61.27 1.09.43 1.46.55.61.19 1.17.16 1.61.1.49-.07 1.54-.63 1.76-1.24.22-.61.22-1.13.15-1.24-.06-.1-.23-.16-.49-.29z" fill="white"/></svg><span class="wa-fab-label">Chat with us</span></a>
+  <script>
+    const h=document.getElementById('hamburger'),n=document.getElementById('navLinks'),o=document.getElementById('navOverlay');
+    function cm(){n.classList.remove('open');o.classList.remove('open');h.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.classList.remove('no-scroll');}
+    h.addEventListener('click',e=>{e.stopPropagation();n.classList.contains('open')?cm():(n.classList.add('open'),o.classList.add('open'),h.classList.add('open'),h.setAttribute('aria-expanded','true'),document.body.classList.add('no-scroll'));});
+    o.addEventListener('click',cm);n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setTimeout(cm,150)));
+  </script>
+</body>
+</html>
