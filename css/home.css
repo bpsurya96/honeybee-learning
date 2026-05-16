@@ -1,0 +1,301 @@
+/* home.css - Styles for the new conversion-focused homepage */
+
+/* HERO BANNER */
+.home-hero {
+  background: linear-gradient(135deg, #e8f5d8, #fff8e1);
+  padding: 56px 5%;
+  text-align: center;
+}
+.home-hero h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2.8rem;
+  color: var(--green);
+  margin: 16px 0;
+  line-height: 1.2;
+}
+.home-hero p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.home-hero-btns {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.home-btn-primary {
+  background: var(--green);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(61, 107, 36, 0.2);
+}
+.home-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(61, 107, 36, 0.3);
+}
+.home-btn-secondary {
+  background: white;
+  color: var(--green);
+  border: 2px solid var(--green);
+  padding: 12px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.home-btn-secondary:hover {
+  background: var(--cream);
+  transform: translateY(-2px);
+}
+
+/* SECTIONS COMMON */
+.home-section {
+  padding: 64px 5%;
+  text-align: center;
+}
+.bg-white { background: white; }
+.bg-cream { background: var(--cream); }
+.bg-green { background: var(--green); color: white; }
+.bg-gradient { background: linear-gradient(135deg, #e8f5d8, #e3f2fd); }
+
+/* SHOP BY AGE */
+.age-cards-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.home-age-card {
+  width: 160px;
+  padding: 24px 16px;
+  border-radius: 18px;
+  border: 2px solid var(--green-pale);
+  text-decoration: none;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+}
+.home-age-card:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(61, 107, 36, 0.1);
+}
+.home-age-icon {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+.home-age-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+.home-age-sub {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* BEST SELLERS */
+.best-sellers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bs-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 2px solid var(--green-pale);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.bs-card:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(61, 107, 36, 0.1);
+}
+.bs-icon { font-size: 3.5rem; margin-bottom: 16px; }
+.bs-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+.bs-desc {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.bs-price {
+  font-family: 'Fredoka One', cursive;
+  color: var(--green);
+  margin-top: 16px;
+  font-size: 1.1rem;
+}
+
+/* WHY PARENTS LOVE */
+.promises-container {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.promise-item {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+}
+.promise-icon {
+  font-size: 2.8rem;
+  margin-bottom: 16px;
+}
+.promise-title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+.promise-desc {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  font-weight: 600;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* REUSABLE DEMO */
+.demo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.demo-step {
+  text-align: center;
+}
+.demo-icon { font-size: 4.5rem; margin-bottom: 12px; }
+.demo-title { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: white; }
+.demo-desc { font-weight: 600; font-size: 0.95rem; opacity: 0.9; margin-top: 6px; }
+.demo-arrow { font-size: 2.5rem; opacity: 0.6; }
+.demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--green);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 800;
+  text-decoration: none;
+  margin-top: 40px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.demo-btn:hover { transform: translateY(-2px); }
+
+/* THEME COLLECTIONS */
+.themes-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.theme-pill {
+  background: white;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 2px solid;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+.theme-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.pill-barbie { border-color: #ff69b4; }
+.pill-krishna { border-color: #7b5ea7; }
+.pill-jungle { border-color: #4caf50; }
+.pill-princess { border-color: #e91e8c; }
+.pill-vehicle { border-color: #2196f3; }
+.pill-frozen { border-color: #00bcd4; }
+
+/* REVIEWS */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+.review-card {
+  background: var(--cream);
+  padding: 28px;
+  border-radius: 18px;
+  text-align: left;
+}
+.review-stars { color: #ffc107; font-size: 1.3rem; margin-bottom: 12px; }
+.review-text { font-size: 0.95rem; font-weight: 600; font-style: italic; line-height: 1.5; color: var(--text); }
+.review-author { margin-top: 16px; font-weight: 800; font-size: 0.9rem; color: var(--text-soft); }
+
+/* HOW TO ORDER */
+.hto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+.hto-card {
+  background: white;
+  padding: 28px 24px;
+  border-radius: 20px;
+  border: 2px solid var(--green-pale);
+  transition: transform 0.2s;
+}
+.hto-card:hover { transform: translateY(-4px); border-color: var(--green); }
+.hto-icon { font-size: 2.8rem; margin-bottom: 16px; }
+.hto-title { font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: var(--text); }
+.hto-desc { font-size: 0.9rem; font-weight: 600; color: var(--text-soft); margin-top: 8px; line-height: 1.4; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .home-hero h1 { font-size: 2.2rem; }
+  .home-hero p { font-size: 1rem; }
+  .demo-arrow { transform: rotate(90deg); margin: 16px 0; }
+  .demo-container { flex-direction: column; gap: 16px; }
+  .age-cards-container { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 16px; }
+  .home-age-card { width: auto; }
+}
+@media (max-width: 480px) {
+  .home-hero h1 { font-size: 1.8rem; }
+  .age-cards-container { grid-template-columns: 1fr; }
+}
