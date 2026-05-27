@@ -98,8 +98,9 @@
         filter: none !important;
         background: var(--cream) !important;
         box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-        /* Prevent nav from creating a stacking context that bleeds into drawer */
+        /* Keep the nav drawer layer above the overlay in mobile layouts */
         isolation: isolate;
+        z-index: calc(var(--z-modal, 99) + 1);
     }
 
     nav * {
@@ -120,7 +121,8 @@
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         filter: none !important;
-        z-index: var(--z-modal, 99);
+        z-index: calc(var(--z-modal, 99) + 10);
+        pointer-events: auto;
         flex-direction: column;
         padding: 80px 20px 30px;
         gap: 2px;
@@ -144,6 +146,7 @@
 
     .nav-links.open {
         transform: translate3d(0, 0, 0) !important;
+        pointer-events: auto;
     }
 
     .nav-links li a {
