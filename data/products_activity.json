@@ -485,5 +485,45 @@
             "🧹 Eraser",
             "🌟 Motivational Stickers"
         ]
+    },
+    {
+        "id": 14,
+        "title": "Personalised Little Singham Activity Book",
+        "price": 349,
+        "badge": "New",
+        "badgeType": "new",
+        "image": "images/products/14/1.png",
+        "images": [
+            "images/products/14/1.png",
+            "images/products/14/2.png",
+            "images/products/14/3.png",
+            "images/products/14/4.png",
+            "images/products/14/5.png",
+            "images/products/14/6.png"
+        ],
+        "fallbackEmoji": "👮",
+        "shortDesc": "Fun-filled Little Singham activity book for preschool kids with tracing, colouring and engaging learning activities. 50 pages with personalised name option.",
+        "fullDesc": "Fun-filled Little Singham themed activity book specially designed for preschool kids to enjoy learning through tracing, colouring, and engaging activities.\n\nThis book helps children improve:\n• Pencil control\n• Handwriting skills\n• Creativity\n• Concentration\n• Fine motor skills\n\nProduct Details\n50 Fun Activity Pages\nTheme: Little Singham\nNormal Paperback Book\nAge Group: 2–6 Years\nBright & Colorful Designs\nPersonalized Name Option Available\n\nPerfect for screen-free learning and gifting for kids.",
+        "tags": [
+            "📏 50 pages",
+            "✍️ Tracing & Colouring",
+            "👮 Little Singham Theme",
+            "🧠 Fine Motor Skills"
+        ],
+        "productType": "activity",
+        "seoTitle": "Little Singham Activity Book for Kids | Personalised Tracing & Colouring Workbook",
+        "metaDescription": "Shop the Little Singham themed personalised activity book for preschool kids. 50 pages of tracing, colouring and fine motor skill learning.",
+        "keywords": [
+            "little singham activity book",
+            "personalised kids activity book",
+            "tracing colouring workbook",
+            "preschool learning book",
+            "screen free activity book"
+        ],
+        "freebies": [
+            "✏️ Pencil",
+            "🧹 Eraser",
+            "🌟 Motivational Stickers"
+        ]
     }
 ]

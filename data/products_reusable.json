@@ -304,5 +304,43 @@
             "🖊️ Whiteboard Marker",
             "🌟 Motivational Stickers"
         ]
+    },
+    {
+        "id": 109,
+        "title": "Personalised Vir The Robot Boy Reusable Activity Book",
+        "price": 399,
+        "badge": "Reusable",
+        "badgeType": "default",
+        "image": "images/products/109/1.png",
+        "images": [
+            "images/products/109/1.png",
+            "images/products/109/2.png",
+            "images/products/109/3.png",
+            "images/products/109/4.png"
+        ],
+        "fallbackEmoji": "🤖",
+        "shortDesc": "Reusable Vir The Robot Boy wipe-and-learn book with 15 laminated pages for repeated practice, personalised name option and marker-friendly learning.",
+        "fullDesc": "Exciting reusable activity book featuring Vir The Robot Boy theme, designed for kids who love fun learning and repeated practice.\n\nChildren can write, wipe, and practice again multiple times using marker-friendly laminated pages.\n\nProduct Details\n15 Laminated Reusable Pages\nTheme: Vir The Robot Boy\nWrite & Wipe Learning Book\nAge Group: 2–6 Years\nReusable Marker Practice\nPersonalized Name Option Available\n\nBenefits\n✔️ Reusable Learning Fun\n✔️ Improves Writing Practice\n✔️ Builds Fine Motor Skills\n✔️ Reduces Screen Time\n✔️ Keeps Kids Engaged Longer\n\nIdeal for daily practice, travel activities, and birthday gifting.",
+        "tags": [
+            "♻️ Reusable",
+            "✍️ Write & Wipe",
+            "🤖 Vir The Robot Boy Theme",
+            "💡 Fine Motor Skills",
+            "🧒 Name Personalisation"
+        ],
+        "productType": "reusable",
+        "seoTitle": "Vir The Robot Boy Reusable Activity Book for Kids | Laminated Write & Wipe Workbook",
+        "metaDescription": "Buy the Vir The Robot Boy reusable laminated activity book for kids. 15 reusable pages, personalised name option, and marker-friendly learning.",
+        "keywords": [
+            "vir the robot boy reusable book",
+            "laminated wipe and learn book",
+            "robot theme reusable activity book",
+            "personalised reusable workbook",
+            "marker practice book for kids"
+        ],
+        "freebies": [
+            "🖊️ Whiteboard Marker",
+            "🌟 Motivational Stickers"
+        ]
     }
 ]

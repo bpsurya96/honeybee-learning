@@ -272,5 +272,44 @@
             "🧹 Eraser",
             "🌟 Motivational Stickers"
         ]
+    },
+    {
+        "id": 208,
+        "title": "Personalised Honeybee Learning Jungle Phonics Book",
+        "price": 349,
+        "badge": "New",
+        "badgeType": "new",
+        "image": "images/products/208/1.png",
+        "images": [
+            "images/products/208/1.png",
+            "images/products/208/2.png",
+            "images/products/208/3.png",
+            "images/products/208/4.png"
+        ],
+        "fallbackEmoji": "🐵",
+        "shortDesc": "Jungle Phonics book for preschool kids with A–Z sounds, tracing, action-based learning and fun jungle activities. Personalized name sound page included.",
+        "fullDesc": "Make phonics fun with our Honeybee Learning Jungle Phonics Book!\n\nDesigned specially for preschool & kindergarten kids to learn:\n• A-Z Letter Sounds\n• Phonics Actions\n• Letter Tracing\n• Sound Recognition\n• Beginning Sounds\n• Fun Jungle Activities\n• Revision & Practice Pages\n• Personalized Name Sound Page\n\nWHAT’S INSIDE?\n✨ 60+ Interactive Pages\n✨ Jungle Animal Theme\n✨ Action-Based Phonics Learning\n✨ Coloring & Fun Activities\n✨ Sound Revision Challenges\n✨ Parent-Friendly Learning System\n\nBENEFITS\n✔️ Improves pronunciation\n✔️ Builds early reading skills\n✔️ Develops pencil control\n✔️ Enhances memory through actions\n✔️ Screen-free learning fun\n\nAGE GROUP\nPerfect for Ages 3–6 Years",
+        "tags": [
+            "🔤 Jungle Phonics",
+            "✍️ Letter Tracing",
+            "🐝 Honeybee Learning",
+            "🦁 Jungle Theme",
+            "📚 60+ Pages"
+        ],
+        "productType": "other",
+        "seoTitle": "Jungle Phonics Book for Kids | Honeybee Learning Personalized Phonics Workbook",
+        "metaDescription": "Buy the Honeybee Learning Jungle Phonics Book for preschool kids. 60+ pages of A-Z sounds, tracing, phonics actions and jungle activities. Personalized name sound page.",
+        "keywords": [
+            "jungle phonics book",
+            "phonics book for preschool",
+            "personalised phonics workbook",
+            "jungle alphabet learning",
+            "sound recognition book for kids"
+        ],
+        "freebies": [
+            "✏️ Pencil",
+            "🧹 Eraser",
+            "🌟 Motivational Stickers"
+        ]
     }
 ]
