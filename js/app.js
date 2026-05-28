@@ -88,7 +88,7 @@ async function loadProducts() {
             otherRes.json()
         ]);
         learningProducts = [...activity, ...reusable, ...other];
-        renderLearningProducts();
+        renderLearningProducts(window.initialLearningType || undefined);
     } catch (e) { console.error('Failed to load products:', e); }
 }
 
@@ -130,6 +130,8 @@ function renderLearningProducts(typeFilter, resetPage) {
         if (searchQuery) {
             // Search mode: ignore type tab, show from all types
             return matchesSearch;
+        } else if (type === 'all') {
+            return true;
         } else {
             // Browse mode: filter by active tab type
             return (p.productType || 'activity') === type;

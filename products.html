@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products — HoneyBee Learning | Personalised Activity Books & Gifts</title>
+  <meta name="description" content="Browse all personalised activity books, reusable learning products, and birthday return gift combos from HoneyBee Learning. Filter by category, search themes, and order in minutes.">
+  <meta name="keywords" content="all products honeybee learning, personalised activity books, reusable learning books, kids return gifts, product filters, search products">
+  <meta name="robots" content="index, follow">
+
+  <link rel="icon" href="images/logo/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap">
+  </noscript>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script>window.initialLearningType = 'all';</script>
+</head>
+
+<body>
+  <nav id="mainNav" aria-label="Main navigation">
+    <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
+      <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books" style="height:42px;border-radius:10px;">
+      <div>
+        <span class="nav-logo-text">HoneyBee</span>
+        <span class="nav-logo-sub">Learning</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#streams">Home Products</a></li>
+      <li><a href="products.html" style="color:var(--green-dark,#2f7a3e);font-weight:800;">All Products</a></li>
+      <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">Ocean Kits</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="bee-points.html" style="color:var(--honey);font-weight:800;">Bee Points</a></li>
+      <li><a href="index.html#footer">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="nav-cta">WhatsApp Us 💬</a>
+    </div>
+  </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
+
+  <main class="section-block" style="padding-top: 110px; padding-bottom: 60px;">
+    <section class="section-headline" style="text-align:center; max-width:960px; margin:0 auto 38px;">
+      <div class="section-tag">All Products</div>
+      <h1 style="font-size:2.25rem; line-height:1.1; margin:14px 0 12px;">Browse Every Product in One Place</h1>
+      <p style="font-size:1rem; color:var(--text-soft); max-width:760px; margin:0 auto;">Search by theme, filter by product type, and shop personalised activity books, reusable write-and-wipe products, flashcards, and birthday return gifts with ease.</p>
+    </section>
+
+    <div class="search-container reveal" style="max-width:940px; margin:0 auto 24px;">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="productSearch" class="search-input" placeholder="Search for themes, ages, products or keywords..." oninput="handleSearch(this.value)">
+    </div>
+
+    <div class="learning-subtabs" style="max-width:940px; margin:0 auto 28px; padding:0 12px;">
+      <button class="learning-subtab active" onclick="switchLearning('all', this)">📦 All Products</button>
+      <button class="learning-subtab" onclick="switchLearning('activity', this)">📚 Activity Books</button>
+      <button class="learning-subtab" onclick="switchLearning('reusable', this)">♻️ Reusable Books</button>
+      <button class="learning-subtab" onclick="switchLearning('other', this)">🃏 Other Products</button>
+    </div>
+
+    <div class="learning-grid" id="learningGrid" style="max-width:1200px; margin:0 auto;"></div>
+
+    <section class="section-block" style="max-width:940px; margin:56px auto 24px; text-align:center;">
+      <div class="section-tag">Birthday Return Gifts</div>
+      <h2 style="font-size:1.75rem; margin:12px 0 8px;">Gift Combos for Every Budget</h2>
+      <p style="font-size:0.95rem; color:var(--text-soft); margin:0 auto;">Filter gift sets by price range and browse responsive cards built for fast ordering.</p>
+    </section>
+
+    <div class="filter-bar" style="max-width:940px; margin:0 auto 20px;">
+      <button class="filter-btn active" data-filter="all">All Combos</button>
+      <button class="filter-btn" data-filter="under50">Under ₹50</button>
+      <button class="filter-btn" data-filter="under100">Under ₹100</button>
+      <button class="filter-btn" data-filter="under200">Under ₹200</button>
+      <button class="filter-btn" data-filter="premium">Premium</button>
+    </div>
+
+    <div class="products-grid" id="giftsGrid" style="max-width:1200px; margin:0 auto;"></div>
+
+    <section class="section-block" style="max-width:940px; margin:50px auto 0; padding:24px 20px; background:rgba(237, 247, 255, 0.85); border-radius:24px; box-shadow:0 12px 30px rgba(0,0,0,0.05); text-align:center;">
+      <h3 style="font-size:1.5rem; margin-bottom:12px;">Looking for Ocean Kits?</h3>
+      <p style="color:var(--text-soft); margin-bottom:18px;">We also ship theme-based Ocean Kits for curious kids. Tap below to explore the latest collection.</p>
+      <a href="ocean-kits.html" class="hcs-btn-primary" style="padding: 14px 28px; font-size:0.95rem;">Explore Ocean Kits 🌊</a>
+    </section>
+  </main>
+
+  <footer class="footer" style="padding: 28px 16px; background:#f9fbf8; text-align:center;">
+    <p style="margin:0 0 8px; font-weight:700;">Need help choosing? WhatsApp us at <a href="https://wa.me/918883624873">+91 88836 24873</a></p>
+    <p style="margin:0; color:var(--text-soft);">Back to <a href="index.html">Home</a> · <a href="ocean-kits.html">Ocean Kits</a> · <a href="about.html">About</a></p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
