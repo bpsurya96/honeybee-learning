@@ -542,15 +542,15 @@
         font-size: 0.82rem;
     }
 
-    /* One-column full-width grid on phones for a cleaner, more stable scroll experience */
+    /* Two-column grid on phones for better density and browsing */
     .products-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .learning-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .testi-grid {
