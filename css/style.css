@@ -2259,6 +2259,11 @@ section {
   transform: translateY(0);
 }
 
+.load-more-sentinel {
+  width: 100%;
+  min-height: 20px;
+}
+
 /* ─── SEARCH NOT FOUND CARD ─── */
 .search-notfound-wrap {
   width: 100%;
@@ -3021,7 +3026,7 @@ section {
 footer {
   background: var(--brown);
   color: rgba(255, 255, 255, 0.8);
-  padding: 48px 5% 24px;
+  padding: 32px 5% 18px;
   font-size: 0.87rem;
   font-weight: 600;
   text-align: left;
@@ -3032,11 +3037,11 @@ footer {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 36px 40px;
+  gap: 24px 24px;
   justify-content: space-between;
-  padding-bottom: 32px;
+  padding-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .footer-col {
@@ -3053,9 +3058,9 @@ footer {
 
 .footer-brand-sub {
   font-size: 0.85rem;
-  opacity: 0.7;
+  opacity: 0.75;
   font-weight: 600;
-  line-height: 1.6;
+  line-height: 1.45;
 }
 
 .footer-title {
@@ -3070,7 +3075,7 @@ footer {
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .footer-links a {
@@ -3090,6 +3095,7 @@ footer {
   font-size: 0.78rem;
   opacity: 0.55;
   font-weight: 600;
+  margin-top: 8px;
 }
 
 /* ─── REVEAL ANIMATION ─── */

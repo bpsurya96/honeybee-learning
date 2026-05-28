@@ -18,8 +18,87 @@ let currentLearningType = 'activity';
 let currentCombo = '';
 let currentPrice = '';
 let searchQuery = '';
-function getProductsPerPage() { return window.innerWidth >= 1280 ? 10 : (window.innerWidth >= 769 ? 8 : 6); }
+let loadMoreObserver = null;
+function isMobileProductFlow() { return window.innerWidth <= 768; }
+function getProductsPerPage() { return isMobileProductFlow() ? 1 : (window.innerWidth >= 1280 ? 10 : (window.innerWidth >= 769 ? 8 : 6)); }
 let currentProductPage = 1;
+let currentAgeFilter = 'all';
+let currentBookTypeFilter = 'all';
+
+function setupProductAutoLoad(hasMore) {
+    if (loadMoreObserver) {
+        loadMoreObserver.disconnect();
+        loadMoreObserver = null;
+    }
+    if (!hasMore) return;
+
+    const sentinel = document.getElementById('loadMoreSentinel');
+    if (!sentinel) return;
+
+    loadMoreObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadMoreObserver.unobserve(entry.target);
+                loadMoreProducts();
+            }
+        });
+    }, { rootMargin: '220px' });
+
+    loadMoreObserver.observe(sentinel);
+}
+
+function setupMobileProductAutoLoad() {
+    if (loadMoreObserver) {
+        loadMoreObserver.disconnect();
+        loadMoreObserver = null;
+    }
+    if (!isMobileProductFlow()) return;
+
+    const sentinel = document.getElementById('loadMoreSentinel');
+    if (!sentinel) return;
+
+    loadMoreObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadMoreObserver.unobserve(entry.target);
+                loadMoreProducts();
+            }
+        });
+    }, { rootMargin: '220px' });
+
+    loadMoreObserver.observe(sentinel);
+}
+
+function matchesBookType(product) {
+    if (currentBookTypeFilter === 'all') return true;
+    return (product.productType || 'activity') === currentBookTypeFilter;
+}
+
+function matchesAgeGroup(product) {
+    if (currentAgeFilter === 'all') return true;
+    const text = [product.shortDesc, product.fullDesc, ...(product.tags || []), ...(product.keywords || [])].join(' ').toLowerCase();
+    switch (currentAgeFilter) {
+        case '1-2':
+            return /1[\-–]2|2[\-–]5|toddler|toddlers|baby/.test(text);
+        case '3-5':
+            return /3[\-–]5|preschool|lkg|nursery|toddler|toddlers/.test(text);
+        case '6-8':
+            return /6[\-–]8|class [1-3]|grade [1-3]|primary/.test(text);
+        case '9-12':
+            return /9[\-–]12|class [4-7]|grade [4-7]|upper primary|upper-primary/.test(text);
+        default:
+            return true;
+    }
+}
+
+function handleFilterChange() {
+    const ageSelect = document.getElementById('filterAge');
+    const typeSelect = document.getElementById('filterType');
+    currentAgeFilter = ageSelect ? ageSelect.value : 'all';
+    currentBookTypeFilter = typeSelect ? typeSelect.value : 'all';
+    currentProductPage = 1;
+    renderLearningProducts(currentLearningType);
+}
 
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', async () => {
@@ -88,7 +167,8 @@ async function loadProducts() {
             otherRes.json()
         ]);
         learningProducts = [...activity, ...reusable, ...other];
-        renderLearningProducts();
+        currentLearningType = window.initialLearningType || currentLearningType;
+        renderLearningProducts(currentLearningType);
     } catch (e) { console.error('Failed to load products:', e); }
 }
 
@@ -124,16 +204,20 @@ function renderLearningProducts(typeFilter, resetPage) {
         const matchesSearch = !searchQuery ||
             p.title.toLowerCase().includes(searchQuery) ||
             (p.shortDesc && p.shortDesc.toLowerCase().includes(searchQuery)) ||
+            (p.fullDesc && p.fullDesc.toLowerCase().includes(searchQuery)) ||
             (p.tags && p.tags.some(t => t.toLowerCase().includes(searchQuery))) ||
             (p.keywords && p.keywords.some(k => k.toLowerCase().includes(searchQuery)));
 
+        const matchesTypeTab = type === 'all' || (p.productType || 'activity') === type;
+        const matchesBookTypeFilter = matchesBookType(p);
+        const matchesAgeFilter = matchesAgeGroup(p);
+
         if (searchQuery) {
-            // Search mode: ignore type tab, show from all types
-            return matchesSearch;
-        } else {
-            // Browse mode: filter by active tab type
-            return (p.productType || 'activity') === type;
+            // Search mode: ignore type tab, still apply filters if set
+            return matchesSearch && matchesBookTypeFilter && matchesAgeFilter;
         }
+
+        return matchesTypeTab && matchesBookTypeFilter && matchesAgeFilter;
     });
 
     // Show a hint banner when search is returning cross-type results
@@ -151,6 +235,7 @@ function renderLearningProducts(typeFilter, resetPage) {
     }
 
     // Pagination slice
+    const mobileAutoLoad = isMobileProductFlow();
     const totalToShow = currentProductPage * getProductsPerPage();
     const visible = filtered.slice(0, totalToShow);
     const hasMore = filtered.length > totalToShow;
@@ -179,10 +264,11 @@ function renderLearningProducts(typeFilter, resetPage) {
 
     const loadMoreHTML = hasMore ? `
     <div class="load-more-wrap" style="grid-column: 1/-1; text-align: center; margin-top: 12px;">
-        <div class="load-more-info">Showing ${visible.length} of ${filtered.length} products</div>
+        <div class="load-more-info">Scroll to load more products while browsing.</div>
         <button class="load-more-btn" onclick="loadMoreProducts()">
             Load More Products ↓
         </button>
+        <div id="loadMoreSentinel" class="load-more-sentinel" aria-hidden="true"></div>
     </div>` : `
     <div class="load-more-wrap" style="grid-column: 1/-1; text-align: center; margin-top: 12px;">
         <div class="load-more-info all-loaded">✅ Showing all ${filtered.length} product${filtered.length !== 1 ? 's' : ''}</div>
@@ -190,6 +276,7 @@ function renderLearningProducts(typeFilter, resetPage) {
 
     grid.innerHTML = searchBanner + cardsHTML + loadMoreHTML;
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+    setupProductAutoLoad(hasMore);
 }
 
 // ─── LOAD MORE ───
