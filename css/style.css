@@ -2259,6 +2259,11 @@ section {
   transform: translateY(0);
 }
 
+.load-more-sentinel {
+  width: 100%;
+  height: 2px;
+}
+
 /* ─── SEARCH NOT FOUND CARD ─── */
 .search-notfound-wrap {
   width: 100%;

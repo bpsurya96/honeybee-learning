@@ -18,8 +18,32 @@ let currentLearningType = 'activity';
 let currentCombo = '';
 let currentPrice = '';
 let searchQuery = '';
-function getProductsPerPage() { return window.innerWidth >= 1280 ? 10 : (window.innerWidth >= 769 ? 8 : 6); }
+let loadMoreObserver = null;
+function isMobileProductFlow() { return window.innerWidth <= 768; }
+function getProductsPerPage() { return isMobileProductFlow() ? 1 : (window.innerWidth >= 1280 ? 10 : (window.innerWidth >= 769 ? 8 : 6)); }
 let currentProductPage = 1;
+
+function setupMobileProductAutoLoad() {
+    if (loadMoreObserver) {
+        loadMoreObserver.disconnect();
+        loadMoreObserver = null;
+    }
+    if (!isMobileProductFlow()) return;
+
+    const sentinel = document.getElementById('loadMoreSentinel');
+    if (!sentinel) return;
+
+    loadMoreObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadMoreObserver.unobserve(entry.target);
+                loadMoreProducts();
+            }
+        });
+    }, { rootMargin: '220px' });
+
+    loadMoreObserver.observe(sentinel);
+}
 
 // ─── INIT ───
 document.addEventListener('DOMContentLoaded', async () => {
@@ -153,6 +177,7 @@ function renderLearningProducts(typeFilter, resetPage) {
     }
 
     // Pagination slice
+    const mobileAutoLoad = isMobileProductFlow();
     const totalToShow = currentProductPage * getProductsPerPage();
     const visible = filtered.slice(0, totalToShow);
     const hasMore = filtered.length > totalToShow;
@@ -179,7 +204,11 @@ function renderLearningProducts(typeFilter, resetPage) {
     </div>`;
     }).join('');
 
-    const loadMoreHTML = hasMore ? `
+    const loadMoreHTML = hasMore ? mobileAutoLoad ? `
+    <div class="load-more-wrap" style="grid-column: 1/-1; text-align: center; margin-top: 12px;">
+        <div class="load-more-info">Scroll to load more products one by one</div>
+        <div id="loadMoreSentinel" class="load-more-sentinel"></div>
+    </div>` : `
     <div class="load-more-wrap" style="grid-column: 1/-1; text-align: center; margin-top: 12px;">
         <div class="load-more-info">Showing ${visible.length} of ${filtered.length} products</div>
         <button class="load-more-btn" onclick="loadMoreProducts()">
@@ -192,6 +221,7 @@ function renderLearningProducts(typeFilter, resetPage) {
 
     grid.innerHTML = searchBanner + cardsHTML + loadMoreHTML;
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+    setupMobileProductAutoLoad();
 }
 
 // ─── LOAD MORE ───
