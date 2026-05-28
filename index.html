@@ -101,6 +101,8 @@
 
 <body>
 
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
   <!-- ═══════════════════════════════════════════
        WELCOME SPLASH — shows once per session
        ═══════════════════════════════════════════ -->
@@ -169,13 +171,9 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#streams">Products</a></li>
-      <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊
-          Ocean Kits</a></li>
+      <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">🌊 Ocean Kits</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="bee-points.html" style="color:var(--honey);font-weight:800;">🐝 Bee Points</a>
-      </li>
       <li><a href="#footer">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -189,6 +187,7 @@
   <div class="nav-drawer-overlay" id="navOverlay"></div>
 
   <!-- ═══ HERO CAROUSEL ═══ -->
+  <main id="mainContent">
   <section class="hero-carousel-section" id="home" aria-label="Hero slideshow">
 
     <!-- ── Slides ── -->
@@ -196,24 +195,29 @@
 
       <!-- ══ SLIDE 1: Personalised Name ══ -->
       <div class="hcs-slide hcs-slide--1" data-slide="0">
-        <div class="hcs-image-side" onclick="window.location.href='#streams'" style="cursor:pointer;"
+          <div class="hcs-image-side" onclick="window.location.href='#streams'" style="cursor:pointer;"
           title="Explore Products">
           <img src="images/hero/slide1.png" alt="Child holding a personalised activity book with their name on it"
-            class="hcs-img" loading="eager">
+            class="hcs-img" loading="eager" decoding="async" fetchpriority="high" width="720" height="720">
         </div>
         <div class="hcs-text-side">
           <div class="hcs-tag">🇮🇳 India's First — Chennai</div>
-          <h1 class="hcs-headline">Your Child's Name<br><span class="hcs-accent">On Every Page!</span></h1>
+          <h1 class="hcs-headline">Personalised Activity Books<br><span class="hcs-accent">Name on Every Page</span>
+          </h1>
+          <p class="hcs-subhead" style="margin-top:8px;font-size:1rem;color:var(--text);font-weight:700;">Personalised
+            books that make learning magical — ages 2–12. Quick orders via WhatsApp.</p>
           <p class="hcs-body">We print <strong>your child's name</strong> across every page of the book — making
-            learning feel magical, personal and exciting. Works for kids aged 2–12!</p>
+            learning feel magical, personal and exciting.</p>
           <div class="hcs-trust-row">
             <span>✅ Personalised</span>
             <span>✅ Ages 2–12</span>
             <span>✅ 1200+ Delivered</span>
           </div>
+          <div class="hcs-review-badge" style="margin-top:10px;font-weight:800;color:#333;">
+            ⭐ 4.9 · 1200+ happy families
+          </div>
           <div class="hcs-btns">
-            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary">Order on
-              WhatsApp 💬</a>
+            <a id="heroPrimaryCTA" href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary" aria-label="Order now via WhatsApp" onclick="gtag('event','order_click',{method:'whatsapp',label:'hero-slide-1'});">Order Now 💬</a>
             <a href="#streams" class="hcs-btn-secondary">See Products 📚</a>
           </div>
         </div>
@@ -221,10 +225,10 @@
 
       <!-- ══ SLIDE 2: 8+ Themes ══ -->
       <div class="hcs-slide hcs-slide--2" data-slide="1">
-        <div class="hcs-image-side" onclick="window.location.href='#streams'" style="cursor:pointer;"
+          <div class="hcs-image-side" onclick="window.location.href='#streams'" style="cursor:pointer;"
           title="Explore Products">
           <img src="images/hero/slide2.png" alt="8 different themed activity books for kids" class="hcs-img"
-            loading="lazy">
+            loading="lazy" decoding="async" fetchpriority="low" width="720" height="720">
         </div>
         <div class="hcs-text-side">
           <div class="hcs-tag">🎨 Choose Their Favourite</div>
@@ -237,8 +241,7 @@
             <span>🧭 Dora</span><span>🚗 Cars</span>
           </div>
           <div class="hcs-btns">
-            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary">Order on
-              WhatsApp 💬</a>
+            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary" onclick="gtag('event','order_click',{method:'whatsapp',label:'hero-slide-2'});">Order on WhatsApp 💬</a>
             <a href="#streams" class="hcs-btn-secondary">Explore Books 📚</a>
           </div>
         </div>
@@ -246,10 +249,10 @@
 
       <!-- ══ SLIDE 3: Wipe & Learn ══ -->
       <div class="hcs-slide hcs-slide--3" data-slide="2">
-        <div class="hcs-image-side" onclick="window.location.href='#streams'" style="cursor:pointer;"
+          <div class="hcs-image-side" onclick="window.location.href='#streams'" style="cursor:pointer;"
           title="Explore Products">
           <img src="images/hero/slide3.png" alt="Child writing on a laminated book page and wiping it clean"
-            class="hcs-img" loading="lazy">
+            class="hcs-img" loading="lazy" decoding="async" fetchpriority="low" width="720" height="720">
         </div>
         <div class="hcs-text-side">
           <div class="hcs-tag">♻️ Reusable — Zero Waste</div>
@@ -262,8 +265,7 @@
             <span>✅ 100+ Sessions</span>
           </div>
           <div class="hcs-btns">
-            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary">Order on
-              WhatsApp 💬</a>
+            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary" onclick="gtag('event','order_click',{method:'whatsapp',label:'hero-slide-3'});">Order on WhatsApp 💬</a>
             <a href="#streams" class="hcs-btn-secondary">View Books 📚</a>
           </div>
         </div>
@@ -271,10 +273,10 @@
 
       <!-- ══ SLIDE 4: Birthday Return Gifts ══ -->
       <div class="hcs-slide hcs-slide--4" data-slide="3">
-        <div class="hcs-image-side" onclick="window.location.href='#streams'" style="cursor:pointer;"
+          <div class="hcs-image-side" onclick="window.location.href='#streams'" style="cursor:pointer;"
           title="Explore Products">
           <img src="images/hero/slide4.png" alt="Birthday return gift sets beautifully packed" class="hcs-img"
-            loading="lazy">
+            loading="lazy" decoding="async" fetchpriority="low" width="720" height="720">
         </div>
         <div class="hcs-text-side">
           <div class="hcs-tag">🎁 Birthday Return Gifts</div>
@@ -287,8 +289,7 @@
             <span>✅ Bulk Orders</span>
           </div>
           <div class="hcs-btns">
-            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary">Order Gifts
-              🎁</a>
+            <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="hcs-btn-primary" onclick="gtag('event','order_click',{method:'whatsapp',label:'hero-slide-4'});">Order Gifts 🎁</a>
             <a href="#streams" class="hcs-btn-secondary">See Gift Combos</a>
           </div>
         </div>
@@ -315,6 +316,27 @@
     </div>
 
   </section><!-- /hero-carousel-section -->
+
+  <!-- HERO HIGHLIGHTS — 3 concise value bullets for quick scanning -->
+  <section class="hero-highlights" aria-hidden="false" style="padding:18px 6%;background:transparent;">
+    <div class="hh-inner">
+      <div class="hh-item">
+        <div class="hh-ico">✏️</div>
+        <div class="hh-title">Personalised — Name on every page</div>
+      </div>
+      <div class="hh-item">
+        <div class="hh-ico">♻️</div>
+        <div class="hh-title">Reusable — Write & wipe 100+ times</div>
+      </div>
+      <div class="hh-item">
+        <div class="hh-ico">🎁</div>
+        <div class="hh-title">Return gifts from ₹25 — Bulk orders</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- wrap remaining content in main and close before footer -->
+  </main>
 
   <!-- ═══ HOW IT WORKS STRIP ═══ -->
   <section class="how-it-works-strip" aria-label="How HoneyBee Learning works">

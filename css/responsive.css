@@ -1037,4 +1037,25 @@
 
     .bp-cta-section { padding: 40px 4%; }
     .bp-cta-btn { padding: 12px 24px; font-size: 0.93rem; width: 100%; text-align: center; box-sizing: border-box; }
+}/* Extra mobile refinements appended */
+@media (max-width: 480px) {
+  /* Slightly smaller hero headline for very small phones */
+  .hcs-headline { font-size: 1.9rem !important; }
+  .hcs-text-side { text-align: center; }
+
+  /* Ensure hero images don't exceed viewport and keep aspect ratio */
+  .hcs-img { max-width: 300px; width: 80%; height: auto; }
+
+  /* Slightly larger tap targets for nav drawer */
+  .nav-links li a { padding: 14px 18px; font-size: 1.06rem; }
+
+  /* Show WA label by default and reduce FAB bounce for better UX */
+  .wa-fab { animation: none !important; }
+  .wa-fab-label { opacity: 1 !important; max-width: 160px !important; }
+
+  /* Improve search input tap area */
+  .search-input { padding: 14px 16px 14px 46px; font-size: 1rem; }
+
+  /* Reduce excessive section paddings on very small screens */
+  section { padding-top: 16px; padding-bottom: 16px; }
 }

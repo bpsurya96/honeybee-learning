@@ -54,6 +54,27 @@ body {
   width: 100%;
 }
 
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  width: auto;
+  height: auto;
+  padding: 10px 14px;
+  background: var(--green);
+  color: white;
+  border-radius: 8px;
+  z-index: 9999;
+}
+
 body.no-scroll {
   overflow: hidden;
   height: 100vh;
@@ -300,6 +321,28 @@ nav {
   animation: hcsTxtIn 0.7s 0.18s ease both;
 }
 
+/* Short subhead shown under main hero headline */
+.hcs-subhead {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+/* Review badge styling shown below trust row */
+.hcs-review-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.96);
+  border-radius: 14px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.92rem;
+  color: var(--text);
+  box-shadow: var(--shadow-card);
+}
+
+.hcs-img { aspect-ratio: 4/3; }
+
 .hcs-body strong { color: var(--text); }
 
 /* Trust row */
@@ -371,6 +414,17 @@ nav {
   box-shadow: 0 8px 24px rgba(61,107,36,0.35);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
   white-space: nowrap;
+}
+
+.hcs-btn-primary:focus {
+  outline: 3px solid rgba(61,107,36,0.18);
+  outline-offset: 3px;
+}
+
+/* Make primary CTA more prominent */
+.hcs-btn-primary {
+  padding: 16px 34px;
+  font-size: 1.05rem;
 }
 
 .hcs-btn-primary:hover {
@@ -491,6 +545,43 @@ nav {
   transition: width 0.5s ease;
   border-radius: 0 2px 2px 0;
 }
+
+/* HERO HIGHLIGHTS */
+.hero-highlights { background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.02)); }
+.hero-highlights .hh-inner { max-width:1100px;margin:0 auto;display:flex;gap:18px;align-items:stretch;justify-content:space-between;}
+.hero-highlights .hh-item { flex:1; display:flex;gap:12px;align-items:center;padding:10px 14px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:var(--shadow-card);}
+.hero-highlights .hh-ico { font-size:1.4rem; }
+.hero-highlights .hh-title { font-weight:800;color:var(--text);font-size:0.95rem;}
+
+/* Banner de-emphasis */
+.banner-strip { opacity:0.85 }
+
+/* Mobile: stack hero columns and make CTA full-width */
+@media (max-width: 900px) {
+  .hcs-slide { flex-direction: column; height: auto; min-height: 640px; }
+  .hcs-image-side { padding: 18px 6% 6% 6%; }
+  .hcs-text-side { padding: 18px 6% 32px 6%; max-width: none; }
+  .hcs-btns { flex-direction: column; align-items: stretch; }
+  .hcs-btn-primary, .hcs-btn-secondary { width: 100%; text-align: center; }
+  .hero-highlights .hh-inner { flex-direction: column; gap:10px; }
+}
+
+/* Global section typography and spacing to improve scanability */
+.section-tag { font-weight:800;color:var(--green);font-size:0.85rem;margin-bottom:8px; }
+.section-title { font-family:'Fredoka One',cursive;font-size:1.6rem;margin:6px 0 8px;color:var(--text); }
+.section-sub { color:var(--text-soft); font-weight:600; max-width:760px; line-height:1.6; }
+.section-inner { max-width:1100px;margin:0 auto;padding:22px 6%; }
+
+/* Reduce visual noise from banner on small screens */
+@media (max-width: 900px) {
+  .banner-strip { display: none; }
+}
+
+/* Improve paragraph readability across sections */
+section p { max-width:760px; line-height:1.7; color:var(--text-soft); }
+
+/* Slightly increase spacing between major sections */
+section { padding: 28px 0; }
 
 /* ═══════════════════════════════════════════
    CINEMATIC FULL-SCREEN HERO
