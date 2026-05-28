@@ -33,7 +33,6 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#streams">Home Products</a></li>
       <li><a href="products.html" style="color:var(--green-dark,#2f7a3e);font-weight:800;">All Products</a></li>
       <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">Ocean Kits</a></li>
       <li><a href="about.html">About</a></li>
@@ -54,7 +53,7 @@
     <section class="section-headline" style="text-align:center; max-width:960px; margin:0 auto 38px;">
       <div class="section-tag">All Products</div>
       <h1 style="font-size:2.25rem; line-height:1.1; margin:14px 0 12px;">Browse Every Product in One Place</h1>
-      <p style="font-size:1rem; color:var(--text-soft); max-width:760px; margin:0 auto;">Search by theme, filter by product type, and shop personalised activity books, reusable write-and-wipe products, flashcards, and birthday return gifts with ease.</p>
+      <p style="font-size:1rem; color:var(--text-soft); max-width:760px; margin:0 auto;">Search by theme, filter by age and book type, and shop personalised activity books, reusable write-and-wipe products, flashcards, and birthday return gifts with ease.</p>
     </section>
 
     <div class="search-container reveal" style="max-width:940px; margin:0 auto 24px;">
@@ -62,11 +61,33 @@
       <input type="text" id="productSearch" class="search-input" placeholder="Search for themes, ages, products or keywords..." oninput="handleSearch(this.value)">
     </div>
 
-    <div class="learning-subtabs" style="max-width:940px; margin:0 auto 28px; padding:0 12px;">
+    <div class="learning-subtabs" style="max-width:940px; margin:0 auto 14px; padding:0 12px;">
       <button class="learning-subtab active" onclick="switchLearning('all', this)">📦 All Products</button>
       <button class="learning-subtab" onclick="switchLearning('activity', this)">📚 Activity Books</button>
       <button class="learning-subtab" onclick="switchLearning('reusable', this)">♻️ Reusable Books</button>
       <button class="learning-subtab" onclick="switchLearning('other', this)">🃏 Other Products</button>
+    </div>
+
+    <div class="product-filter-row" style="max-width:940px; margin:0 auto 26px; padding:0 12px; display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:12px;">
+      <label style="display:flex; flex-direction:column; gap:8px; font-weight:700; font-size:0.92rem; color:var(--brown);">
+        Age group
+        <select id="filterAge" onchange="handleFilterChange()" style="border:1px solid rgba(0,0,0,0.12); border-radius:14px; padding:12px 14px; font-size:0.95rem;">
+          <option value="all">All Ages</option>
+          <option value="1-2">1–2 years</option>
+          <option value="3-5">3–5 years</option>
+          <option value="6-8">6–8 years</option>
+          <option value="9-12">9–12 years</option>
+        </select>
+      </label>
+      <label style="display:flex; flex-direction:column; gap:8px; font-weight:700; font-size:0.92rem; color:var(--brown);">
+        Book type
+        <select id="filterType" onchange="handleFilterChange()" style="border:1px solid rgba(0,0,0,0.12); border-radius:14px; padding:12px 14px; font-size:0.95rem;">
+          <option value="all">All Types</option>
+          <option value="activity">Activity Books</option>
+          <option value="reusable">Reusable Books</option>
+          <option value="other">Flashcards & Extras</option>
+        </select>
+      </label>
     </div>
 
     <div class="learning-grid" id="learningGrid" style="max-width:1200px; margin:0 auto;"></div>
