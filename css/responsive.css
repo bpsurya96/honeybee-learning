@@ -1038,3 +1038,59 @@
     .bp-cta-section { padding: 40px 4%; }
     .bp-cta-btn { padding: 12px 24px; font-size: 0.93rem; width: 100%; text-align: center; box-sizing: border-box; }
 }
+/* Compact footer for mobile and tablet */
+@media (max-width: 768px) {
+    footer {
+        padding: 24px 4% 14px;
+        font-size: 0.82rem;
+    }
+
+    .footer-inner {
+        gap: 18px 18px;
+        padding-bottom: 16px;
+        margin-bottom: 12px;
+    }
+
+    .footer-col {
+        flex: 1 1 100%;
+        min-width: unset;
+    }
+
+    .footer-brand {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+    }
+
+    .footer-brand-sub {
+        font-size: 0.82rem;
+        line-height: 1.4;
+    }
+
+    .footer-title {
+        margin-bottom: 8px;
+    }
+
+    .footer-links {
+        gap: 8px;
+    }
+
+    .footer-copy {
+        text-align: left;
+        font-size: 0.75rem;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 18px 4% 12px;
+    }
+
+    .footer-brand {
+        font-size: 1.05rem;
+    }
+
+    .footer-brand-sub {
+        font-size: 0.8rem;
+    }
+}
