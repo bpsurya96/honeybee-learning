@@ -283,13 +283,6 @@ function renderLearningProducts(typeFilter, resetPage) {
 function loadMoreProducts() {
     currentProductPage++;
     renderLearningProducts(currentLearningType, false);
-    // Smooth scroll to newly loaded items
-    setTimeout(() => {
-        const loadMoreBtn = document.querySelector('.load-more-btn');
-        if (loadMoreBtn) {
-            loadMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }, 100);
 }
 
 // ─── SEARCH NOT FOUND — WhatsApp Enquiry Form ───
