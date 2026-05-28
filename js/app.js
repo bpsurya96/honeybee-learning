@@ -167,7 +167,8 @@ async function loadProducts() {
             otherRes.json()
         ]);
         learningProducts = [...activity, ...reusable, ...other];
-        renderLearningProducts(window.initialLearningType || undefined);
+        currentLearningType = window.initialLearningType || currentLearningType;
+        renderLearningProducts(currentLearningType);
     } catch (e) { console.error('Failed to load products:', e); }
 }
 
