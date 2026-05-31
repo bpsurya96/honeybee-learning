@@ -2,7 +2,7 @@
     {
         "id": 201,
         "title": "Reusable Laminated Alphabet Chart – Hospital Theme (Wipe & Learn)",
-        "price": 69,
+        "price": 40,
         "badge": "Reusable",
         "badgeType": "success",
         "image": "images/products/201/8.png",
@@ -39,7 +39,7 @@
     {
         "id": 202,
         "title": "Reusable Laminated Alphabet Chart – Space Theme (Wipe & Learn)",
-        "price": 69,
+        "price": 40,
         "badge": "Reusable",
         "badgeType": "success",
         "image": "images/products/202/15.png",
@@ -76,7 +76,7 @@
     {
         "id": 203,
         "title": "Personalised Name Tracing Workbook – English, Tamil & Hindi (25 Pages A4)",
-        "price": 279,
+        "price": 250,
         "badge": "Customised",
         "badgeType": "primary",
         "image": "images/products/203/1.png",
@@ -117,7 +117,7 @@
     {
         "id": 204,
         "title": "Personalised Honeybee E-Learning Strokes & Patterns Book – My First Writing Journey (A4, 25 Pages)",
-        "price": 279,
+        "price": 250,
         "badge": "Preschool Bestseller",
         "badgeType": "success",
         "image": "images/products/204/1.png",
@@ -157,7 +157,7 @@
     {
         "id": 205,
         "title": "Kids Math Practice Book with Cheat Sheet | Addition & Subtraction Workbook (Reusable)",
-        "price": 199,
+        "price": 350,
         "badge": "Reusable",
         "badgeType": "success",
         "image": "images/products/205/1.png",
@@ -198,7 +198,7 @@
     {
         "id": 206,
         "title": "My First Learning Book for Babies | A4 Laminated Visual Learning Book (0–1 Year)",
-        "price": 299,
+        "price": 350,
         "badge": "Visual Learning",
         "badgeType": "primary",
         "image": "images/products/206/1.png",
@@ -237,7 +237,7 @@
     {
         "id": 207,
         "title": "Personalised Tamil Name Tracing Book for Kids | Reusable A5 Laminated Workbook",
-        "price": 199,
+        "price": 350,
         "badge": "Personalised",
         "badgeType": "primary",
         "image": "images/products/207/1.png",
@@ -276,7 +276,7 @@
     {
         "id": 208,
         "title": "Personalised Honeybee Learning Jungle Phonics Book",
-        "price": 299,
+        "price": 350,
         "badge": "New",
         "badgeType": "new",
         "image": "images/products/208/1.png",
