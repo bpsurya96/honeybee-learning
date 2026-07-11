@@ -311,5 +311,91 @@
             "🧹 Eraser",
             "🌟 Motivational Stickers"
         ]
+    },
+
+    {
+        "id": 209,
+        "title": "Personalised Honeybee Learning Jungle Phonics Book",
+        "price": 395,
+        "badge": "New",
+        "badgeType": "new",
+        "image": "images/products/209/1.png",
+        "images": [
+            "images/products/209/1.png",
+            "images/products/209/2.png",
+            "images/products/209/3.png",
+            "images/products/209/4.png",
+            "images/products/209/5.png"
+        ],
+        "fallbackEmoji": "🐵",
+        "shortDesc": "Jungle Phonics book for preschool kids with A–Z sounds, tracing, action-based learning and fun jungle activities. Personalized name sound page included.",
+        "fullDesc": "Make phonics fun with our Honeybee Learning Jungle Phonics Book!\n\nDesigned specially for preschool & kindergarten kids to learn:\n• A-Z Letter Sounds\n• Phonics Actions\n• Letter Tracing\n• Sound Recognition\n• Beginning Sounds\n• Fun Jungle Activities\n• Revision & Practice Pages\n• Personalized Name Sound Page\n\nWHAT’S INSIDE?\n✨ 60+ Interactive Pages\n✨ Jungle Animal Theme\n✨ Action-Based Phonics Learning\n✨ Coloring & Fun Activities\n✨ Sound Revision Challenges\n✨ Parent-Friendly Learning System\n\nBENEFITS\n✔️ Improves pronunciation\n✔️ Builds early reading skills\n✔️ Develops pencil control\n✔️ Enhances memory through actions\n✔️ Screen-free learning fun\n\nAGE GROUP\nPerfect for Ages 3–6 Years",
+        "tags": [
+            "🔤 Jungle Phonics",
+            "✍️ Letter Tracing",
+            "🐝 Honeybee Learning",
+            "🦁 Jungle Theme",
+            "📚 60+ Pages"
+        ],
+        "productType": "other",
+        "seoTitle": "Jungle Phonics Book for Kids | Honeybee Learning Personalized Phonics Workbook",
+        "metaDescription": "Buy the Honeybee Learning Jungle Phonics Book for preschool kids. 60+ pages of A-Z sounds, tracing, phonics actions and jungle activities. Personalized name sound page.",
+        "keywords": [
+            "jungle phonics book",
+            "phonics book for preschool",
+            "personalised phonics workbook",
+            "jungle alphabet learning",
+            "sound recognition book for kids"
+        ],
+        "freebies": [
+            "✏️ Pencil",
+            "🧹 Eraser",
+            "🌟 Motivational Stickers"
+        ]
+    },
+    {
+        "id": 210,
+        "title": "My First Tamil Writing Journey | Reusable Write & Wipe Tamil Workbook Level 1",
+        "price": 499,
+        "badge": "New",
+        "badgeType": "new",
+        "image": "images/products/210/1.png",
+        "images": [
+            "images/products/210/1.png",
+            "images/products/210/2.png",
+            "images/products/210/3.png",
+            "images/products/210/4.png",
+            "images/products/210/5.png"
+        ],
+        "fallbackEmoji": "🐵",
+        "shortDesc": "Reusable Write & Wipe Tamil workbook for kids with pre-writing practice, உயிர் எழுத்துகள், மெய் எழுத்துகள், guided tracing and independent writing. Perfect for ages 2.5–5 years.",
+        "fullDesc": "Give your child a strong foundation in Tamil with the HoneyBee Learning My First Tamil Writing Journey – Level 1.\n\nDesigned especially for children aged 2.5–5 years, this reusable Write & Wipe workbook introduces Tamil through a fun, step-by-step learning approach. From pre-writing strokes to mastering உயிர் எழுத்துகள் and மெய் எழுத்துகள், every page helps children develop handwriting, fine motor skills and confidence in writing Tamil.\n\n✨ WHAT'S INSIDE?\n• Pre-Writing Line & Curve Practice\n• Fine Motor Development Activities\n• Introduction to the Tamil Language\n• உயிர் எழுத்துகள் (12 Tamil Vowels)\n• மெய் எழுத்துகள் (18 Tamil Consonants)\n• Guided Letter Tracing\n• Independent Writing Practice\n• Letter Recognition Activities\n• Revision Pages\n• Positive Tamil Affirmations\n• Achievement Certificate\n\n🎯 BENEFITS\n✔ Step-by-step Tamil learning progression\n✔ Improves handwriting and pencil control\n✔ Develops fine motor skills\n✔ Builds confidence in writing Tamil\n✔ Large child-friendly tracing letters\n✔ Encourages independent learning\n✔ Suitable for home, preschool and classroom use\n✔ Designed by HoneyBee Learning\n\n📦 PRODUCT DETAILS\n• Reusable Write & Wipe Workbook\n• Premium Quality Laminated Pages\n• A4 Size\n• 24–26 Interactive Learning Pages\n• Guided Tracing + Independent Writing\n• Full-Colour Premium Design\n\n👶 Recommended Age: 2.5–5 Years\n\n💛 Perfect For\n• Nursery\n• LKG\n• UKG Beginners\n• Homeschooling\n• Preschool Learning\n• Educational Gifts",
+        "tags": [
+            "✍️ Write & Wipe",
+            "🔤 Tamil Writing",
+            "📚 Beginner Workbook",
+            "🎒 Preschool Learning",
+            "📏 A4 Size"
+        ],
+        "productType": "other",
+        "seoTitle": "My First Tamil Writing Journey | Reusable Write & Wipe Tamil Workbook for Kids",
+        "metaDescription": "Buy My First Tamil Writing Journey reusable Write & Wipe workbook for kids. Learn Tamil vowels, consonants, tracing and handwriting with fun activities. Ideal for ages 2.5–5 years.",
+        "keywords": [
+            "tamil writing workbook",
+            "write and wipe tamil book",
+            "reusable tamil workbook",
+            "tamil handwriting practice",
+            "tamil tracing book",
+            "uyir ezhuthukkal workbook",
+            "mei ezhuthukkal workbook",
+            "preschool tamil learning",
+            "tamil workbook for kids",
+            "honeybee learning tamil"
+        ],
+        "freebies": [
+            "✏️ Pencil",
+            "🧹 Eraser",
+            "🌟 Motivational Stickers"
+        ]
     }
 ]
