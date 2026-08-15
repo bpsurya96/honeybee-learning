@@ -1,0 +1,999 @@
+﻿/* ════════════════════════════════════════════════════════════════
+   divine-stories.css — Divine Story Books Page
+   HoneyBee Learning
+   ════════════════════════════════════════════════════════════════ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DIVINE DESIGN TOKENS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --divine-saffron:   #FF9933;
+  --divine-gold:      #D4A017;
+  --divine-gold-pale: #FFF6D6;
+  --divine-purple:    #4A0E8F;
+  --divine-purple-mid:#6B2FAA;
+  --divine-purple-pale:#F4EEFF;
+  --divine-night:     #0D0622;
+  --divine-cream:     #FFFDF5;
+  --divine-red:       #C0392B;
+  --divine-glow:      rgba(212,160,23,0.35);
+  --divine-glow-strong: rgba(255,153,51,0.5);
+  --divine-radius:    22px;
+  --divine-shadow:    0 8px 36px rgba(74,14,143,0.13);
+  --divine-shadow-hover: 0 20px 56px rgba(74,14,143,0.22);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PAGE BASE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+body.divine-page {
+  background: var(--divine-cream);
+  min-height: 100vh;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAV OVERRIDE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+body.divine-page #mainNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 64px;
+  background: rgba(255,253,245,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(212,160,23,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  gap: 12px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   KEYFRAME ANIMATIONS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@keyframes divineFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(2deg); }
+  66%       { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes auराGlow {
+  0%, 100% { box-shadow: 0 0 40px 10px rgba(212,160,23,0.3), 0 0 80px 20px rgba(255,153,51,0.15); }
+  50%       { box-shadow: 0 0 70px 20px rgba(212,160,23,0.5), 0 0 120px 40px rgba(255,153,51,0.25); }
+}
+
+@keyframes auraGlow {
+  0%, 100% { box-shadow: 0 0 40px 10px rgba(212,160,23,0.3), 0 0 80px 20px rgba(255,153,51,0.15); }
+  50%       { box-shadow: 0 0 70px 20px rgba(212,160,23,0.5), 0 0 120px 40px rgba(255,153,51,0.25); }
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+
+@keyframes lotusRise {
+  0%   { transform: translateY(60px) rotate(0deg); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes divineSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes godCharFloat {
+  0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 6px 18px rgba(212,160,23,0.4)); }
+  50%       { transform: translateY(-18px) scale(1.03); filter: drop-shadow(0 20px 40px rgba(212,160,23,0.6)); }
+}
+
+@keyframes ringPulse {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes blessingDrop {
+  0%   { transform: translateY(-10px) rotate(-5deg); opacity: 0; }
+  60%  { opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ✨ HERO SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divine-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 0%, #2d0a5e 0%, #0D0622 55%, #1a0040 100%);
+  padding: 100px 24px 60px;
+}
+
+/* Star field */
+.divine-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.divine-stars span {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: starTwinkle var(--dur,2s) ease-in-out var(--del,0s) infinite;
+}
+
+/* Floating lotus particles */
+.lotus-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.lotus-particles span {
+  position: absolute;
+  bottom: -40px;
+  font-size: var(--fs, 1.4rem);
+  left: var(--x, 50%);
+  animation: lotusRise var(--dur, 8s) ease-in var(--del, 0s) infinite;
+  opacity: 0;
+}
+
+/* Aura ring behind the main illustration */
+.divine-aura {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,160,23,0.25) 0%, transparent 70%);
+  animation: auraGlow 3s ease-in-out infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+}
+
+.divine-aura-ring {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 2px solid rgba(212,160,23,0.4);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+}
+.divine-aura-ring::before, .divine-aura-ring::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,153,51,0.3);
+  animation: ringPulse 2.4s ease-out infinite;
+}
+.divine-aura-ring::after {
+  animation-delay: 1.2s;
+}
+
+/* Hero inner layout */
+.divine-hero-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+  max-width: 780px;
+}
+
+/* The animated CSS illustration */
+.divine-scene {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin-bottom: 28px;
+}
+
+.divine-god-char {
+  font-size: 6.5rem;
+  line-height: 1;
+  animation: godCharFloat 4s ease-in-out infinite;
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(212,160,23,0.5));
+}
+
+.divine-child-char {
+  font-size: 3.2rem;
+  line-height: 1;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  animation: divineFloat 3.2s ease-in-out 0.8s infinite;
+  filter: drop-shadow(0 4px 10px rgba(255,153,51,0.4));
+}
+
+.divine-speech-bubble {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  background: linear-gradient(135deg, #FFD700, #FF9933);
+  color: #1a0040;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.72rem;
+  padding: 6px 10px;
+  border-radius: 14px 14px 14px 4px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(212,160,23,0.5);
+  animation: blessingDrop 0.8s ease 0.5s both;
+  line-height: 1.3;
+}
+
+/* New launch pill */
+.divine-launch-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #FF9933, #D4A017);
+  color: #0D0622;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  padding: 5px 16px;
+  border-radius: 50px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  animation: divineSlideUp 0.7s ease both;
+}
+
+/* Hero heading */
+.divine-hero-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 6px;
+  animation: divineSlideUp 0.8s ease 0.1s both;
+}
+.divine-hero-title span {
+  background: linear-gradient(90deg, #FFD700, #FF9933, #FFD700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.divine-hero-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: rgba(255,255,255,0.8);
+  max-width: 520px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  animation: divineSlideUp 0.9s ease 0.2s both;
+}
+
+/* Hero CTA buttons */
+.divine-hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: divineSlideUp 1s ease 0.3s both;
+}
+
+.btn-divine-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #FF9933, #D4A017);
+  color: #0D0622;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 14px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(212,160,23,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-divine-primary:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 12px 36px rgba(212,160,23,0.6);
+}
+
+.btn-divine-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 13px 28px;
+  border-radius: 50px;
+  border: 2px solid rgba(212,160,23,0.5);
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.btn-divine-secondary:hover {
+  background: rgba(212,160,23,0.15);
+  border-color: #D4A017;
+  transform: translateY(-2px);
+}
+
+/* Scroll indicator */
+.divine-scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.45);
+  font-size: 0.78rem;
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  animation: divineFloat 2s ease-in-out infinite;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HOW IT WORKS STRIP
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divine-how {
+  background: linear-gradient(135deg, var(--divine-purple-pale), #fff9ef);
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.divine-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--divine-saffron), var(--divine-gold));
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+}
+
+.divine-section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  color: var(--divine-purple);
+  margin-bottom: 10px;
+}
+
+.divine-section-sub {
+  color: var(--text-soft, #595959);
+  font-size: 1rem;
+  margin-bottom: 44px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.divine-steps {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.divine-step {
+  flex: 1;
+  min-width: 200px;
+  max-width: 260px;
+  background: #fff;
+  border-radius: var(--divine-radius);
+  padding: 32px 24px 28px;
+  box-shadow: var(--divine-shadow);
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.divine-step:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--divine-shadow-hover);
+}
+
+.divine-step-num {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--divine-saffron), var(--divine-gold));
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(212,160,23,0.4);
+}
+
+.divine-step-icon {
+  font-size: 2.8rem;
+  margin-bottom: 14px;
+  display: block;
+  animation: divineFloat 3.5s ease-in-out infinite;
+}
+
+.divine-step-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: var(--divine-purple);
+  margin-bottom: 8px;
+}
+
+.divine-step-desc {
+  font-size: 0.88rem;
+  color: var(--text-soft, #595959);
+  line-height: 1.55;
+}
+
+/* Step animation delays */
+.divine-step:nth-child(1) .divine-step-icon { animation-delay: 0s; }
+.divine-step:nth-child(2) .divine-step-icon { animation-delay: 0.4s; }
+.divine-step:nth-child(3) .divine-step-icon { animation-delay: 0.8s; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BOOK CARDS SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divine-books-section {
+  padding: 72px 24px 80px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.divine-books-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.divine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+/* ── The Divine Book Card ── */
+.divine-card {
+  background: #fff;
+  border-radius: var(--divine-radius);
+  overflow: hidden;
+  box-shadow: var(--divine-shadow);
+  border: 1.5px solid rgba(212,160,23,0.18);
+  transition: transform 0.28s cubic-bezier(.34,1.56,.64,1), box-shadow 0.28s;
+  cursor: pointer;
+  animation: cardReveal 0.6s ease both;
+  position: relative;
+}
+.divine-card:hover {
+  transform: translateY(-10px) scale(1.015);
+  box-shadow: var(--divine-shadow-hover);
+  border-color: rgba(212,160,23,0.5);
+}
+
+/* Gold shimmer top accent */
+.divine-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--divine-saffron), var(--divine-gold), var(--divine-saffron));
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  border-radius: var(--divine-radius) var(--divine-radius) 0 0;
+}
+
+.divine-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: var(--divine-gold-pale);
+}
+.divine-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.divine-card:hover .divine-card-img-wrap img {
+  transform: scale(1.06);
+}
+
+.divine-card-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 5rem;
+}
+
+/* God badge */
+.divine-god-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  color: #fff;
+  background: var(--badge-color, #4A0E8F);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  backdrop-filter: blur(4px);
+}
+
+/* Price chip */
+.divine-price-chip {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #D4A017, #FF9933);
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.05rem;
+  padding: 5px 14px;
+  border-radius: 50px;
+  box-shadow: 0 4px 14px rgba(212,160,23,0.45);
+}
+
+/* Card body */
+.divine-card-body {
+  padding: 20px 20px 22px;
+}
+
+.divine-card-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: var(--divine-purple);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.divine-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-soft, #595959);
+  line-height: 1.55;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.divine-card-lesson {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--divine-purple-pale);
+  color: var(--divine-purple-mid);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.77rem;
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+}
+
+.divine-card-footer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-divine-order {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #FF9933, #D4A017);
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 11px 18px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(212,160,23,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-divine-order:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(212,160,23,0.55);
+}
+
+.btn-divine-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--divine-gold);
+  background: var(--divine-gold-pale);
+  color: var(--divine-gold);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.btn-divine-view:hover {
+  background: var(--divine-gold);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* card animation stagger */
+.divine-card:nth-child(1) { animation-delay: 0.05s; }
+.divine-card:nth-child(2) { animation-delay: 0.10s; }
+.divine-card:nth-child(3) { animation-delay: 0.15s; }
+.divine-card:nth-child(4) { animation-delay: 0.20s; }
+.divine-card:nth-child(5) { animation-delay: 0.25s; }
+.divine-card:nth-child(6) { animation-delay: 0.30s; }
+.divine-card:nth-child(7) { animation-delay: 0.35s; }
+.divine-card:nth-child(8) { animation-delay: 0.40s; }
+.divine-card:nth-child(9) { animation-delay: 0.45s; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PHOTO GALLERY SCROLL STRIP
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divine-gallery-section {
+  background: linear-gradient(135deg, var(--divine-night) 0%, #2d0a5e 100%);
+  padding: 64px 0;
+  overflow: hidden;
+}
+.divine-gallery-section .divine-section-title,
+.divine-gallery-section .divine-section-sub {
+  color: #fff;
+  padding: 0 24px;
+}
+.divine-gallery-section .divine-section-sub {
+  color: rgba(255,255,255,0.7);
+}
+
+.divine-gallery-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.divine-gallery-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 8px 32px 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--divine-gold) transparent;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.divine-gallery-track::-webkit-scrollbar { height: 5px; }
+.divine-gallery-track::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
+.divine-gallery-track::-webkit-scrollbar-thumb { background: var(--divine-gold); border-radius: 10px; }
+
+.divine-gallery-item {
+  flex: 0 0 220px;
+  height: 270px;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border: 2px solid rgba(212,160,23,0.3);
+  transition: transform 0.25s, border-color 0.25s;
+  position: relative;
+}
+.divine-gallery-item:hover {
+  transform: scale(1.04) translateY(-4px);
+  border-color: var(--divine-gold);
+}
+.divine-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* auto-scroll hint */
+.gallery-scroll-hint {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   WHY THIS SERIES SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divine-why {
+  padding: 72px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.divine-why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 44px;
+  text-align: left;
+}
+
+.divine-why-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 24px;
+  box-shadow: 0 6px 24px rgba(74,14,143,0.08);
+  border: 1.5px solid var(--divine-purple-pale);
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.divine-why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(74,14,143,0.14);
+}
+
+.divine-why-icon {
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.divine-why-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.05rem;
+  color: var(--divine-purple);
+  margin-bottom: 8px;
+}
+
+.divine-why-desc {
+  font-size: 0.86rem;
+  color: var(--text-soft, #595959);
+  line-height: 1.6;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BIG ORDER CTA BANNER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divine-cta-banner {
+  background: radial-gradient(ellipse at 50% 0%, #2d0a5e, var(--divine-night));
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.divine-cta-banner::before {
+  content: '🕉️';
+  position: absolute;
+  font-size: 22rem;
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+
+.divine-cta-banner-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #fff;
+  margin-bottom: 12px;
+}
+.divine-cta-banner-title span {
+  background: linear-gradient(90deg, #FFD700, #FF9933, #FFD700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.divine-cta-banner-sub {
+  color: rgba(255,255,255,0.75);
+  font-size: 1.05rem;
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+}
+
+.divine-cta-price-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF9933, #D4A017);
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  padding: 8px 28px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 20px rgba(212,160,23,0.4);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LIGHTBOX MODAL
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.divine-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13,6,34,0.88);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  backdrop-filter: blur(6px);
+}
+.divine-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.divine-modal {
+  background: #fff;
+  border-radius: var(--divine-radius);
+  max-width: 560px;
+  width: 100%;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+}
+.divine-modal-overlay.open .divine-modal {
+  transform: translateY(0) scale(1);
+}
+
+.divine-modal-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.divine-modal-body {
+  padding: 24px 24px 28px;
+}
+
+.divine-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.divine-modal-overlay .divine-modal { position: relative; }
+.divine-modal-close { position: absolute; top: 12px; right: 12px; background: rgba(13,6,34,0.15); color: #0D0622; z-index:1; }
+
+.divine-modal-god-badge {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 4px 14px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.divine-modal-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: var(--divine-purple);
+  margin-bottom: 8px;
+}
+
+.divine-modal-lesson {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--divine-purple-pale);
+  color: var(--divine-purple-mid);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+}
+
+.divine-modal-desc {
+  font-size: 0.9rem;
+  color: var(--text-soft, #595959);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  white-space: pre-line;
+}
+
+.divine-modal-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.divine-modal-price {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.6rem;
+  color: var(--divine-gold);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 768px) {
+  .divine-hero { min-height: 100svh; padding: 80px 20px 60px; }
+  .divine-god-char { font-size: 5rem; }
+  .divine-child-char { font-size: 2.4rem; }
+  .divine-steps { gap: 18px; }
+  .divine-step { min-width: 160px; padding: 28px 18px 22px; }
+  .divine-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
+  .divine-why-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .divine-gallery-item { flex: 0 0 180px; height: 230px; }
+  .divine-books-section { padding: 48px 16px 60px; }
+}
+
+@media (max-width: 480px) {
+  .divine-hero-ctas { flex-direction: column; align-items: center; }
+  .btn-divine-primary, .btn-divine-secondary { width: 100%; max-width: 300px; justify-content: center; }
+  .divine-why-grid { grid-template-columns: 1fr; }
+  .divine-steps { flex-direction: column; align-items: center; }
+  .divine-step { width: 100%; max-width: 320px; }
+  .divine-modal-price-row { flex-direction: column; }
+  .btn-divine-order { width: 100%; }
+}
