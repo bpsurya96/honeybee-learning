@@ -71,6 +71,7 @@
   <link rel="prefetch" as="fetch" href="data/products_reusable.json" crossorigin>
   <link rel="prefetch" as="fetch" href="data/products_other.json" crossorigin>
   <link rel="prefetch" as="fetch" href="data/return-gifts.json" crossorigin>
+  <link rel="prefetch" as="fetch" href="data/products_stories.json" crossorigin>
   <link rel="prefetch" as="fetch" href="data/reviews.json" crossorigin>
 
   <!-- Critical CSS: blocking (needed for first paint) -->
@@ -417,6 +418,7 @@
         <a class="stream-tab" href="ocean-kits.html"
           style="background:linear-gradient(135deg,#0e4f7c,#00b4d8);color:white;border-color:transparent;text-decoration:none;">🌊
           Ocean Kits ✨</a>
+        <a class="stream-tab" href="divine-stories.html" style="background:linear-gradient(135deg,#4A0E8F,#FF9933);color:white;border-color:transparent;text-decoration:none;">&#x1F549;&#xFE0F; Divine Stories &#x2728;</a>
       </div>
       <div class="stream-tabs-fade-hint" aria-hidden="true"></div>
     </div>
@@ -434,6 +436,16 @@
         <div class="ocean-kit-promo-arrow">→</div>
       </a>
 
+      <!-- Divine Stories Promo Banner -->
+      <a href="divine-stories.html" class="ocean-kit-promo-banner" aria-label="Explore Divine Story Books" style="background:linear-gradient(135deg,#2d0a5e,#FF9933);border-color:rgba(255,153,51,0.3);">
+        <div class="ocean-kit-promo-icon" style="background:rgba(255,153,51,0.2);color:#FFD700;">&#x1F549;&#xFE0F;</div>
+        <div class="ocean-kit-promo-text">
+          <div class="ocean-kit-promo-title" style="color:#FFD700;">New! Divine Story Books &#x2728;</div>
+          <div class="ocean-kit-promo-sub" style="color:rgba(255,255,255,0.8);">Gods speak your child's name &amp; teach timeless values — &#x20B9;65</div>
+        </div>
+        <div class="ocean-kit-promo-arrow" style="color:#FFD700;">&#x2192;</div>
+      </a>
+
       <div class="section-tag">Personalised Books & Cards</div>
       <h3 style="font-family:'Fredoka One',cursive;font-size:1.75rem;color:var(--green);margin-bottom:7px;">HoneyBee
         Learning Products</h3>
@@ -446,6 +458,7 @@
         <button class="learning-subtab active" onclick="switchLearning('activity',this)">📚 Activity Books</button>
         <button class="learning-subtab" onclick="switchLearning('reusable',this)">♻️ Reusable Books</button>
         <button class="learning-subtab" onclick="switchLearning('other',this)">🃏 Other Products</button>
+        <button class="learning-subtab" onclick="switchLearning('divine',this)" style="color:#FF9933;border-color:#FF9933;">&#x1F549;&#xFE0F; Divine Stories</button>
       </div>
 
       <div class="learning-grid" id="learningGrid">

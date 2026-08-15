@@ -997,3 +997,178 @@ body.divine-page #mainNav {
   .divine-modal-price-row { flex-direction: column; }
   .btn-divine-order { width: 100%; }
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ENHANCED MOBILE RESPONSIVE (phones < 480px)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Force hero to be at least full viewport on mobile */
+@media (max-width: 480px) {
+  .divine-hero {
+    min-height: 100svh;
+    padding: 72px 16px 52px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .divine-hero-inner {
+    padding-top: 24px;
+  }
+
+  .divine-scene {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+
+  .divine-god-char { font-size: 4rem; }
+  .divine-child-char { font-size: 2rem; }
+
+  .divine-speech-bubble {
+    font-size: 0.65rem;
+    padding: 5px 8px;
+    right: -20px;
+    top: -5px;
+    border-radius: 10px 10px 10px 3px;
+  }
+
+  .divine-launch-pill {
+    font-size: 0.7rem;
+    padding: 4px 12px;
+  }
+
+  .divine-hero-title {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+  }
+
+  .divine-hero-sub {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+  }
+
+  /* Steps: full width stacked */
+  .divine-steps {
+    gap: 32px;
+    padding: 0 8px;
+  }
+
+  .divine-step {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 32px 20px 24px;
+  }
+
+  /* Book grid: single column on small phones */
+  .divine-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 4px;
+  }
+
+  .divine-card-img-wrap { height: 200px; }
+
+  /* Gallery: smaller tiles */
+  .divine-gallery-item {
+    flex: 0 0 150px;
+    height: 190px;
+  }
+
+  /* Why grid: single column */
+  .divine-why-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .divine-why-card { padding: 22px 18px; }
+
+  /* CTA banner */
+  .divine-cta-banner { padding: 56px 16px; }
+  .divine-cta-banner-title { font-size: 1.6rem; }
+  .divine-cta-banner-sub { font-size: 0.9rem; }
+
+  /* Modal: full screen on mobile */
+  .divine-modal {
+    max-width: 100%;
+    max-height: 95svh;
+    overflow-y: auto;
+    border-radius: 18px 18px 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+
+  .divine-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .divine-modal-img { height: 200px; }
+  .divine-modal-body { padding: 18px 16px 32px; }
+
+  /* Nav on divine page */
+  body.divine-page #mainNav {
+    padding: 0 14px;
+  }
+
+  .divine-books-section {
+    padding: 36px 12px 48px;
+  }
+
+  .divine-section-title { font-size: 1.4rem; }
+
+  .divine-how { padding: 48px 16px; }
+  .divine-why { padding: 48px 16px; }
+}
+
+/* Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .divine-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .divine-hero-title { font-size: 2rem; }
+
+  .divine-steps {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 8px;
+  }
+
+  .divine-step {
+    flex: 0 0 200px;
+    min-width: 200px;
+  }
+
+  .divine-modal {
+    max-width: 480px;
+  }
+}
+
+/* ── Touch improvements ── */
+.divine-card, .divine-gallery-item, .divine-step, .divine-why-card {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-divine-order, .btn-divine-primary, .btn-divine-secondary {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 44px; /* Apple HIG min touch target */
+}
+
+/* ── Safe area padding for notched phones ── */
+.divine-hero {
+  padding-top: max(100px, calc(80px + env(safe-area-inset-top)));
+}
+
+.divine-cta-banner {
+  padding-bottom: max(80px, calc(60px + env(safe-area-inset-bottom)));
+}
+
+footer {
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
