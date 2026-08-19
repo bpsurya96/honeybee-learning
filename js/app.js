@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════
+﻿/* ═══════════════════════════════════════════════
    HoneyBee Learning — Main Application JS
    ═══════════════════════════════════════════════
 
@@ -72,6 +72,17 @@ function setupMobileProductAutoLoad() {
 function matchesBookType(product) {
     if (currentBookTypeFilter === 'all') return true;
     return (product.productType || 'activity') === currentBookTypeFilter;
+}
+
+// Build WhatsApp link for divine products
+function buildDivineWhatsAppLink(p) {
+    const msg = encodeURIComponent(
+        'Hi! I would like to order the Divine Story Book:\n' +
+        '\uD83D\uDCDA ' + p.title + '\n' +
+        '\uD83D\uDCB0 Price: \u20B9' + p.price + '\n\n' +
+        'Please share more details and tell me how to personalise it with my child\u2019s name. \uD83D\uDE4F'
+    );
+    return 'https://wa.me/918883624873?text=' + msg;
 }
 
 function matchesAgeGroup(product) {
@@ -155,18 +166,30 @@ function initFAQ() {
 // ─── DATA LOADERS ───
 async function loadProducts() {
     try {
-        // Load all 3 split files in parallel and merge into one array
-        const [activityRes, reusableRes, otherRes] = await Promise.all([
+        // Load all 4 split files in parallel and merge into one array
+        const [activityRes, reusableRes, otherRes, storiesRes] = await Promise.all([
             fetch('data/products_activity.json'),
             fetch('data/products_reusable.json'),
-            fetch('data/products_other.json')
+            fetch('data/products_other.json'),
+            fetch('data/products_stories.json')
         ]);
-        const [activity, reusable, other] = await Promise.all([
+        const [activity, reusable, other, stories] = await Promise.all([
             activityRes.json(),
             reusableRes.json(),
-            otherRes.json()
+            otherRes.json(),
+            storiesRes.json()
         ]);
-        learningProducts = [...activity, ...reusable, ...other];
+        // Tag divine stories with productType = 'divine' and adapt fields for card render
+        const divineTagged = stories.map(s => ({
+            ...s,
+            productType: 'divine',
+            badge: s.badge || 'Divine Series',
+            badgeType: s.badgeType || 'new',
+            tags: s.tags || [],
+            keywords: s.keywords || [],
+            fallbackEmoji: s.godEmoji || '&#x1F549;&#xFE0F;'
+        }));
+        learningProducts = [...activity, ...reusable, ...other, ...divineTagged];
         currentLearningType = window.initialLearningType || currentLearningType;
         renderLearningProducts(currentLearningType);
     } catch (e) { console.error('Failed to load products:', e); }
@@ -241,6 +264,25 @@ function renderLearningProducts(typeFilter, resetPage) {
     const hasMore = filtered.length > totalToShow;
 
     const cardsHTML = visible.map((p) => {
+        const isDivine = p.productType === 'divine';
+        if (isDivine) {
+            const _gc = {'Krishna':'#1a6b3c','Ganesha':'#e67e22','Hanuman':'#c0392b','Saraswathi':'#8e44ad','Durga':'#c0392b','Shiva':'#1a3a5c','Lakshmi':'#d4a017','Murugan':'#FF9933','Rama':'#1a6b3c'}[p.godCharacter] || '#4A0E8F';
+            const _wa = buildDivineWhatsAppLink(p);
+            return '<div class="learning-card reveal" style="border:2px solid rgba(212,160,23,0.35);position:relative;overflow:hidden;">'
+                + '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF9933,#D4A017,#FF9933);"></div>'
+                + '<div class="lcard-img-wrap">'
+                + '<img src="' + p.image + '" alt="' + p.title + '" loading="lazy">'
+                + '<div class="lcard-badges">'
+                + '<span style="background:' + _gc + ';color:#fff;border-radius:50px;font-size:0.72rem;font-weight:800;padding:4px 10px;">' + (p.godEmoji||'') + ' ' + (p.godCharacter||'') + ' Series</span>'
+                + '<div class="lcard-price" style="background:linear-gradient(135deg,#D4A017,#FF9933);">\u20B9' + p.price + '</div>'
+                + '</div></div>'
+                + '<div class="lcard-body">'
+                + '<div class="lcard-title">' + p.title + '</div>'
+                + '<div class="lcard-desc">' + p.shortDesc + '</div>'
+                + '<div class="lcard-tags">' + (p.tags||[]).map(function(t){ return '<span class="lcard-tag">' + t + '</span>'; }).join('') + '<span class="lcard-tag" style="background:#F4EEFF;color:#6B2FAA;">' + (p.lessonEmoji||'') + ' ' + (p.lesson||'') + '</span></div>'
+                + '<div class="lcard-footer"><a href="' + _wa + '" target="_blank" rel="noopener" class="lcard-btn" style="background:linear-gradient(135deg,#FF9933,#D4A017);">\uD83D\uDCAC Order on WhatsApp</a></div>'
+                + '</div></div>';
+        }
         const badgeClass = p.badgeType === 'hot' ? 'badge-hot' : p.badgeType === 'new' ? 'badge-new' : 'badge-hot';
         return `
     <div class="learning-card reveal">
@@ -920,4 +962,6 @@ document.addEventListener('DOMContentLoaded', () => {
         startHcsTimer();
     }
 });
+
+
 
