@@ -1,173 +1,174 @@
 [
   {
     "id": "ds-001",
-    "title": "Krishna Tells Your Child's Story",
+    "title": "Krishna & Your Child — A Story of Joy & Friendship",
     "godCharacter": "Krishna",
-    "godEmoji": "🦚",
+    "godEmoji": "🪈",
     "godColor": "#1a6b3c",
-    "lesson": "Friendship & Love",
-    "lessonEmoji": "💛",
+    "lesson": "Joy & Friendship",
+    "lessonEmoji": "🎶",
     "price": 65,
-    "badge": "Newly Launched",
-    "badgeType": "new",
-    "fallbackEmoji": "🦚",
-    "image": "images/divine_kits/IMG20260729083826~2.jpg",
+    "badge": "Best Seller",
+    "badgeType": "hot",
+    "fallbackEmoji": "🪈",
+    "image": "images/divine_kits/Krishna/IMG20260729084104~2.jpg",
     "images": [
-      "images/divine_kits/IMG20260729083826~2.jpg",
-      "images/divine_kits/IMG20260729083838~2.jpg",
-      "images/divine_kits/IMG20260729083854~2.jpg"
+      "images/divine_kits/Krishna/IMG20260729084104~2.jpg",
+      "images/divine_kits/Krishna/IMG20260729084123~2.jpg",
+      "images/divine_kits/Krishna/IMG20260729084134~2.jpg"
     ],
-    "shortDesc": "Lord Krishna visits your child by name and shares the timeless wisdom of Bhagavatham — friendship, love and the joy of life. A divine bedtime story made just for them.",
-    "fullDesc": "Imagine your child hearing: 'Arjun, let me tell you a secret…' — spoken by Lord Krishna himself!\n\nThis personalised storybook weaves your child's name into an enchanting Krishna tale, teaching the values of friendship, unconditional love, and the beauty of being kind.\n\nPerfect for ages 2–10 years. Every page glows with colourful illustrations and simple language your child will adore.",
+    "shortDesc": "Lord Krishna plays his flute and calls your child by name, taking them on a joyful Vrindavan adventure full of friendship, music and magic.",
+    "fullDesc": "Lord Krishna smiles and says: '[Child's Name], come — let us play together in Vrindavan!'\n\nIn this enchanting storybook, your child becomes Krishna's special friend. Together they dance with peacocks, float boats on the Yamuna, and learn that true friendship means lifting each other up.\n\nA timeless gift celebrating the divine bond between a child and Lord Krishna — personalised just for them!",
     "tags": [
-      "🦚 Krishna Series",
-      "💛 Teaches: Friendship",
+      "🪈 Krishna Series",
+      "🎶 Teaches: Friendship",
       "📖 Ages 2–10",
       "🪷 Personalised Name"
     ],
     "keywords": [
-      "krishna story book for kids",
+      "krishna story book kids",
       "personalised krishna book",
-      "divine story book children",
-      "krishna tales for toddlers"
+      "vrindavan kids story",
+      "lord krishna personalised gift"
     ]
   },
   {
     "id": "ds-002",
-    "title": "Ganesha Blesses Your Child's Journey",
+    "title": "Ganesha Blesses Your Child's Every New Beginning",
     "godCharacter": "Ganesha",
     "godEmoji": "🐘",
     "godColor": "#e67e22",
-    "lesson": "Courage & New Beginnings",
+    "lesson": "Wisdom & New Beginnings",
     "lessonEmoji": "🌟",
     "price": 65,
-    "badge": "Fan Favourite",
+    "badge": "Most Loved",
     "badgeType": "hot",
     "fallbackEmoji": "🐘",
-    "image": "images/divine_kits/IMG20260729084009~2.jpg",
+    "image": "images/divine_kits/Ganesha/IMG20260729084019~2.jpg",
     "images": [
-      "images/divine_kits/IMG20260729084009~2.jpg",
-      "images/divine_kits/IMG20260729084019~2.jpg",
-      "images/divine_kits/IMG20260729084042~2.jpg"
+      "images/divine_kits/Ganesha/IMG20260729084019~2.jpg",
+      "images/divine_kits/Ganesha/IMG20260729084042~2.jpg",
+      "images/divine_kits/Ganesha/IMG20260729084056~2.jpg"
     ],
-    "shortDesc": "Lord Ganesha speaks your child's name and guides them through a magical adventure, teaching courage and the power of a fresh start.",
-    "fullDesc": "Ganpati Bappa says: 'Come, little one — I have a special story just for you, [Child's Name]!'\n\nThis delightful storybook features Lord Ganesha as your child's wise and fun companion. Together they solve problems, remove obstacles and celebrate new beginnings.\n\nA wonderful gift for school admissions, birthdays, or simply to inspire your child's confidence every day.",
+    "shortDesc": "Lord Ganesha taps your child's shoulder and speaks their name — reminding them that every new beginning is filled with possibilities and blessings.",
+    "fullDesc": "With a warm smile, Lord Ganesha says: '[Child's Name], I am here — let us begin this journey together!'\n\nThis heartwarming storybook features Ganesha as your child's personal guide through every first — first day of school, first challenge, first success. Together, they learn that obstacles are just opportunities in disguise.\n\nA perfect gift for birthdays, Ganesh Chaturthi, or any new milestone in your child's life!",
     "tags": [
       "🐘 Ganesha Series",
-      "🌟 Teaches: Courage",
+      "🌟 Teaches: Wisdom",
       "📖 Ages 2–10",
       "🪷 Personalised Name"
     ],
     "keywords": [
-      "ganesha story book for kids",
+      "ganesha story book kids",
       "personalised ganesh book",
-      "divine ganpati story children",
-      "ganesha tales personalised"
+      "ganesh chaturthi gift children",
+      "lord ganesha personalised story"
     ]
   },
   {
     "id": "ds-003",
-    "title": "Hanuman Gives Your Child Super Strength",
+    "title": "Hanuman Gives Your Child the Strength to Never Give Up",
     "godCharacter": "Hanuman",
     "godEmoji": "🙏",
     "godColor": "#c0392b",
-    "lesson": "Bravery & Devotion",
+    "lesson": "Courage & Devotion",
     "lessonEmoji": "💪",
     "price": 65,
-    "badge": "Most Loved",
-    "badgeType": "hot",
+    "badge": "Popular",
+    "badgeType": "default",
     "fallbackEmoji": "🙏",
-    "image": "images/divine_kits/IMG20260729084056~2.jpg",
+    "image": "images/divine_kits/Hanuman/IMG20260729084423~2.jpg",
     "images": [
-      "images/divine_kits/IMG20260729084056~2.jpg",
-      "images/divine_kits/IMG20260729084104~2.jpg",
-      "images/divine_kits/IMG20260729084123~2.jpg"
+      "images/divine_kits/Hanuman/IMG20260729084423~2.jpg",
+      "images/divine_kits/Hanuman/IMG20260729084444~2.jpg",
+      "images/divine_kits/Hanuman/IMG20260729084453~2.jpg",
+      "images/divine_kits/Hanuman/IMG20260729084504~2.jpg"
     ],
-    "shortDesc": "Mighty Hanuman calls out your child's name and takes them on a heroic adventure, teaching bravery, devotion and the strength that lives inside every child.",
-    "fullDesc": "Jai Hanuman! He flies down and says: '[Child's Name], you are braver than you know!'\n\nFeaturing the beloved Hanuman on a colourful Ramayana-inspired adventure, this book shows your child that true strength comes from a loving heart and a never-give-up spirit.\n\nPerfect for children who love superheroes — because Hanuman is India's greatest one!",
+    "shortDesc": "Hanuman stretches out his mighty hand and calls your child by name — filling them with courage, determination and the belief that they can overcome anything.",
+    "fullDesc": "With a thunderous roar and a gentle heart, Hanuman says: '[Child's Name], with devotion and courage — nothing is impossible!'\n\nThis powerful storybook follows your child on a Ramayana-inspired adventure alongside Hanuman. They discover the strength that comes from love, faith, and never giving up.\n\nA wonderful gift for children who need a boost of confidence and courage!",
     "tags": [
       "🙏 Hanuman Series",
-      "💪 Teaches: Bravery",
+      "💪 Teaches: Courage",
       "📖 Ages 3–10",
       "🪷 Personalised Name"
     ],
     "keywords": [
-      "hanuman story book for kids",
+      "hanuman story book kids",
       "personalised hanuman book",
-      "jai hanuman children story",
-      "brave kids book india"
+      "lord hanuman children story",
+      "courage devotion book india"
     ]
   },
   {
     "id": "ds-004",
-    "title": "Saraswathi Teaches Your Child to Shine",
-    "godCharacter": "Saraswathi",
+    "title": "Kali Maa Gives Your Child Fearless Strength",
+    "godCharacter": "Kali",
+    "godEmoji": "🌺",
+    "godColor": "#6a0dad",
+    "lesson": "Fearlessness & Inner Power",
+    "lessonEmoji": "⚡",
+    "price": 65,
+    "badge": "Navratri Special",
+    "badgeType": "hot",
+    "fallbackEmoji": "🌺",
+    "image": "images/divine_kits/Kali/IMG20260729084229~2.jpg",
+    "images": [
+      "images/divine_kits/Kali/IMG20260729084229~2.jpg",
+      "images/divine_kits/Kali/IMG20260729084245_BURST000_COVER~2.jpg",
+      "images/divine_kits/Kali/IMG20260729084306~2.jpg"
+    ],
+    "shortDesc": "Maa Kali reaches out to your child by name, wrapping them in her divine protection and teaching them that inner strength and fearlessness conquer all fears.",
+    "fullDesc": "Maa Kali says with fierce love: '[Child's Name], you are never alone — my strength is yours!'\n\nA powerful and comforting storybook that teaches children about fearlessness and the protective love of Maa Kali. Through a Navratri-inspired adventure, your child learns that courage and inner strength live in every heart.\n\nA beautiful Navratri or Dussehra gift for children!",
+    "tags": [
+      "🌺 Kali Series",
+      "⚡ Teaches: Fearlessness",
+      "📖 Ages 3–10",
+      "🪷 Personalised Name"
+    ],
+    "keywords": [
+      "kali maa story book kids",
+      "navratri gift children",
+      "personalised kali book",
+      "maa kali story personalised"
+    ]
+  },
+  {
+    "id": "ds-005",
+    "title": "Saraswati Whispers Your Child's Name & Sparks Their Genius",
+    "godCharacter": "Saraswati",
     "godEmoji": "🎵",
     "godColor": "#8e44ad",
-    "lesson": "Wisdom & Learning",
+    "lesson": "Wisdom & Knowledge",
     "lessonEmoji": "📚",
     "price": 65,
-    "badge": "Newly Launched",
-    "badgeType": "new",
+    "badge": "Saraswathi Puja Special",
+    "badgeType": "hot",
     "fallbackEmoji": "🎵",
-    "image": "images/divine_kits/IMG20260729084134~2.jpg",
+    "image": "images/divine_kits/Saraswati/IMG20260729083920~2.jpg",
     "images": [
-      "images/divine_kits/IMG20260729084134~2.jpg",
-      "images/divine_kits/IMG20260729084142~2.jpg",
-      "images/divine_kits/IMG20260729084158~2.jpg"
+      "images/divine_kits/Saraswati/IMG20260729083920~2.jpg",
+      "images/divine_kits/Saraswati/IMG20260729083949~2.jpg",
+      "images/divine_kits/Saraswati/IMG20260729084009~2.jpg"
     ],
-    "shortDesc": "Goddess Saraswathi sits beside your child and whispers their name, sparking a love for learning, music and the gift of knowledge.",
-    "fullDesc": "Goddess Saraswathi smiles and says: 'Dear [Child's Name], you have the greatest gift — a curious mind!'\n\nThis beautiful storybook brings Saraswathi Devi to life as your child's favourite teacher. Together they explore the wonders of music, art, and the joy of learning new things every day.\n\nIdeal before school starts or as a Saraswathi Puja gift!",
+    "shortDesc": "Goddess Saraswati sits beside your child and whispers their name, sparking a love for learning, music and the gift of knowledge.",
+    "fullDesc": "Goddess Saraswati smiles and says: 'Dear [Child's Name], you have the greatest gift — a curious mind!'\n\nThis beautiful storybook brings Saraswati Devi to life as your child's favourite teacher. Together they explore the wonders of music, art, and the joy of learning new things every day.\n\nIdeal before school starts or as a Saraswathi Puja gift!",
     "tags": [
-      "🎵 Saraswathi Series",
+      "🎵 Saraswati Series",
       "📚 Teaches: Wisdom",
       "📖 Ages 3–10",
       "🪷 Personalised Name"
     ],
     "keywords": [
-      "saraswathi story book kids",
+      "saraswati story book kids",
       "personalised goddess book",
       "saraswathi puja gift children",
       "learning wisdom book india"
     ]
   },
   {
-    "id": "ds-005",
-    "title": "Durga Maa Protects Your Little Warrior",
-    "godCharacter": "Durga",
-    "godEmoji": "🌺",
-    "godColor": "#c0392b",
-    "lesson": "Strength & Protection",
-    "lessonEmoji": "⚡",
-    "price": 65,
-    "badge": "Navratri Special",
-    "badgeType": "hot",
-    "fallbackEmoji": "🌺",
-    "image": "images/divine_kits/IMG20260729084222~2.jpg",
-    "images": [
-      "images/divine_kits/IMG20260729084222~2.jpg",
-      "images/divine_kits/IMG20260729084229~2.jpg",
-      "images/divine_kits/IMG20260729084245_BURST000_COVER~2.jpg"
-    ],
-    "shortDesc": "Maa Durga reaches out to your child by name, wrapping them in her divine protection and teaching them that inner strength conquers all fears.",
-    "fullDesc": "Durga Maa says with a gentle smile: '[Child's Name], I am always with you — you are never alone!'\n\nA powerful and comforting storybook that reassures children of Maa Durga's protection. Through a Navratri-inspired adventure, your child learns that courage lives in every heart.\n\nA beautiful Navratri or Dussehra gift for girls and boys alike!",
-    "tags": [
-      "🌺 Durga Series",
-      "⚡ Teaches: Strength",
-      "📖 Ages 3–10",
-      "🪷 Personalised Name"
-    ],
-    "keywords": [
-      "durga story book kids",
-      "navratri gift children",
-      "personalised durga book",
-      "maa durga story personalised"
-    ]
-  },
-  {
     "id": "ds-006",
-    "title": "Shiva Shows Your Child the Way of Peace",
-    "godCharacter": "Shiva",
+    "title": "Siva Shows Your Child the Way of Peace",
+    "godCharacter": "Siva",
     "godEmoji": "🕉️",
     "godColor": "#1a3a5c",
     "lesson": "Calm & Inner Peace",
@@ -176,24 +177,24 @@
     "badge": "Newly Launched",
     "badgeType": "new",
     "fallbackEmoji": "🕉️",
-    "image": "images/divine_kits/IMG20260729084306~2.jpg",
+    "image": "images/divine_kits/Siva/IMG20260729084343~2.jpg",
     "images": [
-      "images/divine_kits/IMG20260729084306~2.jpg",
-      "images/divine_kits/IMG20260729084314~2.jpg",
-      "images/divine_kits/IMG20260729084324~2.jpg"
+      "images/divine_kits/Siva/IMG20260729084343~2.jpg",
+      "images/divine_kits/Siva/IMG20260729084402~3.jpg",
+      "images/divine_kits/Siva/IMG20260729084414~2.jpg"
     ],
-    "shortDesc": "Lord Shiva opens his eyes and calls your child's name, teaching them that true peace and power come from stillness, kindness, and a calm heart.",
-    "fullDesc": "From the peaks of Kailash, Lord Shiva opens his eyes and says: '[Child's Name], come — I have a story of stars and stillness for you…'\n\nThis magical storybook brings the gentle and powerful side of Shiva to your child — teaching mindfulness, inner calm, and how to be kind even when things are hard.\n\nA unique, soothing bedtime story that children and parents will both love.",
+    "shortDesc": "Lord Siva opens his eyes and calls your child's name, teaching them that true peace and power come from stillness, kindness, and a calm heart.",
+    "fullDesc": "From the peaks of Kailash, Lord Siva opens his eyes and says: '[Child's Name], come — I have a story of stars and stillness for you…'\n\nThis magical storybook brings the gentle and powerful side of Siva to your child — teaching mindfulness, inner calm, and how to be kind even when things are hard.\n\nA unique, soothing bedtime story that children and parents will both love.",
     "tags": [
-      "🕉️ Shiva Series",
+      "🕉️ Siva Series",
       "☮️ Teaches: Inner Peace",
       "📖 Ages 3–10",
       "🪷 Personalised Name"
     ],
     "keywords": [
-      "shiva story book kids",
-      "personalised shiv book",
-      "lord shiva children story",
+      "siva story book kids",
+      "personalised siva book",
+      "lord siva children story",
       "calm mindfulness book kids india"
     ]
   },
@@ -209,11 +210,11 @@
     "badge": "Diwali Special",
     "badgeType": "hot",
     "fallbackEmoji": "🪷",
-    "image": "images/divine_kits/IMG20260729084334~2.jpg",
+    "image": "images/divine_kits/Lakshmi/IMG20260729084314~2.jpg",
     "images": [
-      "images/divine_kits/IMG20260729084334~2.jpg",
-      "images/divine_kits/IMG20260729084343~2.jpg",
-      "images/divine_kits/IMG20260729084402~3.jpg"
+      "images/divine_kits/Lakshmi/IMG20260729084314~2.jpg",
+      "images/divine_kits/Lakshmi/IMG20260729084324~2.jpg",
+      "images/divine_kits/Lakshmi/IMG20260729084334~2.jpg"
     ],
     "shortDesc": "Goddess Lakshmi steps off her lotus and sprinkles golden blessings, teaching your child the magic of gratitude, sharing, and a giving heart.",
     "fullDesc": "Goddess Lakshmi smiles and says: 'Dear [Child's Name], the greatest wealth is a grateful heart!'\n\nThis golden storybook weaves Lakshmi Devi's blessings into a Diwali-inspired adventure. Your child learns why sharing is the biggest treasure of all — and how a thankful heart attracts all good things.\n\nA perfect Diwali gift and a treasure every child will return to again and again!",
@@ -242,11 +243,11 @@
     "badge": "Tamil Nadu Favourite",
     "badgeType": "hot",
     "fallbackEmoji": "⚡",
-    "image": "images/divine_kits/IMG20260729084414~2.jpg",
+    "image": "images/divine_kits/Murugan/IMG20260729083826~2.jpg",
     "images": [
-      "images/divine_kits/IMG20260729084414~2.jpg",
-      "images/divine_kits/IMG20260729084423~2.jpg",
-      "images/divine_kits/IMG20260729084444~2.jpg"
+      "images/divine_kits/Murugan/IMG20260729083826~2.jpg",
+      "images/divine_kits/Murugan/IMG20260729083838~2.jpg",
+      "images/divine_kits/Murugan/IMG20260729083854~2.jpg"
     ],
     "shortDesc": "Lord Murugan rides his peacock and calls your child's name, taking them on a Tamil legend adventure filled with determination and the sweetness of victory.",
     "fullDesc": "With his vel raised, Lord Murugan says: '[Child's Name], you were born to win!'\n\nThis vibrant storybook celebrates Murugan — the eternal young God of Tamil Nadu. Your child joins him on an adventure where they learn that persistence, hard work and faith always lead to victory.\n\nA wonderful gift for families in Tamil Nadu — especially around Karthigai Deepam and Thai Pongal!",
@@ -265,35 +266,35 @@
   },
   {
     "id": "ds-009",
-    "title": "Rama Shows Your Child the Path of Truth",
-    "godCharacter": "Rama",
-    "godEmoji": "🏹",
-    "godColor": "#1a6b3c",
-    "lesson": "Truth & Righteousness",
+    "title": "Vishnu Protects Your Child Across Every World",
+    "godCharacter": "Vishnu",
+    "godEmoji": "💫",
+    "godColor": "#1a3a7c",
+    "lesson": "Protection & Dharma",
     "lessonEmoji": "⭐",
     "price": 65,
-    "badge": "Ramayana Special",
+    "badge": "Newly Launched",
     "badgeType": "new",
-    "fallbackEmoji": "🏹",
-    "image": "images/divine_kits/IMG20260729084453~2.jpg",
+    "fallbackEmoji": "💫",
+    "image": "images/divine_kits/Vishnu/IMG20260729084142~2.jpg",
     "images": [
-      "images/divine_kits/IMG20260729084453~2.jpg",
-      "images/divine_kits/IMG20260729084504~2.jpg",
-      "images/divine_kits/IMG20260729083920~2.jpg"
+      "images/divine_kits/Vishnu/IMG20260729084142~2.jpg",
+      "images/divine_kits/Vishnu/IMG20260729084158~2.jpg",
+      "images/divine_kits/Vishnu/IMG20260729084222~2.jpg"
     ],
-    "shortDesc": "Lord Rama places his hand on your child's shoulder and speaks their name — guiding them through a Ramayana adventure teaching truth, honesty and the right way to live.",
-    "fullDesc": "Lord Rama smiles warmly and says: '[Child's Name], let me tell you what it truly means to be good…'\n\nSet in the enchanting world of the Ramayana, this storybook brings Rama — the ideal human — as your child's personal guide. They learn about truth, keeping promises, and treating everyone with kindness.\n\nA classic tale reimagined, personalised just for your child. A gift they'll treasure forever.",
+    "shortDesc": "Lord Vishnu descends from Vaikuntha and calls your child's name — teaching them that righteousness, kindness and truth always protect those with a good heart.",
+    "fullDesc": "Lord Vishnu smiles from his lotus throne and says: '[Child's Name], dharma is your greatest shield!'\n\nSet in the cosmic world of the Puranas, this storybook brings Vishnu — the preserver of the universe — as your child's personal protector. They learn about doing what is right, being kind to all, and how truth always triumphs.\n\nA classic tale of divine love and protection, personalised just for your child.",
     "tags": [
-      "🏹 Rama Series",
-      "⭐ Teaches: Truth",
+      "💫 Vishnu Series",
+      "⭐ Teaches: Dharma",
       "📖 Ages 3–10",
       "🪷 Personalised Name"
     ],
     "keywords": [
-      "rama story book kids",
-      "ramayana personalised book",
-      "lord ram story children",
-      "ramayan kids story india"
+      "vishnu story book kids",
+      "personalised vishnu book",
+      "lord vishnu children story",
+      "dharma protection book kids india"
     ]
   }
 ]
