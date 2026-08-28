@@ -67,18 +67,22 @@ function scrollAgeGuide(dir) {
 
 async function loadProducts() {
     try {
-        // Load all 3 split files in parallel and merge into one array
-        const [activityRes, reusableRes, otherRes] = await Promise.all([
+        // Load all 4 split files in parallel and merge into one array
+        const [activityRes, reusableRes, otherRes, storiesRes] = await Promise.all([
             fetch('data/products_activity.json'),
             fetch('data/products_reusable.json'),
-            fetch('data/products_other.json')
+            fetch('data/products_other.json'),
+            fetch('data/products_stories.json')
         ]);
-        const [activity, reusable, other] = await Promise.all([
+        const [activity, reusable, other, stories] = await Promise.all([
             activityRes.json(),
             reusableRes.json(),
-            otherRes.json()
+            otherRes.json(),
+            storiesRes.json()
         ]);
-        products = [...activity, ...reusable, ...other];
+        // Tag divine stories so product page can detect them
+        const divineTagged = stories.map(s => ({ ...s, productType: 'divine' }));
+        products = [...activity, ...reusable, ...other, ...divineTagged];
     } catch (e) { console.error('Failed to load products:', e); }
 }
 
@@ -89,11 +93,36 @@ async function loadReviews() {
     } catch (e) { console.error('Failed to load reviews:', e); }
 }
 
+// --- DIVINE GOD COLOR MAP ---
+const DIVINE_GOD_COLORS = {
+    'Krishna': '#1a6b3c', 'Ganesha': '#e67e22', 'Hanuman': '#c0392b',
+    'Durga': '#8e0c52', 'Kali': '#4A0E8F', 'Saraswati': '#8e44ad',
+    'Siva': '#1a3a5c', 'Lakshmi': '#d4a017', 'Murugan': '#FF9933', 'Vishnu': '#1a3a7c', 'Rama': '#1a6b3c'
+};
+
+function buildDivineWALink(prod) {
+    const msg = encodeURIComponent(
+        'Hi! I would like to order the Divine Story Book:\n' +
+        '\uD83D\uDCDA ' + prod.title + '\n' +
+        '\uD83D\uDCB0 Price: \u20B9' + prod.price + '\n\n' +
+        'Please share more details and tell me how to personalise it with my child\u2019s name. \uD83D\uDE4F'
+    );
+    return 'https://wa.me/918883624873?text=' + msg;
+}
+
 function initProduct() {
     const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get('id'));
-    p = products.find(item => item.id === id) || products[0];
+    const rawId = params.get('id');
+    // Divine products have string IDs like "ds-001"; regular products use numeric IDs
+    const id = (rawId && rawId.startsWith('ds-')) ? rawId : parseInt(rawId);
+    p = products.find(item => String(item.id) === String(id)) || products.find(item => item.id === parseInt(rawId)) || products[0];
     if (!p) return;
+
+    // --- DIVINE PRODUCT SPECIAL ROUTING ---
+    if (p.productType === 'divine') {
+        initDivineProduct(p);
+        return;
+    }
 
     document.title = p.title + ' — HoneyBee Learning';
     document.getElementById('productBadge').textContent = p.badge;
@@ -252,6 +281,176 @@ function initProduct() {
 
 }
 
+
+// ═══════════════════════════════════════════════════════
+// DIVINE PRODUCT PAGE — Special layout for story books
+// ═══════════════════════════════════════════════════════
+function initDivineProduct(prod) {
+    const godColor = DIVINE_GOD_COLORS[prod.godCharacter] || '#4A0E8F';
+    const waLink = buildDivineWALink(prod);
+
+    // Dynamic SEO
+    document.title = prod.title + ' — HoneyBee Learning | Divine Story Books';
+    const md = document.getElementById('metaDesc');
+    if (md) md.setAttribute('content', prod.shortDesc + ' — Personalised divine story book by HoneyBee Learning, Chennai.');
+    const ot = document.getElementById('ogTitle');
+    if (ot) ot.setAttribute('content', prod.title + ' — HoneyBee Learning');
+    const od = document.getElementById('ogDesc');
+    if (od) od.setAttribute('content', prod.shortDesc || '');
+    const oi = document.getElementById('ogImage');
+    if (oi && prod.image) oi.setAttribute('content', 'https://honeybeelearning.co/' + prod.image);
+
+    // Badge
+    const badge = document.getElementById('productBadge');
+    if (badge) {
+        badge.textContent = (prod.godEmoji || '🕉️') + ' ' + prod.badge;
+        badge.style.background = godColor;
+        badge.style.color = '#fff';
+    }
+
+    // Title & Price
+    const titleEl = document.getElementById('productTitle');
+    if (titleEl) titleEl.textContent = prod.title;
+    const priceEl = document.getElementById('priceSell');
+    if (priceEl) priceEl.textContent = '₹' + prod.price;
+
+    // Description
+    const descEl = document.getElementById('productDesc');
+    if (descEl) descEl.textContent = prod.fullDesc;
+
+    // Tags + lesson tag
+    const tagsEl = document.getElementById('productTags');
+    if (tagsEl) {
+        const tagHTML = (prod.tags || []).map(t => `<span class="product-tag">${t}</span>`).join('');
+        const lessonTag = prod.lesson ? `<span class="product-tag" style="background:#F4EEFF;color:${godColor};font-weight:800;">${prod.lessonEmoji || '✨'} Teaches: ${prod.lesson}</span>` : '';
+        tagsEl.innerHTML = tagHTML + lessonTag;
+    }
+
+    // Freebies — hide for divine books
+    const freebiesContainer = document.getElementById('productFreebies');
+    if (freebiesContainer) freebiesContainer.style.display = 'none';
+
+    // Order button → direct WhatsApp
+    const orderBtn = document.getElementById('orderBtn');
+    if (orderBtn) {
+        orderBtn.href = waLink;
+        orderBtn.target = '_blank';
+        orderBtn.rel = 'noopener';
+        orderBtn.textContent = '💬 Order on WhatsApp';
+        orderBtn.style.background = `linear-gradient(135deg, ${godColor}, #FF9933)`;
+        orderBtn.onclick = null;
+    }
+
+    // Gallery
+    const tc = document.getElementById('thumbsContainer');
+    const dc = document.getElementById('galleryDots');
+    (prod.images || [prod.image]).forEach((src, i) => {
+        const div = document.createElement('div');
+        div.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
+        div.innerHTML = `<img src="${src}" alt="View ${i + 1}" loading="lazy">`;
+        div.onclick = () => setMainImg(i);
+        if (tc) tc.appendChild(div);
+        if (dc) {
+            const dot = document.createElement('button');
+            dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `View image ${i + 1}`);
+            dot.onclick = () => setMainImg(i);
+            dc.appendChild(dot);
+        }
+    });
+    setMainImg(0);
+
+    // Click main image to open lightbox
+    const mainImgEl = document.getElementById('mainImg');
+    if (mainImgEl) {
+        mainImgEl.addEventListener('click', () => {
+            document.getElementById('lightboxImg').src = prod.images[currentImgIdx];
+            document.getElementById('lightbox').classList.add('open');
+        });
+    }
+
+    // Touch swipe
+    let touchStartX = 0, touchStartY = 0;
+    const galleryEl = document.getElementById('galleryMain');
+    if (galleryEl) {
+        galleryEl.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        galleryEl.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+                if (dx < 0) nextImg(); else prevImg();
+            }
+        }, { passive: true });
+    }
+
+    // Sticky mobile bar
+    const msbTitle = document.getElementById('msbTitle');
+    const msbPrice = document.getElementById('msbPrice');
+    const msbBtn = document.getElementById('msbBtn');
+    if (msbTitle) msbTitle.textContent = prod.title;
+    if (msbPrice) msbPrice.textContent = '₹' + prod.price;
+    if (msbBtn) {
+        msbBtn.href = waLink;
+        msbBtn.target = '_blank';
+        msbBtn.textContent = '💬 Order on WhatsApp';
+        msbBtn.onclick = null;
+    }
+
+    // Inject divine hero banner right after product-top section
+    injectDivineHeroBanner(prod, godColor, waLink);
+
+    // Hide customise section — not relevant for divine books
+    const customiseSection = document.getElementById('customiseSection');
+    if (customiseSection) customiseSection.style.display = 'none';
+
+    // Related divine products
+    renderRelatedProducts();
+}
+
+function injectDivineHeroBanner(prod, godColor, waLink) {
+    const productTop = document.querySelector('.product-top') || document.querySelector('.product-section');
+    if (!productTop) return;
+
+    // Check if already injected
+    if (document.getElementById('divineBanner')) return;
+
+    const banner = document.createElement('div');
+    banner.id = 'divineBanner';
+    banner.style.cssText = `
+        background: linear-gradient(135deg, ${godColor}15 0%, ${godColor}08 100%);
+        border: 1.5px solid ${godColor}40;
+        border-radius: 16px;
+        padding: 20px 24px;
+        margin: 24px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+    `;
+    banner.innerHTML = `
+        <div style="font-size:2.4rem;line-height:1;">${prod.godEmoji || '🕉️'}</div>
+        <div style="flex:1;min-width:200px;">
+            <div style="font-weight:800;font-size:1rem;color:${godColor};margin-bottom:4px;">
+                ${prod.godCharacter} Series &mdash; ${prod.lesson}
+            </div>
+            <div style="font-size:0.88rem;color:#555;line-height:1.5;">
+                ${prod.lessonEmoji || '✨'} This personalised story book teaches <strong>${prod.lesson}</strong> — your child's name is woven throughout every page.
+            </div>
+        </div>
+        <a href="${waLink}" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,${godColor},#FF9933);
+                  color:#fff;padding:12px 22px;border-radius:50px;font-weight:800;font-size:0.9rem;
+                  text-decoration:none;white-space:nowrap;box-shadow:0 4px 14px ${godColor}40;">
+            💬 Order &amp; Personalise — ₹${prod.price}
+        </a>
+    `;
+
+    // Insert after product top section
+    productTop.insertAdjacentElement('afterend', banner);
+}
 function setMainImg(idx) {
     currentImgIdx = idx;
     const mainImgEl = document.getElementById('mainImg');

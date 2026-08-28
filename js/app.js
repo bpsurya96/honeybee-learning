@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════════
    HoneyBee Learning — Main Application JS
    ═══════════════════════════════════════════════
 
@@ -280,7 +280,7 @@ function renderLearningProducts(typeFilter, resetPage) {
                 + '<div class="lcard-title">' + p.title + '</div>'
                 + '<div class="lcard-desc">' + p.shortDesc + '</div>'
                 + '<div class="lcard-tags">' + (p.tags||[]).map(function(t){ return '<span class="lcard-tag">' + t + '</span>'; }).join('') + '<span class="lcard-tag" style="background:#F4EEFF;color:#6B2FAA;">' + (p.lessonEmoji||'') + ' ' + (p.lesson||'') + '</span></div>'
-                + '<div class="lcard-footer"><a href="' + _wa + '" target="_blank" rel="noopener" class="lcard-btn" style="background:linear-gradient(135deg,#FF9933,#D4A017);">\uD83D\uDCAC Order on WhatsApp</a></div>'
+                + '<div class="lcard-footer" style="display:flex;gap:6px;"><a href="product.html?id=' + p.id + '" class="lcard-btn" style="background:linear-gradient(135deg,#FF9933,#D4A017);flex:1;text-align:center;">\uD83D\uDCD6 View Details</a><a href="' + _wa + '" target="_blank" rel="noopener" class="lcard-btn" style="background:#25D366;flex:0 0 auto;padding:10px 14px;">\uD83D\uDCAC</a></div>'
                 + '</div></div>';
         }
         const badgeClass = p.badgeType === 'hot' ? 'badge-hot' : p.badgeType === 'new' ? 'badge-new' : 'badge-hot';

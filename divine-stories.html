@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1339,7 +1339,7 @@
       grid.innerHTML = books.map(function (b, i) {
         var color = GOD_COLORS[b.godCharacter] || '#4A0E8F';
         var ge = b.godEmoji || '\uD83D\uDD49\uFE0F';
-        return '<div class="divine-card" style="animation-delay:' + (i * .07) + 's" onclick="openDivineModal(\'' + b.id + '\')" role="button" tabindex="0" aria-label="' + b.title + '" onkeydown="if(event.key===\'Enter\')openDivineModal(\'' + b.id + '\')">'
+        return '<div class="divine-card" style="animation-delay:' + (i * .07) + 's" onclick="window.location.href='product.html?id='+b.id" role="button" tabindex="0" aria-label="' + b.title + '" onkeydown="if(event.key===\'Enter\')window.location.href='product.html?id='+b.id">'
           + '<div class="divine-card-img-wrap">'
           + '<img src="' + b.image + '" alt="' + b.title + '" loading="lazy" onerror="this.parentElement.innerHTML=\'<div class=\\\"divine-card-img-placeholder\\\">' + ge + '</div>\'">'
           + '<div class="divine-god-badge" style="background:' + color + ';">' + ge + ' ' + b.godCharacter + ' Series</div>'
@@ -1350,8 +1350,8 @@
           + '<div class="divine-card-desc">' + b.shortDesc + '</div>'
           + '<div class="divine-card-lesson">' + (b.lessonEmoji || '\u2728') + ' Teaches: ' + b.lesson + '</div>'
           + '<div class="divine-card-footer">'
-          + '<a class="btn-divine-order" href="' + buildWALink(b) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">\uD83D\uDCAC Order on WhatsApp</a>'
-          + '<button class="btn-divine-view" onclick="event.stopPropagation();openDivineModal(\'' + b.id + '\')" aria-label="View">\uD83D\uDC41\uFE0F</button>'
+          + '<a class="btn-divine-order" href="product.html?id=' + b.id + '" onclick="event.stopPropagation()">\uD83D\uDCD6 View Details</a>' + '<a class="btn-divine-wa" href="' + buildWALink(b) + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">\uD83D\uDCAC WhatsApp</a>'
+          + '<button class="btn-divine-view" onclick="event.stopPropagation();window.location.href='product.html?id='+b.id" aria-label="View">\uD83D\uDC41\uFE0F</button>'
           + '</div></div></div>';
       }).join('');
     }
