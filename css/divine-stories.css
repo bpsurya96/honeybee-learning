@@ -491,6 +491,17 @@ body.divine-page #mainNav {
 }
 
 /* ── The Divine Book Card ── */
+/* Card link wrapper - makes entire card clickable as a proper anchor */
+.divine-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.divine-card-link:hover .divine-card,
+.divine-card-link:focus .divine-card {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 16px 40px rgba(212,160,23,0.22), 0 6px 20px rgba(0,0,0,0.1);
+}
 .divine-card {
   background: #fff;
   border-radius: var(--divine-radius);
@@ -646,6 +657,28 @@ body.divine-page #mainNav {
 .btn-divine-order:hover {
   transform: translateY(-2px) scale(1.04);
   box-shadow: 0 8px 24px rgba(212,160,23,0.55);
+}
+/* WhatsApp button on divine story cards */
+.btn-divine-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #25D366;
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 11px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37,211,102,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.btn-divine-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.45);
 }
 
 .btn-divine-view {
