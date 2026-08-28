@@ -491,6 +491,17 @@ body.divine-page #mainNav {
 }
 
 /* ── The Divine Book Card ── */
+/* Card link wrapper - makes entire card clickable as a proper anchor */
+.divine-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.divine-card-link:hover .divine-card,
+.divine-card-link:focus .divine-card {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 16px 40px rgba(212,160,23,0.22), 0 6px 20px rgba(0,0,0,0.1);
+}
 .divine-card {
   background: #fff;
   border-radius: var(--divine-radius);
