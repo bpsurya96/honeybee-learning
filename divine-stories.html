@@ -1,4 +1,4 @@
-﻿﻿﻿﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -603,6 +603,85 @@
       }
     }
 
+    /* ---- SALES BANNER ---- */
+    .divine-sales-banner {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(90deg, rgba(255, 153, 51, 0.15), rgba(255, 215, 0, 0.15));
+      border: 2px solid rgba(255, 215, 0, 0.5);
+      border-radius: 50px;
+      box-shadow: 0 8px 32px rgba(255, 153, 51, 0.25);
+      animation: salesPulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes salesPulse {
+      0% { transform: scale(1); box-shadow: 0 8px 32px rgba(255, 153, 51, 0.25); }
+      100% { transform: scale(1.05); box-shadow: 0 12px 48px rgba(255, 215, 0, 0.4); border-color: rgba(255, 215, 0, 0.8); }
+    }
+
+    .divine-sales-text {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: #FFD700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ---- REVIEWS SECTION ---- */
+    .divine-reviews {
+      padding: 80px 20px;
+      text-align: center;
+      background: #0a0118;
+      position: relative;
+    }
+
+    .divine-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 40px auto 0;
+    }
+
+    .divine-review-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: left;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .divine-review-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-4px);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .review-stars {
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      flex-grow: 1;
+      font-style: italic;
+    }
+
+    .review-author {
+      color: #FFD700;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+
     /* ---- Mobile ---- */
     @media(max-width:580px) {
       .story-chars {
@@ -726,6 +805,11 @@
       <div class="divine-hero-ctas">
         <a href="#storyPlayer" class="btn-divine-primary" id="heroExploreCTA">&#x25B6;&#xFE0F; Watch the Story</a>
         <a href="#divineBooks" class="btn-divine-secondary" id="heroBooksCTA">&#x1F549;&#xFE0F; See the Books</a>
+      </div>
+
+      <!-- MARKETING STATS -->
+      <div class="divine-sales-banner">
+        <span class="divine-sales-text">🎉 Over 1,000+ Copies Sold! 🔥</span>
       </div>
     </div>
     <div class="divine-scroll-hint" aria-hidden="true"><span>Scroll to see the magic</span><span>&#x2193;</span></div>
@@ -912,6 +996,44 @@
       <div class="divine-why-card"><span class="divine-why-icon">&#x1F4E6;</span>
         <div class="divine-why-title">Pan-India Delivery</div>
         <p class="divine-why-desc">Order on WhatsApp &mdash; we personalise it and deliver it to your doorstep.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS SECTION -->
+  <section class="divine-reviews" id="divineReviews" aria-label="Customer Reviews">
+    <h2 class="divine-section-title">What Parents Are Saying</h2>
+    <p class="divine-section-sub">Over 1000+ copies sold and loved by kids across India!</p>
+    <div class="divine-reviews-grid">
+      <div class="divine-review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"My daughter Priya loves her Krishna book! She asks me to read it every night. Best purchase for Rs.75!"</p>
+        <div class="review-author">- Swati R., Chennai</div>
+      </div>
+      <div class="divine-review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"The personalization is magical. Arjun was so surprised when Hanuman called his name. Highly recommend!"</p>
+        <div class="review-author">- Rahul M., Bangalore</div>
+      </div>
+      <div class="divine-review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Such a creative way to teach good values. Ordered the Ganesha and Saraswathi ones. Excellent quality."</p>
+        <div class="review-author">- Kavita S., Mumbai</div>
+      </div>
+      <div class="divine-review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Very fast delivery and the illustrations are beautiful. Makes for a perfect birthday gift!"</p>
+        <div class="review-author">- Deepa K., Delhi</div>
+      </div>
+      <div class="divine-review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"My son loves hearing Rama say his name. He feels like a hero! A truly wonderful book series."</p>
+        <div class="review-author">- Anjali P., Pune</div>
+      </div>
+      <div class="divine-review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Ordered 10 books as return gifts for my daughter's birthday. The kids were thrilled!"</p>
+        <div class="review-author">- Neha T., Hyderabad</div>
       </div>
     </div>
   </section>
