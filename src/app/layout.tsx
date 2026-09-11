@@ -3,6 +3,8 @@ import { Quicksand } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { CartProvider } from "@/lib/CartContext";
+import CartDrawer from "@/components/cart/CartDrawer";
 
 const quicksand = Quicksand({
   variable: "--font-sans",
@@ -16,13 +18,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={${quicksand.variable} h-full antialiased}>
+    <html lang="en" className={`${quicksand.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans bg-background text-foreground">
-        <Header />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );
