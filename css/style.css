@@ -3726,7 +3726,7 @@ footer {
 
 /* --- HERO --- */
 .rg-hero {
-  padding-top: calc(var(--nav-height, 68px) + 60px);
+  padding-top: calc(var(--nav-height, 68px) + 20px) + 60px);
   padding-bottom: 80px;
   padding-left: 5%;
   padding-right: 5%;
@@ -3819,7 +3819,7 @@ footer {
 
 /* --- BENEFITS --- */
 .rg-benefits { padding: 68px 5%; background: white; }
-.rg-benefits-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1100px; }
+.rg-benefits-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1100px;  margin: 0 auto; }
 .rg-benefit-card { background: var(--cream); border-radius: var(--radius); border: 2px solid var(--green-pale); padding: 28px 20px; text-align: center; transition: all 0.3s; }
 .rg-benefit-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--green-light); }
 .rg-benefit-icon { font-size: 2.4rem; display: block; margin-bottom: 12px; }
@@ -3828,14 +3828,14 @@ footer {
 
 /* --- HOW IT WORKS --- */
 .rg-how { padding: 68px 5%; background: var(--cream); }
-.rg-how-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; max-width: 1100px; }
+.rg-how-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; max-width: 1100px;  margin: 0 auto; }
 
 /* --- PACKS SECTION --- */
 .rg-packs { padding: 68px 5%; background: white; }
 
 /* --- COMPARISON TABLE --- */
 .rg-table-section { padding: 68px 5%; background: var(--cream); }
-.rg-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: var(--shadow-card); max-width: 1100px; }
+.rg-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: var(--shadow-card); max-width: 1100px;  margin: 0 auto; }
 .rg-table { width: 100%; border-collapse: collapse; font-family: "Nunito", sans-serif; font-size: 0.9rem; min-width: 700px; background: white; }
 .rg-table th { background: var(--green); color: white; padding: 14px 16px; text-align: left; font-weight: 800; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; }
 .rg-table th:first-child { border-radius: var(--radius) 0 0 0; }
@@ -3851,7 +3851,7 @@ footer {
 
 /* --- PERSONA CARDS --- */
 .rg-persona { padding: 68px 5%; background: white; }
-.rg-persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1000px; }
+.rg-persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1000px;  margin: 0 auto; }
 .rg-persona-card { background: white; border-radius: var(--radius); padding: 32px 24px; box-shadow: var(--shadow-card); border-top: 4px solid var(--green-light); transition: all 0.3s; }
 .rg-persona-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
 .rg-persona-card:nth-child(2) { border-top-color: var(--honey); }
@@ -3903,7 +3903,7 @@ footer {
   .rg-how-grid      { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 768px) {
-  .rg-hero { flex-direction: column; padding-top: calc(var(--nav-height,68px) + 36px); padding-bottom: 48px; gap: 32px; text-align: center; }
+  .rg-hero { flex-direction: column; padding-top: calc(var(--nav-height, 68px) + 36px); padding-bottom: 48px; gap: 32px; text-align: center; }
   .rg-hero-desc { max-width: 100%; }
   .rg-hero-btns { justify-content: center; }
   .rg-stat-row  { justify-content: center; }
