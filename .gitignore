@@ -1,29 +1,41 @@
-# OS files
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
-Thumbs.db
-*.swp
-*.swo
+*.pem
 
-# IDE
-.vscode/
-.idea/
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# Agent files
-.gemini/
-.agent/
-.agents/
+# env files (can opt-in for committing if needed)
+.env*
 
-# Temporary files
-*.tmp
-*.bak
+# vercel
+.vercel
 
-# Large media files — videos now served via YouTube, raw MP4s stay local only
-reviews/videos/*.mp4
-reviews/videos/originals/
-
-# Video compression script (local use only)
-compress_videos.sh
-
-node_modules/*
-package-lock.json
-package.json
+# typescript
+*.tsbuildinfo
+next-env.d.ts
