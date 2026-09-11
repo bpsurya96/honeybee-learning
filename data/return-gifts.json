@@ -1,10 +1,59 @@
 [
     {
+        "id": "thank-you-mini",
+        "name": "Thank You Mini",
+        "emoji": "\ud83c\udf3c",
+        "price": 25,
+        "mrpLabel": "Under \u20b950",
+        "category": "under50",
+        "hasCandy": false,
+        "items": [
+            "Thank-you card",
+            "1 marker pen",
+            "Bookmark",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
+        "id": "honeybee-mini-fun-pack",
+        "name": "HoneyBee Mini Fun Pack",
+        "emoji": "\ud83d\udc1d",
+        "price": 27,
+        "mrpLabel": "Under \u20b950",
+        "category": "under50",
+        "hasCandy": true,
+        "items": [
+            "3 A4 B/W personalised activity sheets",
+            "Pencil",
+            "Eraser",
+            "Chocolate or Chikki",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
+        "id": "honeybee-colour-fun-pack",
+        "name": "HoneyBee Colour Fun Pack",
+        "emoji": "\ud83c\udf08",
+        "price": 35,
+        "mrpLabel": "Under \u20b950",
+        "category": "under50",
+        "hasCandy": true,
+        "items": [
+            "3 A4 Colour personalised activity sheets",
+            "Pencil",
+            "Eraser",
+            "Chocolate or Chikki",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
         "id": "worksheet-fun-pack",
         "name": "Worksheet Fun Pack",
-        "emoji": "📋",
-        "price": 25,
-        "mrpLabel": "Under ₹50",
+        "emoji": "\ud83d\udccb",
+        "price": 27,
+        "mrpLabel": "Under \u20b950",
         "category": "under50",
         "hasCandy": true,
         "items": [
@@ -16,27 +65,91 @@
         ]
     },
     {
+        "id": "honeybee-creative-pack",
+        "name": "HoneyBee Creative Pack",
+        "emoji": "\ud83c\udfa8",
+        "price": 50,
+        "mrpLabel": "Under \u20b975",
+        "category": "under100",
+        "hasCandy": true,
+        "items": [
+            "5 A4 B/W personalised activity sheets",
+            "Pencil + eraser",
+            "10-crayon set",
+            "Chocolate",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
+        "id": "honeybee-creative-fun-pack",
+        "name": "HoneyBee Creative Fun Pack",
+        "emoji": "\ud83c\udfa8",
+        "price": 60,
+        "mrpLabel": "Under \u20b975",
+        "category": "under100",
+        "hasCandy": true,
+        "items": [
+            "5 A4 Colour personalised activity sheets",
+            "Pencil + eraser",
+            "10-crayon set",
+            "Chocolate",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
         "id": "mini-color-pack",
         "name": "Mini Color Pack",
-        "emoji": "🖍️",
+        "emoji": "\ud83d\udda4\ufe0f",
         "price": 50,
-        "mrpLabel": "Under ₹85",
+        "mrpLabel": "Under \u20b985",
         "category": "under100",
         "hasCandy": true,
         "items": [
             "5 personalised A4 B/W activity sheets",
-            "Pencil + eraser + sharpner",
+            "Pencil + eraser + sharpener",
             "Chocolate / candy of choice",
-            "Crayons — 10 color set",
+            "Crayons \u2014 10 color set",
             "Packed as a set"
+        ]
+    },
+    {
+        "id": "honeybee-mini-practice-pack",
+        "name": "HoneyBee Mini Practice Pack",
+        "emoji": "\u270f\ufe0f",
+        "price": 73,
+        "mrpLabel": "Under \u20b9100",
+        "category": "under100",
+        "hasCandy": false,
+        "items": [
+            "20-page A5 B/W personalised activity book",
+            "Pencil + eraser + sharpener",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
+        "id": "honeybee-mini-activity-pack",
+        "name": "HoneyBee Mini Activity Pack",
+        "emoji": "\ud83c\udf08",
+        "price": 85,
+        "mrpLabel": "Under \u20b9100",
+        "category": "under100",
+        "hasCandy": false,
+        "items": [
+            "20-page A5 Colour personalised activity book",
+            "Pencil + eraser + sharpener",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
         ]
     },
     {
         "id": "mini-activity-book",
         "name": "Mini Activity Book",
-        "emoji": "📒",
+        "emoji": "\ud83d\udcd2",
         "price": 85,
-        "mrpLabel": "Under ₹100",
+        "mrpLabel": "Under \u20b9100",
         "category": "under100",
         "hasCandy": false,
         "items": [
@@ -47,26 +160,88 @@
         ]
     },
     {
+        "id": "honeybee-little-learner-pack",
+        "name": "HoneyBee Little Learner Pack",
+        "emoji": "\u270f\ufe0f",
+        "price": 85,
+        "mrpLabel": "Under \u20b9100",
+        "category": "under100",
+        "hasCandy": false,
+        "items": [
+            "24-page A5 B/W personalised activity book",
+            "Pencil + eraser + sharpener",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
+        "id": "honeybee-little-learner-fun-pack",
+        "name": "HoneyBee Little Learner Fun Pack",
+        "emoji": "\u270f\ufe0f",
+        "price": 99,
+        "mrpLabel": "Under \u20b9100",
+        "category": "under100",
+        "hasCandy": false,
+        "items": [
+            "24-page A5 Colour personalised activity book",
+            "Pencil + eraser + sharpener",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
         "id": "activity-book-stationery",
         "name": "Activity Book + Stationery",
-        "emoji": "📚",
+        "emoji": "\ud83d\udcda",
         "price": 99,
-        "mrpLabel": "Under ₹150",
+        "mrpLabel": "Under \u20b9150",
         "category": "under200",
         "hasCandy": false,
         "items": [
             "24-page mini activity book (A5)",
             "Personalised cover page",
-            "Pencil + eraser + sharpner",
+            "Pencil + eraser + sharpener",
             "Packed as a set"
+        ]
+    },
+    {
+        "id": "honeybee-learning-gift-pack",
+        "name": "HoneyBee Learning Gift Pack",
+        "emoji": "\ud83d\udc1d",
+        "price": 125,
+        "mrpLabel": "Under \u20b9150",
+        "category": "under200",
+        "hasCandy": true,
+        "items": [
+            "32-page B/W personalised activity book",
+            "Pencil + eraser + scale + crayons",
+            "Chocolate",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
+        "id": "honeybee-creative-gift-pack",
+        "name": "HoneyBee Creative Gift Pack",
+        "emoji": "\ud83c\udfa8",
+        "price": 150,
+        "mrpLabel": "Under \u20b9150",
+        "category": "under200",
+        "hasCandy": true,
+        "items": [
+            "32-page Colour personalised activity book",
+            "Pencil + eraser + scale + crayons",
+            "Chocolate",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
         ]
     },
     {
         "id": "budget-friendly-combo",
         "name": "Budget Friendly Combo",
-        "emoji": "🌟",
+        "emoji": "\ud83c\udf1f",
         "price": 150,
-        "mrpLabel": "Under ₹200",
+        "mrpLabel": "Under \u20b9200",
         "category": "under200",
         "hasCandy": true,
         "items": [
@@ -78,9 +253,42 @@
         ]
     },
     {
+        "id": "honeybee-celebration-pack",
+        "name": "HoneyBee Celebration Pack",
+        "emoji": "\ud83c\udf81",
+        "price": 158,
+        "mrpLabel": "Under \u20b9200",
+        "category": "under200",
+        "hasCandy": true,
+        "items": [
+            "40-page B/W personalised activity book",
+            "Pencil + eraser + sharpener + scale + crayons",
+            "Chocolate",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
+        "id": "honeybee-premium-celebration-pack",
+        "name": "HoneyBee Premium Celebration Pack",
+        "emoji": "\ud83c\udf08",
+        "price": 170,
+        "mrpLabel": "Best Value",
+        "category": "premium",
+        "isPremium": true,
+        "hasCandy": true,
+        "items": [
+            "40-page Colour personalised activity book",
+            "Pencil + eraser + sharpener + scale + crayons",
+            "Chocolate",
+            "Thank-you card",
+            "Neatly packed as a ready-to-gift set"
+        ]
+    },
+    {
         "id": "high-value-combo",
         "name": "High Value Combo",
-        "emoji": "👑",
+        "emoji": "\ud83d\udc51",
         "price": 170,
         "mrpLabel": "Best Value",
         "category": "premium",
@@ -89,7 +297,7 @@
         "items": [
             "40-page mini activity book (A5)",
             "Personalised cover page for book",
-            "Pencil + eraser + sharpner + scale + crayons",
+            "Pencil + eraser + sharpener + scale + crayons",
             "Chocolate or candy of choice",
             "Personalised thank-you card",
             "Packed as a set"

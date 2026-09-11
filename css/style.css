@@ -3197,7 +3197,7 @@ footer {
   background: white;
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.06);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -3376,7 +3376,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.06);
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
   z-index: 2;
   padding: 0;
@@ -3717,4 +3717,251 @@ footer {
   color: var(--text-soft);
   font-weight: 600;
   line-height: 1.6;
+}
+
+
+/* =======================================================
+   RETURN GIFTS PAGE (return-gifts.html)
+   All classes prefixed rg- to avoid conflicts.
+   ======================================================= */
+
+/* --- HERO --- */
+.rg-hero {
+  padding-top: calc(var(--nav-height, 68px) + 80px);
+  padding-bottom: 80px;
+  padding-left: 5%;
+  padding-right: 5%;
+  background: linear-gradient(135deg, #fffdf5 0%, #f1fae6 50%, #fff8e1 100%);
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  overflow: hidden;
+  position: relative;
+}
+.rg-hero::before {
+  content: "";
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(255,179,0,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.rg-hero-text { flex: 1; min-width: 0; }
+.rg-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green-pale); border: 1.5px solid rgba(61,107,36,0.2);
+  color: var(--green); font-size: 0.78rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1px;
+  padding: 5px 14px; border-radius: 50px; margin-bottom: 18px;
+}
+.rg-hero-h1 {
+  font-family: "Fredoka One", cursive;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.1; color: var(--text); margin-bottom: 16px;
+}
+.rg-hero-h1 .accent-honey { background: linear-gradient(135deg, var(--orange) 0%, var(--honey) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.rg-hero-h1 .accent-green { color: var(--green); }
+.rg-hero-desc {
+  font-size: 1.05rem; font-weight: 600; color: var(--text-soft);
+  line-height: 1.7; margin-bottom: 28px; max-width: 480px;
+}
+.rg-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.rg-stat-row { display: flex; gap: 28px; flex-wrap: wrap; }
+.rg-stat { display: flex; flex-direction: column; }
+.rg-stat-num { font-family: "Fredoka One", cursive; font-size: 1.6rem; color: var(--green); line-height: 1; }
+.rg-stat-label { font-size: 0.78rem; color: var(--text-soft); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.rg-hero-visual { flex: 0 0 360px; display: flex; align-items: center; justify-content: center; position: relative; }
+.rg-gift-stack { position: relative; width: 280px; height: 320px; }
+.rg-gift-card {
+  position: absolute; width: 220px; background: white;
+  border-radius: 20px; padding: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.rg-gift-card:nth-child(1) {
+  top: 0; left: 30px;
+  background: linear-gradient(135deg, #e8f5d8, #c8e6a0);
+  transform: rotate(-6deg); animation: rg-float1 4s ease-in-out infinite; z-index: 1;
+}
+.rg-gift-card:nth-child(2) {
+  top: 30px; left: 10px; background: white;
+  transform: rotate(2deg); animation: rg-float2 4s ease-in-out 0.6s infinite;
+  z-index: 2; border: 2px solid var(--green-pale);
+}
+.rg-gift-card:nth-child(3) {
+  top: 60px; left: 50px;
+  background: linear-gradient(135deg, #fff8e1, #ffe082);
+  transform: rotate(-2deg); animation: rg-float3 4s ease-in-out 1.2s infinite; z-index: 3;
+}
+@keyframes rg-float1 { 0%,100%{transform:translateY(0) rotate(-6deg)} 50%{transform:translateY(-8px) rotate(-6deg)} }
+@keyframes rg-float2 { 0%,100%{transform:translateY(0) rotate(2deg)}  50%{transform:translateY(-8px) rotate(2deg)} }
+@keyframes rg-float3 { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-8px) rotate(-2deg)} }
+.rg-gift-card-emoji { font-size: 2.4rem; }
+.rg-gift-card-name { font-family: "Fredoka One", cursive; font-size: 0.95rem; color: var(--green-dark); text-align: center; line-height: 1.2; }
+.rg-gift-card-price { background: var(--brown); color: white; border-radius: 50px; padding: 3px 12px; font-family: "Fredoka One", cursive; font-size: 0.9rem; }
+
+
+@keyframes floatCard {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+.rg-gift-stack .rg-gift-card:nth-child(1) { animation-delay: 0s; }
+.rg-gift-stack .rg-gift-card:nth-child(2) { animation-delay: -2s; }
+.rg-gift-stack .rg-gift-card:nth-child(3) { animation-delay: -4s; }
+
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+
+.card-btn.premium-btn {
+  background: linear-gradient(135deg, #6b3a1f 0%, #4a2511 40%, #8b5a3a 50%, #4a2511 60%, #6b3a1f 100%);
+  background-size: 200% auto;
+  box-shadow: 0 6px 20px rgba(107, 58, 31, 0.4);
+  animation: shimmer 4s linear infinite;
+}
+.card-btn.premium-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(107, 58, 31, 0.5);
+}
+
+/* --- SCROLL BANNER --- */
+.rg-banner { background: var(--green); padding: 9px 0; overflow: hidden; white-space: nowrap; }
+.rg-banner-track { display: flex; width: max-content; animation: scrollBanner 22s linear infinite; }
+.rg-banner-content { display: flex; }
+.rg-banner-content span { margin: 0 18px; color: rgba(255,255,255,0.9); font-weight: 700; font-size: 0.88rem; flex-shrink: 0; }
+
+/* --- PROBLEM STRIP --- */
+.rg-problem { padding: 68px 5%; background: white; }
+.rg-problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+.rg-problem-card { background: #fff5f5; border: 2px solid #ffe0e0; border-radius: var(--radius); padding: 28px 22px; text-align: center; transition: transform 0.3s; }
+.rg-problem-card:hover { transform: translateY(-4px); }
+.rg-problem-icon { font-size: 2.6rem; margin-bottom: 12px; display: block; }
+.rg-problem-title { font-family: "Fredoka One", cursive; font-size: 1.1rem; color: #c0392b; margin-bottom: 6px; }
+.rg-problem-desc { font-size: 0.88rem; color: var(--text-soft); font-weight: 600; line-height: 1.55; }
+.rg-bridge { display: flex; align-items: center; justify-content: center; padding: 24px 5% 0; background: white; }
+.rg-bridge-arrow { font-family: "Fredoka One", cursive; font-size: 1.1rem; color: var(--green); background: var(--green-pale); border-radius: 50px; padding: 10px 28px; display: flex; align-items: center; gap: 10px; }
+
+
+.rg-problem-icon, .rg-benefit-icon, .how-icon { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.rg-problem-card:hover .rg-problem-icon { transform: scale(1.2) rotate(-5deg); }
+.rg-benefit-card:hover .rg-benefit-icon { transform: scale(1.2) translateY(-4px); }
+.how-card:hover .how-icon { transform: scale(1.15); background: white; color: var(--green); }
+
+/* --- BENEFITS --- */
+.rg-benefits { padding: 68px 5%; background: white; }
+.rg-benefits-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1100px;  margin: 0 auto; }
+.rg-benefit-card { background: var(--cream); border-radius: var(--radius); border: 2px solid var(--green-pale); padding: 28px 20px; text-align: center; transition: all 0.3s; }
+.rg-benefit-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--green-light); }
+.rg-benefit-icon { font-size: 2.4rem; display: block; margin-bottom: 12px; }
+.rg-benefit-title { font-family: "Fredoka One", cursive; font-size: 1.1rem; color: var(--green); margin-bottom: 6px; }
+.rg-benefit-desc { font-size: 0.86rem; color: var(--text-soft); font-weight: 600; line-height: 1.55; }
+
+/* --- HOW IT WORKS --- */
+.rg-how { padding: 68px 5%; background: var(--cream); }
+.rg-how-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; max-width: 1100px;  margin: 0 auto; }
+
+/* --- PACKS SECTION --- */
+.rg-packs { padding: 68px 5%; background: white; }
+
+/* --- COMPARISON TABLE --- */
+.rg-table-section { padding: 68px 5%; background: var(--cream); }
+.rg-table-wrap { display: block; width: 100%; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: 0 12px 36px rgba(0,0,0,0.06); max-width: 1100px;  margin: 0 auto; }
+.rg-table { width: 100%; border-collapse: collapse; font-family: "Nunito", sans-serif; font-size: 0.9rem; min-width: 700px; background: white; }
+.rg-table th { background: var(--green); color: white; padding: 14px 16px; text-align: left; font-weight: 800; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.rg-table th:first-child { border-radius: var(--radius) 0 0 0; }
+.rg-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
+.rg-table td { padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); font-weight: 700; color: var(--text); vertical-align: middle; }
+.rg-table tr:hover td { background: var(--green-pale); }
+.rg-table tr:last-child td { border-bottom: none; }
+.rg-table-bw  { background: #f9f9f9; }
+.rg-table-col { background: #fffbf0; }
+.rg-table-check { color: var(--green); font-size: 1.1rem; }
+.rg-table-cross { color: #ccc; font-size: 1.1rem; }
+.rg-table .rg-price-cell { font-family: "Fredoka One", cursive; font-size: 1.05rem; color: var(--brown); }
+
+/* --- PERSONA CARDS --- */
+.rg-persona { padding: 68px 5%; background: white; }
+.rg-persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1000px;  margin: 0 auto; }
+.rg-persona-card { background: white; border-radius: var(--radius); padding: 32px 24px; box-shadow: 0 12px 36px rgba(0,0,0,0.06); border-top: 4px solid var(--green-light); transition: all 0.3s; }
+.rg-persona-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.rg-persona-card:nth-child(2) { border-top-color: var(--honey); }
+.rg-persona-card:nth-child(3) { border-top-color: var(--brown-light); }
+.rg-persona-icon { font-size: 2.6rem; display: block; margin-bottom: 12px; }
+.rg-persona-title { font-family: "Fredoka One", cursive; font-size: 1.2rem; color: var(--green); margin-bottom: 6px; }
+.rg-persona-card:nth-child(2) .rg-persona-title { color: var(--brown); }
+.rg-persona-card:nth-child(3) .rg-persona-title { color: var(--brown-light); }
+.rg-persona-who { font-size: 0.82rem; font-weight: 800; color: var(--text-soft); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; opacity: 0.7; }
+.rg-persona-desc { font-size: 0.9rem; color: var(--text-soft); font-weight: 600; line-height: 1.6; margin-bottom: 14px; }
+.rg-persona-tag { display: inline-block; background: var(--green-pale); color: var(--green); font-size: 0.8rem; font-weight: 800; padding: 4px 12px; border-radius: 50px; }
+.rg-persona-card:nth-child(2) .rg-persona-tag { background: var(--honey-pale); color: var(--brown); }
+.rg-persona-card:nth-child(3) .rg-persona-tag { background: #fdf3ec; color: var(--brown-light); }
+
+/* --- FAQ --- */
+.rg-faq { padding: 68px 5%; background: var(--cream); }
+
+/* --- FINAL CTA BANNER --- */
+.rg-cta-banner {
+  padding: 80px 5%;
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%, var(--green-light) 100%);
+  text-align: center; position: relative; overflow: hidden;
+}
+.rg-cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.rg-cta-emoji { font-size: 3rem; display: block; margin-bottom: 16px; }
+.rg-cta-h2 { font-family: "Fredoka One", cursive; font-size: clamp(1.9rem,4vw,3rem); color: white; margin-bottom: 12px; text-shadow: 0 3px 14px rgba(0,0,0,0.2); }
+.rg-cta-desc { font-size: 1.05rem; color: rgba(255,255,255,0.85); font-weight: 600; margin-bottom: 32px; line-height: 1.65; }
+.rg-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.rg-cta-btn-primary {
+  background: var(--honey); color: var(--brown);
+  padding: 15px 36px; border-radius: 50px;
+  font-family: "Nunito", sans-serif; font-weight: 800; font-size: 1.02rem;
+  text-decoration: none; box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+  transition: transform 0.2s, box-shadow 0.2s; display: inline-block;
+}
+.rg-cta-btn-primary:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 36px rgba(0,0,0,0.32); }
+.rg-cta-btn-secondary {
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+  color: white; padding: 15px 36px; border-radius: 50px;
+  font-family: "Nunito", sans-serif; font-weight: 800; font-size: 1.02rem;
+  text-decoration: none; border: 2px solid rgba(255,255,255,0.45);
+  transition: all 0.22s; display: inline-block;
+}
+.rg-cta-btn-secondary:hover { background: rgba(255,255,255,0.28); border-color: white; transform: translateY(-2px); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .rg-benefits-grid { grid-template-columns: repeat(2,1fr); }
+  .rg-how-grid      { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+  .rg-hero { flex-direction: column; padding-top: calc(var(--nav-height, 68px) + 60px); padding-bottom: 48px; gap: 32px; text-align: center; }
+  .rg-hero-desc { max-width: 100%; }
+  .rg-hero-btns { justify-content: center; }
+  .rg-stat-row  { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .rg-hero-visual { flex: none; }
+  .rg-gift-stack { width: 220px; height: 250px; }
+  .rg-gift-card  { width: 180px; padding: 14px; }
+  .rg-problem-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .rg-benefits-grid { grid-template-columns: 1fr 1fr; }
+  .rg-how-grid { grid-template-columns: 1fr 1fr; }
+  .rg-persona-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  /* Improved Mobile Table */
+  .rg-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; }
+  .rg-table th, .rg-table td { white-space: nowrap; }
+  .rg-table td:first-child, .rg-table th:first-child { position: sticky; left: 0; z-index: 2; background: inherit; }
+  .rg-table th:first-child { background: var(--green); z-index: 3; }
+  .rg-table td:first-child::after, .rg-table th:first-child::after { content: ''; position: absolute; top: 0; right: -6px; bottom: 0; width: 6px; background: linear-gradient(to right, rgba(0,0,0,0.08), transparent); pointer-events: none; }
+  .rg-table tr { background: inherit; } /* ensures inherit works on td */
+  .rg-table tbody tr { display: table-row; }
+  /* Ensure the special row colors apply to the tr so td inherits them */
+  .rg-table-bw { background: #f9f9f9; }
+  .rg-table-col { background: #fffbf0; }
+}
+@media (max-width: 480px) {
+  .rg-benefits-grid { grid-template-columns: 1fr; }
+  .rg-how-grid { grid-template-columns: 1fr; }
 }
