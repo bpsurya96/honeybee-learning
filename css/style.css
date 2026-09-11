@@ -3836,7 +3836,7 @@ footer {
 
 /* --- COMPARISON TABLE --- */
 .rg-table-section { padding: 68px 5%; background: var(--cream); }
-.rg-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: var(--shadow-card); max-width: 1100px;  margin: 0 auto; }
+.rg-table-wrap { display: block; width: 100%; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); box-shadow: var(--shadow-card); max-width: 1100px;  margin: 0 auto; }
 .rg-table { width: 100%; border-collapse: collapse; font-family: "Nunito", sans-serif; font-size: 0.9rem; min-width: 700px; background: white; }
 .rg-table th { background: var(--green); color: white; padding: 14px 16px; text-align: left; font-weight: 800; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; }
 .rg-table th:first-child { border-radius: var(--radius) 0 0 0; }
@@ -3907,7 +3907,7 @@ footer {
   .rg-hero { flex-direction: column; padding-top: calc(var(--nav-height, 68px) + 36px); padding-bottom: 48px; gap: 32px; text-align: center; }
   .rg-hero-desc { max-width: 100%; }
   .rg-hero-btns { justify-content: center; }
-  .rg-stat-row  { justify-content: center; }
+  .rg-stat-row  { justify-content: center; flex-wrap: wrap; gap: 16px; }
   .rg-hero-visual { flex: none; }
   .rg-gift-stack { width: 220px; height: 250px; }
   .rg-gift-card  { width: 180px; padding: 14px; }
@@ -3915,7 +3915,17 @@ footer {
   .rg-benefits-grid { grid-template-columns: 1fr 1fr; }
   .rg-how-grid { grid-template-columns: 1fr 1fr; }
   .rg-persona-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-  .rg-table td:first-child { position: sticky; left: 0; background: white; z-index: 1; }
+  /* Improved Mobile Table */
+  .rg-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 10px; }
+  .rg-table th, .rg-table td { white-space: nowrap; }
+  .rg-table td:first-child, .rg-table th:first-child { position: sticky; left: 0; z-index: 2; background: inherit; }
+  .rg-table th:first-child { background: var(--green); z-index: 3; }
+  .rg-table td:first-child::after, .rg-table th:first-child::after { content: ''; position: absolute; top: 0; right: -6px; bottom: 0; width: 6px; background: linear-gradient(to right, rgba(0,0,0,0.08), transparent); pointer-events: none; }
+  .rg-table tr { background: inherit; } /* ensures inherit works on td */
+  .rg-table tbody tr { display: table-row; }
+  /* Ensure the special row colors apply to the tr so td inherits them */
+  .rg-table-bw { background: #f9f9f9; }
+  .rg-table-col { background: #fffbf0; }
 }
 @media (max-width: 480px) {
   .rg-benefits-grid { grid-template-columns: 1fr; }
