@@ -3727,7 +3727,7 @@ footer {
 
 /* --- HERO --- */
 .rg-hero {
-  padding-top: calc(var(--nav-height, 68px) + 20px) + 60px);
+  padding-top: calc(var(--nav-height, 68px) + 80px) + 60px);
   padding-bottom: 80px;
   padding-left: 5%;
   padding-right: 5%;
@@ -3938,7 +3938,7 @@ footer {
   .rg-how-grid      { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 768px) {
-  .rg-hero { flex-direction: column; padding-top: calc(var(--nav-height, 68px) + 36px); padding-bottom: 48px; gap: 32px; text-align: center; }
+  .rg-hero { flex-direction: column; padding-top: calc(var(--nav-height, 68px) + 60px); padding-bottom: 48px; gap: 32px; text-align: center; }
   .rg-hero-desc { max-width: 100%; }
   .rg-hero-btns { justify-content: center; }
   .rg-stat-row  { justify-content: center; flex-wrap: wrap; gap: 16px; }
