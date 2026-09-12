@@ -226,8 +226,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             {/* What You Get (Inside the Box) */}
             <div className="bg-white rounded-[2rem] border border-honey-light/50 p-8 shadow-sm">
               <h3 className="font-heading font-extrabold text-2xl text-text-dark-brown mb-6">
-                What's Inside The Box? ðŸŽ
-              </h3>
+                What's Inside The Box? 🎁</h3>
               
               <ul className="space-y-4 mb-6">
                 <li className="flex items-start gap-4">

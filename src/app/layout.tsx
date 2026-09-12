@@ -7,6 +7,7 @@ import { CartProvider } from "@/lib/CartContext";
 import { AuthProvider } from "@/lib/AuthContext";
 import CartDrawer from "@/components/cart/CartDrawer";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import FloatingBee from "@/components/ui/FloatingBee";
 
 const quicksand = Quicksand({
   variable: "--font-heading",
@@ -43,4 +44,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
 
