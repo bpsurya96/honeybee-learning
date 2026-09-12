@@ -1,7 +1,7 @@
 ﻿import { MetadataRoute } from 'next';
 import { getAllProducts } from '@/lib/data';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://honeybeelearning.co.in';
   
   // Static routes
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Dynamic product routes
-  const products = getAllProducts();
+  const products = await getAllProducts();
   const productRoutes = products.map((product) => ({
     url: `${baseUrl}/products/${product.id}`,
     lastModified: new Date(),

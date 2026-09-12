@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description: 'Find the perfect personalised birthday return gifts for kids. Packs starting at ₹25. Educational, meaningful, and fun!',
 };
 
-export default function ReturnGiftsPage() {
-  const returnGifts = getProductsByCategory('return-gift');
+export default async function ReturnGiftsPage() {
+  const returnGifts = await getProductsByCategory('return-gift');
   
   // Sort from lowest price to highest
   const sortedGifts = [...returnGifts].sort((a, b) => a.price - b.price);

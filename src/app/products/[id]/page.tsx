@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const id = (await params).id;
-  const product = getProductById(id);
+  const product = await getProductById(id);
   if (!product) return { title: 'Not Found' };
   
   const imageUrl = product.images?.[0] || '/og-image.jpg';
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 }
 
 export async function generateStaticParams() {
-  const products = getAllProducts();
+  const products = await getAllProducts();
   return products.map((product) => ({
     id: product.id.toString(),
   }));
@@ -36,7 +36,7 @@ export async function generateStaticParams() {
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const id = (await params).id;
-  const product = getProductById(id);
+  const product = await getProductById(id);
   
   if (!product) {
     notFound();

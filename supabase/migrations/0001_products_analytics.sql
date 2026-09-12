@@ -1,14 +1,19 @@
 
 -- Products Table
-CREATE TYPE product_type AS ENUM ('Ebook', 'Physical');
+CREATE TYPE product_type AS ENUM ('activity', 'reusable', 'stories', 'other', 'return-gift', 'Ebook', 'Physical');
 
 CREATE TABLE public.products (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title TEXT NOT NULL,
     description TEXT,
+    full_description TEXT,
     price NUMERIC(10, 2) NOT NULL DEFAULT 0.00,
     type product_type NOT NULL DEFAULT 'Physical',
     image_url TEXT,
+    images TEXT[] DEFAULT '{}',
+    tags TEXT[] DEFAULT '{}',
+    keywords TEXT[] DEFAULT '{}',
+    metadata JSONB DEFAULT '{}'::jsonb,
     is_active BOOLEAN DEFAULT true,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
@@ -26,7 +31,7 @@ CREATE TRIGGER update_products_updated_at BEFORE UPDATE ON public.products FOR E
 -- Analytics Events Table (For tracking visits/drops)
 CREATE TABLE public.analytics_events (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    event_type TEXT NOT NULL, -- 'page_view', 'add_to_cart', 'checkout_drop'
+    event_type TEXT NOT NULL,
     path TEXT,
     user_id UUID REFERENCES public.profiles(id) ON DELETE SET NULL,
     session_id TEXT,

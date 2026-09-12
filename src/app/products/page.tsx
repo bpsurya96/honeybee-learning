@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   description: 'Explore our full range of personalised activity books, flashcards, reusable worksheets, and birthday return gifts.',
 };
 
-export default function ProductsPage() {
-  const allProducts = getAllProducts();
-  const themes = extractThemes(allProducts);
+export default async function ProductsPage() {
+  const allProducts = await getAllProducts();
+  const themes = await extractThemes();
 
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-bg-cream text-honey-amber font-bold text-xl">Loading amazing products...</div>}>

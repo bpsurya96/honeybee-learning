@@ -1,67 +1,49 @@
-﻿import { Product } from '@/types/product';
-import productsActivity from '../data/products_activity.json';
-import productsReusable from '../data/products_reusable.json';
-import productsStories from '../data/products_stories.json';
-import productsOther from '../data/products_other.json';
-import returnGifts from '../data/return-gifts.json';
 
-export function getAllProducts(): Product[] {
-  const allProducts: Product[] = [];
-  
-  productsActivity.forEach((p: any) => {
-    allProducts.push({
-      ...p,
-      productType: 'activity'
-    });
-  });
+import { createClient } from '@/lib/supabase/client';
+import { Product } from '@/types/product';
 
-  productsReusable.forEach((p: any) => {
-    allProducts.push({
-      ...p,
-      productType: 'reusable'
-    });
-  });
-
-  productsStories.forEach((p: any) => {
-    allProducts.push({
-      ...p,
-      productType: 'stories'
-    });
-  });
-
-  productsOther.forEach((p: any) => {
-    allProducts.push({
-      ...p,
-      productType: 'other'
-    });
-  });
-
-  returnGifts.forEach((p: any) => {
-    allProducts.push({
-      id: p.id,
-      title: p.name,
-      price: p.price,
-      image: '',
-      fallbackEmoji: p.emoji,
-      shortDesc: p.items?.join(', '),
-      productType: 'return-gift',
-      badge: p.mrpLabel,
-      badgeType: p.category,
-      tags: p.hasCandy ? ['Candy Included'] : [],
-      ...p
-    });
-  });
-
-  return allProducts;
+// Map database fields to the Product type expected by the frontend
+function mapProduct(row: any): Product {
+  return {
+    ...row,
+    id: row.id,
+    title: row.title,
+    price: row.price,
+    productType: row.type,
+    image: row.image_url,
+    images: row.images || [],
+    shortDesc: row.description,
+    fullDesc: row.full_description,
+    tags: row.tags || [],
+    keywords: row.keywords || [],
+    ...row.metadata // Splat godCharacter, badge, lesson, etc. onto the root object
+  };
 }
 
-export function getProductsByCategory(category: string): Product[] {
-  const all = getAllProducts();
+export async function getAllProducts(): Promise<Product[]> {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('is_active', true)
+    .order('created_at', { ascending: false });
+    
+  if (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
+  
+  return data.map(mapProduct);
+}
+
+export async function getProductsByCategory(category: string): Promise<Product[]> {
+  const all = await getAllProducts();
   if (category === 'all') return all;
   return all.filter(p => p.productType === category);
 }
 
-export function extractThemes(products: Product[]): string[] {
+export async function extractThemes(): Promise<string[]> {
+  const products = await getAllProducts();
   const themes = new Set<string>();
   products.forEach(p => {
     if (p.tags) {
@@ -81,7 +63,14 @@ export function extractThemes(products: Product[]): string[] {
   return Array.from(themes);
 }
 
-export function getProductById(id: string | number): Product | undefined {
-  const all = getAllProducts();
-  return all.find(p => p.id.toString() === id.toString());
+export async function getProductById(id: string | number): Promise<Product | undefined> {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('id', id)
+    .single();
+    
+  if (error || !data) return undefined;
+  return mapProduct(data);
 }

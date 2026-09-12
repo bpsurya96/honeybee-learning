@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 import { Waves, Fish } from 'lucide-react';
 import Link from 'next/link';
 
-export default function OceanCollectionPage() {
-  const allProducts = getAllProducts();
+export default async function OceanCollectionPage() {
+  const allProducts = await getAllProducts();
   const oceanProducts = allProducts.filter(p => 
     p.title.toLowerCase().includes('ocean') || 
     p.tags?.some(tag => tag.toLowerCase().includes('ocean')) ||

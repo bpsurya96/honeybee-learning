@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 import { Sparkles, Sun } from 'lucide-react';
 import Link from 'next/link';
 
-export default function DivineStoriesCollectionPage() {
-  const allProducts = getAllProducts();
+export default async function DivineStoriesCollectionPage() {
+  const allProducts = await getAllProducts();
   const divineProducts = allProducts.filter(p => p.productType === 'stories');
 
   return (

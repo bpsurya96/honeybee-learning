@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     const orderItems = [];
 
     for (const item of items) {
-      const product = getProductById(item.productId);
+      const product = await getProductById(item.productId);
       if (!product) {
          return NextResponse.json({ error: 'Product not found' }, { status: 400 });
       }
