@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,20 +8,18 @@ import { TrustBadge } from '@/components/ui/TrustBadge';
 import { MessageCircle, Star, Sparkles, ShieldCheck, Heart, BookOpen, Gift, CheckCircle2, ChevronRight, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import MediaReviews from '@/components/ui/MediaReviews';
+import reviewsData from '@/data/reviews.json';
 
-const reviews = [
-  { id: 1, name: "Sneha R.", location: "Chennai", text: "My 3-year-old was thrilled to see her name on the cover! The write & wipe quality is amazing. We use it every single day.", rating: 5, date: "2 days ago" },
-  { id: 2, name: "Priya M.", location: "Bangalore", text: "Ordered 30 Dino kits for my son's birthday. They were a massive hit with the kids and parents alike. Much better than plastic toys!", rating: 5, date: "1 week ago" },
-  { id: 3, name: "Karthik S.", location: "Hyderabad", text: "The customisation makes it feel so premium. Customer support on WhatsApp was extremely helpful and shipping was fast.", rating: 5, date: "3 weeks ago" },
-];
+
 
 const themes = [
-  { name: "Dino Explorer", emoji: "🦖", color: "bg-emerald-100" },
-  { name: "Space Journey", emoji: "🚀", color: "bg-slate-800" },
-  { name: "Jungle Safari", emoji: "🦁", color: "bg-amber-100" },
-  { name: "Ocean Magic", emoji: "🐋", color: "bg-cyan-100" },
-  { name: "Little Krishna", emoji: "🦚", color: "bg-indigo-100" },
-  { name: "Fairy Princess", emoji: "🧚‍♀️", color: "bg-pink-100" },
+  { name: "Dino Explorer", emoji: "ðŸ¦–", color: "bg-emerald-100" },
+  { name: "Space Journey", emoji: "ðŸš€", color: "bg-slate-800" },
+  { name: "Jungle Safari", emoji: "ðŸ¦", color: "bg-amber-100" },
+  { name: "Ocean Magic", emoji: "ðŸ‹", color: "bg-cyan-100" },
+  { name: "Little Krishna", emoji: "ðŸ¦š", color: "bg-indigo-100" },
+  { name: "Fairy Princess", emoji: "ðŸ§šâ€â™€ï¸", color: "bg-pink-100" },
 ];
 
 export default function Home() {
@@ -44,9 +42,9 @@ export default function Home() {
       {/* 1. HERO SECTION */}
       <section className="relative w-full pt-12 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
         {/* Decorative Background Elements */}
-        <div className="absolute top-20 left-10 text-4xl opacity-20 animate-bounce" style={{ animationDuration: '3s' }}>⭐</div>
-        <div className="absolute bottom-20 left-1/4 text-4xl opacity-20 animate-bounce" style={{ animationDuration: '4s' }}>🎨</div>
-        <div className="absolute top-40 right-20 text-3xl opacity-20 animate-pulse">✨</div>
+        <div className="absolute top-20 left-10 text-4xl opacity-20 animate-bounce" style={{ animationDuration: '3s' }}>â­</div>
+        <div className="absolute bottom-20 left-1/4 text-4xl opacity-20 animate-bounce" style={{ animationDuration: '4s' }}>ðŸŽ¨</div>
+        <div className="absolute top-40 right-20 text-3xl opacity-20 animate-pulse">âœ¨</div>
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-honey-yellow/20 rounded-full blur-3xl"></div>
         <div className="absolute top-40 -left-40 w-72 h-72 bg-accent-sky/30 rounded-full blur-3xl"></div>
 
@@ -120,7 +118,7 @@ export default function Home() {
                   />
                   {/* Fallback composition if image fails */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-bg-cream rounded-2xl border-2 border-dashed border-honey-light/50">
-                     <span className="text-6xl mb-4">📚</span>
+                     <span className="text-6xl mb-4">ðŸ“š</span>
                      <h3 className="font-heading font-bold text-2xl text-text-dark-brown">Aarav's Dinosaur Book</h3>
                   </div>
                 </div>
@@ -131,14 +129,14 @@ export default function Home() {
                   transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
                   className="absolute -top-4 -right-4 bg-white p-3 rounded-2xl shadow-lg border border-honey-light/30"
                 >
-                  <span className="text-3xl">🖍️</span>
+                  <span className="text-3xl">ðŸ–ï¸</span>
                 </motion.div>
                 <motion.div 
                   animate={{ y: [0, 15, 0] }} 
                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
                   className="absolute bottom-10 -left-6 bg-white px-4 py-2 rounded-2xl shadow-lg border border-honey-light/30 flex items-center gap-2"
                 >
-                  <span className="text-xl">✨</span>
+                  <span className="text-xl">âœ¨</span>
                   <span className="font-bold text-sm text-text-dark-brown">Ages 2-12</span>
                 </motion.div>
               </div>
@@ -150,10 +148,10 @@ export default function Home() {
       {/* 2. TRUST STRIP */}
       <div className="relative z-20 -mt-8 mb-16 container mx-auto px-4 lg:px-8">
         <div className="bg-white/80 backdrop-blur-md rounded-3xl p-4 shadow-sm border border-white flex flex-wrap justify-center gap-3 lg:gap-6">
-          <TrustBadge icon="🐝" label="1200+ Happy Orders" />
+          <TrustBadge icon="ðŸ" label="1200+ Happy Orders" />
           <TrustBadge icon={<Sparkles className="w-5 h-5 text-honey-amber"/>} label="Personalised Every Page" />
-          <TrustBadge icon="♻️" label="Reusable Books" />
-          <TrustBadge icon="🇮🇳" label="Chennai-based" />
+          <TrustBadge icon="â™»ï¸" label="Reusable Books" />
+          <TrustBadge icon="ðŸ‡®ðŸ‡³" label="Chennai-based" />
         </div>
       </div>
 
@@ -165,16 +163,16 @@ export default function Home() {
               Learning Feels Different <br className="hidden md:block"/>When It's Personal.
             </h2>
             <p className="text-lg text-text-slate">
-              We design books that put your child in the center of the story. It’s not just a book, it’s an experience.
+              We design books that put your child in the center of the story. Itâ€™s not just a book, itâ€™s an experience.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { num: "01", title: "Their Name", desc: "Featured dynamically on every single page.", icon: "✨", color: "bg-accent-peach" },
-              { num: "02", title: "Their Favourite Theme", desc: "From Dinosaurs to Princesses, pick what they love.", icon: "🎨", color: "bg-accent-sky" },
-              { num: "03", title: "Write & Wipe", desc: "Premium laminated pages for endless practice.", icon: "♻️", color: "bg-accent-mint" },
-              { num: "04", title: "Learn Again", desc: "Pass it down or practice daily without waste.", icon: "📚", color: "bg-accent-lavender" },
+              { num: "01", title: "Their Name", desc: "Featured dynamically on every single page.", icon: "âœ¨", color: "bg-accent-peach" },
+              { num: "02", title: "Their Favourite Theme", desc: "From Dinosaurs to Princesses, pick what they love.", icon: "ðŸŽ¨", color: "bg-accent-sky" },
+              { num: "03", title: "Write & Wipe", desc: "Premium laminated pages for endless practice.", icon: "â™»ï¸", color: "bg-accent-mint" },
+              { num: "04", title: "Learn Again", desc: "Pass it down or practice daily without waste.", icon: "ðŸ“š", color: "bg-accent-lavender" },
             ].map((feature, i) => (
               <motion.div 
                 key={i}
@@ -203,7 +201,7 @@ export default function Home() {
         <div className="container mx-auto px-4 lg:px-8 mb-12 flex items-end justify-between">
           <div>
             <h2 className="text-4xl lg:text-5xl font-extrabold text-text-dark-brown font-heading mb-4">
-              Pick a Theme They'll Love 💛
+              Pick a Theme They'll Love ðŸ’›
             </h2>
             <p className="text-text-slate text-lg max-w-xl">
               We have something for every imagination.
@@ -260,7 +258,7 @@ export default function Home() {
             <div className="flex-1 w-full bg-slate-50 p-8 rounded-[3rem] text-center border border-slate-200">
               <span className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 block">Generic Book</span>
               <div className="bg-white aspect-[3/4] w-48 mx-auto rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-6">
-                <span className="text-slate-300 text-6xl">📓</span>
+                <span className="text-slate-300 text-6xl">ðŸ““</span>
               </div>
               <h3 className="font-bold text-slate-500 line-through">"This is my book"</h3>
             </div>
@@ -277,7 +275,7 @@ export default function Home() {
               </span>
               <div className="bg-white aspect-[3/4] w-56 mx-auto rounded-xl shadow-xl border border-honey-light flex items-center justify-center mb-6 transform scale-110 -rotate-2 hover:rotate-0 transition-transform">
                 <div className="text-center">
-                   <span className="text-6xl mb-2 block">🌟</span>
+                   <span className="text-6xl mb-2 block">ðŸŒŸ</span>
                    <div className="text-lg font-heading font-bold text-text-dark-brown">Aarav's</div>
                    <div className="text-sm text-text-slate">Magic Book</div>
                 </div>
@@ -302,10 +300,10 @@ export default function Home() {
             <div className="hidden md:block absolute top-12 left-12 right-12 h-1 bg-white/10 rounded-full"></div>
             
             {[
-              { step: "01", title: "Choose Theme", desc: "Select from our wide range of educational themes.", icon: "🎨" },
-              { step: "02", title: "Personalise", desc: "Enter your child's name and photo (optional).", icon: "✨" },
-              { step: "03", title: "We Print", desc: "We custom print and laminate every single page.", icon: "🖨️" },
-              { step: "04", title: "They Learn", desc: "Delivered to your doorstep, ready for fun!", icon: "🚀" },
+              { step: "01", title: "Choose Theme", desc: "Select from our wide range of educational themes.", icon: "ðŸŽ¨" },
+              { step: "02", title: "Personalise", desc: "Enter your child's name and photo (optional).", icon: "âœ¨" },
+              { step: "03", title: "We Print", desc: "We custom print and laminate every single page.", icon: "ðŸ–¨ï¸" },
+              { step: "04", title: "They Learn", desc: "Delivered to your doorstep, ready for fun!", icon: "ðŸš€" },
             ].map((item, i) => (
               <div key={i} className="flex-1 flex flex-row md:flex-col items-start md:items-center relative z-10 gap-6 md:gap-0">
                 <div className="w-24 h-24 rounded-full bg-text-charcoal border-4 border-text-dark-brown flex items-center justify-center text-4xl shadow-xl md:mb-6 flex-shrink-0 z-10 relative">
@@ -330,7 +328,7 @@ export default function Home() {
           <div className="bg-gradient-to-r from-accent-sky/20 to-accent-lavender/20 rounded-[3rem] p-8 md:p-16 border border-white flex flex-col md:flex-row items-center gap-12 shadow-sm">
             <div className="flex-1">
               <div className="inline-block bg-white text-text-charcoal font-bold px-4 py-1.5 rounded-full text-sm mb-6 shadow-sm">
-                🎓 Included in every book
+                ðŸŽ“ Included in every book
               </div>
               <h2 className="text-4xl font-extrabold text-text-dark-brown font-heading mb-6">
                 A Certificate of Achievement
@@ -353,7 +351,7 @@ export default function Home() {
               {/* Certificate Mockup */}
               <div className="bg-white p-6 rounded-2xl shadow-xl border-4 border-honey-light/50 transform rotate-2 mx-auto max-w-md text-center relative overflow-hidden">
                  <div className="border-2 border-honey-light border-dashed p-8 h-full rounded-xl flex flex-col items-center justify-center">
-                    <span className="text-4xl mb-4">🏆</span>
+                    <span className="text-4xl mb-4">ðŸ†</span>
                     <h3 className="font-heading font-black text-2xl text-text-dark-brown uppercase tracking-widest mb-2">Certificate</h3>
                     <p className="text-xs text-text-slate uppercase tracking-widest mb-4">of Achievement</p>
                     <p className="text-sm italic text-text-slate mb-2">This is proudly presented to</p>
@@ -367,51 +365,19 @@ export default function Home() {
         </div>
       </section>
 
+      
       {/* 8. REVIEWS */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-5xl mb-6 block">💛</span>
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-text-dark-brown font-heading mb-4">
-              Loved by 1200+ Parents
-            </h2>
-            <p className="text-lg text-text-slate">Don't just take our word for it.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {reviews.map((review) => (
-              <div key={review.id} className="card-premium">
-                <div className="flex gap-1 mb-6">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-honey-yellow text-honey-yellow" />
-                  ))}
-                </div>
-                <p className="text-text-charcoal text-lg italic mb-8 leading-relaxed">
-                  "{review.text}"
-                </p>
-                <div className="flex items-center gap-4 mt-auto pt-6 border-t border-honey-light/30">
-                  <div className="w-12 h-12 rounded-full bg-honey-light/30 flex items-center justify-center text-honey-amber font-bold text-xl font-heading">
-                    {review.name.charAt(0)}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-text-dark-brown">{review.name}</h4>
-                    <span className="text-xs text-text-slate">{review.location} • {review.date}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <MediaReviews reviews={reviewsData} />
 
       {/* 9. FOUNDER STORY */}
+
       <section className="py-20 bg-bg-cream border-t border-honey-light/20">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-16">
             <div className="w-full md:w-2/5 aspect-square bg-white p-4 rounded-3xl shadow-sm border border-honey-light/50 transform -rotate-2">
                <div className="w-full h-full bg-slate-100 rounded-2xl flex items-center justify-center overflow-hidden relative">
                  {/* Placeholder for Founder Image */}
-                 <span className="text-6xl text-slate-300">📸</span>
+                 <span className="text-6xl text-slate-300">ðŸ“¸</span>
                  <div className="absolute inset-0 bg-text-dark-brown/10"></div>
                </div>
             </div>
@@ -421,7 +387,7 @@ export default function Home() {
                 Made with Love, Right Here in Chennai.
               </h2>
               <p className="text-lg text-text-slate mb-6 leading-relaxed">
-                We started HoneyBee Learning because we couldn't find engaging, screen-free activities that felt special enough for our own kids. When a child sees their name in print, their eyes light up—and learning suddenly becomes magic.
+                We started HoneyBee Learning because we couldn't find engaging, screen-free activities that felt special enough for our own kids. When a child sees their name in print, their eyes light upâ€”and learning suddenly becomes magic.
               </p>
               <p className="text-lg text-text-slate mb-8 leading-relaxed">
                 Every book is personally handled and packed with care. We're proud to have delivered over 1200+ smiles across India.
@@ -438,3 +404,4 @@ export default function Home() {
     </div>
   );
 }
+
