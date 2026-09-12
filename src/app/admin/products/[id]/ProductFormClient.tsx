@@ -5,6 +5,7 @@ import { createProductAdmin, updateProductAdmin } from '../actions';
 import { createClient } from '@/lib/supabase/client';
 import { Upload, X, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function ProductFormClient({ initialData, isEdit }: { initialData: any, isEdit: boolean }) {
   const router = useRouter();
