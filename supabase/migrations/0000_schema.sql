@@ -35,6 +35,10 @@ DROP TABLE IF EXISTS public.order_items CASCADE;
 DROP TABLE IF EXISTS public.orders CASCADE;
 DROP TABLE IF EXISTS public.organisations CASCADE;
 DROP TABLE IF EXISTS public.profiles CASCADE;
+DROP TABLE IF EXISTS public.carts CASCADE;
+DROP TABLE IF EXISTS public.cart_items CASCADE;
+DROP TABLE IF EXISTS public.enquiries CASCADE;
+
 
 -- Profiles Table (Extends Supabase Auth users)
 CREATE TABLE public.profiles (
@@ -272,17 +276,17 @@ DECLARE
   v_is_complete BOOLEAN := false;
   v_account_type account_type := 'individual'::account_type;
 BEGIN
-  -- Determine account type
-  IF new.raw_user_meta_data->>'account_type' IS NOT NULL THEN
-    v_account_type := (new.raw_user_meta_data->>'account_type')::account_type;
-  END IF;
-
-  -- Determine if signup is complete
-  IF new.raw_user_meta_data->>'is_signup_complete' = 'true' THEN
-    v_is_complete := true;
-  END IF;
-
   BEGIN
+    -- Determine account type
+    IF new.raw_user_meta_data->>'account_type' IS NOT NULL THEN
+      v_account_type := (new.raw_user_meta_data->>'account_type')::account_type;
+    END IF;
+
+    -- Determine if signup is complete
+    IF new.raw_user_meta_data->>'is_signup_complete' = 'true' THEN
+      v_is_complete := true;
+    END IF;
+
     INSERT INTO public.profiles (
       id, auth_user_id, email, full_name, avatar_url, phone, account_type, username, is_profile_complete
     )
@@ -290,16 +294,16 @@ BEGIN
       new.id, 
       new.id,
       new.email, 
-      COALESCE(new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'name'), 
-      COALESCE(new.raw_user_meta_data->>'avatar_url', new.raw_user_meta_data->>'picture'),
-      new.raw_user_meta_data->>'phone',
+      NULLIF(COALESCE(new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'name'), ''), 
+      NULLIF(COALESCE(new.raw_user_meta_data->>'avatar_url', new.raw_user_meta_data->>'picture'), ''),
+      NULLIF(new.raw_user_meta_data->>'phone', ''),
       v_account_type,
-      new.raw_user_meta_data->>'username',
+      NULLIF(new.raw_user_meta_data->>'username', ''),
       v_is_complete
     );
 
     -- If business and provided organisation details, insert into organisations table
-    IF v_account_type = 'school_wholesale' AND new.raw_user_meta_data->>'organisation_name' IS NOT NULL THEN
+    IF v_account_type = 'school_wholesale' AND NULLIF(new.raw_user_meta_data->>'organisation_name', '') IS NOT NULL THEN
       INSERT INTO public.organisations (
         profile_id, organisation_name, organisation_type, gst_number, address, city, state, pincode
       )
@@ -362,7 +366,7 @@ CREATE TABLE public.enquiries (
 
 ALTER TABLE public.enquiries ENABLE ROW LEVEL SECURITY;
 
-DO $ $ BEGIN
+DO $$ BEGIN
     IF NOT EXISTS (
         SELECT FROM pg_catalog.pg_policies WHERE policyname = 'Anyone can insert enquiries' AND tablename = 'enquiries'
     ) THEN
@@ -371,7 +375,7 @@ DO $ $ BEGIN
             WITH CHECK (true);
     END IF;
 END
-$ $;
+$$;
 
 CREATE POLICY "Admins can view enquiries" 
     ON public.enquiries FOR SELECT 
