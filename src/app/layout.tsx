@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Quicksand, Nunito } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
@@ -36,9 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
             <CartDrawer />
             <FloatingWhatsApp />
-          </CartProvider>
+            <FloatingBee />
+        </CartProvider>
         </AuthProvider>
       </body>
     </html>
   );
 }
+

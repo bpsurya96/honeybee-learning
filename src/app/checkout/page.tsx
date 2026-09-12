@@ -4,6 +4,7 @@ import { useCart } from '@/lib/CartContext';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import confetti from 'canvas-confetti';
 
 export default function CheckoutPage() {
   const { items, subtotalPrice, discountAmount, totalPrice, totalItems, isCartOpen, setIsCartOpen } = useCart();
@@ -53,8 +54,19 @@ export default function CheckoutPage() {
       const data = await response.json();
       
       if (data.success && data.url) {
-        // Redirect to PhonePe payment page
-        window.location.href = data.url;
+        // Fire Confetti!
+        confetti({
+          particleCount: 150,
+          spread: 80,
+          origin: { y: 0.6 },
+          colors: ['#F59E0B', '#10B981', '#3B82F6', '#EF4444'],
+          zIndex: 100
+        });
+        
+        // Wait a bit before redirecting so they see the confetti
+        setTimeout(() => {
+          window.location.href = data.url;
+        }, 1500);
       } else {
         alert("Payment initialization failed. Please try again.");
       }
@@ -189,4 +201,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
 

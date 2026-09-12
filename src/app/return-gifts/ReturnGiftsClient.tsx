@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Product } from '@/types/product';
 import ProductCard from '@/components/ui/ProductCard';
 import { Button } from '@/components/ui/Button';
+import confetti from 'canvas-confetti';
 import { MessageCircle, Calculator, Sparkles, X, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -71,7 +72,20 @@ export default function ReturnGiftsClient({ gifts }: { gifts: Product[] }) {
     const encoded = encodeURIComponent(text);
     setIsSubmitting(false);
     setIsModalOpen(false);
-    window.open(`https://wa.me/918883624873?text=` + encoded, '_blank');
+
+    // Fire Confetti!
+    confetti({
+      particleCount: 150,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ['#F59E0B', '#10B981', '#3B82F6', '#EF4444'],
+      zIndex: 100
+    });
+
+    // Wait a bit before redirecting so they see the confetti
+    setTimeout(() => {
+      window.open('https://wa.me/918883624873?text=' + encoded, '_blank');
+    }, 1000);
   };
 
   return (
@@ -361,4 +375,6 @@ export default function ReturnGiftsClient({ gifts }: { gifts: Product[] }) {
     </div>
   );
 }
+
+
 

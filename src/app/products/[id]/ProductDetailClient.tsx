@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -7,6 +7,7 @@ import { Product } from '@/types/product';
 import Link from 'next/link';
 import { useCart } from '@/lib/CartContext';
 import { Button } from '@/components/ui/Button';
+import confetti from 'canvas-confetti';
 import { TrustBadge } from '@/components/ui/TrustBadge';
 import { 
   CheckCircle2, 
@@ -40,6 +41,15 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       image: activeImage,
       childName: childName.trim() !== '' ? childName : undefined,
       isReturnGift: isReturnGift
+    });
+
+    // Fire Confetti!
+    confetti({
+      particleCount: 80,
+      spread: 60,
+      origin: { y: 0.6 },
+      colors: ['#F59E0B', '#10B981', '#3B82F6', '#EF4444'],
+      zIndex: 100
     });
   };
 
@@ -131,7 +141,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 {product.title}
               </h1>
               <div className="flex items-center gap-6 mb-4">
-                <span className="text-4xl font-black text-text-charcoal">₹{displayPrice}</span>
+                <span className="text-4xl font-black text-text-charcoal">â‚¹{displayPrice}</span>
                 {isReturnGift && (
                   <span className="bg-accent-lavender/30 text-text-dark-brown px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wider flex items-center gap-1 border border-accent-lavender/50">
                     <Gift className="w-4 h-4" /> Bulk Pack
@@ -208,7 +218,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               </Button>
               <div className="flex items-center justify-center gap-4 text-xs font-bold text-text-slate uppercase tracking-wider">
                 <span className="flex items-center gap-1"><ShieldCheck className="w-4 h-4 text-green-500"/> Secure Checkout</span>
-                <span className="text-honey-light">•</span>
+                <span className="text-honey-light">â€¢</span>
                 <span className="flex items-center gap-1"><Truck className="w-4 h-4 text-text-charcoal"/> Free Shipping</span>
               </div>
             </div>
@@ -216,7 +226,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             {/* What You Get (Inside the Box) */}
             <div className="bg-white rounded-[2rem] border border-honey-light/50 p-8 shadow-sm">
               <h3 className="font-heading font-extrabold text-2xl text-text-dark-brown mb-6">
-                What's Inside The Box? 🎁
+                What's Inside The Box? ðŸŽ
               </h3>
               
               <ul className="space-y-4 mb-6">
@@ -272,3 +282,4 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     </div>
   );
 }
+
