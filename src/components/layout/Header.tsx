@@ -137,7 +137,7 @@ export default function Header() {
                   <Link href={`/login?next=${pathname}`} className="text-sm font-bold text-text-charcoal hover:text-honey-amber transition-colors">
                     Log In
                   </Link>
-                  <Link href={`/login?next=${pathname}`}>
+                  <Link href="/register">
                     <Button variant="primary" size="sm" className="px-5">Sign Up</Button>
                   </Link>
                 </>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, Suspense } from 'react';
+import { useState, Suspense, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -31,6 +31,13 @@ function RegisterContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const next = searchParams.get('next') || '/my-orders';
+  const typeParam = searchParams.get('type');
+  
+  useEffect(() => {
+    if (typeParam === 'school_wholesale' && !accountType) {
+      setAccountType('school_wholesale');
+    }
+  }, [typeParam]);
 
   const handleGoogleLogin = async () => {
     setLoading(true);

@@ -43,7 +43,7 @@ export default async function SchoolsPage() {
               Request B2B Pricing on WhatsApp
             </a>
           ) : (
-            <Link href="/register" className="btn-primary text-lg">
+            <Link href="/register?type=school_wholesale" className="btn-primary text-lg">
               Register as a Wholesale Partner
             </Link>
           )}
