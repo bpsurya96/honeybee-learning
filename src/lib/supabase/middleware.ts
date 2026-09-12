@@ -6,8 +6,8 @@ export async function updateSession(request: NextRequest) {
     request,
   })
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder_key'
+  const supabaseUrl = process.env.SUPABASE_URL || 'https://placeholder.supabase.co'
+  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || 'placeholder_key'
 
   const supabase = createServerClient(
     supabaseUrl,
@@ -41,12 +41,12 @@ export async function updateSession(request: NextRequest) {
 
   // Optional: Check role if going to admin
   if (request.nextUrl.pathname.startsWith('/admin') && user) {
-      const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-      if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
-          const url = request.nextUrl.clone()
-          url.pathname = '/'
-          return NextResponse.redirect(url)
-      }
+    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
+    if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/'
+      return NextResponse.redirect(url)
+    }
   }
 
   return supabaseResponse
