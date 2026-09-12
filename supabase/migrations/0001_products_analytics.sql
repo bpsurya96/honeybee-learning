@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS public.analytics_events CASCADE;
+
+DROP TABLE IF EXISTS public.products CASCADE;
+DROP TYPE IF EXISTS product_type CASCADE;
+
 
 -- Products Table
 CREATE TYPE product_type AS ENUM ('activity', 'reusable', 'stories', 'other', 'return-gift', 'Ebook', 'Physical');

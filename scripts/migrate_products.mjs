@@ -36,7 +36,7 @@ async function uploadImage(localRelativePath) {
   }
 
   const fileBuffer = fs.readFileSync(localImagePath);
-  const fileName = `migrated-${Date.now()}-${Math.random().toString(36).substring(7)}-${path.basename(localImagePath)}`;
+  const ext = path.extname(localImagePath); const fileName = `migrated-${Date.now()}-${Math.random().toString(36).substring(7)}${ext}`;
   
   const { data, error } = await supabase.storage
     .from('product-images')
