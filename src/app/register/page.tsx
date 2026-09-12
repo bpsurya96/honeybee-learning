@@ -41,7 +41,7 @@ export default function RegisterPage() {
       return;
     }
 
-    const supabase = createClient();
+    const supabase = await createClient();
 
     try {
       const { data, error } = await supabase.auth.signUp({

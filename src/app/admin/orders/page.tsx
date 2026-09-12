@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 
 export default async function AdminDashboard() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   // Very basic authorization check. In production, check role in profiles table.
@@ -73,14 +73,14 @@ export default async function AdminDashboard() {
                   <tr key={order.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
                     <td className="p-4 font-bold text-slate-800">{order.order_number}</td>
                     <td className="p-4">
-                      <div className="font-bold text-slate-800">{order.profiles?.full_name || 'Guest'}</div>
-                      <div className="text-xs text-slate-500">{order.profiles?.email}</div>
+                      <div className="font-bold text-slate-800">{(order.profiles as any)?.full_name || 'Guest'}</div>
+                      <div className="text-xs text-slate-500">{(order.profiles as any)?.email}</div>
                     </td>
                     <td className="p-4">
                       <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${
-                        order.profiles?.account_type === 'school_wholesale' ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-100 text-slate-600'
+                        (order.profiles as any)?.account_type === 'school_wholesale' ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-100 text-slate-600'
                       }`}>
-                        {order.profiles?.account_type?.replace('_', ' ')}
+                        {(order.profiles as any)?.account_type?.replace('_', ' ')}
                       </span>
                     </td>
                     <td className="p-4">

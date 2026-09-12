@@ -17,7 +17,7 @@ export function AdminPdfUploadClient({ orderId, orderItemId, currentVersion, cur
     setLoading(true);
     setMessage('');
     
-    const supabase = createClient();
+    const supabase = await createClient();
     
     try {
       // 1. Upload file to Supabase Storage

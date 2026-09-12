@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { AdminPdfUploadClient } from './AdminPdfUploadClient';
 
 export default async function AdminOrderDetailsPage({ params }: { params: { orderId: string } }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
@@ -140,10 +140,10 @@ export default async function AdminOrderDetailsPage({ params }: { params: { orde
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
             <h3 className="font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Customer Info</h3>
             <div className="space-y-2 text-sm">
-              <p><span className="text-slate-500 block text-xs uppercase font-bold">Name</span> {order.profiles?.full_name}</p>
-              <p><span className="text-slate-500 block text-xs uppercase font-bold">Email</span> {order.profiles?.email}</p>
-              <p><span className="text-slate-500 block text-xs uppercase font-bold">Phone</span> {order.profiles?.phone}</p>
-              <p><span className="text-slate-500 block text-xs uppercase font-bold">Account</span> <span className="uppercase">{order.profiles?.account_type?.replace('_', ' ')}</span></p>
+              <p><span className="text-slate-500 block text-xs uppercase font-bold">Name</span> {(order.profiles as any)?.full_name}</p>
+              <p><span className="text-slate-500 block text-xs uppercase font-bold">Email</span> {(order.profiles as any)?.email}</p>
+              <p><span className="text-slate-500 block text-xs uppercase font-bold">Phone</span> {(order.profiles as any)?.phone}</p>
+              <p><span className="text-slate-500 block text-xs uppercase font-bold">Account</span> <span className="uppercase">{(order.profiles as any)?.account_type?.replace('_', ' ')}</span></p>
             </div>
           </div>
 

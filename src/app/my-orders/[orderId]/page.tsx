@@ -5,7 +5,7 @@ import { ArrowLeft, Clock, FileText, Settings, History } from 'lucide-react';
 import { OrderActionsClient } from './OrderActionsClient';
 
 export default async function OrderDetailsPage({ params }: { params: { orderId: string } }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {

@@ -29,7 +29,7 @@ const StatusBadge = ({ status }: { status: string }) => {
 };
 
 export default async function MyOrdersPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
