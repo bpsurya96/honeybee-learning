@@ -42,9 +42,9 @@ export default function Home() {
       {/* 1. HERO SECTION */}
       <section className="relative w-full pt-12 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
         {/* Decorative Background Elements */}
-        <div className="absolute top-20 left-10 text-4xl opacity-20 animate-bounce" style={{ animationDuration: '3s' }}>â­</div>
+        <div className="absolute top-20 left-10 text-4xl opacity-20 animate-bounce" style={{ animationDuration: '3s' }}>⭐</div>
         <div className="absolute bottom-20 left-1/4 text-4xl opacity-20 animate-bounce" style={{ animationDuration: '4s' }}>🎨</div>
-        <div className="absolute top-40 right-20 text-3xl opacity-20 animate-pulse">âœ¨</div>
+        <div className="absolute top-40 right-20 text-3xl opacity-20 animate-pulse">✨</div>
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-honey-yellow/20 rounded-full blur-3xl"></div>
         <div className="absolute top-40 -left-40 w-72 h-72 bg-accent-sky/30 rounded-full blur-3xl"></div>
 
@@ -136,7 +136,7 @@ export default function Home() {
                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
                   className="absolute bottom-10 -left-6 bg-white px-4 py-2 rounded-2xl shadow-lg border border-honey-light/30 flex items-center gap-2"
                 >
-                  <span className="text-xl">âœ¨</span>
+                  <span className="text-xl">✨</span>
                   <span className="font-bold text-sm text-text-dark-brown">Ages 2-12</span>
                 </motion.div>
               </div>
@@ -150,7 +150,7 @@ export default function Home() {
         <div className="bg-white/80 backdrop-blur-md rounded-3xl p-4 shadow-sm border border-white flex flex-wrap justify-center gap-3 lg:gap-6">
           <TrustBadge icon="🐝" label="1200+ Happy Orders" />
           <TrustBadge icon={<Sparkles className="w-5 h-5 text-honey-amber"/>} label="Personalised Every Page" />
-          <TrustBadge icon="â™»ï¸" label="Reusable Books" />
+          <TrustBadge icon="♻️" label="Reusable Books" />
           <TrustBadge icon="🇮🇳" label="Chennai-based" />
         </div>
       </div>
@@ -163,15 +163,15 @@ export default function Home() {
               Learning Feels Different <br className="hidden md:block"/>When It's Personal.
             </h2>
             <p className="text-lg text-text-slate">
-              We design books that put your child in the center of the story. Itâ€™s not just a book, itâ€™s an experience.
+              We design books that put your child in the center of the story. It's not just a book, it's an experience.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { num: "01", title: "Their Name", desc: "Featured dynamically on every single page.", icon: "âœ¨", color: "bg-accent-peach" },
+              { num: "01", title: "Their Name", desc: "Featured dynamically on every single page.", icon: "✨", color: "bg-accent-peach" },
               { num: "02", title: "Their Favourite Theme", desc: "From Dinosaurs to Princesses, pick what they love.", icon: "🎨", color: "bg-accent-sky" },
-              { num: "03", title: "Write & Wipe", desc: "Premium laminated pages for endless practice.", icon: "â™»ï¸", color: "bg-accent-mint" },
+              { num: "03", title: "Write & Wipe", desc: "Premium laminated pages for endless practice.", icon: "♻️", color: "bg-accent-mint" },
               { num: "04", title: "Learn Again", desc: "Pass it down or practice daily without waste.", icon: "📚", color: "bg-accent-lavender" },
             ].map((feature, i) => (
               <motion.div 
@@ -300,7 +300,7 @@ export default function Home() {
             
             {[
               { step: "01", title: "Choose Theme", desc: "Select from our wide range of educational themes.", icon: "🎨" },
-              { step: "02", title: "Personalise", desc: "Enter your child's name and photo (optional).", icon: "âœ¨" },
+              { step: "02", title: "Personalise", desc: "Enter your child's name and photo (optional).", icon: "✨" },
               { step: "03", title: "We Print", desc: "We custom print and laminate every single page.", icon: "🖨️" },
               { step: "04", title: "They Learn", desc: "Delivered to your doorstep, ready for fun!", icon: "🚀" },
             ].map((item, i) => (
@@ -385,7 +385,7 @@ export default function Home() {
                 Made with Love, Right Here in Chennai.
               </h2>
               <p className="text-lg text-text-slate mb-6 leading-relaxed">
-                We started HoneyBee Learning because we couldn't find engaging, screen-free activities that felt special enough for our own kids. When a child sees their name in print, their eyes light upâ€”and learning suddenly becomes magic.
+                We started HoneyBee Learning because we couldn't find engaging, screen-free activities that felt special enough for our own kids. When a child sees their name in print, their eyes light up—and learning suddenly becomes magic.
               </p>
               <p className="text-lg text-text-slate mb-8 leading-relaxed">
                 Every book is personally handled and packed with care. We're proud to have delivered over 1200+ smiles across India.

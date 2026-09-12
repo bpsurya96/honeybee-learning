@@ -29,8 +29,6 @@ export default function Header() {
     { href: '/products', label: 'Activity Books' },
     { href: '/collections/divine-stories', label: 'Divine Stories' },
     { href: '/collections/ocean', label: 'Ocean Kits' },
-    { href: '/collections/divine-stories', label: 'Divine Stories' },
-    { href: '/collections/ocean', label: 'Ocean Kits' },
     { href: '/return-gifts', label: 'Return Gifts' },
     { href: '/schools', label: 'For Schools' },
     { href: '/about', label: 'About' },

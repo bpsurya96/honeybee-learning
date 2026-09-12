@@ -141,7 +141,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 {product.title}
               </h1>
               <div className="flex items-center gap-6 mb-4">
-                <span className="text-4xl font-black text-text-charcoal">â‚¹{displayPrice}</span>
+                <span className="text-4xl font-black text-text-charcoal">₹{displayPrice}</span>
                 {isReturnGift && (
                   <span className="bg-accent-lavender/30 text-text-dark-brown px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wider flex items-center gap-1 border border-accent-lavender/50">
                     <Gift className="w-4 h-4" /> Bulk Pack
@@ -218,7 +218,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               </Button>
               <div className="flex items-center justify-center gap-4 text-xs font-bold text-text-slate uppercase tracking-wider">
                 <span className="flex items-center gap-1"><ShieldCheck className="w-4 h-4 text-green-500"/> Secure Checkout</span>
-                <span className="text-honey-light">â€¢</span>
+                <span className="text-honey-light">•</span>
                 <span className="flex items-center gap-1"><Truck className="w-4 h-4 text-text-charcoal"/> Free Shipping</span>
               </div>
             </div>
