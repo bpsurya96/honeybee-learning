@@ -13,6 +13,7 @@ function RegisterContent() {
   // Individual Fields
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -79,35 +80,27 @@ function RegisterContent() {
           data: {
             full_name: name,
             phone,
-            account_type: accountType
+            username,
+            account_type: accountType,
+            is_signup_complete: true,
+            ...(accountType === 'school_wholesale' && {
+              organisation_name: orgName,
+              organisation_type: orgType,
+              gst_number: gst || null,
+              address,
+              city,
+              state,
+              pincode
+            })
           }
         }
       });
 
       if (error) throw error;
 
-      // If School, insert into organisations table
-      if (accountType === 'school_wholesale' && data.user) {
-        const { error: orgError } = await supabase.from('organisations').insert({
-          profile_id: data.user.id,
-          organisation_name: orgName,
-          organisation_type: orgType,
-          gst_number: gst || null,
-          address,
-          city,
-          state,
-          pincode
-        });
-
-        if (orgError) {
-          console.error("Org insertion error:", orgError);
-          // We don't block auth success on this right now, but we should handle it gracefully in production
-        }
-      }
-
       setMessage('Check your email for the confirmation link!');
       setTimeout(() => {
-        router.push('/login');
+        router.push(`/login?next=${encodeURIComponent(next.startsWith('/') ? next : '/')}`);
       }, 3000);
     } catch (error: any) {
       setMessage(error.message || 'An error occurred during registration');
@@ -262,6 +255,10 @@ function RegisterContent() {
               <div>
                 <label className="block text-sm font-bold text-text-slate mb-1">Full Name *</label>
                 <input type="text" required value={name} onChange={e => setName(e.target.value)} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-text-slate mb-1">Username *</label>
+                <input type="text" required value={username} onChange={e => setUsername(e.target.value)} className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow" />
               </div>
               <div>
                 <label className="block text-sm font-bold text-text-slate mb-1">Mobile Number *</label>

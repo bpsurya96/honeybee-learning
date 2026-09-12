@@ -1,4 +1,4 @@
-﻿-- Create custom types if they don't exist
+-- Create custom types if they don't exist
 DO $$ BEGIN
     CREATE TYPE account_type AS ENUM ('individual', 'school_wholesale');
 EXCEPTION
@@ -48,6 +48,7 @@ CREATE TABLE public.profiles (
   account_type account_type DEFAULT 'individual'::account_type NOT NULL,
   role user_role DEFAULT 'customer'::user_role NOT NULL,
   status TEXT DEFAULT 'active',
+  is_profile_complete BOOLEAN DEFAULT false,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -267,9 +268,24 @@ CREATE POLICY "Admins can view all order activity" ON public.order_activity FOR 
 -- Function to handle new user signup
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS trigger AS $$
+DECLARE
+  v_is_complete BOOLEAN := false;
+  v_account_type account_type := 'individual'::account_type;
 BEGIN
+  -- Determine account type
+  IF new.raw_user_meta_data->>'account_type' IS NOT NULL THEN
+    v_account_type := (new.raw_user_meta_data->>'account_type')::account_type;
+  END IF;
+
+  -- Determine if signup is complete
+  IF new.raw_user_meta_data->>'is_signup_complete' = 'true' THEN
+    v_is_complete := true;
+  END IF;
+
   BEGIN
-    INSERT INTO public.profiles (id, auth_user_id, email, full_name, avatar_url, phone, account_type)
+    INSERT INTO public.profiles (
+      id, auth_user_id, email, full_name, avatar_url, phone, account_type, username, is_profile_complete
+    )
     VALUES (
       new.id, 
       new.id,
@@ -277,8 +293,28 @@ BEGIN
       COALESCE(new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'name'), 
       COALESCE(new.raw_user_meta_data->>'avatar_url', new.raw_user_meta_data->>'picture'),
       new.raw_user_meta_data->>'phone',
-      COALESCE((new.raw_user_meta_data->>'account_type')::account_type, 'individual'::account_type)
+      v_account_type,
+      new.raw_user_meta_data->>'username',
+      v_is_complete
     );
+
+    -- If business and provided organisation details, insert into organisations table
+    IF v_account_type = 'school_wholesale' AND new.raw_user_meta_data->>'organisation_name' IS NOT NULL THEN
+      INSERT INTO public.organisations (
+        profile_id, organisation_name, organisation_type, gst_number, address, city, state, pincode
+      )
+      VALUES (
+        new.id,
+        new.raw_user_meta_data->>'organisation_name',
+        new.raw_user_meta_data->>'organisation_type',
+        new.raw_user_meta_data->>'gst_number',
+        new.raw_user_meta_data->>'address',
+        new.raw_user_meta_data->>'city',
+        new.raw_user_meta_data->>'state',
+        new.raw_user_meta_data->>'pincode'
+      );
+    END IF;
+
   EXCEPTION WHEN OTHERS THEN
     INSERT INTO public.debug_logs (error_message, error_detail)
     VALUES (SQLERRM, SQLSTATE);

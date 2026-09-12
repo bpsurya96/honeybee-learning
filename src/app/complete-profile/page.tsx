@@ -1,15 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Button } from '@/components/ui/Button';
 import { checkUsernameAction, completeProfileAction } from './actions';
 import { CheckCircle2, XCircle, Loader2 } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function CompleteProfilePage() {
+function CompleteProfileContent() {
+  const [accountType, setAccountType] = useState('individual');
   const [username, setUsername] = useState('');
   const [usernameStatus, setUsernameStatus] = useState<'idle' | 'checking' | 'available' | 'taken' | 'invalid'>('idle');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next') || '/my-orders';
 
   // Debounce username check
   useEffect(() => {
@@ -42,6 +46,7 @@ export default function CompleteProfilePage() {
     
     try {
       const formData = new FormData(e.currentTarget);
+      formData.append('next', next);
       await completeProfileAction(formData);
     } catch (err: any) {
       setErrorMsg(err.message || 'Failed to complete registration');
@@ -51,7 +56,7 @@ export default function CompleteProfilePage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-bg-cream py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-[2.5rem] shadow-xl border border-honey-light">
+      <div className="max-w-2xl w-full space-y-8 bg-white p-10 rounded-[2.5rem] shadow-xl border border-honey-light">
         <div className="text-center">
           <span className="text-5xl block mb-4">🚀</span>
           <h2 className="text-3xl font-extrabold text-text-dark-brown font-heading">
@@ -70,12 +75,54 @@ export default function CompleteProfilePage() {
                 name="accountType"
                 required
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow bg-white"
-                defaultValue="individual"
+                value={accountType}
+                onChange={(e) => setAccountType(e.target.value)}
               >
                 <option value="individual">Personal</option>
                 <option value="school_wholesale">Organization / Wholesale</option>
               </select>
             </div>
+
+            {accountType === 'school_wholesale' && (
+              <div className="space-y-4 border border-slate-100 p-4 rounded-xl">
+                <h3 className="font-bold text-text-dark-brown text-lg border-b border-honey-light pb-2">Organisation Information</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-bold text-text-slate mb-1">Organisation Name *</label>
+                    <input type="text" name="orgName" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-text-slate mb-1">Organisation Type *</label>
+                    <select name="orgType" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow">
+                      <option value="school">School / Pre-school</option>
+                      <option value="corporate">Corporate</option>
+                      <option value="retailer">Retailer</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-text-slate mb-1">GST Number (Optional)</label>
+                    <input type="text" name="gst" className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow" />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-bold text-text-slate mb-1">Address *</label>
+                    <input type="text" name="address" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-text-slate mb-1">City *</label>
+                    <input type="text" name="city" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-text-slate mb-1">State *</label>
+                    <input type="text" name="state" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-text-slate mb-1">Pincode *</label>
+                    <input type="text" name="pincode" required className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-honey-yellow focus:ring-1 focus:ring-honey-yellow" />
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div>
               <label className="block text-sm font-bold text-text-slate mb-1">Phone Number</label>
@@ -143,5 +190,13 @@ export default function CompleteProfilePage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function CompleteProfilePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-bg-cream py-12 px-4"><div className="text-center font-bold text-text-dark-brown">Loading...</div></div>}>
+      <CompleteProfileContent />
+    </Suspense>
   );
 }

@@ -44,9 +44,9 @@ export async function updateSession(request: NextRequest) {
   }
 
   if (user && !request.nextUrl.pathname.startsWith('/complete-profile') && !request.nextUrl.pathname.startsWith('/auth')) {
-    const { data: profile } = await supabase.from('profiles').select('username, role').eq('id', user.id).single();
+    const { data: profile } = await supabase.from('profiles').select('is_profile_complete, role').eq('id', user.id).single();
     
-    if (profile && !profile.username) {
+    if (profile && profile.is_profile_complete === false) {
       const url = request.nextUrl.clone()
       url.pathname = '/complete-profile'
       return NextResponse.redirect(url)

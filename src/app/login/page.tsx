@@ -47,7 +47,8 @@ function LoginContent() {
         password,
       });
       if (error) throw error;
-      router.push(next);
+      const safeNext = next.startsWith('/') ? next : '/';
+      router.push(safeNext);
       router.refresh();
     } catch (error: any) {
       setMessage(error.message || 'Invalid email or password');

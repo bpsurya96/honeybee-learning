@@ -12,10 +12,9 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     
     if (!error) {
-      // The session is successfully established.
-      // They will be redirected to the intended destination (e.g. /my-orders).
-      // The middleware will automatically check if their profile is complete and redirect if necessary.
-      return NextResponse.redirect(`${origin}${next}`)
+      // Ensure 'next' is a relative path to prevent open redirect vulnerabilities
+      const safeNext = next.startsWith('/') ? next : '/'
+      return NextResponse.redirect(`${origin}${safeNext}`)
     }
   }
 

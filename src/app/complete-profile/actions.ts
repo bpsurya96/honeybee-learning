@@ -51,7 +51,8 @@ export async function completeProfileAction(formData: FormData) {
     .update({
       account_type: accountType,
       phone: phone,
-      username: cleanUsername
+      username: cleanUsername,
+      is_profile_complete: true
     })
     .eq('id', user.id)
 
@@ -63,6 +64,39 @@ export async function completeProfileAction(formData: FormData) {
     throw new Error(error.message)
   }
 
+  // Handle organisation insert if necessary
+  if (accountType === 'school_wholesale') {
+    const orgName = formData.get('orgName') as string
+    const orgType = formData.get('orgType') as string
+    const gst = formData.get('gst') as string
+    const address = formData.get('address') as string
+    const city = formData.get('city') as string
+    const state = formData.get('state') as string
+    const pincode = formData.get('pincode') as string
+
+    if (!orgName || !orgType || !address || !city || !state || !pincode) {
+      throw new Error('All organisation fields are required')
+    }
+
+    const { error: orgError } = await supabase.from('organisations').insert({
+      profile_id: user.id,
+      organisation_name: orgName,
+      organisation_type: orgType,
+      gst_number: gst || null,
+      address,
+      city,
+      state,
+      pincode
+    });
+
+    if (orgError) {
+      throw new Error('Failed to save organisation details')
+    }
+  }
+
+  const nextUrl = (formData.get('next') as string) || '/my-orders'
+  const safeNext = nextUrl.startsWith('/') ? nextUrl : '/'
+
   revalidatePath('/', 'layout')
-  redirect('/my-orders')
+  redirect(safeNext)
 }
