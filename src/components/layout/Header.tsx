@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useCart } from '@/lib/CartContext';
 import { useAuth } from '@/lib/AuthContext';
 import { useState, useEffect } from 'react';
@@ -14,6 +15,7 @@ export default function Header() {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,6 +101,14 @@ export default function Header() {
                         className="absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-xl border border-honey-light/50 py-2 z-50 overflow-hidden"
                       >
                         <Link 
+                          href="/profile" 
+                          onClick={() => setShowAccountMenu(false)}
+                          className="flex items-center gap-2 px-4 py-3 text-sm font-bold text-text-charcoal hover:bg-bg-cream hover:text-honey-amber transition-colors border-b border-honey-light/30"
+                        >
+                          <User className="w-4 h-4" />
+                          My Profile
+                        </Link>
+                        <Link 
                           href="/admin" 
                           onClick={() => setShowAccountMenu(false)}
                           className="flex items-center gap-2 px-4 py-3 text-sm font-bold text-text-charcoal hover:bg-bg-cream hover:text-honey-amber transition-colors"
@@ -122,10 +132,10 @@ export default function Header() {
                 </div>
               ) : (
                 <>
-                  <Link href="/login" className="text-sm font-bold text-text-charcoal hover:text-honey-amber transition-colors">
+                  <Link href={`/login?next=${pathname}`} className="text-sm font-bold text-text-charcoal hover:text-honey-amber transition-colors">
                     Log In
                   </Link>
-                  <Link href="/login">
+                  <Link href={`/login?next=${pathname}`}>
                     <Button variant="primary" size="sm" className="px-5">Sign Up</Button>
                   </Link>
                 </>
@@ -208,6 +218,11 @@ export default function Header() {
                             <p className="text-sm font-bold text-text-dark-brown truncate">{user.email}</p>
                           </div>
                         </div>
+                        <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)}>
+                          <Button variant="outline" className="w-full justify-start gap-2">
+                            <User className="w-4 h-4" /> My Profile
+                          </Button>
+                        </Link>
                         <Link href="/admin" onClick={() => setIsMobileMenuOpen(false)}>
                           <Button variant="outline" className="w-full justify-start gap-2">
                             <LayoutDashboard className="w-4 h-4" /> Dashboard
@@ -223,7 +238,7 @@ export default function Header() {
                       </>
                     ) : (
                       <div className="flex flex-col gap-3">
-                        <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Link href={`/login?next=${pathname}`} onClick={() => setIsMobileMenuOpen(false)}>
                           <Button variant="primary" className="w-full">Log In / Sign Up</Button>
                         </Link>
                       </div>

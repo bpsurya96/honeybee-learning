@@ -13,8 +13,7 @@ export default async function AdminDashboard() {
 
   const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
   if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
-    // For demo purposes, we might let them in if we are just testing, but normally redirect
-    // redirect('/my-orders'); 
+    redirect('/my-orders'); 
   }
 
   // Fetch real orders from database
@@ -24,8 +23,7 @@ export default async function AdminDashboard() {
       id,
       order_number,
       status,
-      payment_status,
-      total,
+      total_amount,
       created_at,
       profiles (
         full_name,
@@ -91,7 +89,7 @@ export default async function AdminDashboard() {
                         <div className="text-xs font-bold text-red-500 mt-1">Mods: {order.order_modification_requests.length}</div>
                       )}
                     </td>
-                    <td className="p-4 font-bold text-slate-800">₹{order.total}</td>
+                    <td className="p-4 font-bold text-slate-800">₹{order.total_amount}</td>
                     <td className="p-4 text-right">
                       <Link 
                         href={`/admin/orders/${order.id}`}

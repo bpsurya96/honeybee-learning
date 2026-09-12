@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
@@ -12,6 +12,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next') || '/my-orders';
 
   const handleGoogleLogin = async () => {
     setLoading(true);
@@ -22,7 +24,7 @@ export default function LoginPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/my-orders`
+          redirectTo: `${window.location.origin}/auth/callback?next=${next}`
         }
       });
       if (error) throw error;
@@ -45,7 +47,7 @@ export default function LoginPage() {
         password,
       });
       if (error) throw error;
-      router.push('/my-orders'); // Route directly to My Orders after login
+      router.push(next);
       router.refresh();
     } catch (error: any) {
       setMessage(error.message || 'Invalid email or password');
@@ -135,7 +137,7 @@ export default function LoginPage() {
           
           <p className="text-center text-sm text-text-slate font-medium">
             Don't have an account?{' '}
-            <Link href="/register" className="font-bold text-honey-amber hover:underline">
+            <Link href={`/register?next=${next}`} className="font-bold text-honey-amber hover:underline">
               Create an account
             </Link>
           </p>

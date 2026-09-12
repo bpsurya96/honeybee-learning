@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { User, Building2, ChevronRight, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
@@ -29,6 +29,8 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next') || '/my-orders';
 
   const handleGoogleLogin = async () => {
     setLoading(true);
@@ -177,7 +179,7 @@ export default function RegisterPage() {
           
           <p className="mt-8 text-center text-sm text-text-slate">
             Already have an account?{' '}
-            <Link href="/login" className="font-bold text-honey-amber hover:underline">
+            <Link href={`/login?next=${next}`} className="font-bold text-honey-amber hover:underline">
               Sign in
             </Link>
           </p>

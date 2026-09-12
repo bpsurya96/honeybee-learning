@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { db } from '@/services/db';
+import { getProductById } from '@/lib/data';
 
 export async function POST(request: Request) {
   try {
@@ -18,17 +19,19 @@ export async function POST(request: Request) {
     const orderItems = [];
 
     for (const item of items) {
-      // In a real app, verify item price with db
-      // const product = await db.products.getById(item.productId);
-      const unitPrice = item.price; // fallback, should use product.price
+      const product = getProductById(item.productId);
+      if (!product) {
+         return NextResponse.json({ error: 'Product not found' }, { status: 400 });
+      }
+      const unitPrice = product.price; // Server-side price validation
       totalAmount += unitPrice * item.quantity;
       
       orderItems.push({
         product_id: item.productId,
-        product_name_snapshot: item.name,
-        unit_price: unitPrice,
+        product_name: product.title,
+        price: unitPrice,
         quantity: item.quantity,
-        total: unitPrice * item.quantity
+        child_name: item.childName || null
       });
     }
 
@@ -36,11 +39,8 @@ export async function POST(request: Request) {
     const orderData = {
       order_number: orderId,
       user_id: userId || null,
-      subtotal: totalAmount,
-      total: totalAmount,
-      currency: 'INR',
-      status: 'pending',
-      payment_status: 'initiated'
+      total_amount: totalAmount,
+      status: 'pending'
     };
 
     const order = await db.orders.create(orderData, orderItems);

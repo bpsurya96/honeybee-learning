@@ -21,8 +21,8 @@ export async function GET(request: Request) {
     const { count: totalOrders } = await supabase.from('orders').select('*', { count: 'exact', head: true });
 
     // 3. Total Revenue
-    const { data: orders } = await supabase.from('orders').select('total').eq('payment_status', 'successful');
-    const revenue = orders ? orders.reduce((acc, order) => acc + (order.total || 0), 0) : 0;
+    const { data: orders } = await supabase.from('orders').select('total_amount').eq('is_paid', true);
+    const revenue = orders ? orders.reduce((acc, order) => acc + (order.total_amount || 0), 0) : 0;
 
     // 4. Cart Abandonment Rate (rough estimate: carts without successful orders vs total carts)
     const { count: totalCarts } = await supabase.from('carts').select('*', { count: 'exact', head: true });

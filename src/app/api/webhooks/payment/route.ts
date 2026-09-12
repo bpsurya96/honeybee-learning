@@ -28,16 +28,16 @@ export async function POST(request: Request) {
     // Idempotency check: check if order already successful
     const { data: existingOrder } = await supabase
         .from('orders')
-        .select('payment_status')
+        .select('status')
         .eq('id', merchantTransactionId)
         .single();
         
-    if (existingOrder && existingOrder.payment_status === 'successful') {
+    if (existingOrder && existingOrder.status !== 'pending') {
         return NextResponse.json({ success: true, message: 'Already processed' });
     }
 
-    const paymentStatus = code === 'PAYMENT_SUCCESS' ? 'successful' : 'failed';
-    const orderStatus = code === 'PAYMENT_SUCCESS' ? 'confirmed' : 'pending';
+    const paymentStatus = code === 'PAYMENT_SUCCESS' ? 'success' : 'failed';
+    const orderStatus = code === 'PAYMENT_SUCCESS' ? 'processing' : 'pending';
 
     // Insert Payment Log
     await supabase.from('payments').insert([{
@@ -50,10 +50,12 @@ export async function POST(request: Request) {
     }]);
 
     // Update Order Status
-    await supabase.from('orders').update({
-        payment_status: paymentStatus,
-        status: orderStatus
-    }).eq('id', merchantTransactionId);
+    if (code === 'PAYMENT_SUCCESS') {
+      await supabase.from('orders').update({
+          status: orderStatus,
+          is_paid: true
+      }).eq('id', merchantTransactionId);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

@@ -33,8 +33,6 @@ DROP TABLE IF EXISTS public.order_modification_requests CASCADE;
 DROP TABLE IF EXISTS public.order_files CASCADE;
 DROP TABLE IF EXISTS public.order_items CASCADE;
 DROP TABLE IF EXISTS public.orders CASCADE;
-DROP TABLE IF EXISTS public.cart_items CASCADE;
-DROP TABLE IF EXISTS public.carts CASCADE;
 DROP TABLE IF EXISTS public.organisations CASCADE;
 DROP TABLE IF EXISTS public.profiles CASCADE;
 
@@ -70,36 +68,13 @@ CREATE TABLE public.organisations (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Carts Table
-CREATE TABLE public.carts (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
-  session_id TEXT, -- for guest users
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
-CREATE TABLE public.cart_items (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  cart_id UUID REFERENCES public.carts(id) ON DELETE CASCADE,
-  product_id TEXT NOT NULL, 
-  quantity INTEGER DEFAULT 1,
-  price DECIMAL(10, 2) NOT NULL,
-  child_name TEXT, 
-  child_gender TEXT, 
-  child_age INTEGER, 
-  child_photo_url TEXT,
-  metadata JSONB,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
 -- Orders Table
 CREATE TABLE public.orders (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES public.profiles(id),
   order_number TEXT UNIQUE NOT NULL,
   total_amount DECIMAL(10, 2) NOT NULL,
+  discount_amount DECIMAL(10, 2) DEFAULT 0,
   status order_status DEFAULT 'pending',
   shipping_address JSONB,
   billing_address JSONB,
@@ -210,8 +185,6 @@ $$ language 'plpgsql';
 
 CREATE TRIGGER update_profiles_updated_at BEFORE UPDATE ON public.profiles FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 CREATE TRIGGER update_organisations_updated_at BEFORE UPDATE ON public.organisations FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
-CREATE TRIGGER update_carts_updated_at BEFORE UPDATE ON public.carts FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
-CREATE TRIGGER update_cart_items_updated_at BEFORE UPDATE ON public.cart_items FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 CREATE TRIGGER update_orders_updated_at BEFORE UPDATE ON public.orders FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 CREATE TRIGGER update_order_items_updated_at BEFORE UPDATE ON public.order_items FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
 CREATE TRIGGER update_order_files_updated_at BEFORE UPDATE ON public.order_files FOR EACH ROW EXECUTE PROCEDURE update_updated_at_column();
@@ -238,8 +211,6 @@ ALTER TABLE public.order_items ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.order_files ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.order_modification_requests ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.order_activity ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.carts ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.cart_items ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.payments ENABLE ROW LEVEL SECURITY;
 
 -- Profiles Policies

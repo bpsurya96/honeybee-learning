@@ -1,13 +1,21 @@
 ﻿import Image from 'next/image';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'School Partnerships | HoneyBee Learning',
   description: 'Customised, branded learning materials for preschools and activity centres.',
 };
 
-export default function SchoolsPage() {
+export default async function SchoolsPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  let isWholesale = false;
+  if (user) {
+    const { data: profile } = await supabase.from('profiles').select('account_type').eq('id', user.id).single();
+    isWholesale = profile?.account_type === 'school_wholesale';
+  }
   return (
     <div className="flex flex-col">
       <section className="bg-slate-900 text-white py-20 lg:py-32">
@@ -21,14 +29,24 @@ export default function SchoolsPage() {
           <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
             Get our premium, reusable write-and-wipe activity books customised with your school's logo and branding.
           </p>
-          <a 
-            href="https://wa.me/918883624873?text=Hi%20HoneyBee,%20I%20run%20a%20preschool%20and%20want%20to%20enquire%20about%20branded%20bulk%20orders."
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary text-lg"
-          >
-            Request B2B Pricing on WhatsApp
-          </a>
+          {isWholesale ? (
+            <Link href="/schools/dashboard" className="btn-primary text-lg">
+              Go to Wholesale Portal
+            </Link>
+          ) : user ? (
+            <a 
+              href="https://wa.me/918883624873?text=Hi%20HoneyBee,%20I%20run%20a%20preschool%20and%20want%20to%20enquire%20about%20branded%20bulk%20orders."
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary text-lg"
+            >
+              Request B2B Pricing on WhatsApp
+            </a>
+          ) : (
+            <Link href="/register" className="btn-primary text-lg">
+              Register as a Wholesale Partner
+            </Link>
+          )}
         </div>
       </section>
 
