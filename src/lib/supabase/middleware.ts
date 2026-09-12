@@ -54,7 +54,7 @@ export async function updateSession(request: NextRequest) {
 
     // Optional: Check role if going to admin
     if (request.nextUrl.pathname.startsWith('/admin')) {
-      if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
+      if (!profile || profile.role !== 'admin') {
         const url = request.nextUrl.clone()
         url.pathname = '/'
         return NextResponse.redirect(url)

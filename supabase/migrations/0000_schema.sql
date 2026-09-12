@@ -6,7 +6,7 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
-    CREATE TYPE user_role AS ENUM ('customer', 'admin', 'super_admin');
+    CREATE TYPE user_role AS ENUM ('customer', 'admin');
 EXCEPTION
     WHEN duplicate_object THEN null;
 END $$;
@@ -204,7 +204,7 @@ RETURNS BOOLEAN AS $$
 BEGIN
   RETURN EXISTS (
     SELECT 1 FROM public.profiles 
-    WHERE id = auth.uid() AND role IN ('admin', 'super_admin')
+    WHERE id = auth.uid() AND role = 'admin'
   );
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
@@ -325,7 +325,7 @@ BEGIN
   END;
   RETURN new;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
 CREATE TRIGGER on_auth_user_created
@@ -384,3 +384,8 @@ CREATE POLICY "Admins can view enquiries"
 CREATE POLICY "Admins can update enquiries" 
     ON public.enquiries FOR UPDATE
     USING (public.is_admin());
+
+-- Admin Policies added for CRUD
+CREATE POLICY "Admins can update all profiles" ON public.profiles FOR UPDATE USING (public.is_admin());
+CREATE POLICY "Admins can update all organisations" ON public.organisations FOR UPDATE USING (public.is_admin());
+CREATE POLICY "Admins can insert organisations" ON public.organisations FOR INSERT WITH CHECK (public.is_admin());

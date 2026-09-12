@@ -10,7 +10,7 @@ export async function GET() {
   }
 
   const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
+  if (profile?.role !== 'admin') {
     return new NextResponse('Forbidden', { status: 403 });
   }
 
