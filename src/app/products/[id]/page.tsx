@@ -8,9 +8,22 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const product = getProductById(id);
   if (!product) return { title: 'Not Found' };
   
+  const imageUrl = product.images?.[0] || '/og-image.jpg';
+  
   return {
     title: `${product.seoTitle || product.title} | HoneyBee Learning`,
     description: product.metaDescription || product.shortDesc,
+    openGraph: {
+      title: product.seoTitle || product.title,
+      description: product.metaDescription || product.shortDesc,
+      images: [imageUrl],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: product.seoTitle || product.title,
+      description: product.metaDescription || product.shortDesc,
+      images: [imageUrl],
+    }
   };
 }
 

@@ -20,8 +20,31 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://honeybeelearning.co.in'),
   title: "HoneyBee Learning | Premium Kids Activity Books",
-  description: "India's first personalised activity book for kids.",
+  description: "India's first personalised activity book for kids. Educational, fun, and completely customised for your child.",
+  openGraph: {
+    title: "HoneyBee Learning",
+    description: "Personalised Activity Books for Kids",
+    url: 'https://honeybeelearning.co.in',
+    siteName: 'HoneyBee Learning',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'HoneyBee Learning Activity Books',
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'HoneyBee Learning | Premium Kids Activity Books',
+    description: "India's first personalised activity book for kids.",
+    images: ['/og-image.jpg'],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

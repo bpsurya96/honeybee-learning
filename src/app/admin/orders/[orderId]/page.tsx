@@ -19,6 +19,8 @@ export default async function AdminOrderDetailsPage({ params }: { params: { orde
       status,
       payment_status,
       total,
+      notes,
+      age_group,
       created_at,
       profiles (
         full_name,
@@ -144,6 +146,22 @@ export default async function AdminOrderDetailsPage({ params }: { params: { orde
               <p><span className="text-slate-500 block text-xs uppercase font-bold">Email</span> {(order.profiles as any)?.email}</p>
               <p><span className="text-slate-500 block text-xs uppercase font-bold">Phone</span> {(order.profiles as any)?.phone}</p>
               <p><span className="text-slate-500 block text-xs uppercase font-bold">Account</span> <span className="uppercase">{(order.profiles as any)?.account_type?.replace('_', ' ')}</span></p>
+            </div>
+          </div>
+
+                    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <h3 className="font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Order Extras</h3>
+            <div className="space-y-4 text-sm">
+              <div>
+                <span className="text-slate-500 block text-xs uppercase font-bold mb-1">Age Group</span>
+                <span className="bg-slate-100 px-2 py-1 rounded text-slate-700 font-bold">{order.age_group || 'Not specified'}</span>
+              </div>
+              <div>
+                <span className="text-slate-500 block text-xs uppercase font-bold mb-1">Customer Notes</span>
+                <div className="bg-amber-50 p-3 rounded-lg border border-amber-100 text-amber-900 text-sm whitespace-pre-wrap">
+                  {order.notes || 'No notes provided.'}
+                </div>
+              </div>
             </div>
           </div>
 

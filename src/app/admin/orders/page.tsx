@@ -24,6 +24,8 @@ export default async function AdminDashboard() {
       order_number,
       status,
       total_amount,
+      notes,
+      age_group,
       created_at,
       profiles (
         full_name,
@@ -53,6 +55,10 @@ export default async function AdminDashboard() {
         <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
           <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
             <h2 className="text-lg font-bold text-slate-800">Recent Orders</h2>
+            <a href="/api/admin/orders/export" className="inline-flex bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-lg text-sm font-bold shadow-sm transition-colors items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export CSV
+            </a>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
@@ -85,6 +91,9 @@ export default async function AdminDashboard() {
                       <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 uppercase tracking-wider">
                         {order.status.replace(/_/g, ' ')}
                       </span>
+                      {order.notes && (
+                        <div className="text-xs font-bold text-slate-500 mt-1">📝 Has Notes</div>
+                      )}
                       {order.order_modification_requests.length > 0 && (
                         <div className="text-xs font-bold text-red-500 mt-1">Mods: {order.order_modification_requests.length}</div>
                       )}
