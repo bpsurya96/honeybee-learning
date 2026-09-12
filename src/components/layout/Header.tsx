@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -27,6 +27,8 @@ export default function Header() {
 
   const navLinks = [
     { href: '/products', label: 'Activity Books' },
+    { href: '/collections/divine-stories', label: 'Divine Stories' },
+    { href: '/collections/ocean', label: 'Ocean Kits' },
     { href: '/return-gifts', label: 'Return Gifts' },
     { href: '/schools', label: 'For Schools' },
     { href: '/about', label: 'About' },
@@ -53,7 +55,7 @@ export default function Header() {
           </button>
 
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="text-3xl md:text-4xl group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">🐝</span>
+            <span className="text-3xl md:text-4xl group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">ðŸ</span>
             <span className="text-2xl md:text-3xl font-extrabold text-text-dark-brown tracking-tight font-heading">
               HoneyBee
             </span>
@@ -179,7 +181,7 @@ export default function Header() {
             >
               <div className="p-6 flex items-center justify-between border-b border-honey-light/50">
                 <div className="flex items-center gap-2">
-                  <span className="text-3xl">🐝</span>
+                  <span className="text-3xl">ðŸ</span>
                   <span className="text-2xl font-extrabold text-text-dark-brown font-heading">
                     HoneyBee
                   </span>
@@ -253,3 +255,4 @@ export default function Header() {
     </header>
   );
 }
+

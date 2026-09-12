@@ -1,4 +1,4 @@
--- Create custom types if they don't exist
+﻿-- Create custom types if they don't exist
 DO $$ BEGIN
     CREATE TYPE account_type AS ENUM ('individual', 'school_wholesale');
 EXCEPTION
@@ -81,6 +81,7 @@ CREATE TABLE public.orders (
   payment_method TEXT,
   is_paid BOOLEAN DEFAULT false,
   notes TEXT,
+    age_group TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -127,6 +128,7 @@ CREATE TABLE public.order_modification_requests (
   request_text TEXT NOT NULL,
   status TEXT DEFAULT 'pending', 
   admin_notes TEXT,
+    age_group TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -308,3 +310,37 @@ DROP POLICY IF EXISTS "Admins can manage order files" ON storage.objects;
 CREATE POLICY "Admins can manage order files" ON storage.objects FOR ALL USING (
   bucket_id = 'order-files' AND public.is_admin()
 );
+
+-- ========================================================
+-- Enquiries Table
+-- ========================================================
+CREATE TABLE public.enquiries (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    type TEXT NOT NULL,
+    customer_name TEXT NOT NULL,
+    customer_phone TEXT NOT NULL,
+    details JSONB NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    status TEXT DEFAULT 'PENDING'
+);
+
+ALTER TABLE public.enquiries ENABLE ROW LEVEL SECURITY;
+
+DO $ $ BEGIN
+    IF NOT EXISTS (
+        SELECT FROM pg_catalog.pg_policies WHERE policyname = 'Anyone can insert enquiries' AND tablename = 'enquiries'
+    ) THEN
+        CREATE POLICY "Anyone can insert enquiries" 
+            ON public.enquiries FOR INSERT 
+            WITH CHECK (true);
+    END IF;
+END
+$ $;
+
+CREATE POLICY "Admins can view enquiries" 
+    ON public.enquiries FOR SELECT 
+    USING (public.is_admin());
+
+CREATE POLICY "Admins can update enquiries" 
+    ON public.enquiries FOR UPDATE
+    USING (public.is_admin());

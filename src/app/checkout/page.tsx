@@ -10,6 +10,8 @@ export default function CheckoutPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState('');
+  const [ageGroup, setAgeGroup] = useState('');
+  const [orderNotes, setOrderNotes] = useState('');
 
   useEffect(() => {
     if (isCartOpen) setIsCartOpen(false);
@@ -42,7 +44,9 @@ export default function CheckoutPage() {
         body: JSON.stringify({
           items,
           totalPrice,
-          customerPhone: phone
+          customerPhone: phone,
+          ageGroup: ageGroup,
+          notes: orderNotes
         }),
       });
       
@@ -104,6 +108,35 @@ export default function CheckoutPage() {
               <p className="text-xs text-slate-500 mt-2">We need this to send your order confirmation and tracking details.</p>
             </div>
           </div>
+          <div className="bg-white rounded-2xl p-6 border border-slate-200 mt-6">
+            <h3 className="font-bold text-slate-800 mb-4">Personalisation Details</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Child's Age Group (For the entire order)</label>
+                <select 
+                  value={ageGroup}
+                  onChange={(e) => setAgeGroup(e.target.value)}
+                  className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary appearance-none bg-white"
+                >
+                  <option value="">Select an age group (optional)</option>
+                  <option value="1-2 years (Toddler)">1-2 years (Toddler)</option>
+                  <option value="3-5 years (Nursery/LKG)">3-5 years (Nursery/LKG)</option>
+                  <option value="6-8 years (Class 1-3)">6-8 years (Class 1-3)</option>
+                  <option value="9-12 years (Class 4-7)">9-12 years (Class 4-7)</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Special Notes</label>
+                <textarea 
+                  value={orderNotes}
+                  onChange={(e) => setOrderNotes(e.target.value)}
+                  placeholder="Any sibling names, theme preferences, or special requests?"
+                  className="w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-primary focus:border-primary min-h-[100px]"
+                ></textarea>
+              </div>
+            </div>
+          </div>
         </div>
         
         <div className="md:col-span-1">
@@ -156,3 +189,4 @@ export default function CheckoutPage() {
     </div>
   );
 }
+

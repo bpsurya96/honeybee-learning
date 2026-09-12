@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { db } from '@/services/db';
 import { getProductById } from '@/lib/data';
 
 export async function POST(request: Request) {
   try {
-    const { items, userId, sessionId } = await request.json();
+    const { items, userId, sessionId, ageGroup, notes } = await request.json();
 
     if (!items || items.length === 0) {
       return NextResponse.json({ error: 'Cart is empty' }, { status: 400 });
@@ -40,7 +40,9 @@ export async function POST(request: Request) {
       order_number: orderId,
       user_id: userId || null,
       total_amount: totalAmount,
-      status: 'pending'
+      status: 'pending',
+      age_group: ageGroup || null,
+      notes: notes || null
     };
 
     const order = await db.orders.create(orderData, orderItems);
@@ -104,3 +106,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
+
