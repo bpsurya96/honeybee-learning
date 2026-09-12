@@ -5,7 +5,9 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { TrustBadge } from '@/components/ui/TrustBadge';
-import { MessageCircle, Star, Sparkles, ShieldCheck, Heart, BookOpen, Gift, CheckCircle2, ChevronRight } from 'lucide-react';
+import { MessageCircle, Star, Sparkles, ShieldCheck, Heart, BookOpen, Gift, CheckCircle2, ChevronRight, Search } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const reviews = [
   { id: 1, name: "Sneha R.", location: "Chennai", text: "My 3-year-old was thrilled to see her name on the cover! The write & wipe quality is amazing. We use it every single day.", rating: 5, date: "2 days ago" },
@@ -25,6 +27,17 @@ const themes = [
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 50]);
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/products?q=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      router.push('/products');
+    }
+  };
 
   return (
     <div className="flex flex-col bg-bg-cream overflow-hidden">
@@ -60,6 +73,19 @@ export default function Home() {
                 Screen-free, value-based learning that kids actually love. Make learning feel magical with our premium reusable books.
               </p>
               
+              <form onSubmit={handleSearch} className="w-full max-w-md mb-8 relative z-20">
+                <input 
+                  type="text" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for dinosaurs, space, gifts..." 
+                  className="w-full pl-6 pr-14 py-4 rounded-full border-2 border-honey-yellow focus:outline-none focus:ring-4 focus:ring-honey-light/50 text-text-dark-brown font-medium shadow-sm transition-all"
+                />
+                <button type="submit" className="absolute right-2 top-2 bottom-2 w-12 bg-honey-yellow text-white rounded-full flex items-center justify-center hover:bg-honey-amber transition-colors shadow-sm">
+                  <Search className="w-5 h-5" />
+                </button>
+              </form>
+              
               <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                 <Link href="/products" className="w-full sm:w-auto">
                   <Button variant="primary" size="lg" className="w-full sm:w-auto gap-2">
@@ -83,7 +109,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-white rounded-[3rem] shadow-xl transform -rotate-2 border-4 border-white flex items-center justify-center p-8 overflow-hidden group">
                 <div className="relative w-full h-full transform group-hover:scale-105 transition-transform duration-700">
                   <Image 
-                    src="/book-mockup.png" // We assume this exists or fallback to a div if not
+                    src="/book-mockup.jpg" // We assume this exists or fallback to a div if not
                     alt="Personalised Activity Book Mockup"
                     fill
                     className="object-contain"

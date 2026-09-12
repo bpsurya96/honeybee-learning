@@ -33,19 +33,32 @@ export async function updateSession(request: NextRequest) {
   // refreshing the auth token
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (request.nextUrl.pathname.startsWith('/admin') && !user) {
+  const protectedRoutes = ['/my-orders', '/checkout', '/admin']
+  const isProtectedRoute = protectedRoutes.some(route => request.nextUrl.pathname.startsWith(route))
+
+  if (isProtectedRoute && !user) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
+    url.searchParams.set('next', request.nextUrl.pathname)
     return NextResponse.redirect(url)
   }
 
-  // Optional: Check role if going to admin
-  if (request.nextUrl.pathname.startsWith('/admin') && user) {
-    const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
-    if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
+  if (user && !request.nextUrl.pathname.startsWith('/complete-profile') && !request.nextUrl.pathname.startsWith('/auth')) {
+    const { data: profile } = await supabase.from('profiles').select('username, role').eq('id', user.id).single();
+    
+    if (profile && !profile.username) {
       const url = request.nextUrl.clone()
-      url.pathname = '/'
+      url.pathname = '/complete-profile'
       return NextResponse.redirect(url)
+    }
+
+    // Optional: Check role if going to admin
+    if (request.nextUrl.pathname.startsWith('/admin')) {
+      if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/'
+        return NextResponse.redirect(url)
+      }
     }
   }
 

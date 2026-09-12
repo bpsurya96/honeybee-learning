@@ -1,7 +1,7 @@
 'use client';
 
 import { useCart } from '@/lib/CartContext';
-import Image from 'next/image';
+import { ProductImage } from '@/components/ui/ProductImage';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, Trash2, ShoppingBag, Sparkles, ChevronRight } from 'lucide-react';
@@ -72,18 +72,12 @@ export default function CartDrawer() {
               ) : (
                 items.map(item => (
                   <div key={item.id} className="flex gap-4 p-4 border border-honey-light/50 rounded-2xl bg-bg-cream/50">
-                    <div className="w-24 h-24 relative rounded-xl overflow-hidden bg-white shadow-sm flex-shrink-0 border border-honey-light">
-                      {item.image ? (
-                        <Image 
-                          src={`/${item.image}`} 
-                          alt={item.title} 
-                          fill 
-                          sizes="96px"
-                          className="object-cover" 
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-3xl">🍯</div>
-                      )}
+                    <div className="w-24 h-24 flex-shrink-0">
+                      <ProductImage 
+                        src={item.image} 
+                        alt={item.title} 
+                        variant="thumbnail"
+                      />
                     </div>
                     
                     <div className="flex-grow flex flex-col">

@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Product } from '@/types/product';
 import ProductCard from '@/components/ui/ProductCard';
-import { Filter, X } from 'lucide-react';
+import { Filter, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 interface ProductsClientProps {
   initialProducts: Product[];
@@ -12,9 +13,29 @@ interface ProductsClientProps {
 }
 
 export default function ProductsClient({ initialProducts, themes }: ProductsClientProps) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const initialQuery = searchParams.get('q') || '';
+  
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedTheme, setSelectedTheme] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
+
+  useEffect(() => {
+    setSearchQuery(searchParams.get('q') || '');
+  }, [searchParams]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams(searchParams.toString());
+    if (searchQuery.trim()) {
+      params.set('q', searchQuery.trim());
+    } else {
+      params.delete('q');
+    }
+    router.push(`/products?${params.toString()}`);
+  };
 
   const filteredProducts = initialProducts.filter(p => {
     if (selectedType !== 'all' && p.productType !== selectedType) return false;
@@ -24,6 +45,14 @@ export default function ProductsClient({ initialProducts, themes }: ProductsClie
       const titleThemeMatch = p.title.toLowerCase().includes(selectedTheme.toLowerCase());
       const hasThemeTag = pThemes.some(t => t.includes(selectedTheme.toLowerCase()));
       if (!titleThemeMatch && !hasThemeTag) return false;
+    }
+
+    if (searchQuery.trim() !== '') {
+      const query = searchQuery.toLowerCase();
+      const titleMatch = p.title.toLowerCase().includes(query);
+      const descMatch = p.shortDesc?.toLowerCase().includes(query);
+      const tagsMatch = p.tags?.some(t => t.toLowerCase().includes(query));
+      if (!titleMatch && !descMatch && !tagsMatch) return false;
     }
     
     return true;
@@ -167,6 +196,21 @@ export default function ProductsClient({ initialProducts, themes }: ProductsClie
 
           {/* Product Grid */}
           <div className="flex-grow">
+            <div className="mb-8">
+              <form onSubmit={handleSearchSubmit} className="relative w-full shadow-sm rounded-full">
+                <input 
+                  type="text" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search products, themes..." 
+                  className="w-full pl-6 pr-14 py-4 rounded-full border border-honey-light focus:outline-none focus:ring-4 focus:ring-honey-light/50 text-text-dark-brown font-medium transition-all bg-white"
+                />
+                <button type="submit" className="absolute right-2 top-2 bottom-2 w-12 bg-honey-yellow text-white rounded-full flex items-center justify-center hover:bg-honey-amber transition-colors">
+                  <Search className="w-5 h-5" />
+                </button>
+              </form>
+            </div>
+            
             <div className="hidden md:flex mb-8 justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-honey-light/50">
               <p className="text-text-charcoal font-bold">
                 Showing <span className="text-honey-amber">{filteredProducts.length}</span> products
@@ -186,7 +230,13 @@ export default function ProductsClient({ initialProducts, themes }: ProductsClie
                 <p className="text-text-slate mb-8 max-w-md mx-auto">We couldn't find any products matching your current filters. Try adjusting them to see more results.</p>
                 <Button 
                   variant="secondary"
-                  onClick={() => {setSelectedType('all'); setSelectedTheme('all'); setIsMobileFiltersOpen(false);}}
+                  onClick={() => {
+                    setSelectedType('all'); 
+                    setSelectedTheme('all'); 
+                    setSearchQuery('');
+                    router.push('/products');
+                    setIsMobileFiltersOpen(false);
+                  }}
                 >
                   Clear all filters
                 </Button>

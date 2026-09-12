@@ -8,12 +8,12 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { ShoppingCart } from 'lucide-react';
+import { ProductImage } from '@/components/ui/ProductImage';
 
 export default function ProductCard({ product }: { product: Product }) {
   const isReturnGift = product.productType === 'return-gift';
   const price = isReturnGift ? product.price : product.price;
   const { addItem } = useCart();
-  const [imageError, setImageError] = useState(false);
   
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -36,21 +36,13 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="card-premium flex flex-col h-full group p-5 bg-white relative overflow-hidden">
       <Link href={isReturnGift ? '/return-gifts' : `/products/${product.id}`} className="block relative">
-        <div className="relative aspect-square w-full mb-5 bg-bg-cream rounded-2xl overflow-hidden flex items-center justify-center">
-          {product.image && !imageError ? (
-            <Image 
-              src={`/${product.image}`} 
-              alt={product.title} 
-              fill 
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-              onError={() => setImageError(true)}
-            />
-          ) : (
-            <span className="text-6xl group-hover:scale-110 transition-transform duration-300">
-              {product.fallbackEmoji || '🍯'}
-            </span>
-          )}
+        <div className="mb-5 relative">
+          <ProductImage 
+            src={product.image || product.images?.[0]} 
+            alt={product.title}
+            fallbackEmoji={product.fallbackEmoji}
+            variant="card"
+          />
           
           {product.badge && (
             <div className="absolute top-3 left-3 z-10">

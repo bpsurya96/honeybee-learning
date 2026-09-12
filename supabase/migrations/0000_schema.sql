@@ -45,6 +45,8 @@ CREATE TABLE public.profiles (
   full_name TEXT,
   email TEXT UNIQUE,
   phone TEXT UNIQUE,
+  username TEXT UNIQUE,
+  avatar_url TEXT,
   account_type account_type DEFAULT 'individual'::account_type NOT NULL,
   role user_role DEFAULT 'customer'::user_role NOT NULL,
   status TEXT DEFAULT 'active',
@@ -294,12 +296,13 @@ CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS trigger AS $$
 BEGIN
   BEGIN
-    INSERT INTO public.profiles (id, auth_user_id, email, full_name, phone, account_type)
+    INSERT INTO public.profiles (id, auth_user_id, email, full_name, avatar_url, phone, account_type)
     VALUES (
       new.id, 
       new.id,
       new.email, 
-      new.raw_user_meta_data->>'full_name', 
+      COALESCE(new.raw_user_meta_data->>'full_name', new.raw_user_meta_data->>'name'), 
+      COALESCE(new.raw_user_meta_data->>'avatar_url', new.raw_user_meta_data->>'picture'),
       new.raw_user_meta_data->>'phone',
       COALESCE((new.raw_user_meta_data->>'account_type')::account_type, 'individual'::account_type)
     );
@@ -322,12 +325,15 @@ VALUES ('order-files', 'order-files', false)
 ON CONFLICT (id) DO NOTHING;
 
 -- Storage Policies for order-files bucket
+DROP POLICY IF EXISTS "Users can view their own order files" ON storage.objects;
 CREATE POLICY "Users can view their own order files" ON storage.objects FOR SELECT USING (
   bucket_id = 'order-files' AND 
   auth.uid() = (
     SELECT user_id FROM public.orders WHERE id = (storage.objects.metadata->>'order_id')::uuid
   )
 );
+
+DROP POLICY IF EXISTS "Admins can manage order files" ON storage.objects;
 CREATE POLICY "Admins can manage order files" ON storage.objects FOR ALL USING (
   bucket_id = 'order-files' AND public.is_admin()
 );
