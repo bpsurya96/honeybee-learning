@@ -5,6 +5,8 @@ import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -21,9 +23,18 @@ export default function LoginPage() {
 
     try {
       if (isSignUp) {
+        if (!name || !phone) {
+          throw new Error("Name and Phone Number are required for Sign Up");
+        }
         const { error } = await supabase.auth.signUp({
           email,
           password,
+          options: {
+            data: {
+              full_name: name,
+              phone: phone
+            }
+          }
         });
         if (error) throw error;
         setMessage('Check your email for the confirmation link!');
@@ -53,7 +64,10 @@ export default function LoginPage() {
           <p className="mt-2 text-center text-sm text-slate-600">
             {isSignUp ? 'Already have an account? ' : 'Or '}
             <button 
-              onClick={() => setIsSignUp(!isSignUp)}
+              onClick={() => {
+                setIsSignUp(!isSignUp);
+                setMessage('');
+              }}
               className="font-medium text-primary hover:text-amber-500"
             >
               {isSignUp ? 'Sign in' : 'register for a new account'}
@@ -62,6 +76,38 @@ export default function LoginPage() {
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleAuth}>
           <div className="rounded-md shadow-sm space-y-4">
+            
+            {isSignUp && (
+              <>
+                <div>
+                  <label htmlFor="name" className="sr-only">Full Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required={isSignUp}
+                    className="appearance-none rounded-xl relative block w-full px-4 py-3 border border-slate-300 placeholder-slate-500 text-slate-900 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                    placeholder="Full Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="sr-only">Mobile Number</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required={isSignUp}
+                    className="appearance-none rounded-xl relative block w-full px-4 py-3 border border-slate-300 placeholder-slate-500 text-slate-900 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                    placeholder="Mobile Number (e.g. 9876543210)"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
+              </>
+            )}
+
             <div>
               <label htmlFor="email-address" className="sr-only">Email address</label>
               <input

@@ -1,13 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fffdf7;
-  --foreground: #1e293b;
-  --primary: #f59e0b;
-  --primary-foreground: #ffffff;
-  --secondary: #8b5cf6;
-  --secondary-foreground: #ffffff;
-  --accent: #10b981;
+  /* Primary brand colors */
+  --honey-yellow: #F5A623;
+  --honey-amber: #D97706;
+  --honey-light: #FDE68A;
+  
+  /* Backgrounds */
+  --bg-cream: #FFFCF5;
+  --bg-ivory: #FFFFFE;
+  --bg-white: #FFFFFF;
+  
+  /* Text */
+  --text-dark-brown: #3E2723;
+  --text-charcoal: #2D3748;
+  --text-slate: #4A5568;
+  
+  /* Accents */
+  --accent-peach: #FFD1C1;
+  --accent-sky: #BAE6FD;
+  --accent-mint: #A7F3D0;
+  --accent-lavender: #E9D5FF;
+  
+  /* Map to standard theme variables */
+  --background: var(--bg-cream);
+  --foreground: var(--text-dark-brown);
+  --primary: var(--honey-yellow);
+  --primary-foreground: var(--bg-white);
+  --secondary: var(--accent-sky);
+  --secondary-foreground: var(--text-dark-brown);
+  --accent: var(--accent-mint);
   --radius: 1rem;
 }
 
@@ -19,24 +41,59 @@
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
+  
+  /* Map the custom colors to Tailwind classes */
+  --color-honey-yellow: var(--honey-yellow);
+  --color-honey-amber: var(--honey-amber);
+  --color-honey-light: var(--honey-light);
+  --color-bg-cream: var(--bg-cream);
+  --color-bg-ivory: var(--bg-ivory);
+  --color-text-dark-brown: var(--text-dark-brown);
+  --color-text-charcoal: var(--text-charcoal);
+  --color-accent-peach: var(--accent-peach);
+  --color-accent-sky: var(--accent-sky);
+  --color-accent-mint: var(--accent-mint);
+  --color-accent-lavender: var(--accent-lavender);
+  
   --radius-xl: var(--radius);
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), Arial, Helvetica, sans-serif;
+  color: var(--text-dark-brown);
 }
 
 @layer utilities {
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-bold py-3 px-6 rounded-xl hover:opacity-90 transition-opacity shadow-sm active:scale-95;
+    @apply bg-honey-yellow text-white font-bold py-3 px-8 rounded-full hover:bg-honey-amber transition-all shadow-md hover:shadow-lg active:scale-95 text-lg;
   }
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground font-bold py-3 px-6 rounded-xl hover:opacity-90 transition-opacity shadow-sm active:scale-95;
+    @apply bg-white text-text-dark-brown border-2 border-honey-light font-bold py-3 px-8 rounded-full hover:bg-honey-light transition-all shadow-sm hover:shadow-md active:scale-95 text-lg;
   }
-  .card {
-    @apply bg-white rounded-2xl p-6 shadow-sm border border-amber-100;
+  .card-premium {
+    @apply bg-white rounded-3xl p-6 shadow-sm border border-honey-light/50 transition-all hover:shadow-md;
   }
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-sm rounded-3xl;
+  }
+  .heading-premium {
+    @apply font-extrabold tracking-tight;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

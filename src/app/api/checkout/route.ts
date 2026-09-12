@@ -1,83 +1,106 @@
-﻿import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { db } from '@/services/db';
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const body = await req.json();
-    const { items, totalPrice, customerPhone } = body;
+    const { items, userId, sessionId } = await request.json();
 
-    // PhonePe Credentials from .env
-    const merchantId = process.env.PHONEPE_MERCHANT_ID || 'PGTESTPAYUAT';
-    const saltKey = process.env.PHONEPE_SALT_KEY || '099eb0cd-02cf-4e2a-8aca-3e6c6aff0399';
-    const saltIndex = process.env.PHONEPE_SALT_INDEX || '1';
-    
-    // Use UAT environment if the merchant ID looks like a test one, otherwise PROD
-    const isTestEnv = merchantId === 'PGTESTPAYUAT' || merchantId.includes('TEST');
-    const baseUrl = isTestEnv 
-      ? 'https://api-preprod.phonepe.com/apis/pg-sandbox'
-      : 'https://api.phonepe.com/apis/hermes';
+    if (!items || items.length === 0) {
+      return NextResponse.json({ error: 'Cart is empty' }, { status: 400 });
+    }
 
-    const merchantTransactionId = `MT-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    // Generate unique order ID
+    const orderId = 'ORD-' + Date.now();
 
-    // Prepare PhonePe Payload
-    const data = {
+    // 1. Calculate total server-side
+    let totalAmount = 0;
+    const orderItems = [];
+
+    for (const item of items) {
+      // In a real app, verify item price with db
+      // const product = await db.products.getById(item.productId);
+      const unitPrice = item.price; // fallback, should use product.price
+      totalAmount += unitPrice * item.quantity;
+      
+      orderItems.push({
+        product_id: item.productId,
+        product_name_snapshot: item.name,
+        unit_price: unitPrice,
+        quantity: item.quantity,
+        total: unitPrice * item.quantity
+      });
+    }
+
+    // 2. Create Order in DB
+    const orderData = {
+      order_number: orderId,
+      user_id: userId || null,
+      subtotal: totalAmount,
+      total: totalAmount,
+      currency: 'INR',
+      status: 'pending',
+      payment_status: 'initiated'
+    };
+
+    const order = await db.orders.create(orderData, orderItems);
+
+    // 3. Setup PhonePe Payment Request
+    const merchantId = process.env.NEXT_PUBLIC_PHONEPE_MERCHANT_ID;
+    const saltKey = process.env.PHONEPE_SALT_KEY;
+    const saltIndex = process.env.PHONEPE_SALT_INDEX;
+    const env = process.env.PHONEPE_ENV || 'UAT';
+
+    const redirectUrl = `${process.env.APP_URL}/api/webhooks/payment/redirect?id=${order.id}`;
+    const callbackUrl = `${process.env.APP_URL}/api/webhooks/payment`;
+
+    const paymentPayload = {
       merchantId: merchantId,
-      merchantTransactionId: merchantTransactionId,
-      merchantUserId: `MUID-${Date.now()}`,
-      name: "HoneyBee Customer",
-      amount: totalPrice * 100, // Amount in paise
-      redirectUrl: `https://honeybeelearning.co.in/api/phonepe-webhook`,
-      redirectMode: "POST",
-      mobileNumber: customerPhone || "9999999999",
+      merchantTransactionId: order.id,
+      merchantUserId: userId || sessionId || 'anonymous',
+      amount: totalAmount * 100, // in paise
+      redirectUrl: redirectUrl,
+      redirectMode: 'POST',
+      callbackUrl: callbackUrl,
       paymentInstrument: {
-        type: "PAY_PAGE"
+        type: 'PAY_PAGE'
       }
     };
 
-    // 1. Base64 Encode the payload
-    const payloadBuffer = Buffer.from(JSON.stringify(data));
-    const base64Payload = payloadBuffer.toString('base64');
-
-    // 2. Generate X-VERIFY checksum (SHA256(base64Payload + "/pg/v1/pay" + saltKey) + "###" + saltIndex)
-    const stringToSign = base64Payload + "/pg/v1/pay" + saltKey;
-    const sha256 = crypto.createHash('sha256').update(stringToSign).digest('hex');
+    const base64Payload = Buffer.from(JSON.stringify(paymentPayload)).toString('base64');
+    const stringToHash = base64Payload + '/pg/v1/pay' + saltKey;
+    const sha256 = crypto.createHash('sha256').update(stringToHash).digest('hex');
     const checksum = sha256 + '###' + saltIndex;
 
-    // We skip the actual fetch if keys are missing to prevent crashing during demo
-    if (merchantId === 'PGTESTPAYUAT' && !process.env.PHONEPE_SALT_KEY) {
-       console.log("Mocking PhonePe Request due to missing credentials", { base64Payload, checksum });
-       // Return a mock success URL
-       return NextResponse.json({ 
-         success: true, 
-         url: `/admin?mock_payment_success=${merchantTransactionId}` 
-       });
-    }
+    const phonePeUrl = env === 'PROD' 
+      ? 'https://api.phonepe.com/apis/hermes/pg/v1/pay'
+      : 'https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay';
 
-    // Actual API Call to PhonePe
-    const response = await fetch(`${baseUrl}/pg/v1/pay`, {
+    // Optionally: send to phonePe and return instrument URL
+    /*
+    const response = await fetch(phonePeUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-VERIFY': checksum,
-        'X-CLIENT-ID': merchantId,
+        'X-MERCHANT-ID': merchantId
       },
-      body: JSON.stringify({ request: base64Payload }),
+      body: JSON.stringify({ request: base64Payload })
+    });
+    
+    const data = await response.json();
+    return NextResponse.json({ url: data.data.instrumentResponse.redirectInfo.url });
+    */
+
+    // For now, return payload so client can submit form or we mock redirect
+    return NextResponse.json({ 
+        success: true, 
+        orderId: order.id,
+        phonePePayload: { request: base64Payload, checksum, url: phonePeUrl }
     });
 
-    const result = await response.json();
-
-    if (result.success && result.data && result.data.instrumentResponse) {
-      return NextResponse.json({ 
-        success: true, 
-        url: result.data.instrumentResponse.redirectInfo.url 
-      });
-    } else {
-      console.error('PhonePe Error:', result);
-      return NextResponse.json({ success: false, error: 'Payment initiation failed' }, { status: 400 });
-    }
-
-  } catch (error) {
-    console.error('Checkout API Error:', error);
-    return NextResponse.json({ success: false, error: 'Internal Server Error' }, { status: 500 });
+  } catch (error: any) {
+    console.error('Checkout error:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

@@ -1,10 +1,13 @@
-﻿'use client';
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types/product';
 import { useCart } from '@/lib/CartContext';
 import { useState } from 'react';
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
+import { ShoppingCart } from 'lucide-react';
 
 export default function ProductCard({ product }: { product: Product }) {
   const isReturnGift = product.productType === 'return-gift';
@@ -24,55 +27,81 @@ export default function ProductCard({ product }: { product: Product }) {
     });
   };
 
+  const badgeTypeMap: Record<string, "popular" | "new" | "festive" | "default"> = {
+    new: "new",
+    popular: "popular",
+    premium: "festive",
+  };
+
   return (
-    <div className="card flex flex-col h-full group hover:shadow-md transition-shadow">
-      <Link href={isReturnGift ? '/return-gifts' : `/products/${product.id}`} className="block">
-        <div className="relative aspect-square w-full mb-4 bg-amber-50 rounded-xl overflow-hidden flex items-center justify-center">
+    <div className="card-premium flex flex-col h-full group p-5 bg-white relative overflow-hidden">
+      <Link href={isReturnGift ? '/return-gifts' : `/products/${product.id}`} className="block relative">
+        <div className="relative aspect-square w-full mb-5 bg-bg-cream rounded-2xl overflow-hidden flex items-center justify-center">
           {product.image && !imageError ? (
             <Image 
               src={`/${product.image}`} 
               alt={product.title} 
               fill 
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               onError={() => setImageError(true)}
             />
           ) : (
-            <span className="text-6xl">{product.fallbackEmoji || '🍯'}</span>
+            <span className="text-6xl group-hover:scale-110 transition-transform duration-300">
+              {product.fallbackEmoji || '🍯'}
+            </span>
           )}
           
           {product.badge && (
-            <div className={`absolute top-2 right-2 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm
-              ${product.badgeType === 'new' ? 'bg-emerald-500' : 
-                product.badgeType === 'premium' ? 'bg-violet-500' : 'bg-primary'}`}>
-              {product.badge}
+            <div className="absolute top-3 left-3 z-10">
+              <Badge variant={badgeTypeMap[product.badgeType || 'default'] || 'default'} className="shadow-sm">
+                {product.badge}
+              </Badge>
             </div>
           )}
         </div>
       </Link>
       
       <div className="flex-grow flex flex-col">
-        <h3 className="font-bold text-slate-800 text-lg mb-2 leading-tight">
-          {product.title}
-        </h3>
+        <div className="flex items-start justify-between gap-2 mb-2">
+          <Link href={isReturnGift ? '/return-gifts' : `/products/${product.id}`} className="block flex-1">
+            <h3 className="font-heading font-extrabold text-text-dark-brown text-xl leading-tight group-hover:text-honey-amber transition-colors">
+              {product.title}
+            </h3>
+          </Link>
+          <div className="text-xl font-extrabold text-text-charcoal whitespace-nowrap">
+            ₹{price}
+          </div>
+        </div>
         
         {product.shortDesc && (
-          <p className="text-slate-500 text-sm mb-4 line-clamp-2">
+          <p className="text-text-slate text-sm mb-4 line-clamp-2">
             {product.shortDesc}
           </p>
         )}
         
-        <div className="mt-auto flex items-center justify-between pt-2">
-          <div className="text-xl font-bold text-slate-800">
-            ₹{price}
+        {/* Fake Feature Chips based on product type to make it look premium */}
+        {!isReturnGift && (
+          <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+            <span className="text-[10px] uppercase tracking-wider font-bold bg-honey-light/20 text-honey-amber px-2 py-1 rounded-md">Personalised</span>
+            <span className="text-[10px] uppercase tracking-wider font-bold bg-honey-light/20 text-honey-amber px-2 py-1 rounded-md">Reusable</span>
           </div>
-          
-          <button 
+        )}
+        {isReturnGift && (
+          <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+            <span className="text-[10px] uppercase tracking-wider font-bold bg-accent-lavender/30 text-text-dark-brown px-2 py-1 rounded-md">Min. 10 Pcs</span>
+          </div>
+        )}
+        
+        <div className="mt-auto pt-2">
+          <Button 
             onClick={handleAddToCart}
-            className="btn-primary py-2 px-4 text-sm"
+            variant="primary"
+            className="w-full gap-2"
           >
+            <ShoppingCart className="w-5 h-5" />
             Add to Cart
-          </button>
+          </Button>
         </div>
       </div>
     </div>
