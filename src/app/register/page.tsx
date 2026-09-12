@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { User, Building2, ChevronRight, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
-export default function RegisterPage() {
+function RegisterContent() {
   const [accountType, setAccountType] = useState<'individual' | 'school_wholesale' | null>(null);
   
   // Individual Fields
@@ -293,5 +293,14 @@ export default function RegisterPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-bg-cream py-12 px-4"><div className="text-center font-bold text-text-dark-brown">Loading...</div></div>}>
+      <RegisterContent />
+    </Suspense>
   );
 }
