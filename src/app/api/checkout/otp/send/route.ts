@@ -31,6 +31,13 @@ export async function POST(req: Request) {
 
     // LOCAL TESTING LOG
     console.log('\n\n=== 🐝 HONEYBEE OTP FOR ' + phone + ' IS: ' + otp + ' ===\n\n');
+    const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
+    await client.messages.create({
+      body: `Your HoneyBee Learning OTP is ${otp}. It is valid for 10 minutes.`,
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: phone
+    });
+
 
     return NextResponse.json({ success: true, message: 'OTP sent successfully' });
   } catch (error) {
