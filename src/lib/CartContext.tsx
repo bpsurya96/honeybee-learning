@@ -53,7 +53,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addItem = (newItem: Omit<CartItem, 'id'>) => {
     setItems((currentItems) => {
-      const id = newItem.productId;
+      const id = String(newItem.productId);
       const existingItemIndex = currentItems.findIndex(i => i.id === id);
       
       if (existingItemIndex > -1) {

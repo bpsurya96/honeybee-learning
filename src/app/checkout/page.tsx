@@ -93,9 +93,7 @@ export default function CheckoutPage() {
                   <div>
                     <h3 className="font-bold text-slate-800">{item.title}</h3>
                     <div className="text-sm text-slate-500 mt-1">Qty: {item.quantity} x ₹{item.price}</div>
-                    {item.childName && (
-                      <div className="text-sm font-bold text-primary mt-1">Name: {item.childName}</div>
-                    )}
+                    
                   </div>
                   <div className="font-bold text-slate-800">
                     ₹{item.price * item.quantity}

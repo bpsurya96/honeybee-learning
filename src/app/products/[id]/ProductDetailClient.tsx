@@ -38,7 +38,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       price: displayPrice,
       quantity: 1,
       image: activeImage,
-      childName: childName.trim() !== '' ? childName : undefined,
+      
       isReturnGift: isReturnGift
     });
 
@@ -82,15 +82,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               
               {activeImage && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-                   <motion.div 
-                     initial={{ scale: 0.9, opacity: 0 }}
-                     animate={{ scale: 1, opacity: 1 }}
-                     className="bg-white/90 backdrop-blur-md px-8 py-3 rounded-full shadow-xl transform -translate-y-24 rotate-[-2deg] border-2 border-honey-yellow"
-                   >
-                     <span className="text-3xl font-black text-text-dark-brown tracking-widest uppercase font-heading drop-shadow-sm">
-                       {childName || 'YOUR NAME'}
-                     </span>
-                   </motion.div>
+                   
                 </div>
               )}
               

@@ -83,11 +83,7 @@ export default function CartDrawer() {
                     <div className="flex-grow flex flex-col">
                       <h4 className="font-bold text-text-dark-brown leading-tight font-heading">{item.title}</h4>
                       
-                      {item.childName && (
-                        <p className="text-sm text-honey-amber font-bold mt-1 flex items-center gap-1">
-                          <Sparkles className="w-3 h-3" /> {item.childName}
-                        </p>
-                      )}
+                      
                       
                       {item.isReturnGift && (
                         <p className="text-[10px] bg-accent-lavender/30 text-text-dark-brown inline-block px-2 py-0.5 rounded-full mt-2 uppercase tracking-wider font-bold w-fit">
