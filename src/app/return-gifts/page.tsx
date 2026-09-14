@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 ﻿import { getProductsByCategory } from '@/lib/data';
 import ReturnGiftsClient from './ReturnGiftsClient';
 import { Metadata } from 'next';

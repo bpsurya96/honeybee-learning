@@ -24,8 +24,7 @@ import {
 import { motion } from 'framer-motion';
 
 export default function ProductDetailClient({ product }: { product: Product }) {
-  const [childName, setChildName] = useState('');
-  const [activeImage, setActiveImage] = useState(product.images?.[0] || product.image);
+    const [activeImage, setActiveImage] = useState(product.images?.[0] || product.image);
   const [imageError, setImageError] = useState(false);
   const { addItem } = useCart();
 
@@ -171,38 +170,6 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 ))}
               </div>
             )}
-
-            {/* Personalization UI */}
-            <div className="bg-white p-8 rounded-[2rem] border border-honey-yellow/30 shadow-sm relative overflow-hidden mb-10 group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-honey-yellow/10 rounded-full blur-3xl transform translate-x-10 -translate-y-10 group-hover:scale-150 transition-transform duration-700"></div>
-              
-              <h3 className="font-heading font-extrabold text-2xl text-text-dark-brown mb-2 flex items-center gap-2 relative z-10">
-                <Sparkles className="w-6 h-6 text-honey-amber" /> Personalise It!
-              </h3>
-              <p className="text-text-slate mb-6 relative z-10">Make it magical. We'll print this name on the cover and throughout the book.</p>
-              
-              <div className="relative z-10">
-                <label className="block text-sm font-bold text-text-slate mb-2 uppercase tracking-wider">Child's First Name</label>
-                <div className="relative">
-                  <input 
-                    type="text" 
-                    maxLength={15}
-                    value={childName}
-                    onChange={(e) => setChildName(e.target.value)}
-                    placeholder="e.g. AARAV"
-                    className="w-full bg-bg-cream border-2 border-honey-light rounded-2xl px-5 py-4 text-xl font-black uppercase text-text-dark-brown placeholder:text-text-slate/50 focus:outline-none focus:ring-4 focus:ring-honey-yellow/20 focus:border-honey-yellow transition-all"
-                  />
-                  {childName && (
-                    <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-green-500">
-                      <CheckCircle2 className="w-6 h-6" />
-                    </div>
-                  )}
-                </div>
-                <p className="text-xs text-honey-amber font-bold mt-3 flex items-center gap-1">
-                  <Sparkles className="w-3 h-3" /> Watch the preview update on the book cover!
-                </p>
-              </div>
-            </div>
 
             {/* Add To Cart Section */}
             <div className="flex flex-col gap-4 mb-12">

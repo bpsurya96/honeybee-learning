@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { ArrowLeft, Clock, FileText, Settings, History } from 'lucide-react';
 import { OrderActionsClient } from './OrderActionsClient';
 
-export default async function OrderDetailsPage({ params }: { params: { orderId: string } }) {
+export default async function OrderDetailsPage({ params }: { params: Promise<{ orderId: string }> }) {
+  const orderId = (await params).orderId;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -45,7 +46,7 @@ export default async function OrderDetailsPage({ params }: { params: { orderId: 
         )
       )
     `)
-    .eq('id', params.orderId)
+    .eq('id', orderId)
     .eq('user_id', user.id)
     .single();
 

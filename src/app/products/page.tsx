@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { getAllProducts, extractThemes } from '@/lib/data';
 import ProductsClient from './ProductsClient';
 import { Metadata } from 'next';

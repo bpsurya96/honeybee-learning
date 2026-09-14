@@ -31,7 +31,7 @@ export async function POST(request: Request) {
         product_name: product.title,
         price: unitPrice,
         quantity: item.quantity,
-        child_name: item.childName || null
+        
       });
     }
 

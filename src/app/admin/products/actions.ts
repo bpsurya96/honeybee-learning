@@ -12,7 +12,7 @@ export async function createProductAdmin(data: any) {
   const { data: product, error } = await supabase.from('products').insert([data]).select().single();
   if (error) throw error;
 
-  revalidatePath('/admin/products');
+  revalidatePath('/', 'layout');
   return { success: true, product };
 }
 

@@ -3,7 +3,8 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { AdminPdfUploadClient } from './AdminPdfUploadClient';
 
-export default async function AdminOrderDetailsPage({ params }: { params: { orderId: string } }) {
+export default async function AdminOrderDetailsPage({ params }: { params: Promise<{ orderId: string }> }) {
+  const orderId = (await params).orderId;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -50,7 +51,7 @@ export default async function AdminOrderDetailsPage({ params }: { params: { orde
         )
       )
     `)
-    .eq('id', params.orderId)
+    .eq('id', orderId)
     .single();
 
   if (error || !order) {

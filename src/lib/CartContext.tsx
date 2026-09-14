@@ -9,8 +9,7 @@ export interface CartItem {
   price: number;
   quantity: number;
   image: string;
-  childName?: string;
-  isReturnGift?: boolean;
+    isReturnGift?: boolean;
 }
 
 interface CartContextType {
@@ -54,7 +53,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addItem = (newItem: Omit<CartItem, 'id'>) => {
     setItems((currentItems) => {
-      const id = `${newItem.productId}-${newItem.childName || 'no-name'}`;
+      const id = newItem.productId;
       const existingItemIndex = currentItems.findIndex(i => i.id === id);
       
       if (existingItemIndex > -1) {

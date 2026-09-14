@@ -5,7 +5,8 @@ import ProductFormClient from './ProductFormClient';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
-export default async function AdminProductEditPage({ params }: { params: { id: string } }) {
+export default async function AdminProductEditPage({ params }: { params: Promise<{ id: string }> }) {
+  const id = (await params).id;
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -14,7 +15,7 @@ export default async function AdminProductEditPage({ params }: { params: { id: s
   const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single();
   if (profile?.role !== 'admin') redirect('/my-orders'); 
 
-  const { data: product } = await supabase.from('products').select('*').eq('id', params.id).single();
+  const { data: product } = await supabase.from('products').select('*').eq('id', id).single();
 
   if (!product) {
     redirect('/admin/products');

@@ -45,7 +45,7 @@ export function ProductImage({
     <div className={`${containerVariants[variant]} ${className}`}>
       {validSrc ? (
         <Image 
-          src={src.startsWith('/') ? src : `/${src}`} 
+          src={src.startsWith('http') || src.startsWith('/') ? src : `/${src}`} 
           alt={alt}
           fill
           sizes={sizesMap[variant]}
