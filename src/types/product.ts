@@ -1,4 +1,5 @@
 ﻿export interface Product {
+  is_deleted?: boolean;
   id: string | number;
   title: string;
   price: number;

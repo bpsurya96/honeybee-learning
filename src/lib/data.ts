@@ -10,8 +10,8 @@ function mapProduct(row: any): Product {
     title: row.title,
     price: row.price,
     productType: row.type,
-    image: row.image_url,
-    images: row.images || [],
+    image: row.type === 'return-gift' ? '/images/return_gift_thumbnail.webp' : row.image_url,
+    images: row.type === 'return-gift' ? ['/images/return_gift_thumbnail.webp'] : (row.images || []),
     shortDesc: row.description,
     fullDesc: row.full_description,
     tags: row.tags || [],
@@ -26,7 +26,7 @@ export async function getAllProducts(): Promise<Product[]> {
     .from('products')
     .select('*')
     .eq('is_active', true)
-    .order('created_at', { ascending: false });
+    .eq('is_deleted', false).order('created_at', { ascending: false });
     
   if (error) {
     console.error('Error fetching products:', error);

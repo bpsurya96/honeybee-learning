@@ -34,7 +34,7 @@ export async function deleteProductAdmin(id: string) {
   const { data: profile } = await supabase.from('profiles').select('role').eq('id', (await supabase.auth.getUser()).data.user?.id).single();
   if (profile?.role !== 'admin') throw new Error('Unauthorized');
 
-  const { error } = await supabase.from('products').delete().eq('id', id);
+  const { error } = await supabase.from('products').update({ is_deleted: true, is_active: false }).eq('id', id);
   if (error) throw error;
 
   revalidatePath('/admin/products');

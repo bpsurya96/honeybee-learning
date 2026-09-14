@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { Plus, Edit2, PackageOpen } from 'lucide-react';
+import ProductRowActions from './ProductRowActions';
 
 export default async function AdminProductsPage() {
   const supabase = await createClient();
@@ -15,7 +16,7 @@ export default async function AdminProductsPage() {
 
   const { data: products, error } = await supabase
     .from('products')
-    .select('*')
+    .select('*').eq('is_deleted', false)
     .order('created_at', { ascending: false });
 
   return (
@@ -83,12 +84,7 @@ export default async function AdminProductsPage() {
                     </span>
                   </td>
                   <td className="p-4 text-right">
-                    <Link 
-                      href={`/admin/products/${product.id}`}
-                      className="inline-flex p-2 text-slate-400 hover:text-amber-500 transition-colors bg-white hover:bg-amber-50 rounded-lg shadow-sm border border-slate-200 hover:border-amber-200"
-                    >
-                      <Edit2 size={16} />
-                    </Link>
+                    <ProductRowActions id={product.id} />
                   </td>
                 </tr>
               ))}
