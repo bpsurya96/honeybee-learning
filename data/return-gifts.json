@@ -1,20 +1,5 @@
 [
     {
-        "id": "thank-you-mini",
-        "name": "Thank You Mini",
-        "emoji": "\ud83c\udf3c",
-        "price": 25,
-        "mrpLabel": "Under \u20b950",
-        "category": "under50",
-        "hasCandy": false,
-        "items": [
-            "Thank-you card",
-            "1 marker pen",
-            "Bookmark",
-            "Neatly packed as a ready-to-gift set"
-        ]
-    },
-    {
         "id": "honeybee-mini-fun-pack",
         "name": "HoneyBee Mini Fun Pack",
         "emoji": "\ud83d\udc1d",
@@ -46,22 +31,6 @@
             "Chocolate or Chikki",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
-        ]
-    },
-    {
-        "id": "worksheet-fun-pack",
-        "name": "Worksheet Fun Pack",
-        "emoji": "\ud83d\udccb",
-        "price": 27,
-        "mrpLabel": "Under \u20b950",
-        "category": "under50",
-        "hasCandy": true,
-        "items": [
-            "3 personalised activity sheets (A4 B/W)",
-            "Pencil",
-            "Eraser",
-            "Chocolate or Chikki",
-            "Packed as a set"
         ]
     },
     {
@@ -99,22 +68,6 @@
         ]
     },
     {
-        "id": "mini-color-pack",
-        "name": "Mini Color Pack",
-        "emoji": "\ud83d\udda4\ufe0f",
-        "price": 50,
-        "mrpLabel": "Under \u20b985",
-        "category": "under100",
-        "hasCandy": true,
-        "items": [
-            "5 personalised A4 B/W activity sheets",
-            "Pencil + eraser + sharpener",
-            "Chocolate / candy of choice",
-            "Crayons \u2014 10 color set",
-            "Packed as a set"
-        ]
-    },
-    {
         "id": "honeybee-mini-practice-pack",
         "name": "HoneyBee Mini Practice Pack",
         "emoji": "\u270f\ufe0f",
@@ -145,21 +98,6 @@
         ]
     },
     {
-        "id": "mini-activity-book",
-        "name": "Mini Activity Book",
-        "emoji": "\ud83d\udcd2",
-        "price": 85,
-        "mrpLabel": "Under \u20b9100",
-        "category": "under100",
-        "hasCandy": false,
-        "items": [
-            "20-page mini activity book (A5)",
-            "Personalised cover page",
-            "Pencil + eraser",
-            "Packed as a set"
-        ]
-    },
-    {
         "id": "honeybee-little-learner-pack",
         "name": "HoneyBee Little Learner Pack",
         "emoji": "\u270f\ufe0f",
@@ -187,21 +125,6 @@
             "Pencil + eraser + sharpener",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
-        ]
-    },
-    {
-        "id": "activity-book-stationery",
-        "name": "Activity Book + Stationery",
-        "emoji": "\ud83d\udcda",
-        "price": 99,
-        "mrpLabel": "Under \u20b9150",
-        "category": "under200",
-        "hasCandy": false,
-        "items": [
-            "24-page mini activity book (A5)",
-            "Personalised cover page",
-            "Pencil + eraser + sharpener",
-            "Packed as a set"
         ]
     },
     {
@@ -237,22 +160,6 @@
         ]
     },
     {
-        "id": "budget-friendly-combo",
-        "name": "Budget Friendly Combo",
-        "emoji": "\ud83c\udf1f",
-        "price": 150,
-        "mrpLabel": "Under \u20b9200",
-        "category": "under200",
-        "hasCandy": true,
-        "items": [
-            "32-page mini activity book (A5)",
-            "Personalised cover page",
-            "Pencil + eraser + scale + crayons",
-            "Chocolate or candy of choice",
-            "Packed as a set"
-        ]
-    },
-    {
         "id": "honeybee-celebration-pack",
         "name": "HoneyBee Celebration Pack",
         "emoji": "\ud83c\udf81",
@@ -283,24 +190,6 @@
             "Chocolate",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
-        ]
-    },
-    {
-        "id": "high-value-combo",
-        "name": "High Value Combo",
-        "emoji": "\ud83d\udc51",
-        "price": 170,
-        "mrpLabel": "Best Value",
-        "category": "premium",
-        "isPremium": true,
-        "hasCandy": true,
-        "items": [
-            "40-page mini activity book (A5)",
-            "Personalised cover page for book",
-            "Pencil + eraser + sharpener + scale + crayons",
-            "Chocolate or candy of choice",
-            "Personalised thank-you card",
-            "Packed as a set"
         ]
     }
 ]
