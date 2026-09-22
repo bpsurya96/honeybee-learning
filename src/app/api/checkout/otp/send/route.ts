@@ -31,17 +31,29 @@ export async function POST(req: Request) {
 
     // LOCAL TESTING LOG
     console.log('\n\n=== 🐝 HONEYBEE OTP FOR ' + phone + ' IS: ' + otp + ' ===\n\n');
-    const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
-    await client.messages.create({
-      body: `Your HoneyBee Learning OTP is ${otp}. It is valid for 10 minutes.`,
-      from: process.env.TWILIO_PHONE_NUMBER,
-      to: phone
-    });
+    
+    try {
+      const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
+      
+      let formattedPhone = phone;
+      if (!formattedPhone.startsWith('+')) {
+        formattedPhone = '+91' + formattedPhone;
+      }
 
+      await client.messages.create({
+        body: `Your HoneyBee Learning OTP is ${otp}. It is valid for 10 minutes.`,
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: formattedPhone
+      });
+      console.log('Twilio SMS sent successfully!');
+    } catch (twilioError) {
+      console.error("TWILIO ERROR:", twilioError.message);
+      return NextResponse.json({ error: 'Failed to send SMS via Twilio: ' + twilioError.message }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true, message: 'OTP sent successfully' });
   } catch (error) {
-    console.error(error);
+    console.error("GENERAL ERROR:", error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
