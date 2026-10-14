@@ -21,7 +21,7 @@
   <!-- End Meta Pixel Code -->
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Customer Reviews & Video Ratings — HoneyBee Learning (4.9★)</title>
   <meta name="description" content="Read real reviews & watch video testimonials of HoneyBee Learning personalised activity books, return gifts and divine stories. Watch reels directly on page without opening Instagram.">
   <meta name="keywords" content="HoneyBee Learning reviews, HoneyBee Learning ratings, personalised books reviews, birthday return gifts reviews chennai, divine stories reviews, play instagram reel on website">
@@ -323,7 +323,7 @@
 
   <style>
     /* ═════════════════════════════════════════════════════════════
-       REVIEWS HUB — CLEAN, AIRY, UNCONGESTED ARCHITECTURE
+       REVIEWS HUB — CLEAN, AIRY, FULLY RESPONSIVE ARCHITECTURE
        ═════════════════════════════════════════════════════════════ */
     :root {
       --hb-gold: #f59e0b;
@@ -337,12 +337,18 @@
       --shadow-hover: 0 10px 28px rgba(217, 119, 6, 0.12);
     }
 
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       background: var(--hb-cream);
       color: var(--hb-dark);
       font-family: 'Nunito', sans-serif;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* ── HERO BANNER ── */
@@ -366,23 +372,26 @@
       box-shadow: 0 4px 12px rgba(245, 158, 11, 0.14);
       border: 1px solid #fde68a;
       margin-bottom: 16px;
+      max-width: 95%;
     }
 
     .rev-hero-title {
       font-family: 'Fredoka One', cursive;
-      font-size: clamp(2.1rem, 4vw, 2.9rem);
+      font-size: clamp(1.85rem, 4.5vw, 2.9rem);
       color: var(--hb-brown);
       margin: 0 0 12px;
       line-height: 1.25;
+      padding: 0 8px;
     }
 
     .rev-hero-subtitle {
-      font-size: 1.08rem;
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
       font-weight: 600;
       color: #854d0e;
       max-width: 650px;
       margin: 0 auto 30px;
       line-height: 1.6;
+      padding: 0 12px;
     }
 
     /* ── COMPACT RATING STATS BAR ── */
@@ -399,15 +408,6 @@
       gap: 28px;
       align-items: center;
       text-align: left;
-    }
-
-    @media (max-width: 768px) {
-      .stats-card-bar {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 22px 20px;
-        gap: 20px;
-      }
     }
 
     .score-number {
@@ -477,6 +477,10 @@
       text-align: center;
       box-shadow: 0 4px 14px rgba(217, 119, 6, 0.28);
       transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
 
     .btn-action-primary:hover {
@@ -494,6 +498,10 @@
       border-radius: 50px;
       text-align: center;
       transition: transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
 
     .btn-action-wa:hover {
@@ -514,6 +522,7 @@
       z-index: 95;
       background: rgba(250, 247, 242, 0.96);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 14px 0 16px;
       margin-bottom: 36px;
       border-bottom: 1.5px solid var(--border-soft);
@@ -529,6 +538,7 @@
       overflow-x: auto;
       padding: 4px 2px;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
 
     .media-tabs-row::-webkit-scrollbar { display: none; }
@@ -537,9 +547,9 @@
       background: #ffffff;
       border: 1.5px solid var(--border-soft);
       color: #57534e;
-      padding: 11px 22px;
+      padding: 11px 20px;
       border-radius: 50px;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       font-weight: 800;
       cursor: pointer;
       white-space: nowrap;
@@ -548,6 +558,7 @@
       gap: 8px;
       transition: all 0.2s ease;
       font-family: inherit;
+      flex-shrink: 0;
     }
 
     .media-tab-btn:hover {
@@ -585,6 +596,7 @@
       overflow-x: auto;
       padding: 2px 2px 4px;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
 
     .cat-filter-row::-webkit-scrollbar { display: none; }
@@ -595,6 +607,7 @@
       color: #78716c;
       white-space: nowrap;
       margin-right: 4px;
+      flex-shrink: 0;
     }
 
     .cat-pill-btn {
@@ -609,6 +622,7 @@
       white-space: nowrap;
       transition: all 0.2s ease;
       font-family: inherit;
+      flex-shrink: 0;
     }
 
     .cat-pill-btn:hover {
@@ -642,16 +656,6 @@
       grid-template-columns: 320px 1fr;
       gap: 36px;
       align-items: center;
-    }
-
-    @media (max-width: 860px) {
-      .reel-highlight-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .reel-highlight-box {
-        padding: 26px 20px;
-      }
     }
 
     /* Smartphone video frame */
@@ -697,6 +701,7 @@
       left: 14px;
       background: rgba(0,0,0,0.7);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #ffffff;
       font-size: 0.78rem;
       font-weight: 800;
@@ -710,10 +715,13 @@
       z-index: 5;
     }
 
-    /* Centered Glowing Play Button Overlay */
+    /* Centered Glowing Play Button Overlay (doesn't block bottom controls!) */
     .reel-play-overlay {
       position: absolute;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 56px;
       background: rgba(0, 0, 0, 0.28);
       display: flex;
       flex-direction: column;
@@ -767,6 +775,7 @@
       border-radius: 30px;
       border: 1px solid rgba(255,255,255,0.2);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       pointer-events: none;
     }
 
@@ -774,11 +783,12 @@
     .player-mode-bar {
       display: flex;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 12px;
       background: rgba(255,255,255,0.06);
       padding: 4px;
       border-radius: 30px;
       width: fit-content;
+      justify-content: center;
     }
 
     .player-mode-btn {
@@ -822,7 +832,7 @@
 
     .reel-box-title {
       font-family: 'Fredoka One', cursive;
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
       margin: 0;
       color: #fef08a;
       line-height: 1.3;
@@ -837,7 +847,7 @@
 
     .reel-points-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 12px;
       margin-top: 6px;
     }
@@ -892,24 +902,19 @@
       box-shadow: var(--shadow-sm);
     }
 
-    @media (max-width: 600px) {
-      .section-block {
-        padding: 24px 16px;
-      }
-    }
-
     .block-header {
       margin-bottom: 28px;
     }
 
     .block-header h2 {
       font-family: 'Fredoka One', cursive;
-      font-size: 1.7rem;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
       color: var(--hb-brown);
       margin: 0 0 6px;
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .block-header p {
@@ -926,12 +931,6 @@
       gap: 24px;
     }
 
-    @media (max-width: 650px) {
-      .text-reviews-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .rev-card {
       background: #faf8f5;
       border-radius: 18px;
@@ -941,6 +940,8 @@
       flex-direction: column;
       gap: 12px;
       transition: all 0.2s ease;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .rev-card:hover {
@@ -954,6 +955,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
     .rev-avatar {
@@ -973,7 +975,7 @@
 
     .rev-author-details {
       flex: 1;
-      min-width: 0;
+      min-width: 140px;
     }
 
     .rev-name {
@@ -1047,12 +1049,14 @@
       font-size: 0.8rem;
       font-weight: 700;
       color: #78716c;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
     /* ── YOUTUBE VIDEO GRID ── */
     .yt-videos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 26px;
     }
 
@@ -1102,6 +1106,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
     .yt-parent-title {
@@ -1128,7 +1134,7 @@
     /* ── PHOTO GALLERY GRID ── */
     .photo-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 22px;
     }
 
@@ -1198,6 +1204,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     .photo-date-badge {
@@ -1296,11 +1303,13 @@
       justify-content: space-between;
       align-items: center;
       user-select: none;
+      gap: 12px;
     }
 
     .faq-chevron {
       font-size: 0.85rem;
       transition: transform 0.2s;
+      flex-shrink: 0;
     }
 
     .faq-node.open .faq-chevron {
@@ -1330,7 +1339,7 @@
 
     .write-rev-footer-banner h2 {
       font-family: 'Fredoka One', cursive;
-      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
       margin: 0 0 10px;
       color: #fef08a;
     }
@@ -1356,6 +1365,7 @@
       inset: 0;
       background: rgba(0,0,0,0.88);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       z-index: 9999;
       display: none;
       align-items: center;
@@ -1403,6 +1413,334 @@
 
     .lightbox-dismiss:hover {
       background: rgba(0,0,0,0.95);
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       TABLET RESPONSIVENESS (768px – 1024px)
+       ═════════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .rev-content-wrapper {
+        padding: 28px 18px 70px;
+      }
+
+      .stats-card-bar {
+        grid-template-columns: 180px 1fr 190px;
+        gap: 20px;
+        padding: 22px 24px;
+      }
+
+      .reel-highlight-grid {
+        grid-template-columns: 290px 1fr;
+        gap: 28px;
+      }
+
+      .smartphone-frame {
+        max-width: 290px;
+      }
+
+      .text-reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .yt-videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .photo-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .trust-features-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       MOBILE & PHABLET RESPONSIVENESS (<= 768px)
+       ═════════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .rev-hero-section {
+        padding: 85px 16px 36px;
+      }
+
+      .stats-card-bar {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 24px 20px;
+        gap: 20px;
+        border-radius: 18px;
+      }
+
+      .progress-bar-group {
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .stats-cta-col {
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* Sticky controls on mobile */
+      .controls-panel {
+        top: 60px;
+        padding: 10px 0 12px;
+        margin-bottom: 24px;
+        gap: 10px;
+      }
+
+      .media-tab-btn {
+        padding: 9px 16px;
+        font-size: 0.88rem;
+      }
+
+      .cat-pill-btn {
+        padding: 5px 13px;
+        font-size: 0.82rem;
+      }
+
+      /* Reel box on mobile: stack vertically */
+      .reel-highlight-box {
+        padding: 28px 20px;
+        border-radius: 20px;
+        margin-bottom: 36px;
+      }
+
+      .reel-highlight-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .smartphone-frame {
+        max-width: 270px;
+        margin: 0 auto;
+      }
+
+      .player-mode-bar {
+        margin: 12px auto 0 !important;
+      }
+
+      .reel-header-badge {
+        margin: 0 auto;
+      }
+
+      .reel-content-side {
+        align-items: center;
+      }
+
+      .reel-points-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        text-align: left;
+      }
+
+      .reel-buttons-wrap {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .btn-ig-external,
+      .reel-buttons-wrap .btn-action-primary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Section blocks on mobile */
+      .section-block {
+        padding: 24px 18px;
+        border-radius: 20px;
+        margin-bottom: 32px;
+      }
+
+      .block-header {
+        margin-bottom: 20px;
+      }
+
+      .text-reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .yt-videos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .photo-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .trust-features-strip {
+        grid-template-columns: 1fr;
+        padding: 20px 22px;
+        gap: 16px;
+        border-radius: 18px;
+        margin-bottom: 32px;
+      }
+
+      .faq-accordion-box {
+        padding: 24px 18px;
+        border-radius: 20px;
+        margin-bottom: 32px;
+      }
+
+      .faq-question-btn {
+        padding: 14px 16px;
+        font-size: 0.94rem;
+      }
+
+      .faq-answer-body {
+        padding: 0 16px 16px;
+        font-size: 0.9rem;
+      }
+
+      .write-rev-footer-banner {
+        padding: 34px 20px;
+        border-radius: 20px;
+      }
+
+      .banner-buttons-row a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       SMALL PHONES RESPONSIVENESS (<= 480px)
+       ═════════════════════════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      .rev-hero-section {
+        padding: 78px 12px 28px;
+      }
+
+      .hero-top-badge {
+        font-size: 0.8rem;
+        padding: 6px 14px;
+      }
+
+      .rev-hero-title {
+        font-size: 1.65rem;
+      }
+
+      .stats-card-bar {
+        padding: 20px 14px;
+      }
+
+      .score-number {
+        font-size: 2.8rem;
+      }
+
+      .controls-panel {
+        top: 56px;
+        padding: 8px 0 10px;
+      }
+
+      .media-tab-btn {
+        padding: 8px 14px;
+        font-size: 0.84rem;
+      }
+
+      .smartphone-frame {
+        max-width: 240px;
+        border-radius: 22px;
+        border-width: 3px;
+      }
+
+      .reel-big-play-btn {
+        width: 62px;
+        height: 62px;
+      }
+
+      .reel-big-play-btn svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .reel-play-hint {
+        font-size: 0.8rem;
+        padding: 4px 12px;
+      }
+
+      .reel-highlight-box {
+        padding: 22px 14px;
+      }
+
+      .reel-points-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .point-card {
+        padding: 8px 12px;
+        font-size: 0.84rem;
+      }
+
+      .section-block {
+        padding: 20px 12px;
+        border-radius: 16px;
+      }
+
+      .rev-card {
+        padding: 18px 14px;
+        border-radius: 16px;
+      }
+
+      .rev-card-header {
+        gap: 10px;
+      }
+
+      .rev-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+      }
+
+      .rev-name {
+        font-size: 0.94rem;
+      }
+
+      .rev-text {
+        font-size: 0.9rem;
+      }
+
+      .photo-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .photo-caption-bar {
+        padding: 8px 10px;
+      }
+
+      .photo-date-badge {
+        font-size: 0.72rem;
+      }
+
+      .rev-cat-pill {
+        font-size: 0.72rem;
+        padding: 2px 7px;
+      }
+
+      .photo-hover-tag span {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+      }
+
+      .write-rev-footer-banner h2 {
+        font-size: 1.45rem;
+      }
+
+      .write-rev-footer-banner p {
+        font-size: 0.92rem;
+      }
     }
   </style>
 </head>
@@ -1529,9 +1867,9 @@
               poster="reviews/videos/honeybee_reel_poster.jpg" 
               controls 
               playsinline 
-              preload="auto"
+              preload="metadata"
               title="HoneyBee Learning Instagram Reel Video">
-              <source src="reviews/videos/honeybee_reel.mp4?v=2" type="video/mp4">
+              <source src="reviews/videos/honeybee_reel.mp4" type="video/mp4">
               Your browser does not support HTML5 video.
             </video>
 
@@ -1548,7 +1886,9 @@
             <!-- Fallback Instagram Iframe (toggled via button below) -->
             <div class="smartphone-iframe-wrap" id="instaIframeWrap">
               <iframe 
-                src="https://www.instagram.com/reel/DeIxisWMoaT/embed/captioned/" 
+                id="instaIframe"
+                src="about:blank"
+                data-src="https://www.instagram.com/reel/DeIxisWMoaT/embed/captioned/" 
                 title="HoneyBee Instagram Reel Embed" 
                 allowfullscreen="true" 
                 frameborder="0"
@@ -2155,7 +2495,7 @@
         <div class="photo-img-container">
           <img src="reviews/photos/review1.jpeg" alt="Customer photo of child with HoneyBee Learning personalised book 1" loading="lazy">
           <div class="photo-hover-tag">
-            <span>🔍 Tap to Zoom</span>
+            <span>🔍 Zoom</span>
           </div>
         </div>
         <div class="photo-caption-bar">
@@ -2169,7 +2509,7 @@
         <div class="photo-img-container">
           <img src="reviews/photos/review2.jpeg" alt="Customer photo of child with HoneyBee Learning personalised book 2" loading="lazy">
           <div class="photo-hover-tag">
-            <span>🔍 Tap to Zoom</span>
+            <span>🔍 Zoom</span>
           </div>
         </div>
         <div class="photo-caption-bar">
@@ -2183,7 +2523,7 @@
         <div class="photo-img-container">
           <img src="reviews/photos/review3.jpeg" alt="Customer photo of child with HoneyBee Learning personalised book 3" loading="lazy">
           <div class="photo-hover-tag">
-            <span>🔍 Tap to Zoom</span>
+            <span>🔍 Zoom</span>
           </div>
         </div>
         <div class="photo-caption-bar">
@@ -2363,33 +2703,55 @@
       var videoPlayer = document.getElementById('instaReelPlayer');
       var playOverlay = document.getElementById('reelPlayOverlay');
       var iframeWrap = document.getElementById('instaIframeWrap');
+      var instaIframe = document.getElementById('instaIframe');
       var btnNative = document.getElementById('btnModeNative');
       var btnEmbed = document.getElementById('btnModeEmbed');
 
-      if (videoPlayer && playOverlay) {
-        playOverlay.addEventListener('click', function () {
-          videoPlayer.play().then(function() {
-            playOverlay.style.display = 'none';
+      function startPlayback() {
+        if (!videoPlayer) return;
+        var promise = videoPlayer.play();
+        if (promise !== undefined) {
+          promise.then(function() {
+            if (playOverlay) playOverlay.style.display = 'none';
           }).catch(function(err) {
-            console.log('Autoplay policy caught, retrying:', err);
-            videoPlayer.controls = true;
-            videoPlayer.play();
-            playOverlay.style.display = 'none';
+            console.log('Play blocked, muting first:', err);
+            videoPlayer.muted = true;
+            videoPlayer.play().then(function() {
+              if (playOverlay) playOverlay.style.display = 'none';
+              // Unmute smoothly
+              videoPlayer.muted = false;
+            }).catch(function(e) {
+              console.warn('Playback error:', e);
+              if (btnEmbed) btnEmbed.click();
+            });
           });
+        }
+      }
+
+      if (videoPlayer && playOverlay) {
+        playOverlay.addEventListener('click', function (e) {
+          e.stopPropagation();
+          startPlayback();
         });
 
         videoPlayer.addEventListener('play', function () {
-          playOverlay.style.display = 'none';
+          if (playOverlay) playOverlay.style.display = 'none';
         });
 
         videoPlayer.addEventListener('pause', function () {
-          if (!videoPlayer.seeking) {
+          if (playOverlay && !videoPlayer.seeking && !videoPlayer.ended) {
             playOverlay.style.display = 'flex';
           }
         });
 
         videoPlayer.addEventListener('ended', function () {
-          playOverlay.style.display = 'flex';
+          if (playOverlay) playOverlay.style.display = 'flex';
+        });
+
+        // If local video fails to decode, fallback to Instagram embed automatically
+        videoPlayer.addEventListener('error', function () {
+          console.warn('Native video error, switching to Instagram embed.');
+          if (btnEmbed) btnEmbed.click();
         });
       }
 
@@ -2398,8 +2760,8 @@
         btnNative.addEventListener('click', function () {
           btnNative.classList.add('active');
           btnEmbed.classList.remove('active');
-          videoPlayer.style.display = 'block';
-          if (playOverlay && videoPlayer.paused) playOverlay.style.display = 'flex';
+          if (videoPlayer) videoPlayer.style.display = 'block';
+          if (playOverlay && videoPlayer && videoPlayer.paused) playOverlay.style.display = 'flex';
           if (iframeWrap) iframeWrap.style.display = 'none';
         });
 
@@ -2411,11 +2773,16 @@
             videoPlayer.style.display = 'none';
           }
           if (playOverlay) playOverlay.style.display = 'none';
-          if (iframeWrap) iframeWrap.style.display = 'block';
+          if (iframeWrap) {
+            iframeWrap.style.display = 'block';
+            if (instaIframe && instaIframe.src === 'about:blank') {
+              instaIframe.src = instaIframe.getAttribute('data-src');
+            }
+          }
         });
       }
 
-      // ── FILTER SYSTEM ──
+      // ── FILTER SYSTEM WITH AUTO-PAUSE ──
       var currentView = 'all';    // 'all', 'written', 'videos', 'photos'
       var currentCat = 'all';     // 'all', 'activity', 'return-gift', 'divine'
 
@@ -2465,7 +2832,7 @@
         });
         videoBlock.style.display = (visibleYt > 0) ? 'block' : 'none';
 
-        // 3. Instagram Reel
+        // 3. Instagram Reel — IMPORTANT: Auto-pause when reel section is hidden!
         var matchReelCat = (currentCat === 'all' || currentCat === 'activity');
         var matchReelView = (currentView === 'all' || currentView === 'videos');
         if (matchReelCat && matchReelView) {
@@ -2473,6 +2840,10 @@
           totalVisible++;
         } else {
           reelSection.style.display = 'none';
+          // PAUSE VIDEO WHEN HIDDEN SO AUDIO DOES NOT KEEP PLAYING!
+          if (videoPlayer && !videoPlayer.paused) {
+            videoPlayer.pause();
+          }
         }
 
         // 4. Photos
