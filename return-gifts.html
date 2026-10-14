@@ -30,7 +30,7 @@
   <!-- ═══ PRIMARY SEO ═══ -->
   <title>Birthday Return Gift Packs — HoneyBee Learning | From ₹39 · Pan-India Delivery</title>
   <meta name="description"
-    content="Shop HoneyBee Learning's birthday return gift packs — personalised activity sheets, books, stationery & chocolate combos starting ₹39. 19 ready-to-gift sets. Pan-India delivery. Medavakkam, Chennai.">
+    content="Shop HoneyBee Learning's birthday return gift packs — personalised activity sheets, books, stationery & chocolate combos starting ₹39. 12 ready-to-gift sets. Pan-India delivery. Medavakkam, Chennai.">
   <meta name="keywords"
     content="birthday return gifts Chennai, return gift packs kids, personalised return gifts India, birthday return gift combos, kids birthday return gifts under 100, activity book return gift, HoneyBee Learning return gifts, return gifts Medavakkam, birthday party gifts kids Chennai">
   <meta name="robots" content="index, follow">
@@ -42,7 +42,7 @@
   <meta property="og:url" content="https://honeybeelearning.co/return-gifts.html">
   <meta property="og:title" content="Birthday Return Gift Packs — HoneyBee Learning | From ₹39">
   <meta property="og:description"
-    content="Personalised, educational, ready-to-gift packs for birthday parties. 19 combos from ₹39. Pan-India delivery.">
+    content="Personalised, educational, ready-to-gift packs for birthday parties. 12 combos from ₹39. Pan-India delivery.">
   <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
   <meta property="og:site_name" content="HoneyBee Learning">
   <meta property="og:locale" content="en_IN">
@@ -90,7 +90,244 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
     rel="stylesheet">
+
+  <!-- ═══ MOBILE MATRIX COMPARISON STYLES (OPTION 1) ═══ -->
+  <style>
+    .rg-desktop-table-wrap {
+      display: block;
+    }
+    .rg-mobile-matrix-wrap {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .rg-desktop-table-wrap {
+        display: none !important;
+      }
+      .rg-mobile-matrix-wrap {
+        display: block !important;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      /* Quick filter pills above matrix */
+      .rg-m-filters {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 4px 2px 14px 2px;
+        margin-bottom: 8px;
+        scrollbar-width: none;
+      }
+      .rg-m-filters::-webkit-scrollbar {
+        display: none;
+      }
+      .rg-m-filter-btn {
+        white-space: nowrap;
+        background: #ffffff;
+        border: 1.5px solid rgba(47, 122, 62, 0.2);
+        color: var(--text, #333);
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-family: 'Nunito', sans-serif;
+        font-size: 0.82rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+      .rg-m-filter-btn.active {
+        background: var(--green, #2f7a3e);
+        color: #ffffff;
+        border-color: var(--green, #2f7a3e);
+        box-shadow: 0 4px 12px rgba(47, 122, 62, 0.25);
+      }
+
+      /* Table Card Container */
+      .rg-m-table-card {
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .rg-m-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Nunito', sans-serif;
+        table-layout: fixed;
+      }
+
+      .rg-m-table thead th {
+        background: var(--green, #2f7a3e);
+        color: #ffffff;
+        padding: 10px 8px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-align: left;
+      }
+
+      .rg-m-table tbody tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        transition: background 0.15s ease;
+      }
+      .rg-m-table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .rg-m-table tbody td {
+        padding: 10px 8px;
+        vertical-align: middle;
+        font-size: 0.8rem;
+        color: var(--text, #2c3e50);
+      }
+
+      /* Alternating row colors */
+      .rg-m-row-col {
+        background: #fffdf5;
+      }
+      .rg-m-row-bw {
+        background: #ffffff;
+      }
+      .rg-m-row-premium {
+        background: linear-gradient(90deg, #fffcf0, #fff7dc) !important;
+      }
+
+      /* Pack Name & Badge */
+      .rg-m-pack-name {
+        font-weight: 800;
+        font-size: 0.82rem;
+        line-height: 1.25;
+        color: var(--brown, #5c3d2e);
+        margin-bottom: 4px;
+        display: block;
+      }
+      .rg-m-type-pill {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 800;
+        padding: 2px 7px;
+        border-radius: 20px;
+        letter-spacing: 0.2px;
+      }
+      .rg-m-type-pill.bw {
+        background: #eef2f5;
+        color: #495057;
+      }
+      .rg-m-type-pill.col {
+        background: #fff0d4;
+        color: #d35400;
+      }
+      .rg-m-type-pill.prem {
+        background: linear-gradient(135deg, #ffe082, #ffd54f);
+        color: #6d4c00;
+        font-weight: 900;
+      }
+
+      /* Format / Pages column */
+      .rg-m-format {
+        font-weight: 800;
+        font-size: 0.78rem;
+        line-height: 1.2;
+        color: var(--text, #2c3e50);
+      }
+      .rg-m-format-sub {
+        display: block;
+        font-size: 0.68rem;
+        color: var(--text-soft, #7f8c8d);
+        font-weight: 600;
+      }
+
+      /* Goodies icon column */
+      .rg-m-goodies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        align-items: center;
+        font-size: 0.95rem;
+        line-height: 1.1;
+      }
+      .rg-m-goodies span {
+        display: inline-block;
+        filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+      }
+
+      /* Price button */
+      .rg-m-price-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        width: 100%;
+        padding: 7px 4px;
+        background: var(--green, #2f7a3e);
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        font-family: 'Fredoka One', cursive;
+        font-size: 0.88rem;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 3px 8px rgba(47, 122, 62, 0.25);
+        transition: transform 0.1s ease, box-shadow 0.1s ease;
+      }
+      .rg-m-price-btn:active {
+        transform: scale(0.96);
+      }
+      .rg-m-price-btn span {
+        font-family: sans-serif;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-left: 1px;
+      }
+      .rg-m-price-btn-premium {
+        background: linear-gradient(135deg, #d35400, #e67e22);
+        box-shadow: 0 4px 12px rgba(211, 84, 0, 0.35);
+      }
+
+      /* Legend & Note */
+      .rg-m-legend {
+        margin-top: 14px;
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 12px 14px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        border: 1px solid rgba(0,0,0,0.04);
+        font-size: 0.76rem;
+      }
+      .rg-m-legend-title {
+        font-weight: 800;
+        color: var(--brown, #5c3d2e);
+        margin-bottom: 6px;
+        font-size: 0.8rem;
+      }
+      .rg-m-legend-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        color: var(--text, #333);
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .rg-leg-icon {
+        font-size: 0.9rem;
+        margin-right: 2px;
+      }
+      .rg-m-legend-note {
+        font-size: 0.74rem;
+        color: var(--green-dark, #205c2e);
+        font-weight: 800;
+        background: var(--green-pale, #e8f5e9);
+        padding: 6px 10px;
+        border-radius: 8px;
+      }
+    }
+  </style>
 </head>
+
 
 <body>
 
@@ -144,7 +381,7 @@
       </div>
       <div class="rg-stat-row">
         <div class="rg-stat">
-          <span class="rg-stat-num">19</span>
+          <span class="rg-stat-num">12</span>
           <span class="rg-stat-label">Gift packs</span>
         </div>
         <div class="rg-stat">
@@ -167,7 +404,7 @@
         <div class="rg-gift-card">
           <span class="rg-gift-card-emoji">🌈</span>
           <div class="rg-gift-card-name">Colour Fun Pack</div>
-          <div class="rg-gift-card-price">₹35</div>
+          <div class="rg-gift-card-price">₹49</div>
         </div>
         <div class="rg-gift-card">
           <span class="rg-gift-card-emoji">🐝</span>
@@ -177,7 +414,7 @@
         <div class="rg-gift-card">
           <span class="rg-gift-card-emoji">🎁</span>
           <div class="rg-gift-card-name">Celebration Pack</div>
-          <div class="rg-gift-card-price">₹158</div>
+          <div class="rg-gift-card-price">₹175</div>
         </div>
       </div>
     </div>
@@ -187,7 +424,7 @@
   <div class="rg-banner" aria-hidden="true">
     <div class="rg-banner-track">
       <div class="rg-banner-content">
-        <span>🎁 19 gift combos</span>
+        <span>🎁 12 gift combos</span>
         <span>·</span>
         <span>Starting ₹39 per pack</span>
         <span>·</span>
@@ -203,7 +440,7 @@
         <span>·</span>
       </div>
       <div class="rg-banner-content" aria-hidden="true">
-        <span>🎁 19 gift combos</span>
+        <span>🎁 12 gift combos</span>
         <span>·</span>
         <span>Starting ₹39 per pack</span>
         <span>·</span>
@@ -277,7 +514,7 @@
       <div class="rg-benefit-card reveal">
         <span class="rg-benefit-icon">💰</span>
         <div class="rg-benefit-title">Affordable</div>
-        <p class="rg-benefit-desc">Packs from ₹39 to ₹170. Whether you're hosting 10 kids or 200, there's a combo that
+        <p class="rg-benefit-desc">Packs from ₹39 to ₹250. Whether you're hosting 10 kids or 200, there's a combo that
           fits your budget perfectly.</p>
       </div>
       <div class="rg-benefit-card reveal">
@@ -327,7 +564,7 @@
   <section class="rg-packs" id="rg-packs">
     <div class="section-tag">Gift Combos</div>
     <div class="section-title">Birthday Return Gift Packs</div>
-    <p class="section-sub">19 ready-to-gift combos — personalised, packed, and perfect for every budget. Minimum order:
+    <p class="section-sub">12 ready-to-gift combos — personalised, packed, and perfect for every budget. Minimum order:
       10 sets.</p>
 
     <div class="filter-bar" id="rgFilterBar">
@@ -353,7 +590,8 @@
     <div class="section-title">What's in each pack?</div>
     <p class="section-sub">A side-by-side look at all our packs — find the one that fits your party and budget.</p>
 
-    <div class="rg-table-wrap reveal">
+    <!-- Desktop Table View (>= 769px) -->
+    <div class="rg-table-wrap rg-desktop-table-wrap reveal">
       <table class="rg-table" aria-label="Return gift pack comparison">
         <thead>
           <tr>
@@ -369,6 +607,48 @@
         </thead>
         <tbody id="rgTableBody"></tbody>
       </table>
+    </div>
+
+    <!-- Mobile Single-Shot Matrix View (<= 768px) -->
+    <div class="rg-mobile-matrix-wrap reveal">
+      <!-- Quick Filter Pills -->
+      <div class="rg-m-filters" id="rgMFilters">
+        <button type="button" class="rg-m-filter-btn active" data-filter="all" onclick="rgMFilter(this)">All (12)</button>
+        <button type="button" class="rg-m-filter-btn" data-filter="under50" onclick="rgMFilter(this)">Under ₹50</button>
+        <button type="button" class="rg-m-filter-btn" data-filter="under100" onclick="rgMFilter(this)">Under ₹100</button>
+        <button type="button" class="rg-m-filter-btn" data-filter="under200" onclick="rgMFilter(this)">Under ₹200</button>
+        <button type="button" class="rg-m-filter-btn" data-filter="premium" onclick="rgMFilter(this)">👑 Premium</button>
+      </div>
+
+      <!-- 4-Column Consolidated Matrix Table -->
+      <div class="rg-m-table-card">
+        <table class="rg-m-table" aria-label="Mobile Return Gift Pack Matrix">
+          <thead>
+            <tr>
+              <th style="width: 38%;">Pack &amp; Print</th>
+              <th style="width: 25%;">Pages</th>
+              <th style="width: 22%;">Goodies</th>
+              <th style="width: 15%; text-align: center;">Price</th>
+            </tr>
+          </thead>
+          <tbody id="rgMobileMatrixBody">
+            <!-- Dynamically populated from JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Goodies Legend & Hint -->
+      <div class="rg-m-legend">
+        <div class="rg-m-legend-title">🎁 Goodies Legend:</div>
+        <div class="rg-m-legend-items">
+          <span><span class="rg-leg-icon">✏️</span> Stationery</span>
+          <span><span class="rg-leg-icon">🖍️</span> 10 Crayons</span>
+          <span><span class="rg-leg-icon">🍫</span> Candy</span>
+          <span><span class="rg-leg-icon">💌</span> Thank-You Card</span>
+          <span><span class="rg-leg-icon">📏</span> Scale</span>
+        </div>
+        <div class="rg-m-legend-note">💡 Tap any <strong>price button</strong> to customize &amp; order directly!</div>
+      </div>
     </div>
 
     <p style="margin-top:16px;font-size:0.85rem;color:var(--text-soft);font-weight:600;">
@@ -390,7 +670,7 @@
         <div class="rg-persona-who">For you if you're...</div>
         <div class="rg-persona-title">Hosting a Birthday Party</div>
         <p class="rg-persona-desc">Planning a birthday for 10–200 guests and want every child to leave with something
-          meaningful, personalised, and fun. Our ₹39–₹170 range has something for every guest list size.</p>
+          meaningful, personalised, and fun. Our ₹39–₹250 range has something for every guest list size.</p>
         <span class="rg-persona-tag">Best packs: Mini Fun Pack → Celebration Pack</span>
       </div>
       <div class="rg-persona-card reveal">
@@ -399,7 +679,7 @@
         <div class="rg-persona-title">Organising a School Event</div>
         <p class="rg-persona-desc">Running a classroom activity, Sports Day, or annual day celebration and want
           affordable gift sets that parents and teachers appreciate. Stationery packs are always a hit.</p>
-        <span class="rg-persona-tag">Best packs: Worksheet Pack → Little Learner Pack</span>
+        <span class="rg-persona-tag">Best packs: Creative Pack → Little Learner Pack</span>
       </div>
       <div class="rg-persona-card reveal">
         <span class="rg-persona-icon">🌟</span>
@@ -762,6 +1042,7 @@
         allGifts = await res.json();
         renderGifts();
         if (typeof renderTable === "function") renderTable();
+        if (typeof renderMobileMatrix === "function") renderMobileMatrix();
       } catch (e) {
         document.getElementById('rgGrid').innerHTML =
           '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-soft);"><span style="font-size:2rem;display:block;margin-bottom:10px;">⚠️</span>Could not load gift packs. <a href="https://wa.me/918883624873" style="color:var(--green);font-weight:800;">WhatsApp us</a> to order.</div>';
@@ -871,6 +1152,105 @@
 
       // Observe newly added reveals
       grid.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+    }
+
+
+    // ─── MOBILE COMPARISON MATRIX (OPTION 1) ───
+    let currentMFilter = 'all';
+
+    function rgMFilter(btn) {
+      document.querySelectorAll('#rgMFilters .rg-m-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentMFilter = btn.dataset.filter;
+      renderMobileMatrix();
+    }
+
+    function renderMobileMatrix() {
+      const tbody = document.getElementById('rgMobileMatrixBody');
+      if (!tbody) return;
+
+      const filtered = currentMFilter === 'all'
+        ? allGifts
+        : allGifts.filter(g => g.category === currentMFilter);
+
+      if (!filtered.length) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:24px;color:var(--text-soft);font-weight:700;">🎁 No packs in this category.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(g => {
+        const isCol = g.items[0].includes('Colour');
+        const isPremium = g.isPremium;
+
+        let rowClass = isCol ? 'rg-m-row-col' : 'rg-m-row-bw';
+        if (isPremium) rowClass += ' rg-m-row-premium';
+
+        // Format pages/sheets
+        let formatHtml = '';
+        const matchSheet = g.items[0].match(/^(\d+)(?:-page)?\s*(A[45])?/i);
+        if (matchSheet) {
+          const count = matchSheet[1];
+          const size = matchSheet[2] ? ` ${matchSheet[2].toUpperCase()}` : '';
+          const isSheet = g.items[0].toLowerCase().includes('sheet');
+          formatHtml = `<div class="rg-m-format">${count}${isSheet ? '' : 'p'}${size}</div><span class="rg-m-format-sub">${isSheet ? 'sheets' : 'book'}</span>`;
+        } else {
+          formatHtml = `<div class="rg-m-format">${g.items[0]}</div>`;
+        }
+
+        // Print Type badge
+        let typeBadge = '';
+        if (isPremium) {
+          typeBadge = '<span class="rg-m-type-pill prem">👑 Colour</span>';
+        } else if (isCol) {
+          typeBadge = '<span class="rg-m-type-pill col">Colour</span>';
+        } else {
+          typeBadge = '<span class="rg-m-type-pill bw">B/W</span>';
+        }
+
+        // Short Name
+        const shortName = g.name.replace('HoneyBee ', '');
+
+        // Goodies icons
+        let goodies = [];
+        const lowerItems = g.items.map(i => i.toLowerCase());
+        if (lowerItems.some(i => i.includes('pencil') || i.includes('eraser') || i.includes('sharpener'))) {
+          goodies.push('<span title="Stationery (Pencil/Eraser/Sharpener)">✏️</span>');
+        }
+        if (lowerItems.some(i => i.includes('scale'))) {
+          goodies.push('<span title="Scale">📏</span>');
+        }
+        if (lowerItems.some(i => i.includes('crayon'))) {
+          goodies.push('<span title="10-Crayon Set">🖍️</span>');
+        }
+        if (g.hasCandy) {
+          goodies.push('<span title="Chocolate or Chikki">🍫</span>');
+        }
+        if (lowerItems.some(i => i.includes('thank-you card'))) {
+          goodies.push('<span title="Thank-You Card">💌</span>');
+        }
+
+        // Button
+        const btnClass = isPremium ? 'rg-m-price-btn rg-m-price-btn-premium' : 'rg-m-price-btn';
+        const btnLabel = `₹${g.price}`;
+
+        return `
+          <tr class="${rowClass}">
+            <td>
+              <span class="rg-m-pack-name">${g.emoji} ${shortName}</span>
+              ${typeBadge}
+            </td>
+            <td>${formatHtml}</td>
+            <td>
+              <div class="rg-m-goodies">${goodies.join('')}</div>
+            </td>
+            <td style="text-align: center;">
+              <button type="button" class="${btnClass}" onclick="openOrderModal('${g.name.replace(/'/g, "\\'")}','₹${g.price}',${g.hasCandy})" aria-label="Order ${g.name}">
+                ${btnLabel} <span>›</span>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
     }
 
     function rgFilter(btn) {
