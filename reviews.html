@@ -289,7 +289,7 @@
       "name": "Can I watch HoneyBee Learning customer video reviews and Instagram reels directly?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! You can play our Instagram reels and customer video testimonials directly on our reviews page without opening the Instagram app or leaving our website."
+        "text": "Yes! You can play our Instagram reels and customer video testimonials directly on our reviews page with audio and full controls without opening the Instagram app or leaving our website."
       }
     },
     {
@@ -674,6 +674,21 @@
       object-fit: cover;
       display: block;
       background: #000;
+      cursor: pointer;
+    }
+
+    .smartphone-iframe-wrap {
+      width: 100%;
+      height: 100%;
+      display: none;
+      background: #000;
+    }
+
+    .smartphone-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
     .phone-verified-tag {
@@ -692,6 +707,96 @@
       gap: 6px;
       border: 1px solid rgba(255,255,255,0.2);
       pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Centered Glowing Play Button Overlay */
+    .reel-play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.28);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      z-index: 4;
+    }
+
+    .reel-play-overlay:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .reel-big-play-btn {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.8), 0 8px 24px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: pulsePlayGlow 2.4s infinite;
+    }
+
+    .reel-play-overlay:hover .reel-big-play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px rgba(245, 158, 11, 1), 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .reel-big-play-btn svg {
+      margin-left: 4px;
+    }
+
+    @keyframes pulsePlayGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(245, 158, 11, 0.6); }
+      50% { transform: scale(1.05); box-shadow: 0 0 32px rgba(245, 158, 11, 0.9); }
+    }
+
+    .reel-play-hint {
+      margin-top: 14px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fef08a;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 6px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(6px);
+      pointer-events: none;
+    }
+
+    /* Mode Switcher Buttons */
+    .player-mode-bar {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.06);
+      padding: 4px;
+      border-radius: 30px;
+      width: fit-content;
+    }
+
+    .player-mode-btn {
+      background: transparent;
+      border: none;
+      color: #a1a1aa;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .player-mode-btn.active {
+      background: #f59e0b;
+      color: #18181b;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .reel-content-side {
@@ -1401,7 +1506,7 @@
         </button>
       </div>
 
-      <!-- Tier 2: Product Filter Pills -->
+      <!-- Tier 2: Product Category Pills -->
       <div class="cat-filter-row" role="group" aria-label="Filter by product category">
         <span class="cat-filter-label">Filter:</span>
         <button class="cat-pill-btn active" data-cat="all">All Products</button>
@@ -1414,21 +1519,52 @@
     <!-- ═══ FEATURED INSTAGRAM REEL (PLAYS NATIVELY IN PAGE) ═══ -->
     <section class="reel-highlight-box" id="reelSection" data-category="activity">
       <div class="reel-highlight-grid">
-        <!-- Smartphone frame playing MP4 natively -->
-        <div class="smartphone-frame">
-          <video 
-            id="instaReelPlayer"
-            class="smartphone-video"
-            src="reviews/videos/honeybee_reel.mp4" 
-            poster="reviews/videos/honeybee_reel_poster.jpg" 
-            controls 
-            playsinline 
-            preload="metadata"
-            title="HoneyBee Learning Instagram Reel Video">
-            Your browser does not support the video tag.
-          </video>
-          <div class="phone-verified-tag">
-            <span>🐝</span> Verified Reel
+        <!-- Smartphone frame playing MP4 natively + Instagram Embed option -->
+        <div>
+          <div class="smartphone-frame" id="smartphoneFrame">
+            <!-- Native HTML5 Video Player -->
+            <video 
+              id="instaReelPlayer"
+              class="smartphone-video"
+              poster="reviews/videos/honeybee_reel_poster.jpg" 
+              controls 
+              playsinline 
+              preload="auto"
+              title="HoneyBee Learning Instagram Reel Video">
+              <source src="reviews/videos/honeybee_reel.mp4?v=2" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+
+            <!-- Centered Glowing Play Button Overlay -->
+            <div class="reel-play-overlay" id="reelPlayOverlay" title="Click to play with sound">
+              <div class="reel-big-play-btn">
+                <svg viewBox="0 0 24 24" width="34" height="34" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="reel-play-hint">Tap to Play Reel 🎬</span>
+            </div>
+
+            <!-- Fallback Instagram Iframe (toggled via button below) -->
+            <div class="smartphone-iframe-wrap" id="instaIframeWrap">
+              <iframe 
+                src="https://www.instagram.com/reel/DeIxisWMoaT/embed/captioned/" 
+                title="HoneyBee Instagram Reel Embed" 
+                allowfullscreen="true" 
+                frameborder="0"
+                scrolling="no">
+              </iframe>
+            </div>
+
+            <div class="phone-verified-tag">
+              <span>🐝</span> Verified Reel
+            </div>
+          </div>
+
+          <!-- Dual Mode Switcher -->
+          <div class="player-mode-bar" style="margin: 12px auto 0;">
+            <button class="player-mode-btn active" id="btnModeNative" type="button">▶ Direct HD Video</button>
+            <button class="player-mode-btn" id="btnModeEmbed" type="button">📸 Instagram Embed</button>
           </div>
         </div>
 
@@ -2213,7 +2349,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT FOR VIEW SWITCHING & FILTERING -->
+  <!-- SCRIPT FOR VIEW SWITCHING, FILTERING & VIDEO CONTROLS -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Mobile hamburger nav
@@ -2223,7 +2359,63 @@
       if (ov) ov.addEventListener('click', cm);
       document.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', cm); });
 
-      // Filter State
+      // ── VIDEO PLAY OVERLAY CONTROLS ──
+      var videoPlayer = document.getElementById('instaReelPlayer');
+      var playOverlay = document.getElementById('reelPlayOverlay');
+      var iframeWrap = document.getElementById('instaIframeWrap');
+      var btnNative = document.getElementById('btnModeNative');
+      var btnEmbed = document.getElementById('btnModeEmbed');
+
+      if (videoPlayer && playOverlay) {
+        playOverlay.addEventListener('click', function () {
+          videoPlayer.play().then(function() {
+            playOverlay.style.display = 'none';
+          }).catch(function(err) {
+            console.log('Autoplay policy caught, retrying:', err);
+            videoPlayer.controls = true;
+            videoPlayer.play();
+            playOverlay.style.display = 'none';
+          });
+        });
+
+        videoPlayer.addEventListener('play', function () {
+          playOverlay.style.display = 'none';
+        });
+
+        videoPlayer.addEventListener('pause', function () {
+          if (!videoPlayer.seeking) {
+            playOverlay.style.display = 'flex';
+          }
+        });
+
+        videoPlayer.addEventListener('ended', function () {
+          playOverlay.style.display = 'flex';
+        });
+      }
+
+      // Player Mode Switcher: Native vs Instagram Embed
+      if (btnNative && btnEmbed) {
+        btnNative.addEventListener('click', function () {
+          btnNative.classList.add('active');
+          btnEmbed.classList.remove('active');
+          videoPlayer.style.display = 'block';
+          if (playOverlay && videoPlayer.paused) playOverlay.style.display = 'flex';
+          if (iframeWrap) iframeWrap.style.display = 'none';
+        });
+
+        btnEmbed.addEventListener('click', function () {
+          btnEmbed.classList.add('active');
+          btnNative.classList.remove('active');
+          if (videoPlayer) {
+            videoPlayer.pause();
+            videoPlayer.style.display = 'none';
+          }
+          if (playOverlay) playOverlay.style.display = 'none';
+          if (iframeWrap) iframeWrap.style.display = 'block';
+        });
+      }
+
+      // ── FILTER SYSTEM ──
       var currentView = 'all';    // 'all', 'written', 'videos', 'photos'
       var currentCat = 'all';     // 'all', 'activity', 'return-gift', 'divine'
 
