@@ -23,9 +23,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- --- PRIMARY SEO (dynamically updated by JS) --- -->
-    <title>Personalised Activity Book — HoneyBee Learning | India's First Personalised Activity Book for Kids</title>
+    <title>Personalised Activity Book  HoneyBee Learning | India's First Personalised Activity Book for Kids</title>
     <meta name="description" id="metaDesc"
-        content="Browse personalised activity books and learning products from HoneyBee Learning — India's first personalised activity book for kids. Home-based in Medavakkam, Chennai.">
+        content="Browse personalised activity books and learning products from HoneyBee Learning  India's first personalised activity book for kids. Home-based in Medavakkam, Chennai.">
     <meta name="keywords"
         content="personalised kids books Chennai, personalised activity books India, kids activity books Medavakkam, personalised books for kids, honeybee learning products, India first personalised kids book">
     <meta name="robots" content="index, follow">
@@ -35,9 +35,9 @@
     <!-- --- OPEN GRAPH --- -->
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://honeybeelearning.co/product.html">
-    <meta property="og:title" id="ogTitle" content="Personalised Activity Book — HoneyBee Learning">
+    <meta property="og:title" id="ogTitle" content="Personalised Activity Book  HoneyBee Learning">
     <meta property="og:description" id="ogDesc"
-        content="Personalised kids activity books with your child's name — India's first personalised activity book for kids. Based in Medavakkam, Chennai.">
+        content="Personalised kids activity books with your child's name  India's first personalised activity book for kids. Based in Medavakkam, Chennai.">
     <meta property="og:image" id="ogImage" content="https://honeybeelearning.co/images/logo/logo.png">
     <meta property="og:site_name" content="HoneyBee Learning">
     <meta property="og:locale" content="en_IN">
@@ -53,14 +53,14 @@
     <!-- Preload logo (LCP element) -->
     <link rel="preload" as="image" href="images/logo/logo.png">
 
-    <!-- Prefetch product data — starts before JS runs -->
+    <!-- Prefetch product data  starts before JS runs -->
     <link rel="prefetch" as="fetch" href="data/products_activity.json" crossorigin>
     <link rel="prefetch" as="fetch" href="data/products_reusable.json" crossorigin>
     <link rel="prefetch" as="fetch" href="data/products_other.json" crossorigin>
     <link rel="prefetch" as="fetch" href="data/products_stories.json" crossorigin>
     <link rel="prefetch" as="fetch" href="data/reviews.json" crossorigin>
 
-    <!-- Critical CSS (blocks render — needed for above-fold content) -->
+    <!-- Critical CSS (blocks render  needed for above-fold content) -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/product.css">
 
@@ -79,7 +79,7 @@
         gtag('config', 'G-R4YMNFP0WP');
     </script>
 
-    <!-- Google Fonts — non-blocking preload -->
+    <!-- Google Fonts  non-blocking preload -->
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
         onload="this.rel='stylesheet'">
@@ -88,25 +88,30 @@
 <body>
 
     <nav id="mainNav" aria-label="Main navigation">
-        <a class="nav-logo" href="index.html">
-            <img src="images/logo/logo.png" alt="HoneyBee" style="height:42px;border-radius:10px;">
-            <div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div>
-        </a>
-        <ul class="nav-links" id="navLinks">
-      <li><a href="products.html" style="color:var(--green-dark,#2f7a3e);font-weight:800;">&#x1F4D6; All Products</a></li>
-      <li><a href="return-gifts.html" style="color:var(--orange);font-weight:800;">&#x1F381; Return Gifts</a></li>
-      <li><a href="divine-stories.html" style="color:#FF9933;font-weight:800;">&#x1F549;&#xFE0F; Divine Stories</a></li>
-      <li><a href="bee-points.html" style="color:var(--honey);font-weight:800;">&#x1F41D; Bee Points</a></li>
-      <li><a href="index.html#testimonials">Reviews</a></li>
+    <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
+      <img src="images/logo/logo.png" alt="HoneyBee Learning â€” Personalised Kids Books"
+        style="height:42px;border-radius:10px;">
+      <div>
+        <span class="nav-logo-text">HoneyBee</span>
+        <span class="nav-logo-sub">Learning</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="products.html">All products</a></li>
+      <li><a href="return-gifts.html">Return gifts</a></li>
+      <li><a href="divine-stories.html">Divine stories</a></li>
+      <li><a href="bee-points.html">Bee Points</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
     </ul>
-        <div class="nav-right">
-            <a href="index.html?tab=learning#streams" class="back-btn" style="margin-right: 10px;">? All Products</a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-    <div class="nav-drawer-overlay" id="navOverlay"></div>
+    <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="nav-cta"
+        style="background:#25D366;">WhatsApp Us ðŸ’¬</a>
+    </div>
+  </nav>
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var hamburger = document.getElementById('hamburger');
@@ -177,8 +182,8 @@
             <div class="product-gallery">
                 <div class="gallery-main" id="galleryMain">
                     <img id="mainImg" src="" alt="">
-                    <button class="gallery-nav gallery-prev" onclick="prevImg()">‹</button>
-                    <button class="gallery-nav gallery-next" onclick="nextImg()">›</button>
+                    <button class="gallery-nav gallery-prev" onclick="prevImg()"></button>
+                    <button class="gallery-nav gallery-next" onclick="nextImg()"></button>
                 </div>
                 <div class="gallery-thumbs" id="thumbsContainer"></div>
                 <div class="gallery-dots" id="galleryDots"></div>
@@ -207,8 +212,8 @@
                 </button>
                 <div class="delivery-info">
                     <span>??</span>
-                    <div>Delivery charges applicable based on location · Free pickup in Medavakkam · 3–5 days delivery ·
-                        No returns — all orders are personalised &amp; confirmed with you before we print</div>
+                    <div>Delivery charges applicable based on location  Free pickup in Medavakkam  35 days delivery 
+                        No returns  all orders are personalised &amp; confirmed with you before we print</div>
                 </div>
             </div>
         </div>
@@ -221,7 +226,7 @@
         <h2 class="age-guide-title">What Your Child Will Learn ??</h2>
         <p class="age-guide-sub">Carefully curated activities for every milestone!</p>
         <div class="age-guide-container" style="position: relative; max-width: 1000px; margin: 0 auto;">
-            <button class="age-nav age-prev" onclick="scrollAgeGuide(-1)">‹</button>
+            <button class="age-nav age-prev" onclick="scrollAgeGuide(-1)"></button>
             <div class="age-guide-scroll">
                 <img src="images/age-guides/age-2.jpeg" class="age-guide-img" alt="Age 2 Focus" loading="lazy">
                 <img src="images/age-guides/age-3.jpeg" class="age-guide-img" alt="Age 3 Focus" loading="lazy">
@@ -236,7 +241,7 @@
                 <img src="images/age-guides/age-11.jpeg" class="age-guide-img" alt="Age 11 Focus" loading="lazy">
                 <img src="images/age-guides/age-12.jpeg" class="age-guide-img" alt="Age 12 Focus" loading="lazy">
             </div>
-            <button class="age-nav age-next" onclick="scrollAgeGuide(1)">›</button>
+            <button class="age-nav age-next" onclick="scrollAgeGuide(1)"></button>
         </div>
         <div class="swipe-indicator">? Swipe or use buttons to see more ?</div>
     </div>
@@ -261,8 +266,8 @@
             <div class="custom-header">
                 <div class="custom-badge">? We Create Anything</div>
                 <h2 class="custom-title">Still not fully satisfied? <br>Let's create <span>yours!</span> ??</h2>
-                <p class="custom-sub">Every child is unique — so should be their book! Tell us your dream theme and
-                    we'll handcraft a personalised learning book just for your little one, delivered in 3–5 days. ??</p>
+                <p class="custom-sub">Every child is unique  so should be their book! Tell us your dream theme and
+                    we'll handcraft a personalised learning book just for your little one, delivered in 35 days. ??</p>
             </div>
 
             <!-- Step 1: Pick a Theme -->
@@ -304,7 +309,7 @@
                         data-type="activity">
                         <div class="pt-icon">??</div>
                         <div class="pt-name">Activity Book</div>
-                        <div class="pt-desc">A4 · 50 pages · Tracing, Colouring, Math</div>
+                        <div class="pt-desc">A4  50 pages  Tracing, Colouring, Math</div>
                         <div class="pt-price">Starting ?349</div>
                     </div>
                     <div class="pt-card"
@@ -312,24 +317,24 @@
                         data-type="reusable">
                         <div class="pt-icon">??</div>
                         <div class="pt-name">Reusable Book</div>
-                        <div class="pt-desc">A4 · Laminated · Wipe & Learn · 100+ uses</div>
+                        <div class="pt-desc">A4  Laminated  Wipe & Learn  100+ uses</div>
                         <div class="pt-price">Starting 399</div>
                     </div>
                     <div class="pt-card" onclick="selectProductType(this, 'Reusable Alphabet Chart (A4, laminated)')"
                         data-type="chart">
                         <div class="pt-icon">??</div>
                         <div class="pt-name">Learning Chart</div>
-                        <div class="pt-desc">A4 · Laminated · Alphabet / Numbers</div>
+                        <div class="pt-desc">A4  Laminated  Alphabet / Numbers</div>
                         <div class="pt-price">Starting ?69</div>
                     </div>
                     <div class="pt-card" onclick="selectProductType(this, 'Return Gift Set (combo of books + treats)')"
                         data-type="gift">
                         <div class="pt-icon">??</div>
                         <div class="pt-name">Return Gift Set</div>
-                        <div class="pt-desc">Birthday combos · Bulk orders · With treats</div>
+                        <div class="pt-desc">Birthday combos  Bulk orders  With treats</div>
                         <div class="pt-price">Starting ?25/set</div>
                     </div>
-                    <div class="pt-card" onclick="selectProductType(this, 'Not sure — need help choosing')"
+                    <div class="pt-card" onclick="selectProductType(this, 'Not sure  need help choosing')"
                         data-type="other">
                         <div class="pt-icon">??</div>
                         <div class="pt-name">Not Sure Yet</div>
@@ -351,13 +356,13 @@
                         <label class="custom-label">Age Group *</label>
                         <select id="custAge" class="custom-input" onchange="updateCustomAgeImage()">
                             <option value="">Select age group</option>
-                            <option value="1–2 years (Toddler)">1–2 years (Toddler)</option>
-                            <option value="3–5 years (Preschool / LKG)">3–5 years (Preschool / LKG)</option>
+                            <option value="12 years (Toddler)">12 years (Toddler)</option>
+                            <option value="35 years (Preschool / LKG)">35 years (Preschool / LKG)</option>
                             <option value="6 years">6 years (Early Primary)</option>
                             <option value="7 years">7 years</option>
                             <option value="8 years">8 years</option>
                             <option value="9 years">9 years</option>
-                            <option value="10-12 years">10–12 years (Class 5–7)</option>
+                            <option value="10-12 years">1012 years (Class 57)</option>
                         </select>
                         <div id="custAgePreview" style="display:none; margin-top:12px; text-align:center;">
                             <img id="custAgeImage" src="" alt="Age Curriculum"
@@ -370,9 +375,9 @@
                         <label class="custom-label">Quantity Needed</label>
                         <select id="custQty" class="custom-input">
                             <option value="1 copy">1 copy (for my child)</option>
-                            <option value="2–5 copies">2–5 copies (siblings / cousins)</option>
-                            <option value="10–25 copies (Return Gifts)">10–25 copies (Return Gifts)</option>
-                            <option value="25–50 copies (Bulk)">25–50 copies (Bulk)</option>
+                            <option value="25 copies">25 copies (siblings / cousins)</option>
+                            <option value="1025 copies (Return Gifts)">1025 copies (Return Gifts)</option>
+                            <option value="2550 copies (Bulk)">2550 copies (Bulk)</option>
                             <option value="50+ copies (Bulk / Event)">50+ copies (Bulk / Event)</option>
                         </select>
                     </div>
@@ -381,8 +386,8 @@
                         <select id="custBudget" class="custom-input">
                             <option value="">Any / Not sure</option>
                             <option value="Under ?200">Under ?200</option>
-                            <option value="?200–?500">?200–?500</option>
-                            <option value="?500–?1000">?500–?1000</option>
+                            <option value="?200?500">?200?500</option>
+                            <option value="?500?1000">?500?1000</option>
                             <option value="?1000+">?1000+</option>
                         </select>
                     </div>
@@ -427,9 +432,9 @@
                         <label class="custom-label">Best time to call?</label>
                         <select id="custTime" class="custom-input">
                             <option value="Anytime">Anytime</option>
-                            <option value="Morning (9am–12pm)">Morning (9am–12pm)</option>
-                            <option value="Afternoon (12pm–4pm)">Afternoon (12pm–4pm)</option>
-                            <option value="Evening (4pm–8pm)">Evening (4pm–8pm)</option>
+                            <option value="Morning (9am12pm)">Morning (9am12pm)</option>
+                            <option value="Afternoon (12pm4pm)">Afternoon (12pm4pm)</option>
+                            <option value="Evening (4pm8pm)">Evening (4pm8pm)</option>
                         </select>
                     </div>
                 </div>
@@ -441,8 +446,8 @@
                 <span>?? Send Enquiry</span>
 
             </button>
-            <p class="cust-note">We will reach out to you and customize based on your preference. · ?? Delivery in 3–5
-                days · ?? 100% personalised</p>
+            <p class="cust-note">We will reach out to you and customize based on your preference.  ?? Delivery in 35
+                days  ?? 100% personalised</p>
 
         </div>
     </div>
@@ -484,7 +489,7 @@
             </div>
         </div>
         <div class="footer-copy">
-            © 2026 HoneyBee Learning · India's First Personalised Activity Book for Kids · Made with ?? in Chennai
+             2026 HoneyBee Learning  India's First Personalised Activity Book for Kids  Made with ?? in Chennai
         </div>
     </footer>
 

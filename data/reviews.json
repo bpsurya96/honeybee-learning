@@ -1,73 +1,26 @@
 {
+    "instagram": [
+        {
+            "url": "https://www.instagram.com/reel/DeIxisWMoaT/",
+            "caption": "Kids loving their personalised HoneyBee activity books! 🐝",
+            "category": "activity"
+        }
+    ],
     "text": [
         {
             "name": "Abi",
             "loc": "Chennai",
             "stars": 5,
             "date": "May 2026",
-            "text": "My kid loved the book, and her reading skills have really improved.  I would definitely recommend it to my friends and family."
-        },
-        {
-            "name": "Soundarya R",
-            "loc": "Erode",
-            "stars": 5,
-            "date": "July 2026",
-            "text": "This book is very easy to understand the letters sound . She loved reading the jungle phonics level one book and I could see her reading level had improved well. Thanks for the wonderful book. "
-        },
-        {
-            "name": "Priyasree",
-            "loc": "Madurai",
-            "stars": 5,
-            "date": "July 2026",
-            "text": "My daughter really loves this book. She is very excited about it. This book has been very useful in reducing her screen time. She likes it a lot and enjoys reading it."
-        },
-        {
-            "name": "Tamilselvi Ranjithkumar",
-            "loc": "Chrompet,Chennai",
-            "stars": 5,
-            "date": "July 2026",
-            "text": "The customised page in phonics level one book, with dora theme elements is really nice, and my kid really enjoyed learning the book. The quality of paper is really nice and worth the money."
-        },
-        {
-            "name": "Aadhvik Kathir Balan",
-            "loc": "Thirunelveli ",
-            "stars": 5,
-            "date": "July 2026",
-            "text": "He loved it a lot and especially your customisation he attracted by those pictures and love to learn  and one more think his 1st word after seeing your book is SUPER  thank you honey bee learning  team"
-        },
-        {
-            "name": "Sathya ",
-            "loc": "Madambakam, Chennai",
-            "stars": 5,
-            "date": "July 2026",
-            "text": "My son loved the book.. He loves to colour and learn in happy way"
-        },
-        {
-            "name": "Seethalakshmi",
-            "loc": "Tenkasi",
-            "stars": 5,
-            "date": "May 2026",
-            "text": "My son is loved the activity book, andthe name customisation is extra special to us. His Writing, Counting, Creativity, Reading is improved very well. "
-        },
-        {
-            "name": "Usha  ",
-            "loc": "Madurai",
-            "stars": 5,
-            "date": "June 2026",
-            "text": " I recently purchased a set of 2 reusable (Dora & Chutti kannama) theme books and one Barbie theme book.The activities like tracing and matching that keep kids engaged. Kids happily practicing again and again with their favourite theme book. It's great to see their excitement in learning. Wholeheartedly Recommended "
-        },
-        {
-            "name": "Divya K",
-            "loc": "Madurai",
-            "stars": 5,
-            "date": "July 2026",
-            "text": "My cousin loved all the 4 books which I bought her from the Ocean Kit. She was very excited seeing her name and picture on the books Thank you Honeybee Learning for these Amazing Customized Workbooks"
+            "category": "activity",
+            "text": "My kid loved the book, and her reading skills have really improved. I would definitely recommend it to my friends and family."
         },
         {
             "name": "Priya Anand",
             "loc": "Medavakkam, Chennai",
             "stars": 5,
             "date": "Jan 2026",
+            "category": "return-gift",
             "text": "Ordered 30 Mini Color Packs for my son's birthday. Every child's name was personalised perfectly. The kids were so excited to see their own names on the sheets!"
         },
         {
@@ -75,13 +28,15 @@
             "loc": "Villapuram, Madurai",
             "stars": 5,
             "date": "Jan 2026",
-            "text": "I wanted to gift my daughter with a fun + educational activity.So , I ordered a Barbie themed activity book for her birthday . She was excited and happy for the book. Thank you Honeybee learning the gift."
+            "category": "activity",
+            "text": "I wanted to gift my daughter with a fun + educational activity. So I ordered a Barbie themed activity book for her birthday. She was excited and happy for the book. Thank you Honeybee Learning!"
         },
         {
             "name": "Nivedhitha",
             "loc": "Munichalai, Madurai",
             "stars": 4,
             "date": "Dec 2025",
+            "category": "activity",
             "text": "Its awesome, my son really loved it."
         },
         {
@@ -89,6 +44,7 @@
             "loc": "Sabarimalayapuram, Sivagiri",
             "stars": 5,
             "date": "Jan 2026",
+            "category": "return-gift",
             "text": "We wanted something meaningful for my son's birthday and ordered 35 sets of Mini Colour Pack. The kids were so happy with the activity sheets and stationery. Seeing them start coloring in class itself was the cutest moment. Highly Recommended!"
         },
         {
@@ -96,6 +52,7 @@
             "loc": "Sholinganallur, Chennai",
             "stars": 4,
             "date": "Nov 2025",
+            "category": "divine",
             "text": "The Bhagavad Gita activity book is beautiful! My 4-year-old loves the Krishna illustrations and the name personalisation makes her feel so special. Highly recommend!"
         },
         {
@@ -103,6 +60,7 @@
             "loc": "Perungudi, Chennai",
             "stars": 4,
             "date": "Dec 2025",
+            "category": "activity",
             "text": "Got the Alphabet Flashcards for my daughter. The real-life pictures with her name in the sentences made learning so engaging. Sold out in my kids group within a week!"
         },
         {
@@ -110,6 +68,7 @@
             "loc": "Velachery, Chennai",
             "stars": 5,
             "date": "Feb 2026",
+            "category": "activity",
             "text": "The Dino activity book kept my 5-year-old busy for hours! Love that it's personalised with his name. Great quality printing."
         },
         {
@@ -117,6 +76,7 @@
             "loc": "Tambaram, Chennai",
             "stars": 5,
             "date": "Jan 2026",
+            "category": "return-gift",
             "text": "Perfect birthday return gifts. Ordered the Budget Friendly Combo for 25 kids — delivery was on time and every set was neatly packed!"
         },
         {
@@ -124,30 +84,67 @@
             "loc": "Pallavaram, Chennai",
             "stars": 4,
             "date": "Feb 2026",
+            "category": "divine",
             "text": "Krishna theme activity book is wonderful for value education. My daughter now talks about kindness and sharing after doing the exercises!"
         },
         {
-            "name": "Ashwini arumugam",
+            "name": "Ashwini Arumugam",
             "loc": "Thirupuvanam",
             "stars": 5,
             "date": "Apr 2026",
-            "text": "My son was extremely excited to see his name on every page of the Spiderman themed book. It made the learning experience very special for him. He enjoyed the activities so much and stayed focused throughout. Truly impressed with the creativity and effort put into the book."
+            "category": "activity",
+            "text": "My son was extremely excited to see his name on every page of the Spiderman themed book. It made the learning experience very special for him. He enjoyed the activities so much and stayed focused throughout. Truly impressed with the creativity and effort!"
+        },
+        {
+            "name": "Sathya",
+            "loc": "Madambakam, Chennai",
+            "stars": 5,
+            "date": "July 2026",
+            "category": "activity",
+            "text": "My son loved the book. He loves to colour and learn in a happy way."
+        },
+        {
+            "name": "Seethalakshmi",
+            "loc": "Tenkasi",
+            "stars": 5,
+            "date": "May 2026",
+            "category": "activity",
+            "text": "My son loved the activity book, and the name customisation is extra special to us. His Writing, Counting, Creativity, Reading is improved very well."
+        },
+        {
+            "name": "Usha",
+            "loc": "Madurai",
+            "stars": 5,
+            "date": "June 2026",
+            "category": "activity",
+            "text": "I recently purchased a set of 2 reusable (Dora & Chutti kannama) theme books and one Barbie theme book. The activities keep kids engaged. Kids happily practising again and again with their favourite theme book. Wholeheartedly Recommended!"
+        },
+        {
+            "name": "Divya K",
+            "loc": "Madurai",
+            "stars": 5,
+            "date": "July 2026",
+            "category": "activity",
+            "text": "My cousin loved all 4 books which I bought for her. She was very excited seeing her name and picture on the books. Thank you Honeybee Learning for these Amazing Customized Workbooks!"
         }
     ],
     "photos": [
         {
             "stars": 5,
             "date": "Mar 2026",
+            "category": "activity",
             "img": "reviews/photos/review1.jpeg"
         },
         {
             "stars": 5,
             "date": "Mar 2026",
+            "category": "activity",
             "img": "reviews/photos/review2.jpeg"
         },
         {
             "stars": 5,
             "date": "Mar 2026",
+            "category": "return-gift",
             "img": "reviews/photos/review3.jpeg"
         }
     ],
@@ -157,7 +154,8 @@
             "loc": "Somarasampatti, Trichy",
             "stars": 5,
             "date": "Jan 2026",
-            "text": "Ocean theme activity book is wonderful for value education. My daughter now talks about ocean creatures and learning more things after doing the exercises!",
+            "category": "activity",
+            "text": "Jungle Animals theme activity book is wonderful for value education. My daughter now talks about friendly animals and learning more things after doing the exercises!",
             "youtube": "-Ls9w3RLdzw"
         },
         {
@@ -165,6 +163,7 @@
             "loc": "Krishnarajapuram, Bangalore",
             "stars": 4,
             "date": "Dec 2025",
+            "category": "activity",
             "text": "Reusable book - Roads and Cars theme. My child is hooked, and I personally loved it myself. It's really good for toddlers. Highly recommend!",
             "youtube": "yCsBi-g-b2o"
         },
@@ -173,7 +172,8 @@
             "loc": "Chinnalapatti, Dindugal",
             "stars": 5,
             "date": "Jan 2026",
-            "text": "Ordered 25 worksheet fun pack. The quality and presentation were wonderful, and everyone really likes them. Truly appreciate your effort and great work! My daughter loved it a lot.",
+            "category": "return-gift",
+            "text": "Ordered 25 worksheet fun pack. The quality and presentation were wonderful, and everyone really likes them. My daughter loved it a lot.",
             "youtube": "NH8rxpwhZYk"
         },
         {
@@ -181,6 +181,7 @@
             "loc": "Teppakulam, Madurai",
             "stars": 5,
             "date": "Nov 2025",
+            "category": "activity",
             "text": "Barbie theme activity book with my kid's name, and family name tracing was such a unique exercise. I really appreciate bringing these kinds of books to market!",
             "youtube": "tG9q0YS1dTU"
         },
@@ -189,23 +190,26 @@
             "loc": "Lalgudi, Trichy",
             "stars": 5,
             "date": "Feb 2026",
+            "category": "activity",
             "text": "Ordered Butterfly theme activity book for my daughter. She really loved it, and the motivational stickers included in the set were so nice.",
             "youtube": "O-ffeovY_98"
         },
         {
             "name": "Srinivasan TB",
-            "loc": "Banglore",
-            "stars": 5,
-            "date": "Apr 2026",
-            "text": "My daughter loved the book a lot and enjoyed. It improves the study time. Instead of thinking reading and writing as a work, she started enjoying that.. Also liked the theme much.",
-            "youtube": "jlRk5LFcUuw"
-        },
-        {
-            "name": "Mano sri",
             "loc": "Bangalore",
             "stars": 5,
             "date": "Apr 2026",
-            "text": "The personalized cocomelon book was a big hit with my daughter. She was thrilled to see her name throughout the book. It kept her engaged and excited to complete every activity. Amazing concept and beautifully designed.",
+            "category": "activity",
+            "text": "My daughter loved the book a lot and enjoyed. It improves the study time. She started enjoying reading and writing instead of seeing it as work. Also liked the theme much.",
+            "youtube": "jlRk5LFcUuw"
+        },
+        {
+            "name": "Mano Sri",
+            "loc": "Bangalore",
+            "stars": 5,
+            "date": "Apr 2026",
+            "category": "activity",
+            "text": "The personalized cocomelon book was a big hit with my daughter. She was thrilled to see her name throughout the book. It kept her engaged and excited to complete every activity. Amazing concept!",
             "youtube": "bSaD86nqBcw"
         }
     ]
