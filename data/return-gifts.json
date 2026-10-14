@@ -3,7 +3,7 @@
         "id": "honeybee-mini-fun-pack",
         "name": "HoneyBee Mini Fun Pack",
         "emoji": "\ud83d\udc1d",
-        "price": 27,
+        "price": 39,
         "mrpLabel": "Under \u20b950",
         "category": "under50",
         "hasCandy": true,
@@ -20,7 +20,7 @@
         "id": "honeybee-colour-fun-pack",
         "name": "HoneyBee Colour Fun Pack",
         "emoji": "\ud83c\udf08",
-        "price": 35,
+        "price": 49,
         "mrpLabel": "Under \u20b950",
         "category": "under50",
         "hasCandy": true,
@@ -37,14 +37,13 @@
         "id": "honeybee-creative-pack",
         "name": "HoneyBee Creative Pack",
         "emoji": "\ud83c\udfa8",
-        "price": 50,
+        "price": 49,
         "mrpLabel": "Under \u20b975",
         "category": "under100",
         "hasCandy": true,
         "items": [
             "5 A4 B/W personalised activity sheets",
-            "Pencil + eraser",
-            "10-crayon set",
+            "Pencil + eraser + sharpener",
             "Chocolate",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
@@ -54,14 +53,13 @@
         "id": "honeybee-creative-fun-pack",
         "name": "HoneyBee Creative Fun Pack",
         "emoji": "\ud83c\udfa8",
-        "price": 60,
+        "price": 69,
         "mrpLabel": "Under \u20b975",
         "category": "under100",
         "hasCandy": true,
         "items": [
             "5 A4 Colour personalised activity sheets",
-            "Pencil + eraser",
-            "10-crayon set",
+            "Pencil + eraser + sharpener",
             "Chocolate",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
@@ -71,13 +69,14 @@
         "id": "honeybee-mini-practice-pack",
         "name": "HoneyBee Mini Practice Pack",
         "emoji": "\u270f\ufe0f",
-        "price": 73,
+        "price": 79,
         "mrpLabel": "Under \u20b9100",
         "category": "under100",
         "hasCandy": false,
         "items": [
             "20-page A5 B/W personalised activity book",
             "Pencil + eraser + sharpener",
+            "10-crayon set",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
         ]
@@ -86,13 +85,14 @@
         "id": "honeybee-mini-activity-pack",
         "name": "HoneyBee Mini Activity Pack",
         "emoji": "\ud83c\udf08",
-        "price": 85,
+        "price": 99,
         "mrpLabel": "Under \u20b9100",
         "category": "under100",
         "hasCandy": false,
         "items": [
             "20-page A5 Colour personalised activity book",
             "Pencil + eraser + sharpener",
+            "10-crayon set",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
         ]
@@ -108,6 +108,7 @@
         "items": [
             "24-page A5 B/W personalised activity book",
             "Pencil + eraser + sharpener",
+            "10-crayon set",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
         ]
@@ -116,13 +117,14 @@
         "id": "honeybee-little-learner-fun-pack",
         "name": "HoneyBee Little Learner Fun Pack",
         "emoji": "\u270f\ufe0f",
-        "price": 99,
+        "price": 109,
         "mrpLabel": "Under \u20b9100",
         "category": "under100",
         "hasCandy": false,
         "items": [
             "24-page A5 Colour personalised activity book",
             "Pencil + eraser + sharpener",
+            "10-crayon set",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
         ]
@@ -137,7 +139,7 @@
         "hasCandy": true,
         "items": [
             "32-page B/W personalised activity book",
-            "Pencil + eraser + scale + crayons",
+            "Pencil + eraser + sharpener + crayons",
             "Chocolate",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
@@ -153,7 +155,7 @@
         "hasCandy": true,
         "items": [
             "32-page Colour personalised activity book",
-            "Pencil + eraser + scale + crayons",
+            "Pencil + eraser + sharpener + crayons",
             "Chocolate",
             "Thank-you card",
             "Neatly packed as a ready-to-gift set"
@@ -163,7 +165,7 @@
         "id": "honeybee-celebration-pack",
         "name": "HoneyBee Celebration Pack",
         "emoji": "\ud83c\udf81",
-        "price": 158,
+        "price": 175,
         "mrpLabel": "Under \u20b9200",
         "category": "under200",
         "hasCandy": true,
@@ -179,7 +181,7 @@
         "id": "honeybee-premium-celebration-pack",
         "name": "HoneyBee Premium Celebration Pack",
         "emoji": "\ud83c\udf08",
-        "price": 170,
+        "price": 250,
         "mrpLabel": "Best Value",
         "category": "premium",
         "isPremium": true,
