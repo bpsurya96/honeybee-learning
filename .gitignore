@@ -27,3 +27,9 @@ compress_videos.sh
 node_modules/*
 package-lock.json
 package.json
+
+.env.example
+.env.local
+.next/
+next-env.d.ts
+supabase/

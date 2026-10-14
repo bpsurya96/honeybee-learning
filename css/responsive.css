@@ -518,10 +518,7 @@
         display: block;
     }
 
-    /* Show Ocean Kits promo banner in learning stream on mobile */
-    .ocean-kit-promo-banner {
-        display: flex;
-    }
+    
 
     /* Tabs — horizontal scroll on small phones with fade overlay */
     .stream-tabs {
