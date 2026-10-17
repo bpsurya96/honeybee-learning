@@ -312,7 +312,7 @@
     
       <!-- ══ SLIDE 5: Divine Stories (New Series) ══ -->
       <div class="hcs-slide hcs-slide--5" data-slide="4">
-        <div class="hcs-image-side" onclick="goToCategoryStream('divine')" style="cursor:pointer;"
+        <div class="hcs-image-side" onclick="window.location.href='divine-stories.html'" style="cursor:pointer;"
           title="Explore Divine Story Books">
           <img src="images/divine_kits/Krishna/IMG20260729084104~2.jpg" alt="Personalised Divine Story Books for kids"
             class="hcs-img" loading="lazy">
@@ -328,7 +328,7 @@
           </div>
           <div class="hcs-btns">
             <a href="https://wa.me/918883624873?text=Hi!%20I%20would%20like%20to%20order%20Divine%20Story%20Books%20for%20my%20child" target="_blank" rel="noopener" class="hcs-btn-primary" style="background:linear-gradient(135deg,#4A0E8F,#FF9933);">Order Divine Books &#x1F4AC;</a>
-            <button onclick="goToCategoryStream('divine')" class="hcs-btn-secondary" style="border-color:#FF9933;color:#4A0E8F;">Explore Stories &#x1F549;&#xFE0F;</button>
+            <a href="divine-stories.html" class="hcs-btn-secondary" style="border-color:#FF9933;color:#4A0E8F;text-decoration:none;">Explore Stories &#x1F549;&#xFE0F;</a>
           </div>
         </div>
       </div>
@@ -398,7 +398,7 @@
         </div>
 
         <!-- Card 3: Divine Stories -->
-        <div class="hero-cat-card hero-cat-card--divine" onclick="goToCategoryStream('divine')" tabindex="0" role="button" aria-label="Explore Divine Story Books">
+        <div class="hero-cat-card hero-cat-card--divine" onclick="window.location.href='divine-stories.html'" tabindex="0" role="button" aria-label="Explore Divine Story Books">
           <div class="hero-cat-badge hero-cat-badge--purple">&#x2728; New Launch</div>
           <div class="hero-cat-icon-wrap hero-cat-icon-wrap--purple">
             <span class="hero-cat-icon">&#x1F549;&#xFE0F;</span>
@@ -513,7 +513,7 @@
       <div class="stream-tabs">
         <button class="stream-tab active" id="tab-learning" onclick="switchStream('learning',this)">📚 Learning Products</button>
         <button class="stream-tab" id="tab-gifts" onclick="switchStream('gifts',this)">🎁 Birthday Return Gifts</button>
-        <button class="stream-tab" id="tab-divine" onclick="switchStream('divine',this)">&#x1F549;&#xFE0F; Divine Stories &#x2728;</button>
+        <a class="stream-tab" href="divine-stories.html" style="background:linear-gradient(135deg,#4A0E8F,#FF9933);color:white;border-color:transparent;text-decoration:none;">&#x1F549;&#xFE0F; Divine Stories &#x2728;</a>
       </div>
       <div class="stream-tabs-fade-hint" aria-hidden="true"></div>
     </div>
@@ -603,40 +603,7 @@
       </div>
     </div>
 
-    <!-- DIVINE STORIES STREAM (Inline) -->
-    <div class="stream-content" id="stream-divine">
-      <div class="divine-stream-header" style="text-align:left;margin-bottom:26px;">
-        <div class="section-tag" style="background:#FFF6D6;color:#d97706;border-color:rgba(217,119,6,0.3);">&#x1F549;&#xFE0F; Sacred Stories For Little Hearts</div>
-        <h3 style="font-family:'Fredoka One',cursive;font-size:1.85rem;color:#4A0E8F;margin-bottom:8px;">Divine Story Books</h3>
-        <p style="font-size:0.95rem;color:var(--text-soft);font-weight:600;max-width:720px;line-height:1.5;">
-          Where Hindu Gods speak your child's name and teach timeless values — friendship, courage, kindness &amp; wisdom. Beautifully illustrated, personalized with your child's name, starting at just &#x20B9;65!
-        </p>
-      </div>
-
-      <!-- Divine Filter Pills -->
-      <div class="filter-bar divine-filter-bar">
-        <button class="filter-btn divine-filter-btn active" onclick="filterDivineHome('all', this)">All Stories</button>
-        <button class="filter-btn divine-filter-btn" onclick="filterDivineHome('Krishna', this)">&#x1FA99; Krishna</button>
-        <button class="filter-btn divine-filter-btn" onclick="filterDivineHome('Ganesha', this)">&#x1F418; Ganesha</button>
-        <button class="filter-btn divine-filter-btn" onclick="filterDivineHome('Hanuman', this)">&#x1F6A9; Hanuman</button>
-        <button class="filter-btn divine-filter-btn" onclick="filterDivineHome('Murugan', this)">&#x1FA84; Murugan</button>
-        <button class="filter-btn divine-filter-btn" onclick="filterDivineHome('Siva', this)">&#x1F531; Shiva</button>
-        <button class="filter-btn divine-filter-btn" onclick="filterDivineHome('Lakshmi', this)">&#x1FAAB; Lakshmi</button>
-      </div>
-
-      <div class="products-grid divine-home-grid" id="divineGrid">
-        <!-- Populated from data/products_stories.json -->
-      </div>
-
-      <!-- Link to dedicated divine stories page -->
-      <div style="text-align:center;margin-top:36px;">
-        <a href="divine-stories.html" class="hcs-btn-primary" style="background:linear-gradient(135deg,#4A0E8F,#FF9933);color:#fff;display:inline-flex;align-items:center;gap:10px;padding:14px 30px;text-decoration:none;border-radius:50px;font-weight:800;font-size:1rem;box-shadow:0 8px 24px rgba(74,14,143,0.3);">
-          Explore Full Divine Stories Page &#x1F549;&#xFE0F; &#x2192;
-        </a>
-      </div>
-    </div>
-
-  </section>
+    </section>
 
   <!-- REVIEWS (full tabbed section) -->
   <section class="testimonials-section" id="testimonials">

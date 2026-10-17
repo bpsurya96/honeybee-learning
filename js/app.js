@@ -11,8 +11,6 @@
 
 // ─── GLOBAL STATE ───
 let learningProducts = [];
-let divineStories = [];
-let currentDivineFilter = 'all';
 
 let returnGifts = [];
 let reviewsData = { text: [], photos: [], videos: [] };
@@ -196,8 +194,7 @@ async function loadProducts() {
         divineStories = stories;
         currentLearningType = window.initialLearningType || currentLearningType;
         renderLearningProducts(currentLearningType);
-        renderDivineGrid();
-    } catch (e) { console.error('Failed to load products:', e); }
+            } catch (e) { console.error('Failed to load products:', e); }
 }
 
 async function loadReturnGifts() {
@@ -982,53 +979,6 @@ function goToCategoryStream(stream) {
     if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-}
-
-// ─── RENDER INLINE DIVINE STORIES GRID (Homepage) ───
-function renderDivineGrid(filter) {
-    const grid = document.getElementById('divineGrid');
-    if (!grid || !divineStories || !divineStories.length) return;
-    const f = filter || currentDivineFilter;
-    const list = f === 'all' 
-        ? divineStories 
-        : divineStories.filter(s => (s.godCharacter || '').toLowerCase() === f.toLowerCase());
-
-    grid.innerHTML = list.map((s, idx) => {
-        const orderMsg = encodeURIComponent("Hi HoneyBee Learning! I would like to order the personalized Divine Story book: " + s.title + " (₹" + s.price + ").");
-        const waLink = "https://wa.me/918883624873?text=" + orderMsg;
-        return `
-        <div class="product-card reveal visible" style="border-color:rgba(255,153,51,0.22);background:#fff;">
-          <div class="product-img-wrap" style="background:linear-gradient(135deg,#FFFDF5,#FFF6D6);position:relative;border-radius:18px 18px 0 0;overflow:hidden;">
-            <img src="${s.image}" alt="${s.title}" class="product-img" loading="lazy" 
-                 onerror="this.onerror=null;this.parentElement.innerHTML='<div style=\'height:210px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;\'>${s.godEmoji || '🕉️'}</div>'">
-            <div class="card-badge" style="background:linear-gradient(135deg,#4A0E8F,#6B2FAA);color:#FFD700;position:absolute;top:10px;left:10px;border-radius:20px;font-size:0.72rem;font-weight:800;padding:4px 10px;letter-spacing:0.4px;">${s.badge || 'Divine Story'}</div>
-          </div>
-          <div class="product-body" style="padding:16px;display:flex;flex-direction:column;flex:1;">
-            <div style="color:#d97706;font-size:0.74rem;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">
-              ${s.godEmoji || '🕉️'} ${s.godCharacter || 'Divine'} Series · Personalised
-            </div>
-            <h4 class="product-title" style="font-size:1.02rem;line-height:1.3;margin:0 0 6px;color:#2d0a5e;font-weight:800;">${s.title}</h4>
-            <p class="product-desc" style="font-size:0.83rem;color:var(--text-soft);line-height:1.42;margin-bottom:14px;flex:1;">${s.shortDesc || ''}</p>
-            <div class="product-footer" style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:10px;border-top:1px solid #f1f5f9;">
-              <div>
-                <span style="font-size:0.72rem;color:var(--text-soft);font-weight:700;display:block;">Price</span>
-                <span class="product-price" style="font-size:1.25rem;font-weight:900;color:#d97706;">₹${s.price}</span>
-              </div>
-              <a href="${waLink}" target="_blank" rel="noopener" class="btn-primary" 
-                 style="background:linear-gradient(135deg,#4A0E8F,#FF9933);color:#fff;padding:8px 18px;border-radius:24px;font-size:0.84rem;font-weight:800;text-decoration:none;box-shadow:0 4px 14px rgba(74,14,143,0.25);">
-                 Order 💬
-              </a>
-            </div>
-          </div>
-        </div>`;
-    }).join('');
-}
-
-function filterDivineHome(filter, btn) {
-    currentDivineFilter = filter;
-    document.querySelectorAll('.divine-filter-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    renderDivineGrid(filter);
 }
 
 // ─── HOMEPAGE INSTAGRAM REEL CONTROLLER ───
