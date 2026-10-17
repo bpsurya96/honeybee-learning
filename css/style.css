@@ -3900,3 +3900,123 @@ footer {
   .rg-benefits-grid { grid-template-columns: 1fr; }
   .rg-how-grid { grid-template-columns: 1fr; }
 }
+
+/* ─── DIVINE STORIES PROMO BANNER (Homepage) ─── */
+.divine-promo-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #2d0a5e 0%, #4a0e8f 60%, #ff9933 100%);
+  border: 1.5px solid rgba(255, 153, 51, 0.45);
+  border-radius: 16px;
+  padding: 14px 22px;
+  margin-bottom: 28px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(74, 14, 143, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.divine-promo-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(74, 14, 143, 0.35);
+  text-decoration: none;
+  color: white;
+}
+
+.divine-promo-banner::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.divine-promo-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 153, 51, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 215, 0, 0.35);
+}
+
+.divine-promo-text {
+  flex: 1;
+}
+
+.divine-promo-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: #FFD700;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.divine-promo-badge {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  background: #FF9933;
+  color: #2d0a5e;
+  padding: 2px 7px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.divine-promo-sub {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.35;
+}
+
+.divine-promo-arrow {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #FFD700;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.divine-promo-banner:hover .divine-promo-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .divine-promo-banner {
+    padding: 12px 14px;
+    gap: 12px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+  }
+  .divine-promo-icon {
+    font-size: 1.6rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  .divine-promo-title {
+    font-size: 0.95rem;
+  }
+  .divine-promo-sub {
+    font-size: 0.76rem;
+  }
+  .divine-promo-arrow {
+    font-size: 1.15rem;
+  }
+}
