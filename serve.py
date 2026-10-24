@@ -1,17 +1,26 @@
 #!/usr/bin/env python3
 """
 HoneyBee Learning — Development Server with Byte-Range Support for HTML5 Video
-Supports HTTP 206 Partial Content, Accept-Ranges, and progressive MP4 streaming.
+Supports HTTP 206 Partial Content, Accept-Ranges, UTF-8 charsets, and progressive MP4 streaming.
 """
 
 import os
 import sys
 import re
+from functools import partial
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
+DOC_ROOT = sys.argv[2] if len(sys.argv) > 2 else ('dist' if os.path.isdir('dist') else '.')
 
 class RangeHTTPRequestHandler(SimpleHTTPRequestHandler):
+    def guess_type(self, path):
+        ctype = super().guess_type(path)
+        if ctype.startswith('text/') or ctype in ('application/javascript', 'application/json'):
+            if 'charset' not in ctype:
+                ctype += '; charset=utf-8'
+        return ctype
+
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Cache-Control', 'no-cache, must-revalidate')
@@ -69,26 +78,20 @@ class RangeHTTPRequestHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
         f.seek(start)
-        bytes_to_send = length
-        bufsize = 64 * 1024
-        try:
-            while bytes_to_send > 0:
-                chunk = f.read(min(bytes_to_send, bufsize))
-                if not chunk:
-                    break
-                self.wfile.write(chunk)
-                bytes_to_send -= len(chunk)
-        except (ConnectionResetError, BrokenPipeError):
-            pass
-        finally:
-            f.close()
+        self.wfile.write(f.read(length))
+        f.close()
 
 if __name__ == '__main__':
-    server_address = ('0.0.0.0', PORT)
-    httpd = HTTPServer(server_address, RangeHTTPRequestHandler)
-    print(f"🍯 HoneyBee Local Server running with Byte-Range Video Streaming on http://localhost:{PORT}")
+    handler_class = partial(RangeHTTPRequestHandler, directory=DOC_ROOT)
+    server = HTTPServer(('0.0.0.0', PORT), handler_class)
+    print(f"\n  🍯 HoneyBee Learning Server")
+    print(f"  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    print(f"  🌐 Running at: http://localhost:{PORT}")
+    print(f"  📂 Serving from: {os.path.abspath(DOC_ROOT)}")
+    print(f"  🔤 Default Charset: UTF-8")
+    print(f"  🎥 HTML5 Video Streaming: Enabled")
+    print(f"  🛑 Press Ctrl+C to stop\n")
     try:
-        httpd.serve_forever()
+        server.serve_forever()
     except KeyboardInterrupt:
         print("\nShutting down server.")
-        httpd.server_close()
