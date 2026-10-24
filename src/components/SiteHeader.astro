@@ -1,0 +1,72 @@
+---
+interface Props {
+  activeNav?: string;
+}
+const { activeNav = "" } = Astro.props;
+
+const navItems = [
+  { href: "products.html", label: "All products" },
+  { href: "return-gifts.html", label: "Return gifts" },
+  { href: "ocean-kits.html", label: "Ocean Kits" },
+  { href: "divine-stories.html", label: "Divine stories" },
+  { href: "bee-points.html", label: "Bee Points" },
+  { href: "reviews.html", label: "Reviews" },
+];
+---
+<nav id="mainNav" aria-label="Main navigation">
+  <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
+    <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books" style="height:42px;border-radius:10px;">
+    <div>
+      <span class="nav-logo-text">HoneyBee</span>
+      <span class="nav-logo-sub">Learning</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    {navItems.map((item) => (
+      <li>
+        <a href={item.href} class={activeNav === item.href ? "active" : undefined}>{item.label}</a>
+      </li>
+    ))}
+  </ul>
+  <div class="nav-right">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="nav-cta" style="background:#25D366;">WhatsApp Us 💬</a>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<script is:inline>
+  (function() {
+    function setupNav() {
+      const h = document.getElementById('hamburger');
+      const nl = document.getElementById('navLinks');
+      const ov = document.getElementById('navOverlay') || document.getElementById('navDrawerOverlay');
+      if (!h || !nl) return;
+      
+      function toggle(open) {
+        nl.classList.toggle('open', open);
+        if (ov) ov.classList.toggle('open', open);
+        h.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+
+      h.onclick = function(e) {
+        e.stopPropagation();
+        toggle(!nl.classList.contains('open'));
+      };
+      if (ov) {
+        ov.onclick = function() { toggle(false); };
+      }
+      nl.querySelectorAll('a').forEach(function(a) {
+        a.onclick = function() { toggle(false); };
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupNav);
+    } else {
+      setupNav();
+    }
+  })();
+</script>

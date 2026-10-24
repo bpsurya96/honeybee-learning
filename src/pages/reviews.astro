@@ -1,0 +1,2827 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Customer Reviews & Video Ratings — HoneyBee Learning (4.9★)";
+const description = "Read real reviews & watch video testimonials of HoneyBee Learning personalised activity books, return gifts and divine stories. Watch reels directly on page without opening Instagram.";
+const canonicalUrl = "https://honeybeelearning.co/reviews.html";
+const activeNav = "reviews.html";
+const extraStylesheets = ['css/pages.css'];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  activeNav={activeNav}
+  extraStylesheets={extraStylesheets}
+  hideHeader={false}
+  hideFooter={false}
+  hideFab={false}
+>
+  <Fragment slot="head">
+    <style is:global>
+    /* ═════════════════════════════════════════════════════════════
+       REVIEWS HUB — CLEAN, AIRY, FULLY RESPONSIVE ARCHITECTURE
+       ═════════════════════════════════════════════════════════════ */
+    :root {
+      --hb-gold: #f59e0b;
+      --hb-amber: #d97706;
+      --hb-brown: #78350f;
+      --hb-dark: #292019;
+      --hb-cream: #faf7f2;
+      --hb-green: #15803d;
+      --border-soft: #ede6da;
+      --shadow-sm: 0 4px 16px rgba(0,0,0,0.04);
+      --shadow-hover: 0 10px 28px rgba(217, 119, 6, 0.12);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--hb-cream);
+      color: var(--hb-dark);
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO BANNER ── */
+    .rev-hero-section {
+      background: linear-gradient(180deg, #fff9ee 0%, #fff4df 100%);
+      padding: 105px 24px 44px;
+      text-align: center;
+      border-bottom: 1.5px solid #fde68a;
+    }
+
+    .hero-top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: var(--hb-brown);
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 8px 20px;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.14);
+      border: 1px solid #fde68a;
+      margin-bottom: 16px;
+      max-width: 95%;
+    }
+
+    .rev-hero-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.85rem, 4.5vw, 2.9rem);
+      color: var(--hb-brown);
+      margin: 0 0 12px;
+      line-height: 1.25;
+      padding: 0 8px;
+    }
+
+    .rev-hero-subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
+      font-weight: 600;
+      color: #854d0e;
+      max-width: 650px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+      padding: 0 12px;
+    }
+
+    /* ── COMPACT RATING STATS BAR ── */
+    .stats-card-bar {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 24px 32px;
+      box-shadow: 0 10px 30px rgba(120, 53, 15, 0.08);
+      border: 1.5px solid #fef3c7;
+      display: grid;
+      grid-template-columns: 200px 1fr 220px;
+      gap: 28px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .score-number {
+      font-family: 'Fredoka One', cursive;
+      font-size: 3.4rem;
+      color: #b45309;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .score-stars-row {
+      color: var(--hb-gold);
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+    }
+
+    .score-count-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #78716c;
+      margin-top: 4px;
+    }
+
+    .progress-bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .pbar-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #78716c;
+    }
+
+    .pbar-track {
+      flex: 1;
+      height: 9px;
+      background: #f5f5f4;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .pbar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f59e0b, #d97706);
+      border-radius: 10px;
+    }
+
+    .stats-cta-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-action-primary {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 12px 22px;
+      border-radius: 50px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.28);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-action-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(217, 119, 6, 0.35);
+    }
+
+    .btn-action-wa {
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 11px 20px;
+      border-radius: 50px;
+      text-align: center;
+      transition: transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-action-wa:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ── MAIN CONTENT WRAPPER ── */
+    .rev-content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 36px 20px 80px;
+    }
+
+    /* ── UNCLUTTERED 2-TIER TAB NAVIGATION ── */
+    .controls-panel {
+      position: sticky;
+      top: 68px;
+      z-index: 95;
+      background: rgba(250, 247, 242, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 14px 0 16px;
+      margin-bottom: 36px;
+      border-bottom: 1.5px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Tier 1: Media Mode Tabs */
+    .media-tabs-row {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 4px 2px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .media-tabs-row::-webkit-scrollbar { display: none; }
+
+    .media-tab-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border-soft);
+      color: #57534e;
+      padding: 11px 20px;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      flex-shrink: 0;
+    }
+
+    .media-tab-btn:hover {
+      border-color: var(--hb-gold);
+      color: var(--hb-brown);
+      background: #fffbeb;
+      transform: translateY(-1px);
+    }
+
+    .media-tab-btn.active {
+      background: var(--hb-brown);
+      color: #ffffff;
+      border-color: var(--hb-brown);
+      box-shadow: 0 4px 14px rgba(120, 53, 15, 0.22);
+    }
+
+    .media-tab-btn .pill-counter {
+      background: rgba(0,0,0,0.07);
+      font-size: 0.78rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    .media-tab-btn.active .pill-counter {
+      background: rgba(255,255,255,0.25);
+      color: #ffffff;
+    }
+
+    /* Tier 2: Product Category Pills */
+    .cat-filter-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 2px 2px 4px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cat-filter-row::-webkit-scrollbar { display: none; }
+
+    .cat-filter-label {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #78716c;
+      white-space: nowrap;
+      margin-right: 4px;
+      flex-shrink: 0;
+    }
+
+    .cat-pill-btn {
+      background: #ffffff;
+      border: 1px solid #e7e5e4;
+      color: #78716c;
+      padding: 6px 15px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      flex-shrink: 0;
+    }
+
+    .cat-pill-btn:hover {
+      border-color: #f59e0b;
+      color: #b45309;
+      background: #fffdf5;
+    }
+
+    .cat-pill-btn.active {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #f59e0b;
+      font-weight: 800;
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       INSTAGRAM REEL CARD — IN-PAGE DIRECT MP4 PLAYBACK
+       ═════════════════════════════════════════════════════════════ */
+    .reel-highlight-box {
+      background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+      border-radius: 24px;
+      padding: 36px 32px;
+      color: white;
+      margin-bottom: 50px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .reel-highlight-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    /* Smartphone video frame */
+    .smartphone-frame {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      background: #000000;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.6);
+      border: 4px solid #3f3f46;
+      aspect-ratio: 9/16;
+      position: relative;
+    }
+
+    .smartphone-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #000;
+      cursor: pointer;
+    }
+
+    .smartphone-iframe-wrap {
+      width: 100%;
+      height: 100%;
+      display: none;
+      background: #000;
+    }
+
+    .smartphone-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .phone-verified-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Centered Glowing Play Button Overlay (doesn't block bottom controls!) */
+    .reel-play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 56px;
+      background: rgba(0, 0, 0, 0.28);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      z-index: 4;
+    }
+
+    .reel-play-overlay:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    .reel-big-play-btn {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.8), 0 8px 24px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: pulsePlayGlow 2.4s infinite;
+    }
+
+    .reel-play-overlay:hover .reel-big-play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px rgba(245, 158, 11, 1), 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .reel-big-play-btn svg {
+      margin-left: 4px;
+    }
+
+    @keyframes pulsePlayGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(245, 158, 11, 0.6); }
+      50% { transform: scale(1.05); box-shadow: 0 0 32px rgba(245, 158, 11, 0.9); }
+    }
+
+    .reel-play-hint {
+      margin-top: 14px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fef08a;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 6px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      pointer-events: none;
+    }
+
+    /* Mode Switcher Buttons */
+    .player-mode-bar {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      background: rgba(255,255,255,0.06);
+      padding: 4px;
+      border-radius: 30px;
+      width: fit-content;
+      justify-content: center;
+    }
+
+    .player-mode-btn {
+      background: transparent;
+      border: none;
+      color: #a1a1aa;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .player-mode-btn.active {
+      background: #f59e0b;
+      color: #18181b;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .reel-content-side {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .reel-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #f09433, #dc2743, #bc1888);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 50px;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .reel-box-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      margin: 0;
+      color: #fef08a;
+      line-height: 1.3;
+    }
+
+    .reel-box-p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #e4e4e7;
+      margin: 0;
+    }
+
+    .reel-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .point-card {
+      background: rgba(255,255,255,0.08);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fef08a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reel-buttons-wrap {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn-ig-external {
+      background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(220, 39, 67, 0.35);
+      transition: transform 0.2s;
+    }
+
+    .btn-ig-external:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       SECTION CARDS — SPACIOUS & DISTINCT
+       ═════════════════════════════════════════════════════════════ */
+    .section-block {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 36px 32px;
+      margin-bottom: 44px;
+      border: 1.5px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .block-header {
+      margin-bottom: 28px;
+    }
+
+    .block-header h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      color: var(--hb-brown);
+      margin: 0 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .block-header p {
+      color: #78716c;
+      font-size: 0.96rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* ── TEXT REVIEWS GRID ── */
+    .text-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 24px;
+    }
+
+    .rev-card {
+      background: #faf8f5;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.2s ease;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .rev-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: #fde68a;
+      background: #ffffff;
+    }
+
+    .rev-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .rev-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      font-weight: 900;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid #fde68a;
+      flex-shrink: 0;
+    }
+
+    .rev-author-details {
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .rev-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--hb-dark);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .rev-location {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #78716c;
+      display: block;
+    }
+
+    .rev-verified-badge {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--hb-green);
+      background: #dcfce7;
+      padding: 4px 9px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .rev-tag-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .rev-stars {
+      color: var(--hb-gold);
+      font-size: 1.15rem;
+      letter-spacing: 1.5px;
+    }
+
+    .rev-cat-pill {
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .rev-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #374151;
+      margin: 0;
+      flex: 1;
+    }
+
+    .rev-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px dashed #e7e5e4;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #78716c;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ── YOUTUBE VIDEO GRID ── */
+    .yt-videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 26px;
+    }
+
+    .yt-video-card {
+      background: #faf8f5;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+    }
+
+    .yt-video-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: #fde68a;
+      background: #ffffff;
+    }
+
+    .yt-frame-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: #000000;
+    }
+
+    .yt-frame-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .yt-card-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .yt-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .yt-parent-title {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--hb-dark);
+      margin: 0;
+    }
+
+    .yt-loc-span {
+      font-weight: 600;
+      color: #78716c;
+      font-size: 0.88rem;
+    }
+
+    .yt-quote {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #4b5563;
+      margin: 0;
+      font-style: italic;
+    }
+
+    /* ── PHOTO GALLERY GRID ── */
+    .photo-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .photo-item-card {
+      background: #faf8f5;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .photo-item-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: #fde68a;
+    }
+
+    .photo-img-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #f5f5f4;
+    }
+
+    .photo-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-item-card:hover .photo-img-container img {
+      transform: scale(1.05);
+    }
+
+    .photo-hover-tag {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .photo-item-card:hover .photo-hover-tag {
+      opacity: 1;
+    }
+
+    .photo-hover-tag span {
+      background: #ffffff;
+      color: var(--hb-dark);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 50px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    }
+
+    .photo-caption-bar {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .photo-date-badge {
+      font-size: 0.8rem;
+      color: #78716c;
+      font-weight: 700;
+    }
+
+    /* ── EMPTY FILTER STATE ── */
+    .empty-filter-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #78716c;
+      display: none;
+    }
+
+    .empty-filter-state span {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* ── TRUST HIGHLIGHTS ROW ── */
+    .trust-features-strip {
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      border-radius: 20px;
+      padding: 24px 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 44px;
+    }
+
+    .trust-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .trust-cell-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .trust-cell-title {
+      font-weight: 800;
+      color: var(--hb-brown);
+      font-size: 0.95rem;
+      margin: 0 0 2px;
+    }
+
+    .trust-cell-sub {
+      font-size: 0.82rem;
+      color: #92400e;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    /* ── FAQ SECTION ── */
+    .faq-accordion-box {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 36px 32px;
+      border: 1.5px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 44px;
+    }
+
+    .faq-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .faq-node {
+      border: 1.5px solid var(--border-soft);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    .faq-node.open {
+      border-color: #fde68a;
+      background: #fffdf8;
+    }
+
+    .faq-question-btn {
+      padding: 16px 20px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--hb-brown);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      gap: 12px;
+    }
+
+    .faq-chevron {
+      font-size: 0.85rem;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-node.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer-body {
+      padding: 0 20px 18px;
+      font-size: 0.94rem;
+      line-height: 1.6;
+      color: #4b5563;
+      display: none;
+    }
+
+    .faq-node.open .faq-answer-body {
+      display: block;
+    }
+
+    /* ── WRITE REVIEW FOOTER BANNER ── */
+    .write-rev-footer-banner {
+      background: linear-gradient(135deg, #78350f 0%, #451a03 100%);
+      color: white;
+      border-radius: 24px;
+      padding: 44px 32px;
+      text-align: center;
+    }
+
+    .write-rev-footer-banner h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      margin: 0 0 10px;
+      color: #fef08a;
+    }
+
+    .write-rev-footer-banner p {
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 26px;
+      color: #fde68a;
+      line-height: 1.6;
+    }
+
+    .banner-buttons-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── LIGHTBOX MODAL ── */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-body {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .lightbox-body img {
+      width: 100%;
+      height: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-dismiss {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: rgba(0,0,0,0.65);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-dismiss:hover {
+      background: rgba(0,0,0,0.95);
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       TABLET RESPONSIVENESS (768px – 1024px)
+       ═════════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .rev-content-wrapper {
+        padding: 28px 18px 70px;
+      }
+
+      .stats-card-bar {
+        grid-template-columns: 180px 1fr 190px;
+        gap: 20px;
+        padding: 22px 24px;
+      }
+
+      .reel-highlight-grid {
+        grid-template-columns: 290px 1fr;
+        gap: 28px;
+      }
+
+      .smartphone-frame {
+        max-width: 290px;
+      }
+
+      .text-reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .yt-videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .photo-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .trust-features-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       MOBILE & PHABLET RESPONSIVENESS (<= 768px)
+       ═════════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .rev-hero-section {
+        padding: 85px 16px 36px;
+      }
+
+      .stats-card-bar {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 24px 20px;
+        gap: 20px;
+        border-radius: 18px;
+      }
+
+      .progress-bar-group {
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .stats-cta-col {
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* Sticky controls on mobile */
+      .controls-panel {
+        top: 60px;
+        padding: 10px 0 12px;
+        margin-bottom: 24px;
+        gap: 10px;
+      }
+
+      .media-tab-btn {
+        padding: 9px 16px;
+        font-size: 0.88rem;
+      }
+
+      .cat-pill-btn {
+        padding: 5px 13px;
+        font-size: 0.82rem;
+      }
+
+      /* Reel box on mobile: stack vertically */
+      .reel-highlight-box {
+        padding: 28px 20px;
+        border-radius: 20px;
+        margin-bottom: 36px;
+      }
+
+      .reel-highlight-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .smartphone-frame {
+        max-width: 270px;
+        margin: 0 auto;
+      }
+
+      .player-mode-bar {
+        margin: 12px auto 0 !important;
+      }
+
+      .reel-header-badge {
+        margin: 0 auto;
+      }
+
+      .reel-content-side {
+        align-items: center;
+      }
+
+      .reel-points-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        text-align: left;
+      }
+
+      .reel-buttons-wrap {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .btn-ig-external,
+      .reel-buttons-wrap .btn-action-primary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Section blocks on mobile */
+      .section-block {
+        padding: 24px 18px;
+        border-radius: 20px;
+        margin-bottom: 32px;
+      }
+
+      .block-header {
+        margin-bottom: 20px;
+      }
+
+      .text-reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .yt-videos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .photo-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .trust-features-strip {
+        grid-template-columns: 1fr;
+        padding: 20px 22px;
+        gap: 16px;
+        border-radius: 18px;
+        margin-bottom: 32px;
+      }
+
+      .faq-accordion-box {
+        padding: 24px 18px;
+        border-radius: 20px;
+        margin-bottom: 32px;
+      }
+
+      .faq-question-btn {
+        padding: 14px 16px;
+        font-size: 0.94rem;
+      }
+
+      .faq-answer-body {
+        padding: 0 16px 16px;
+        font-size: 0.9rem;
+      }
+
+      .write-rev-footer-banner {
+        padding: 34px 20px;
+        border-radius: 20px;
+      }
+
+      .banner-buttons-row a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ═════════════════════════════════════════════════════════════
+       SMALL PHONES RESPONSIVENESS (<= 480px)
+       ═════════════════════════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      .rev-hero-section {
+        padding: 78px 12px 28px;
+      }
+
+      .hero-top-badge {
+        font-size: 0.8rem;
+        padding: 6px 14px;
+      }
+
+      .rev-hero-title {
+        font-size: 1.65rem;
+      }
+
+      .stats-card-bar {
+        padding: 20px 14px;
+      }
+
+      .score-number {
+        font-size: 2.8rem;
+      }
+
+      .controls-panel {
+        top: 56px;
+        padding: 8px 0 10px;
+      }
+
+      .media-tab-btn {
+        padding: 8px 14px;
+        font-size: 0.84rem;
+      }
+
+      .smartphone-frame {
+        max-width: 240px;
+        border-radius: 22px;
+        border-width: 3px;
+      }
+
+      .reel-big-play-btn {
+        width: 62px;
+        height: 62px;
+      }
+
+      .reel-big-play-btn svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .reel-play-hint {
+        font-size: 0.8rem;
+        padding: 4px 12px;
+      }
+
+      .reel-highlight-box {
+        padding: 22px 14px;
+      }
+
+      .reel-points-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .point-card {
+        padding: 8px 12px;
+        font-size: 0.84rem;
+      }
+
+      .section-block {
+        padding: 20px 12px;
+        border-radius: 16px;
+      }
+
+      .rev-card {
+        padding: 18px 14px;
+        border-radius: 16px;
+      }
+
+      .rev-card-header {
+        gap: 10px;
+      }
+
+      .rev-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+      }
+
+      .rev-name {
+        font-size: 0.94rem;
+      }
+
+      .rev-text {
+        font-size: 0.9rem;
+      }
+
+      .photo-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .photo-caption-bar {
+        padding: 8px 10px;
+      }
+
+      .photo-date-badge {
+        font-size: 0.72rem;
+      }
+
+      .rev-cat-pill {
+        font-size: 0.72rem;
+        padding: 2px 7px;
+      }
+
+      .photo-hover-tag span {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+      }
+
+      .write-rev-footer-banner h2 {
+        font-size: 1.45rem;
+      }
+
+      .write-rev-footer-banner p {
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+    <script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "HoneyBee Learning Personalised Books & Birthday Return Gifts",
+  "image": "https://honeybeelearning.co/images/logo/logo.png",
+  "description": "India's first personalised activity book for kids. Customer reviews and ratings for activity books, divine stories and birthday return gift combos.",
+  "brand": {
+    "@type": "Brand",
+    "name": "HoneyBee Learning"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "142",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "25",
+    "highPrice": "499",
+    "priceCurrency": "INR"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Abi"
+      },
+      "reviewBody": "My kid loved the book, and her reading skills have really improved. I would definitely recommend it to my friends and family.",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Priya Anand"
+      },
+      "reviewBody": "Ordered 30 Mini Color Packs for my son's birthday. Every child's name was personalised perfectly. The kids were so excited to see their own names on the sheets!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Asha Nandhini"
+      },
+      "reviewBody": "I wanted to gift my daughter with a fun + educational activity. So I ordered a Barbie themed activity book for her birthday. She was excited and happy for the book. Thank you Honeybee Learning!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Nivedhitha"
+      },
+      "reviewBody": "Its awesome, my son really loved it.",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Shravanthi"
+      },
+      "reviewBody": "We wanted something meaningful for my son's birthday and ordered 35 sets of Mini Colour Pack. The kids were so happy with the activity sheets and stationery. Seeing them start coloring in class itself was the cutest moment. Highly Recommended!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Kavitha R."
+      },
+      "reviewBody": "The Bhagavad Gita activity book is beautiful! My 4-year-old loves the Krishna illustrations and the name personalisation makes her feel so special. Highly recommend!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Ramesh K."
+      },
+      "reviewBody": "Got the Alphabet Flashcards for my daughter. The real-life pictures with her name in the sentences made learning so engaging. Sold out in my kids group within a week!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Deepa S."
+      },
+      "reviewBody": "The Dino activity book kept my 5-year-old busy for hours! Love that it's personalised with his name. Great quality printing.",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Arun M."
+      },
+      "reviewBody": "Perfect birthday return gifts. Ordered the Budget Friendly Combo for 25 kids \u2014 delivery was on time and every set was neatly packed!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Lakshmi V."
+      },
+      "reviewBody": "Krishna theme activity book is wonderful for value education. My daughter now talks about kindness and sharing after doing the exercises!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Ashwini Arumugam"
+      },
+      "reviewBody": "My son was extremely excited to see his name on every page of the Spiderman themed book. It made the learning experience very special for him. He enjoyed the activities so much and stayed focused throughout. Truly impressed with the creativity and effort!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Sathya"
+      },
+      "reviewBody": "My son loved the book. He loves to colour and learn in a happy way.",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Seethalakshmi"
+      },
+      "reviewBody": "My son loved the activity book, and the name customisation is extra special to us. His Writing, Counting, Creativity, Reading is improved very well.",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Usha"
+      },
+      "reviewBody": "I recently purchased a set of 2 reusable (Dora & Chutti kannama) theme books and one Barbie theme book. The activities keep kids engaged. Kids happily practising again and again with their favourite theme book. Wholeheartedly Recommended!",
+      "datePublished": "2026-02-10"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Divya K"
+      },
+      "reviewBody": "My cousin loved all 4 books which I bought for her. She was very excited seeing her name and picture on the books. Thank you Honeybee Learning for these Amazing Customized Workbooks!",
+      "datePublished": "2026-02-10"
+    }
+  ]
+}
+  </script>
+    <script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I watch HoneyBee Learning customer video reviews and Instagram reels directly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! You can play our Instagram reels and customer video testimonials directly on our reviews page with audio and full controls without opening the Instagram app or leaving our website."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do parents say about HoneyBee personalised activity books?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Parents rate HoneyBee Learning 4.9/5 stars. They highlight that seeing their child's own name on every page boosts reading interest and creates screen-free engagement for hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are HoneyBee return gifts good for birthday parties?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Parents and party hosts love HoneyBee's personalised Mini Color Packs and Birthday Return Gift Combos. Starting at budget-friendly prices, each pack is customized with individual guests' names."
+      }
+    }
+  ]
+}
+  </script>
+    <meta name="keywords" content="HoneyBee Learning reviews, HoneyBee Learning ratings, personalised books reviews, birthday return gifts reviews chennai, divine stories reviews, play instagram reel on website">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://honeybeelearning.co/reviews.html">
+    <meta property="og:title" content="HoneyBee Learning Reviews — 4.9★ from 1,000+ Happy Parents">
+    <meta property="og:description" content="Watch video reviews, Instagram reels, and see why kids love our personalised name books.">
+    <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+  </Fragment>
+
+
+
+  <!-- NAV -->
+  
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <span>Customer Reviews</span>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="rev-hero-section">
+    <div class="hero-top-badge">
+      <span>🍯 4.9 / 5 Stars from 1,000+ Happy Families</span>
+    </div>
+    <h1 class="rev-hero-title">Loved by Parents & Kids Across India</h1>
+    <p class="rev-hero-subtitle">
+      Real stories, real smiles, and authentic parent experiences with our screen-free personalised activity books, return gifts and divine stories.
+    </p>
+
+    <!-- STATS OVERVIEW BAR -->
+    <div class="stats-card-bar">
+      <div>
+        <div class="score-number">4.9</div>
+        <div class="score-stars-row">★★★★★</div>
+        <div class="score-count-label">Based on 142+ verified reviews</div>
+      </div>
+
+      <div class="progress-bar-group">
+        <div class="pbar-line">
+          <span>5 ★</span>
+          <div class="pbar-track"><div class="pbar-fill" style="width: 94%;"></div></div>
+          <span>94%</span>
+        </div>
+        <div class="pbar-line">
+          <span>4 ★</span>
+          <div class="pbar-track"><div class="pbar-fill" style="width: 6%;"></div></div>
+          <span>6%</span>
+        </div>
+        <div class="pbar-line">
+          <span>3 ★</span>
+          <div class="pbar-track"><div class="pbar-fill" style="width: 0%;"></div></div>
+          <span>0%</span>
+        </div>
+      </div>
+
+      <div class="stats-cta-col">
+        <a href="write-review.html" class="btn-action-primary">⭐ Write a Review</a>
+        <a href="https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20saw%20your%20customer%20reviews%20and%20want%20to%20order." target="_blank" rel="noopener" class="btn-action-wa">💬 Order on WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN REVIEWS CONTAINER -->
+  <main class="rev-content-wrapper">
+
+    <!-- ═══ 2-TIER CONTROLS PANEL: UNCLUTTERED & INTUITIVE ═══ -->
+    <div class="controls-panel">
+      <!-- Tier 1: View Modes -->
+      <div class="media-tabs-row" role="tablist" aria-label="Review type tabs">
+        <button class="media-tab-btn active" data-view="all" role="tab">
+          ✨ All Reviews <span class="pill-counter">25</span>
+        </button>
+        <button class="media-tab-btn" data-view="written" role="tab">
+          💬 Written Reviews <span class="pill-counter">15</span>
+        </button>
+        <button class="media-tab-btn" data-view="videos" role="tab">
+          🎥 Videos & Reels <span class="pill-counter">8</span>
+        </button>
+        <button class="media-tab-btn" data-view="photos" role="tab">
+          📸 Unboxing Photos <span class="pill-counter">3</span>
+        </button>
+      </div>
+
+      <!-- Tier 2: Product Category Pills -->
+      <div class="cat-filter-row" role="group" aria-label="Filter by product category">
+        <span class="cat-filter-label">Filter:</span>
+        <button class="cat-pill-btn active" data-cat="all">All Products</button>
+        <button class="cat-pill-btn" data-cat="activity">📖 Activity Books</button>
+        <button class="cat-pill-btn" data-cat="return-gift">🎁 Return Gifts</button>
+        <button class="cat-pill-btn" data-cat="divine">🕉️ Divine Stories</button>
+      </div>
+    </div>
+
+    <!-- ═══ FEATURED INSTAGRAM REEL (PLAYS NATIVELY IN PAGE) ═══ -->
+    <section class="reel-highlight-box" id="reelSection" data-category="activity">
+      <div class="reel-highlight-grid">
+        <!-- Smartphone frame playing MP4 natively + Instagram Embed option -->
+        <div>
+          <div class="smartphone-frame" id="smartphoneFrame">
+            <!-- Native HTML5 Video Player -->
+            <video 
+              id="instaReelPlayer"
+              class="smartphone-video"
+              poster="reviews/videos/honeybee_reel_poster.jpg" 
+              controls 
+              playsinline 
+              preload="metadata"
+              title="HoneyBee Learning Instagram Reel Video">
+              <source src="reviews/videos/honeybee_reel.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+
+            <!-- Centered Glowing Play Button Overlay -->
+            <div class="reel-play-overlay" id="reelPlayOverlay" title="Click to play with sound">
+              <div class="reel-big-play-btn">
+                <svg viewBox="0 0 24 24" width="34" height="34" fill="white">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="reel-play-hint">Tap to Play Reel 🎬</span>
+            </div>
+
+            <!-- Fallback Instagram Iframe (toggled via button below) -->
+            <div class="smartphone-iframe-wrap" id="instaIframeWrap">
+              <iframe 
+                id="instaIframe"
+                src="about:blank"
+                data-src="https://www.instagram.com/reel/DeIxisWMoaT/embed/captioned/" 
+                title="HoneyBee Instagram Reel Embed" 
+                allowfullscreen="true" 
+                frameborder="0"
+                scrolling="no">
+              </iframe>
+            </div>
+
+            <div class="phone-verified-tag">
+              <span>🐝</span> Verified Reel
+            </div>
+          </div>
+
+          <!-- Dual Mode Switcher -->
+          <div class="player-mode-bar" style="margin: 12px auto 0;">
+            <button class="player-mode-btn active" id="btnModeNative" type="button">▶ Direct HD Video</button>
+            <button class="player-mode-btn" id="btnModeEmbed" type="button">📸 Instagram Embed</button>
+          </div>
+        </div>
+
+        <!-- Reel information -->
+        <div class="reel-content-side">
+          <div class="reel-header-badge">
+            <span>🎥</span> Direct Reel Playback
+          </div>
+          <h2 class="reel-box-title">Watch Kids Unboxing Their Personalised Books! ✨</h2>
+          <p class="reel-box-p">
+            Press play to watch this real video reel directly on this page without opening Instagram or signing in! See the pure joy as children discover their names woven into every activity page.
+          </p>
+
+          <div class="reel-points-grid">
+            <div class="point-card">
+              <span>✍️</span> Child's Name Printed
+            </div>
+            <div class="point-card">
+              <span>📚</span> Screen-Free Engagement
+            </div>
+            <div class="point-card">
+              <span>🎨</span> Thick Matte Paper
+            </div>
+            <div class="point-card">
+              <span>🚚</span> Delivered Across India
+            </div>
+          </div>
+
+          <div class="reel-buttons-wrap">
+            <a href="https://www.instagram.com/reel/DeIxisWMoaT/?exln=MWo5ZG5kNTFvaTZvbQ==" target="_blank" rel="noopener" class="btn-ig-external">
+              <span>📸</span> Open in Instagram ↗
+            </a>
+            <a href="https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20watched%20the%20video%20reel%20and%20want%20to%20order." target="_blank" rel="noopener" class="btn-action-primary" style="padding:12px 24px;border-radius:50px;text-decoration:none;">
+              Order This on WhatsApp 💬
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 1: VERIFIED WRITTEN REVIEWS ═══ -->
+    <section class="section-block" id="writtenBlock" data-section="written">
+      <div class="block-header">
+        <h2>💬 Verified Parent Reviews</h2>
+        <p>Honest feedback from parents on reading improvements, focus, and birthday party gifts.</p>
+      </div>
+
+      <div class="text-reviews-grid" id="textReviewsGrid">
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">A</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Abi</h3>
+            <span class="rev-location">📍 Chennai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;My kid loved the book, and her reading skills have really improved. I would definitely recommend it to my friends and family.&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ May 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="return-gift">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">P</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Priya Anand</h3>
+            <span class="rev-location">📍 Medavakkam, Chennai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#d97706; background:#fef3c7;">🎁 Return Gifts</span>
+        </div>
+
+        <p class="rev-text">&ldquo;Ordered 30 Mini Color Packs for my son&#x27;s birthday. Every child&#x27;s name was personalised perfectly. The kids were so excited to see their own names on the sheets!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Jan 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">A</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Asha Nandhini</h3>
+            <span class="rev-location">📍 Villapuram, Madurai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;I wanted to gift my daughter with a fun + educational activity. So I ordered a Barbie themed activity book for her birthday. She was excited and happy for the book. Thank you Honeybee Learning!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Jan 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">N</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Nivedhitha</h3>
+            <span class="rev-location">📍 Munichalai, Madurai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;Its awesome, my son really loved it.&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Dec 2025</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="return-gift">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">S</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Shravanthi</h3>
+            <span class="rev-location">📍 Sabarimalayapuram, Sivagiri</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#d97706; background:#fef3c7;">🎁 Return Gifts</span>
+        </div>
+
+        <p class="rev-text">&ldquo;We wanted something meaningful for my son&#x27;s birthday and ordered 35 sets of Mini Colour Pack. The kids were so happy with the activity sheets and stationery. Seeing them start coloring in class itself was the cutest moment. Highly Recommended!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Jan 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="divine">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">K</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Kavitha R.</h3>
+            <span class="rev-location">📍 Sholinganallur, Chennai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <span class="rev-cat-pill" style="color:#b45309; background:#fff7ed;">🕉️ Divine Stories</span>
+        </div>
+
+        <p class="rev-text">&ldquo;The Bhagavad Gita activity book is beautiful! My 4-year-old loves the Krishna illustrations and the name personalisation makes her feel so special. Highly recommend!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Nov 2025</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">R</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Ramesh K.</h3>
+            <span class="rev-location">📍 Perungudi, Chennai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;Got the Alphabet Flashcards for my daughter. The real-life pictures with her name in the sentences made learning so engaging. Sold out in my kids group within a week!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Dec 2025</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">D</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Deepa S.</h3>
+            <span class="rev-location">📍 Velachery, Chennai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;The Dino activity book kept my 5-year-old busy for hours! Love that it&#x27;s personalised with his name. Great quality printing.&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Feb 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="return-gift">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">A</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Arun M.</h3>
+            <span class="rev-location">📍 Tambaram, Chennai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#d97706; background:#fef3c7;">🎁 Return Gifts</span>
+        </div>
+
+        <p class="rev-text">&ldquo;Perfect birthday return gifts. Ordered the Budget Friendly Combo for 25 kids — delivery was on time and every set was neatly packed!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Jan 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="divine">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">L</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Lakshmi V.</h3>
+            <span class="rev-location">📍 Pallavaram, Chennai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <span class="rev-cat-pill" style="color:#b45309; background:#fff7ed;">🕉️ Divine Stories</span>
+        </div>
+
+        <p class="rev-text">&ldquo;Krishna theme activity book is wonderful for value education. My daughter now talks about kindness and sharing after doing the exercises!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Feb 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">A</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Ashwini Arumugam</h3>
+            <span class="rev-location">📍 Thirupuvanam</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;My son was extremely excited to see his name on every page of the Spiderman themed book. It made the learning experience very special for him. He enjoyed the activities so much and stayed focused throughout. Truly impressed with the creativity and effort!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ Apr 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">S</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Sathya</h3>
+            <span class="rev-location">📍 Madambakam, Chennai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;My son loved the book. He loves to colour and learn in a happy way.&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ July 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">S</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Seethalakshmi</h3>
+            <span class="rev-location">📍 Tenkasi</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;My son loved the activity book, and the name customisation is extra special to us. His Writing, Counting, Creativity, Reading is improved very well.&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ May 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">U</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Usha</h3>
+            <span class="rev-location">📍 Madurai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;I recently purchased a set of 2 reusable (Dora &amp; Chutti kannama) theme books and one Barbie theme book. The activities keep kids engaged. Kids happily practising again and again with their favourite theme book. Wholeheartedly Recommended!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ June 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+
+      <article class="rev-card" data-category="activity">
+        <div class="rev-card-header">
+          <div class="rev-avatar" aria-hidden="true">D</div>
+          <div class="rev-author-details">
+            <h3 class="rev-name">Divya K</h3>
+            <span class="rev-location">📍 Madurai</span>
+          </div>
+          <div class="rev-verified-badge" title="Verified Customer">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified
+          </div>
+        </div>
+
+        <div class="rev-tag-row">
+          <div class="rev-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+        </div>
+
+        <p class="rev-text">&ldquo;My cousin loved all 4 books which I bought for her. She was very excited seeing her name and picture on the books. Thank you Honeybee Learning for these Amazing Customized Workbooks!&rdquo;</p>
+
+        <div class="rev-card-bottom">
+          <span class="rev-date">🗓️ July 2026</span>
+          <span class="rev-recommend">🍯 100% Recommended</span>
+        </div>
+      </article>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 2: VIDEO TESTIMONIALS ═══ -->
+    <section class="section-block" id="videoBlock" data-section="videos">
+      <div class="block-header">
+        <h2>🎥 Video Testimonials from Parents</h2>
+        <p>Listen directly to parents across Trichy, Bangalore, Dindigul, and Madurai.</p>
+      </div>
+
+      <div class="yt-videos-grid" id="ytVideosGrid">
+
+      <div class="yt-video-card" data-category="activity">
+        <div class="yt-frame-wrap">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/-Ls9w3RLdzw?rel=0" 
+            title="HoneyBee Learning customer video by Manikandan" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-badge-row">
+            <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+            <span class="rev-stars">★★★★★</span>
+          </div>
+          <h4 class="yt-parent-title">Manikandan <span class="yt-loc-span">· Somarasampatti, Trichy</span></h4>
+          <p class="yt-quote">&ldquo;Jungle Animals theme activity book is wonderful for value education. My daughter now talks about friendly animals and learning more things after doing the exercises!&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="yt-video-card" data-category="activity">
+        <div class="yt-frame-wrap">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/yCsBi-g-b2o?rel=0" 
+            title="HoneyBee Learning customer video by Geetha" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-badge-row">
+            <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+            <span class="rev-stars">★★★★☆</span>
+          </div>
+          <h4 class="yt-parent-title">Geetha <span class="yt-loc-span">· Krishnarajapuram, Bangalore</span></h4>
+          <p class="yt-quote">&ldquo;Reusable book - Roads and Cars theme. My child is hooked, and I personally loved it myself. It&#x27;s really good for toddlers. Highly recommend!&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="yt-video-card" data-category="return-gift">
+        <div class="yt-frame-wrap">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/NH8rxpwhZYk?rel=0" 
+            title="HoneyBee Learning customer video by Srija" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-badge-row">
+            <span class="rev-cat-pill" style="color:#d97706; background:#fef3c7;">🎁 Return Gifts</span>
+            <span class="rev-stars">★★★★★</span>
+          </div>
+          <h4 class="yt-parent-title">Srija <span class="yt-loc-span">· Chinnalapatti, Dindugal</span></h4>
+          <p class="yt-quote">&ldquo;Ordered 25 worksheet fun pack. The quality and presentation were wonderful, and everyone really likes them. My daughter loved it a lot.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="yt-video-card" data-category="activity">
+        <div class="yt-frame-wrap">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/tG9q0YS1dTU?rel=0" 
+            title="HoneyBee Learning customer video by Madhumitha" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-badge-row">
+            <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+            <span class="rev-stars">★★★★★</span>
+          </div>
+          <h4 class="yt-parent-title">Madhumitha <span class="yt-loc-span">· Teppakulam, Madurai</span></h4>
+          <p class="yt-quote">&ldquo;Barbie theme activity book with my kid&#x27;s name, and family name tracing was such a unique exercise. I really appreciate bringing these kinds of books to market!&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="yt-video-card" data-category="activity">
+        <div class="yt-frame-wrap">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/O-ffeovY_98?rel=0" 
+            title="HoneyBee Learning customer video by Vidhya Deepak Prakash" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-badge-row">
+            <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+            <span class="rev-stars">★★★★★</span>
+          </div>
+          <h4 class="yt-parent-title">Vidhya Deepak Prakash <span class="yt-loc-span">· Lalgudi, Trichy</span></h4>
+          <p class="yt-quote">&ldquo;Ordered Butterfly theme activity book for my daughter. She really loved it, and the motivational stickers included in the set were so nice.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="yt-video-card" data-category="activity">
+        <div class="yt-frame-wrap">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/jlRk5LFcUuw?rel=0" 
+            title="HoneyBee Learning customer video by Srinivasan TB" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-badge-row">
+            <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+            <span class="rev-stars">★★★★★</span>
+          </div>
+          <h4 class="yt-parent-title">Srinivasan TB <span class="yt-loc-span">· Bangalore</span></h4>
+          <p class="yt-quote">&ldquo;My daughter loved the book a lot and enjoyed. It improves the study time. She started enjoying reading and writing instead of seeing it as work. Also liked the theme much.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="yt-video-card" data-category="activity">
+        <div class="yt-frame-wrap">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/bSaD86nqBcw?rel=0" 
+            title="HoneyBee Learning customer video by Mano Sri" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="yt-card-body">
+          <div class="yt-badge-row">
+            <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+            <span class="rev-stars">★★★★★</span>
+          </div>
+          <h4 class="yt-parent-title">Mano Sri <span class="yt-loc-span">· Bangalore</span></h4>
+          <p class="yt-quote">&ldquo;The personalized cocomelon book was a big hit with my daughter. She was thrilled to see her name throughout the book. It kept her engaged and excited to complete every activity. Amazing concept!&rdquo;</p>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION 3: CUSTOMER PHOTO ALBUM ═══ -->
+    <section class="section-block" id="photoBlock" data-section="photos">
+      <div class="block-header">
+        <h2>📸 Unboxing Photos from Parents</h2>
+        <p>Real customer photos sent to our WhatsApp after receiving their custom books.</p>
+      </div>
+
+      <div class="photo-cards-grid" id="photoCardsGrid">
+
+      <div class="photo-item-card" data-category="activity" onclick="openPhotoLightbox('reviews/photos/review1.jpeg')">
+        <div class="photo-img-container">
+          <img src="reviews/photos/review1.jpeg" alt="Customer photo of child with HoneyBee Learning personalised book 1" loading="lazy">
+          <div class="photo-hover-tag">
+            <span>🔍 Zoom</span>
+          </div>
+        </div>
+        <div class="photo-caption-bar">
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+          <span class="rev-stars">★★★★★</span>
+          <span class="photo-date-badge">Mar 2026</span>
+        </div>
+      </div>
+
+      <div class="photo-item-card" data-category="activity" onclick="openPhotoLightbox('reviews/photos/review2.jpeg')">
+        <div class="photo-img-container">
+          <img src="reviews/photos/review2.jpeg" alt="Customer photo of child with HoneyBee Learning personalised book 2" loading="lazy">
+          <div class="photo-hover-tag">
+            <span>🔍 Zoom</span>
+          </div>
+        </div>
+        <div class="photo-caption-bar">
+          <span class="rev-cat-pill" style="color:#2f7a3e; background:#e8f5e9;">📖 Activity Book</span>
+          <span class="rev-stars">★★★★★</span>
+          <span class="photo-date-badge">Mar 2026</span>
+        </div>
+      </div>
+
+      <div class="photo-item-card" data-category="return-gift" onclick="openPhotoLightbox('reviews/photos/review3.jpeg')">
+        <div class="photo-img-container">
+          <img src="reviews/photos/review3.jpeg" alt="Customer photo of child with HoneyBee Learning personalised book 3" loading="lazy">
+          <div class="photo-hover-tag">
+            <span>🔍 Zoom</span>
+          </div>
+        </div>
+        <div class="photo-caption-bar">
+          <span class="rev-cat-pill" style="color:#d97706; background:#fef3c7;">🎁 Return Gifts</span>
+          <span class="rev-stars">★★★★★</span>
+          <span class="photo-date-badge">Mar 2026</span>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- EMPTY STATE IF NO MATCHES -->
+    <div class="empty-filter-state" id="emptyState">
+      <span>🔍</span>
+      <h3>No reviews found for this specific category</h3>
+      <p>Try switching to "All Products" to see all reviews.</p>
+    </div>
+
+    <!-- ═══ TRUST STRIP ═══ -->
+    <div class="trust-features-strip">
+      <div class="trust-cell">
+        <span class="trust-cell-icon">🇮🇳</span>
+        <div>
+          <div class="trust-cell-title">India's First Personalised</div>
+          <div class="trust-cell-sub">Made with love in Chennai</div>
+        </div>
+      </div>
+      <div class="trust-cell">
+        <span class="trust-cell-icon">⭐</span>
+        <div>
+          <div class="trust-cell-title">4.9 / 5 Rating</div>
+          <div class="trust-cell-sub">10,000+ kids delighted</div>
+        </div>
+      </div>
+      <div class="trust-cell">
+        <span class="trust-cell-icon">📦</span>
+        <div>
+          <div class="trust-cell-title">Pan-India Courier</div>
+          <div class="trust-cell-sub">Safe doorstep delivery</div>
+        </div>
+      </div>
+      <div class="trust-cell">
+        <span class="trust-cell-icon">💬</span>
+        <div>
+          <div class="trust-cell-title">WhatsApp Proofs</div>
+          <div class="trust-cell-sub">Preview before we print</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ FAQ ACCORDION (AI & CRAWLER OPTIMIZED) ═══ -->
+    <section class="faq-accordion-box">
+      <div class="block-header" style="margin-bottom:16px;">
+        <h2>❓ Frequently Asked Questions</h2>
+        <p>Common questions parents ask about quality, name personalisation, and bulk return gift orders.</p>
+      </div>
+
+      <div class="faq-items-list">
+        <div class="faq-node open">
+          <div class="faq-question-btn">
+            <span>Can I watch Instagram videos directly on the HoneyBee Learning website?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-answer-body" style="display:block;">
+            Yes! We host our customer video reels directly on our website, so you can press play, listen with full audio, and watch real kids enjoying their books without needing an Instagram account or leaving the website.
+          </div>
+        </div>
+
+        <div class="faq-node">
+          <div class="faq-question-btn">
+            <span>Why do kids prefer personalised books over standard books?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-answer-body">
+            Seeing their own name in stories and tracing activities triggers an immediate sense of ownership and pride. Parents report that children willingly spend 40–60 minutes practicing without asking for mobile phones or screens.
+          </div>
+        </div>
+
+        <div class="faq-node">
+          <div class="faq-question-btn">
+            <span>Can I order return gifts with different names for each child?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-answer-body">
+            Yes! For birthday return gifts, simply send us the guest list of children's names on WhatsApp. Each pack (Mini Color Pack or Activity Combo) is printed with the individual child's name, making it the most cherished return gift.
+          </div>
+        </div>
+
+        <div class="faq-node">
+          <div class="faq-question-btn">
+            <span>How do Divine Story books help my child?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-answer-body">
+            Our Divine Stories feature beloved deities like Krishna, Ganesha, and Hanuman speaking directly to your child by name. This teaches timeless values like kindness, courage, and truth in a warm, interactive format.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WRITE A REVIEW CTA BANNER ═══ -->
+    <div class="write-rev-footer-banner">
+      <h2>Have You Tried HoneyBee Learning? 🍯</h2>
+      <p>
+        Help other parents find the right learning products for their kids. Share your review, unboxing photo, or video clip and earn 50 Bee Points!
+      </p>
+      <div class="banner-buttons-row">
+        <a href="write-review.html" class="btn-action-primary" style="padding:14px 34px;font-size:1.05rem;">
+          ⭐ Write a Review
+        </a>
+        <a href="https://wa.me/918883624873?text=Hi%20HoneyBee!%20I'd%20like%20to%20send%20a%20video%20or%20photo%20review%20of%20my%20child's%20book." target="_blank" rel="noopener" class="btn-action-wa" style="padding:14px 28px;font-size:1rem;">
+          📸 Send Video on WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR PHOTOS -->
+  <div class="lightbox-overlay" id="photoLightbox" onclick="dismissLightbox(event)">
+    <div class="lightbox-body">
+      <button class="lightbox-dismiss" onclick="dismissLightbox(event)">&times;</button>
+      <img id="lightboxImg" src="" alt="Enlarged customer photo">
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  
+
+  <!-- SCRIPT FOR VIEW SWITCHING, FILTERING & VIDEO CONTROLS -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mobile hamburger nav
+      var h = document.getElementById('hamburger'), nl = document.getElementById('navLinks'), ov = document.getElementById('navOverlay');
+      function cm() { if (nl) nl.classList.remove('open'); if (ov) ov.classList.remove('open'); if (h) { h.classList.remove('open'); h.setAttribute('aria-expanded', 'false'); } document.body.classList.remove('no-scroll'); }
+      if (h) h.addEventListener('click', function (e) { e.stopPropagation(); nl.classList.contains('open') ? cm() : (nl.classList.add('open'), ov.classList.add('open'), h.classList.add('open'), h.setAttribute('aria-expanded', 'true'), document.body.classList.add('no-scroll')); });
+      if (ov) ov.addEventListener('click', cm);
+      document.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', cm); });
+
+      // ── VIDEO PLAY OVERLAY CONTROLS ──
+      var videoPlayer = document.getElementById('instaReelPlayer');
+      var playOverlay = document.getElementById('reelPlayOverlay');
+      var iframeWrap = document.getElementById('instaIframeWrap');
+      var instaIframe = document.getElementById('instaIframe');
+      var btnNative = document.getElementById('btnModeNative');
+      var btnEmbed = document.getElementById('btnModeEmbed');
+
+      function startPlayback() {
+        if (!videoPlayer) return;
+        var promise = videoPlayer.play();
+        if (promise !== undefined) {
+          promise.then(function() {
+            if (playOverlay) playOverlay.style.display = 'none';
+          }).catch(function(err) {
+            console.log('Play blocked, muting first:', err);
+            videoPlayer.muted = true;
+            videoPlayer.play().then(function() {
+              if (playOverlay) playOverlay.style.display = 'none';
+              // Unmute smoothly
+              videoPlayer.muted = false;
+            }).catch(function(e) {
+              console.warn('Playback error:', e);
+              if (btnEmbed) btnEmbed.click();
+            });
+          });
+        }
+      }
+
+      if (videoPlayer && playOverlay) {
+        playOverlay.addEventListener('click', function (e) {
+          e.stopPropagation();
+          startPlayback();
+        });
+
+        videoPlayer.addEventListener('play', function () {
+          if (playOverlay) playOverlay.style.display = 'none';
+        });
+
+        videoPlayer.addEventListener('pause', function () {
+          if (playOverlay && !videoPlayer.seeking && !videoPlayer.ended) {
+            playOverlay.style.display = 'flex';
+          }
+        });
+
+        videoPlayer.addEventListener('ended', function () {
+          if (playOverlay) playOverlay.style.display = 'flex';
+        });
+
+        // If local video fails to decode, fallback to Instagram embed automatically
+        videoPlayer.addEventListener('error', function () {
+          console.warn('Native video error, switching to Instagram embed.');
+          if (btnEmbed) btnEmbed.click();
+        });
+      }
+
+      // Player Mode Switcher: Native vs Instagram Embed
+      if (btnNative && btnEmbed) {
+        btnNative.addEventListener('click', function () {
+          btnNative.classList.add('active');
+          btnEmbed.classList.remove('active');
+          if (videoPlayer) videoPlayer.style.display = 'block';
+          if (playOverlay && videoPlayer && videoPlayer.paused) playOverlay.style.display = 'flex';
+          if (iframeWrap) iframeWrap.style.display = 'none';
+        });
+
+        btnEmbed.addEventListener('click', function () {
+          btnEmbed.classList.add('active');
+          btnNative.classList.remove('active');
+          if (videoPlayer) {
+            videoPlayer.pause();
+            videoPlayer.style.display = 'none';
+          }
+          if (playOverlay) playOverlay.style.display = 'none';
+          if (iframeWrap) {
+            iframeWrap.style.display = 'block';
+            if (instaIframe && instaIframe.src === 'about:blank') {
+              instaIframe.src = instaIframe.getAttribute('data-src');
+            }
+          }
+        });
+      }
+
+      // ── FILTER SYSTEM WITH AUTO-PAUSE ──
+      var currentView = 'all';    // 'all', 'written', 'videos', 'photos'
+      var currentCat = 'all';     // 'all', 'activity', 'return-gift', 'divine'
+
+      var mediaTabs = document.querySelectorAll('.media-tab-btn');
+      var catPills = document.querySelectorAll('.cat-pill-btn');
+
+      var reelSection = document.getElementById('reelSection');
+      var writtenBlock = document.getElementById('writtenBlock');
+      var videoBlock = document.getElementById('videoBlock');
+      var photoBlock = document.getElementById('photoBlock');
+      var emptyState = document.getElementById('emptyState');
+
+      var textCards = document.querySelectorAll('.rev-card');
+      var ytCards = document.querySelectorAll('.yt-video-card');
+      var photoCards = document.querySelectorAll('.photo-item-card');
+
+      function applyFilter() {
+        var totalVisible = 0;
+
+        // 1. Text reviews
+        var visibleText = 0;
+        textCards.forEach(function (c) {
+          var matchCat = (currentCat === 'all' || c.dataset.category === currentCat);
+          var matchView = (currentView === 'all' || currentView === 'written');
+          if (matchCat && matchView) {
+            c.style.display = 'flex';
+            visibleText++;
+            totalVisible++;
+          } else {
+            c.style.display = 'none';
+          }
+        });
+        writtenBlock.style.display = (visibleText > 0) ? 'block' : 'none';
+
+        // 2. YouTube Videos
+        var visibleYt = 0;
+        ytCards.forEach(function (c) {
+          var matchCat = (currentCat === 'all' || c.dataset.category === currentCat);
+          var matchView = (currentView === 'all' || currentView === 'videos');
+          if (matchCat && matchView) {
+            c.style.display = 'flex';
+            visibleYt++;
+            totalVisible++;
+          } else {
+            c.style.display = 'none';
+          }
+        });
+        videoBlock.style.display = (visibleYt > 0) ? 'block' : 'none';
+
+        // 3. Instagram Reel — IMPORTANT: Auto-pause when reel section is hidden!
+        var matchReelCat = (currentCat === 'all' || currentCat === 'activity');
+        var matchReelView = (currentView === 'all' || currentView === 'videos');
+        if (matchReelCat && matchReelView) {
+          reelSection.style.display = 'block';
+          totalVisible++;
+        } else {
+          reelSection.style.display = 'none';
+          // PAUSE VIDEO WHEN HIDDEN SO AUDIO DOES NOT KEEP PLAYING!
+          if (videoPlayer && !videoPlayer.paused) {
+            videoPlayer.pause();
+          }
+        }
+
+        // 4. Photos
+        var visiblePhotos = 0;
+        photoCards.forEach(function (c) {
+          var matchCat = (currentCat === 'all' || c.dataset.category === currentCat);
+          var matchView = (currentView === 'all' || currentView === 'photos');
+          if (matchCat && matchView) {
+            c.style.display = 'block';
+            visiblePhotos++;
+            totalVisible++;
+          } else {
+            c.style.display = 'none';
+          }
+        });
+        photoBlock.style.display = (visiblePhotos > 0) ? 'block' : 'none';
+
+        // 5. Empty State
+        emptyState.style.display = (totalVisible === 0) ? 'block' : 'none';
+      }
+
+      // Click on Media Tab (Tier 1)
+      mediaTabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          mediaTabs.forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          currentView = tab.dataset.view;
+          applyFilter();
+        });
+      });
+
+      // Click on Category Pill (Tier 2)
+      catPills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          catPills.forEach(function (p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+          currentCat = pill.dataset.cat;
+          applyFilter();
+        });
+      });
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-question-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          btn.parentElement.classList.toggle('open');
+        });
+      });
+    });
+
+    // Lightbox modal functions
+    function openPhotoLightbox(src) {
+      var modal = document.getElementById('photoLightbox');
+      var img = document.getElementById('lightboxImg');
+      img.src = src;
+      modal.classList.add('active');
+    }
+
+    function dismissLightbox(e) {
+      if (e.target.id === 'photoLightbox' || e.target.classList.contains('lightbox-dismiss')) {
+        document.getElementById('photoLightbox').classList.remove('active');
+      }
+    }
+  </script>
+
+</BaseLayout>

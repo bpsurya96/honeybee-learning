@@ -1,0 +1,115 @@
+/* ═══════════════════════════════════════════════════════════════
+   HoneyBee Learning — Modern Mobile & Tablet Responsive Enhancements
+   Ensures seamless responsive experience across 320px - 1440px
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 1. Global Viewport & Horizontal Overflow Prevention */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Fluid Containers */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 3. Responsive Table & Matrix Containers */
+.rg-table-wrap,
+.table-responsive,
+.admin-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+}
+
+/* 4. Touch Targets & Interaction Areas */
+@media (pointer: coarse), (max-width: 768px) {
+  button, 
+  .filter-btn, 
+  .theme-chip, 
+  .choice-chip, 
+  .star-btn, 
+  .hcs-btn-primary, 
+  .nav-cta,
+  .btn-submit {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .nav-links li a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* 5. Mobile Modal & Drawer Scrolling */
+.modal-overlay,
+.dmodal-overlay,
+.explainer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-overlay.open,
+.dmodal-overlay.open,
+.explainer-overlay.open {
+  display: flex !important;
+}
+
+.modal-content,
+.dmodal-card,
+.explainer-card {
+  max-height: 90dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  width: 100%;
+  max-width: 580px;
+  margin: auto;
+}
+
+/* 6. Product Detail Sticky Bottom Bar & FAB Coexistence */
+@media (max-width: 768px) {
+  /* Prevent Sticky Bottom Bar on product.html from overlapping Floating WhatsApp Button */
+  body:has(.msb-bar) .wa-fab,
+  body.has-sticky-bar .wa-fab {
+    bottom: 84px !important;
+  }
+
+  /* Compact grid spacing on mobile */
+  .learning-grid,
+  .products-grid,
+  .gifts-grid {
+    gap: 16px;
+  }
+}
+
+/* 7. Tablet Optimization (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .learning-grid,
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .hero-carousel-section {
+    min-height: 480px;
+  }
+}
