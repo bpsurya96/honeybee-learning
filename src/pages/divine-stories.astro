@@ -1028,12 +1028,7 @@ const extraStylesheets = ['css/divine-stories.css'];
   <script is:inline>
     /* ========== NAV ========== */
     document.addEventListener('DOMContentLoaded', function () {
-      var h = document.getElementById('hamburger'), nl = document.getElementById('navLinks'), ov = document.getElementById('navOverlay');
-      function cm() { if (nl) nl.classList.remove('open'); if (ov) ov.classList.remove('open'); if (h) { h.classList.remove('open'); h.setAttribute('aria-expanded', 'false'); } document.body.classList.remove('no-scroll'); document.body.style.overflow = ''; }
-      if (h) h.addEventListener('click', function (e) { e.stopPropagation(); nl.classList.contains('open') ? cm() : (nl.classList.add('open'), ov.classList.add('open'), h.classList.add('open'), h.setAttribute('aria-expanded', 'true'), document.body.classList.add('no-scroll')); });
-      if (ov) ov.addEventListener('click', cm);
-      document.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', cm); });
-    });
+      
 
     /* ========== BACKGROUND PARTICLES ========== */
     (function () { var c = document.getElementById('divineStars'); if (!c) return; for (var i = 0; i < 80; i++) { var s = document.createElement('span'), sz = Math.random() * 3 + 1; s.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;top:' + Math.random() * 100 + '%;left:' + Math.random() * 100 + '%;--dur:' + (Math.random() * 3 + 1.5) + 's;--del:' + (Math.random() * 3) + 's'; c.appendChild(s); } })();

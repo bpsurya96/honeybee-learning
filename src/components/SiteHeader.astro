@@ -5,68 +5,898 @@ interface Props {
 const { activeNav = "" } = Astro.props;
 
 const navItems = [
-  { href: "products.html", label: "All products" },
-  { href: "return-gifts.html", label: "Return gifts" },
-  { href: "ocean-kits.html", label: "Ocean Kits" },
-  { href: "divine-stories.html", label: "Divine stories" },
-  { href: "bee-points.html", label: "Bee Points" },
-  { href: "reviews.html", label: "Reviews" },
+  { href: "products.html", label: "All products", icon: "🛍️", desc: "Personalised activity & reusable books", color: "#F4A227" },
+  { href: "return-gifts.html", label: "Return gifts", icon: "🎁", desc: "Birthday combo packs from ₹39", color: "#E76F51" },
+  { href: "ocean-kits.html", label: "Ocean Kits", icon: "🌊", desc: "4 ocean learning combos", color: "#00B4D8" },
+  { href: "divine-stories.html", label: "Divine stories", icon: "✨", desc: "Personalised god tales with child's name", color: "#7209B7" },
+  { href: "bee-points.html", label: "Bee Points", icon: "🐝", desc: "Check loyalty balance & rewards", color: "#E63946" },
+  { href: "reviews.html", label: "Reviews", icon: "⭐", desc: "4.9★ Real parent photos & videos", color: "#FFB703" },
+];
+
+const secondaryItems = [
+  { href: "about.html", label: "Our Story", icon: "🍯", desc: "Meet founder Shanmugi (Record Holder)" },
+  { href: "faq.html", label: "Help & FAQ", icon: "❓", desc: "Common questions & order guidance" },
 ];
 ---
-<nav id="mainNav" aria-label="Main navigation">
-  <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
-    <img src="images/logo/logo.png" alt="HoneyBee Learning — Personalised Kids Books" style="height:42px;border-radius:10px;">
-    <div>
-      <span class="nav-logo-text">HoneyBee</span>
-      <span class="nav-logo-sub">Learning</span>
-    </div>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    {navItems.map((item) => (
-      <li>
-        <a href={item.href} class={activeNav === item.href ? "active" : undefined}>{item.label}</a>
-      </li>
-    ))}
-  </ul>
-  <div class="nav-right">
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="nav-cta" style="background:#25D366;">WhatsApp Us 💬</a>
-  </div>
-</nav>
-<div class="nav-overlay" id="navOverlay"></div>
+<!-- ═══════════════════════════════════════════════════════════
+     UNIQUE MODERN HONEYBEE NAVIGATION & MOBILE DRAWER
+     ═══════════════════════════════════════════════════════════ -->
+<header class="hb-header-wrap">
+  <nav id="mainNav" class="hb-navbar" aria-label="Main navigation">
+    <!-- Brand Logo -->
+    <a class="hb-brand" href="index.html" aria-label="HoneyBee Learning Home">
+      <div class="hb-logo-badge">
+        <img src="images/logo/logo.png" alt="HoneyBee Learning Logo" class="hb-logo-img">
+        <span class="hb-bee-decor" aria-hidden="true">🐝</span>
+      </div>
+      <div class="hb-brand-copy">
+        <div class="hb-brand-title">
+          <span class="hb-brand-honey">HoneyBee</span>
+          <span class="hb-brand-learning">Learning</span>
+        </div>
+        <span class="hb-brand-tagline">India's 1st Personalised Books</span>
+      </div>
+    </a>
 
+    <!-- Desktop Navigation Pills -->
+    <ul class="hb-desktop-links" id="desktopNavLinks">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class={activeNav === item.href ? "hb-nav-link active" : "hb-nav-link"}
+            aria-current={activeNav === item.href ? "page" : undefined}
+          >
+            <span class="hb-link-icon" aria-hidden="true">{item.icon}</span>
+            <span class="hb-link-text">{item.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Right Controls Area -->
+    <div class="hb-nav-actions">
+      <!-- Quick Mobile WhatsApp Tap -->
+      <a
+        href="https://wa.me/918883624873?text=Hi%20HoneyBee%20Learning%2C%20I%20have%20an%20enquiry!"
+        target="_blank"
+        rel="noopener"
+        class="hb-wa-mobile-btn"
+        aria-label="Order on WhatsApp"
+      >
+        <span class="hb-wa-pulse" aria-hidden="true"></span>
+        <span class="hb-wa-icon" aria-hidden="true">💬</span>
+      </a>
+
+      <!-- Desktop Primary WhatsApp Button -->
+      <a
+        href="https://wa.me/918883624873?text=Hi%20HoneyBee%20Learning%2C%20I%20have%20an%20enquiry!"
+        target="_blank"
+        rel="noopener"
+        class="hb-desktop-cta"
+      >
+        <span class="hb-cta-icon" aria-hidden="true">💬</span>
+        <span>WhatsApp Us</span>
+        <span class="hb-cta-sparkle" aria-hidden="true">✦</span>
+      </a>
+
+      <!-- Unique Animated Hamburger Button -->
+      <button
+        class="hb-hamburger-btn"
+        id="hamburger"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="hbDrawerPanel"
+      >
+        <span class="hb-hamb-box" aria-hidden="true">
+          <span class="hb-hamb-line hb-line-1"></span>
+          <span class="hb-hamb-line hb-line-2"></span>
+          <span class="hb-hamb-line hb-line-3"></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Backdrop Blur Overlay -->
+<div class="hb-drawer-backdrop" id="hbNavOverlay" aria-hidden="true"></div>
+
+<!-- Unique Modern Side Drawer -->
+<aside
+  class="hb-side-drawer"
+  id="hbDrawerPanel"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mobile Navigation Drawer"
+>
+  <!-- Drawer Header Card -->
+  <div class="hb-drawer-header">
+    <div class="hb-drawer-brand">
+      <img src="images/logo/logo.png" alt="HoneyBee Logo" class="hb-drawer-logo">
+      <div>
+        <div class="hb-drawer-title">HoneyBee <em>Learning</em></div>
+        <div class="hb-drawer-subtitle">🏆 India Book of Records Holder</div>
+      </div>
+    </div>
+    <button
+      class="hb-drawer-close-btn"
+      id="hbDrawerClose"
+      type="button"
+      aria-label="Close navigation menu"
+    >
+      <span aria-hidden="true">✕</span>
+    </button>
+  </div>
+
+  <!-- Drawer Body Navigation Tiles -->
+  <div class="hb-drawer-body">
+    <div class="hb-drawer-section-title">Explore Store</div>
+    <ul class="hb-drawer-menu" id="navLinks">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class={activeNav === item.href ? "hb-tile-link active" : "hb-tile-link"}
+            aria-current={activeNav === item.href ? "page" : undefined}
+          >
+            <span class="hb-tile-icon" style={`background: ${item.color}15; color: ${item.color};`} aria-hidden="true">
+              {item.icon}
+            </span>
+            <div class="hb-tile-content">
+              <span class="hb-tile-title">{item.label}</span>
+              <span class="hb-tile-desc">{item.desc}</span>
+            </div>
+            <span class="hb-tile-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Secondary Links Section -->
+    <div class="hb-drawer-section-title" style="margin-top: 18px;">About & Support</div>
+    <ul class="hb-drawer-menu hb-secondary-menu">
+      {secondaryItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class={activeNav === item.href ? "hb-tile-link active" : "hb-tile-link"}
+            aria-current={activeNav === item.href ? "page" : undefined}
+          >
+            <span class="hb-tile-icon hb-tile-sm" aria-hidden="true">{item.icon}</span>
+            <div class="hb-tile-content">
+              <span class="hb-tile-title">{item.label}</span>
+              <span class="hb-tile-desc">{item.desc}</span>
+            </div>
+            <span class="hb-tile-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Direct Founder Assistance Card -->
+    <div class="hb-drawer-founder-card">
+      <div class="hb-founder-header">
+        <span class="hb-founder-avatar">👩‍🏫</span>
+        <div>
+          <div class="hb-founder-name">Chat with Founder Shanmugi</div>
+          <div class="hb-founder-status">🟢 Online · Fast WhatsApp reply</div>
+        </div>
+      </div>
+      <a
+        href="https://wa.me/918883624873?text=Hi%20Shanmugi%2C%20I%20am%20looking%20for%20personalised%20learning%20books%20for%20my%20child!"
+        target="_blank"
+        rel="noopener"
+        class="hb-founder-wa-btn"
+      >
+        <span>Message on WhatsApp</span>
+        <span aria-hidden="true">💬</span>
+      </a>
+    </div>
+
+    <!-- Quick Contact Footer in Drawer -->
+    <div class="hb-drawer-contacts">
+      <a href="tel:8883624873" class="hb-contact-pill">
+        <span>📞</span> Call: 8883624873
+      </a>
+      <a
+        href="https://www.instagram.com/honeybee.learning.co?igsh=aDJ3enhnNWs1eHZ0"
+        target="_blank"
+        rel="noopener"
+        class="hb-contact-pill"
+      >
+        <span>📸</span> Instagram
+      </a>
+      <div class="hb-drawer-badge">📍 Medavakkam, Chennai · Pan-India Delivery</div>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCOPED UNIQUE STYLES FOR HEADER & SIDE DRAWER
+     ═══════════════════════════════════════════════════════════ -->
+<style is:global>
+  /* 1. Header Wrapper & Floating Glassmorphism Bar */
+  .hb-header-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 253, 247, 0.94);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1.5px solid rgba(244, 162, 39, 0.22);
+    box-shadow: 0 4px 20px -2px rgba(60, 40, 10, 0.06);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  .hb-navbar {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 68px;
+  }
+
+  /* 2. Brand Identity */
+  .hb-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+  }
+
+  .hb-logo-badge {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #FFF9E6;
+    border: 1.5px solid rgba(244, 162, 39, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(244, 162, 39, 0.2);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .hb-brand:hover .hb-logo-badge {
+    transform: rotate(-6deg) scale(1.05);
+  }
+
+  .hb-logo-img {
+    height: 38px;
+    width: 38px;
+    object-fit: contain;
+    border-radius: 9px;
+  }
+
+  .hb-bee-decor {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    font-size: 14px;
+    animation: hbBeeFloat 3s ease-in-out infinite;
+  }
+
+  @keyframes hbBeeFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-4px) rotate(8deg); }
+  }
+
+  .hb-brand-copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .hb-brand-title {
+    font-family: 'Fredoka One', cursive, sans-serif;
+    font-size: 1.45rem;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .hb-brand-honey {
+    color: #1E5E3A;
+  }
+
+  .hb-brand-learning {
+    background: linear-gradient(135deg, #F4A227, #E76F51);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hb-brand-tagline {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #8C6D53;
+    letter-spacing: 0.2px;
+  }
+
+  /* 3. Desktop Navigation Pills */
+  .hb-desktop-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hb-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #4A3B32;
+    text-decoration: none;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid transparent;
+  }
+
+  .hb-link-icon {
+    font-size: 1rem;
+    transition: transform 0.2s;
+  }
+
+  .hb-nav-link:hover {
+    background: rgba(244, 162, 39, 0.12);
+    color: #D9601A;
+    transform: translateY(-1px);
+  }
+
+  .hb-nav-link:hover .hb-link-icon {
+    transform: scale(1.15);
+  }
+
+  .hb-nav-link.active {
+    background: linear-gradient(135deg, #F4A227, #E76F51);
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(244, 162, 39, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* 4. Action Controls */
+  .hb-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hb-desktop-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #FFFFFF !important;
+    font-size: 0.92rem;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hb-desktop-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  }
+
+  .hb-wa-mobile-btn {
+    display: none;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #25D366;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  }
+
+  .hb-wa-pulse {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid rgba(37, 211, 102, 0.6);
+    animation: hbPulse 2s infinite;
+  }
+
+  @keyframes hbPulse {
+    0% { transform: scale(0.95); opacity: 1; }
+    100% { transform: scale(1.35); opacity: 0; }
+  }
+
+  /* 5. Unique Animated Hamburger Button */
+  .hb-hamburger-btn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1.5px solid rgba(244, 162, 39, 0.3);
+    border-radius: 12px;
+    background: #FFFDF5;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    touch-action: manipulation;
+  }
+
+  .hb-hamburger-btn:hover {
+    background: #FFF5DE;
+    border-color: #F4A227;
+  }
+
+  .hb-hamb-box {
+    position: relative;
+    width: 22px;
+    height: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hb-hamb-line {
+    display: block;
+    width: 100%;
+    height: 2.4px;
+    background: #3D2B1F;
+    border-radius: 4px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, background 0.3s;
+    transform-origin: center;
+  }
+
+  /* Hamburger to X Transformation */
+  .hb-hamburger-btn.is-active .hb-line-1 {
+    transform: translateY(6.8px) rotate(45deg);
+    background: #E76F51;
+  }
+
+  .hb-hamburger-btn.is-active .hb-line-2 {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hb-hamburger-btn.is-active .hb-line-3 {
+    transform: translateY(-6.8px) rotate(-45deg);
+    background: #E76F51;
+  }
+
+  /* 6. Backdrop Blur Overlay */
+  .hb-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1990;
+    background: rgba(25, 15, 5, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+  }
+
+  .hb-drawer-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* 7. Unique Mobile Side Drawer */
+  .hb-side-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(340px, 86vw);
+    height: 100dvh;
+    z-index: 2000;
+    background: #FFFDF9;
+    box-shadow: -12px 0 40px rgba(30, 20, 10, 0.25);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(102%);
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    overflow: hidden;
+  }
+
+  .hb-side-drawer.is-open {
+    transform: translateX(0);
+  }
+
+  /* Drawer Header */
+  .hb-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #FFF6E5 0%, #FFE9C7 100%);
+    border-bottom: 1.5px solid rgba(244, 162, 39, 0.25);
+    flex-shrink: 0;
+  }
+
+  .hb-drawer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hb-drawer-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: white;
+    padding: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .hb-drawer-title {
+    font-family: 'Fredoka One', cursive, sans-serif;
+    font-size: 1.25rem;
+    color: #1E5E3A;
+    line-height: 1.1;
+  }
+
+  .hb-drawer-title em {
+    color: #E76F51;
+    font-style: normal;
+  }
+
+  .hb-drawer-subtitle {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #8C6D53;
+  }
+
+  .hb-drawer-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+    font-size: 1.1rem;
+    color: #4A3B32;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .hb-drawer-close-btn:hover {
+    background: #FFF2D6;
+    transform: rotate(90deg);
+  }
+
+  /* Drawer Body Scroll Area */
+  .hb-drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px;
+  }
+
+  .hb-drawer-section-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #A38B78;
+    margin-bottom: 8px;
+    padding-left: 6px;
+  }
+
+  .hb-drawer-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Interactive Menu Tiles */
+  .hb-tile-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(235, 230, 220, 0.7);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hb-tile-link:hover,
+  .hb-tile-link:active {
+    background: #FFFDF5;
+    border-color: #F4A227;
+    transform: translateX(4px);
+  }
+
+  .hb-tile-link.active {
+    background: linear-gradient(135deg, #FFF6E5, #FFF0D4);
+    border-color: #F4A227;
+    box-shadow: 0 4px 12px rgba(244, 162, 39, 0.2);
+  }
+
+  .hb-tile-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .hb-tile-icon.hb-tile-sm {
+    width: 32px;
+    height: 32px;
+    font-size: 1.05rem;
+    background: #F4F1EA;
+  }
+
+  .hb-tile-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    min-width: 0;
+  }
+
+  .hb-tile-title {
+    font-size: 0.94rem;
+    font-weight: 800;
+    color: #2D231C;
+  }
+
+  .hb-tile-desc {
+    font-size: 0.72rem;
+    color: #7A695B;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hb-tile-arrow {
+    font-size: 1.05rem;
+    color: #C2B3A3;
+    transition: transform 0.2s;
+  }
+
+  .hb-tile-link:hover .hb-tile-arrow {
+    transform: translateX(3px);
+    color: #E76F51;
+  }
+
+  /* Founder Assistance Card */
+  .hb-drawer-founder-card {
+    margin-top: 18px;
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+    border: 1.5px solid #81C784;
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hb-founder-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hb-founder-avatar {
+    font-size: 1.6rem;
+  }
+
+  .hb-founder-name {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #1B5E20;
+    line-height: 1.15;
+  }
+
+  .hb-founder-status {
+    font-size: 0.7rem;
+    color: #2E7D32;
+    font-weight: 600;
+  }
+
+  .hb-founder-wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #25D366;
+    color: white !important;
+    text-decoration: none;
+    padding: 9px 12px;
+    border-radius: 999px;
+    font-size: 0.84rem;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+  }
+
+  /* Contacts Footer */
+  .hb-drawer-contacts {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 24px;
+  }
+
+  .hb-contact-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: #F5EFE6;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #4A3B32;
+    text-decoration: none;
+  }
+
+  .hb-drawer-badge {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #8C7B6E;
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  /* 8. Responsive Breakpoints */
+  @media (max-width: 980px) {
+    .hb-desktop-links {
+      display: none !important;
+    }
+
+    .hb-desktop-cta {
+      display: none !important;
+    }
+
+    .hb-wa-mobile-btn {
+      display: flex !important;
+    }
+
+    .hb-hamburger-btn {
+      display: flex !important;
+    }
+
+    .hb-navbar {
+      padding: 8px 16px;
+      min-height: 60px;
+    }
+
+    .hb-brand-title {
+      font-size: 1.25rem;
+    }
+
+    .hb-brand-tagline {
+      display: none;
+    }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ROCK-SOLID CLIENT SCRIPT FOR MOBILE DRAWER
+     ═══════════════════════════════════════════════════════════ -->
 <script is:inline>
   (function() {
-    function setupNav() {
-      const h = document.getElementById('hamburger');
-      const nl = document.getElementById('navLinks');
-      const ov = document.getElementById('navOverlay') || document.getElementById('navDrawerOverlay');
-      if (!h || !nl) return;
-      
-      function toggle(open) {
-        nl.classList.toggle('open', open);
-        if (ov) ov.classList.toggle('open', open);
-        h.setAttribute('aria-expanded', String(open));
-        document.body.style.overflow = open ? 'hidden' : '';
+    function initHoneybeeMenu() {
+      const btn = document.getElementById('hamburger');
+      const drawer = document.getElementById('hbDrawerPanel');
+      const backdrop = document.getElementById('hbNavOverlay');
+      const closeBtn = document.getElementById('hbDrawerClose');
+      if (!btn || !drawer) return;
+
+      let isOpen = false;
+
+      function openMenu() {
+        isOpen = true;
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-expanded', 'true');
+        drawer.classList.add('is-open');
+        if (backdrop) backdrop.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
       }
 
-      h.onclick = function(e) {
-        e.stopPropagation();
-        toggle(!nl.classList.contains('open'));
-      };
-      if (ov) {
-        ov.onclick = function() { toggle(false); };
+      function closeMenu() {
+        isOpen = false;
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+        drawer.classList.remove('is-open');
+        if (backdrop) backdrop.classList.remove('is-open');
+        document.body.style.overflow = '';
       }
-      nl.querySelectorAll('a').forEach(function(a) {
-        a.onclick = function() { toggle(false); };
+
+      function toggleMenu(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
+
+      // 1. Hamburger button click & touch
+      btn.onclick = toggleMenu;
+
+      // 2. Close button inside drawer
+      if (closeBtn) {
+        closeBtn.onclick = function(e) {
+          e.preventDefault();
+          closeMenu();
+        };
+      }
+
+      // 3. Backdrop tap
+      if (backdrop) {
+        backdrop.onclick = closeMenu;
+      }
+
+      // 4. Close on navigation link click
+      drawer.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMenu();
+        });
       });
+
+      // 5. Escape key dismissal
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+          closeMenu();
+        }
+      });
+
+      // 6. Swipe right to close gesture on mobile
+      let startX = 0;
+      drawer.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      drawer.addEventListener('touchend', function(e) {
+        const endX = e.changedTouches[0].clientX;
+        if (endX - startX > 50) {
+          closeMenu();
+        }
+      }, { passive: true });
     }
+
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupNav);
+      document.addEventListener('DOMContentLoaded', initHoneybeeMenu);
     } else {
-      setupNav();
+      initHoneybeeMenu();
     }
   })();
 </script>
