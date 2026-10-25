@@ -27,6 +27,16 @@ let currentAgeFilter = 'all';
 let currentBookTypeFilter = 'all';
 let currentMainStream = 'custom'; // 'custom', 'standard', 'gifts'
 
+// ─── SCROLL REVEAL ───
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            revealObs.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.1 });
+
 function setupProductAutoLoad(hasMore) {
     if (loadMoreObserver) {
         loadMoreObserver.disconnect();
@@ -950,16 +960,6 @@ function submitOrder() {
         btn.innerHTML = origText;
     });
 }
-
-// ─── SCROLL REVEAL ───
-const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-            entry.target.style.transitionDelay = (i % 4) * 0.1 + 's';
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
 
 function initReveal() {
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
