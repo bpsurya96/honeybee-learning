@@ -1,11 +1,67 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import productsOther from "../../data/products_other.json";
+import productsActivity from "../../data/products_activity.json";
+import productsReusable from "../../data/products_reusable.json";
+import productsStories from "../../data/products_stories.json";
+import returnGifts from "../../data/return-gifts.json";
+import reviewsData from "../../data/reviews.json";
 
-const title = "HoneyBee Learning — India's First Personalised Activity Book for Kids &amp; Birthday Return Gifts, Chennai";
-const description = "HoneyBee Learning is India";
+const title = "HoneyBee Learning — India's First Personalised Activity Book for Kids & Birthday Return Gifts, Chennai";
+const description = "Shop personalised learning activity books, reusable wipe & clean workbooks, divine moral stories, ocean kits, and birthday return gift combos.";
 const canonicalUrl = "https://honeybeelearning.co/";
 const activeNav = "index.html";
 const extraStylesheets = ['css/splash.css'];
+
+// Customised products merged (activity + reusable)
+const productsCustomised = [...productsActivity, ...productsReusable];
+
+// The 4 Ocean Kits from ocean-kits.astro
+const oceanKits = [
+  {
+    id: "kit-starter",
+    title: "Ocean Starter Learning Kit",
+    price: 340,
+    mrp: 500,
+    badge: "Age 3–5",
+    image: "images/ocean-kits/starter-kit.jpg",
+    desc: "Starter ocean activities, marine animal flashcards, tracing & fun worksheets.",
+    link: "https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20want%20to%20order%20the%20Ocean%20Starter%20Learning%20Kit%20(%E2%82%B9340)."
+  },
+  {
+    id: "kit-skill",
+    title: "Ocean Skill Builder Kit",
+    price: 440,
+    mrp: 650,
+    badge: "Age 4–7",
+    image: "images/ocean-kits/skill-builder-kit.jpg",
+    desc: "Skill building underwater activities, coloring, mazes & early math cards.",
+    link: "https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20want%20to%20order%20the%20Ocean%20Skill%20Builder%20Kit%20(%E2%82%B9440)."
+  },
+  {
+    id: "kit-brain",
+    title: "Ocean Brain Booster Kit",
+    price: 600,
+    mrp: 850,
+    badge: "Age 5–9",
+    image: "images/ocean-kits/brain-booster-kit.jpg",
+    desc: "Comprehensive brain teaser puzzles, reusable tracing & ocean learning cards.",
+    link: "https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20want%20to%20order%20the%20Ocean%20Brain%20Booster%20Kit%20(%E2%82%B9600)."
+  },
+  {
+    id: "kit-genius",
+    title: "Ocean Genius Puzzle Kit",
+    price: 650,
+    mrp: 950,
+    badge: "Mega Combo",
+    image: "images/ocean-kits/genius-kit.jpg",
+    desc: "Full mega combo with giant floor puzzle, flashcards, activity book & ocean passport!",
+    link: "https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20want%20to%20order%20the%20Ocean%20Genius%20Puzzle%20Kit%20(%E2%82%B9650)."
+  }
+];
+
+// Pick 4 featured genuine reviews
+const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.slice(0, 4) : [];
 ---
 <BaseLayout
   title={title}
@@ -270,435 +326,289 @@ const extraStylesheets = ['css/splash.css'];
 
   </section><!-- /hero-carousel-section -->
 
-    <!-- ═══ BROWSE BY AGE NAVIGATOR ═══ -->
-  <section class="age-navigator-section reveal" aria-label="Browse products by age">
-    <div class="age-navigator-container">
-      <div class="age-nav-header">
-        <span class="age-nav-label">🎯 Fast Finder: Browse by Age</span>
-      </div>
-      <div class="age-nav-pills">
-        <button class="age-nav-pill" onclick="quickAgeJump('0+')">
-          <span class="age-nav-emoji">🍼</span>
-          <span class="age-nav-text"><strong>0+ Months</strong><small>Visual Learning &amp; Divine</small></span>
-        </button>
-        <button class="age-nav-pill" onclick="quickAgeJump('2+')">
-          <span class="age-nav-emoji">🎨</span>
-          <span class="age-nav-text"><strong>2+ Years</strong><small>Writing Journey (Photo &amp; Name)</small></span>
-        </button>
-        <button class="age-nav-pill" onclick="quickAgeJump('3+')">
-          <span class="age-nav-emoji">🧒</span>
-          <span class="age-nav-text"><strong>3+ Years</strong><small>Phonics, Tamil, Charts &amp; Ocean</small></span>
-        </button>
-        <button class="age-nav-pill age-nav-pill--gifts" onclick="quickAgeJump('gifts')">
-          <span class="age-nav-emoji">🎁</span>
-          <span class="age-nav-text"><strong>Party Gifts</strong><small>Bulk Packs from ₹25</small></span>
-        </button>
-      </div>
+  <!-- ═══ WHAT ARE YOU LOOKING FOR TODAY? CARDS ═══ -->
+  <section class="section-block" style="padding: 36px 20px 20px; max-width: 1320px; margin: 0 auto;" aria-label="What are you looking for today?">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <span class="showcase-tag">✨ Quick Explorer</span>
+      <h2 style="font-family: 'Fredoka One', cursive; font-size: 2rem; color: var(--text-dark, #2d3436); margin: 6px 0;">What are you looking for today?</h2>
+      <p style="font-size: 0.95rem; color: var(--text-soft, #636e72); font-weight: 600;">Tap any collection below to jump directly to its products</p>
     </div>
-  </section>
 
-  <!-- ═══ 3-PILLAR QUICK CATEGORY GATEWAY ═══ -->
-  <section class="hero-cat-gateway" aria-label="Quick category explorer">
-    <div class="hero-cat-container">
-      <div class="hero-cat-intro">
-        <span class="hero-cat-tagline">&#x2728; Explore HoneyBee Collections</span>
-        <h2 class="hero-cat-heading">What are you looking for today?</h2>
-        <p style="font-size:0.95rem; color:var(--text-soft); max-width:650px; margin:8px auto 0; font-weight:600;">
-          Choose from customized keepsake books, standard curriculum essentials, or bulk party gift packs.
-        </p>
-      </div>
-      <div class="hero-cat-grid">
+    <div class="what-looking-grid">
+      <!-- 1. Standard -->
+      <a href="#showcase-standard" class="what-looking-card">
+        <span class="what-looking-icon">📚</span>
+        <h3 class="what-looking-title">Standard Learning</h3>
+        <p class="what-looking-sub">Phonics L1 &amp; L2, Tamil books, charts &amp; tables</p>
+        <span class="what-looking-cta">Explore Standard ↓</span>
+      </a>
 
-        <!-- Card 1: Customised Collection -->
-        <div class="hero-cat-card hero-cat-card--custom" onclick="switchStreamCategory('custom'); scrollToStreams();" tabindex="0" role="button" aria-label="Explore Customised Books">
-          <div class="hero-cat-badge">&#x2728; Name &amp; Photo Personalised</div>
-          <div class="hero-cat-icon-wrap">
-            <span class="hero-cat-icon">&#x1F3A8;</span>
-          </div>
-          <div class="hero-cat-content">
-            <span class="hero-cat-age-pill">Ages 0+ to 3+ Years</span>
-            <h3 class="hero-cat-title">Personalised Books</h3>
-            <ul class="hero-cat-feature-list">
-              <li><strong>My First Writing Journey (2+)</strong> — 7 themes, custom photo &amp; family tracing</li>
-              <li><strong>Ocean Explorer Combo (3+)</strong> — Sea adventure activity pack</li>
-              <li><strong>Divine Values Series (0+)</strong> — Gods teach morals in child's name</li>
-            </ul>
-            <div class="hero-cat-meta">
-              <span class="hero-cat-price">From <strong>&#x20B9;65</strong></span>
-              <span class="hero-cat-cta">Explore Customised &#x2192;</span>
-            </div>
-          </div>
-        </div>
+      <!-- 2. Customised -->
+      <a href="#showcase-customised" class="what-looking-card">
+        <span class="what-looking-icon">✨</span>
+        <h3 class="what-looking-title">Customised Books</h3>
+        <p class="what-looking-sub">Child's photo, name &amp; 15+ themes on every page</p>
+        <span class="what-looking-cta">Explore Customised ↓</span>
+      </a>
 
-        <!-- Card 2: Standard Learning Essentials -->
-        <div class="hero-cat-card hero-cat-card--standard" onclick="switchStreamCategory('standard'); scrollToStreams();" tabindex="0" role="button" aria-label="Explore Standard Learning Books">
-          <div class="hero-cat-badge hero-cat-badge--blue">&#x1F4DA; Curriculum &amp; Skills</div>
-          <div class="hero-cat-icon-wrap hero-cat-icon-wrap--blue">
-            <span class="hero-cat-icon">&#x1F4D6;</span>
-          </div>
-          <div class="hero-cat-content">
-            <span class="hero-cat-age-pill">Ages 0+ to 3+ Years</span>
-            <h3 class="hero-cat-title">Standard Books &amp; Charts</h3>
-            <ul class="hero-cat-feature-list">
-              <li><strong>Visual Learning (0+)</strong> — High-contrast sensory book for infants</li>
-              <li><strong>Phonics Level 1 &amp; 2 (3+)</strong> — Letter sounds &amp; sentence reading</li>
-              <li><strong>Tamil Normal &amp; Reusable (3+)</strong> — Handwriting &amp; vowels</li>
-              <li><strong>Laminated Charts &amp; Tables</strong> — English, Tamil, Hindi, Maths</li>
-            </ul>
-            <div class="hero-cat-meta">
-              <span class="hero-cat-price">From <strong>&#x20B9;40</strong></span>
-              <span class="hero-cat-cta">Explore Standard &#x2192;</span>
-            </div>
-          </div>
-        </div>
+      <!-- 3. Divine Stories -->
+      <a href="#showcase-divine" class="what-looking-card">
+        <span class="what-looking-icon">🕉️</span>
+        <h3 class="what-looking-title">Divine Stories</h3>
+        <p class="what-looking-sub">Gods teach values calling your child by name</p>
+        <span class="what-looking-cta">Explore Stories ↓</span>
+      </a>
 
-        <!-- Card 3: Birthday Return Gifts -->
-        <div class="hero-cat-card hero-cat-card--gifts" onclick="switchStreamCategory('gifts'); scrollToStreams();" tabindex="0" role="button" aria-label="Explore Birthday Return Gifts">
-          <div class="hero-cat-badge hero-cat-badge--orange">&#x1F389; Party Hit · Pan-India</div>
-          <div class="hero-cat-icon-wrap hero-cat-icon-wrap--orange">
-            <span class="hero-cat-icon">&#x1F381;</span>
-          </div>
-          <div class="hero-cat-content">
-            <span class="hero-cat-age-pill">All Birthday Parties</span>
-            <h3 class="hero-cat-title">Birthday Return Gift Packs</h3>
-            <ul class="hero-cat-feature-list">
-              <li><strong>12 educational combos</strong> starting from &#x20B9;25</li>
-              <li><strong>Personalised name card</strong> included in every pack</li>
-              <li>Activity sheet + stationery / chocolate options</li>
-              <li>Ready-to-gift packaging delivered across India</li>
-            </ul>
-            <div class="hero-cat-meta">
-              <span class="hero-cat-price">Starting <strong>&#x20B9;25</strong></span>
-              <span class="hero-cat-cta">View Combos &#x2192;</span>
-            </div>
-          </div>
-        </div>
+      <!-- 4. Ocean Kits -->
+      <a href="#showcase-ocean" class="what-looking-card">
+        <span class="what-looking-icon">🌊</span>
+        <h3 class="what-looking-title">Ocean Kits</h3>
+        <p class="what-looking-sub">4 marine adventure combos with puzzles &amp; books</p>
+        <span class="what-looking-cta">Explore Kits ↓</span>
+      </a>
 
-      </div>
+      <!-- 5. Return Gifts -->
+      <a href="#showcase-gifts" class="what-looking-card">
+        <span class="what-looking-icon">🎁</span>
+        <h3 class="what-looking-title">Return Gifts</h3>
+        <p class="what-looking-sub">12 party combos starting ₹25 with custom name tag</p>
+        <span class="what-looking-cta">Explore Gifts ↓</span>
+      </a>
     </div>
   </section>
 
 
-  <!-- ═══ HOW IT WORKS STRIP ═══ -->
-  <section class="how-it-works-strip" aria-label="How HoneyBee Learning works">
-    <div class="how-strip-header">
-      <div class="section-tag">Simple &amp; Fun</div>
-      <div class="how-strip-title">How It Works 🐝</div>
-      <div class="how-strip-sub">From choosing a theme to practising 100+ times — here's the magic!</div>
-    </div>
-    <div class="how-strip-grid">
-
-      <!-- Step 1 -->
-      <div class="how-strip-step">
-        <div class="how-strip-icon-wrap" style="background:linear-gradient(135deg,#e8f5d8,#c8e6a0);">
-          <span>🎨</span>
-          <span class="how-strip-step-num">1</span>
-        </div>
-        <h4>Pick a Theme</h4>
-        <p>Choose from 8+ favourite characters — Thomas, Batman, Unicorn, Spiderman &amp; more!</p>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="how-strip-step">
-        <div class="how-strip-icon-wrap" style="background:linear-gradient(135deg,#fff8e1,#ffe082);">
-          <span>✏️</span>
-          <span class="how-strip-step-num">2</span>
-        </div>
-        <h4>We Personalise</h4>
-        <p>Every page is printed with <strong>your child's name</strong> to make learning feel magical.</p>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="how-strip-step">
-        <div class="how-strip-icon-wrap" style="background:linear-gradient(135deg,#e3f2fd,#90caf9);">
-          <span>🖊️</span>
-          <span class="how-strip-step-num">3</span>
-        </div>
-        <h4>Wipe &amp; Learn</h4>
-        <p>Fully laminated pages — trace with any whiteboard marker, wipe clean and go again!</p>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="how-strip-step">
-        <div class="how-strip-icon-wrap" style="background:linear-gradient(135deg,#fce4ec,#f48fb1);">
-          <span>♻️</span>
-          <span class="how-strip-step-num">4</span>
-        </div>
-        <h4>Repeat 100+ Times</h4>
-        <p>Zero paper waste — the book lasts <strong>years</strong> of daily practice. Screen-free, mess-free!</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- BANNER STRIP -->
-  <div class="banner-strip">
-    <div class="banner-track">
-      <div class="banner-content">
-        <span>🇮🇳 India's First Personalised Activity Book for Kids</span>
-        <span>🎁 Return Gift Combos from ₹25</span>
-        <span>🦖 Customised Dino Theme Books</span>
-        <span>🌟 Bhagavad Gita & Krishna Themes</span>
-        <span>🚀 Space & STEM Learning Books</span>
-        <span>🦋 Butterfly Garden Nature Theme</span>
-        <span>👑 Princess & Unicorn Magic Themes</span>
-        <span>✍️ Every Child's Name Personalised</span>
-      </div>
-      <div class="banner-content" aria-hidden="true">
-        <span>🇮🇳 India's First Personalised Activity Book for Kids</span>
-        <span>🎁 Return Gift Combos from ₹25</span>
-        <span>🦖 Customised Dino Theme Books</span>
-        <span>🌟 Bhagavad Gita & Krishna Themes</span>
-        <span>🚀 Space & STEM Learning Books</span>
-        <span>🦋 Butterfly Garden Nature Theme</span>
-        <span>👑 Princess & Unicorn Magic Themes</span>
-        <span>✍️ Every Child's Name Personalised</span>
-      </div>
-    </div>
+  <!-- ═══ WHAT WE OFFER GRAND TITLE ═══ -->
+  <div style="text-align: center; padding: 44px 20px 10px; max-width: 1320px; margin: 0 auto;" id="what-we-offer">
+    <span class="showcase-tag">Our Products</span>
+    <h2 style="font-family: 'Fredoka One', cursive; font-size: 2.3rem; color: var(--green, #1a6b3c); margin: 6px 0 10px;">What We Offer</h2>
+    <p style="font-size: 1rem; color: var(--text-soft, #636e72); font-weight: 600; max-width: 680px; margin: 0 auto;">
+      Swipe or scroll right on each collection to explore all available products.
+    </p>
   </div>
 
-  <!-- PRODUCT STREAMS -->
-  <section class="streams-section" id="streams">
-    <div class="section-tag">Our Products</div>
-    <div class="section-title">What We Offer</div>
-    <div class="section-sub">Personalised learning books for daily use, and fun birthday return gift
-      combos for every budget.</div>
 
-    <div class="search-container reveal">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="productSearch" class="search-input" placeholder="Search for products, themes or ages..."
-        oninput="handleSearch(this.value)">
-    </div>
-
-    <div class="stream-tabs-wrap">
-      <div class="stream-tabs">
-        <button class="stream-tab active" id="tab-custom" onclick="switchStreamCategory('custom',this)">✨ Customised Books</button>
-        <button class="stream-tab" id="tab-standard" onclick="switchStreamCategory('standard',this)">📚 Standard Learning</button>
-        <button class="stream-tab" id="tab-gifts" onclick="switchStreamCategory('gifts',this)">🎁 Birthday Return Gifts</button>
+  <!-- ═══ SHOWCASE 1: STANDARD LEARNING (products_other.json) ═══ -->
+  <section class="showcase-section" id="showcase-standard">
+    <div class="showcase-header">
+      <div class="showcase-title-wrap">
+        <span class="showcase-tag">Curriculum &amp; Skills</span>
+        <h3 class="showcase-title">📚 Standard Learning Books &amp; Charts</h3>
+        <p class="showcase-sub">Phonics L1 &amp; L2, Tamil books, visual learning 0+, math tables &amp; reusable charts</p>
       </div>
-      <div class="stream-tabs-fade-hint" aria-hidden="true"></div>
-    </div>
-
-    <!-- Age Filter Row -->
-    <div class="stream-age-filter-row" id="streamAgeFilterRow">
-      <span class="stream-age-label">Filter by Age:</span>
-      <div class="stream-age-pills">
-        <button class="stream-age-pill active" data-age="all" onclick="filterByAge('all', this)">All Ages</button>
-        <button class="stream-age-pill" data-age="0+" onclick="filterByAge('0+', this)">🍼 0+ Months (Babies)</button>
-        <button class="stream-age-pill" data-age="2+" onclick="filterByAge('2+', this)">🎨 2+ Years (Toddlers)</button>
-        <button class="stream-age-pill" data-age="3+" onclick="filterByAge('3+', this)">🧒 3+ Years (Preschool / KG)</button>
-      </div>
-    </div>
-    <p class="stream-tabs-scroll-hint">← Swipe to see all tabs →</p>
-
-    <!-- LEARNING STREAM -->
-    <div class="stream-content active" id="stream-learning">
-
-      <!-- Divine Stories Promo Banner -->
-      <a href="divine-stories.html" class="divine-promo-banner" aria-label="Explore Divine Story Books">
-        <div class="divine-promo-icon">&#x1F549;&#xFE0F;</div>
-        <div class="divine-promo-text">
-          <div class="divine-promo-title">Divine Story Books <span class="divine-promo-badge">NEW</span> &#x2728;</div>
-          <div class="divine-promo-sub">Gods speak your child's name &amp; teach timeless values — starting &#x20B9;65</div>
-        </div>
-        <div class="divine-promo-arrow">&#x2192;</div>
-      </a>
-
-      <div class="section-tag">Featured Products</div>
-      <h3 style="font-family:'Fredoka One',cursive;font-size:1.75rem;color:var(--green);margin-bottom:7px;" id="catalogHeading">✨ Customised Books Collection</h3>
-      <p style="font-size:0.93rem;color:var(--text-soft);font-weight:600;margin-bottom:24px;" id="catalogSub">Personalised with your child's photo, name &amp; family! Featuring My First Writing Journey (2+), Ocean Combo (3+) and Divine Series (0+).</p>
-
-      <div class="learning-grid" id="learningGrid">
-        <!-- Populated from data/products.json -->
+      <div class="showcase-actions">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-soft);">Scroll right →</span>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-standard', -1)" aria-label="Scroll left">‹</button>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-standard', 1)" aria-label="Scroll right">›</button>
       </div>
     </div>
 
-    <!-- GIFTS STREAM -->
-    <div class="stream-content" id="stream-gifts">
-      <div style="margin-bottom:44px;">
-        <div class="section-tag">Simple Process</div>
-        <h3 style="font-family:'Fredoka One',cursive;font-size:1.75rem;color:var(--green);margin-bottom:7px;">How Gift
-          Orders Work</h3>
-        <p style="font-size:0.93rem;color:var(--text-soft);font-weight:600;margin-bottom:24px;">Order in minutes — we
-          personalise, pack & deliver!</p>
-        <div class="how-grid">
-          <div class="how-card reveal"><span class="how-num">1</span>
-            <div class="how-icon">🎯</div>
-            <h3>Pick a Combo</h3>
-            <p>Browse 6 gift combos from ₹25–₹170. Choose by budget.</p>
-          </div>
-          <div class="how-card reveal"><span class="how-num">2</span>
-            <div class="how-icon">✏️</div>
-            <h3>Personalise It</h3>
-            <p>Tell us the child's name, age group, and candy preference.</p>
-          </div>
-          <div class="how-card reveal"><span class="how-num">3</span>
-            <div class="how-icon">📦</div>
-            <h3>We Pack It</h3>
-            <p>Sheets printed with names, packed neatly as a complete set.</p>
-          </div>
-          <div class="how-card reveal"><span class="how-num">4</span>
-            <div class="how-icon">🎉</div>
-            <h3>You Celebrate!</h3>
-            <p>Pickup in Medavakkam or local delivery in Chennai.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-tag">Gift Combos</div>
-      <h3 style="font-family:'Fredoka One',cursive;font-size:1.75rem;color:var(--green);margin-bottom:7px;">Birthday
-        Return Gift Packs</h3>
-      <p style="font-size:0.93rem;color:var(--text-soft);font-weight:600;margin-bottom:22px;">Personalised, packed as a
-        set — perfect for every budget.</p>
-
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All Combos</button>
-        <button class="filter-btn" data-filter="under50">Under ₹50</button>
-        <button class="filter-btn" data-filter="under100">Under ₹100</button>
-        <button class="filter-btn" data-filter="under200">Under ₹200</button>
-        <button class="filter-btn" data-filter="premium">Premium</button>
-      </div>
-
-      <div class="products-grid" id="giftsGrid">
-        <!-- Populated from data/return-gifts.json -->
-      </div>
-    </div>
-
-    </section>
-
-  <!-- REVIEWS (full tabbed section) -->
-  <section class="testimonials-section" id="testimonials">
-    <div class="section-tag">Happy Families</div>
-    <div class="section-title">What Parents Say</div>
-    <div class="section-sub">Real reviews — text, photos &amp; videos — from happy families across Tamil Nadu!</div>
-
-    <div class="review-tabs" id="homeReviewTabs">
-      <button class="review-tab active" onclick="switchHomeReview('text', this)">💬 Text Reviews</button>
-      <button class="review-tab" onclick="switchHomeReview('photos', this)">📸 Photo Reviews</button>
-      <button class="review-tab" onclick="switchHomeReview('videos', this)">🎥 Video Reviews</button>
-    </div>
-
-    <div class="review-content active" id="home-review-text">
-      <div class="carousel-wrap">
-        <button class="carousel-btn carousel-btn--prev" onclick="scrollCarousel('testiTrack', -1)"
-          aria-label="Previous">&#8249;</button>
-        <div class="carousel-track" id="testiTrack">
-          <!-- Populated from data/reviews.json -->
-        </div>
-        <button class="carousel-btn carousel-btn--next" onclick="scrollCarousel('testiTrack', 1)"
-          aria-label="Next">&#8250;</button>
-      </div>
-    </div>
-
-    <div class="review-content" id="home-review-photos">
-      <div class="carousel-wrap">
-        <button class="carousel-btn carousel-btn--prev" onclick="scrollCarousel('photoTrack', -1)"
-          aria-label="Previous">&#8249;</button>
-        <div class="carousel-track" id="photoTrack">
-          <!-- Populated from data/reviews.json -->
-        </div>
-        <button class="carousel-btn carousel-btn--next" onclick="scrollCarousel('photoTrack', 1)"
-          aria-label="Next">&#8250;</button>
-      </div>
-    </div>
-
-    <div class="review-content" id="home-review-videos">
-
-      <!-- Featured Instagram Reel Card -->
-      <div class="home-reel-card">
-        <div class="home-reel-video-col">
-          <div class="home-reel-frame">
-            <video 
-              id="homeReelPlayer"
-              class="home-reel-video"
-              poster="reviews/videos/honeybee_reel_poster.jpg" 
-              controls 
-              playsinline 
-              preload="metadata"
-              title="HoneyBee Learning Instagram Unboxing Reel">
-              <source src="reviews/videos/honeybee_reel.mp4" type="video/mp4">
-              Your browser does not support HTML5 video.
-            </video>
-            <div class="home-reel-play-overlay" id="homeReelPlayOverlay" onclick="playHomeReel()" title="Click to play unboxing reel">
-              <div class="home-reel-play-btn">
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="white">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-              <span class="home-reel-hint">Watch Unboxing Reel &#x1F3AC;</span>
+    <div class="showcase-track-wrap">
+      <div class="showcase-scroller" id="scroller-standard">
+        {productsOther.map((p) => (
+          <div class="showcase-card">
+            <div class="scard-img-wrap">
+              <span class="scard-badge">{p.badge || 'Standard'}</span>
+              <img src={p.image} alt={p.title} loading="lazy" onerror="this.src='images/logo/logo.png'" />
+              <div class="scard-price">₹{p.price}</div>
+            </div>
+            <div class="scard-body">
+              <div class="scard-title">{p.title}</div>
+              <div class="scard-desc">{p.shortDesc}</div>
+              <a href={`product.html?id=${p.id}`} class="scard-btn">View &amp; Order 📚</a>
             </div>
           </div>
-        </div>
-
-        <div class="home-reel-info-col">
-          <div class="home-reel-badge">
-            <span>&#x1F4F8; Instagram Reel</span>
-            <span class="home-reel-dot">&#183;</span>
-            <span>15,000+ Views</span>
-          </div>
-          <h3 class="home-reel-title">See Happy Kids &amp; Parents Unbox Their Books!</h3>
-          <p class="home-reel-sub">
-            Watch real reactions as children open their personalised name books and birthday return gift hampers. Zero filters, pure excitement!
-          </p>
-          <div class="home-reel-highlights">
-            <div class="home-reel-point">
-              <span class="home-reel-check">&#x2713;</span>
-              <span>100% Genuine Parent Feedback</span>
-            </div>
-            <div class="home-reel-point">
-              <span class="home-reel-check">&#x2713;</span>
-              <span>Child's Name printed on every page</span>
-            </div>
-            <div class="home-reel-point">
-              <span class="home-reel-check">&#x2713;</span>
-              <span>Medavakkam, Chennai &amp; Pan-India Dispatch</span>
-            </div>
-          </div>
-          <div class="home-reel-actions">
-            <a href="https://www.instagram.com/reel/DeIxisWMoaT/" target="_blank" rel="noopener" class="home-reel-insta-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-              <span>View on Instagram &#x2197;</span>
-            </a>
-            <a href="reviews.html" class="home-reel-all-btn">
-              <span>All 140+ Reviews &amp; Videos &#x2192;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <h4 style="font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--green);margin:34px 0 16px;text-align:center;">
-        More Video Reviews From Parents &#x1F3AC;
-      </h4>
-
-      <div class="carousel-wrap">
-        <button class="carousel-btn carousel-btn--prev" onclick="scrollCarousel('videoTrack', -1)"
-          aria-label="Previous">&#8249;</button>
-        <div class="carousel-track" id="videoTrack">
-          <!-- Populated from data/reviews.json -->
-        </div>
-        <button class="carousel-btn carousel-btn--next" onclick="scrollCarousel('videoTrack', 1)"
-          aria-label="Next">&#8250;</button>
+        ))}
       </div>
     </div>
-  
-    <!-- Trust Rating Bar & Reviews Page Link -->
-    <div class="home-reviews-trust-bar">
-      <div class="home-reviews-rating-box">
-        <div class="home-reviews-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
-        <div class="home-reviews-rating-text">
-          <strong>4.9 / 5 Average Rating</strong> &#183; Based on 140+ verified parent reviews across Tamil Nadu &amp; Bangalore
-        </div>
-      </div>
-      <a href="reviews.html" class="home-reviews-explore-btn">
-        See All Photo &amp; Video Reviews &#x1F4F8; &#x2192;
-      </a>
-    </div>
-
   </section>
 
-  <!-- ABOUT TEASER -->
+
+  <!-- ═══ SHOWCASE 2: CUSTOMISED BOOKS (products_activity + products_reusable) ═══ -->
+  <section class="showcase-section" id="showcase-customised">
+    <div class="showcase-header">
+      <div class="showcase-title-wrap">
+        <span class="showcase-tag" style="background: rgba(244, 162, 39, 0.12); color: #d35400;">Personalised Keepsakes</span>
+        <h3 class="showcase-title">✨ Customised &amp; Personalised Books</h3>
+        <p class="showcase-sub">Printed with your child's name, photo &amp; favorite themes · 100+ reusable wipe &amp; write</p>
+      </div>
+      <div class="showcase-actions">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-soft);">Scroll right →</span>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-customised', -1)" aria-label="Scroll left">‹</button>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-customised', 1)" aria-label="Scroll right">›</button>
+      </div>
+    </div>
+
+    <div class="showcase-track-wrap">
+      <div class="showcase-scroller" id="scroller-customised">
+        {productsCustomised.map((p) => (
+          <div class="showcase-card">
+            <div class="scard-img-wrap">
+              <span class="scard-badge">{p.badge || 'Customised'}</span>
+              <img src={p.image} alt={p.title} loading="lazy" onerror="this.src='images/logo/logo.png'" />
+              <div class="scard-price">₹{p.price}</div>
+            </div>
+            <div class="scard-body">
+              <div class="scard-title">{p.title}</div>
+              <div class="scard-desc">{p.shortDesc}</div>
+              <a href={`product.html?id=${p.id}`} class="scard-btn">Personalise 📚</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SHOWCASE 3: DIVINE STORIES (products_stories.json) ═══ -->
+  <section class="showcase-section" id="showcase-divine">
+    <div class="showcase-header">
+      <div class="showcase-title-wrap">
+        <span class="showcase-tag" style="background: rgba(142, 68, 173, 0.1); color: #8e44ad;">Values &amp; Morals</span>
+        <h3 class="showcase-title">🕉️ Divine Story Books</h3>
+        <p class="showcase-sub">Gods (Krishna, Ganesha, Hanuman, Shiva...) address your child by name and teach timeless values</p>
+      </div>
+      <div class="showcase-actions">
+        <a href="divine-stories.html" class="showcase-view-all">Explore Series →</a>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-divine', -1)" aria-label="Scroll left">‹</button>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-divine', 1)" aria-label="Scroll right">›</button>
+      </div>
+    </div>
+
+    <div class="showcase-track-wrap">
+      <div class="showcase-scroller" id="scroller-divine">
+        {productsStories.map((s) => (
+          <div class="showcase-card" style="border-color: rgba(212, 160, 23, 0.3);">
+            <div class="scard-img-wrap">
+              <span class="scard-badge" style="background: #4A0E8F; color: #fff;">{s.godEmoji || '🕉️'} {s.godCharacter} Series</span>
+              <img src={s.image} alt={s.title} loading="lazy" onerror="this.src='images/logo/logo.png'" />
+              <div class="scard-price" style="background: linear-gradient(135deg, #d4a017, #ff9933);">₹{s.price}</div>
+            </div>
+            <div class="scard-body">
+              <div style="font-size: 0.74rem; font-weight: 800; color: #8e44ad; margin-bottom: 4px;">{s.lessonEmoji} {s.lesson}</div>
+              <div class="scard-title">{s.title}</div>
+              <div class="scard-desc">{s.shortDesc}</div>
+              <a href={`https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20want%20to%20order%20the%20Divine%20Story%20Book:%20${encodeURIComponent(s.title)}`} target="_blank" rel="noopener" class="scard-btn scard-btn--wa">Order on WhatsApp 💬</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SHOWCASE 4: OCEAN LEARNING KITS (Compact 4 Products) ═══ -->
+  <section class="showcase-section" id="showcase-ocean">
+    <div class="showcase-header">
+      <div class="showcase-title-wrap">
+        <span class="showcase-tag" style="background: rgba(41, 128, 185, 0.12); color: #2980b9;">Marine Adventures</span>
+        <h3 class="showcase-title">🌊 Ocean Learning Kits</h3>
+        <p class="showcase-sub">Curated screen-free combos with books, giant puzzles, flashcards &amp; marine animal activities</p>
+      </div>
+      <div class="showcase-actions">
+        <a href="ocean-kits.html" class="showcase-view-all">All Ocean Kits →</a>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-ocean', -1)" aria-label="Scroll left">‹</button>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-ocean', 1)" aria-label="Scroll right">›</button>
+      </div>
+    </div>
+
+    <div class="showcase-track-wrap">
+      <div class="showcase-scroller" id="scroller-ocean">
+        {oceanKits.map((k) => (
+          <div class="showcase-card" style="border-color: rgba(41, 128, 185, 0.3);">
+            <div class="scard-img-wrap">
+              <span class="scard-badge" style="background: #2980b9; color: #fff;">{k.badge}</span>
+              <img src={k.image} alt={k.title} loading="lazy" onerror="this.src='images/logo/logo.png'" />
+              <div class="scard-price" style="background: #2980b9;">₹{k.price}</div>
+            </div>
+            <div class="scard-body">
+              <div style="font-size: 0.76rem; color: #e74c3c; font-weight: 800; margin-bottom: 4px;">Worth ₹{k.mrp}+</div>
+              <div class="scard-title">{k.title}</div>
+              <div class="scard-desc">{k.desc}</div>
+              <a href={k.link} target="_blank" rel="noopener" class="scard-btn scard-btn--wa">Order on WhatsApp 💬</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ SHOWCASE 5: BIRTHDAY RETURN GIFTS (return-gifts.json) ═══ -->
+  <section class="showcase-section" id="showcase-gifts">
+    <div class="showcase-header">
+      <div class="showcase-title-wrap">
+        <span class="showcase-tag" style="background: rgba(230, 126, 34, 0.12); color: #d35400;">Party Favorites</span>
+        <h3 class="showcase-title">🎁 Birthday Return Gift Packs</h3>
+        <p class="showcase-sub">12 ready-to-gift educational combos starting ₹25 with personalized name card included</p>
+      </div>
+      <div class="showcase-actions">
+        <a href="return-gifts.html" class="showcase-view-all">All 12 Combos →</a>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-gifts', -1)" aria-label="Scroll left">‹</button>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-gifts', 1)" aria-label="Scroll right">›</button>
+      </div>
+    </div>
+
+    <div class="showcase-track-wrap">
+      <div class="showcase-scroller" id="scroller-gifts">
+        {returnGifts.map((g) => (
+          <div class="showcase-card">
+            <div style="background: linear-gradient(135deg, #fff9e6, #ffe082); padding: 18px 16px; text-align: center; border-bottom: 1.5px solid #ffecb3;">
+              <span style="font-size: 2.4rem; display: block; margin-bottom: 4px;">{g.emoji}</span>
+              <div style="font-family: 'Fredoka One', cursive; font-size: 1.05rem; color: #6b3a1f;">{g.name}</div>
+              <div style="font-weight: 900; color: #d35400; font-size: 1.15rem; margin-top: 4px;">₹{g.price} <span style="font-size: 0.78rem; text-decoration: line-through; color: #888;">{g.mrpLabel}</span></div>
+            </div>
+            <div class="scard-body">
+              <ul style="list-style: none; padding: 0; margin: 0 0 14px 0; font-size: 0.82rem; color: var(--text-soft); font-weight: 600;">
+                {g.items.map((item) => (
+                  <li style="margin-bottom: 4px;">✔ {item}</li>
+                ))}
+              </ul>
+              <a href="return-gifts.html" class="scard-btn">Customise &amp; Order 🎁</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ REVIEWS SECTION (Simple & Random Sample) ═══ -->
+  <section class="simple-reviews-section reveal" id="reviews-highlight">
+    <span class="showcase-tag">Verified Parents</span>
+    <h2 style="font-family: 'Fredoka One', cursive; font-size: 2.1rem; color: var(--green, #1a6b3c); margin: 8px 0 6px;">Loved by 140+ Parents Across India ⭐️</h2>
+    <p style="font-size: 0.95rem; color: var(--text-soft, #636e72); font-weight: 600; max-width: 620px; margin: 0 auto 28px;">
+      Real stories from parents who made screen-free learning fun, meaningful, and personalized!
+    </p>
+
+    <div class="simple-reviews-grid">
+      {featuredReviews.map((r) => (
+        <div class="simple-review-card">
+          <div class="simple-review-stars">{'★'.repeat(r.stars || 5)}</div>
+          <div class="simple-review-text">"{r.text}"</div>
+          <div class="simple-review-author">
+            <span class="simple-review-name">{r.name}</span>
+            <span class="simple-review-loc">📍 {r.loc} · Verified Parent</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div style="margin-top: 10px;">
+      <a href="reviews.html" class="see-all-reviews-btn">See All 140+ Customer Reviews &amp; Reel Videos →</a>
+    </div>
+  </section>
+
+
+  <script is:inline>
+    function scrollShowcase(id, direction) {
+      var scroller = document.getElementById(id);
+      if (scroller) {
+        scroller.scrollBy({ left: direction * 320, behavior: 'smooth' });
+      }
+    }
+  </script>
+<!-- ABOUT TEASER -->
   <section class="about-section" id="about" style="padding: 44px 24px 36px;">
     <div class="about-inner">
       <div class="about-emoji">🍯</div>
