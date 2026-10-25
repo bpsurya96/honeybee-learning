@@ -33,7 +33,7 @@ img, video, iframe {
 
 /* 4. Touch Targets & Interaction Areas */
 @media (pointer: coarse), (max-width: 768px) {
-  button, 
+  button:not(.gallery-dot):not(.gallery-nav), 
   .filter-btn, 
   .theme-chip, 
   .choice-chip, 

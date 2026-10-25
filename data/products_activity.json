@@ -7,12 +7,12 @@
         "badgeType": "new",
         "image": "images/products/1/6.png",
         "images": [
+            "images/products/1/6.png",
             "images/products/1/1.png",
             "images/products/1/2.png",
             "images/products/1/3.png",
             "images/products/1/4.png",
-            "images/products/1/5.png",
-            "images/products/1/6.png"
+            "images/products/1/5.png"
         ],
         "fallbackEmoji": "🦕",
         "shortDesc": "Name tracing, matching letters & word search in a fun dinosaur theme. Makes your child's first writing journey special and personal — A4, 50 pages!",
