@@ -807,3 +807,81 @@ img, video, iframe {
     font-size: 0.95rem;
   }
 }
+
+/* ─── AGE MILESTONE ROADMAP ─── */
+.age-guide-card {
+  flex: 0 0 240px !important;
+  width: 240px !important;
+  max-width: 240px !important;
+  min-width: 240px !important;
+  scroll-snap-align: start;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  border: 1.5px solid #ececec !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.age-guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1) !important;
+  border-color: var(--green, #1a6b3c) !important;
+}
+
+.age-guide-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  background: #fffdf5;
+  display: block;
+}
+
+.age-card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #1a6b3c;
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 50px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.age-card-footer {
+  padding: 10px 12px;
+  background: #ffffff;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.age-card-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.88rem;
+  color: #2d3436;
+}
+
+.age-card-tap {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--green, #1a6b3c);
+}
+
+@media (max-width: 600px) {
+  .age-guide-card {
+    flex: 0 0 210px !important;
+    width: 210px !important;
+    max-width: 210px !important;
+    min-width: 210px !important;
+  }
+}

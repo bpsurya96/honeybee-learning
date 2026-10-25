@@ -62,6 +62,22 @@ const oceanKits = [
 
 // Pick 4 featured genuine reviews
 const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.slice(0, 4) : [];
+
+// 11 Milestone Age Guides
+const ageGuides = [
+  { age: 2, title: "Age 2: Toddler Basics", badge: "Age 2+", img: "images/age-guides/age-2.jpeg" },
+  { age: 3, title: "Age 3: Early Pre-Writing", badge: "Age 3+", img: "images/age-guides/age-3.jpeg" },
+  { age: 4, title: "Age 4: Foundation Skills", badge: "Age 4+", img: "images/age-guides/age-4.jpeg" },
+  { age: 5, title: "Age 5: Early Phonics & Math", badge: "Age 5+", img: "images/age-guides/age-5.jpeg" },
+  { age: 6, title: "Age 6: Sentence & Logic", badge: "Age 6+", img: "images/age-guides/age-6.jpeg" },
+  { age: 7, title: "Age 7: Creative Thinking", badge: "Age 7+", img: "images/age-guides/age-7.jpeg" },
+  { age: 8, title: "Age 8: Brain Teasers & Math", badge: "Age 8+", img: "images/age-guides/age-8.jpeg" },
+  { age: 9, title: "Age 9: Problem Solving", badge: "Age 9+", img: "images/age-guides/age-9.jpeg" },
+  { age: 10, title: "Age 10: Advanced Logic", badge: "Age 10+", img: "images/age-guides/age-10.jpeg" },
+  { age: 11, title: "Age 11: Critical Thinking", badge: "Age 11+", img: "images/age-guides/age-11.jpeg" },
+  { age: 12, title: "Age 12: Independent Mastery", badge: "Age 12+", img: "images/age-guides/age-12.jpeg" },
+];
+
 ---
 <BaseLayout
   title={title}
@@ -93,7 +109,7 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
       "addressCountry": "IN"
     },
     "openingHours": "Mo-Sa 09:00-20:00",
-    "priceRange": "₹25 - ₹500",
+    "priceRange": "₹39 - ₹500",
     "sameAs": ["https://www.instagram.com/honeybee.learning.co"]
   }
   </script>
@@ -105,7 +121,7 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
     <meta property="og:url" content="https://honeybeelearning.co/">
     <meta property="og:title" content="HoneyBee Learning — India's First Personalised Activity Book for Kids">
     <meta property="og:description"
-    content="Personalised activity books &amp; birthday return gift combos for kids. Starting ₹25. Medavakkam, Chennai. Pan-India delivery.">
+    content="Personalised activity books &amp; birthday return gift combos for kids. Starting ₹39. Medavakkam, Chennai. Pan-India delivery.">
     <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
     <meta property="og:site_name" content="HoneyBee Learning">
     <meta property="og:locale" content="en_IN">
@@ -263,11 +279,11 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
         </div>
         <div class="hcs-text-side">
           <div class="hcs-tag">🎁 Birthday Return Gifts</div>
-          <h2 class="hcs-headline">Perfect Return Gifts<br><span class="hcs-accent">Starting ₹25!</span></h2>
+          <h2 class="hcs-headline">Perfect Return Gifts<br><span class="hcs-accent">Starting ₹39!</span></h2>
           <p class="hcs-body">Give something <strong>meaningful</strong> instead of plastic toys! Our birthday return
             gift combos come with personalised books, stickers &amp; candy — packed and ready for every child!</p>
           <div class="hcs-trust-row">
-            <span>✅ From ₹25</span>
+            <span>✅ From ₹39</span>
             <span>✅ Pan-India Delivery</span>
             <span>✅ Bulk Orders</span>
           </div>
@@ -371,7 +387,7 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
       <a href="#showcase-gifts" class="what-looking-card">
         <span class="what-looking-icon">🎁</span>
         <h3 class="what-looking-title">Return Gifts</h3>
-        <p class="what-looking-sub">12 party combos starting ₹25 with custom name tag</p>
+        <p class="what-looking-sub">12 party combos starting ₹39 with custom name tag</p>
         <span class="what-looking-cta">Explore Gifts ↓</span>
       </a>
     </div>
@@ -479,16 +495,19 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
       <div class="showcase-scroller" id="scroller-divine">
         {productsStories.map((s) => (
           <div class="showcase-card" style="border-color: rgba(212, 160, 23, 0.3);">
-            <div class="scard-img-wrap">
+            <a href={`product.html?id=${s.id}`} class="scard-img-wrap" style="text-decoration:none;display:block;">
               <span class="scard-badge" style="background: #4A0E8F; color: #fff;">{s.godEmoji || '🕉️'} {s.godCharacter} Series</span>
               <img src={s.image} alt={s.title} loading="lazy" onerror="this.src='images/logo/logo.png'" />
               <div class="scard-price" style="background: linear-gradient(135deg, #d4a017, #ff9933);">₹{s.price}</div>
-            </div>
+            </a>
             <div class="scard-body">
               <div style="font-size: 0.74rem; font-weight: 800; color: #8e44ad; margin-bottom: 4px;">{s.lessonEmoji} {s.lesson}</div>
-              <div class="scard-title">{s.title}</div>
+              <a href={`product.html?id=${s.id}`} style="text-decoration:none;color:inherit;"><div class="scard-title">{s.title}</div></a>
               <div class="scard-desc">{s.shortDesc}</div>
-              <a href={`https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20want%20to%20order%20the%20Divine%20Story%20Book:%20${encodeURIComponent(s.title)}`} target="_blank" rel="noopener" class="scard-btn scard-btn--wa">Order on WhatsApp 💬</a>
+              <div style="display:flex;gap:6px;margin-top:auto;">
+                <a href={`product.html?id=${s.id}`} class="scard-btn" style="flex:1;text-align:center;text-decoration:none;padding:10px 8px;font-size:0.85rem;">View Details 📖</a>
+                <a href={`https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20want%20to%20order%20the%20Divine%20Story%20Book:%20${encodeURIComponent(s.title)}`} target="_blank" rel="noopener" class="scard-btn scard-btn--wa" style="flex:0 0 auto;padding:10px 14px;text-decoration:none;" title="Order on WhatsApp">💬</a>
+              </div>
             </div>
           </div>
         ))}
@@ -540,7 +559,7 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
       <div class="showcase-title-wrap">
         <span class="showcase-tag" style="background: rgba(230, 126, 34, 0.12); color: #d35400;">Party Favorites</span>
         <h3 class="showcase-title">🎁 Birthday Return Gift Packs</h3>
-        <p class="showcase-sub">12 ready-to-gift educational combos starting ₹25 with personalized name card included</p>
+        <p class="showcase-sub">12 ready-to-gift educational combos starting ₹39 with personalized name card included</p>
       </div>
       <div class="showcase-actions">
         <a href="return-gifts.html" class="showcase-view-all">All 12 Combos →</a>
@@ -573,12 +592,44 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
   </section>
 
 
+  <!-- ═══ SHOWCASE 6: WHAT YOUR CHILD WILL LEARN (AGE-BY-AGE MILESTONES) ═══ -->
+  <section class="showcase-section" id="showcase-milestones" style="background: linear-gradient(180deg, #faf7f2 0%, #fffdf5 100%);">
+    <div class="showcase-header">
+      <div class="showcase-title-wrap">
+        <span class="showcase-tag" style="background: rgba(26, 107, 60, 0.1); color: var(--green, #1a6b3c);">Milestone Roadmap</span>
+        <h3 class="showcase-title">🎯 What Your Child Will Learn</h3>
+        <p class="showcase-sub">From first scribbles at Age 2 to logic &amp; problem-solving at Age 12 — swipe across ages to see skills developed!</p>
+      </div>
+      <div class="showcase-actions">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-soft);">Scroll Ages →</span>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-age-guides', -1)" aria-label="Scroll left">‹</button>
+        <button class="showcase-nav-btn" onclick="scrollShowcase('scroller-age-guides', 1)" aria-label="Scroll right">›</button>
+      </div>
+    </div>
+
+    <div class="showcase-track-wrap">
+      <div class="showcase-scroller" id="scroller-age-guides">
+        {ageGuides.map((guide) => (
+          <div class="age-guide-card" onclick={`openLightboxFromHome('${guide.img}')`} title="Tap to expand milestone roadmap">
+            <span class="age-card-badge">{guide.badge}</span>
+            <img src={guide.img} alt={guide.title} loading="lazy" />
+            <div class="age-card-footer">
+              <span class="age-card-label">{guide.title}</span>
+              <span class="age-card-tap">Tap to Expand 🔍</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
   <!-- ═══ REVIEWS SECTION (Simple & Random Sample) ═══ -->
   <section class="simple-reviews-section reveal" id="reviews-highlight">
     <span class="showcase-tag">Verified Parents</span>
-    <h2 style="font-family: 'Fredoka One', cursive; font-size: 2.1rem; color: var(--green, #1a6b3c); margin: 8px 0 6px;">Loved by 140+ Parents Across India ⭐️</h2>
+    <h2 style="font-family: 'Fredoka One', cursive; font-size: 2.1rem; color: var(--green, #1a6b3c); margin: 8px 0 6px;">Loved by 1,200+ Happy Families Across India ⭐️</h2>
     <p style="font-size: 0.95rem; color: var(--text-soft, #636e72); font-weight: 600; max-width: 620px; margin: 0 auto 28px;">
-      Real stories from parents who made screen-free learning fun, meaningful, and personalized!
+      Real stories, real smiles, and authentic parent experiences from families across India!
     </p>
 
     <div class="simple-reviews-grid">
@@ -595,7 +646,7 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
     </div>
 
     <div style="margin-top: 10px;">
-      <a href="reviews.html" class="see-all-reviews-btn">See All 140+ Customer Reviews &amp; Reel Videos →</a>
+      <a href="reviews.html" class="see-all-reviews-btn">See Customer Reviews &amp; Reel Videos →</a>
     </div>
   </section>
 
@@ -608,56 +659,70 @@ const featuredReviews = (reviewsData && reviewsData.text) ? reviewsData.text.sli
       }
     }
   </script>
-<!-- ABOUT TEASER -->
-  <section class="about-section" id="about" style="padding: 44px 24px 36px;">
-    <div class="about-inner">
-      <div class="about-emoji">🍯</div>
-      <div class="about-text">
-        <div class="section-tag">Our Story</div>
-        <h2>Made with Love, Right Here in Chennai</h2>
-        <p>Hi! I'm <strong>Shanmugi</strong>, a parent from <strong>Medavakkam, Chennai</strong> — and HoneyBee Learning
-          started from a simple wish: to give children something more meaningful than a plastic toy at birthday parties.
-          My biggest inspiration is my daughter, a <strong style="color:var(--green)">multiple record holder</strong>,
-          whose love for learning drives every product we make!</p>
+<!-- ABOUT TEASER (SIMPLE, CLEAN & HEARTFELT) -->
+  <section class="about-section" id="about" style="padding: 44px 20px 36px;">
+    <div class="about-inner" style="max-width: 1080px; margin: 0 auto;">
+      <div class="about-text" style="width: 100%;">
+        <div style="text-align: center; margin-bottom: 22px;">
+          <span class="showcase-tag">Our Story</span>
+          <h2 style="font-family: 'Fredoka One', cursive; font-size: 2.2rem; color: var(--green, #1a6b3c); margin: 6px 0 10px;">
+            Made with Love in Chennai 🍯
+          </h2>
+          <p style="font-size: 1rem; color: #4b5563; max-width: 720px; margin: 0 auto; line-height: 1.6;">
+            Hi! I'm <strong>Shanmugi</strong>, a parent from <strong>Medavakkam, Chennai</strong>. HoneyBee began with a simple wish:
+            replacing disposable plastic return gifts with meaningful, personalized learning books children cherish — inspired by my
+            daughter, a proud <strong style="color:var(--green, #1a6b3c);">multiple record holder</strong>!
+          </p>
+        </div>
 
-        <div style="display: flex; gap: 12px; margin: 20px 0; overflow-x: auto; padding-bottom: 8px;">
-          <div
-            style="flex-shrink: 0; width: 100px; height: 100px; background: #eef2e6; border-radius: 10px; border: 2px solid var(--honey); overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <img src="images/record-holder-1.jpeg" alt="Record Holder 1"
-              style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;"
-              onclick="openLightboxFromHome(this.src)"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-            <span
-              style="display: none; font-size: 0.7rem; color: #7f9a5f; padding: 5px; text-align: center; font-weight: 700;">Upload
-              Photo 1</span>
+        <div class="story-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0;">
+          <div class="story-mini-card" style="background: #ffffff; border: 1.5px solid #eef2e6; border-radius: 16px; padding: 20px 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+            <div style="font-size: 1.8rem; margin-bottom: 8px;">🏡</div>
+            <h4 style="font-family: 'Fredoka One', cursive; font-size: 1.05rem; color: #2d3436; margin-bottom: 6px;">Home-Based &amp; Handcrafted</h4>
+            <p style="font-size: 0.88rem; color: #636e72; line-height: 1.5; margin: 0;">
+              Every single book is designed, printed, and hand-packed with personal love right here in Medavakkam.
+            </p>
           </div>
-          <div
-            style="flex-shrink: 0; width: 100px; height: 100px; background: #eef2e6; border-radius: 10px; border: 2px solid var(--honey); overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <img src="images/record-holder-2.jpeg" alt="Record Holder 2"
-              style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;"
-              onclick="openLightboxFromHome(this.src)"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-            <span
-              style="display: none; font-size: 0.7rem; color: #7f9a5f; padding: 5px; text-align: center; font-weight: 700;">Upload
-              Photo 2</span>
+
+          <div class="story-mini-card" style="background: #ffffff; border: 1.5px solid #eef2e6; border-radius: 16px; padding: 20px 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+            <div style="font-size: 1.8rem; margin-bottom: 8px;">🎁</div>
+            <h4 style="font-family: 'Fredoka One', cursive; font-size: 1.05rem; color: #2d3436; margin-bottom: 6px;">Zero Waste, 100% Value</h4>
+            <p style="font-size: 0.88rem; color: #636e72; line-height: 1.5; margin: 0;">
+              Starting ₹39, our gift packs feature custom name cards, reusable wipe &amp; clean pages, and educational activities.
+            </p>
+          </div>
+
+          <div class="story-mini-card" style="background: #ffffff; border: 1.5px solid #eef2e6; border-radius: 16px; padding: 20px 18px; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+            <div style="font-size: 1.8rem; margin-bottom: 8px;">❤️</div>
+            <h4 style="font-family: 'Fredoka One', cursive; font-size: 1.05rem; color: #2d3436; margin-bottom: 6px;">1,200+ Happy Families</h4>
+            <p style="font-size: 0.88rem; color: #636e72; line-height: 1.5; margin: 0;">
+              Direct 1-on-1 WhatsApp consultation before you order, and personal follow-up after delivery.
+            </p>
           </div>
         </div>
 
-        <div class="about-trust-row">
-          <div class="about-trust-item">✅ <span>Home-based, Medavakkam</span></div>
-          <div class="about-trust-item">✅ <span>Every order personally handled</span></div>
-          <div class="about-trust-item">✅ <span>1200+ sets delivered across Tamil Nadu</span></div>
-          <div class="about-trust-item">✅ <span>WhatsApp support before &amp; after order</span></div>
-        </div>
-        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="about.html" class="about-wa-btn" style="background:var(--green);">📖 Read Our Full Story</a>
-          <a href="https://wa.me/918883624873" target="_blank" class="about-wa-btn">💬 Say Hi on WhatsApp</a>
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-top: 14px; border-top: 1px solid #f0f0f0;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid var(--honey, #ffcc00); box-shadow: 0 2px 8px rgba(0,0,0,0.08); flex-shrink: 0; cursor: pointer;" onclick="openLightboxFromHome('images/record-holder-1.jpeg')" title="View record holder photo">
+              <img src="images/record-holder-1.jpeg" alt="Record Holder" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            </div>
+            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid var(--honey, #ffcc00); box-shadow: 0 2px 8px rgba(0,0,0,0.08); flex-shrink: 0; cursor: pointer;" onclick="openLightboxFromHome('images/record-holder-2.jpeg')" title="View record holder photo">
+              <img src="images/record-holder-2.jpeg" alt="Record Holder" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            </div>
+            <div style="font-size: 0.82rem; font-weight: 700; color: #555;">
+              <span>🏅 Multiple Record Holder Inspiration</span>
+              <span style="display:block; font-size:0.75rem; color:#888; font-weight:600;">Tap photo to view</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="about.html" class="about-wa-btn" style="background: var(--green, #1a6b3c); padding: 10px 22px; font-size: 0.9rem;">📖 Read Full Story</a>
+            <a href="https://wa.me/918883624873?text=Hi%20Shanmugi!%20I%20would%20love%20to%20know%20more%20about%20HoneyBee%20Learning" target="_blank" rel="noopener" class="about-wa-btn" style="padding: 10px 22px; font-size: 0.9rem;">💬 Chat on WhatsApp</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  
 
   <!-- DETAIL MODAL -->
   <div class="dmodal-overlay" id="dmodalOverlay" onclick="closeDetailOnBg(event)">
