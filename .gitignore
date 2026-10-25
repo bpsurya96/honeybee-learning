@@ -13,17 +13,22 @@ Thumbs.db
 .agent/
 .agents/
 
-# Temporary files
-*.tmp
-*.bak
+# Build and cache outputs
+dist/
+.astro/
+.next/
 
-# Large media files — videos now served via YouTube, raw MP4s stay local only
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Large media files (raw local videos)
 reviews/videos/*.mp4
 reviews/videos/originals/
 
-# Video compression script (local use only)
-compress_videos.sh
-
-node_modules/*
-package-lock.json
-package.json
+# Temporary files
+*.tmp
+*.bak

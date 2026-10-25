@@ -11,6 +11,7 @@
 
 // ─── GLOBAL STATE ───
 let learningProducts = [];
+
 let returnGifts = [];
 let reviewsData = { text: [], photos: [], videos: [] };
 let selectedCandy = 'chocolate';
@@ -24,6 +25,17 @@ function getProductsPerPage() { return isMobileProductFlow() ? 1 : (window.inner
 let currentProductPage = 1;
 let currentAgeFilter = 'all';
 let currentBookTypeFilter = 'all';
+let currentMainStream = 'custom'; // 'custom', 'standard', 'gifts'
+
+// ─── SCROLL REVEAL ───
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            revealObs.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.1 });
 
 function setupProductAutoLoad(hasMore) {
     if (loadMoreObserver) {
@@ -179,20 +191,128 @@ async function loadProducts() {
             otherRes.json(),
             storiesRes.json()
         ]);
-        // Tag divine stories with productType = 'divine' and adapt fields for card render
-        const divineTagged = stories.map(s => ({
+
+        // 1. Tag activity books: Custom, Age 2+ / 3+
+        activity.forEach(p => {
+            p.mainCategory = 'custom';
+            p.ageGroup = (p.id === 11 || (p.title && p.title.toLowerCase().includes('ocean'))) ? '3+' : '2+';
+            p.uspBadge = '✨ Custom Photo & Name';
+            if (p.id === 11 || (p.title && p.title.toLowerCase().includes('ocean'))) {
+                p.featuredOrder = 2;
+                p.title = 'Personalised Ocean Explorer Activity Book & Kit (3+)';
+                p.ageGroup = '3+';
+                p.uspBadge = '🌊 Ocean Explorer Combo (3+)';
+            } else {
+                p.featuredOrder = 10;
+            }
+        });
+
+        // 2. Tag reusable books: Custom, Age 2+ / 3+
+        reusable.forEach(p => {
+            p.mainCategory = 'custom';
+            p.ageGroup = '2+';
+            p.uspBadge = '♻️ Reusable Wipe & Learn';
+            p.featuredOrder = 20;
+        });
+
+        // 3. Tag divine stories: Custom, Age 0+
+        const divineTagged = stories.map((s, idx) => ({
             ...s,
             productType: 'divine',
+            mainCategory: 'custom',
+            ageGroup: '0+',
+            uspBadge: '🕉️ Divine Moral Series (0+)',
+            featuredOrder: 3 + idx * 0.1,
             badge: s.badge || 'Divine Series',
             badgeType: s.badgeType || 'new',
             tags: s.tags || [],
             keywords: s.keywords || [],
-            fallbackEmoji: s.godEmoji || '&#x1F549;&#xFE0F;'
+            fallbackEmoji: s.godEmoji || '🕉️'
         }));
+
+        // 4. Tag other products with accurate Custom vs Standard categorization:
+        other.forEach(p => {
+            const pid = p.id;
+            if (pid === 204) {
+                // Flagship: My First Writing Journey Book (2+)
+                p.mainCategory = 'custom';
+                p.ageGroup = '2+';
+                p.featuredOrder = 1; // Top featured in custom
+                p.title = 'My First Writing Journey Book — 7 Themes (Photo & Family Name)';
+                p.uspBadge = '⭐ 7 Themes · Custom Photo & Family Tracing';
+                p.shortDesc = 'Customised with your child\'s photo, name & family name tracing page! 7 themes (Dino, Space, Unicorn, Cars...). 25 reusable A4 wipe-clean pages.';
+            } else if (pid === 203) {
+                p.mainCategory = 'custom';
+                p.ageGroup = '2+';
+                p.featuredOrder = 5;
+                p.uspBadge = '✍️ Personalised Name Tracing (Eng/Tam/Hin)';
+            } else if (pid === 207) {
+                p.mainCategory = 'custom';
+                p.ageGroup = '3+';
+                p.featuredOrder = 6;
+                p.uspBadge = '✍️ Personalised Tamil Tracing Book';
+            } else if (pid === 206) {
+                // My First Visual Learning Book (0+)
+                p.mainCategory = 'standard';
+                p.ageGroup = '0+';
+                p.featuredOrder = 1; // Top featured in standard
+                p.title = 'My First Visual Learning Book for Babies (0+ Months)';
+                p.uspBadge = '🍼 High-Contrast Visual Learning (0+)';
+                p.shortDesc = 'High-contrast black, white & red visual stimulation book for infants (0–12 months). Stimulates brain development and optic nerve focus.';
+            } else if (pid === 208) {
+                // Phonics Level 1 (3+)
+                p.mainCategory = 'standard';
+                p.ageGroup = '3+';
+                p.featuredOrder = 2;
+                p.title = 'Honeybee Jungle Phonics Book — Level 1 (Sounds & Blending)';
+                p.uspBadge = '🔤 Phonics Foundation Level 1 (3+)';
+                p.shortDesc = 'Level 1: Letter sounds (A-Z), sound blending, vocabulary & mouth movement guide. Builds strong early reading skills for ages 3+.';
+            } else if (pid === 209) {
+                // Phonics Level 2 (3+)
+                p.mainCategory = 'standard';
+                p.ageGroup = '3+';
+                p.featuredOrder = 3;
+                p.title = 'Honeybee Jungle Phonics Book — Level 2 (Sentences & Fluency)';
+                p.uspBadge = '🔤 Phonics Reading Level 2 (3+)';
+                p.shortDesc = 'Level 2: CV & CVC word families, sight words, and reading fluency with certificates for ages 4+.';
+            } else if (pid === 210) {
+                // Tamil Book Normal & Reusable (3+)
+                p.mainCategory = 'standard';
+                p.ageGroup = '3+';
+                p.featuredOrder = 4;
+                p.title = 'My First Tamil Writing Journey (Normal & Reusable Wipe-and-Wipe)';
+                p.uspBadge = '🌺 Tamil Book — Normal & Reusable (3+)';
+                p.shortDesc = 'Step-by-step Tamil writing: Pre-writing strokes, உயிர் எழுத்துகள் (12) and மெய் எழுத்துகள் (18) with reusable write & wipe tracing.';
+            } else if (pid === 205) {
+                // Tables Book (Tamil & Hindi) (3+)
+                p.mainCategory = 'standard';
+                p.ageGroup = '3+';
+                p.featuredOrder = 5;
+                p.title = 'Kids Math Practice & Tables Book (Tamil & Hindi Options)';
+                p.uspBadge = '🔢 Tables Book — Tamil & Hindi (3+)';
+                p.shortDesc = 'Addition, subtraction & multiplication tables practice workbook with wipe-clean cheat sheets in Tamil & Hindi language options.';
+            } else if (pid === 201 || pid === 202) {
+                // Charts (English, Tamil, Hindi, Maths) (3+)
+                p.mainCategory = 'standard';
+                p.ageGroup = '3+';
+                p.featuredOrder = 6;
+                p.title = pid === 201 ? 'Reusable Laminated Learning Chart — Hospital Theme' : 'Reusable Laminated Learning Chart — Space Theme';
+                p.uspBadge = '📊 Reusable Laminated Chart (3+)';
+                p.shortDesc = 'Durable write & wipe laminated wall/desk learning charts. Available in English, Tamil, Hindi & Maths.';
+            } else {
+                p.mainCategory = 'standard';
+                p.ageGroup = '3+';
+                p.featuredOrder = 9;
+                p.uspBadge = '📚 Learning Essential';
+            }
+        });
+
         learningProducts = [...activity, ...reusable, ...other, ...divineTagged];
-        currentLearningType = window.initialLearningType || currentLearningType;
-        renderLearningProducts(currentLearningType);
-    } catch (e) { console.error('Failed to load products:', e); }
+        divineStories = stories;
+        renderLearningProducts();
+    } catch (e) {
+        console.error('Failed to load products:', e);
+    }
 }
 
 async function loadReturnGifts() {
@@ -557,25 +677,26 @@ function renderHomePhotoReviews() {
 function renderStars(n) { return '★'.repeat(n) + '☆'.repeat(5 - n); }
 
 function openLightboxFromHome(imgSrc) {
-    const lightbox = document.getElementById('dmodalOverlay');
-    if (lightbox) {
-        // reuse the dmodal html we have
-        document.getElementById('dmImg').src = imgSrc;
-        document.getElementById('dmImg').style.maxHeight = '80vh';
-        document.getElementById('dmImg').style.aspectRatio = 'auto';
-        document.getElementById('dmTitle').textContent = "";
-        document.getElementById('dmPrice').textContent = '';
-        document.getElementById('dmDesc').textContent = '';
-        document.getElementById('dmTags').innerHTML = '';
-        document.getElementById('dmBtn').style.display = 'none';
-        
-        // Hide note if it exists
-        const note = document.querySelector('.dmodal-note');
-        if (note) note.style.display = 'none';
-        
-        lightbox.classList.add('open');
-        document.body.classList.add('no-scroll');
+    let lb = document.getElementById('imageLightboxOverlay');
+    if (!lb) {
+        lb = document.createElement('div');
+        lb.id = 'imageLightboxOverlay';
+        lb.className = 'image-lightbox-overlay';
+        lb.innerHTML = '<div class="ilb-backdrop" onclick="closeImageLightbox()"></div><button class="ilb-close" onclick="closeImageLightbox()" aria-label="Close image">✕</button><div class="ilb-wrap" onclick="closeImageLightbox()"><img id="ilbImg" src="" alt="Enlarged view" /></div>';
+        document.body.appendChild(lb);
     }
+    const imgEl = document.getElementById('ilbImg');
+    if (imgEl) imgEl.src = imgSrc;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImageLightbox() {
+    const lb = document.getElementById('imageLightboxOverlay');
+    if (lb) lb.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+    document.body.style.overflow = '';
+    document.body.style.height = '';
 }
 
 // ─── RENDER HOME VIDEO REVIEWS (YouTube Shorts) ───
@@ -630,16 +751,98 @@ function switchHomeReview(type, btn) {
     document.getElementById('home-review-' + type).classList.add('active');
 }
 
-// ─── STREAM TABS ───
-function switchStream(stream, btn) {
+// ─── STREAM & CATEGORY SWITCHING ───
+function switchStreamCategory(category, btn) {
+    currentMainStream = category;
+    currentProductPage = 1;
+
+    // Update stream tabs
     document.querySelectorAll('.stream-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.stream-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('stream-' + stream).classList.add('active');
+    if (btn) {
+        btn.classList.add('active');
+    } else {
+        const targetBtn = document.getElementById('tab-' + category);
+        if (targetBtn) targetBtn.classList.add('active');
+    }
+
+    const streamLearning = document.getElementById('stream-learning');
+    const streamGifts = document.getElementById('stream-gifts');
+    const ageFilterRow = document.getElementById('streamAgeFilterRow');
+
+    if (category === 'gifts') {
+        if (streamLearning) streamLearning.classList.remove('active');
+        if (streamGifts) streamGifts.classList.add('active');
+        if (ageFilterRow) ageFilterRow.style.display = 'none';
+        renderReturnGifts();
+    } else {
+        if (streamGifts) streamGifts.classList.remove('active');
+        if (streamLearning) streamLearning.classList.add('active');
+        if (ageFilterRow) ageFilterRow.style.display = 'flex';
+        renderLearningProducts();
+    }
+
     setTimeout(() => {
         document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
     }, 100);
 }
+
+// Backward-compatible switchStream
+function switchStream(stream, btn) {
+    if (stream === 'gifts') {
+        switchStreamCategory('gifts', btn);
+    } else {
+        switchStreamCategory('custom', btn);
+    }
+}
+
+// Filter by Age
+function filterByAge(age, btn) {
+    currentAgeFilter = age;
+    currentProductPage = 1;
+    document.querySelectorAll('.stream-age-pill').forEach(p => p.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    renderLearningProducts();
+}
+
+// Fast Finder Age Quick Jump
+function quickAgeJump(age) {
+    const streamsSec = document.getElementById('streams');
+    if (streamsSec) {
+        streamsSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    if (age === 'gifts') {
+        switchStreamCategory('gifts');
+    } else {
+        currentAgeFilter = age;
+        if (age === '0+') {
+            switchStreamCategory('custom');
+        } else if (age === '2+') {
+            switchStreamCategory('custom');
+        } else {
+            switchStreamCategory('standard');
+        }
+
+        // Highlight matching age pill in filter bar
+        document.querySelectorAll('.stream-age-pill').forEach(p => {
+            if (p.getAttribute('data-age') === age) {
+                p.classList.add('active');
+            } else {
+                p.classList.remove('active');
+            }
+        });
+        renderLearningProducts();
+    }
+}
+
+function scrollToStreams() {
+    const streamsSec = document.getElementById('streams');
+    if (streamsSec) {
+        streamsSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+
 
 // ─── FILTERS ───
 function initFilters() {
@@ -669,7 +872,13 @@ function openDetailModal(idx) {
     document.getElementById('dmodalOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
 }
-function closeDetailModal() { document.getElementById('dmodalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+function closeDetailModal() {
+    const dmodal = document.getElementById('dmodalOverlay');
+    if (dmodal) dmodal.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+    document.body.style.overflow = '';
+    document.body.style.height = '';
+}
 function closeDetailOnBg(e) { if (e.target === document.getElementById('dmodalOverlay')) closeDetailModal(); }
 
 // ─── ORDER MODAL ───
@@ -758,16 +967,6 @@ function submitOrder() {
         btn.innerHTML = origText;
     });
 }
-
-// ─── SCROLL REVEAL ───
-const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-            entry.target.style.transitionDelay = (i % 4) * 0.1 + 's';
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
 
 function initReveal() {
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
@@ -885,7 +1084,7 @@ document.addEventListener('keydown', (e) => {
 
 // ─── HERO CAROUSEL ───
 let hcsCurrentSlide = 0;
-const HCS_TOTAL = 4;
+const HCS_TOTAL = 5;
 let hcsTimer = null;
 const HCS_AUTO_MS = 5000;
 
@@ -907,6 +1106,9 @@ function renderHcsSlide(idx) {
     // Prevent prev/next when out of bounds
     document.getElementById('hcsPrev').disabled = (idx === 0);
     document.getElementById('hcsNext').disabled = (idx === HCS_TOTAL - 1);
+
+    const countPill = document.getElementById('hcsCounterPill');
+    if (countPill) countPill.textContent = (idx + 1) + ' / ' + HCS_TOTAL;
 
     hcsCurrentSlide = idx;
 }
@@ -965,3 +1167,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+// ─── CATEGORY NAVIGATION HELPER ───
+function goToCategoryStream(stream) {
+    const tab = document.getElementById('tab-' + stream);
+    if (tab) {
+        switchStream(stream, tab);
+    }
+    const target = document.getElementById('streams');
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// ─── HOMEPAGE INSTAGRAM REEL CONTROLLER ───
+function playHomeReel() {
+    const video = document.getElementById('homeReelPlayer');
+    const overlay = document.getElementById('homeReelPlayOverlay');
+    if (!video) return;
+    if (video.paused) {
+        video.muted = false;
+        video.play().then(() => {
+            if (overlay) overlay.style.opacity = '0';
+            setTimeout(() => { if (overlay) overlay.style.display = 'none'; }, 200);
+        }).catch(err => {
+            console.log('Play attempt thwarted, trying muted play:', err);
+            video.muted = true;
+            video.play();
+            if (overlay) overlay.style.display = 'none';
+        });
+    } else {
+        video.pause();
+        if (overlay) {
+            overlay.style.display = 'flex';
+            overlay.style.opacity = '1';
+        }
+    }
+}
+
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeImageLightbox();
+        closeDetailModal();
+    }
+});

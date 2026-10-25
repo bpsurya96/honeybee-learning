@@ -1,0 +1,90 @@
+---
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import WhatsAppFAB from "../components/WhatsAppFAB.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalUrl?: string;
+  activeNav?: string;
+  extraStylesheets?: string[];
+  hideHeader?: boolean;
+  hideFooter?: boolean;
+  hideFab?: boolean;
+}
+
+const {
+  title,
+  description = "India's First Personalised Activity Book for Kids & Birthday Return Gifts, Chennai. Screen-free learning customized with child's name.",
+  canonicalUrl = "https://honeybeelearning.co.in/",
+  activeNav = "",
+  extraStylesheets = [],
+  hideHeader = false,
+  hideFooter = false,
+  hideFab = false,
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 1. MANDATORY: Charset MUST be the very first element in <head> within byte 0-1024 -->
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalUrl}>
+  <link rel="icon" href="images/logo/logo.png" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/modern-responsive-fixes.css">
+  {extraStylesheets.map((sheet) => (
+    <link rel="stylesheet" href={sheet}>
+  ))}
+
+  <!-- Meta Pixel Code -->
+  <script is:inline>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1578885053978376');
+  fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1578885053978376&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-R4YMNFP0WP"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R4YMNFP0WP');
+  </script>
+
+  <slot name="head" />
+</head>
+<body>
+  {!hideHeader && <SiteHeader activeNav={activeNav} />}
+  <slot />
+  {!hideFooter && <SiteFooter />}
+  {!hideFab && <WhatsAppFAB />}
+  <slot name="scripts" />
+</body>
+</html>

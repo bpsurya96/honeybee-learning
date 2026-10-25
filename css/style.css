@@ -185,10 +185,10 @@ nav {
   background: #ffffff;
 }
 
-/* Track holds all 4 slides side by side */
+/* Track holds all 5 slides side by side */
 .hcs-track {
   display: flex;
-  width: 400%; /* 4 slides × 100% */
+  width: 500%; /* 5 slides × 100% */
   height: calc(100vh - var(--nav-height, 68px));
   min-height: 560px;
   touch-action: pan-y pinch-zoom; /* Prevents horizontal swipe navigation interfering with JS swiper */
@@ -197,7 +197,7 @@ nav {
 
 /* Each slide is a two-column split */
 .hcs-slide {
-  width: 25%; /* = 100% of viewport */
+  width: 20%; /* 100% / 5 slides = 20% of track */
   height: 100%;
   display: flex;
   align-items: stretch;
@@ -209,6 +209,7 @@ nav {
 .hcs-slide--2 { background: linear-gradient(135deg, #e3f2fd 0%, #e8f5ff 100%); }
 .hcs-slide--3 { background: linear-gradient(135deg, #e8f5d8 0%, #f1fae6 100%); }
 .hcs-slide--4 { background: linear-gradient(135deg, #fce4ec 0%, #fdf0f5 100%); }
+.hcs-slide--5 { background: linear-gradient(135deg, #fef8f0 0%, #fff7ed 100%); }
 
 /* Image side */
 .hcs-image-side {
@@ -1656,72 +1657,7 @@ section {
   display: block;
 }
 
-/* ─── OCEAN KITS PROMO BANNER (mobile discovery) ─── */
-.ocean-kit-promo-banner {
-  display: none; /* shown on mobile via media query */
-  text-decoration: none;
-  background: linear-gradient(135deg, #0e4f7c 0%, #0096c7 60%, #00b4d8 100%);
-  border-radius: 16px;
-  padding: 14px 18px;
-  margin-bottom: 20px;
-  color: white;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.35);
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
-  overflow: hidden;
-}
 
-.ocean-kit-promo-banner::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 100px;
-  height: 100px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 50%;
-}
-
-.ocean-kit-promo-banner:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 180, 216, 0.45);
-}
-
-.ocean-kit-promo-icon {
-  font-size: 2.2rem;
-  flex-shrink: 0;
-  animation: wave 2s ease-in-out infinite;
-}
-
-@keyframes wave {
-  0%, 100% { transform: rotate(-5deg); }
-  50% { transform: rotate(5deg); }
-}
-
-.ocean-kit-promo-text {
-  flex: 1;
-}
-
-.ocean-kit-promo-title {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.05rem;
-  margin-bottom: 2px;
-}
-
-.ocean-kit-promo-sub {
-  font-size: 0.78rem;
-  font-weight: 600;
-  opacity: 0.88;
-}
-
-.ocean-kit-promo-arrow {
-  font-size: 1.4rem;
-  font-weight: 800;
-  flex-shrink: 0;
-  opacity: 0.85;
-}
 
 /* ─── HOW IT WORKS ─── */
 .how-grid {
@@ -3964,4 +3900,635 @@ footer {
 @media (max-width: 480px) {
   .rg-benefits-grid { grid-template-columns: 1fr; }
   .rg-how-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── DIVINE STORIES PROMO BANNER (Homepage) ─── */
+.divine-promo-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #2d0a5e 0%, #4a0e8f 60%, #ff9933 100%);
+  border: 1.5px solid rgba(255, 153, 51, 0.45);
+  border-radius: 16px;
+  padding: 14px 22px;
+  margin-bottom: 28px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(74, 14, 143, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.divine-promo-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(74, 14, 143, 0.35);
+  text-decoration: none;
+  color: white;
+}
+
+.divine-promo-banner::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.divine-promo-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 153, 51, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 215, 0, 0.35);
+}
+
+.divine-promo-text {
+  flex: 1;
+}
+
+.divine-promo-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: #FFD700;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.divine-promo-badge {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  background: #FF9933;
+  color: #2d0a5e;
+  padding: 2px 7px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.divine-promo-sub {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.35;
+}
+
+.divine-promo-arrow {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #FFD700;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.divine-promo-banner:hover .divine-promo-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .divine-promo-banner {
+    padding: 12px 14px;
+    gap: 12px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+  }
+  .divine-promo-icon {
+    font-size: 1.6rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  .divine-promo-title {
+    font-size: 0.95rem;
+  }
+  .divine-promo-sub {
+    font-size: 0.76rem;
+  }
+  .divine-promo-arrow {
+    font-size: 1.15rem;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   3-PILLAR QUICK CATEGORY GATEWAY (Homepage)
+   ════════════════════════════════════════════════════════════════ */
+.hero-cat-gateway {
+  padding: 44px 20px 32px;
+  background: linear-gradient(180deg, #ffffff 0%, #fcfbf7 100%);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.hero-cat-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-cat-intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hero-cat-tagline {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--green, #2f7a3e);
+  background: var(--green-pale, #e8f5e9);
+  padding: 4px 14px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+}
+
+.hero-cat-heading {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.85rem;
+  color: var(--brown, #4a2c11);
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.hero-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.hero-cat-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 28px 24px 22px;
+  border: 2px solid #f0eee6;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+.hero-cat-card:hover, .hero-cat-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.1);
+  border-color: var(--green, #2f7a3e);
+}
+
+.hero-cat-card--gifts:hover, .hero-cat-card--gifts:focus-visible {
+  border-color: var(--orange, #f26522);
+}
+
+.hero-cat-card--divine:hover, .hero-cat-card--divine:focus-visible {
+  border-color: #4A0E8F;
+}
+
+.hero-cat-badge {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: var(--green-pale, #e8f5e9);
+  color: var(--green, #2f7a3e);
+  letter-spacing: 0.3px;
+}
+
+.hero-cat-badge--orange {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.hero-cat-badge--purple {
+  background: #f3e5f5;
+  color: #4A0E8F;
+}
+
+.hero-cat-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: var(--green-pale, #e8f5e9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: transform 0.25s ease;
+}
+
+.hero-cat-card:hover .hero-cat-icon-wrap {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.hero-cat-icon-wrap--orange {
+  background: #fff3e0;
+}
+
+.hero-cat-icon-wrap--purple {
+  background: #ede7f6;
+}
+
+.hero-cat-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.hero-cat-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.28rem;
+  color: var(--text-dark, #2d3748);
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+
+.hero-cat-desc {
+  font-size: 0.88rem;
+  color: var(--text-soft, #64748b);
+  line-height: 1.45;
+  margin: 0 0 20px;
+  flex: 1;
+}
+
+.hero-cat-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.hero-cat-price {
+  font-size: 0.88rem;
+  color: var(--text-dark, #334155);
+}
+
+.hero-cat-price strong {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--green, #2f7a3e);
+}
+
+.hero-cat-card--gifts .hero-cat-price strong {
+  color: var(--orange, #f26522);
+}
+
+.hero-cat-card--divine .hero-cat-price strong {
+  color: #4A0E8F;
+}
+
+.hero-cat-cta {
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: var(--green, #2f7a3e);
+  transition: transform 0.2s;
+}
+
+.hero-cat-card:hover .hero-cat-cta {
+  transform: translateX(4px);
+}
+
+.hero-cat-card--gifts .hero-cat-cta {
+  color: var(--orange, #f26522);
+}
+
+.hero-cat-card--divine .hero-cat-cta {
+  color: #4A0E8F;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   DIVINE STORIES STREAM (Inline Homepage Grid)
+   ════════════════════════════════════════════════════════════════ */
+.divine-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.divine-filter-btn {
+  border: 1.5px solid rgba(74, 14, 143, 0.2);
+  color: #4A0E8F;
+  background: white;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.divine-filter-btn:hover {
+  border-color: #4A0E8F;
+  background: #f8f4ff;
+}
+
+.divine-filter-btn.active {
+  background: linear-gradient(135deg, #4A0E8F, #FF9933);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(74, 14, 143, 0.25);
+}
+
+.divine-home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   FEATURED INSTAGRAM REEL CARD (Homepage Testimonials)
+   ════════════════════════════════════════════════════════════════ */
+.home-reel-card {
+  background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+  border-radius: 24px;
+  padding: 32px 36px;
+  margin: 10px 0 36px;
+  color: white;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 36px;
+  align-items: center;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.home-reel-frame {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.65);
+  border: 3.5px solid #3f3f46;
+  aspect-ratio: 9/16;
+  position: relative;
+  background: #000;
+}
+
+.home-reel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-reel-play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.38);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.25s;
+}
+
+.home-reel-play-overlay:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+.home-reel-play-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(225, 48, 108, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(225, 48, 108, 0.6);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.home-reel-play-overlay:hover .home-reel-play-btn {
+  transform: scale(1.12);
+  box-shadow: 0 12px 30px rgba(225, 48, 108, 0.8);
+}
+
+.home-reel-hint {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.home-reel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fb7185;
+  margin-bottom: 12px;
+}
+
+.home-reel-dot {
+  opacity: 0.5;
+}
+
+.home-reel-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.7rem;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+.home-reel-sub {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin: 0 0 20px;
+}
+
+.home-reel-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.home-reel-point {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.home-reel-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.home-reel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.home-reel-insta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(253, 29, 29, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.home-reel-insta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(253, 29, 29, 0.45);
+  color: white;
+}
+
+.home-reel-all-btn {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.home-reel-all-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   TRUST RATING BAR & REVIEWS LINK (Homepage Testimonials Bottom)
+   ════════════════════════════════════════════════════════════════ */
+.home-reviews-trust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px 28px;
+  margin-top: 40px;
+  border: 1.5px solid var(--green-pale, #e8f5e9);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+.home-reviews-rating-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-reviews-stars {
+  color: #f59e0b;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.home-reviews-rating-text {
+  font-size: 0.95rem;
+  color: var(--text-dark, #334155);
+}
+
+.home-reviews-explore-btn {
+  background: var(--green, #2f7a3e);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(47, 122, 62, 0.25);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.home-reviews-explore-btn:hover {
+  transform: translateY(-2px);
+  background: #256633;
+  color: white;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES
+   ════════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-cat-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .home-reel-card {
+    grid-template-columns: 1fr;
+    padding: 26px 20px;
+    gap: 24px;
+    text-align: center;
+  }
+  .home-reel-frame {
+    max-width: 250px;
+  }
+  .home-reel-title {
+    font-size: 1.45rem;
+  }
+  .home-reel-highlights {
+    text-align: left;
+    max-width: 340px;
+    margin: 0 auto 20px;
+  }
+  .home-reel-actions {
+    justify-content: center;
+  }
+  .home-reviews-trust-bar {
+    flex-direction: column;
+    text-align: center;
+    padding: 18px;
+  }
+  .home-reviews-rating-box {
+    flex-direction: column;
+    gap: 6px;
+  }
 }

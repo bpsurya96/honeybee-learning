@@ -1,39 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-<head>
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1578885053978376');
-  fbq('track', 'PageView');
-  </script>
-  <noscript>
-  <img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1578885053978376&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — Bee Points Dashboard | HoneyBee Learning</title>
-  <meta name="robots" content="noindex, nofollow">
-
-  <link rel="icon" href="images/logo/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/bee-points.css">
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
-    onload="this.rel='stylesheet'">
-
-  <style>
+const title = "Admin — Bee Points Dashboard | HoneyBee Learning";
+const description = "HoneyBee Learning";
+const canonicalUrl = "https://honeybeelearning.co.in/admin.html";
+const activeNav = "";
+const extraStylesheets = ['css/bee-points.css'];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  activeNav={activeNav}
+  extraStylesheets={extraStylesheets}
+  hideHeader={true}
+  hideFooter={true}
+  hideFab={true}
+>
+  <Fragment slot="head">
+    <style is:global>
     * {
       margin: 0;
       padding: 0;
@@ -55,9 +40,10 @@
       --text-soft: #666;
     }
   </style>
-</head>
+    <meta name="robots" content="noindex, nofollow">
+  </Fragment>
 
-<body class="admin-body">
+
 
   <!-- ═══ LOGIN SCREEN ═══ -->
   <div class="admin-login-wrap" id="loginScreen">
@@ -250,73 +236,9 @@
   </div>
 
   <!-- Supabase CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/bee-points.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var hamburger = document.getElementById('hamburger');
-      var navLinks = document.getElementById('navLinks');
-      var overlay = document.getElementById('navOverlay');
+  <script is:inline src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script is:inline src="js/bee-points.js"></script>
+  
 
-      // 1. Unified close function
-      function closeMenu() {
-        if (navLinks) navLinks.classList.remove('open');
-        if (overlay) overlay.classList.remove('open');
-        if (hamburger) {
-          hamburger.classList.remove('open');
-          hamburger.setAttribute('aria-expanded', 'false');
-        }
-        // Reset scrolling consistently 
-        document.body.classList.remove('no-scroll');
-        document.body.style.overflow = '';
-      }
 
-      // 2. Hamburger toggle logic
-      if (hamburger) {
-        hamburger.addEventListener('click', function (e) {
-          e.stopPropagation(); // Prevents click from bubbling to body
-          var isOpen = navLinks.classList.contains('open');
-          if (isOpen) {
-            closeMenu();
-          } else {
-            navLinks.classList.add('open');
-            if (overlay) overlay.classList.add('open');
-            hamburger.classList.add('open');
-            hamburger.setAttribute('aria-expanded', 'true');
-            document.body.classList.add('no-scroll');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      }
-
-      // 3. Close on overlay click
-      if (overlay) {
-        overlay.addEventListener('click', closeMenu);
-      }
-
-      // 4. Close menu if clicking outside of it
-      document.body.addEventListener('click', function (e) {
-        if (navLinks && navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== hamburger) {
-          closeMenu();
-        }
-      });
-
-      // 5. THE FIX: Handle link clicks with a slight delay so redirection doesn't fail
-      if (navLinks) {
-        navLinks.addEventListener('click', function (e) {
-          e.stopPropagation();
-        });
-
-        var links = navLinks.querySelectorAll('a');
-        links.forEach(function (link) {
-          link.addEventListener('click', function () {
-            setTimeout(closeMenu, 150);
-          });
-        });
-      }
-    });
-  </script>
-
-</body>
-
-</html>
+</BaseLayout>

@@ -1,0 +1,376 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Personalised Activity Book — HoneyBee Learning | India's First Personalised Activity Book for Kids";
+const description = "HoneyBee Learning — Handcrafted personalised activity books, wipe & clean books, divine stories and return gifts.";
+const canonicalUrl = "https://honeybeelearning.co/product.html";
+const activeNav = "products.html";
+const extraStylesheets = ['css/product.css', 'css/custom-order.css'];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  activeNav={activeNav}
+  extraStylesheets={extraStylesheets}
+  hideHeader={false}
+  hideFooter={false}
+  hideFab={false}
+>
+  <Fragment slot="head">
+    <meta name="keywords"
+        content="personalised kids books Chennai, personalised activity books India, kids activity books Medavakkam, personalised books for kids, honeybee learning products, India first personalised kids book">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HoneyBee Learning">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://honeybeelearning.co/product.html">
+    <meta property="og:title" id="ogTitle" content="Personalised Activity Book — HoneyBee Learning">
+    <meta property="og:description" id="ogDesc"
+        content="Personalised kids activity books with your child's name — India's first personalised activity book for kids. Based in Medavakkam, Chennai.">
+    <meta property="og:image" id="ogImage" content="https://honeybeelearning.co/images/logo/logo.png">
+    <meta property="og:site_name" content="HoneyBee Learning">
+    <meta property="og:locale" content="en_IN">
+  </Fragment>
+
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
+
+    <div class="product-page">
+        <div class="product-layout">
+            <!-- Left Top Column: Flipkart-style Product Gallery -->
+            <div class="product-gallery">
+                <div class="gallery-main" id="galleryMain">
+                    <img id="mainImg" src="" alt="Product View">
+                    <button class="gallery-nav gallery-prev" onclick="prevImg()" aria-label="Previous Image">&#10094;</button>
+                    <button class="gallery-nav gallery-next" onclick="nextImg()" aria-label="Next Image">&#10095;</button>
+                    <div class="gallery-count-badge" id="galleryCountBadge">1 / 1</div>
+                </div>
+                <!-- Desktop & Mobile Thumbs with 6+ overflow support -->
+                <div class="gallery-thumbs" id="thumbsContainer"></div>
+                <!-- Clean, compact mobile slider dots -->
+                <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+
+            <!-- Left Bottom Column (Desktop): Product Overview Card -->
+            <div class="product-details-card" id="productDetailsCard">
+                <h3 class="product-section-heading">📖 Product Overview</h3>
+                <div class="product-desc" id="productDesc"></div>
+                <div class="product-tags" id="productTags"></div>
+            </div>
+
+            <!-- Right Column: Product Purchase & Details -->
+            <div class="product-info">
+                <div class="product-badge" id="productBadge"></div>
+                <h1 class="product-title" id="productTitle"></h1>
+
+                <!-- Price & MRP Row -->
+                <div class="price-row">
+                    <span class="price-sell" id="priceSell"></span>
+                    <span class="price-mrp-detail" id="priceMrp"></span>
+                    <span class="price-off" id="priceDiscount"></span>
+                    <span class="reusable-pill" id="reusablePill" style="display:none;">♻️ Wipe &amp; Clean · 100+ Uses</span>
+                </div>
+
+                <!-- Free Goodies Box (Flipkart Style — Highlighted right below price) -->
+                <div class="product-freebies" id="productFreebies" style="display:none;"></div>
+
+                <!-- Personalized Details Box (Shown for customizable books) -->
+                <div class="product-customizer-box" id="productCustomizerBox" style="display:none;">
+                    <div class="pc-heading">
+                        <span class="pc-badge">✨ Personalize Your Book</span>
+                        <span class="pc-sub">1st review included!</span>
+                    </div>
+                    
+                    <div class="pc-field">
+                        <label for="pcChildName">Child's Name for Cover <span class="req">*</span></label>
+                        <input type="text" id="pcChildName" class="pc-input" placeholder="Enter child's name (e.g. Aarav, Diya, Kavin...)" maxlength="30" />
+                    </div>
+
+                    <div class="pc-row">
+                        <div class="pc-field">
+                            <label for="pcChildAge">Child's Age</label>
+                            <select id="pcChildAge" class="pc-select">
+                                <option value="2 Years">Age 2 Years (Toddler Basics)</option>
+                                <option value="3 Years" selected>Age 3 Years (Early Pre-Writing)</option>
+                                <option value="4 Years">Age 4 Years (Foundation Skills)</option>
+                                <option value="5 Years">Age 5 Years (Phonics &amp; Math)</option>
+                                <option value="6-8 Years">Age 6–8 Years (Logic &amp; Fun)</option>
+                                <option value="8+ Years">Age 8+ Years</option>
+                            </select>
+                        </div>
+                        <div class="pc-field">
+                            <label for="pcTheme">Preferred Theme</label>
+                            <select id="pcTheme" class="pc-select">
+                                <option value="Dinosaur">🦕 Dinosaur Theme</option>
+                                <option value="Unicorn">🦄 Unicorn Theme</option>
+                                <option value="Spiderman">🕷️ Spiderman Theme</option>
+                                <option value="Thomas & Friends">🚂 Thomas &amp; Friends</option>
+                                <option value="Space & Astronaut">🚀 Space &amp; Astronaut</option>
+                                <option value="Jungle Animals">🦁 Jungle Animals</option>
+                                <option value="Cocomelon">🍉 Cocomelon</option>
+                                <option value="Superhero Avengers">🦸 Superhero / Avengers</option>
+                                <option value="Princess & Frozen">👑 Princess / Frozen</option>
+                                <option value="Cars & Vehicles">🚗 Cars &amp; Transport</option>
+                                <option value="Under the Sea">🌊 Ocean / Under Sea</option>
+                                <option value="Custom Theme">🎨 Custom (Discuss on WhatsApp)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="pc-photo-hint">
+                        📸 <strong>Photo on Cover:</strong> You can send your child's clear photo on WhatsApp right after clicking Order!
+                    </div>
+
+                    <!-- 50rs per customization policy -->
+                    <div class="pc-policy-hint">
+                        ℹ️ <strong>Customization Policy:</strong> 1st design review &amp; personalization included. <strong>₹50 per customization after first review.</strong>
+                    </div>
+                </div>
+
+                <div class="ecommerce-urgency">
+                    <span class="urgency-icon">⚡</span>
+                    <div class="urgency-text">
+                        <strong>Handcrafted with Care!</strong> <span class="urgency-fade">Each book personalized individually in Chennai</span>
+                    </div>
+                </div>
+
+                <!-- Primary Order CTA Button -->
+                <button class="order-btn order-btn--wa" id="orderBtn" onclick="handleMainOrderClick()">
+                    💬 Order on WhatsApp
+                </button>
+                <p class="order-note">1-on-1 personal confirmation on WhatsApp before we print your book.</p>
+
+                <!-- Share & Custom Request Row -->
+                <div class="product-action-row" style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+                    <button id="shareBtn" class="share-btn" onclick="shareProduct()" style="flex:1;">
+                        <span class="share-icon">🔗</span> Share with Friends
+                    </button>
+                    <a href="#customiseSection" class="share-btn" style="flex:1;text-decoration:none;text-align:center;color:var(--text);">
+                        🎁 Bulk / Custom Request
+                    </a>
+                </div>
+
+                <!-- Fast Delivery Note -->
+                <div class="delivery-info">
+                    <span style="font-size:1.4rem;">🚚</span>
+                    <div>
+                        <strong>Fast &amp; Safe Delivery:</strong> Chennai 24–48h dispatch · Pan-India delivery in 3–5 business days · Free local pickup in Medavakkam.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------------------------------------
+         RELATED PRODUCTS
+         ------------------------------------------- -->
+    <div class="related-section">
+        <h2 class="related-title">✨ You May Also Like</h2>
+        <div class="learning-grid" id="relatedGrid">
+            <!-- Populated dynamically via JS -->
+        </div>
+    </div>
+
+    <!-- -------------------------------------------
+         CUSTOMISE YOUR OWN SECTION (Bulk & Custom Themes)
+         ------------------------------------------- -->
+    <div class="custom-section" id="customiseSection">
+        <div class="custom-inner">
+
+            <!-- Header -->
+            <div class="custom-header">
+                <div class="custom-badge">🎨 Custom Orders &amp; Bulk Return Gifts</div>
+                <h2 class="custom-title">Need a Custom Theme or Bulk Return Gifts? <br><span>Let's Create It Together! 🍯</span></h2>
+                <p class="custom-sub">Every child is unique — so should be their book! Tell us your dream theme and
+                    we'll handcraft a personalised learning book just for your little one, delivered in 3–5 days. 🚚</p>
+            </div>
+
+            <!-- Step 1: Pick a Theme -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">1</span> Pick your theme <span
+                        class="step-hint">(or type your own below)</span></div>
+                <div class="theme-chips" id="themeChips">
+                    <button class="theme-chip" onclick="selectTheme(this, 'Marvel / Avengers')">🦸 Marvel / Avengers</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Doraemon')">🐱 Doraemon</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Peppa Pig')">🐷 Peppa Pig</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Minions')">🍌 Minions</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Disney Princess')">👑 Disney Princess</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Paw Patrol')">🐶 Paw Patrol</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Cars & Trucks')">🚗 Cars &amp; Trucks</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Dinosaurs')">🦕 Dinosaurs</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Ganesh Theme')">🐘 Ganesh Theme</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Tamil Culture / Pongal')">🌾 Tamil Culture</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Ramayan Theme')">🏹 Ramayan Theme</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Fairy Tales')">🧚 Fairy Tales</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Animals & Safari')">🦁 Animals &amp; Safari</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Super Mario')">🍄 Super Mario</button>
+                    <button class="theme-chip" onclick="selectTheme(this, 'Frozen / Elsa')">❄️ Frozen / Elsa</button>
+                    <button class="theme-chip custom-chip" onclick="selectTheme(this, '')">✏️ My Own Theme...</button>
+                </div>
+                <input type="text" id="customThemeInput" class="custom-input" style="display:none;margin-top:8px;"
+                    placeholder="e.g. Chota Bheem, Ninja, Tamil Alphabet, Space Expedition..." />
+            </div>
+
+            <!-- Step 2: Choose Book Type -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">2</span> Choose book type</div>
+                <div class="product-type-cards" id="productTypeCards">
+                    <div class="pt-card"
+                        onclick="selectProductType(this, 'Personalised Activity Book (A4, 50 pages, single use)')"
+                        data-type="activity">
+                        <div class="pt-icon">📖</div>
+                        <div class="pt-name">Activity Book</div>
+                        <div class="pt-desc">A4 · 50 pages · Tracing, Colouring, Math</div>
+                        <div class="pt-price">Starting ₹349</div>
+                    </div>
+                    <div class="pt-card"
+                        onclick="selectProductType(this, 'Reusable Wipe & Learn Laminated Book (A4, 100+ uses)')"
+                        data-type="reusable">
+                        <div class="pt-icon">♻️</div>
+                        <div class="pt-name">Reusable Book</div>
+                        <div class="pt-desc">A4 · Laminated · Wipe &amp; Learn · 100+ uses</div>
+                        <div class="pt-price">Starting ₹399</div>
+                    </div>
+                    <div class="pt-card" onclick="selectProductType(this, 'Reusable Alphabet Chart (A4, laminated)')"
+                        data-type="chart">
+                        <div class="pt-icon">📊</div>
+                        <div class="pt-name">Learning Chart</div>
+                        <div class="pt-desc">A4 · Laminated · Alphabet / Numbers</div>
+                        <div class="pt-price">Starting ₹69</div>
+                    </div>
+                    <div class="pt-card" onclick="selectProductType(this, 'Return Gift Set (combo of books + treats)')"
+                        data-type="gift">
+                        <div class="pt-icon">🎁</div>
+                        <div class="pt-name">Return Gift Set</div>
+                        <div class="pt-desc">Birthday combos · Bulk orders · With treats</div>
+                        <div class="pt-price">Starting ₹39/set</div>
+                    </div>
+                    <div class="pt-card" onclick="selectProductType(this, 'Not sure — need help choosing')"
+                        data-type="other">
+                        <div class="pt-icon">💡</div>
+                        <div class="pt-name">Not Sure Yet</div>
+                        <div class="pt-desc">Tell us your need &amp; we'll recommend!</div>
+                        <div class="pt-price">Free advice</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Child Details -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">3</span> A little about your child</div>
+                <div class="custom-form-row">
+                    <div class="custom-form-group">
+                        <label class="custom-label">Child's Name *</label>
+                        <input type="text" id="custChildName" class="custom-input" placeholder="e.g. Arjun, Priya..." />
+                    </div>
+                    <div class="custom-form-group">
+                        <label class="custom-label">Age Group *</label>
+                        <select id="custAge" class="custom-input" onchange="updateCustomAgeImage()">
+                            <option value="">Select age group</option>
+                            <option value="1–2 years (Toddler)">1–2 years (Toddler)</option>
+                            <option value="3–5 years (Preschool / LKG)">3–5 years (Preschool / LKG)</option>
+                            <option value="6 years">6 years (Early Primary)</option>
+                            <option value="7 years">7 years</option>
+                            <option value="8 years">8 years</option>
+                            <option value="9 years">9 years</option>
+                            <option value="10–12 years">10–12 years (Class 5–7)</option>
+                        </select>
+                        <div id="custAgePreview" style="display:none; margin-top:12px; text-align:center;"></div>
+                    </div>
+                </div>
+                <div class="custom-form-row">
+                    <div class="custom-form-group">
+                        <label class="custom-label">Quantity Needed</label>
+                        <select id="custQty" class="custom-input">
+                            <option value="1 copy">1 copy (for my child)</option>
+                            <option value="2–5 copies">2–5 copies (siblings / cousins)</option>
+                            <option value="10–25 copies (Return Gifts)">10–25 copies (Return Gifts)</option>
+                            <option value="25–50 copies (Bulk)">25–50 copies (Bulk)</option>
+                            <option value="50+ copies (Bulk / Event)">50+ copies (Bulk / Event)</option>
+                        </select>
+                    </div>
+                    <div class="custom-form-group">
+                        <label class="custom-label">Budget Range</label>
+                        <select id="custBudget" class="custom-input">
+                            <option value="">Any / Not sure</option>
+                            <option value="Under ₹200">Under ₹200</option>
+                            <option value="₹200–₹500">₹200–₹500</option>
+                            <option value="₹500–₹1000">₹500–₹1000</option>
+                            <option value="₹1000+">₹1000+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Extra Details -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">4</span> Anything special you want?</div>
+                <div class="special-chips">
+                    <label class="special-chip"><input type="checkbox" value="Child's name on cover" /> ✍️ Name on cover</label>
+                    <label class="special-chip"><input type="checkbox" value="Parent names inside" /> 👨‍👩‍👧 Parent names inside</label>
+                    <label class="special-chip"><input type="checkbox" value="Photo on cover" /> 📸 Photo on cover</label>
+                    <label class="special-chip"><input type="checkbox" value="Specific colour theme" /> 🎨 Specific colours</label>
+                    <label class="special-chip"><input type="checkbox" value="Tamil / regional language" /> 🕉️ Tamil / Regional</label>
+                    <label class="special-chip"><input type="checkbox" value="Moral values / life skills pages" /> 🌟 Moral values</label>
+                    <label class="special-chip"><input type="checkbox" value="Bilingual (English + Tamil)" /> 🗣️ Bilingual (English + Tamil)</label>
+                    <label class="special-chip"><input type="checkbox" value="Extra tracing pages" /> ✏️ Extra tracing pages</label>
+                </div>
+                <div style="background: rgba(255,204,0,0.15); border: 1.5px solid #ffcc00; border-radius: 10px; padding: 10px 14px; margin: 12px 0 16px; font-size: 0.85rem; color: #78350f; font-weight: 700;">
+                    ℹ️ <strong>Customization Policy:</strong> 1st design review &amp; personalization included. ₹50 per customization after first review.
+                </div>
+                <textarea id="custNotes" class="custom-input custom-textarea"
+                    placeholder="Describe your vision! e.g. 'I want a Dinosaur theme book with Tamil alphabet tracing, personalised for my daughter Diya (age 3). Need 15 copies for her birthday return gifts...'"></textarea>
+            </div>
+
+            <!-- Step 5: Contact -->
+            <div class="custom-step">
+                <div class="custom-step-label"><span class="step-num">5</span> Your WhatsApp number</div>
+                <div class="custom-form-row">
+                    <div class="custom-form-group" style="flex:2">
+                        <label class="custom-label">WhatsApp Number *</label>
+                        <input type="tel" id="custPhone" class="custom-input" placeholder="10-digit number"
+                            maxlength="10" />
+                    </div>
+                    <div class="custom-form-group" style="flex:1">
+                        <label class="custom-label">Best time to call?</label>
+                        <select id="custTime" class="custom-input">
+                            <option value="Anytime">Anytime</option>
+                            <option value="Morning (9am–12pm)">Morning (9am–12pm)</option>
+                            <option value="Afternoon (12pm–4pm)">Afternoon (12pm–4pm)</option>
+                            <option value="Evening (4pm–8pm)">Evening (4pm–8pm)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error & Submit -->
+            <p id="custError" class="cust-error" style="display:none;"></p>
+            <button class="cust-submit-btn" onclick="submitCustomOrder()">
+                <span>💬 Send WhatsApp Enquiry</span>
+            </button>
+            <p class="cust-note">We will reach out to you directly on WhatsApp to design and customize your order. · 🚚 Fast Delivery · ✨ 100% Personalised</p>
+
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="Enlarged view">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Product Page Controller -->
+    <script is:inline src="js/product.js"></script>
+
+    <!-- STICKY MOBILE ORDER BAR -->
+    <div class="mobile-sticky-bar" id="stickyOrderBar">
+        <div class="msb-info">
+            <div class="msb-title" id="msbTitle"></div>
+            <div class="msb-price-wrap">
+                <span class="msb-price" id="msbPrice"></span>
+                <span class="msb-mrp" id="msbMrp"></span>
+            </div>
+        </div>
+        <button class="msb-btn" id="msbBtn" onclick="handleMainOrderClick()">💬 Order on WhatsApp</button>
+    </div>
+
+</BaseLayout>

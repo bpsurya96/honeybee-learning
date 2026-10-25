@@ -1,0 +1,482 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "FAQ — HoneyBee Learning | Common Questions Answered";
+const description = "Got questions about HoneyBee Learning personalised books and return gifts? Find answers about delivery, payment, minimum orders, previews, and more.";
+const canonicalUrl = "https://honeybeelearning.co/faq.html";
+const activeNav = "faq.html";
+const extraStylesheets = ['css/pages.css'];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  activeNav={activeNav}
+  extraStylesheets={extraStylesheets}
+  hideHeader={false}
+  hideFooter={false}
+  hideFab={false}
+>
+  <Fragment slot="head">
+    <style is:global>
+    body {
+      background: #fafaf7;
+    }
+
+    .page-hero {
+      background: linear-gradient(135deg, #f4a227 0%, #e67e22 60%, #3d6b24 100%);
+    }
+
+    .faq-page-wrap {
+      max-width: 760px;
+      margin: 44px auto;
+      padding: 0 24px 60px;
+    }
+
+    .faq-category {
+      margin-bottom: 36px;
+    }
+
+    .faq-category-title {
+      font-family: 'Fredoka One', cursive;
+      color: var(--brown);
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .faq-category-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--honey-pale), transparent);
+      border-radius: 2px;
+    }
+
+    /* Accordion overrides for standalone page */
+    .faq-item {
+      background: white;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      border: 1.5px solid #f0e8d0;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .faq-item.active {
+      border-color: var(--honey);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--brown);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--honey);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 20px 18px;
+      color: var(--text-soft);
+      font-weight: 600;
+      font-size: 0.93rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .faq-still-help {
+      background: linear-gradient(135deg, #f0f9e8, #fff8e1);
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: center;
+      border: 1.5px solid #d4edaa;
+      margin-top: 40px;
+    }
+
+    .faq-still-help h2 {
+      font-family: 'Fredoka One', cursive;
+      color: var(--green);
+      font-size: 1.5rem;
+      margin: 0 0 10px;
+    }
+
+    .faq-still-help p {
+      color: var(--text-soft);
+      font-weight: 600;
+      margin: 0 0 20px;
+      font-size: 0.95rem;
+    }
+
+    .faq-still-help .help-btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .help-btn {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .help-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .help-btn-wa {
+      background: #25D366;
+      color: white;
+    }
+
+    .help-btn-call {
+      background: var(--green);
+      color: white;
+    }
+  </style>
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does delivery take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We design, print, and pack your personalised order within 2–3 days. Delivery within Chennai takes 1–2 days, and outside Chennai takes 3–5 days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I get to see a preview before printing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Once you confirm your order and make the payment on WhatsApp, we share a digital preview of the cover page with your child's name. We proceed to printing only after your approval."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the minimum order quantity for return gifts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our return gift combos start from a minimum of 10 sets. For individual activity books or flashcards, you can order just 1 piece."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you ship outside Chennai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we deliver all across Tamil Nadu and India. Standard shipping charges apply based on your location and order weight. Free pickup available in Medavakkam, Chennai."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I pay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We accept UPI, GPay, PhonePe, and bank transfer. Payment is confirmed before we begin personalisation and printing. No advance without a preview — you see your child's name in the design first!"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I change the child's name after ordering?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but only before you approve the preview. Once you approve the cover design on WhatsApp, we cannot change the name. Please double-check the spelling when we share the preview."
+        }
+      }
+    ]
+  }
+  </script>
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How long does delivery take?","acceptedAnswer":{"@type":"Answer","text":"We design, print and pack within 2-3 days. Chennai delivery takes 1-2 days, outside Chennai 3-5 days."}},
+      {"@type":"Question","name":"Do I get to see a preview before printing?","acceptedAnswer":{"@type":"Answer","text":"Yes! After payment on WhatsApp, we share a digital preview with your child's name. We print only after your approval."}},
+      {"@type":"Question","name":"What is the minimum order quantity for return gifts?","acceptedAnswer":{"@type":"Answer","text":"Return gift combos start from a minimum of 10 sets. Individual books can be ordered as a single piece."}},
+      {"@type":"Question","name":"Do you ship outside Chennai?","acceptedAnswer":{"@type":"Answer","text":"Yes, we deliver across Tamil Nadu and all of India. Standard shipping charges apply. Free pickup at Medavakkam studio."}},
+      {"@type":"Question","name":"How do I pay?","acceptedAnswer":{"@type":"Answer","text":"We accept UPI, GPay, PhonePe, and bank transfer. Payment is confirmed before printing begins."}},
+      {"@type":"Question","name":"Can I change the child's name after ordering?","acceptedAnswer":{"@type":"Answer","text":"Yes, but only before you approve the preview. Once approved, we cannot change it — so please check the spelling carefully."}}
+    ]
+  }
+  </script>
+    <script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How long does delivery take?","acceptedAnswer":{"@type":"Answer","text":"We design, print and pack within 2-3 days. Chennai delivery takes 1-2 days, outside Chennai 3-5 days."}},
+      {"@type":"Question","name":"Do I get to see a preview before printing?","acceptedAnswer":{"@type":"Answer","text":"Yes! After payment on WhatsApp, we share a digital preview with your child's name. We print only after your approval."}},
+      {"@type":"Question","name":"What is the minimum order quantity for return gifts?","acceptedAnswer":{"@type":"Answer","text":"Return gift combos start from a minimum of 10 sets. Individual books can be ordered as a single piece."}},
+      {"@type":"Question","name":"Do you ship outside Chennai?","acceptedAnswer":{"@type":"Answer","text":"Yes, we deliver across Tamil Nadu and all of India. Standard shipping charges apply. Free pickup at Medavakkam studio."}},
+      {"@type":"Question","name":"How do I pay?","acceptedAnswer":{"@type":"Answer","text":"We accept UPI, GPay, PhonePe, and bank transfer. Payment confirmed before printing begins."}},
+      {"@type":"Question","name":"Can I change the child's name after ordering?","acceptedAnswer":{"@type":"Answer","text":"Yes, but only before you approve the preview. Once approved we cannot change it, so check the spelling carefully."}}
+    ]
+  }
+  </script>
+    <meta name="keywords"
+    content="HoneyBee Learning FAQ, personalised kids books questions, birthday return gifts FAQ Chennai, delivery personalised books India, how to order personalised books, activity books FAQ, return gifts ordering India">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HoneyBee Learning">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://honeybeelearning.co/faq.html">
+    <meta property="og:title" content="FAQ — HoneyBee Learning | Common Questions Answered">
+    <meta property="og:description"
+    content="Got questions about personalised kids books or birthday return gifts? Find answers about delivery, payment, minimum orders, and more from India's first personalised activity book for kids.">
+    <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+    <meta property="og:site_name" content="HoneyBee Learning">
+    <meta name="keywords"
+    content="HoneyBee Learning FAQ, personalised kids books questions, birthday return gifts FAQ Chennai, delivery personalised books India, how to order personalised books">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HoneyBee Learning">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://honeybeelearning.co/faq.html">
+    <meta property="og:title" content="FAQ — HoneyBee Learning | Questions Answered">
+    <meta property="og:description"
+    content="Got questions about personalised kids books or birthday return gifts? Find answers from India's first personalised activity book for kids.">
+    <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+    <meta property="og:site_name" content="HoneyBee Learning">
+    <meta name="keywords"
+    content="HoneyBee Learning FAQ, personalised kids books questions, birthday return gifts FAQ Chennai, delivery personalised books India, how to order personalised books">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="HoneyBee Learning">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://honeybeelearning.co/faq.html">
+    <meta property="og:title" content="FAQ - HoneyBee Learning | Questions Answered">
+    <meta property="og:description"
+    content="Got questions about personalised kids books or birthday return gifts? Find answers from India's first personalised activity book for kids.">
+    <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+    <meta property="og:site_name" content="HoneyBee Learning">
+  </Fragment>
+
+
+  <!-- NAV -->
+  
+  <div class="nav-drawer-overlay" id="navOverlay"></div>
+  
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">🏠 Home</a>
+    <span>›</span>
+    <strong style="color:var(--green);">❓ FAQ</strong>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="page-hero-emoji">❓</span>
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about ordering, delivery and personalisation for
+      <strong>India's first personalised activity book for kids</strong> for kids!
+    </p>
+  </div>
+
+  <!-- India First Banner -->
+  <div style="max-width:760px;margin:0 auto;padding:20px 24px 0;">
+    <div class="india-banner">
+      <span class="flag">🇮🇳</span>
+      <span>HoneyBee Learning is <strong>India's first personalised activity book for kids</strong> — crafting books
+        with each child's name woven into every page.</span>
+    </div>
+  </div>
+
+  <div class="faq-page-wrap">
+
+    <!-- DELIVERY & TIMELINES -->
+    <div class="faq-category">
+      <div class="faq-category-title">🚚 Delivery &amp; Timelines</div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>How long does delivery take?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>We typically design, print, and pack your personalised order within 2–3 days. Delivery within Chennai takes
+            another 1–2 days, and outside Chennai takes 3–5 days. If you have an urgent birthday party, please contact
+            us on WhatsApp directly!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Do you ship outside Chennai?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Yes! We deliver all across Tamil Nadu and India. Standard shipping charges apply based on your location and
+            order weight. Free pickup is always available at our studio in Medavakkam, Chennai.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>How much does delivery cost?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Delivery charges vary based on your location and order weight. We will share the exact shipping cost when
+            you WhatsApp us before confirming the order. Free pickup is available at our studio in Medavakkam, Chennai.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERSONALISATION -->
+    <div class="faq-category">
+      <div class="faq-category-title">✏️ Personalisation</div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Do I get to see a preview before printing?</span><span
+            class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Yes! Once you confirm your order and make the payment on WhatsApp, we will share a digital preview of the
+            cover page with your child's name. Only after your approval, we proceed to printing. Your satisfaction is
+            guaranteed before we press print!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Can I change the child's name after ordering?</span><span
+            class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Yes — but only before you approve the preview and we begin printing. Once you have approved the cover
+            design on WhatsApp, we cannot change the name. So please double-check the spelling carefully when we share
+            the preview!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Can I personalise with multiple children's names?</span><span
+            class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>For return gift sets, each set is personalised with a different child's name — that's what makes them extra
+            special! For personal learning books, we personalise with one child's name per book. Do mention in your
+            order notes if you need multiple names.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDERING -->
+    <div class="faq-category">
+      <div class="faq-category-title">📦 Orders &amp; Minimum Quantities</div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>What's the minimum order quantity for return gifts?</span><span
+            class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Our return gift combos start from a minimum of 10 sets. For individual activity books, flashcards, or
+            reusable books, you can order just 1 piece!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Can I customise a theme that's not listed?</span><span
+            class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Absolutely! We create custom personalised books for any theme — Marvel, Doraemon, Tamil alphabet, regional
+            festivals, and more. Just WhatsApp us with your idea and we'll create something unique for your child.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Can I return or cancel my order?</span><span
+            class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Since all our products are personalised specifically for your child, we do not accept returns after
+            printing begins. You can cancel before approving the preview. This is why we always share a preview first —
+            so you're 100% happy before we print!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="faq-category">
+      <div class="faq-category-title">💳 Payment</div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>How do I pay?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>We accept UPI, GPay, PhonePe, and bank transfer. Payment is confirmed before we begin the personalisation
+            and printing process. No advance without a preview — you see your child's name in the design first!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question"><span>Is my payment secure?</span><span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Yes. We use standard UPI / bank transfer — the same systems trusted across India. We never ask for card
+            details. Payments are only made after you approve the preview and confirm the order on WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STILL NEED HELP -->
+    <div class="faq-still-help">
+      <h2>Still have a question? 💬</h2>
+      <p>We're available on WhatsApp and phone — just reach out and we'll sort it out for you!</p>
+      <div class="help-btns">
+        <a href="https://wa.me/918883624873" target="_blank" class="help-btn help-btn-wa">💬 WhatsApp Us</a>
+        <a href="tel:8883624873" class="help-btn help-btn-call">📞 Call Us</a>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+  
+
+  <script is:inline>
+    // Accordion logic
+    document.querySelectorAll(".faq-question").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.parentElement;
+        const answer = btn.nextElementSibling;
+        const isActive = item.classList.contains("active");
+        document.querySelectorAll(".faq-item").forEach((i) => {
+          i.classList.remove("active");
+          i.querySelector(".faq-answer").style.maxHeight = null;
+        });
+        if (!isActive) {
+          item.classList.add("active");
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+
+</BaseLayout>

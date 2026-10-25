@@ -1,54 +1,24 @@
-﻿﻿<!DOCTYPE html>
-<html lang="en">
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-<head>
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1578885053978376');
-  fbq('track', 'PageView');
-  </script>
-  <noscript>
-  <img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1578885053978376&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Divine Story Books - Personalised God Tales for Kids | HoneyBee Learning</title>
-  <meta name="description"
-    content="Personalised divine story books where gods speak your child name and teach good values. Krishna, Ganesha, Hanuman and more. Starting Rs.75. HoneyBee Learning, Chennai.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://honeybeelearning.co/divine-stories.html">
-  <meta property="og:type" content="product">
-  <meta property="og:title" content="Divine Story Books - Where Gods Teach Your Child">
-  <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
-  <link rel="icon" href="images/logo/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="images/logo/logo.png">
-  <link rel="prefetch" as="fetch" href="data/products_stories.json" crossorigin>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/divine-stories.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4YMNFP0WP"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-R4YMNFP0WP');</script>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
-    onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap">
-  </noscript>
-
-  <style>
+const title = "Divine Story Books - Personalised God Tales for Kids | HoneyBee Learning";
+const description = "Personalised divine story books where gods speak your child name and teach good values. Krishna, Ganesha, Hanuman and more. Starting Rs.75. HoneyBee Learning, Chennai.";
+const canonicalUrl = "https://honeybeelearning.co/divine-stories.html";
+const activeNav = "divine-stories.html";
+const extraStylesheets = ['css/divine-stories.css'];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  activeNav={activeNav}
+  extraStylesheets={extraStylesheets}
+  hideHeader={false}
+  hideFooter={false}
+  hideFab={false}
+>
+  <Fragment slot="head">
+    <style is:global>
     /* ===== ANIMATED STORY PLAYER ===== */
     .story-player {
       background: linear-gradient(135deg, #0a0118 0%, #1a0533 40%, #0d0325 100%);
@@ -723,36 +693,16 @@
       }
     }
   </style>
-</head>
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="Divine Story Books - Where Gods Teach Your Child">
+    <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
+  </Fragment>
 
-<body class="divine-page">
+
 
   <!-- NAV -->
-  <nav id="mainNav" aria-label="Main navigation">
-    <a class="nav-logo" href="index.html" aria-label="HoneyBee Learning Home">
-      <img src="images/logo/logo.png" alt="HoneyBee Learning" style="height:42px;border-radius:10px;">
-      <div><span class="nav-logo-text">HoneyBee</span><span class="nav-logo-sub">Learning</span></div>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="products.html" style="color:var(--green-dark,#2f7a3e);font-weight:800;">&#x1F4DA; All Products</a>
-      </li>
-      <li><a href="ocean-kits.html" style="color:var(--ocean-teal,#00b4d8);font-weight:800;">&#x1F30A; Ocean Kits</a>
-      </li>
-      <li><a href="divine-stories.html" class="active" style="color:#FF9933;font-weight:800;">&#x1F549;&#xFE0F; Divine
-          Stories</a></li>
-      <li><a href="index.html#testimonials">Reviews</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="bee-points.html" style="color:var(--honey);font-weight:800;">&#x1F36F; Bee Points</a></li>
-      <li><a href="index.html#footer">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu"
-        aria-expanded="false"><span></span><span></span><span></span></button>
-      <a href="https://wa.me/918883624873" target="_blank" rel="noopener" class="nav-cta"
-        style="background:#25D366;">WhatsApp Us &#x1F4AC;</a>
-    </div>
-  </nav>
+  
   <div class="nav-drawer-overlay" id="navOverlay"></div>
 
   <!-- ====================================================
@@ -1053,38 +1003,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer id="footer">
-    <div class="footer-inner">
-      <div class="footer-col">
-        <div class="footer-brand">&#x1F41D; HoneyBee Learning</div>
-        <div class="footer-brand-sub">&#x1F1EE;&#x1F1F3; India&apos;s First Personalised Activity Book for
-          Kids<br>&#x1F4CD; Medavakkam, Chennai</div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-title">Quick Links</div>
-        <div class="footer-links">
-          <a href="index.html#streams">&#x1F4DA; Products</a>
-          <a href="ocean-kits.html">&#x1F30A; Ocean Kits</a>
-          <a href="divine-stories.html">&#x1F549;&#xFE0F; Divine Stories</a>
-          <a href="about.html">&#x1F41D; About</a>
-          <a href="faq.html">&#x2753; FAQ</a>
-          <a href="write-review.html">&#x2B50; Write a Review</a>
-          <a href="bee-points.html">&#x1F36F; Bee Points</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-title">Connect</div>
-        <div class="footer-links">
-          <a href="https://wa.me/918883624873" target="_blank">&#x1F4AC; WhatsApp</a>
-          <a href="https://www.instagram.com/honeybee.learning.co?igsh=aDJ3enhnNWs1eHZ0" target="_blank">&#x1F4F8;
-            Instagram</a>
-          <a href="tel:8883624873">&#x1F4DE; Call Us</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copy">&copy; 2026 HoneyBee Learning &middot; India&apos;s First Personalised Activity Book for
-      Kids &middot; Made with &hearts; in Chennai</div>
-  </footer>
+  
 
   <!-- MODAL -->
   <div class="divine-modal-overlay" id="divineModalOverlay" role="dialog" aria-modal="true"
@@ -1106,16 +1025,7 @@
     </div>
   </div>
 
-  <script>
-    /* ========== NAV ========== */
-    document.addEventListener('DOMContentLoaded', function () {
-      var h = document.getElementById('hamburger'), nl = document.getElementById('navLinks'), ov = document.getElementById('navOverlay');
-      function cm() { if (nl) nl.classList.remove('open'); if (ov) ov.classList.remove('open'); if (h) { h.classList.remove('open'); h.setAttribute('aria-expanded', 'false'); } document.body.classList.remove('no-scroll'); document.body.style.overflow = ''; }
-      if (h) h.addEventListener('click', function (e) { e.stopPropagation(); nl.classList.contains('open') ? cm() : (nl.classList.add('open'), ov.classList.add('open'), h.classList.add('open'), h.setAttribute('aria-expanded', 'true'), document.body.classList.add('no-scroll')); });
-      if (ov) ov.addEventListener('click', cm);
-      document.querySelectorAll('.nav-links a').forEach(function (a) { a.addEventListener('click', cm); });
-    });
-
+  <script is:inline>
     /* ========== BACKGROUND PARTICLES ========== */
     (function () { var c = document.getElementById('divineStars'); if (!c) return; for (var i = 0; i < 80; i++) { var s = document.createElement('span'), sz = Math.random() * 3 + 1; s.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;top:' + Math.random() * 100 + '%;left:' + Math.random() * 100 + '%;--dur:' + (Math.random() * 3 + 1.5) + 's;--del:' + (Math.random() * 3) + 's'; c.appendChild(s); } })();
     (function () { var c = document.getElementById('lotusParticles'); if (!c) return;['\uD83E\uDEB7', '\u2728', '\u2B50', '\uD83C\uDF38', '\uD83D\uDC9B', '\uD83D\uDD49\uFE0F'].forEach(function (e, i) { var s = document.createElement('span'); s.textContent = e; s.style.cssText = '--x:' + (10 + i * 15) + '%;--dur:' + (Math.random() * 8 + 6) + 's;--del:' + (Math.random() * 8) + 's;--fs:' + (Math.random() * .8 + .8) + 'rem'; c.appendChild(s); }); })();
@@ -1557,6 +1467,5 @@
       a.addEventListener('click', function (e) { var t = document.querySelector(this.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
     });
   </script>
-</body>
 
-</html>
+</BaseLayout>
