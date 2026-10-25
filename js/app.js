@@ -677,25 +677,26 @@ function renderHomePhotoReviews() {
 function renderStars(n) { return '★'.repeat(n) + '☆'.repeat(5 - n); }
 
 function openLightboxFromHome(imgSrc) {
-    const lightbox = document.getElementById('dmodalOverlay');
-    if (lightbox) {
-        // reuse the dmodal html we have
-        document.getElementById('dmImg').src = imgSrc;
-        document.getElementById('dmImg').style.maxHeight = '80vh';
-        document.getElementById('dmImg').style.aspectRatio = 'auto';
-        document.getElementById('dmTitle').textContent = "";
-        document.getElementById('dmPrice').textContent = '';
-        document.getElementById('dmDesc').textContent = '';
-        document.getElementById('dmTags').innerHTML = '';
-        document.getElementById('dmBtn').style.display = 'none';
-        
-        // Hide note if it exists
-        const note = document.querySelector('.dmodal-note');
-        if (note) note.style.display = 'none';
-        
-        lightbox.classList.add('open');
-        document.body.classList.add('no-scroll');
+    let lb = document.getElementById('imageLightboxOverlay');
+    if (!lb) {
+        lb = document.createElement('div');
+        lb.id = 'imageLightboxOverlay';
+        lb.className = 'image-lightbox-overlay';
+        lb.innerHTML = '<div class="ilb-backdrop" onclick="closeImageLightbox()"></div><button class="ilb-close" onclick="closeImageLightbox()" aria-label="Close image">✕</button><div class="ilb-wrap" onclick="closeImageLightbox()"><img id="ilbImg" src="" alt="Enlarged view" /></div>';
+        document.body.appendChild(lb);
     }
+    const imgEl = document.getElementById('ilbImg');
+    if (imgEl) imgEl.src = imgSrc;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImageLightbox() {
+    const lb = document.getElementById('imageLightboxOverlay');
+    if (lb) lb.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+    document.body.style.overflow = '';
+    document.body.style.height = '';
 }
 
 // ─── RENDER HOME VIDEO REVIEWS (YouTube Shorts) ───
@@ -871,7 +872,13 @@ function openDetailModal(idx) {
     document.getElementById('dmodalOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
 }
-function closeDetailModal() { document.getElementById('dmodalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+function closeDetailModal() {
+    const dmodal = document.getElementById('dmodalOverlay');
+    if (dmodal) dmodal.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+    document.body.style.overflow = '';
+    document.body.style.height = '';
+}
 function closeDetailOnBg(e) { if (e.target === document.getElementById('dmodalOverlay')) closeDetailModal(); }
 
 // ─── ORDER MODAL ───
@@ -1100,6 +1107,9 @@ function renderHcsSlide(idx) {
     document.getElementById('hcsPrev').disabled = (idx === 0);
     document.getElementById('hcsNext').disabled = (idx === HCS_TOTAL - 1);
 
+    const countPill = document.getElementById('hcsCounterPill');
+    if (countPill) countPill.textContent = (idx + 1) + ' / ' + HCS_TOTAL;
+
     hcsCurrentSlide = idx;
 }
 
@@ -1195,3 +1205,11 @@ function playHomeReel() {
         }
     }
 }
+
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeImageLightbox();
+        closeDetailModal();
+    }
+});

@@ -326,13 +326,16 @@ const ageGuides = [
       aria-label="Previous slide">&#8249;</button>
     <button class="hcs-arrow hcs-arrow--next" id="hcsNext" onclick="hcsNav(1)" aria-label="Next slide">&#8250;</button>
 
-    <!-- ── Slide dots ── -->
-    <div class="hcs-dots" id="hcsDots" role="tablist">
-      <button class="hcs-dot active" onclick="hcsGoTo(0)" role="tab" aria-label="Slide 1"></button>
-      <button class="hcs-dot" onclick="hcsGoTo(1)" role="tab" aria-label="Slide 2"></button>
-      <button class="hcs-dot" onclick="hcsGoTo(2)" role="tab" aria-label="Slide 3"></button>
-      <button class="hcs-dot" onclick="hcsGoTo(3)" role="tab" aria-label="Slide 4"></button>
-      <button class="hcs-dot" onclick="hcsGoTo(4)" role="tab" aria-label="Slide 5"></button>
+    <!-- ── Slide Status Bar (Clean & Compact) ── -->
+    <div class="hcs-status-wrap">
+      <div class="hcs-dots" id="hcsDots" role="tablist">
+        <button class="hcs-dot active" onclick="hcsGoTo(0)" role="tab" aria-label="Slide 1"></button>
+        <button class="hcs-dot" onclick="hcsGoTo(1)" role="tab" aria-label="Slide 2"></button>
+        <button class="hcs-dot" onclick="hcsGoTo(2)" role="tab" aria-label="Slide 3"></button>
+        <button class="hcs-dot" onclick="hcsGoTo(3)" role="tab" aria-label="Slide 4"></button>
+        <button class="hcs-dot" onclick="hcsGoTo(4)" role="tab" aria-label="Slide 5"></button>
+      </div>
+      <span class="hcs-counter-pill" id="hcsCounterPill">1 / 5</span>
     </div>
 
     <!-- ── Progress bar ── -->
@@ -504,10 +507,7 @@ const ageGuides = [
               <div style="font-size: 0.74rem; font-weight: 800; color: #8e44ad; margin-bottom: 4px;">{s.lessonEmoji} {s.lesson}</div>
               <a href={`product.html?id=${s.id}`} style="text-decoration:none;color:inherit;"><div class="scard-title">{s.title}</div></a>
               <div class="scard-desc">{s.shortDesc}</div>
-              <div style="display:flex;gap:6px;margin-top:auto;">
-                <a href={`product.html?id=${s.id}`} class="scard-btn" style="flex:1;text-align:center;text-decoration:none;padding:10px 8px;font-size:0.85rem;">View Details 📖</a>
-                <a href={`https://wa.me/918883624873?text=Hi%20HoneyBee!%20I%20want%20to%20order%20the%20Divine%20Story%20Book:%20${encodeURIComponent(s.title)}`} target="_blank" rel="noopener" class="scard-btn scard-btn--wa" style="flex:0 0 auto;padding:10px 14px;text-decoration:none;" title="Order on WhatsApp">💬</a>
-              </div>
+              <a href={`product.html?id=${s.id}`} class="scard-btn">View &amp; Order 📚</a>
             </div>
           </div>
         ))}
