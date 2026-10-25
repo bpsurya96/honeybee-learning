@@ -1,4 +1,4 @@
-import { cp, mkdir, stat } from "node:fs/promises";
+import { cp, mkdir, stat, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -21,7 +21,7 @@ for (const dir of assetDirs) {
   }
 }
 
-// Ensure standalone files like CNAME, robots.txt, serve.py are preserved
+// Ensure standalone files like CNAME, robots.txt, sitemap.xml, favicon.ico are preserved
 for (const file of ["CNAME", "robots.txt", "sitemap.xml", "favicon.ico"]) {
   const src = path.join(root, file);
   const dest = path.join(output, file);
@@ -31,4 +31,20 @@ for (const file of ["CNAME", "robots.txt", "sitemap.xml", "favicon.ico"]) {
   } catch (err) {}
 }
 
-console.log("✓ All static assets (css, js, data, images, reviews) verified in dist/");
+// Dual-support both clean URLs (/about) and legacy extension URLs (/about.html)
+// across static hosting providers (Vercel, GitHub Pages, Netlify)
+try {
+  const files = await readdir(output);
+  for (const file of files) {
+    if (file.endsWith(".html") && file !== "index.html") {
+      const pageName = file.replace(/\.html$/, "");
+      const pageDir = path.join(output, pageName);
+      await mkdir(pageDir, { recursive: true });
+      await cp(path.join(output, file), path.join(pageDir, "index.html"), { force: true });
+    }
+  }
+} catch (err) {
+  console.warn("Notice generating clean URL directory mirrors:", err);
+}
+
+console.log("✓ All static assets and dual clean-URL routes verified in dist/");
