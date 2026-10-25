@@ -270,59 +270,106 @@ const extraStylesheets = ['css/splash.css'];
 
   </section><!-- /hero-carousel-section -->
 
+    <!-- ═══ BROWSE BY AGE NAVIGATOR ═══ -->
+  <section class="age-navigator-section reveal" aria-label="Browse products by age">
+    <div class="age-navigator-container">
+      <div class="age-nav-header">
+        <span class="age-nav-label">🎯 Fast Finder: Browse by Age</span>
+      </div>
+      <div class="age-nav-pills">
+        <button class="age-nav-pill" onclick="quickAgeJump('0+')">
+          <span class="age-nav-emoji">🍼</span>
+          <span class="age-nav-text"><strong>0+ Months</strong><small>Visual Learning &amp; Divine</small></span>
+        </button>
+        <button class="age-nav-pill" onclick="quickAgeJump('2+')">
+          <span class="age-nav-emoji">🎨</span>
+          <span class="age-nav-text"><strong>2+ Years</strong><small>Writing Journey (Photo &amp; Name)</small></span>
+        </button>
+        <button class="age-nav-pill" onclick="quickAgeJump('3+')">
+          <span class="age-nav-emoji">🧒</span>
+          <span class="age-nav-text"><strong>3+ Years</strong><small>Phonics, Tamil, Charts &amp; Ocean</small></span>
+        </button>
+        <button class="age-nav-pill age-nav-pill--gifts" onclick="quickAgeJump('gifts')">
+          <span class="age-nav-emoji">🎁</span>
+          <span class="age-nav-text"><strong>Party Gifts</strong><small>Bulk Packs from ₹25</small></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ 3-PILLAR QUICK CATEGORY GATEWAY ═══ -->
   <section class="hero-cat-gateway" aria-label="Quick category explorer">
     <div class="hero-cat-container">
       <div class="hero-cat-intro">
-        <span class="hero-cat-tagline">&#x2728; Explore by Category</span>
+        <span class="hero-cat-tagline">&#x2728; Explore HoneyBee Collections</span>
         <h2 class="hero-cat-heading">What are you looking for today?</h2>
+        <p style="font-size:0.95rem; color:var(--text-soft); max-width:650px; margin:8px auto 0; font-weight:600;">
+          Choose from customized keepsake books, standard curriculum essentials, or bulk party gift packs.
+        </p>
       </div>
       <div class="hero-cat-grid">
 
-        <!-- Card 1: Activity & Reusable Books -->
-        <div class="hero-cat-card hero-cat-card--learning" onclick="goToCategoryStream('learning')" tabindex="0" role="button" aria-label="Explore Personalized Activity Books">
-          <div class="hero-cat-badge">&#x1F31F; 15+ Themes</div>
+        <!-- Card 1: Customised Collection -->
+        <div class="hero-cat-card hero-cat-card--custom" onclick="switchStreamCategory('custom'); scrollToStreams();" tabindex="0" role="button" aria-label="Explore Customised Books">
+          <div class="hero-cat-badge">&#x2728; Name &amp; Photo Personalised</div>
           <div class="hero-cat-icon-wrap">
-            <span class="hero-cat-icon">&#x1F4DA;</span>
+            <span class="hero-cat-icon">&#x1F3A8;</span>
           </div>
           <div class="hero-cat-content">
-            <h3 class="hero-cat-title">Personalised Activity Books</h3>
-            <p class="hero-cat-desc">Name on every page &#183; 100+ write &amp; wipe sessions &#183; Screen-free fun</p>
+            <span class="hero-cat-age-pill">Ages 0+ to 3+ Years</span>
+            <h3 class="hero-cat-title">Personalised Books</h3>
+            <ul class="hero-cat-feature-list">
+              <li><strong>My First Writing Journey (2+)</strong> — 7 themes, custom photo &amp; family tracing</li>
+              <li><strong>Ocean Explorer Combo (3+)</strong> — Sea adventure activity pack</li>
+              <li><strong>Divine Values Series (0+)</strong> — Gods teach morals in child's name</li>
+            </ul>
             <div class="hero-cat-meta">
-              <span class="hero-cat-price">From <strong>&#x20B9;180</strong></span>
-              <span class="hero-cat-cta">Explore Books &#x2192;</span>
+              <span class="hero-cat-price">From <strong>&#x20B9;65</strong></span>
+              <span class="hero-cat-cta">Explore Customised &#x2192;</span>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: Birthday Return Gifts -->
-        <div class="hero-cat-card hero-cat-card--gifts" onclick="goToCategoryStream('gifts')" tabindex="0" role="button" aria-label="Explore Birthday Return Gifts">
-          <div class="hero-cat-badge hero-cat-badge--orange">&#x1F389; Party Favorite</div>
+        <!-- Card 2: Standard Learning Essentials -->
+        <div class="hero-cat-card hero-cat-card--standard" onclick="switchStreamCategory('standard'); scrollToStreams();" tabindex="0" role="button" aria-label="Explore Standard Learning Books">
+          <div class="hero-cat-badge hero-cat-badge--blue">&#x1F4DA; Curriculum &amp; Skills</div>
+          <div class="hero-cat-icon-wrap hero-cat-icon-wrap--blue">
+            <span class="hero-cat-icon">&#x1F4D6;</span>
+          </div>
+          <div class="hero-cat-content">
+            <span class="hero-cat-age-pill">Ages 0+ to 3+ Years</span>
+            <h3 class="hero-cat-title">Standard Books &amp; Charts</h3>
+            <ul class="hero-cat-feature-list">
+              <li><strong>Visual Learning (0+)</strong> — High-contrast sensory book for infants</li>
+              <li><strong>Phonics Level 1 &amp; 2 (3+)</strong> — Letter sounds &amp; sentence reading</li>
+              <li><strong>Tamil Normal &amp; Reusable (3+)</strong> — Handwriting &amp; vowels</li>
+              <li><strong>Laminated Charts &amp; Tables</strong> — English, Tamil, Hindi, Maths</li>
+            </ul>
+            <div class="hero-cat-meta">
+              <span class="hero-cat-price">From <strong>&#x20B9;40</strong></span>
+              <span class="hero-cat-cta">Explore Standard &#x2192;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Birthday Return Gifts -->
+        <div class="hero-cat-card hero-cat-card--gifts" onclick="switchStreamCategory('gifts'); scrollToStreams();" tabindex="0" role="button" aria-label="Explore Birthday Return Gifts">
+          <div class="hero-cat-badge hero-cat-badge--orange">&#x1F389; Party Hit · Pan-India</div>
           <div class="hero-cat-icon-wrap hero-cat-icon-wrap--orange">
             <span class="hero-cat-icon">&#x1F381;</span>
           </div>
           <div class="hero-cat-content">
+            <span class="hero-cat-age-pill">All Birthday Parties</span>
             <h3 class="hero-cat-title">Birthday Return Gift Packs</h3>
-            <p class="hero-cat-desc">Meaningful bulk gifts &#183; Name customised + Chocolates/Chikki</p>
+            <ul class="hero-cat-feature-list">
+              <li><strong>12 educational combos</strong> starting from &#x20B9;25</li>
+              <li><strong>Personalised name card</strong> included in every pack</li>
+              <li>Activity sheet + stationery / chocolate options</li>
+              <li>Ready-to-gift packaging delivered across India</li>
+            </ul>
             <div class="hero-cat-meta">
               <span class="hero-cat-price">Starting <strong>&#x20B9;25</strong></span>
               <span class="hero-cat-cta">View Combos &#x2192;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3: Divine Stories -->
-        <div class="hero-cat-card hero-cat-card--divine" onclick="window.location.href='divine-stories.html'" tabindex="0" role="button" aria-label="Explore Divine Story Books">
-          <div class="hero-cat-badge hero-cat-badge--purple">&#x2728; New Launch</div>
-          <div class="hero-cat-icon-wrap hero-cat-icon-wrap--purple">
-            <span class="hero-cat-icon">&#x1F549;&#xFE0F;</span>
-          </div>
-          <div class="hero-cat-content">
-            <h3 class="hero-cat-title">Divine Story Books</h3>
-            <p class="hero-cat-desc">Krishna, Ganesha &amp; Shiva teach timeless moral values in your child's name</p>
-            <div class="hero-cat-meta">
-              <span class="hero-cat-price">Starting <strong>&#x20B9;65</strong></span>
-              <span class="hero-cat-cta">See Stories &#x2192;</span>
             </div>
           </div>
         </div>
@@ -425,11 +472,22 @@ const extraStylesheets = ['css/splash.css'];
 
     <div class="stream-tabs-wrap">
       <div class="stream-tabs">
-        <button class="stream-tab active" id="tab-learning" onclick="switchStream('learning',this)">📚 Learning Products</button>
-        <button class="stream-tab" id="tab-gifts" onclick="switchStream('gifts',this)">🎁 Birthday Return Gifts</button>
-        <a class="stream-tab" href="divine-stories.html" style="background:linear-gradient(135deg,#4A0E8F,#FF9933);color:white;border-color:transparent;text-decoration:none;">&#x1F549;&#xFE0F; Divine Stories &#x2728;</a>
+        <button class="stream-tab active" id="tab-custom" onclick="switchStreamCategory('custom',this)">✨ Customised Books</button>
+        <button class="stream-tab" id="tab-standard" onclick="switchStreamCategory('standard',this)">📚 Standard Learning</button>
+        <button class="stream-tab" id="tab-gifts" onclick="switchStreamCategory('gifts',this)">🎁 Birthday Return Gifts</button>
       </div>
       <div class="stream-tabs-fade-hint" aria-hidden="true"></div>
+    </div>
+
+    <!-- Age Filter Row -->
+    <div class="stream-age-filter-row" id="streamAgeFilterRow">
+      <span class="stream-age-label">Filter by Age:</span>
+      <div class="stream-age-pills">
+        <button class="stream-age-pill active" data-age="all" onclick="filterByAge('all', this)">All Ages</button>
+        <button class="stream-age-pill" data-age="0+" onclick="filterByAge('0+', this)">🍼 0+ Months (Babies)</button>
+        <button class="stream-age-pill" data-age="2+" onclick="filterByAge('2+', this)">🎨 2+ Years (Toddlers)</button>
+        <button class="stream-age-pill" data-age="3+" onclick="filterByAge('3+', this)">🧒 3+ Years (Preschool / KG)</button>
+      </div>
     </div>
     <p class="stream-tabs-scroll-hint">← Swipe to see all tabs →</p>
 
@@ -446,20 +504,9 @@ const extraStylesheets = ['css/splash.css'];
         <div class="divine-promo-arrow">&#x2192;</div>
       </a>
 
-      <div class="section-tag">Personalised Books & Cards</div>
-      <h3 style="font-family:'Fredoka One',cursive;font-size:1.75rem;color:var(--green);margin-bottom:7px;">HoneyBee
-        Learning Products</h3>
-      <p style="font-size:0.93rem;color:var(--text-soft);font-weight:600;margin-bottom:32px;">Value-based, personalised
-        learning for kids aged 3–12. Each product is customised with your child's name — making learning personal,
-        meaningful, and fun!</p>
-
-      <!-- Learning sub-tabs -->
-      <div class="learning-subtabs" id="learningSubTabs">
-        <button class="learning-subtab active" onclick="switchLearning('activity',this)">📚 Activity Books</button>
-        <button class="learning-subtab" onclick="switchLearning('reusable',this)">♻️ Reusable Books</button>
-        <button class="learning-subtab" onclick="switchLearning('other',this)">🃏 Other Products</button>
-        <button class="learning-subtab" onclick="switchLearning('divine',this)" style="color:#FF9933;border-color:#FF9933;">&#x1F549;&#xFE0F; Divine Stories</button>
-      </div>
+      <div class="section-tag">Featured Products</div>
+      <h3 style="font-family:'Fredoka One',cursive;font-size:1.75rem;color:var(--green);margin-bottom:7px;" id="catalogHeading">✨ Customised Books Collection</h3>
+      <p style="font-size:0.93rem;color:var(--text-soft);font-weight:600;margin-bottom:24px;" id="catalogSub">Personalised with your child's photo, name &amp; family! Featuring My First Writing Journey (2+), Ocean Combo (3+) and Divine Series (0+).</p>
 
       <div class="learning-grid" id="learningGrid">
         <!-- Populated from data/products.json -->
