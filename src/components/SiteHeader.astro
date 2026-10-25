@@ -4,26 +4,22 @@ interface Props {
 }
 const { activeNav = "" } = Astro.props;
 
-const navItems = [
-  { href: "products.html", label: "All products", icon: "🛍️", desc: "Personalised activity & reusable books", color: "#F4A227" },
-  { href: "return-gifts.html", label: "Return gifts", icon: "🎁", desc: "Birthday combo packs from ₹39", color: "#E76F51" },
-  { href: "ocean-kits.html", label: "Ocean Kits", icon: "🌊", desc: "4 ocean learning combos", color: "#00B4D8" },
-  { href: "divine-stories.html", label: "Divine stories", icon: "✨", desc: "Personalised god tales with child's name", color: "#7209B7" },
-  { href: "bee-points.html", label: "Bee Points", icon: "🐝", desc: "Check loyalty balance & rewards", color: "#E63946" },
-  { href: "reviews.html", label: "Reviews", icon: "⭐", desc: "4.9★ Real parent photos & videos", color: "#FFB703" },
+// Series & Collections Items (Hierarchical Dropdown)
+const seriesItems = [
+  { href: "ocean-kits.html", label: "Ocean Kits", icon: "🌊", badge: "Ages 3–9", desc: "4 themed learning combo kits", color: "#00B4D8" },
+  { href: "divine-stories.html", label: "Divine Stories", icon: "✨", badge: "Personalised", desc: "God tales with child's name", color: "#7209B7" },
+  { href: "return-gifts.html", label: "Return Gifts", icon: "🎁", badge: "From ₹39", desc: "Birthday packs & ready combos", color: "#E76F51" },
+  { href: "products.html", label: "All Products", icon: "🛍️", badge: "Full Shop", desc: "Activity & reusable wipe-clean books", color: "#F4A227" },
 ];
 
-const secondaryItems = [
-  { href: "about.html", label: "Our Story", icon: "🍯", desc: "Meet founder Shanmugi (Record Holder)" },
-  { href: "faq.html", label: "Help & FAQ", icon: "❓", desc: "Common questions & order guidance" },
-];
+const isSeriesActive = ["products.html", "ocean-kits.html", "divine-stories.html", "return-gifts.html"].includes(activeNav);
 ---
 <!-- ═══════════════════════════════════════════════════════════
-     UNIQUE MODERN HONEYBEE NAVIGATION & MOBILE DRAWER
+     PROPERLY ALIGNED, SIMPLIFIED HEADER WITH SERIES DROPDOWN
      ═══════════════════════════════════════════════════════════ -->
 <header class="hb-header-wrap">
   <nav id="mainNav" class="hb-navbar" aria-label="Main navigation">
-    <!-- Brand Logo -->
+    <!-- 1. Left: Brand Logo -->
     <a class="hb-brand" href="index.html" aria-label="HoneyBee Learning Home">
       <div class="hb-logo-badge">
         <img src="images/logo/logo.png" alt="HoneyBee Learning Logo" class="hb-logo-img">
@@ -38,23 +34,97 @@ const secondaryItems = [
       </div>
     </a>
 
-    <!-- Desktop Navigation Pills -->
+    <!-- 2. Center: Simplified, Properly Aligned Navigation Links -->
     <ul class="hb-desktop-links" id="desktopNavLinks">
-      {navItems.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class={activeNav === item.href ? "hb-nav-link active" : "hb-nav-link"}
-            aria-current={activeNav === item.href ? "page" : undefined}
-          >
-            <span class="hb-link-icon" aria-hidden="true">{item.icon}</span>
-            <span class="hb-link-text">{item.label}</span>
-          </a>
-        </li>
-      ))}
+      <!-- Home Link -->
+      <li>
+        <a
+          href="index.html"
+          class={activeNav === "index.html" || activeNav === "" ? "hb-nav-link active" : "hb-nav-link"}
+          aria-current={activeNav === "index.html" || activeNav === "" ? "page" : undefined}
+        >
+          <span>Home</span>
+        </a>
+      </li>
+
+      <!-- Products / Series Dropdown Trigger -->
+      <li class="hb-dropdown-parent" id="hbDropdownParent">
+        <button
+          type="button"
+          class={isSeriesActive ? "hb-nav-link hb-dropdown-trigger active" : "hb-nav-link hb-dropdown-trigger"}
+          aria-expanded="false"
+          aria-haspopup="true"
+          id="seriesDropdownBtn"
+        >
+          <span>Products / Series</span>
+          <svg class="hb-caret-icon" viewBox="0 0 12 12" width="11" height="11" fill="currentColor" aria-hidden="true">
+            <path d="M2.2 4.2a.8.8 0 0 1 1.1 0L6 6.9l2.7-2.7a.8.8 0 1 1 1.1 1.1L6.5 8.6a.8.8 0 0 1-1.1 0L2.2 5.3a.8.8 0 0 1 0-1.1z"/>
+          </svg>
+        </button>
+
+        <!-- Dropdown Menu Card -->
+        <div class="hb-dropdown-menu" id="seriesDropdownMenu" role="menu" aria-labelledby="seriesDropdownBtn">
+          <div class="hb-dropdown-header">
+            <span class="hb-dropdown-eyebrow">Collections & Series</span>
+          </div>
+          <div class="hb-dropdown-grid">
+            {seriesItems.map((item) => (
+              <a
+                href={item.href}
+                class={activeNav === item.href ? "hb-drop-item active" : "hb-drop-item"}
+                role="menuitem"
+              >
+                <span class="hb-drop-icon" style={`background: ${item.color}15; color: ${item.color};`}>
+                  {item.icon}
+                </span>
+                <div class="hb-drop-text">
+                  <div class="hb-drop-row">
+                    <span class="hb-drop-title">{item.label}</span>
+                    <span class="hb-drop-badge">{item.badge}</span>
+                  </div>
+                  <span class="hb-drop-desc">{item.desc}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </li>
+
+      <!-- Bee Points Link -->
+      <li>
+        <a
+          href="bee-points.html"
+          class={activeNav === "bee-points.html" ? "hb-nav-link active" : "hb-nav-link"}
+          aria-current={activeNav === "bee-points.html" ? "page" : undefined}
+        >
+          <span>Bee Points 🐝</span>
+        </a>
+      </li>
+
+      <!-- Reviews Link -->
+      <li>
+        <a
+          href="reviews.html"
+          class={activeNav === "reviews.html" ? "hb-nav-link active" : "hb-nav-link"}
+          aria-current={activeNav === "reviews.html" ? "page" : undefined}
+        >
+          <span>Reviews ⭐</span>
+        </a>
+      </li>
+
+      <!-- Our Story Link -->
+      <li>
+        <a
+          href="about.html"
+          class={activeNav === "about.html" ? "hb-nav-link active" : "hb-nav-link"}
+          aria-current={activeNav === "about.html" ? "page" : undefined}
+        >
+          <span>Our Story 🍯</span>
+        </a>
+      </li>
     </ul>
 
-    <!-- Right Controls Area -->
+    <!-- 3. Right: Quick Actions -->
     <div class="hb-nav-actions">
       <!-- Quick Mobile WhatsApp Tap -->
       <a
@@ -77,10 +147,9 @@ const secondaryItems = [
       >
         <span class="hb-cta-icon" aria-hidden="true">💬</span>
         <span>WhatsApp Us</span>
-        <span class="hb-cta-sparkle" aria-hidden="true">✦</span>
       </a>
 
-      <!-- Unique Animated Hamburger Button -->
+      <!-- Animated Hamburger Button -->
       <button
         class="hb-hamburger-btn"
         id="hamburger"
@@ -102,7 +171,7 @@ const secondaryItems = [
 <!-- Backdrop Blur Overlay -->
 <div class="hb-drawer-backdrop" id="hbNavOverlay" aria-hidden="true"></div>
 
-<!-- Unique Modern Side Drawer -->
+<!-- Mobile Side Drawer (Cleanly Grouped with Series) -->
 <aside
   class="hb-side-drawer"
   id="hbDrawerPanel"
@@ -129,11 +198,22 @@ const secondaryItems = [
     </button>
   </div>
 
-  <!-- Drawer Body Navigation Tiles -->
+  <!-- Drawer Body Navigation -->
   <div class="hb-drawer-body">
-    <div class="hb-drawer-section-title">Explore Store</div>
+    <!-- Quick Home Tile -->
+    <a href="index.html" class={activeNav === "index.html" || activeNav === "" ? "hb-tile-link active" : "hb-tile-link"} style="margin-bottom: 14px;">
+      <span class="hb-tile-icon" style="background: rgba(244, 162, 39, 0.15); color: #F4A227;">🏠</span>
+      <div class="hb-tile-content">
+        <span class="hb-tile-title">Home</span>
+        <span class="hb-tile-desc">Storefront, top picks & founder intro</span>
+      </div>
+      <span class="hb-tile-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <!-- Series & Products Section -->
+    <div class="hb-drawer-section-title">Products & Series</div>
     <ul class="hb-drawer-menu" id="navLinks">
-      {navItems.map((item) => (
+      {seriesItems.map((item) => (
         <li>
           <a
             href={item.href}
@@ -144,7 +224,10 @@ const secondaryItems = [
               {item.icon}
             </span>
             <div class="hb-tile-content">
-              <span class="hb-tile-title">{item.label}</span>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
+                <span class="hb-tile-title">{item.label}</span>
+                <span class="hb-drop-badge">{item.badge}</span>
+              </div>
               <span class="hb-tile-desc">{item.desc}</span>
             </div>
             <span class="hb-tile-arrow" aria-hidden="true">→</span>
@@ -153,25 +236,49 @@ const secondaryItems = [
       ))}
     </ul>
 
-    <!-- Secondary Links Section -->
-    <div class="hb-drawer-section-title" style="margin-top: 18px;">About & Support</div>
-    <ul class="hb-drawer-menu hb-secondary-menu">
-      {secondaryItems.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class={activeNav === item.href ? "hb-tile-link active" : "hb-tile-link"}
-            aria-current={activeNav === item.href ? "page" : undefined}
-          >
-            <span class="hb-tile-icon hb-tile-sm" aria-hidden="true">{item.icon}</span>
-            <div class="hb-tile-content">
-              <span class="hb-tile-title">{item.label}</span>
-              <span class="hb-tile-desc">{item.desc}</span>
-            </div>
-            <span class="hb-tile-arrow" aria-hidden="true">→</span>
-          </a>
-        </li>
-      ))}
+    <!-- Loyalty, Reviews & Story Section -->
+    <div class="hb-drawer-section-title" style="margin-top: 18px;">Loyalty & Community</div>
+    <ul class="hb-drawer-menu">
+      <li>
+        <a href="bee-points.html" class={activeNav === "bee-points.html" ? "hb-tile-link active" : "hb-tile-link"}>
+          <span class="hb-tile-icon" style="background: rgba(230, 57, 70, 0.12); color: #E63946;">🐝</span>
+          <div class="hb-tile-content">
+            <span class="hb-tile-title">Bee Points</span>
+            <span class="hb-tile-desc">Check balance, tiers & rewards</span>
+          </div>
+          <span class="hb-tile-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="reviews.html" class={activeNav === "reviews.html" ? "hb-tile-link active" : "hb-tile-link"}>
+          <span class="hb-tile-icon" style="background: rgba(255, 183, 3, 0.15); color: #FFB703;">⭐</span>
+          <div class="hb-tile-content">
+            <span class="hb-tile-title">Customer Reviews</span>
+            <span class="hb-tile-desc">4.9★ Real parent photos & video reviews</span>
+          </div>
+          <span class="hb-tile-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="about.html" class={activeNav === "about.html" ? "hb-tile-link active" : "hb-tile-link"}>
+          <span class="hb-tile-icon" style="background: rgba(42, 157, 143, 0.15); color: #2A9D8F;">🍯</span>
+          <div class="hb-tile-content">
+            <span class="hb-tile-title">Our Story</span>
+            <span class="hb-tile-desc">Meet founder Shanmugi (Record Holder)</span>
+          </div>
+          <span class="hb-tile-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="faq.html" class={activeNav === "faq.html" ? "hb-tile-link active" : "hb-tile-link"}>
+          <span class="hb-tile-icon" style="background: rgba(114, 9, 183, 0.12); color: #7209B7;">❓</span>
+          <div class="hb-tile-content">
+            <span class="hb-tile-title">Help & FAQ</span>
+            <span class="hb-tile-desc">Delivery times, customization & orders</span>
+          </div>
+          <span class="hb-tile-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
     </ul>
 
     <!-- Direct Founder Assistance Card -->
@@ -205,7 +312,7 @@ const secondaryItems = [
         rel="noopener"
         class="hb-contact-pill"
       >
-        <span>📸</span> Instagram
+        <span>📸</span> Instagram (@honeybee.learning.co)
       </a>
       <div class="hb-drawer-badge">📍 Medavakkam, Chennai · Pan-India Delivery</div>
     </div>
@@ -213,17 +320,17 @@ const secondaryItems = [
 </aside>
 
 <!-- ═══════════════════════════════════════════════════════════
-     SCOPED UNIQUE STYLES FOR HEADER & SIDE DRAWER
+     HEADER & DROPDOWN STYLES (CLEAN, PROPERLY ALIGNED)
      ═══════════════════════════════════════════════════════════ -->
 <style is:global>
-  /* 1. Header Wrapper & Floating Glassmorphism Bar */
+  /* 1. Header Wrapper & Glass Navbar */
   .hb-header-wrap {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(255, 253, 247, 0.94);
+    background: rgba(255, 253, 247, 0.95);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1.5px solid rgba(244, 162, 39, 0.22);
@@ -232,13 +339,13 @@ const secondaryItems = [
   }
 
   .hb-navbar {
-    max-width: 1320px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 10px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 20px;
     min-height: 68px;
   }
 
@@ -321,11 +428,11 @@ const secondaryItems = [
     letter-spacing: 0.2px;
   }
 
-  /* 3. Desktop Navigation Pills */
+  /* 3. Center Navigation Pills (Clean & Simple) */
   .hb-desktop-links {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -335,19 +442,18 @@ const secondaryItems = [
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 14px;
+    padding: 8px 16px;
     border-radius: 999px;
-    font-size: 0.92rem;
+    font-size: 0.94rem;
     font-weight: 700;
     color: #4A3B32;
     text-decoration: none;
-    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
     border: 1px solid transparent;
-  }
-
-  .hb-link-icon {
-    font-size: 1rem;
-    transition: transform 0.2s;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: inherit;
+    white-space: nowrap;
   }
 
   .hb-nav-link:hover {
@@ -356,29 +462,164 @@ const secondaryItems = [
     transform: translateY(-1px);
   }
 
-  .hb-nav-link:hover .hb-link-icon {
-    transform: scale(1.15);
-  }
-
   .hb-nav-link.active {
     background: linear-gradient(135deg, #F4A227, #E76F51);
     color: #FFFFFF !important;
-    box-shadow: 0 4px 14px rgba(244, 162, 39, 0.4);
+    box-shadow: 0 4px 14px rgba(244, 162, 39, 0.35);
     border-color: rgba(255, 255, 255, 0.3);
   }
 
-  /* 4. Action Controls */
+  /* 4. Dropdown Container & Menu */
+  .hb-dropdown-parent {
+    position: relative;
+    list-style: none;
+  }
+
+  .hb-dropdown-trigger {
+    padding-right: 12px;
+  }
+
+  .hb-caret-icon {
+    transition: transform 0.25s ease;
+  }
+
+  .hb-dropdown-parent.is-open .hb-caret-icon,
+  .hb-dropdown-parent:hover .hb-caret-icon {
+    transform: rotate(180deg);
+  }
+
+  .hb-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    width: 320px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(244, 162, 39, 0.25);
+    border-radius: 18px;
+    box-shadow: 0 16px 40px -8px rgba(50, 30, 10, 0.16);
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s;
+    z-index: 1050;
+  }
+
+  /* Desktop hover & open states */
+  .hb-dropdown-parent:hover .hb-dropdown-menu,
+  .hb-dropdown-parent.is-open .hb-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .hb-dropdown-header {
+    padding: 6px 10px 8px;
+    border-bottom: 1px solid rgba(240, 235, 225, 0.9);
+    margin-bottom: 6px;
+  }
+
+  .hb-dropdown-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #9C8370;
+  }
+
+  .hb-dropdown-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hb-drop-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .hb-drop-item:hover {
+    background: #FFFDF5;
+    transform: translateX(3px);
+  }
+
+  .hb-drop-item.active {
+    background: linear-gradient(135deg, #FFF6E5, #FFF0D4);
+  }
+
+  .hb-drop-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .hb-drop-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    min-width: 0;
+  }
+
+  .hb-drop-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .hb-drop-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #2D231C;
+  }
+
+  .hb-drop-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: #FFF3DA;
+    color: #D9601A;
+    border: 1px solid rgba(244, 162, 39, 0.25);
+  }
+
+  .hb-drop-desc {
+    font-size: 0.72rem;
+    color: #7A695B;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 5. Right Action Controls */
   .hb-nav-actions {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
   }
 
   .hb-desktop-cta {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 9px 18px;
+    padding: 9px 20px;
     border-radius: 999px;
     background: linear-gradient(135deg, #25D366, #128C7E);
     color: #FFFFFF !important;
@@ -387,6 +628,7 @@ const secondaryItems = [
     text-decoration: none;
     box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
     transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
   }
 
   .hb-desktop-cta:hover {
@@ -422,7 +664,7 @@ const secondaryItems = [
     100% { transform: scale(1.35); opacity: 0; }
   }
 
-  /* 5. Unique Animated Hamburger Button */
+  /* 6. Animated Hamburger Button */
   .hb-hamburger-btn {
     display: none;
     width: 44px;
@@ -463,7 +705,6 @@ const secondaryItems = [
     transform-origin: center;
   }
 
-  /* Hamburger to X Transformation */
   .hb-hamburger-btn.is-active .hb-line-1 {
     transform: translateY(6.8px) rotate(45deg);
     background: #E76F51;
@@ -479,7 +720,7 @@ const secondaryItems = [
     background: #E76F51;
   }
 
-  /* 6. Backdrop Blur Overlay */
+  /* 7. Backdrop Overlay */
   .hb-drawer-backdrop {
     position: fixed;
     inset: 0;
@@ -499,7 +740,7 @@ const secondaryItems = [
     pointer-events: auto;
   }
 
-  /* 7. Unique Mobile Side Drawer */
+  /* 8. Mobile Side Drawer */
   .hb-side-drawer {
     position: fixed;
     top: 0;
@@ -522,7 +763,6 @@ const secondaryItems = [
     transform: translateX(0);
   }
 
-  /* Drawer Header */
   .hb-drawer-header {
     display: flex;
     align-items: center;
@@ -586,7 +826,6 @@ const secondaryItems = [
     transform: rotate(90deg);
   }
 
-  /* Drawer Body Scroll Area */
   .hb-drawer-body {
     flex: 1;
     overflow-y: auto;
@@ -613,7 +852,6 @@ const secondaryItems = [
     gap: 8px;
   }
 
-  /* Interactive Menu Tiles */
   .hb-tile-link {
     display: flex;
     align-items: center;
@@ -652,13 +890,6 @@ const secondaryItems = [
     flex-shrink: 0;
   }
 
-  .hb-tile-icon.hb-tile-sm {
-    width: 32px;
-    height: 32px;
-    font-size: 1.05rem;
-    background: #F4F1EA;
-  }
-
   .hb-tile-content {
     flex: 1;
     display: flex;
@@ -687,12 +918,6 @@ const secondaryItems = [
     transition: transform 0.2s;
   }
 
-  .hb-tile-link:hover .hb-tile-arrow {
-    transform: translateX(3px);
-    color: #E76F51;
-  }
-
-  /* Founder Assistance Card */
   .hb-drawer-founder-card {
     margin-top: 18px;
     background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
@@ -742,7 +967,6 @@ const secondaryItems = [
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
   }
 
-  /* Contacts Footer */
   .hb-drawer-contacts {
     margin-top: 16px;
     display: flex;
@@ -772,7 +996,7 @@ const secondaryItems = [
     font-weight: 600;
   }
 
-  /* 8. Responsive Breakpoints */
+  /* Responsive Breakpoints */
   @media (max-width: 980px) {
     .hb-desktop-links {
       display: none !important;
@@ -806,21 +1030,51 @@ const secondaryItems = [
 </style>
 
 <!-- ═══════════════════════════════════════════════════════════
-     ROCK-SOLID CLIENT SCRIPT FOR MOBILE DRAWER
+     CLIENT SCRIPT FOR DROPDOWN & MOBILE DRAWER
      ═══════════════════════════════════════════════════════════ -->
 <script is:inline>
   (function() {
-    function initHoneybeeMenu() {
+    function initHeaderInteractions() {
+      // 1. Dropdown Parent Interaction (Desktop click/touch support)
+      const dropdownParent = document.getElementById('hbDropdownParent');
+      const dropdownBtn = document.getElementById('seriesDropdownBtn');
+
+      if (dropdownParent && dropdownBtn) {
+        dropdownBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isOpen = dropdownParent.classList.contains('is-open');
+          dropdownParent.classList.toggle('is-open', !isOpen);
+          dropdownBtn.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!dropdownParent.contains(e.target)) {
+            dropdownParent.classList.remove('is-open');
+            dropdownBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Escape key closes dropdown
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            dropdownParent.classList.remove('is-open');
+            dropdownBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // 2. Mobile Drawer Controls
       const btn = document.getElementById('hamburger');
       const drawer = document.getElementById('hbDrawerPanel');
       const backdrop = document.getElementById('hbNavOverlay');
       const closeBtn = document.getElementById('hbDrawerClose');
       if (!btn || !drawer) return;
 
-      let isOpen = false;
+      let isDrawerOpen = false;
 
-      function openMenu() {
-        isOpen = true;
+      function openDrawer() {
+        isDrawerOpen = true;
         btn.classList.add('is-active');
         btn.setAttribute('aria-expanded', 'true');
         drawer.classList.add('is-open');
@@ -828,8 +1082,8 @@ const secondaryItems = [
         document.body.style.overflow = 'hidden';
       }
 
-      function closeMenu() {
-        isOpen = false;
+      function closeDrawer() {
+        isDrawerOpen = false;
         btn.classList.remove('is-active');
         btn.setAttribute('aria-expanded', 'false');
         drawer.classList.remove('is-open');
@@ -837,49 +1091,44 @@ const secondaryItems = [
         document.body.style.overflow = '';
       }
 
-      function toggleMenu(e) {
+      function toggleDrawer(e) {
         if (e) {
           e.preventDefault();
           e.stopPropagation();
         }
-        if (isOpen) {
-          closeMenu();
+        if (isDrawerOpen) {
+          closeDrawer();
         } else {
-          openMenu();
+          openDrawer();
         }
       }
 
-      // 1. Hamburger button click & touch
-      btn.onclick = toggleMenu;
+      btn.onclick = toggleDrawer;
 
-      // 2. Close button inside drawer
       if (closeBtn) {
         closeBtn.onclick = function(e) {
           e.preventDefault();
-          closeMenu();
+          closeDrawer();
         };
       }
 
-      // 3. Backdrop tap
       if (backdrop) {
-        backdrop.onclick = closeMenu;
+        backdrop.onclick = closeDrawer;
       }
 
-      // 4. Close on navigation link click
       drawer.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
-          closeMenu();
+          closeDrawer();
         });
       });
 
-      // 5. Escape key dismissal
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && isOpen) {
-          closeMenu();
+        if (e.key === 'Escape' && isDrawerOpen) {
+          closeDrawer();
         }
       });
 
-      // 6. Swipe right to close gesture on mobile
+      // Swipe right on drawer to close
       let startX = 0;
       drawer.addEventListener('touchstart', function(e) {
         startX = e.touches[0].clientX;
@@ -888,15 +1137,15 @@ const secondaryItems = [
       drawer.addEventListener('touchend', function(e) {
         const endX = e.changedTouches[0].clientX;
         if (endX - startX > 50) {
-          closeMenu();
+          closeDrawer();
         }
       }, { passive: true });
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initHoneybeeMenu);
+      document.addEventListener('DOMContentLoaded', initHeaderInteractions);
     } else {
-      initHoneybeeMenu();
+      initHeaderInteractions();
     }
   })();
 </script>
