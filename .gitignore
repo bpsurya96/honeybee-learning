@@ -14,7 +14,7 @@ Thumbs.db
 .agents/
 
 # Build and cache outputs
-
+dist/
 .astro/
 .next/
 

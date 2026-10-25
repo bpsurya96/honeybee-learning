@@ -2608,8 +2608,32 @@ const extraStylesheets = ['css/pages.css'];
   <!-- SCRIPT FOR VIEW SWITCHING, FILTERING & VIDEO CONTROLS -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', function () {
-      
-      
+      // ── VIDEO PLAY OVERLAY CONTROLS ──
+      var videoPlayer = document.getElementById('instaReelPlayer');
+      var playOverlay = document.getElementById('reelPlayOverlay');
+      var iframeWrap = document.getElementById('instaIframeWrap');
+      var instaIframe = document.getElementById('instaIframe');
+      var btnNative = document.getElementById('btnModeNative');
+      var btnEmbed = document.getElementById('btnModeEmbed');
+
+      function startPlayback() {
+        if (!videoPlayer) return;
+        var promise = videoPlayer.play();
+        if (promise !== undefined) {
+          promise.then(function() {
+            if (playOverlay) playOverlay.style.display = 'none';
+          }).catch(function(err) {
+            console.log('Play blocked, muting first:', err);
+            videoPlayer.muted = true;
+            videoPlayer.play().then(function() {
+              if (playOverlay) playOverlay.style.display = 'none';
+              // Unmute smoothly
+              videoPlayer.muted = false;
+            }).catch(function(e) {
+              console.warn('Playback error:', e);
+              if (btnEmbed) btnEmbed.click();
+            });
+          });
         }
       }
 

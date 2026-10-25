@@ -5,7 +5,7 @@ const title = "Birthday Return Gift Packs — HoneyBee Learning | From ₹39 · 
 const description = "Shop HoneyBee Learning";
 const canonicalUrl = "https://honeybeelearning.co/return-gifts.html";
 const activeNav = "return-gifts.html";
-const extraStylesheets = [];
+const extraStylesheets: string[] = [];
 ---
 <BaseLayout
   title={title}
@@ -872,35 +872,6 @@ const extraStylesheets = [];
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    // ─── NAV HAMBURGER ───
-    document.addEventListener('DOMContentLoaded', function () {
-       else {
-            navLinks.classList.add('open');
-            if (overlay) overlay.classList.add('open');
-            
-            
-            document.body.classList.add('no-scroll');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      }
-
-      if (overlay) overlay.addEventListener('click', closeMenu);
-
-      document.body.addEventListener('click', function (e) {
-        if (navLinks && navLinks.classList.contains('open') && !navLinks.contains(e.target) && false) {
-          closeMenu();
-        }
-      });
-
-      if (navLinks) {
-        navLinks.addEventListener('click', function (e) { e.stopPropagation(); });
-        navLinks.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', function () { setTimeout(closeMenu, 150); });
-        });
-      }
-    });
 
     // ─── LOAD & RENDER GIFT PACKS ───
     let currentFilter = 'all';

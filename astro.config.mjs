@@ -9,4 +9,21 @@ export default defineConfig({
   build: {
     format: "file",
   },
+  vite: {
+    plugins: [
+      {
+        name: "reviews-dev-middleware",
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url === "/reviews") {
+              res.writeHead(302, { Location: "/reviews.html" });
+              res.end();
+              return;
+            }
+            next();
+          });
+        },
+      },
+    ],
+  },
 });

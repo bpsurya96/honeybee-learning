@@ -1026,10 +1026,6 @@ const extraStylesheets = ['css/divine-stories.css'];
   </div>
 
   <script is:inline>
-    /* ========== NAV ========== */
-    document.addEventListener('DOMContentLoaded', function () {
-      
-
     /* ========== BACKGROUND PARTICLES ========== */
     (function () { var c = document.getElementById('divineStars'); if (!c) return; for (var i = 0; i < 80; i++) { var s = document.createElement('span'), sz = Math.random() * 3 + 1; s.style.cssText = 'width:' + sz + 'px;height:' + sz + 'px;top:' + Math.random() * 100 + '%;left:' + Math.random() * 100 + '%;--dur:' + (Math.random() * 3 + 1.5) + 's;--del:' + (Math.random() * 3) + 's'; c.appendChild(s); } })();
     (function () { var c = document.getElementById('lotusParticles'); if (!c) return;['\uD83E\uDEB7', '\u2728', '\u2B50', '\uD83C\uDF38', '\uD83D\uDC9B', '\uD83D\uDD49\uFE0F'].forEach(function (e, i) { var s = document.createElement('span'); s.textContent = e; s.style.cssText = '--x:' + (10 + i * 15) + '%;--dur:' + (Math.random() * 8 + 6) + 's;--del:' + (Math.random() * 8) + 's;--fs:' + (Math.random() * .8 + .8) + 'rem'; c.appendChild(s); }); })();
