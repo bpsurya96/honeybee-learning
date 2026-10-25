@@ -142,6 +142,31 @@ function initProduct() {
 
   document.getElementById('productTitle').textContent = p.title;
     document.getElementById('priceSell').textContent = '₹' + p.price;
+
+    // ─── Compute MRP & Discount ───
+    let mrp = p.mrp;
+    if (!mrp) {
+        if (p.price < 100) mrp = Math.round(p.price * 1.5);
+        else if (p.price < 300) mrp = Math.round(p.price * 1.4);
+        else mrp = Math.round(p.price * 1.35);
+    }
+    const mrpEl = document.getElementById('priceMrp');
+    if (mrpEl) mrpEl.textContent = '₹' + mrp;
+    const offEl = document.getElementById('priceDiscount');
+    if (offEl) {
+        const discount = Math.round(((mrp - p.price) / mrp) * 100);
+        offEl.textContent = discount + '% OFF';
+    }
+
+    // ─── Reusable Pill ───
+    const reusablePill = document.getElementById('reusablePill');
+    if (reusablePill) {
+        const isReusable = p.productType === 'reusable' || 
+                           (p.tags && p.tags.join(' ').toLowerCase().includes('reusable')) ||
+                           (p.title && p.title.toLowerCase().includes('reusable'));
+        reusablePill.style.display = isReusable ? 'inline-block' : 'none';
+    }
+
     document.getElementById('productDesc').textContent = p.fullDesc;
     document.getElementById('productTags').innerHTML = p.tags.map(t => `<span class="product-tag">${t}</span>`).join('');
 
@@ -160,11 +185,25 @@ function initProduct() {
         }
     }
 
-    document.getElementById('orderBtn').href = '#customiseSection';
-    document.getElementById('orderBtn').onclick = (e) => {
-        e.preventDefault();
-        document.getElementById('customiseSection').scrollIntoView({ behavior: 'smooth' });
-    };
+    // ─── Customizer Box for Custom/Personalised Books ───
+    const isCustom = p.productType === 'activity' || p.productType === 'reusable' || 
+                     (p.title && (p.title.includes('Custom') || p.title.includes('Personalised')));
+    const pcBox = document.getElementById('productCustomizerBox');
+    if (pcBox) {
+        pcBox.style.display = isCustom ? 'block' : 'none';
+        if (isCustom) {
+            // Auto match theme dropdown if found in title
+            const themeSelect = document.getElementById('pcTheme');
+            if (themeSelect) {
+                for (let opt of themeSelect.options) {
+                    if (opt.value && p.title.toLowerCase().includes(opt.value.toLowerCase())) {
+                        themeSelect.value = opt.value;
+                        break;
+                    }
+                }
+            }
+        }
+    }
 
     // Build gallery thumbs + dot indicators
     const tc = document.getElementById('thumbsContainer');
@@ -216,16 +255,10 @@ function initProduct() {
     // Populate sticky order bar
     const msbTitle = document.getElementById('msbTitle');
     const msbPrice = document.getElementById('msbPrice');
-    const msbBtn = document.getElementById('msbBtn');
+    const msbMrp = document.getElementById('msbMrp');
     if (msbTitle) msbTitle.textContent = p.title;
     if (msbPrice) msbPrice.textContent = '₹' + p.price;
-    if (msbBtn) {
-        msbBtn.href = '#customiseSection';
-        msbBtn.onclick = (e) => {
-            e.preventDefault();
-            document.getElementById('customiseSection').scrollIntoView({ behavior: 'smooth' });
-        };
-    }
+    if (msbMrp) msbMrp.textContent = '₹' + mrp;
 
     renderRelatedProducts();
 
@@ -313,6 +346,23 @@ function initDivineProduct(prod) {
     if (titleEl) titleEl.textContent = prod.title;
     const priceEl = document.getElementById('priceSell');
     if (priceEl) priceEl.textContent = '₹' + prod.price;
+
+    let dMrp = prod.mrp || Math.round(prod.price * 1.5);
+    const mrpEl = document.getElementById('priceMrp');
+    if (mrpEl) mrpEl.textContent = '₹' + dMrp;
+    const offEl = document.getElementById('priceDiscount');
+    if (offEl) {
+        const discount = Math.round(((dMrp - prod.price) / dMrp) * 100);
+        offEl.textContent = discount + '% OFF';
+    }
+
+    // Show name field for divine books too
+    const pcBox = document.getElementById('productCustomizerBox');
+    if (pcBox) {
+        pcBox.style.display = 'block';
+        const themeRow = pcBox.querySelector('.pc-row');
+        if (themeRow) themeRow.style.display = 'none'; // hide theme selector for divine stories
+    }
 
     // Description
     const descEl = document.getElementById('productDesc');
@@ -727,3 +777,47 @@ function updateCustomAgeImage() {
     }
 }
 
+
+
+// ─── HIGH CONVERTING 1-TAP WHATSAPP ORDER HANDLER ───
+function handleMainOrderClick() {
+    if (!p) return;
+
+    // 1. Divine Story Books
+    if (p.productType === 'divine' || (p.id && String(p.id).startsWith('ds-'))) {
+        const nameEl = document.getElementById('pcChildName');
+        const childName = (nameEl ? nameEl.value.trim() : '') || 'My Child';
+        const msg = `Hi HoneyBee Learning! 🕉️\nI want to order the Divine Story Book:\n• Story: ${p.title} (₹${p.price})\n• Child's Name: ${childName}\n\nPlease share sample pages & payment details!`;
+        window.open(`https://wa.me/918883624873?text=${encodeURIComponent(msg)}`, '_blank');
+        return;
+    }
+
+    // 2. Customised / Personalised Books
+    const isCustom = p.productType === 'activity' || p.productType === 'reusable' || 
+                     (p.title && (p.title.includes('Custom') || p.title.includes('Personalised')));
+
+    if (isCustom) {
+        const nameEl = document.getElementById('pcChildName');
+        const childName = nameEl ? nameEl.value.trim() : '';
+        const childAge = document.getElementById('pcChildAge') ? document.getElementById('pcChildAge').value : '3 Years';
+        const theme = document.getElementById('pcTheme') ? document.getElementById('pcTheme').value : 'Preferred';
+
+        if (!childName) {
+            if (nameEl) {
+                nameEl.focus();
+                nameEl.classList.add('input-alert');
+                setTimeout(() => nameEl.classList.remove('input-alert'), 1800);
+            }
+            alert("Please enter your child's name for the cover! ✨");
+            return;
+        }
+
+        const msg = `Hi HoneyBee Learning! 🐝\nI would like to order a Personalised Book:\n• Book: ${p.title} (₹${p.price})\n• Child's Name: ${childName}\n• Age: ${childAge}\n• Theme: ${theme}\n📸 I will send my child's photo here on WhatsApp!\n\n(Noted: 1st review included, ₹50 per customization after 1st review).`;
+        window.open(`https://wa.me/918883624873?text=${encodeURIComponent(msg)}`, '_blank');
+        return;
+    }
+
+    // 3. Standard Books & Learning Charts (Phonics, Tamil, Tables, Visual 0+)
+    const msg = `Hi HoneyBee Learning! 🐝\nI want to order:\n• Product: ${p.title} (₹${p.price})\n\nPlease share availability & payment details!`;
+    window.open(`https://wa.me/918883624873?text=${encodeURIComponent(msg)}`, '_blank');
+}

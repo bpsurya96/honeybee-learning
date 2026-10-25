@@ -52,29 +52,107 @@ const extraStylesheets = ['css/product.css', 'css/custom-order.css'];
             <div class="product-info">
                 <div class="product-badge" id="productBadge"></div>
                 <h1 class="product-title" id="productTitle"></h1>
+                
+                <!-- Price & MRP Row -->
                 <div class="price-row">
                     <span class="price-sell" id="priceSell"></span>
+                    <span class="price-mrp-detail" id="priceMrp"></span>
+                    <span class="price-off" id="priceDiscount"></span>
+                    <span class="reusable-pill" id="reusablePill" style="display:none;">♻️ Wipe &amp; Clean · 100+ Uses</span>
                 </div>
+
+                <!-- Quality & Trust Badges -->
+                <div class="product-trust-strip">
+                    <div class="pts-item">🛡️ <span>250 GSM Tear-Proof &amp; Laminated</span></div>
+                    <div class="pts-item">👶 <span>100% Child-Safe Rounded Corners</span></div>
+                    <div class="pts-item">✍️ <span>Free Marker &amp; Wiper Included</span></div>
+                    <div class="pts-item">⚡ <span>Handcrafted in Chennai · 24–48h Dispatch</span></div>
+                </div>
+
                 <div class="product-desc" id="productDesc"></div>
                 <div class="product-tags" id="productTags"></div>
                 <div class="product-freebies" id="productFreebies" style="display:none;"></div>
 
-                <div class="ecommerce-urgency">
-                    <span class="urgency-icon">?</span>
-                    <div class="urgency-text">
-                        <strong>High Demand!</strong> <span class="urgency-fade">Usually sells out fast</span>
+                <!-- Personalized Details Box (Shown for customizable books) -->
+                <div class="product-customizer-box" id="productCustomizerBox" style="display:none;">
+                    <div class="pc-heading">
+                        <span class="pc-badge">✨ Personalize Your Book</span>
+                        <span class="pc-sub">1st review included!</span>
+                    </div>
+                    
+                    <div class="pc-field">
+                        <label for="pcChildName">Child's Name for Cover <span class="req">*</span></label>
+                        <input type="text" id="pcChildName" class="pc-input" placeholder="Enter child's name (e.g. Aarav, Diya, Kavin...)" maxlength="30" />
+                    </div>
+
+                    <div class="pc-row">
+                        <div class="pc-field">
+                            <label for="pcChildAge">Child's Age</label>
+                            <select id="pcChildAge" class="pc-select">
+                                <option value="2 Years">Age 2 Years (Toddler Basics)</option>
+                                <option value="3 Years" selected>Age 3 Years (Early Pre-Writing)</option>
+                                <option value="4 Years">Age 4 Years (Foundation Skills)</option>
+                                <option value="5 Years">Age 5 Years (Phonics &amp; Math)</option>
+                                <option value="6-8 Years">Age 6–8 Years (Logic &amp; Fun)</option>
+                                <option value="8+ Years">Age 8+ Years</option>
+                            </select>
+                        </div>
+                        <div class="pc-field">
+                            <label for="pcTheme">Preferred Theme</label>
+                            <select id="pcTheme" class="pc-select">
+                                <option value="Dinosaur">🦕 Dinosaur Theme</option>
+                                <option value="Unicorn">🦄 Unicorn Theme</option>
+                                <option value="Spiderman">🕷️ Spiderman Theme</option>
+                                <option value="Thomas & Friends">🚂 Thomas &amp; Friends</option>
+                                <option value="Space & Astronaut">🚀 Space &amp; Astronaut</option>
+                                <option value="Jungle Animals">🦁 Jungle Animals</option>
+                                <option value="Cocomelon">🍉 Cocomelon</option>
+                                <option value="Superhero Avengers">🦸 Superhero / Avengers</option>
+                                <option value="Princess & Frozen">👑 Princess / Frozen</option>
+                                <option value="Cars & Vehicles">🚗 Cars &amp; Transport</option>
+                                <option value="Under the Sea">🌊 Ocean / Under Sea</option>
+                                <option value="Custom Theme">🎨 Custom (Discuss on WhatsApp)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="pc-photo-hint">
+                        📸 <strong>Photo on Cover:</strong> You can send your child's clear photo on WhatsApp right after clicking Order!
+                    </div>
+
+                    <!-- POLICY NOTICE AS REQUESTED BY USER -->
+                    <div class="pc-policy-hint">
+                        ℹ️ <strong>Customization Policy:</strong> 1st design review &amp; personalization included. <strong>₹50 per customization after first review.</strong>
                     </div>
                 </div>
 
-                <a class="order-btn" id="orderBtn" href="#" target="_blank">Send Enquiry ??</a>
-                <p class="order-note">We will reach out to you and customize based on your preference.</p>
-                <button id="shareBtn" class="share-btn" onclick="shareProduct()">
-                    <span class="share-icon">??</span> Share this Product
+                <div class="ecommerce-urgency">
+                    <span class="urgency-icon">🔥</span>
+                    <div class="urgency-text">
+                        <strong>Handcrafted with Care!</strong> <span class="urgency-fade">Each book personalized individually in Chennai</span>
+                    </div>
+                </div>
+
+                <!-- Primary Order CTA Button -->
+                <button class="order-btn order-btn--wa" id="orderBtn" onclick="handleMainOrderClick()">
+                    💬 Order on WhatsApp
                 </button>
+                <p class="order-note">1-on-1 personal confirmation on WhatsApp before we print your book.</p>
+
+                <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;">
+                    <button id="shareBtn" class="share-btn" onclick="shareProduct()" style="flex:1;">
+                        <span class="share-icon">🔗</span> Share with Friends
+                    </button>
+                    <a href="#customiseSection" class="share-btn" style="flex:1;text-decoration:none;text-align:center;color:var(--text);">
+                        🎁 Bulk Return Gifts / Special Request
+                    </a>
+                </div>
+
                 <div class="delivery-info">
-                    <span>??</span>
-                    <div>Delivery charges applicable based on location  Free pickup in Medavakkam  35 days delivery 
-                        No returns  all orders are personalised &amp; confirmed with you before we print</div>
+                    <span style="font-size:1.4rem;">🚚</span>
+                    <div>
+                        <strong>Fast &amp; Safe Delivery:</strong> Chennai 24–48h dispatch · Pan-India delivery in 3–5 business days · Free local pickup in Medavakkam.
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,34 +162,34 @@ const extraStylesheets = ['css/product.css', 'css/custom-order.css'];
          WHAT YOUR CHILD WILL LEARN (AGE GUIDE)
          ------------------------------------------- -->
     <div class="age-guide-wrapper" id="ageGuideWrapper">
-        <h2 class="age-guide-title">What Your Child Will Learn ??</h2>
+        <h2 class="age-guide-title">🎯 What Your Child Will Learn (Age 2 to 12)</h2>
         <p class="age-guide-sub">Carefully curated activities for every milestone!</p>
         <div class="age-guide-container" style="position: relative; max-width: 1000px; margin: 0 auto;">
             <button class="age-nav age-prev" onclick="scrollAgeGuide(-1)"></button>
             <div class="age-guide-scroll">
-                <img src="images/age-guides/age-2.jpeg" class="age-guide-img" alt="Age 2 Focus" loading="lazy">
-                <img src="images/age-guides/age-3.jpeg" class="age-guide-img" alt="Age 3 Focus" loading="lazy">
-                <img src="images/age-guides/age-4.jpeg" class="age-guide-img" alt="Age 4 Focus" loading="lazy">
-                <img src="images/age-guides/age-5.jpeg" class="age-guide-img" alt="Age 5 Focus" loading="lazy">
-                <img src="images/age-guides/age-6.jpeg" class="age-guide-img" alt="Age 6 Focus" loading="lazy">
-                <img src="images/age-guides/age-7.jpeg" class="age-guide-img" alt="Age 7 Focus" loading="lazy">
-                <img src="images/age-guides/age-8.jpeg" class="age-guide-img" alt="Age 8 Focus" loading="lazy">
-                <img src="images/age-guides/age-9.jpeg" class="age-guide-img" alt="Age 9 Focus (Problem Solving)"
+                <img src="images/age-guides/age-2.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 2 Focus" loading="lazy">
+                <img src="images/age-guides/age-3.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 3 Focus" loading="lazy">
+                <img src="images/age-guides/age-4.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 4 Focus" loading="lazy">
+                <img src="images/age-guides/age-5.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 5 Focus" loading="lazy">
+                <img src="images/age-guides/age-6.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 6 Focus" loading="lazy">
+                <img src="images/age-guides/age-7.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 7 Focus" loading="lazy">
+                <img src="images/age-guides/age-8.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 8 Focus" loading="lazy">
+                <img src="images/age-guides/age-9.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 9 Focus (Problem Solving)"
                     loading="lazy">
-                <img src="images/age-guides/age-10.jpeg" class="age-guide-img" alt="Age 10 Focus" loading="lazy">
-                <img src="images/age-guides/age-11.jpeg" class="age-guide-img" alt="Age 11 Focus" loading="lazy">
-                <img src="images/age-guides/age-12.jpeg" class="age-guide-img" alt="Age 12 Focus" loading="lazy">
+                <img src="images/age-guides/age-10.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 10 Focus" loading="lazy">
+                <img src="images/age-guides/age-11.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 11 Focus" loading="lazy">
+                <img src="images/age-guides/age-12.jpeg" class="age-guide-img" onclick="openLightboxFromHome(this.src)" style="cursor:pointer;" alt="Age 12 Focus" loading="lazy">
             </div>
             <button class="age-nav age-next" onclick="scrollAgeGuide(1)"></button>
         </div>
-        <div class="swipe-indicator">? Swipe or use buttons to see more ?</div>
+        <div class="swipe-indicator">👉 Swipe or use buttons to explore all age milestones (tap image to expand) 👈</div>
     </div>
 
     <!-- -------------------------------------------
          RELATED PRODUCTS
          ------------------------------------------- -->
     <div class="related-section">
-        <h2 class="related-title">You May Also Like ??</h2>
+        <h2 class="related-title">✨ You May Also Like</h2>
         <div class="learning-grid" id="relatedGrid">
             <!-- Populated via JS -->
         </div>
@@ -125,8 +203,8 @@ const extraStylesheets = ['css/product.css', 'css/custom-order.css'];
 
             <!-- Header -->
             <div class="custom-header">
-                <div class="custom-badge">? We Create Anything</div>
-                <h2 class="custom-title">Still not fully satisfied? <br>Let's create <span>yours!</span> ??</h2>
+                <div class="custom-badge">🎨 Custom Orders &amp; Bulk Return Gifts</div>
+                <h2 class="custom-title">Need a Custom Theme or Bulk Return Gifts? <br><span>Let's Create It Together! 🍯</span></h2>
                 <p class="custom-sub">Every child is unique  so should be their book! Tell us your dream theme and
                     we'll handcraft a personalised learning book just for your little one, delivered in 35 days. ??</p>
             </div>
@@ -259,22 +337,17 @@ const extraStylesheets = ['css/product.css', 'css/custom-order.css'];
             <div class="custom-step">
                 <div class="custom-step-label"><span class="step-num">4</span> Anything special you want?</div>
                 <div class="special-chips">
-                    <label class="special-chip"><input type="checkbox" value="Child's name on cover" /> ??? Name on
-                        cover</label>
-                    <label class="special-chip"><input type="checkbox" value="Parent names inside" /> ???????? Parent
-                        names inside</label>
-                    <label class="special-chip"><input type="checkbox" value="Photo on cover" /> ?? Photo on
-                        cover</label>
-                    <label class="special-chip"><input type="checkbox" value="Specific colour theme" /> ?? Specific
-                        colours</label>
-                    <label class="special-chip"><input type="checkbox" value="Tamil / regional language" /> ??? Tamil /
-                        Regional</label>
-                    <label class="special-chip"><input type="checkbox" value="Moral values / life skills pages" /> ??
-                        Moral values</label>
-                    <label class="special-chip"><input type="checkbox" value="Bilingual (English + Tamil)" /> ??
-                        Bilingual</label>
-                    <label class="special-chip"><input type="checkbox" value="Extra tracing pages" /> ?? More
-                        tracing</label>
+                    <label class="special-chip"><input type="checkbox" value="Child's name on cover" /> ✍️ Name on cover</label>
+                    <label class="special-chip"><input type="checkbox" value="Parent names inside" /> 👨‍👩‍👧 Parent names inside</label>
+                    <label class="special-chip"><input type="checkbox" value="Photo on cover" /> 📸 Photo on cover</label>
+                    <label class="special-chip"><input type="checkbox" value="Specific colour theme" /> 🎨 Specific colours</label>
+                    <label class="special-chip"><input type="checkbox" value="Tamil / regional language" /> 🕉️ Tamil / Regional</label>
+                    <label class="special-chip"><input type="checkbox" value="Moral values / life skills pages" /> 🌟 Moral values</label>
+                    <label class="special-chip"><input type="checkbox" value="Bilingual (English + Tamil)" /> 🗣️ Bilingual (English + Tamil)</label>
+                    <label class="special-chip"><input type="checkbox" value="Extra tracing pages" /> ✏️ Extra tracing pages</label>
+                </div>
+                <div style="background: rgba(255,204,0,0.15); border: 1.5px solid #ffcc00; border-radius: 10px; padding: 10px 14px; margin: 12px 0 16px; font-size: 0.85rem; color: #78350f; font-weight: 700;">
+                    ℹ️ <strong>Customization Policy:</strong> 1st design review &amp; personalization included. ₹50 per customization after first review.
                 </div>
                 <textarea id="custNotes" class="custom-input custom-textarea"
                     placeholder="Describe your vision! e.g. 'I want a Ganesh theme book with Tamil alphabet tracing, personalised for my daughter Kavya (age 4). Need 15 copies for her birthday return gifts...'"></textarea>
@@ -317,24 +390,24 @@ const extraStylesheets = ['css/product.css', 'css/custom-order.css'];
 
     <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <img id="lightboxImg" src="">
-        <button class="lightbox-close" onclick="closeLightbox()">?</button>
+        <img id="lightboxImg" src="" alt="Enlarged view">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
     </div>
 
-    
-
-    <!-- STICKY WHATSAPP BUTTON -->
-    
-
+    <!-- Include core app.js and product.js -->
+    <script is:inline src="js/app.js"></script>
     <script is:inline src="js/product.js"></script>
 
     <!-- STICKY MOBILE ORDER BAR -->
     <div class="mobile-sticky-bar" id="stickyOrderBar">
         <div class="msb-info">
             <div class="msb-title" id="msbTitle"></div>
-            <div class="msb-price" id="msbPrice"></div>
+            <div class="msb-price-wrap">
+                <span class="msb-price" id="msbPrice"></span>
+                <span class="msb-mrp" id="msbMrp"></span>
+            </div>
         </div>
-        <a class="msb-btn" id="msbBtn" href="#" target="_blank">Send Enquiry ??</a>
+        <button class="msb-btn" id="msbBtn" onclick="handleMainOrderClick()">💬 Order on WhatsApp</button>
     </div>
 
 </BaseLayout>
