@@ -884,15 +884,25 @@ function closeDetailOnBg(e) { if (e.target === document.getElementById('dmodalOv
 // ─── ORDER MODAL ───
 function openOrderModal(name, price, hasCandy) {
     currentCombo = name; currentPrice = price;
-    document.getElementById('modalCombo').textContent = name;
-    document.getElementById('modalPrice').textContent = price;
-    document.getElementById('candyGroup').style.display = hasCandy ? 'block' : 'none';
-    document.getElementById('orderForm').style.display = 'block';
-    document.getElementById('successScreen').classList.remove('show');
-    document.getElementById('formError').style.display = 'none';
+    const mc = document.getElementById('modalCombo');
+    if (mc) mc.textContent = name;
+    const mcl = document.getElementById('modalComboLabel');
+    if (mcl) mcl.textContent = name;
+    const mp = document.getElementById('modalPrice');
+    if (mp) mp.textContent = price;
+    const cg = document.getElementById('candyGroup');
+    if (cg) cg.style.display = hasCandy ? 'block' : 'none';
+    const oform = document.getElementById('orderForm');
+    if (oform) oform.style.display = 'block';
+    const ss = document.getElementById('successScreen');
+    if (ss) { ss.classList.remove('show'); ss.style.display = 'none'; }
+    const fe = document.getElementById('formError');
+    if (fe) fe.style.display = 'none';
     const minDate = new Date(); minDate.setDate(minDate.getDate() + 3);
-    document.getElementById('deliveryDate').min = minDate.toISOString().split('T')[0];
-    document.getElementById('modalOverlay').classList.add('open');
+    const dd = document.getElementById('deliveryDate');
+    if (dd) dd.min = minDate.toISOString().split('T')[0];
+    const mo = document.getElementById('modalOverlay');
+    if (mo) mo.classList.add('open');
     document.body.style.overflow = 'hidden';
 }
 function closeOrderModal() {
@@ -931,6 +941,23 @@ function submitOrder() {
     errEl.style.display = 'none';
     const orderId = 'HBC' + Date.now().toString().slice(-6);
     const deliveryFmt = new Date(ddate).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    const waText = `Hi! I'd like to place an order for Return Gifts.
+*Pack:* ${currentCombo}
+*Quantity:* ${qty}
+*Birthday Child:* ${child}
+*Age Group:* ${age || 'N/A'}
+*Candy:* ${showCandy ? candyMap[selectedCandy] : 'N/A'}
+*Party Date:* ${deliveryFmt}
+
+*My Name:* ${name}
+*Address:* ${addr}
+${notes ? '\n*Notes:* ' + notes : ''}`;
+
+    const waUrl = `https://wa.me/918883624873?text=${encodeURIComponent(waText)}`;
+    const waBtn = document.getElementById('waProceedBtn');
+    if (waBtn) waBtn.href = waUrl;
+
     const payload = {
         _subject: "New Enquiry - HoneyBee Learning",
         Combo: currentCombo,

@@ -1,73 +1,1640 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import productsActivity from "../../data/products_activity.json";
+import productsReusable from "../../data/products_reusable.json";
+import productsOther from "../../data/products_other.json";
+import productsStories from "../../data/products_stories.json";
+import returnGifts from "../../data/return-gifts.json";
 
-const title = "All Products — HoneyBee Learning | Personalised Activity Books & Gifts";
-const description = "Browse all personalised activity books, reusable learning products, and birthday return gift combos from HoneyBee Learning. Filter by category, search themes, and order in minutes.";
+const title = "All Products & Return Gifts \u2014 HoneyBee Learning | Personalised Kids Books";
+const description = "Explore all 56 handcrafted personalised activity books, wipe & clean reusable workbooks, divine moral stories, and birthday return gift packs from HoneyBee Learning, Chennai.";
 const canonicalUrl = "https://honeybeelearning.co.in/products.html";
 const activeNav = "products.html";
-const extraStylesheets: string[] = [];
+
+const makeWa = (name: string, price: number | string, note = "") => {
+  const msg = `Hi HoneyBee Learning! I would like to order:\n*${name}* (Price: Rs.${price})\n${note ? note + '\n' : ''}Please share details.`;
+  return `https://wa.me/918883624873?text=${encodeURIComponent(msg)}`;
+};
+
+// 1. Customized Products (Activity + Reusable) - 25 items
+const normalizedActivity = productsActivity.map((p: any) => ({
+  id: String(p.id),
+  title: p.title,
+  price: Number(p.price) || 349,
+  mrp: Number(p.mrp) || 499,
+  category: "customized",
+  categoryLabel: "Customized",
+  categoryIcon: "\u2702\uFE0F",
+  badge: "Personalised",
+  badgeClass: "badge-custom",
+  image: p.image || "images/logo/logo.png",
+  fallbackEmoji: p.fallbackEmoji || "\U0001F4D6",
+  shortDesc: p.shortDesc || "Personalised activity book customized with child's name and photo.",
+  tags: p.tags && p.tags.length ? p.tags.slice(0, 3) : ["Personalised", "Activity", "Age 2+"],
+  link: `product.html?id=${p.id}`,
+  waLink: makeWa(p.title, p.price, "Child's name & photo customization enquiry."),
+  isGift: false,
+  hasCandy: false,
+}));
+
+const normalizedReusable = productsReusable.map((p: any) => ({
+  id: String(p.id),
+  title: p.title,
+  price: Number(p.price) || 399,
+  mrp: Number(p.mrp) || 549,
+  category: "customized",
+  categoryLabel: "Customized",
+  categoryIcon: "\u267B\uFE0F",
+  badge: "Reusable Wipe & Clean",
+  badgeClass: "badge-reusable",
+  image: p.image || "images/logo/logo.png",
+  fallbackEmoji: p.fallbackEmoji || "\u267B\uFE0F",
+  shortDesc: p.shortDesc || "Wipe & clean reusable workbook with marker. Write, wipe, learn again!",
+  tags: p.tags && p.tags.length ? p.tags.slice(0, 3) : ["Reusable", "Wipe & Clean", "Marker Included"],
+  link: `product.html?id=${p.id}`,
+  waLink: makeWa(p.title, p.price, "Reusable wipe-clean workbook enquiry."),
+  isGift: false,
+  hasCandy: false,
+}));
+
+// 2. Standard Products - 10 items
+const normalizedOther = productsOther.map((p: any) => ({
+  id: String(p.id),
+  title: p.title,
+  price: Number(p.price) || 250,
+  mrp: Number(p.mrp) || (Number(p.price) < 100 ? 70 : 450),
+  category: "standard",
+  categoryLabel: "Standard",
+  categoryIcon: "\U0001F4DA",
+  badge: "Standard Learning",
+  badgeClass: "badge-standard",
+  image: p.image || "images/logo/logo.png",
+  fallbackEmoji: p.fallbackEmoji || "\U0001F4D5",
+  shortDesc: p.shortDesc || "Early learning essential foundation workbooks and charts for kids.",
+  tags: p.tags && p.tags.length ? p.tags.slice(0, 3) : ["Foundation", "Standard", "Kids Learning"],
+  link: `product.html?id=${p.id}`,
+  waLink: makeWa(p.title, p.price, "Standard learning product enquiry."),
+  isGift: false,
+  hasCandy: false,
+}));
+
+// 3. Divine Stories (_stores.json) - 9 items
+const normalizedStories = productsStories.map((p: any) => ({
+  id: String(p.id),
+  title: p.title,
+  price: Number(p.price) || 75,
+  mrp: Number(p.mrp) || 120,
+  category: "divine-stories",
+  categoryLabel: "Divine Stories",
+  categoryIcon: p.godEmoji || "\u2728",
+  badge: `${p.godEmoji || "\u2728"} Divine Tales`,
+  badgeClass: "badge-divine",
+  image: p.image || "images/logo/logo.png",
+  fallbackEmoji: p.godEmoji || "\u2728",
+  shortDesc: `${p.lessonEmoji || "\U0001F4A1"} Moral: ${p.lesson || "Wisdom & Devotion"}. Child's name woven into story.`,
+  tags: p.tags && p.tags.length ? p.tags.slice(0, 3) : ["Divine Story", "Moral Values", "Personalised"],
+  link: `product.html?id=${p.id}`,
+  waLink: makeWa(p.title, p.price, "Divine moral story book enquiry."),
+  isGift: false,
+  hasCandy: false,
+}));
+
+// 4. Return Gifts - 12 items
+const normalizedReturnGifts = returnGifts.map((g: any) => ({
+  id: String(g.id),
+  title: g.name,
+  price: Number(g.price) || 39,
+  mrp: Number(g.price) ? Number(g.price) + 20 : 59,
+  mrpLabel: g.mrpLabel || `Under Rs.${(Number(g.price) || 39) + 20}`,
+  category: "return-gifts",
+  categoryLabel: "Return Gifts",
+  categoryIcon: g.emoji || "\U0001F381",
+  badge: `\U0001F381 ${g.mrpLabel || "Return Gift"}`,
+  badgeClass: "badge-gift",
+  image: "",
+  fallbackEmoji: g.emoji || "\U0001F381",
+  shortDesc: Array.isArray(g.items) ? g.items.slice(0, 3).join(" \u2022 ") : "Personalised birthday return gift combo pack.",
+  tags: ["Return Gift", "Birthday Combo", "Bulk Ready"],
+  link: "return-gifts.html",
+  waLink: makeWa(g.name, g.price, "Birthday return gifts bulk enquiry."),
+  isGift: true,
+  hasCandy: Boolean(g.hasCandy),
+}));
+
+// Combined catalog: 56 items total
+const allProducts = [
+  ...normalizedActivity,
+  ...normalizedReusable,
+  ...normalizedOther,
+  ...normalizedStories,
+  ...normalizedReturnGifts,
+];
+
+const totalCount = allProducts.length;
+const customizedCount = normalizedActivity.length + normalizedReusable.length;
+const standardCount = normalizedOther.length;
+const divineCount = normalizedStories.length;
+const returnGiftsCount = normalizedReturnGifts.length;
 ---
 <BaseLayout
   title={title}
   description={description}
   canonicalUrl={canonicalUrl}
   activeNav={activeNav}
-  extraStylesheets={extraStylesheets}
   hideHeader={false}
   hideFooter={false}
   hideFab={false}
 >
-  <Fragment slot="head">
-    <meta name="keywords" content="all products honeybee learning, personalised activity books, reusable learning books, kids return gifts, product filters, search products">
-    <meta name="robots" content="index, follow">
-  </Fragment>
+  <main class="products-catalog-page">
+    <div class="catalog-container">
 
+      <!-- 1. COMPACT HERO / HEADER (Zero dead space) -->
+      <header class="catalog-header">
+        <div class="header-left">
+          <div class="header-eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            <span>Handcrafted in Medavakkam, Chennai &bull; Screen-Free Learning</span>
+          </div>
+          <div class="header-title-row">
+            <h1 class="header-title">Product Catalog</h1>
+            <span class="header-count-badge" id="catalogLiveCount">{totalCount} Items</span>
+          </div>
+          <p class="header-subtitle">
+            Personalised name activity books, wipe &amp; clean workbooks, divine moral stories, and birthday return gift packs.
+          </p>
+        </div>
 
-  
-  <div class="nav-drawer-overlay" id="navOverlay"></div>
+        <div class="header-trust-bar">
+          <div class="trust-chip">
+            <span class="trust-icon">&#9889;</span>
+            <span>Fast Dispatch</span>
+          </div>
+          <div class="trust-chip">
+            <span class="trust-icon">&#9997;&#65039;</span>
+            <span>100% Personalised</span>
+          </div>
+          <div class="trust-chip">
+            <span class="trust-icon">&#11088;</span>
+            <span>4.9/5 Rating</span>
+          </div>
+        </div>
+      </header>
 
-  <main class="section-block" style="padding-top: 110px; padding-bottom: 60px;">
-    <section class="section-headline" style="text-align:center; max-width:960px; margin:0 auto 38px;">
-      <div class="section-tag">All Products</div>
-      <h1 style="font-size:2.25rem; line-height:1.1; margin:14px 0 12px;">Browse Every Product in One Place</h1>
-      <p style="font-size:1rem; color:var(--text-soft); max-width:760px; margin:0 auto;">Search by theme, filter by age and book type, and shop personalised activity books, reusable write-and-wipe products, flashcards, and birthday return gifts with ease.</p>
-    </section>
+      <!-- 2. UNIFIED COMPACT FILTER HUB (Category, Price, Sort Dropdowns + Search) -->
+      <section class="filter-hub" aria-label="Product Filters">
+        <div class="controls-toolbar">
+          <!-- Live Search Input -->
+          <div class="search-field">
+            <span class="search-icon" aria-hidden="true">&#128269;</span>
+            <input
+              type="text"
+              id="productSearchInput"
+              class="search-text-input"
+              placeholder="Search books, kits, themes (e.g. Ocean, Dino, Tamil)..."
+              autocomplete="off"
+              aria-label="Search products"
+            />
+            <button
+              type="button"
+              id="clearSearchBtn"
+              class="clear-search-btn"
+              aria-label="Clear search text"
+              style="display: none;"
+            >
+              &#10005;
+            </button>
+          </div>
 
-    <div class="search-container reveal" style="max-width:940px; margin:0 auto 24px;">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="productSearch" class="search-input" placeholder="Search for themes, ages, products or keywords..." oninput="handleSearch(this.value)">
+          <!-- Category Dropdown (As requested by user) -->
+          <div class="filter-control-wrap">
+            <label for="categoryFilter" class="control-label">Category:</label>
+            <select id="categoryFilter" class="filter-select" aria-label="Filter by category">
+              <option value="all">All Products ({totalCount})</option>
+              <option value="customized">Customized ({customizedCount})</option>
+              <option value="standard">Standard ({standardCount})</option>
+              <option value="divine-stories">Divine Stories ({divineCount})</option>
+              <option value="return-gifts">Return Gifts ({returnGiftsCount})</option>
+            </select>
+          </div>
+
+          <!-- Price Filter Dropdown -->
+          <div class="filter-control-wrap">
+            <label for="priceFilter" class="control-label">Price:</label>
+            <select id="priceFilter" class="filter-select" aria-label="Filter by price">
+              <option value="all">All Prices</option>
+              <option value="under-100">Under &#8377;100</option>
+              <option value="100-300">&#8377;100 &ndash; &#8377;300</option>
+              <option value="300-500">&#8377;300 &ndash; &#8377;500</option>
+              <option value="above-500">Above &#8377;500</option>
+            </select>
+          </div>
+
+          <!-- Sort Dropdown -->
+          <div class="filter-control-wrap">
+            <label for="sortFilter" class="control-label">Sort:</label>
+            <select id="sortFilter" class="filter-select" aria-label="Sort products">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+            </select>
+          </div>
+
+          <!-- Reset Button -->
+          <button type="button" id="resetFiltersBtn" class="reset-btn" title="Reset all active filters">
+            <span aria-hidden="true">&#8634;</span> Reset
+          </button>
+        </div>
+
+        <!-- Active Filter Tags Strip -->
+        <div class="active-chips-strip" id="activeChipsStrip" style="display: none;">
+          <span class="active-chips-label">Active:</span>
+          <div class="active-chips-list" id="activeChipsList"></div>
+          <button type="button" class="clear-all-link" id="clearAllFiltersLink">Clear All</button>
+        </div>
+      </section>
+
+      <!-- 3. COMPACT 4-COLUMN PRODUCT GRID -->
+      <section class="catalog-main-content" aria-label="Products List">
+        <div class="grid-meta-bar">
+          <span class="grid-result-count" id="gridResultCount">
+            Showing <strong>{totalCount}</strong> products
+          </span>
+        </div>
+
+        <div class="products-compact-grid" id="productsGrid">
+          {allProducts.map((p) => (
+            <article
+              class="product-card"
+              data-id={p.id}
+              data-category={p.category}
+              data-price={p.price}
+              data-title={p.title.toLowerCase()}
+              data-tags={p.tags.join(" ").toLowerCase()}
+              data-desc={p.shortDesc.toLowerCase()}
+            >
+              <!-- Card Visual / Media Box -->
+              <div class="card-media-box">
+                <span class={`cat-badge ${p.badgeClass}`}>
+                  {p.categoryIcon} {p.categoryLabel}
+                </span>
+
+                {p.mrp > p.price && (
+                  <span class="discount-badge">
+                    {Math.round(((p.mrp - p.price) / p.mrp) * 100)}% OFF
+                  </span>
+                )}
+
+                {p.isGift ? (
+                  <div class="gift-art-cover">
+                    <span class="gift-art-emoji" aria-hidden="true">{p.fallbackEmoji}</span>
+                    <span class="gift-art-text">Birthday Pack</span>
+                  </div>
+                ) : (
+                  <div class="product-img-wrap">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      loading="lazy"
+                      class="product-thumbnail"
+                      onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';"
+                    />
+                    <div class="product-img-fallback" style="display: none;">
+                      <span>{p.fallbackEmoji}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <!-- Card Details -->
+              <div class="card-details">
+                <span class="card-sub-label">{p.badge}</span>
+                <h2 class="card-title" title={p.title}>{p.title}</h2>
+                <p class="card-desc">{p.shortDesc}</p>
+
+                <!-- Tags -->
+                <div class="card-tags-row">
+                  {p.tags.map((t: string) => (
+                    <span class="micro-tag">{t}</span>
+                  ))}
+                </div>
+
+                <!-- Price Row -->
+                <div class="card-price-row">
+                  <div class="price-stack">
+                    <span class="price-current">&#8377;{p.price}</span>
+                    {p.mrp > p.price && (
+                      <span class="price-mrp">&#8377;{p.mrp}</span>
+                    )}
+                  </div>
+                  {p.isGift && (
+                    <span class="pack-note">Custom Name Tag</span>
+                  )}
+                </div>
+
+                <!-- Dual Action Buttons -->
+                <div class="card-actions-row">
+                  {p.isGift ? (
+                    <button
+                      type="button"
+                      class="btn-details"
+                      onclick={`openOrderModal('${p.title.replace(/'/g, "\\'")}', '₹${p.price}', ${Boolean((p as any).hasCandy)})`}
+                      aria-label={`Customise and order ${p.title}`}
+                      style="cursor: pointer; border: 1.5px solid #f4a227; font-family: inherit;"
+                    >
+                      <span>Customise &amp; Order &#127873;</span>
+                    </button>
+                  ) : (
+                    <a
+                      href={p.link}
+                      class="btn-details"
+                      aria-label={`View details of ${p.title}`}
+                    >
+                      <span>View Book &#128214;</span>
+                    </a>
+                  )}
+
+                  <a
+                    href={p.waLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-whatsapp"
+                    aria-label={`Order ${p.title} via WhatsApp`}
+                    title="Instant WhatsApp Order"
+                  >
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 18.06c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.106 8.106 0 0 1-1.25-4.29c0-4.48 3.65-8.13 8.14-8.13 2.17 0 4.21.85 5.75 2.38 1.53 1.54 2.38 3.58 2.38 5.76-.01 4.49-3.66 8.14-8.13 8.14zm4.46-6.09c-.24-.12-1.45-.71-1.67-.79-.23-.09-.39-.12-.56.12-.17.24-.65.79-.8 1-.15.12-.3.14-.54.02-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.45-1.35-1.69-.15-.24-.02-.37.11-.49.11-.11.24-.29.37-.43.12-.15.17-.24.25-.41.08-.17.04-.32-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.43 1.03 2.6c.12.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.17 1.58.1.48-.07 1.45-.59 1.66-1.17.2-.57.2-1.07.14-1.17-.06-.11-.23-.17-.47-.29z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- 4. ZERO RESULTS EMPTY STATE -->
+        <div class="catalog-empty-state" id="catalogEmptyState" style="display: none;">
+          <div class="empty-graphic">&#128029;</div>
+          <h3 class="empty-heading">No products found</h3>
+          <p class="empty-message">
+            We couldn't find any products matching your current filters. Try choosing a different category, adjusting price, or clearing your search.
+          </p>
+          <button type="button" class="empty-reset-action" id="emptyStateResetBtn">
+            &#8634; Reset All Filters
+          </button>
+        </div>
+      </section>
+
     </div>
+  
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeOrderModal()" aria-label="Close">✕</button>
+        <h2 id="modalTitle">Customise &amp; Order 🎁</h2>
+        <p id="modalCombo">Pack name</p>
+      </div>
+      <div class="modal-body">
+        <div class="order-summary-box">
+          <span class="osum-name" id="modalComboLabel">—</span>
+          <span class="osum-price" id="modalPrice">—</span>
+        </div>
 
-    <div class="product-filter-row" style="max-width:940px; margin:0 auto 26px; padding:0 12px; display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:12px;">
-      <label style="display:flex; flex-direction:column; gap:8px; font-weight:700; font-size:0.92rem; color:var(--brown);">
-        Age group
-        <select id="filterAge" onchange="handleFilterChange()" style="border:1px solid rgba(0,0,0,0.12); border-radius:14px; padding:12px 14px; font-size:0.95rem;">
-          <option value="all">All Ages</option>
-          <option value="1-2">1–2 years</option>
-          <option value="3-5">3–5 years</option>
-          <option value="6-8">6–8 years</option>
-          <option value="9-12">9–12 years</option>
-        </select>
-      </label>
-      <label style="display:flex; flex-direction:column; gap:8px; font-weight:700; font-size:0.92rem; color:var(--brown);">
-        Book type
-        <select id="filterType" onchange="handleFilterChange()" style="border:1px solid rgba(0,0,0,0.12); border-radius:14px; padding:12px 14px; font-size:0.95rem;">
-          <option value="all">All Types</option>
-          <option value="activity">Activity Books</option>
-          <option value="reusable">Reusable Books</option>
-          <option value="other">Others</option>
-          <option value="divine">&#x1F549;&#xFE0F; Divine Stories</option>
-        </select>
-      </label>
+        <div id="orderForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="buyerName">Your Name *</label>
+              <input type="text" id="buyerName" placeholder="Your full name" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="buyerPhone">WhatsApp Number *</label>
+              <input type="tel" id="buyerPhone" placeholder="10-digit number" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="childName">Birthday Child's Name *</label>
+              <input type="text" id="childName" placeholder="e.g. Aarav">
+            </div>
+            <div class="form-group">
+              <label for="quantity">Quantity (sets) *</label>
+              <input type="number" id="quantity" min="10" value="10">
+            </div>
+          </div>
+
+          <div id="candyGroup" class="form-group" style="display:none;">
+            <label>Candy Preference</label>
+            <div class="candy-choice">
+              <button type="button" class="candy-btn selected" id="candy1" onclick="selectCandy('chocolate')">🍫
+                Chocolate</button>
+              <button type="button" class="candy-btn" id="candy2" onclick="selectCandy('chikki')">🍬 Chikki</button>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ageGroup">Age Group</label>
+              <select id="ageGroup">
+                <option value="">Select age group</option>
+                <option value="2-4">2–4 years</option>
+                <option value="4-6">4–6 years</option>
+                <option value="6-8">6–8 years</option>
+                <option value="8-12">8–12 years</option>
+                <option value="mixed">Mixed ages</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="deliveryDate">Party / Delivery Date *</label>
+              <input type="date" id="deliveryDate">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Delivery Address *</label>
+            <textarea id="address" placeholder="Full address with pincode"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Extra Notes</label>
+            <textarea id="notes" placeholder="Guest name list, special requests, etc."></textarea>
+          </div>
+
+          <div id="formError" style="display:none;color:#c0392b;font-weight:700;font-size:0.88rem;margin-bottom:10px;">
+          </div>
+
+          <button class="btn-submit" onclick="submitOrder()">Send Enquiry 💬</button>
+        </div>
+
+        <div id="successScreen" style="display:none;text-align:center;padding:20px 0;">
+          <div style="font-size:3rem;margin-bottom:12px;">🎉</div>
+          <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--green);margin-bottom:8px;">Enquiry
+            sent!</div>
+          <div style="font-size:0.88rem;color:var(--text-soft);font-weight:600;margin-bottom:16px;">
+            We'll reply on WhatsApp shortly to confirm your order details.
+          </div>
+          <div id="orderIdBox"
+            style="background:var(--green-pale);color:var(--green);padding:8px 20px;border-radius:50px;font-weight:800;display:inline-block;margin-bottom:16px;">
+          </div>
+          <br>
+          <a id="waProceedBtn" href="#" target="_blank" rel="noopener" class="btn-primary"
+            style="display:inline-block;margin-bottom:12px;background:#25D366;border-color:#25D366;box-shadow:0 8px 24px rgba(37,211,102,0.3);">Proceed
+            to WhatsApp 💬</a>
+          <br>
+          <button onclick="closeOrderModal()" class="btn-secondary"
+            style="border:none;cursor:pointer;background:transparent;color:var(--text-soft);">Close</button>
+        </div>
+      </div>
     </div>
+  </div>
+</main>
 
-    <div class="learning-grid" id="learningGrid" style="max-width:1200px; margin:0 auto;"></div>
+  <style>
+    /* --
+       COMPACT DESKTOP & PREMIUM RESPONSIVE CATALOG STYLES
+       ---------------------------------------------------- */
 
-  </main>
+    .products-catalog-page {
+      background: #fafaf8;
+      min-height: 100vh;
+      /* Clears 64px fixed navbar + small 12px breathing room, eliminating excessive dead space */
+      padding-top: 76px;
+      padding-bottom: 50px;
+      color: #2a2a2a;
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
 
-  
+    .catalog-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-  <script is:inline src="js/app.js"></script>
-  
+    /* -- 1. Compact Header --- */
+    .catalog-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 0 14px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      margin-bottom: 10px;
+    }
 
+    .header-left {
+      max-width: 780px;
+    }
+
+    .header-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #6b3a1f;
+      background: rgba(244, 162, 39, 0.14);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f4a227;
+      display: inline-block;
+    }
+
+    .header-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .header-title {
+      font-family: 'Fredoka One', cursive, sans-serif;
+      font-size: 1.85rem;
+      line-height: 1.15;
+      color: #6b3a1f;
+      margin: 0;
+    }
+
+    .header-count-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #2e7d32;
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(46, 125, 50, 0.2);
+    }
+
+    .header-subtitle {
+      font-size: 0.88rem;
+      color: #555555;
+      margin: 4px 0 0 0;
+      line-height: 1.4;
+    }
+
+    .header-trust-bar {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .trust-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #374151;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .trust-icon {
+      font-size: 0.85rem;
+    }
+
+    /* -- 2. Unified Filter Hub (Single Compact Row) --- */
+    .filter-hub {
+      position: sticky;
+      top: 64px;
+      z-index: 30;
+      background: rgba(250, 250, 248, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 10px 0 12px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+      margin-bottom: 14px;
+    }
+
+    .controls-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-field {
+      flex: 1 1 240px;
+      min-width: 200px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      font-size: 0.85rem;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .search-text-input {
+      width: 100%;
+      padding: 7px 32px 7px 34px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.84rem;
+      color: #1e293b;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-text-input:focus {
+      border-color: #f4a227;
+      box-shadow: 0 0 0 3px rgba(244, 162, 39, 0.15);
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 10px;
+      background: #e2e8f0;
+      border: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 0.65rem;
+      color: #475569;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .filter-control-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .control-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    .filter-select {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 7px 28px 7px 10px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #334155;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      transition: border-color 0.2s ease;
+    }
+
+    .filter-select:focus {
+      border-color: #f4a227;
+    }
+
+    .reset-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 7px 12px;
+      background: #f1f5f9;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .reset-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* Active Chips Strip */
+    .active-chips-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(0, 0, 0, 0.08);
+    }
+
+    .active-chips-label {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #64748b;
+    }
+
+    .active-chips-list {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    :global(.filter-chip) {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #fff8e7;
+      border: 1px solid #f4a227;
+      color: #6b3a1f;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    :global(.filter-chip-remove) {
+      background: none;
+      border: none;
+      color: #6b3a1f;
+      font-size: 0.75rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      opacity: 0.7;
+    }
+    :global(.filter-chip-remove:hover) {
+      opacity: 1;
+    }
+
+    .clear-all-link {
+      background: none;
+      border: none;
+      color: #dc2626;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0 4px;
+    }
+
+    /* -- 3. Compact 4-Column Product Grid --- */
+    .catalog-main-content {
+      margin-top: 4px;
+    }
+
+    .grid-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 0.82rem;
+      color: #64748b;
+    }
+
+    .grid-result-count strong {
+      color: #0f172a;
+    }
+
+    .products-compact-grid {
+      display: grid;
+      /* 4 Columns on desktop for high-density, compact browsing */
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: #ffffff;
+      border: 1px solid #e8ecef;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    /* Card Visual Box */
+    .card-media-box {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      background: #f8fafc;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .cat-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 2;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .badge-custom {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+    .badge-reusable {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+    }
+    .badge-standard {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .badge-divine {
+      background: #f3e8ff;
+      color: #6b21a8;
+      border: 1px solid #e9d5ff;
+    }
+    .badge-gift {
+      background: #fdf2f8;
+      color: #9d174d;
+      border: 1px solid #fbcfe8;
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 2;
+      background: #dc2626;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+
+    .product-img-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover .product-thumbnail {
+      transform: scale(1.04);
+    }
+
+    .product-img-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    }
+
+    .gift-art-cover {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fdf2f8 0%, #fef3c7 100%);
+      padding: 12px;
+    }
+
+    .gift-art-emoji {
+      font-size: 3.5rem;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+    }
+
+    .gift-art-text {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #9d174d;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    /* Card Details */
+    .card-details {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-sub-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: #64748b;
+      margin-bottom: 3px;
+    }
+
+    .card-title {
+      font-family: inherit;
+      font-size: 0.94rem;
+      font-weight: 800;
+      line-height: 1.32;
+      color: #1e293b;
+      margin: 0 0 5px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.5em;
+    }
+
+    .card-desc {
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.35;
+      margin: 0 0 8px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.1em;
+    }
+
+    .card-tags-row {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .micro-tag {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .card-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: auto;
+      margin-bottom: 10px;
+      padding-top: 6px;
+      border-top: 1px dashed #f1f5f9;
+    }
+
+    .price-stack {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-current {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #6b3a1f;
+      letter-spacing: -0.3px;
+    }
+
+    .price-mrp {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-decoration: line-through;
+      font-weight: 600;
+    }
+
+    .pack-note {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #16a34a;
+      background: #f0fdf4;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Dual Action Buttons */
+    .card-actions-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .btn-details {
+      flex: 1;
+      text-align: center;
+      background: #fff8e7;
+      color: #6b3a1f;
+      border: 1.5px solid #f4a227;
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-details:hover {
+      background: #f4a227;
+      color: #ffffff;
+    }
+
+    .btn-whatsapp {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      background: #25D366;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1eb854;
+      transform: scale(1.05);
+    }
+
+    /* -- 4. Empty State --- */
+    .catalog-empty-state {
+      text-align: center;
+      background: #ffffff;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 16px;
+      padding: 40px 20px;
+      margin: 20px 0;
+    }
+
+    .empty-graphic {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .empty-heading {
+      font-family: 'Fredoka One', cursive, sans-serif;
+      font-size: 1.4rem;
+      color: #6b3a1f;
+      margin: 0 0 6px 0;
+    }
+
+    .empty-message {
+      font-size: 0.88rem;
+      color: #64748b;
+      max-width: 460px;
+      margin: 0 auto 16px auto;
+      line-height: 1.45;
+    }
+
+    .empty-reset-action {
+      background: #6b3a1f;
+      color: #ffffff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .empty-reset-action:hover {
+      background: #4a2810;
+    }
+
+    /* --
+       RESPONSIVE BREAKPOINTS (Desktop, Tablet, Mobile)
+       ---------------------------------------------------- */
+
+    @media (max-width: 1200px) {
+      .products-compact-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 820px) {
+      .catalog-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .products-compact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .card-desc {
+        display: none; /* Hide description on mobile to keep cards compact */
+      }
+      .card-title {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .products-catalog-page {
+        padding-top: 68px;
+      }
+      .catalog-container {
+        padding: 0 12px;
+      }
+      .products-compact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .card-details {
+        padding: 8px;
+      }
+      .price-current {
+        font-size: 1.1rem;
+      }
+      .btn-details {
+        font-size: 0.72rem;
+        padding: 6px 4px;
+      }
+      .btn-whatsapp {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
+
+  <!-- 5. CLIENT-SIDE FILTERING SCRIPT -->
+  <script is:inline>
+
+    // --- Return Gifts Order Modal Logic ---
+    let currentCombo = '';
+    let currentPrice = '';
+    let selectedCandy = 'chocolate';
+
+    function openOrderModal(name, price, hasCandy) {
+      currentCombo = name;
+      currentPrice = price;
+      document.getElementById('modalCombo').textContent = name;
+      document.getElementById('modalComboLabel').textContent = name;
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('candyGroup').style.display = hasCandy ? 'block' : 'none';
+      document.getElementById('orderForm').style.display = 'block';
+      document.getElementById('successScreen').style.display = 'none';
+      document.getElementById('formError').style.display = 'none';
+      const minDate = new Date();
+      minDate.setDate(minDate.getDate() + 3);
+      document.getElementById('deliveryDate').min = minDate.toISOString().split('T')[0];
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeOrderModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        document.getElementById('orderForm').style.display = 'block';
+        document.getElementById('successScreen').style.display = 'none';
+        ['buyerName', 'buyerPhone', 'childName', 'address', 'notes'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.value = '';
+        });
+        document.getElementById('quantity').value = 10;
+        document.getElementById('ageGroup').value = '';
+        document.getElementById('deliveryDate').value = '';
+        selectCandy('chocolate');
+      }, 300);
+    }
+
+    function closeModalOnBg(e) {
+      if (e.target === document.getElementById('modalOverlay')) closeOrderModal();
+    }
+
+    function selectCandy(type) {
+      selectedCandy = type;
+      document.getElementById('candy1').classList.toggle('selected', type === 'chocolate');
+      document.getElementById('candy2').classList.toggle('selected', type === 'chikki');
+    }
+
+    function submitOrder() {
+      const name = document.getElementById('buyerName').value.trim();
+      const phone = document.getElementById('buyerPhone').value.trim();
+      const child = document.getElementById('childName').value.trim();
+      const qty = document.getElementById('quantity').value;
+      const ddate = document.getElementById('deliveryDate').value;
+      const addr = document.getElementById('address').value.trim();
+      const age = document.getElementById('ageGroup').value;
+      const notes = document.getElementById('notes').value.trim();
+      const errEl = document.getElementById('formError');
+      const showCandy = document.getElementById('candyGroup').style.display !== 'none';
+      const candyMap = { chocolate: '🍫 Chocolate', chikki: '🍬 Chikki' };
+
+      if (!name || !phone || !child || !qty || !ddate || !addr) {
+        errEl.textContent = '⚠️ Please fill in all required fields marked with *';
+        errEl.style.display = 'block';
+        return;
+      }
+      if (!/^\d{10}$/.test(phone.replace(/\s/g, ''))) {
+        errEl.textContent = '⚠️ Please enter a valid 10-digit phone number.';
+        errEl.style.display = 'block';
+        return;
+      }
+      errEl.style.display = 'none';
+
+      const orderId = 'HBC' + Date.now().toString().slice(-6);
+      const deliveryFmt = new Date(ddate).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+
+
+      const waText = `Hi! I'd like to place an order for Return Gifts.
+*Pack:* ${currentCombo}
+*Quantity:* ${qty}
+*Birthday Child:* ${child}
+*Age Group:* ${age || 'N/A'}
+*Candy:* ${showCandy ? candyMap[selectedCandy] : 'N/A'}
+*Party Date:* ${deliveryFmt}
+
+*My Name:* ${name}
+*Address:* ${addr}
+${notes ? '\n*Notes:* ' + notes : ''}`;
+
+      const waUrl = `https://wa.me/918883624873?text=${encodeURIComponent(waText)}`;
+      document.getElementById('waProceedBtn').href = waUrl;
+
+      const payload = {
+        _subject: 'New Return Gift Enquiry — HoneyBee Learning',
+        Pack: currentCombo,
+        Price: currentPrice,
+        Quantity: qty,
+        BuyerName: name,
+        Phone: phone,
+        ChildName: child,
+        AgeGroup: age,
+        Candy: showCandy ? candyMap[selectedCandy] : 'N/A',
+        PartyDate: deliveryFmt,
+        Address: addr,
+        Notes: notes
+      };
+
+      const btn = document.querySelector('.btn-submit');
+      const origText = btn.innerHTML;
+      btn.innerHTML = 'Sending... ⏳';
+      btn.disabled = true;
+
+      fetch('https://formsubmit.co/ajax/honeybeelearning.co@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(r => r.json()).then(() => {
+        document.getElementById('orderIdBox').textContent = `ENQUIRY #${orderId}`;
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('successScreen').style.display = 'block';
+      }).catch(() => {
+        errEl.textContent = '⚠️ Network error. Please try WhatsApp directly.';
+        errEl.style.display = 'block';
+      }).finally(() => {
+        btn.innerHTML = origText;
+        btn.disabled = false;
+      });
+    }
+
+    // ─── FAQ ACCORDION ───
+
+    window.openOrderModal = openOrderModal;
+    window.closeOrderModal = closeOrderModal;
+    window.closeModalOnBg = closeModalOnBg;
+    window.selectCandy = selectCandy;
+    window.submitOrder = submitOrder;
+
+    (function () {
+      const state = {
+        category: 'all',
+        price: 'all',
+        sort: 'featured',
+        query: '',
+      };
+
+      const categorySelect = document.getElementById('categoryFilter');
+      const searchInput = document.getElementById('productSearchInput');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+      const priceSelect = document.getElementById('priceFilter');
+      const sortSelect = document.getElementById('sortFilter');
+      const resetBtn = document.getElementById('resetFiltersBtn');
+      const gridResultCount = document.getElementById('gridResultCount');
+      const catalogLiveCount = document.getElementById('catalogLiveCount');
+      const emptyState = document.getElementById('catalogEmptyState');
+      const emptyStateResetBtn = document.getElementById('emptyStateResetBtn');
+      const activeChipsStrip = document.getElementById('activeChipsStrip');
+      const activeChipsList = document.getElementById('activeChipsList');
+      const clearAllFiltersLink = document.getElementById('clearAllFiltersLink');
+      const grid = document.getElementById('productsGrid');
+
+      if (!grid) return;
+      const allCards = Array.from(grid.querySelectorAll('.product-card'));
+
+      // Check URL parameters on load
+      function syncFromURL() {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const cat = params.get('category');
+          if (cat && ['all', 'customized', 'standard', 'divine-stories', 'return-gifts'].includes(cat)) {
+            state.category = cat;
+            if (categorySelect) categorySelect.value = cat;
+          }
+          const price = params.get('price');
+          if (price && ['all', 'under-100', '100-300', '300-500', 'above-500'].includes(price)) {
+            state.price = price;
+            if (priceSelect) priceSelect.value = price;
+          }
+          const sort = params.get('sort');
+          if (sort && ['featured', 'price-asc', 'price-desc', 'name-asc'].includes(sort)) {
+            state.sort = sort;
+            if (sortSelect) sortSelect.value = sort;
+          }
+          const q = params.get('q');
+          if (q) {
+            state.query = q.trim();
+            if (searchInput) searchInput.value = state.query;
+            if (clearSearchBtn) clearSearchBtn.style.display = 'inline-flex';
+          }
+        } catch (e) {
+          console.warn('URL sync error:', e);
+        }
+      }
+
+      function updateURL() {
+        try {
+          const params = new URLSearchParams();
+          if (state.category !== 'all') params.set('category', state.category);
+          if (state.price !== 'all') params.set('price', state.price);
+          if (state.sort !== 'featured') params.set('sort', state.sort);
+          if (state.query) params.set('q', state.query);
+          const newUrl = params.toString()
+            ? `${window.location.pathname}?${params.toString()}`
+            : window.location.pathname;
+          window.history.replaceState({}, '', newUrl);
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      function matchesCategory(card) {
+        if (state.category === 'all') return true;
+        return card.dataset.category === state.category;
+      }
+
+      function matchesPrice(card) {
+        if (state.price === 'all') return true;
+        const p = parseFloat(card.dataset.price) || 0;
+        if (state.price === 'under-100') return p < 100;
+        if (state.price === '100-300') return p >= 100 && p <= 300;
+        if (state.price === '300-500') return p > 300 && p <= 500;
+        if (state.price === 'above-500') return p > 500;
+        return true;
+      }
+
+      function matchesSearch(card) {
+        if (!state.query) return true;
+        const q = state.query.toLowerCase();
+        const title = card.dataset.title || '';
+        const tags = card.dataset.tags || '';
+        const desc = card.dataset.desc || '';
+        return title.includes(q) || tags.includes(q) || desc.includes(q);
+      }
+
+      function applySort(cards) {
+        if (state.sort === 'featured') {
+          return cards;
+        }
+        return [...cards].sort((a, b) => {
+          const priceA = parseFloat(a.dataset.price) || 0;
+          const priceB = parseFloat(b.dataset.price) || 0;
+          const titleA = a.dataset.title || '';
+          const titleB = b.dataset.title || '';
+          if (state.sort === 'price-asc') return priceA - priceB;
+          if (state.sort === 'price-desc') return priceB - priceA;
+          if (state.sort === 'name-asc') return titleA.localeCompare(titleB);
+          return 0;
+        });
+      }
+
+      function renderActiveChips() {
+        if (!activeChipsStrip || !activeChipsList) return;
+        const chips = [];
+
+        if (state.category !== 'all') {
+          const catLabels = {
+            customized: 'Customized',
+            standard: 'Standard',
+            'divine-stories': 'Divine Stories',
+            'return-gifts': 'Return Gifts',
+          };
+          chips.push({
+            type: 'category',
+            label: `Category: ${catLabels[state.category] || state.category}`,
+          });
+        }
+
+        if (state.price !== 'all') {
+          const priceLabels = {
+            'under-100': 'Under \u20B9100',
+            '100-300': '\u20B9100 \u2013 \u20B9300',
+            '300-500': '\u20B9300 \u2013 \u20B9500',
+            'above-500': 'Above \u20B9500',
+          };
+          chips.push({
+            type: 'price',
+            label: `Price: ${priceLabels[state.price] || state.price}`,
+          });
+        }
+
+        if (state.query) {
+          chips.push({
+            type: 'query',
+            label: `Search: "${state.query}"`,
+          });
+        }
+
+        if (chips.length > 0) {
+          activeChipsStrip.style.display = 'flex';
+          activeChipsList.innerHTML = chips
+            .map(
+              (c) => `
+              <span class="filter-chip">
+                ${c.label}
+                <button type="button" class="filter-chip-remove" data-type="${c.type}" aria-label="Remove filter">&#10005;</button>
+              </span>
+            `
+            )
+            .join('');
+        } else {
+          activeChipsStrip.style.display = 'none';
+          activeChipsList.innerHTML = '';
+        }
+      }
+
+      function applyFilters() {
+        const visibleCards = [];
+        allCards.forEach((card) => {
+          const isVisible = matchesCategory(card) && matchesPrice(card) && matchesSearch(card);
+          card.style.display = isVisible ? '' : 'none';
+          if (isVisible) visibleCards.push(card);
+        });
+
+        const sorted = applySort(visibleCards);
+        sorted.forEach((card) => grid.appendChild(card));
+
+        const count = visibleCards.length;
+        if (gridResultCount) {
+          gridResultCount.innerHTML = `Showing <strong>${count}</strong> of ${allCards.length} products`;
+        }
+        if (catalogLiveCount) {
+          catalogLiveCount.textContent = `${count} Products`;
+        }
+
+        if (emptyState) {
+          emptyState.style.display = count === 0 ? 'block' : 'none';
+        }
+
+        renderActiveChips();
+        updateURL();
+      }
+
+      function resetAll() {
+        state.category = 'all';
+        state.price = 'all';
+        state.sort = 'featured';
+        state.query = '';
+
+        if (categorySelect) categorySelect.value = 'all';
+        if (searchInput) searchInput.value = '';
+        if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+        if (priceSelect) priceSelect.value = 'all';
+        if (sortSelect) sortSelect.value = 'featured';
+
+        applyFilters();
+      }
+
+      // Event listeners
+      if (categorySelect) {
+        categorySelect.addEventListener('change', (e) => {
+          state.category = e.target.value;
+          applyFilters();
+        });
+      }
+
+      if (searchInput) {
+        let debounceTimer;
+        searchInput.addEventListener('input', (e) => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            state.query = e.target.value.trim();
+            if (clearSearchBtn) {
+              clearSearchBtn.style.display = state.query ? 'inline-flex' : 'none';
+            }
+            applyFilters();
+          }, 200);
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          state.query = '';
+          if (searchInput) {
+            searchInput.value = '';
+            searchInput.focus();
+          }
+          clearSearchBtn.style.display = 'none';
+          applyFilters();
+        });
+      }
+
+      if (priceSelect) {
+        priceSelect.addEventListener('change', (e) => {
+          state.price = e.target.value;
+          applyFilters();
+        });
+      }
+
+      if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+          state.sort = e.target.value;
+          applyFilters();
+        });
+      }
+
+      if (resetBtn) resetBtn.addEventListener('click', resetAll);
+      if (emptyStateResetBtn) emptyStateResetBtn.addEventListener('click', resetAll);
+      if (clearAllFiltersLink) clearAllFiltersLink.addEventListener('click', resetAll);
+
+      if (activeChipsList) {
+        activeChipsList.addEventListener('click', (e) => {
+          const btn = e.target.closest('.filter-chip-remove');
+          if (!btn) return;
+          const type = btn.dataset.type;
+          if (type === 'category') {
+            state.category = 'all';
+            if (categorySelect) categorySelect.value = 'all';
+          } else if (type === 'price') {
+            state.price = 'all';
+            if (priceSelect) priceSelect.value = 'all';
+          } else if (type === 'query') {
+            state.query = '';
+            if (searchInput) searchInput.value = '';
+            if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+          }
+          applyFilters();
+        });
+      }
+
+      // Initial execution
+      syncFromURL();
+      applyFilters();
+    })();
+  </script>
 </BaseLayout>
