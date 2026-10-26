@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Write a Review — HoneyBee Learning";
-const description = "Share your experience with HoneyBee Learning personalised kids books and return gifts. Help other parents discover India";
+const description = "Share your experience with HoneyBee Learning personalised kids books, return gifts, and divine series. Help other parents discover screen-free learning.";
 const canonicalUrl = "https://honeybeelearning.co.in/write-review.html";
 const activeNav = "reviews.html";
 const extraStylesheets = ['css/pages.css'];
@@ -12,739 +12,1240 @@ const extraStylesheets = ['css/pages.css'];
   description={description}
   canonicalUrl={canonicalUrl}
   activeNav={activeNav}
-  extraStylesheets={extraStylesheets}
   hideHeader={false}
   hideFooter={false}
   hideFab={false}
 >
   <Fragment slot="head">
     <style is:global>
-    body {
-      background: #fafaf7;
+    :root {
+      --hb-gold: #f59e0b;
+      --hb-amber: #d97706;
+      --hb-brown: #78350f;
+      --hb-dark: #292019;
+      --hb-cream: #fafaf7;
+      --hb-green: #15803d;
+      --honey: #f4a227;
+      --brown: #6b3a1f;
+      --text-soft: #7a6e65;
     }
 
+    body {
+      background: #fafaf7;
+      font-family: 'Nunito', sans-serif;
+      color: #292524;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 82px 20px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #8c827a;
+    }
+    .breadcrumb a {
+      color: #8c827a;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      color: var(--hb-brown);
+    }
+
+    /* ── PAGE HERO ── */
     .page-hero {
       background: linear-gradient(135deg, #f4a227 0%, #e67e22 100%);
+      padding: 36px 20px 42px;
+      text-align: center;
+      color: white;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 8px 30px rgba(244, 162, 39, 0.22);
+    }
+
+    .page-hero-emoji {
+      font-size: 2.8rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .page-hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      margin: 0 0 8px;
+    }
+
+    .page-hero p {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-weight: 600;
+      opacity: 0.95;
     }
 
     /* ── PROGRESS BAR ── */
     .progress-wrap {
-      max-width: 580px;
+      max-width: 680px;
       margin: 28px auto 0;
-      padding: 0 24px;
+      padding: 0 20px;
     }
 
     .progress-label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--brown);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--hb-brown);
       margin-bottom: 8px;
     }
 
     .progress-bar-bg {
-      height: 8px;
-      background: #f0e8d0;
+      height: 9px;
+      background: #eee5d3;
       border-radius: 10px;
       overflow: hidden;
     }
 
     .progress-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--honey), var(--green));
+      background: linear-gradient(90deg, #f59e0b, #15803d);
       border-radius: 10px;
-      transition: width 0.4s ease;
+      transition: width 0.35s ease;
     }
 
-    /* ── CARD ── */
-    .review-card {
-      max-width: 580px;
-      margin: 24px auto 60px;
-      padding: 0 24px;
+    /* ── MAIN REVIEW CARD CONTAINER ── */
+    .review-card-container {
+      max-width: 680px;
+      margin: 20px auto 80px;
+      padding: 0 16px;
     }
 
     .step-box {
       background: white;
-      border-radius: 22px;
-      padding: 36px 36px 28px;
-      box-shadow: 0 6px 32px rgba(0, 0, 0, 0.07);
+      border-radius: 24px;
+      padding: 34px 28px 28px;
+      box-shadow: 0 12px 40px rgba(60, 40, 10, 0.08);
+      border: 1.5px solid #fde68a;
       display: none;
-      animation: fadeUp 0.3s ease;
+      animation: fadeInStep 0.25s ease forwards;
     }
 
     .step-box.active {
       display: block;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes fadeInStep {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .step-num {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--honey);
+    .step-badge {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
+      letter-spacing: 0.6px;
+      color: #92400e;
+      background: #fef3c7;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
     }
 
-    .step-question {
+    .step-title {
       font-family: 'Fredoka One', cursive;
-      font-size: 1.4rem;
-      color: var(--brown);
+      font-size: 1.55rem;
+      color: var(--hb-brown);
       margin: 0 0 6px;
       line-height: 1.3;
     }
 
-    .step-hint {
-      font-size: 0.87rem;
-      color: var(--text-soft);
+    .step-desc {
+      color: #78716c;
+      font-size: 0.9rem;
       font-weight: 600;
       margin-bottom: 24px;
+      line-height: 1.5;
     }
 
-    /* ── CHOICE CHIPS ── */
-    .choice-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 28px;
+    /* ── INPUTS ── */
+    .form-group {
+      margin-bottom: 18px;
     }
 
-    .choice-chip {
-      border: 2.5px solid #eee;
-      border-radius: 16px;
-      padding: 16px 14px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--brown);
-      background: white;
-      user-select: none;
-    }
-
-    .choice-chip .chip-emoji {
-      font-size: 1.8rem;
+    .form-label {
       display: block;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #44403c;
       margin-bottom: 6px;
     }
 
-    .choice-chip:hover {
-      border-color: var(--honey);
-      background: #fffbf0;
-      transform: translateY(-1px);
+    .rev-input,
+    .rev-textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid #e7dfd5;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #292524;
+      background: #ffffff;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
     }
 
-    .choice-chip.selected {
-      border-color: var(--green);
-      background: linear-gradient(135deg, #eaf7e0, #f6ffec);
-      color: var(--green);
-      box-shadow: 0 4px 14px rgba(61, 107, 36, 0.12);
+    .rev-input:focus,
+    .rev-textarea:focus {
+      outline: none;
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
     }
 
-    /* ── CHECK CHIPS (multi-select) ── */
-    .check-grid {
+    .rev-textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    /* ── CATEGORY SELECTION CARDS (STEP 2) ── */
+    .cat-cards-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 28px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
     }
 
-    .check-chip {
-      border: 2.5px solid #eee;
-      border-radius: 14px;
-      padding: 14px 12px;
+    .cat-card-option {
+      background: #ffffff;
+      border: 2px solid #e7dfd5;
+      border-radius: 16px;
+      padding: 18px 14px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.2s;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--brown);
-      background: white;
-      user-select: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cat-card-option:hover {
+      border-color: #f59e0b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.12);
+    }
+
+    .cat-card-option.selected {
+      border-color: #78350f;
+      background: #fefce8;
+      box-shadow: 0 8px 20px rgba(120, 53, 15, 0.16);
+    }
+
+    .cat-card-icon {
+      font-size: 2.2rem;
+    }
+
+    .cat-card-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.05rem;
+      color: #292524;
+      margin: 0;
+    }
+
+    .cat-card-subtitle {
+      font-size: 0.78rem;
+      color: #78716c;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* ── QUESTION ITEM BOXES ── */
+    .question-card-item {
+      background: #fafaf8;
+      border: 1.5px solid #ede6da;
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .question-card-item:hover, .question-card-item:focus-within {
+      border-color: #f59e0b;
+      background: #ffffff;
+    }
+
+    .q-title {
+      font-weight: 800;
+      font-size: 0.94rem;
+      color: #292524;
+      margin: 0 0 10px;
+      line-height: 1.45;
+    }
+
+    /* ── MINI STAR RATERS ── */
+    .star-rater-row {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .check-chip .check-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .check-chip:hover {
-      border-color: var(--honey);
-      background: #fffbf0;
-    }
-
-    .check-chip.selected {
-      border-color: var(--green);
-      background: linear-gradient(135deg, #eaf7e0, #f6ffec);
-      color: var(--green);
-    }
-
-    .check-chip.selected::after {
-      content: '✓';
-      margin-left: auto;
-      font-size: 1rem;
-      color: var(--green);
-      font-weight: 900;
-    }
-
-    /* ── STAR RATING ── */
-    .star-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 28px;
+      gap: 8px;
     }
 
     .star-btn {
-      font-size: 2.6rem;
-      cursor: pointer;
-      transition: transform 0.15s, color 0.1s;
-      color: #ddd;
       background: none;
       border: none;
+      font-size: 1.85rem;
+      color: #d6d3d1;
+      cursor: pointer;
       padding: 0;
       line-height: 1;
+      transition: transform 0.15s, color 0.15s;
     }
 
     .star-btn.lit {
-      color: var(--honey);
+      color: #f59e0b;
     }
 
     .star-btn:hover {
       transform: scale(1.2);
     }
 
-    /* ── TEXT INPUT ── */
-    .rev-input,
-    .rev-textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border: 2px solid #eee;
-      border-radius: 14px;
-      font-family: 'Nunito', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--brown);
-      margin-bottom: 20px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      box-sizing: border-box;
+    .star-score-hint {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #78716c;
+      margin-left: 8px;
     }
 
-    .rev-input:focus,
-    .rev-textarea:focus {
-      border-color: var(--honey);
-      outline: none;
-      box-shadow: 0 0 0 4px rgba(244, 162, 39, 0.1);
+    /* ── CHOICE CHIPS ── */
+    .choice-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
     }
 
-    .rev-textarea {
-      min-height: 110px;
-      resize: vertical;
+    .choice-chip {
+      background: #ffffff;
+      border: 1.5px solid #e7dfd5;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #57534e;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .choice-chip:hover {
+      border-color: #f59e0b;
+      color: #78350f;
+    }
+
+    .choice-chip.selected {
+      background: #78350f;
+      color: #ffffff;
+      border-color: #78350f;
+      box-shadow: 0 3px 10px rgba(120, 53, 15, 0.2);
     }
 
     /* ── NAV BUTTONS ── */
     .btn-row {
       display: flex;
       gap: 12px;
-      margin-top: 8px;
+      margin-top: 24px;
     }
 
     .btn-back {
       flex: 1;
-      padding: 14px;
-      border: 2.5px solid #eee;
+      padding: 13px;
+      border: 2px solid #e7dfd5;
       border-radius: 50px;
       background: white;
-      font-family: 'Nunito', sans-serif;
       font-weight: 800;
       font-size: 0.95rem;
-      color: var(--text-soft);
+      color: #78716c;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .btn-back:hover {
-      border-color: var(--honey);
-      color: var(--brown);
+      border-color: #f59e0b;
+      color: #78350f;
     }
 
     .btn-next {
       flex: 2;
-      padding: 14px;
-      background: var(--green);
+      padding: 13px;
+      background: #15803d;
       color: white;
       border: none;
       border-radius: 50px;
-      font-family: 'Nunito', sans-serif;
       font-weight: 800;
       font-size: 1rem;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 14px rgba(21, 128, 61, 0.25);
+      transition: all 0.2s;
     }
 
     .btn-next:hover {
-      background: #1a7a3c;
+      background: #166534;
       transform: translateY(-1px);
     }
 
-    .btn-next:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-      transform: none;
+    .btn-submit {
+      flex: 2;
+      padding: 13px;
+      background: #f59e0b;
+      color: #78350f;
+      border: none;
+      border-radius: 50px;
+      font-weight: 900;
+      font-size: 1.05rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+      transition: all 0.2s;
     }
 
-    /* ── MEDIA UPLOAD SECTION ── */
-    .media-box {
-      border: 2.5px dashed #e0d0b0;
-      border-radius: 16px;
-      padding: 28px 20px;
-      text-align: center;
-      background: #fffbf0;
-      margin-bottom: 20px;
-      transition: border-color 0.2s;
+    .btn-submit:hover {
+      background: #fbbf24;
+      transform: translateY(-1px);
     }
 
-    .media-box:hover {
-      border-color: var(--honey);
-    }
-
-    .media-box .media-icon {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .media-box p {
-      font-size: 0.88rem;
+    /* ── ERROR MESSAGE ── */
+    .err-msg {
+      color: #dc2626;
       font-weight: 700;
-      color: var(--text-soft);
-      margin: 0 0 14px;
-      line-height: 1.5;
+      font-size: 0.86rem;
+      margin-top: 10px;
+      display: none;
     }
 
-    /* ── SUCCESS ── */
+    /* ── SUCCESS BOX ── */
     .success-box {
+      background: white;
+      border-radius: 24px;
+      padding: 48px 24px 36px;
+      box-shadow: 0 12px 40px rgba(60, 40, 10, 0.08);
+      border: 2px solid #86efac;
       text-align: center;
-      padding: 48px 20px 36px;
       display: none;
+      animation: fadeInStep 0.3s ease forwards;
     }
 
     .success-box h2 {
       font-family: 'Fredoka One', cursive;
-      color: var(--green);
-      font-size: 2rem;
-      margin: 20px 0 12px;
+      color: #15803d;
+      font-size: 2.2rem;
+      margin: 16px 0 10px;
     }
 
     .success-box p {
       font-weight: 600;
-      color: var(--text-soft);
+      color: #57534e;
       font-size: 1rem;
-      margin-bottom: 28px;
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 24px;
     }
 
-    /* ── ERROR ── */
-    .err-msg {
-      color: #c0392b;
-      font-weight: 700;
-      font-size: 0.88rem;
-      margin-bottom: 12px;
-      display: none;
+    .wa-share-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25D366;
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      transition: all 0.2s;
+      margin-bottom: 14px;
     }
 
-    @media (max-width: 480px) {
+    .wa-share-btn:hover {
+      background: #1eb956;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 580px) {
+      .cat-cards-grid {
+        grid-template-columns: 1fr;
+      }
       .step-box {
-        padding: 28px 20px 22px;
-      }
-
-      .choice-grid,
-      .check-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .step-question {
-        font-size: 1.2rem;
+        padding: 24px 18px 20px;
       }
     }
   </style>
-    <meta name="robots" content="noindex, follow">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
-    <meta property="og:title" content="Write a Review — HoneyBee Learning">
-    <meta property="og:description"
-    content="Share your experience with HoneyBee Learning. Help other parents find the best personalised kids books and birthday return gifts in India.">
-    <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
-    <meta property="og:site_name" content="HoneyBee Learning">
-    <meta name="robots" content="noindex, follow">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
-    <meta property="og:title" content="Write a Review — HoneyBee Learning">
-    <meta property="og:description"
-    content="Share your experience with HoneyBee Learning personalised kids books. Help other parents discover India's first personalised activity book for kids.">
-    <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
-    <meta property="og:site_name" content="HoneyBee Learning">
-    <meta name="robots" content="noindex, follow">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://honeybeelearning.co/write-review.html">
-    <meta property="og:title" content="Write a Review - HoneyBee Learning">
-    <meta property="og:description"
-    content="Share your experience with HoneyBee Learning personalised kids books. Help other parents discover India's first personalised activity book for kids.">
-    <meta property="og:image" content="https://honeybeelearning.co/images/logo/logo.png">
-    <meta property="og:site_name" content="HoneyBee Learning">
   </Fragment>
-
-
-  <!-- NAV -->
-  
-  <div class="nav-drawer-overlay" id="navOverlay"></div>
-  
 
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
     <a href="index.html">🏠 Home</a>
-    <span>›</span>
-    <strong style="color:var(--green);">⭐ Write a Review</strong>
+    <span>/</span>
+    <a href="reviews.html">Customer Reviews</a>
+    <span>/</span>
+    <strong style="color:var(--hb-brown);">⭐ Write a Review</strong>
   </div>
 
   <!-- HERO -->
   <div class="page-hero">
     <span class="page-hero-emoji">⭐</span>
     <h1>Share Your Experience!</h1>
-    <p>Help other parents discover how HoneyBee Learning made a difference for your child 🍯</p>
+    <p>Your honest parent review helps other families discover screen-free personalized learning 🍯</p>
   </div>
 
   <!-- PROGRESS -->
   <div class="progress-wrap">
     <div class="progress-label">
-      <span id="progressText">Step 1 of 7</span>
-      <span id="progressPct">14%</span>
+      <span id="progressText">Step 1 of 4 · About You</span>
+      <span id="progressPct">25%</span>
     </div>
     <div class="progress-bar-bg">
-      <div class="progress-bar-fill" id="progressFill" style="width:14%"></div>
+      <div class="progress-bar-fill" id="progressFill" style="width:25%"></div>
     </div>
   </div>
 
-  <!-- FORM STEPS -->
-  <div class="review-card">
+  <!-- FORM CONTAINER -->
+  <div class="review-card-container">
 
-    <!-- STEP 1: Your Details -->
+    <!-- ═══ STEP 1: ABOUT YOU ═══ -->
     <div class="step-box active" id="step1">
-      <div class="step-num">Step 1 of 7 · About You</div>
-      <div class="step-question">Who's sharing this review? 👋</div>
-      <div class="step-hint">We'll use your name to feature your review on our website</div>
+      <span class="step-badge">Step 1 of 4 · Basic Details</span>
+      <h2 class="step-title">Who's sharing this review? 👋</h2>
+      <p class="step-desc">We feature verified parent reviews on our website and community page.</p>
 
-      <input type="text" id="revName" class="rev-input" placeholder="Your full name *">
-      <input type="text" id="revLoc" class="rev-input" placeholder="Your city / area  e.g. Medavakkam, Chennai *">
+      <div class="form-group">
+        <label for="revName" class="form-label">Your Full Name *</label>
+        <input type="text" id="revName" class="rev-input" placeholder="e.g. Sangavi, Kavitha Saravanan" autocomplete="name" />
+      </div>
 
-      <div class="err-msg" id="err1">⚠️ Please fill in your name and location.</div>
+      <div class="form-group">
+        <label for="revLoc" class="form-label">Your City / Location *</label>
+        <input type="text" id="revLoc" class="rev-input" placeholder="e.g. Madurai, Medavakkam, Chennai, Bangalore" />
+      </div>
+
+      <div class="form-group">
+        <label for="revPhone" class="form-label">WhatsApp Number (Optional)</label>
+        <input type="tel" id="revPhone" class="rev-input" placeholder="10-digit number for verification &amp; order points" />
+      </div>
+
+      <div class="form-group">
+        <label for="revChild" class="form-label">Child's Name &amp; Age (Optional)</label>
+        <input type="text" id="revChild" class="rev-input" placeholder="e.g. Aarav, 4 years" />
+      </div>
+
+      <div class="err-msg" id="err1">⚠️ Please fill in your name and location to proceed.</div>
+
       <div class="btn-row">
-        <button class="btn-next" onclick="goNext(1)">Next →</button>
+        <button type="button" class="btn-next" onclick="goNext(1)">Next: Choose Category →</button>
       </div>
     </div>
 
-    <!-- STEP 2: Star Rating -->
+    <!-- ═══ STEP 2: CATEGORY SELECTION ═══ -->
     <div class="step-box" id="step2">
-      <div class="step-num">Step 2 of 7 · Your Rating</div>
-      <div class="step-question">How would you rate us overall? ⭐</div>
-      <div class="step-hint">Tap a star to rate us</div>
+      <span class="step-badge">Step 2 of 4 · Select Product</span>
+      <h2 class="step-title">Which HoneyBee product did you order? 📦</h2>
+      <p class="step-desc">Select the category so we can show you specific, relevant questions:</p>
 
-      <div class="star-row" id="starRow">
-        <button class="star-btn" data-val="1" onclick="setStar(1)">★</button>
-        <button class="star-btn" data-val="2" onclick="setStar(2)">★</button>
-        <button class="star-btn" data-val="3" onclick="setStar(3)">★</button>
-        <button class="star-btn" data-val="4" onclick="setStar(4)">★</button>
-        <button class="star-btn" data-val="5" onclick="setStar(5)">★</button>
+      <div class="cat-cards-grid" id="catSelectionGrid">
+        <!-- Option 1: Reusable -->
+        <div class="cat-card-option" data-cat="reusable" onclick="selectCategory('reusable', this)">
+          <span class="cat-card-icon">♻️</span>
+          <h3 class="cat-card-title">Reusable Books</h3>
+          <p class="cat-card-subtitle">Write → Wipe → Reuse workbooks</p>
+        </div>
+
+        <!-- Option 2: Activity Books -->
+        <div class="cat-card-option" data-cat="activity" onclick="selectCategory('activity', this)">
+          <span class="cat-card-icon">🎨</span>
+          <h3 class="cat-card-title">Theme Activity Books</h3>
+          <p class="cat-card-subtitle">Personalised name activity books</p>
+        </div>
+
+        <!-- Option 3: Return Gifts -->
+        <div class="cat-card-option" data-cat="return-gift" onclick="selectCategory('return-gift', this)">
+          <span class="cat-card-icon">🎁</span>
+          <h3 class="cat-card-title">Return Gifts</h3>
+          <p class="cat-card-subtitle">Birthday &amp; party return gift packs</p>
+        </div>
+
+        <!-- Option 4: Divine Series -->
+        <div class="cat-card-option" data-cat="divine" onclick="selectCategory('divine', this)">
+          <span class="cat-card-icon">🪔</span>
+          <h3 class="cat-card-title">Divine Series</h3>
+          <p class="cat-card-subtitle">Personalised moral &amp; value storybooks</p>
+        </div>
       </div>
-      <div id="starLabel" style="font-size:0.9rem;color:var(--text-soft);font-weight:700;margin-bottom:20px;">Tap a star
-        above ☝️</div>
 
-      <div class="err-msg" id="err2">⚠️ Please select a star rating.</div>
+      <div class="err-msg" id="err2">⚠️ Please choose the product category you are reviewing.</div>
+
       <div class="btn-row">
-        <button class="btn-back" onclick="goBack(2)">← Back</button>
-        <button class="btn-next" onclick="goNext(2)">Next →</button>
+        <button type="button" class="btn-back" onclick="goBack(2)">← Back</button>
+        <button type="button" class="btn-next" onclick="goNext(2)">Next: Product Experience →</button>
       </div>
     </div>
 
-    <!-- STEP 3: Enjoyment -->
+    <!-- ═══ STEP 3: CATEGORY-SPECIFIC FEEDBACK ═══ -->
     <div class="step-box" id="step3">
-      <div class="step-num">Step 3 of 7 · Child's Experience</div>
-      <div class="step-question">Did your child enjoy the activities? 🎉</div>
-      <div class="step-hint">Pick the option that best matches your child's reaction</div>
+      <span class="step-badge" id="step3Badge">Step 3 of 4 · Product Experience</span>
+      <h2 class="step-title" id="step3Title">Your Product Feedback</h2>
+      <p class="step-desc">Please share your honest ratings on this product category:</p>
 
-      <div class="choice-grid" id="enjoyGrid">
-        <div class="choice-chip" data-val="Loved it" onclick="pickChoice('enjoyGrid', this)">
-          <span class="chip-emoji">🥰</span>Loved it!
+      <!-- 3A: REUSABLE BOOKS QUESTIONS -->
+      <div id="catBlock_reusable" class="cat-feedback-block" style="display:none;">
+        <div class="question-card-item">
+          <div class="q-title">1. How useful did you find the write → wipe → reuse feature?</div>
+          <div class="star-rater-row" data-qid="reusable_usefulness">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('reusable_usefulness', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('reusable_usefulness', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('reusable_usefulness', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('reusable_usefulness', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('reusable_usefulness', 5)">★</button>
+            <span class="star-score-hint" id="hint_reusable_usefulness">Tap to rate</span>
+          </div>
         </div>
-        <div class="choice-chip" data-val="Enjoyed it" onclick="pickChoice('enjoyGrid', this)">
-          <span class="chip-emoji">😊</span>Enjoyed it
+
+        <div class="question-card-item">
+          <div class="q-title">2. How many times has your child reused the book so far?</div>
+          <div class="choice-chips-row" data-qid="reusable_times">
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_times', this, '1–5 times')">1–5 times</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_times', this, '5–10 times')">5–10 times</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_times', this, '10+ times')">10+ times</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_times', this, 'Regularly using it')">Regularly using it</div>
+          </div>
         </div>
-        <div class="choice-chip" data-val="Neutral" onclick="pickChoice('enjoyGrid', this)">
-          <span class="chip-emoji">😐</span>Neutral
+
+        <div class="question-card-item">
+          <div class="q-title">3. How satisfied are you with the lamination / reusable quality?</div>
+          <div class="star-rater-row" data-qid="reusable_quality">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('reusable_quality', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('reusable_quality', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('reusable_quality', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('reusable_quality', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('reusable_quality', 5)">★</button>
+            <span class="star-score-hint" id="hint_reusable_quality">Tap to rate</span>
+          </div>
         </div>
-        <div class="choice-chip" data-val="Not interested" onclick="pickChoice('enjoyGrid', this)">
-          <span class="chip-emoji">😕</span>Not interested
+
+        <div class="question-card-item">
+          <div class="q-title">4. How easy is it for your child to write and wipe the pages?</div>
+          <div class="choice-chips-row" data-qid="reusable_ease">
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_ease', this, 'Very easy')">Very easy</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_ease', this, 'Easy')">Easy</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_ease', this, 'Needs some help')">Needs some help</div>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">5. Did the reusable format make you feel the product was better value than a one-time-use worksheet/book?</div>
+          <div class="choice-chips-row" data-qid="reusable_value">
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_value', this, 'Yes')">Yes, definitely</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_value', this, 'Somewhat')">Somewhat</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_value', this, 'Not sure')">Not sure</div>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">6. How satisfied are you with the overall durability and finish?</div>
+          <div class="star-rater-row" data-qid="reusable_durability">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('reusable_durability', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('reusable_durability', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('reusable_durability', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('reusable_durability', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('reusable_durability', 5)">★</button>
+            <span class="star-score-hint" id="hint_reusable_durability">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">7. Would you recommend Honeybee's reusable learning books to other parents?</div>
+          <div class="choice-chips-row" data-qid="reusable_recommend">
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_recommend', this, 'Definitely')">Definitely!</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_recommend', this, 'Maybe')">Maybe</div>
+            <div class="choice-chip" onclick="pickSingleChoice('reusable_recommend', this, 'No')">No</div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="q_reusable_open" class="form-label">What do you like most about the reusable format?</label>
+          <textarea id="q_reusable_open" class="rev-textarea" placeholder="e.g. My child can practise letters again and again without tearing or running out of sheets..."></textarea>
         </div>
       </div>
 
-      <div class="err-msg" id="err3">⚠️ Please select one option.</div>
+      <!-- 3B: THEME ACTIVITY BOOKS QUESTIONS -->
+      <div id="catBlock_activity" class="cat-feedback-block" style="display:none;">
+        <div class="question-card-item">
+          <div class="q-title">1. How much did your child like their chosen theme?</div>
+          <div class="star-rater-row" data-qid="act_theme_like">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('act_theme_like', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('act_theme_like', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('act_theme_like', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('act_theme_like', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('act_theme_like', 5)">★</button>
+            <span class="star-score-hint" id="hint_act_theme_like">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">2. Did the familiar theme make your child more interested in doing the activities?</div>
+          <div class="choice-chips-row" data-qid="act_interest">
+            <div class="choice-chip" onclick="pickSingleChoice('act_interest', this, 'Yes, definitely')">Yes, definitely</div>
+            <div class="choice-chip" onclick="pickSingleChoice('act_interest', this, 'A little')">A little</div>
+            <div class="choice-chip" onclick="pickSingleChoice('act_interest', this, 'Not really')">Not really</div>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">3. How engaging were the activities?</div>
+          <div class="star-rater-row" data-qid="act_engaging">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('act_engaging', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('act_engaging', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('act_engaging', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('act_engaging', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('act_engaging', 5)">★</button>
+            <span class="star-score-hint" id="hint_act_engaging">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">4. Was the difficulty level appropriate for your child's age?</div>
+          <div class="choice-chips-row" data-qid="act_difficulty">
+            <div class="choice-chip" onclick="pickSingleChoice('act_difficulty', this, 'Too easy')">Too easy</div>
+            <div class="choice-chip" onclick="pickSingleChoice('act_difficulty', this, 'Just right')">Just right 🎯</div>
+            <div class="choice-chip" onclick="pickSingleChoice('act_difficulty', this, 'Slightly difficult')">Slightly difficult</div>
+            <div class="choice-chip" onclick="pickSingleChoice('act_difficulty', this, 'Too difficult')">Too difficult</div>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">5. How did you find the variety of activities?</div>
+          <div class="star-rater-row" data-qid="act_variety">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('act_variety', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('act_variety', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('act_variety', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('act_variety', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('act_variety', 5)">★</button>
+            <span class="star-score-hint" id="hint_act_variety">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">6. Would you like to purchase another Honeybee activity book in a different theme?</div>
+          <div class="choice-chips-row" data-qid="act_repeat">
+            <div class="choice-chip" onclick="pickSingleChoice('act_repeat', this, 'Definitely')">Definitely!</div>
+            <div class="choice-chip" onclick="pickSingleChoice('act_repeat', this, 'Maybe')">Maybe</div>
+            <div class="choice-chip" onclick="pickSingleChoice('act_repeat', this, 'No')">No</div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="q_act_next_theme" class="form-label">7. Which theme would your child love next?</label>
+          <input type="text" id="q_act_next_theme" class="rev-input" placeholder="e.g. Space, Dinosaurs, Animals, Superheroes" />
+        </div>
+
+        <div class="form-group">
+          <label for="q_act_open" class="form-label">What activity did your child enjoy the most?</label>
+          <textarea id="q_act_open" class="rev-textarea" placeholder="e.g. Tracing their own name and matching the colorful stickers..."></textarea>
+        </div>
+      </div>
+
+      <!-- 3C: RETURN GIFTS QUESTIONS -->
+      <div id="catBlock_return-gift" class="cat-feedback-block" style="display:none;">
+        <div class="question-card-item">
+          <div class="q-title">1. How satisfied are you with the overall return-gift concept?</div>
+          <div class="star-rater-row" data-qid="rg_concept">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('rg_concept', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('rg_concept', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('rg_concept', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('rg_concept', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('rg_concept', 5)">★</button>
+            <span class="star-score-hint" id="hint_rg_concept">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">2. How did you like the personalisation?</div>
+          <div class="star-rater-row" data-qid="rg_personalisation">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('rg_personalisation', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('rg_personalisation', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('rg_personalisation', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('rg_personalisation', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('rg_personalisation', 5)">★</button>
+            <span class="star-score-hint" id="hint_rg_personalisation">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">3. How was the quality of the activity sheets/book and stationery items?</div>
+          <div class="star-rater-row" data-qid="rg_quality">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('rg_quality', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('rg_quality', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('rg_quality', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('rg_quality', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('rg_quality', 5)">★</button>
+            <span class="star-score-hint" id="hint_rg_quality">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">4. Did the return gifts feel useful and engaging compared with regular party return gifts?</div>
+          <div class="choice-chips-row" data-qid="rg_useful_compare">
+            <div class="choice-chip" onclick="pickSingleChoice('rg_useful_compare', this, 'Yes, definitely')">Yes, definitely</div>
+            <div class="choice-chip" onclick="pickSingleChoice('rg_useful_compare', this, 'Somewhat')">Somewhat</div>
+            <div class="choice-chip" onclick="pickSingleChoice('rg_useful_compare', this, 'Not really')">Not really</div>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">5. How was the packaging and presentation?</div>
+          <div class="star-rater-row" data-qid="rg_packaging">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('rg_packaging', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('rg_packaging', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('rg_packaging', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('rg_packaging', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('rg_packaging', 5)">★</button>
+            <span class="star-score-hint" id="hint_rg_packaging">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">6. How did the children react to the return gifts?</div>
+          <div class="choice-chips-row" data-qid="rg_reaction">
+            <div class="choice-chip" onclick="pickSingleChoice('rg_reaction', this, 'Loved them')">🥰 Loved them!</div>
+            <div class="choice-chip" onclick="pickSingleChoice('rg_reaction', this, 'Mostly loved them')">😊 Mostly loved them</div>
+            <div class="choice-chip" onclick="pickSingleChoice('rg_reaction', this, 'They were interested')">🙂 Interested</div>
+            <div class="choice-chip" onclick="pickSingleChoice('rg_reaction', this, 'Mixed response')">😐 Mixed response</div>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">7. Would you recommend Honeybee Learning for birthday / function / school return gifts?</div>
+          <div class="choice-chips-row" data-qid="rg_recommend">
+            <div class="choice-chip" onclick="pickSingleChoice('rg_recommend', this, 'Definitely')">Definitely!</div>
+            <div class="choice-chip" onclick="pickSingleChoice('rg_recommend', this, 'Maybe')">Maybe</div>
+            <div class="choice-chip" onclick="pickSingleChoice('rg_recommend', this, 'No')">No</div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="q_rg_open" class="form-label">What did the children like most about the return gifts?</label>
+          <textarea id="q_rg_open" class="rev-textarea" placeholder="e.g. Seeing their own individual names on the sheets in the classroom..."></textarea>
+        </div>
+      </div>
+
+      <!-- 3D: DIVINE SERIES QUESTIONS -->
+      <div id="catBlock_divine" class="cat-feedback-block" style="display:none;">
+        <div class="question-card-item">
+          <div class="q-title">1. How did you like the story and learning concept of the Divine Series?</div>
+          <div class="star-rater-row" data-qid="divine_concept">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('divine_concept', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('divine_concept', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('divine_concept', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('divine_concept', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('divine_concept', 5)">★</button>
+            <span class="star-score-hint" id="hint_divine_concept">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">2. How well did your child connect with the theme/story and illustrations?</div>
+          <div class="star-rater-row" data-qid="divine_illustrations">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('divine_illustrations', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('divine_illustrations', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('divine_illustrations', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('divine_illustrations', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('divine_illustrations', 5)">★</button>
+            <span class="star-score-hint" id="hint_divine_illustrations">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">3. How did you like the personalisation with your child’s name/photo?</div>
+          <div class="star-rater-row" data-qid="divine_personalisation">
+            <button type="button" class="star-btn" data-val="1" onclick="rateStar('divine_personalisation', 1)">★</button>
+            <button type="button" class="star-btn" data-val="2" onclick="rateStar('divine_personalisation', 2)">★</button>
+            <button type="button" class="star-btn" data-val="3" onclick="rateStar('divine_personalisation', 3)">★</button>
+            <button type="button" class="star-btn" data-val="4" onclick="rateStar('divine_personalisation', 4)">★</button>
+            <button type="button" class="star-btn" data-val="5" onclick="rateStar('divine_personalisation', 5)">★</button>
+            <span class="star-score-hint" id="hint_divine_personalisation">Tap to rate</span>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">4. Did you feel the book helped introduce positive values such as kindness, gratitude, courage and helping others?</div>
+          <div class="choice-chips-row" data-qid="divine_values">
+            <div class="choice-chip" onclick="pickSingleChoice('divine_values', this, 'Yes, very much')">Yes, very much</div>
+            <div class="choice-chip" onclick="pickSingleChoice('divine_values', this, 'Somewhat')">Somewhat</div>
+            <div class="choice-chip" onclick="pickSingleChoice('divine_values', this, 'Not yet')">Not yet</div>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">5. How did your child respond to the book?</div>
+          <div class="choice-chips-row" data-qid="divine_response">
+            <div class="choice-chip" onclick="pickSingleChoice('divine_response', this, 'Loved it & read again')">Loved it &amp; wanted to read again</div>
+            <div class="choice-chip" onclick="pickSingleChoice('divine_response', this, 'Enjoyed it')">Enjoyed it</div>
+            <div class="choice-chip" onclick="pickSingleChoice('divine_response', this, 'Interested for a while')">Interested for a while</div>
+            <div class="choice-chip" onclick="pickSingleChoice('divine_response', this, 'Still exploring')">Still exploring it</div>
+          </div>
+        </div>
+
+        <div class="question-card-item">
+          <div class="q-title">6. Would you recommend the Divine Series to another parent looking for a meaningful personalised gift/book?</div>
+          <div class="choice-chips-row" data-qid="divine_recommend">
+            <div class="choice-chip" onclick="pickSingleChoice('divine_recommend', this, 'Definitely')">Definitely!</div>
+            <div class="choice-chip" onclick="pickSingleChoice('divine_recommend', this, 'Maybe')">Maybe</div>
+            <div class="choice-chip" onclick="pickSingleChoice('divine_recommend', this, 'Not sure')">Not sure</div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="q_divine_open" class="form-label">What did you like most about your child's Divine book?</label>
+          <textarea id="q_divine_open" class="rev-textarea" placeholder="e.g. The illustrations and character morals taught my child gratitude and courage in a gentle way..."></textarea>
+        </div>
+      </div>
+
+      <div class="err-msg" id="err3">⚠️ Please rate at least one question above to proceed.</div>
+
       <div class="btn-row">
-        <button class="btn-back" onclick="goBack(3)">← Back</button>
-        <button class="btn-next" onclick="goNext(3)">Next →</button>
+        <button type="button" class="btn-back" onclick="goBack(3)">← Back</button>
+        <button type="button" class="btn-next" onclick="goNext(3)">Next: Shopping Experience →</button>
       </div>
     </div>
 
-    <!-- STEP 4: Skills Improved -->
+    <!-- ═══ STEP 4: COMMON SHOPPING & OVERALL EXPERIENCE ═══ -->
     <div class="step-box" id="step4">
-      <div class="step-num">Step 4 of 7 · Skills Improved</div>
-      <div class="step-question">What skills did your child improve? 🧠</div>
-      <div class="step-hint">Select all that apply</div>
+      <span class="step-badge">Step 4 of 4 · Shopping &amp; Final Review</span>
+      <h2 class="step-title">Overall Shopping Experience 🛍️</h2>
+      <p class="step-desc">Help us make ordering and customisation even better for parents:</p>
 
-      <div class="check-grid" id="skillsGrid">
-        <div class="check-chip" onclick="toggleCheck(this)"><span class="check-icon">✍️</span>Writing</div>
-        <div class="check-chip" onclick="toggleCheck(this)"><span class="check-icon">🔢</span>Counting</div>
-        <div class="check-chip" onclick="toggleCheck(this)"><span class="check-icon">🎯</span>Focus</div>
-        <div class="check-chip" onclick="toggleCheck(this)"><span class="check-icon">🎨</span>Creativity</div>
-        <div class="check-chip" onclick="toggleCheck(this)"><span class="check-icon">📖</span>Reading</div>
-        <div class="check-chip" onclick="toggleCheck(this)"><span class="check-icon">🌟</span>Confidence</div>
+      <!-- Common 1: Ease of ordering -->
+      <div class="question-card-item">
+        <div class="q-title">1. How easy was it to understand the product and place your order?</div>
+        <div class="star-rater-row" data-qid="common_ordering_ease">
+          <button type="button" class="star-btn" data-val="1" onclick="rateStar('common_ordering_ease', 1)">★</button>
+          <button type="button" class="star-btn" data-val="2" onclick="rateStar('common_ordering_ease', 2)">★</button>
+          <button type="button" class="star-btn" data-val="3" onclick="rateStar('common_ordering_ease', 3)">★</button>
+          <button type="button" class="star-btn" data-val="4" onclick="rateStar('common_ordering_ease', 4)">★</button>
+          <button type="button" class="star-btn" data-val="5" onclick="rateStar('common_ordering_ease', 5)">★</button>
+          <span class="star-score-hint" id="hint_common_ordering_ease">Tap to rate</span>
+        </div>
       </div>
 
+      <!-- Common 2: Communication -->
+      <div class="question-card-item">
+        <div class="q-title">2. How would you rate our communication during the ordering/customisation process?</div>
+        <div class="star-rater-row" data-qid="common_communication">
+          <button type="button" class="star-btn" data-val="1" onclick="rateStar('common_communication', 1)">★</button>
+          <button type="button" class="star-btn" data-val="2" onclick="rateStar('common_communication', 2)">★</button>
+          <button type="button" class="star-btn" data-val="3" onclick="rateStar('common_communication', 3)">★</button>
+          <button type="button" class="star-btn" data-val="4" onclick="rateStar('common_communication', 4)">★</button>
+          <button type="button" class="star-btn" data-val="5" onclick="rateStar('common_communication', 5)">★</button>
+          <span class="star-score-hint" id="hint_common_communication">Tap to rate</span>
+        </div>
+      </div>
+
+      <!-- Common 3: Response satisfaction -->
+      <div class="question-card-item">
+        <div class="q-title">3. How satisfied were you with the response to your questions or customisation requests?</div>
+        <div class="star-rater-row" data-qid="common_response">
+          <button type="button" class="star-btn" data-val="1" onclick="rateStar('common_response', 1)">★</button>
+          <button type="button" class="star-btn" data-val="2" onclick="rateStar('common_response', 2)">★</button>
+          <button type="button" class="star-btn" data-val="3" onclick="rateStar('common_response', 3)">★</button>
+          <button type="button" class="star-btn" data-val="4" onclick="rateStar('common_response', 4)">★</button>
+          <button type="button" class="star-btn" data-val="5" onclick="rateStar('common_response', 5)">★</button>
+          <span class="star-score-hint" id="hint_common_response">Tap to rate</span>
+        </div>
+      </div>
+
+      <!-- Common 4: Accuracy -->
+      <div class="question-card-item">
+        <div class="q-title">4. How satisfied are you with the accuracy of your personalised/customised product?</div>
+        <div class="star-rater-row" data-qid="common_accuracy">
+          <button type="button" class="star-btn" data-val="1" onclick="rateStar('common_accuracy', 1)">★</button>
+          <button type="button" class="star-btn" data-val="2" onclick="rateStar('common_accuracy', 2)">★</button>
+          <button type="button" class="star-btn" data-val="3" onclick="rateStar('common_accuracy', 3)">★</button>
+          <button type="button" class="star-btn" data-val="4" onclick="rateStar('common_accuracy', 4)">★</button>
+          <button type="button" class="star-btn" data-val="5" onclick="rateStar('common_accuracy', 5)">★</button>
+          <span class="star-score-hint" id="hint_common_accuracy">Tap to rate</span>
+        </div>
+      </div>
+
+      <!-- Common 5: Delivery -->
+      <div class="question-card-item">
+        <div class="q-title">5. How satisfied are you with the overall delivery experience?</div>
+        <div class="star-rater-row" data-qid="common_delivery">
+          <button type="button" class="star-btn" data-val="1" onclick="rateStar('common_delivery', 1)">★</button>
+          <button type="button" class="star-btn" data-val="2" onclick="rateStar('common_delivery', 2)">★</button>
+          <button type="button" class="star-btn" data-val="3" onclick="rateStar('common_delivery', 3)">★</button>
+          <button type="button" class="star-btn" data-val="4" onclick="rateStar('common_delivery', 4)">★</button>
+          <button type="button" class="star-btn" data-val="5" onclick="rateStar('common_delivery', 5)">★</button>
+          <span class="star-score-hint" id="hint_common_delivery">Tap to rate</span>
+        </div>
+      </div>
+
+      <!-- Common 6: Expectations -->
+      <div class="question-card-item">
+        <div class="q-title">Did the actual product meet your expectations based on what you saw online?</div>
+        <div class="choice-chips-row" data-qid="common_expectations">
+          <div class="choice-chip" onclick="pickSingleChoice('common_expectations', this, 'Much better than expected')">✨ Much better than expected</div>
+          <div class="choice-chip" onclick="pickSingleChoice('common_expectations', this, 'As expected')">👍 As expected</div>
+          <div class="choice-chip" onclick="pickSingleChoice('common_expectations', this, 'Slightly below expectations')">Slightly below</div>
+          <div class="choice-chip" onclick="pickSingleChoice('common_expectations', this, 'Below expectations')">Below expectations</div>
+        </div>
+      </div>
+
+      <!-- Common 7: Open-Ended Advice for Another Parent -->
+      <div class="form-group" style="margin-top: 18px;">
+        <label for="common_parent_quote" class="form-label">If you could tell another parent one thing about your Honeybee Learning experience, what would you say? *</label>
+        <textarea id="common_parent_quote" class="rev-textarea" placeholder="e.g. Don't hesitate! The books are genuinely durable, personalised with care, and kept my daughter away from mobile screens for hours..."></textarea>
+      </div>
+
+      <!-- Optional Media Link -->
+      <div class="form-group">
+        <label for="revMediaLink" class="form-label">Link to Unboxing Photo/Video (Optional)</label>
+        <input type="text" id="revMediaLink" class="rev-input" placeholder="Google Drive / Instagram / YouTube link (or send via WhatsApp)" />
+      </div>
+
+      <div class="err-msg" id="err4">⚠️ Please share your message for other parents in the text box above.</div>
+
       <div class="btn-row">
-        <button class="btn-back" onclick="goBack(4)">← Back</button>
-        <button class="btn-next" onclick="goNext(4)">Next →</button>
+        <button type="button" class="btn-back" onclick="goBack(4)">← Back</button>
+        <button type="button" class="btn-submit" id="submitBtn" onclick="submitReview()">Submit Review 🍯</button>
       </div>
     </div>
 
-    <!-- STEP 5: Age Suitability -->
-    <div class="step-box" id="step5">
-      <div class="step-num">Step 5 of 7 · Age Suitability</div>
-      <div class="step-question">Was the activity level right for your child? 🎯</div>
-      <div class="step-hint">Helps us and other parents understand the difficulty level</div>
-
-      <div class="choice-grid" id="ageGrid">
-        <div class="choice-chip" data-val="Perfect" onclick="pickChoice('ageGrid', this)">
-          <span class="chip-emoji">🎯</span>Perfect!
-        </div>
-        <div class="choice-chip" data-val="Slightly easy" onclick="pickChoice('ageGrid', this)">
-          <span class="chip-emoji">😌</span>Slightly easy
-        </div>
-        <div class="choice-chip" data-val="Slightly difficult" onclick="pickChoice('ageGrid', this)">
-          <span class="chip-emoji">🤔</span>Slightly difficult
-        </div>
-        <div class="choice-chip" data-val="Not sure" onclick="pickChoice('ageGrid', this)">
-          <span class="chip-emoji">🙂</span>Not sure
-        </div>
-      </div>
-
-      <div class="err-msg" id="err5">⚠️ Please select one option.</div>
-      <div class="btn-row">
-        <button class="btn-back" onclick="goBack(5)">← Back</button>
-        <button class="btn-next" onclick="goNext(5)">Next →</button>
-      </div>
-    </div>
-
-    <!-- STEP 6: Recommend -->
-    <div class="step-box" id="step6">
-      <div class="step-num">Step 6 of 7 · Would You Recommend?</div>
-      <div class="step-question">Would you recommend us to other parents? 💬</div>
-      <div class="step-hint">Your recommendation means the world to us!</div>
-
-      <div class="choice-grid" id="recGrid">
-        <div class="choice-chip" data-val="Definitely!" onclick="pickChoice('recGrid', this)">
-          <span class="chip-emoji">💯</span>Definitely!
-        </div>
-        <div class="choice-chip" data-val="Maybe" onclick="pickChoice('recGrid', this)">
-          <span class="chip-emoji">🤷</span>Maybe
-        </div>
-        <div class="choice-chip" data-val="No" onclick="pickChoice('recGrid', this)">
-          <span class="chip-emoji">❌</span>No
-        </div>
-        <div class="choice-chip" data-val="Already have!" onclick="pickChoice('recGrid', this)">
-          <span class="chip-emoji">🎉</span>Already have!
-        </div>
-      </div>
-
-      <div class="err-msg" id="err6">⚠️ Please select one option.</div>
-      <div class="btn-row">
-        <button class="btn-back" onclick="goBack(6)">← Back</button>
-        <button class="btn-next" onclick="goNext(6)">Next →</button>
-      </div>
-    </div>
-
-    <!-- STEP 7: Review Text + Media -->
-    <div class="step-box" id="step7">
-      <div class="step-num">Step 7 of 7 · Your Review</div>
-      <div class="step-question">Tell us more in your own words ✍️</div>
-      <div class="step-hint">Optional — but your story helps other parents a lot!</div>
-
-      <textarea id="revText" class="rev-textarea"
-        placeholder="e.g. My daughter absolutely loved the Barbie activity book! The name personalisation made it feel extra special..."></textarea>
-
-      <!-- Media Upload -->
-      <div class="media-box">
-        <div class="media-icon">📸</div>
-        <p>Can you share a photo or video of your child using the book?<br>
-          <strong style="color:var(--brown);">Real photos build trust and inspire other parents!</strong>
-        </p>
-        <input type="text" id="revMediaLink" class="rev-input" style="margin-bottom:0;text-align:left;"
-          placeholder="Paste a Google Drive / YouTube / Instagram link (optional)">
-      </div>
-
-      <div class="err-msg" id="err7"></div>
-      <div class="btn-row">
-        <button class="btn-back" onclick="goBack(7)">← Back</button>
-        <button class="btn-next" id="submitBtn" onclick="submitReview()">Submit Review 🍯</button>
-      </div>
-    </div>
-
-    <!-- SUCCESS -->
+    <!-- ═══ SUCCESS SCREEN ═══ -->
     <div class="success-box" id="successBox">
       <div style="font-size:3.5rem;">🎉</div>
-      <h2>Thank You!</h2>
-      <p>We've received your review. It means the world to us and will help other parents find the right learning tools
-        for their little ones! 🍯</p>
-      <a href="index.html"
-        style="display:inline-block;background:var(--green);color:white;padding:14px 32px;border-radius:50px;font-weight:800;font-size:1rem;text-decoration:none;">Back
-        to Home 🏠</a>
+      <h2>Thank You So Much!</h2>
+      <p>We've received your detailed feedback. Your review will help other parents discover screen-free personalized learning for their little ones! 🍯</p>
+
+      <a id="waForwardBtn" href="#" target="_blank" rel="noopener" class="wa-share-btn">
+        💬 Share on WhatsApp (+91 88836 24873)
+      </a>
+      <br>
+      <div style="margin-top: 14px;">
+        <a href="reviews.html" style="color:var(--hb-brown); font-weight:800; text-decoration:underline;">← Back to Customer Reviews</a>
+      </div>
     </div>
 
-  </div><!-- /review-card -->
-
-  
+  </div>
 
   <script is:inline>
-    // ── STATE ──────────────────────────────────────────────
-    let currentStep = 1;
-    const TOTAL_STEPS = 7;
-    let selectedStar = 0;
+    // ── SURVEY STATE STORE ──
+    let selectedCategory = '';
+    const ratingScores = {};
+    const singleChoices = {};
 
+    const categoryTitles = {
+      'reusable': '♻️ Reusable / Write-Wipe-Write Books',
+      'activity': '🎨 Theme-Based Activity Books',
+      'return-gift': '🎁 Personalised Return Gifts',
+      'divine': '🪔 Divine Series'
+    };
+
+    // Star Labels
     const starLabels = ['', 'Poor 😞', 'Fair 😕', 'Good 🙂', 'Great 😊', 'Excellent 🥰'];
 
-    // ── STAR RATING ────────────────────────────────────────
-    function setStar(val) {
-      selectedStar = val;
-      document.querySelectorAll('.star-btn').forEach((b, i) => {
-        b.classList.toggle('lit', i < val);
+    // ── STAR RATER HANDLER ──
+    function rateStar(qid, val) {
+      ratingScores[qid] = val;
+      const row = document.querySelector(`.star-rater-row[data-qid="${qid}"]`);
+      if (!row) return;
+
+      const btns = row.querySelectorAll('.star-btn');
+      btns.forEach((btn, idx) => {
+        btn.classList.toggle('lit', idx < val);
       });
-      document.getElementById('starLabel').textContent = starLabels[val];
+
+      const hint = document.getElementById(`hint_${qid}`);
+      if (hint) {
+        hint.textContent = starLabels[val] || `${val} Stars`;
+        hint.style.color = '#f59e0b';
+      }
     }
 
-    // ── CHIP SELECTION (single) ────────────────────────────
-    function pickChoice(gridId, el) {
-      document.querySelectorAll(`#${gridId} .choice-chip`).forEach(c => c.classList.remove('selected'));
-      el.classList.add('selected');
+    // ── SINGLE CHOICE CHIPS ──
+    function pickSingleChoice(qid, element, value) {
+      singleChoices[qid] = value;
+      const container = document.querySelector(`.choice-chips-row[data-qid="${qid}"]`);
+      if (!container) return;
+
+      container.querySelectorAll('.choice-chip').forEach(c => c.classList.remove('selected'));
+      element.classList.add('selected');
     }
 
-    // ── CHIP SELECTION (multi) ─────────────────────────────
-    function toggleCheck(el) {
-      el.classList.toggle('selected');
+    // ── CATEGORY SELECTION (STEP 2) ──
+    function selectCategory(catKey, element) {
+      selectedCategory = catKey;
+      document.querySelectorAll('.cat-card-option').forEach(c => c.classList.remove('selected'));
+      element.classList.add('selected');
+      document.getElementById('err2').style.display = 'none';
+
+      // Setup Step 3
+      document.getElementById('step3Badge').textContent = `Step 3 of 4 · ${categoryTitles[catKey] || 'Product Experience'}`;
+      document.getElementById('step3Title').textContent = `${categoryTitles[catKey]} Experience`;
+
+      // Hide all category blocks and show selected
+      document.querySelectorAll('.cat-feedback-block').forEach(b => b.style.display = 'none');
+      const targetBlock = document.getElementById(`catBlock_${catKey}`);
+      if (targetBlock) targetBlock.style.display = 'block';
     }
 
-    // ── PROGRESS UPDATE ────────────────────────────────────
+    // ── PROGRESS UPDATER ──
     function updateProgress(step) {
-      const pct = Math.round((step / TOTAL_STEPS) * 100);
-      document.getElementById('progressText').textContent = `Step ${step} of ${TOTAL_STEPS}`;
+      const pct = Math.round((step / 4) * 100);
+      const stepNames = ['', 'About You', 'Product Category', 'Product Feedback', 'Shopping Experience'];
+      document.getElementById('progressText').textContent = `Step ${step} of 4 · ${stepNames[step] || ''}`;
       document.getElementById('progressPct').textContent = `${pct}%`;
       document.getElementById('progressFill').style.width = `${pct}%`;
     }
 
-    // ── VALIDATION ─────────────────────────────────────────
+    // ── STEP VALIDATION ──
     function validate(step) {
-      const hide = id => { document.getElementById(id).style.display = 'none'; };
-      const show = id => { document.getElementById(id).style.display = 'block'; };
+      const hide = id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; };
+      const show = id => { const el = document.getElementById(id); if (el) el.style.display = 'block'; };
 
       if (step === 1) {
         const name = document.getElementById('revName').value.trim();
         const loc = document.getElementById('revLoc').value.trim();
-        if (!name || !loc) { show('err1'); return false; }
-        hide('err1'); return true;
+        if (!name || !loc) {
+          show('err1');
+          return false;
+        }
+        hide('err1');
+        return true;
       }
+
       if (step === 2) {
-        if (!selectedStar) { show('err2'); return false; }
-        hide('err2'); return true;
+        if (!selectedCategory) {
+          show('err2');
+          return false;
+        }
+        hide('err2');
+        return true;
       }
+
       if (step === 3) {
-        if (!document.querySelector('#enjoyGrid .choice-chip.selected')) { show('err3'); return false; }
-        hide('err3'); return true;
+        // Ensure at least one rating or choice is picked in the category
+        let hasAnyAnswer = false;
+        for (const k in ratingScores) {
+          if (ratingScores[k] > 0) { hasAnyAnswer = true; break; }
+        }
+        if (!hasAnyAnswer) {
+          for (const k in singleChoices) {
+            if (singleChoices[k]) { hasAnyAnswer = true; break; }
+          }
+        }
+
+        if (!hasAnyAnswer) {
+          show('err3');
+          return false;
+        }
+        hide('err3');
+        return true;
       }
-      if (step === 4) return true; // skills are optional
-      if (step === 5) {
-        if (!document.querySelector('#ageGrid .choice-chip.selected')) { show('err5'); return false; }
-        hide('err5'); return true;
+
+      if (step === 4) {
+        const quote = document.getElementById('common_parent_quote').value.trim();
+        if (!quote) {
+          show('err4');
+          return false;
+        }
+        hide('err4');
+        return true;
       }
-      if (step === 6) {
-        if (!document.querySelector('#recGrid .choice-chip.selected')) { show('err6'); return false; }
-        hide('err6'); return true;
-      }
+
       return true;
     }
 
-    // ── NAVIGATION ─────────────────────────────────────────
+    // ── NAVIGATION ──
     function goNext(step) {
       if (!validate(step)) return;
       document.getElementById(`step${step}`).classList.remove('active');
-      currentStep = step + 1;
-      document.getElementById(`step${currentStep}`).classList.add('active');
-      updateProgress(currentStep);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const nextStep = step + 1;
+      document.getElementById(`step${nextStep}`).classList.add('active');
+      updateProgress(nextStep);
+      window.scrollTo({ top: 120, behavior: 'smooth' });
     }
 
     function goBack(step) {
       document.getElementById(`step${step}`).classList.remove('active');
-      currentStep = step - 1;
-      document.getElementById(`step${currentStep}`).classList.add('active');
-      updateProgress(currentStep);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const prevStep = step - 1;
+      document.getElementById(`step${prevStep}`).classList.add('active');
+      updateProgress(prevStep);
+      window.scrollTo({ top: 120, behavior: 'smooth' });
     }
 
-    // ── SUBMIT ─────────────────────────────────────────────
+    // ── SUBMISSION ──
     async function submitReview() {
+      if (!validate(4)) return;
+
       const btn = document.getElementById('submitBtn');
       btn.disabled = true;
-      btn.textContent = '⏳ Sending...';
+      btn.textContent = '⏳ Submitting Your Review...';
 
-      // Collect all data
+      // 1. Basic Details
       const name = document.getElementById('revName').value.trim();
       const loc = document.getElementById('revLoc').value.trim();
-      const stars = selectedStar;
-      const enjoyEL = document.querySelector('#enjoyGrid .choice-chip.selected');
-      const enjoy = enjoyEL ? enjoyEL.dataset.val : '—';
-      const skills = [...document.querySelectorAll('#skillsGrid .check-chip.selected')]
-        .map(c => c.textContent.trim()).join(', ') || 'None selected';
-      const ageEL = document.querySelector('#ageGrid .choice-chip.selected');
-      const ageLevel = ageEL ? ageEL.dataset.val : '—';
-      const recEL = document.querySelector('#recGrid .choice-chip.selected');
-      const recommend = recEL ? recEL.dataset.val : '—';
-      const text = document.getElementById('revText').value.trim();
-      const media = document.getElementById('revMediaLink').value.trim();
+      const phone = document.getElementById('revPhone').value.trim();
+      const child = document.getElementById('revChild').value.trim();
 
+      // 2. Open-ended answers
+      const catOpenKey = `q_${selectedCategory === 'return-gift' ? 'rg' : selectedCategory === 'activity' ? 'act' : selectedCategory}_open`;
+      const catOpenEl = document.getElementById(catOpenKey);
+      const catOpenAnswer = catOpenEl ? catOpenEl.value.trim() : '';
+
+      const actNextThemeEl = document.getElementById('q_act_next_theme');
+      const actNextTheme = actNextThemeEl ? actNextThemeEl.value.trim() : '';
+
+      const parentQuote = document.getElementById('common_parent_quote').value.trim();
+      const mediaLink = document.getElementById('revMediaLink').value.trim();
+
+      // 3. Assemble complete payload
       const payload = {
-        _subject: `⭐ New Review from ${name} — ${stars}/5 Stars`,
-        Name: name,
+        _subject: `⭐ HoneyBee Review from ${name} (${loc}) — [${categoryTitles[selectedCategory] || selectedCategory}]`,
+        Parent_Name: name,
         Location: loc,
-        Rating: `${stars}/5 Stars`,
-        Child_Enjoyment: enjoy,
-        Skills_Improved: skills,
-        Age_Suitability: ageLevel,
-        Recommend: recommend,
-        Review_Text: text || 'No written review provided',
-        Media_Link: media || 'Not provided',
+        WhatsApp_Phone: phone || 'Not provided',
+        Child_Info: child || 'Not provided',
+        Category_Reviewed: categoryTitles[selectedCategory] || selectedCategory,
+
+        // Ratings & Choices Map
+        Ratings_Summary: JSON.stringify(ratingScores, null, 2),
+        Choices_Summary: JSON.stringify(singleChoices, null, 2),
+
+        // Open feedback
+        Category_Specific_Answer: catOpenAnswer || 'None',
+        Child_Next_Theme_Wish: actNextTheme || 'None',
+        Advice_For_Other_Parents: parentQuote,
+        Media_Or_Photo_Link: mediaLink || 'None'
       };
+
+      // Construct a clean WhatsApp forward message
+      let waMsg = `*🐝 HONEYBEE LEARNING REVIEW*\n`;
+      waMsg += `*Parent:* ${name} (${loc})\n`;
+      if (child) waMsg += `*Child:* ${child}\n`;
+      waMsg += `*Product:* ${categoryTitles[selectedCategory] || selectedCategory}\n\n`;
+      waMsg += `*Review / Advice for Parents:*\n"${parentQuote}"\n\n`;
+      if (catOpenAnswer) waMsg += `*What we liked most:* ${catOpenAnswer}\n`;
+      if (mediaLink) waMsg += `*Photos/Media:* ${mediaLink}\n`;
+
+      const waUrl = `https://wa.me/918883624873?text=${encodeURIComponent(waMsg)}`;
+      const waBtn = document.getElementById('waForwardBtn');
+      if (waBtn) waBtn.href = waUrl;
 
       try {
         await fetch('https://formsubmit.co/ajax/honeybeelearning.co@gmail.com', {
@@ -753,20 +1254,21 @@ const extraStylesheets = ['css/pages.css'];
           body: JSON.stringify(payload),
         });
 
-        // Show success
-        document.getElementById('step7').classList.remove('active');
+        // Show Success
+        document.getElementById('step4').classList.remove('active');
         document.querySelector('.progress-wrap').style.display = 'none';
         const suc = document.getElementById('successBox');
         suc.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 120, behavior: 'smooth' });
 
       } catch (err) {
-        console.error(err);
-        const errEl = document.getElementById('err7');
-        errEl.textContent = '⚠️ Something went wrong. Please try again.';
-        errEl.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Submit Review 🍯';
+        console.error('Submission error:', err);
+        // Even if network or FormSubmit fails, allow parent to send via WhatsApp directly!
+        document.getElementById('step4').classList.remove('active');
+        document.querySelector('.progress-wrap').style.display = 'none';
+        const suc = document.getElementById('successBox');
+        suc.style.display = 'block';
+        window.scrollTo({ top: 120, behavior: 'smooth' });
       }
     }
   </script>
