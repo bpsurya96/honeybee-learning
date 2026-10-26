@@ -2,13 +2,57 @@
     "instagram": [
         {
             "url": "https://www.instagram.com/reel/DeIxisWMoaT/",
-            "video": "reviews/videos/honeybee_reel.mp4",
-            "poster": "reviews/videos/honeybee_reel_poster.jpg",
+            "video": "/reviews/videos/honeybee_reel.mp4",
+            "poster": "/reviews/videos/honeybee_reel_poster.jpg",
             "caption": "Kids loving their personalised HoneyBee activity books! 🐝",
             "category": "activity"
+        },
+        {
+            "url": "https://www.instagram.com/reel/Dbwx-aKJca-/",
+            "video": "/reviews/videos/honeybee_reel.mp4",
+            "poster": "/reviews/videos/honeybee_reel_poster.jpg",
+            "caption": "Just loved the stories 🐝",
+            "category": "divine"
+        },
+        {
+            "url": "https://www.instagram.com/reel/DcbLjGrJJ9q/",
+            "video": "/reviews/videos/honeybee_reel.mp4",
+            "poster": "/reviews/videos/honeybee_reel_poster.jpg",
+            "caption": "Milestone of HONEYBEE LEARNING 🐝",
+            "category": "divine"
+        },
+        {
+            "url": "https://www.instagram.com/reel/Dd_fpQMpyEj/",
+            "video": "/reviews/videos/honeybee_reel.mp4",
+            "poster": "/reviews/videos/honeybee_reel_poster.jpg",
+            "caption": "Milestone of HONEYBEE LEARNING 🐝",
+            "category": "divine"
+        },
+        {
+            "url": "https://www.instagram.com/reel/DeBxjPPpiHM/",
+            "video": "/reviews/videos/honeybee_reel.mp4",
+            "poster": "/reviews/videos/honeybee_reel_poster.jpg",
+            "caption": "Sample customised divine books",
+            "category": "divine"
         }
     ],
     "text": [
+        {
+            "name": "kavitha saravanan",
+            "loc": "Chennai",
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "text": "Excellent books, and customisation work done is really nice and perfect"
+        },
+        {
+            "name": "Sangavi",
+            "loc": "Madurai",
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "text": "We loved your books ... Excellent illustrations and kids friendly... My son enjoys reading everyday. Paper quality in this price is very good"
+        },
         {
             "name": "Abi",
             "loc": "Chennai",
@@ -148,6 +192,60 @@
             "date": "Mar 2026",
             "category": "return-gift",
             "img": "reviews/photos/review3.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/1.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/2.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/3.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/4.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/5.jpeg"
+        },
+        {
+            "stars": 4,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/6.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/7.jpeg"
+        },
+        {
+            "stars": 4,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/8.jpeg"
+        },
+        {
+            "stars": 5,
+            "date": "Sept 2026",
+            "category": "divine",
+            "img": "reviews/divineseries/9.jpeg"
         }
     ],
     "videos": [
