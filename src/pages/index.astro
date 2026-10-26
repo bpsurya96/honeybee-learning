@@ -583,7 +583,14 @@ const ageGuides = [
                   <li style="margin-bottom: 4px;">✔ {item}</li>
                 ))}
               </ul>
-              <a href="return-gifts.html" class="scard-btn">Customise &amp; Order 🎁</a>
+              <button
+                type="button"
+                class="scard-btn"
+                onclick={`openOrderModal('${g.name.replace(/'/g, "\'")}', '₹${g.price}', ${Boolean(g.hasCandy)})`}
+                style="cursor: pointer; width: 100%; border: none; font-family: inherit;"
+              >
+                Customise &amp; Order 🎁
+              </button>
             </div>
           </div>
         ))}
@@ -742,71 +749,105 @@ const ageGuides = [
     </div>
   </div>
 
+  
+
   <!-- ORDER MODAL -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
-    <div class="modal">
-      <div class="modal-header"><button class="modal-close" onclick="closeOrderModal()">✕</button>
-        <h2>Send Enquiry</h2>
-        <p>Fill in the details — we'll personalise it just for you!</p>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeOrderModal()" aria-label="Close">✕</button>
+        <h2 id="modalTitle">Customise &amp; Order 🎁</h2>
+        <p id="modalCombo">Pack name</p>
       </div>
       <div class="modal-body">
-        <div id="orderForm">
-          <div class="order-summary-box">
-            <div>
-              <div
-                style="font-size:0.7rem;color:var(--brown-light);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">
-                Selected Combo</div>
-              <div class="osum-name" id="modalCombo">—</div>
-            </div>
-            <div class="osum-price" id="modalPrice">₹—</div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label for="buyerName">Your Name *</label><input type="text" id="buyerName"
-                placeholder="Parent / Buyer name"></div>
-            <div class="form-group"><label for="buyerPhone">Phone / WhatsApp *</label><input type="tel" id="buyerPhone"
-                placeholder="10-digit number"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label for="childName">Child's Name (for personalisation) *</label><input
-                type="text" id="childName" placeholder="e.g. Arjun"></div>
-            <div class="form-group"><label for="quantity">Quantity *</label><input type="number" id="quantity"
-                value="10" min="1" max="500"></div>
-          </div>
-          <div class="form-group"><label for="ageGroup">Age Group</label><select id="ageGroup">
-              <option value="">Select age group</option>
-              <option value="1-2">1–2 years (Toddler)</option>
-              <option value="3-5">3–5 years (Nursery/LKG)</option>
-              <option value="6-8">6–8 years (Class 1–3)</option>
-              <option value="9-12">9–12 years (Class 4–7)</option>
-            </select></div>
-          <div class="form-group" id="candyGroup"><label>Candy Preference</label>
-            <div class="candy-choice"><button class="candy-btn selected" id="candy1"
-                onclick="selectCandy('chocolate')">🍫 Chocolate</button><button class="candy-btn" id="candy2"
-                onclick="selectCandy('chikki')">🍬 Chikki</button></div>
-          </div>
-          <div class="form-group"><label for="deliveryDate">Delivery Date Needed *</label><input type="date"
-              id="deliveryDate"></div>
-          <div class="form-group"><label for="address">Delivery Address *</label><textarea id="address"
-              placeholder="Your full address"></textarea></div>
-          <div class="form-group"><label for="notes">Special Notes</label><textarea id="notes"
-              placeholder="Theme preference, multiple names, etc." style="min-height:54px;"></textarea></div>
-          <p id="formError" style="color:#c0392b;font-weight:700;font-size:0.86rem;margin-bottom:10px;display:none;">
-          </p>
-          <button class="btn-submit" onclick="submitOrder()">Send Enquiry ✉️</button>
-          <p style="text-align:center;font-size:0.79rem;color:var(--text-soft);margin-top:7px;font-weight:600;">We will
-            reach out to you and customize based on your preference.</p>
+        <div class="order-summary-box">
+          <span class="osum-name" id="modalComboLabel">—</span>
+          <span class="osum-price" id="modalPrice">—</span>
         </div>
-        <div class="success-screen" id="successScreen">
-          <span class="success-bee">🍯</span>
-          <h2>Enquiry Sent!</h2>
-          <p>Your enquiry details have been sent.<br>We will reach out to you and customize based on your preference.
-          </p>
-          <div class="order-id-box" id="orderIdBox">ENQUIRY #—</div>
 
+        <div id="orderForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="buyerName">Your Name *</label>
+              <input type="text" id="buyerName" placeholder="Your full name" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="buyerPhone">WhatsApp Number *</label>
+              <input type="tel" id="buyerPhone" placeholder="10-digit number" autocomplete="tel">
+            </div>
+          </div>
 
-          <button onclick="closeOrderModal()"
-            style="background:none;border:2px solid var(--green);color:var(--green);padding:10px 22px;border-radius:50px;font-family:'Nunito',sans-serif;font-weight:800;cursor:pointer;font-size:0.9rem;">Done
-            ✓</button>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="childName">Birthday Child's Name *</label>
+              <input type="text" id="childName" placeholder="e.g. Aarav">
+            </div>
+            <div class="form-group">
+              <label for="quantity">Quantity (sets) *</label>
+              <input type="number" id="quantity" min="10" value="10">
+            </div>
+          </div>
+
+          <div id="candyGroup" class="form-group" style="display:none;">
+            <label>Candy Preference</label>
+            <div class="candy-choice">
+              <button type="button" class="candy-btn selected" id="candy1" onclick="selectCandy('chocolate')">🍫
+                Chocolate</button>
+              <button type="button" class="candy-btn" id="candy2" onclick="selectCandy('chikki')">🍬 Chikki</button>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ageGroup">Age Group</label>
+              <select id="ageGroup">
+                <option value="">Select age group</option>
+                <option value="2-4">2–4 years</option>
+                <option value="4-6">4–6 years</option>
+                <option value="6-8">6–8 years</option>
+                <option value="8-12">8–12 years</option>
+                <option value="mixed">Mixed ages</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="deliveryDate">Party / Delivery Date *</label>
+              <input type="date" id="deliveryDate">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Delivery Address *</label>
+            <textarea id="address" placeholder="Full address with pincode"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Extra Notes</label>
+            <textarea id="notes" placeholder="Guest name list, special requests, etc."></textarea>
+          </div>
+
+          <div id="formError" style="display:none;color:#c0392b;font-weight:700;font-size:0.88rem;margin-bottom:10px;">
+          </div>
+
+          <button class="btn-submit" onclick="submitOrder()">Send Enquiry 💬</button>
+        </div>
+
+        <div id="successScreen" style="display:none;text-align:center;padding:20px 0;">
+          <div style="font-size:3rem;margin-bottom:12px;">🎉</div>
+          <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--green);margin-bottom:8px;">Enquiry
+            sent!</div>
+          <div style="font-size:0.88rem;color:var(--text-soft);font-weight:600;margin-bottom:16px;">
+            We'll reply on WhatsApp shortly to confirm your order details.
+          </div>
+          <div id="orderIdBox"
+            style="background:var(--green-pale);color:var(--green);padding:8px 20px;border-radius:50px;font-weight:800;display:inline-block;margin-bottom:16px;">
+          </div>
+          <br>
+          <a id="waProceedBtn" href="#" target="_blank" rel="noopener" class="btn-primary"
+            style="display:inline-block;margin-bottom:12px;background:#25D366;border-color:#25D366;box-shadow:0 8px 24px rgba(37,211,102,0.3);">Proceed
+            to WhatsApp 💬</a>
+          <br>
+          <button onclick="closeOrderModal()" class="btn-secondary"
+            style="border:none;cursor:pointer;background:transparent;color:var(--text-soft);">Close</button>
         </div>
       </div>
     </div>

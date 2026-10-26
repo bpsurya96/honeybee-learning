@@ -2401,7 +2401,7 @@ section {
 .dmodal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 300;
+  z-index: 99999;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(8px);
   display: flex;
@@ -2567,13 +2567,16 @@ section {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 200;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  z-index: 999999 !important;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 20px;
+  padding: max(24px, 4vh) 16px 32px 16px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
@@ -2589,11 +2592,14 @@ section {
   border-radius: 28px;
   width: 100%;
   max-width: 540px;
-  max-height: 90vh;
+  max-height: calc(100dvh - 48px);
   overflow-y: auto;
-  transform: translateY(40px) scale(0.96);
+  position: relative;
+  z-index: 1000000;
+  margin: auto;
+  transform: translateY(20px) scale(0.98);
   transition: transform 0.3s;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
 }
 
 .modal-overlay.open .modal {
@@ -2601,10 +2607,13 @@ section {
 }
 
 .modal-header {
-  background: linear-gradient(135deg, var(--green-pale), #d4edb0);
-  padding: 24px 24px 16px;
+  background: linear-gradient(135deg, var(--green-pale, #e8f5d0), #d4edb0);
+  padding: 20px 24px 16px;
   border-radius: 28px 28px 0 0;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .modal-header h2 {
@@ -2624,16 +2633,34 @@ section {
   position: absolute;
   top: 14px;
   right: 18px;
-  background: none;
-  border: none;
-  font-size: 1.4rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  font-size: 1.3rem;
+  font-weight: 700;
   cursor: pointer;
-  color: var(--text-soft);
-  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a1a;
+  z-index: 30;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-close:hover {
+  background: #ff4757;
+  color: #ffffff;
+  border-color: #ff4757;
+  transform: scale(1.08) rotate(90deg);
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.16);
   color: var(--green);
+  transform: scale(1.08);
 }
 
 .modal-body {
