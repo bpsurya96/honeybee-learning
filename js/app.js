@@ -889,7 +889,7 @@ function openOrderModal(name, price, hasCandy) {
     const mcl = document.getElementById('modalComboLabel');
     if (mcl) mcl.textContent = name;
     const mp = document.getElementById('modalPrice');
-    if (mp) mp.textContent = price;
+    if (mp) mp.innerHTML = (price || '').replace('₹', '&#8377;');
     const cg = document.getElementById('candyGroup');
     if (cg) cg.style.display = hasCandy ? 'block' : 'none';
     const oform = document.getElementById('orderForm');
