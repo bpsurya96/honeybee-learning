@@ -335,7 +335,19 @@ const isSeriesActive = ["products.html", "ocean-kits.html", "divine-stories.html
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1.5px solid rgba(244, 162, 39, 0.22);
     box-shadow: 0 4px 20px -2px rgba(60, 40, 10, 0.06);
-    transition: background 0.3s, box-shadow 0.3s;
+    transition: transform 0.25s ease, opacity 0.2s ease, visibility 0.2s, background 0.3s, box-shadow 0.3s;
+  }
+
+  /* Automatically suppress site header when any modal is open so close button is completely unobstructed */
+  body.modal-open .hb-header-wrap,
+  body:has(.modal-overlay.open) .hb-header-wrap,
+  body:has(.dmodal-overlay.open) .hb-header-wrap,
+  body:has(.explainer-overlay.open) .hb-header-wrap {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: -1 !important;
+    transform: translateY(-100%) !important;
   }
 
   .hb-navbar {

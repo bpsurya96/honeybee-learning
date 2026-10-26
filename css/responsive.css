@@ -181,12 +181,14 @@
     .modal-overlay {
         align-items: flex-end;
         padding: 0;
+        z-index: 999999 !important;
     }
 
     .modal {
         border-radius: 24px 24px 0 0;
-        max-height: 96dvh;
+        max-height: calc(100dvh - 36px);
         width: 100%;
+        margin-top: 36px;
     }
     
     /* Hide top nav CTA on mobile/tablet since the floating button exists */

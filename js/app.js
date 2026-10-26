@@ -688,14 +688,14 @@ function openLightboxFromHome(imgSrc) {
     const imgEl = document.getElementById('ilbImg');
     if (imgEl) imgEl.src = imgSrc;
     lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open'); document.body.style.overflow = 'hidden';
 }
 
 function closeImageLightbox() {
     const lb = document.getElementById('imageLightboxOverlay');
     if (lb) lb.classList.remove('open');
     document.body.classList.remove('no-scroll');
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open'); document.body.style.overflow = '';
     document.body.style.height = '';
 }
 
@@ -869,14 +869,14 @@ function openDetailModal(idx) {
         closeDetailModal();
         openOrderModal(p.title, '₹' + p.price, false);
     };
-    document.getElementById('dmodalOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
+    document.getElementById('dmodalOverlay').classList.add('open'); document.body.classList.add('modal-open'); document.body.classList.add('modal-open');
+    document.body.classList.add('modal-open'); document.body.style.overflow = 'hidden';
 }
 function closeDetailModal() {
     const dmodal = document.getElementById('dmodalOverlay');
     if (dmodal) dmodal.classList.remove('open');
     document.body.classList.remove('no-scroll');
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open'); document.body.style.overflow = '';
     document.body.style.height = '';
 }
 function closeDetailOnBg(e) { if (e.target === document.getElementById('dmodalOverlay')) closeDetailModal(); }
@@ -903,11 +903,11 @@ function openOrderModal(name, price, hasCandy) {
     if (dd) dd.min = minDate.toISOString().split('T')[0];
     const mo = document.getElementById('modalOverlay');
     if (mo) mo.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open'); document.body.style.overflow = 'hidden';
 }
 function closeOrderModal() {
     document.getElementById('modalOverlay').classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open'); document.body.style.overflow = '';
     setTimeout(() => {
         document.getElementById('orderForm').style.display = 'block';
         document.getElementById('successScreen').classList.remove('show');
@@ -1030,7 +1030,7 @@ function openExplainerModal() {
     const overlay = document.getElementById('explainerOverlay');
     if (!overlay) return;
     overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open'); document.body.style.overflow = 'hidden';
     explainerCurrentSlide = 0;
     renderExplainerSlide(0);
     startExplainerTimer();
@@ -1040,7 +1040,7 @@ function closeExplainerModal(e) {
     const overlay = document.getElementById('explainerOverlay');
     if (!overlay) return;
     overlay.classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open'); document.body.style.overflow = '';
     stopExplainerTimer();
 }
 

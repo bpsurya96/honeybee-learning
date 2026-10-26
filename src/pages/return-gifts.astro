@@ -1119,11 +1119,13 @@ const extraStylesheets: string[] = [];
       minDate.setDate(minDate.getDate() + 3);
       document.getElementById('deliveryDate').min = minDate.toISOString().split('T')[0];
       document.getElementById('modalOverlay').classList.add('open');
+      document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeOrderModal() {
       document.getElementById('modalOverlay').classList.remove('open');
+      document.body.classList.remove('modal-open');
       document.body.style.overflow = '';
       setTimeout(() => {
         document.getElementById('orderForm').style.display = 'block';

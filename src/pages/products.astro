@@ -386,7 +386,9 @@ const returnGiftsCount = normalizedReturnGifts.length;
       </section>
 
     </div>
+  </main>
   
+  <!-- ORDER MODAL (OUTSIDE MAIN FOR MAXIMUM Z-INDEX AND CLEAN VIEWPORT ISOLATION) -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <div class="modal-header">
@@ -487,7 +489,6 @@ const returnGiftsCount = normalizedReturnGifts.length;
       </div>
     </div>
   </div>
-</main>
 
   <style>
     /* --
@@ -1208,6 +1209,83 @@ const returnGiftsCount = normalizedReturnGifts.length;
         height: 32px;
       }
     }
+
+    /* Modal Header & Overlay Layering (Above Fixed Site Header) */
+    .modal-overlay {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 999999 !important;
+      background: rgba(0, 0, 0, 0.65) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      padding: max(24px, 4vh) 16px 32px 16px !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+
+    .modal {
+      background: white !important;
+      border-radius: 28px !important;
+      width: 100% !important;
+      max-width: 540px !important;
+      max-height: calc(100dvh - 48px) !important;
+      overflow-y: auto !important;
+      position: relative !important;
+      z-index: 1000000 !important;
+      margin: auto !important;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, var(--green-pale, #e8f5d0), #d4edb0) !important;
+      padding: 20px 24px 16px !important;
+      border-radius: 28px 28px 0 0 !important;
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 20 !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    .modal-close {
+      position: absolute !important;
+      top: 14px !important;
+      right: 18px !important;
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50% !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+      font-size: 1.3rem !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #1a1a1a !important;
+      z-index: 30 !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .modal-close:hover {
+      background: #ff4757 !important;
+      color: #ffffff !important;
+      border-color: #ff4757 !important;
+      transform: scale(1.08) rotate(90deg) !important;
+    }
+
+    :global(body.modal-open .hb-header-wrap),
+    :global(body:has(.modal-overlay.open) .hb-header-wrap) {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      z-index: -1 !important;
+      transform: translateY(-100%) !important;
+      transition: transform 0.25s ease, opacity 0.2s ease, visibility 0.2s !important;
+    }
   </style>
 
   <!-- 5. CLIENT-SIDE FILTERING SCRIPT -->
@@ -1232,11 +1310,13 @@ const returnGiftsCount = normalizedReturnGifts.length;
       minDate.setDate(minDate.getDate() + 3);
       document.getElementById('deliveryDate').min = minDate.toISOString().split('T')[0];
       document.getElementById('modalOverlay').classList.add('open');
+      document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeOrderModal() {
       document.getElementById('modalOverlay').classList.remove('open');
+      document.body.classList.remove('modal-open');
       document.body.style.overflow = '';
       setTimeout(() => {
         document.getElementById('orderForm').style.display = 'block';
